@@ -1,0 +1,344 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		75019787148395DF00C7B661 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501977D148395DF00C7B661 /* AppDelegate.m */; };
+		75019788148395DF00C7B661 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501977E148395DF00C7B661 /* MenuController.m */; };
+		75019789148395DF00C7B661 /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75019782148395DF00C7B661 /* CanvasView.m */; };
+		7501978A148395DF00C7B661 /* CanvasWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75019784148395DF00C7B661 /* CanvasWindowController.m */; };
+		7501978B148395DF00C7B661 /* CanvasWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 75019785148395DF00C7B661 /* CanvasWindow.m */; };
+		75E082DE1476BC7C00A459E5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E082DD1476BC7C00A459E5 /* Cocoa.framework */; };
+		75E082EA1476BC7C00A459E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E082E91476BC7C00A459E5 /* main.m */; };
+		B7D7715D1A8114D60059B0CB /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = B7D7715C1A8114D60059B0CB /* README.md */; };
+		B7D7715E1A8115170059B0CB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75975C2D147D24C5001D3B77 /* MainMenu.xib */; };
+		B7D7715F1A81151B0059B0CB /* disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 75975C2F147D250A001D3B77 /* disable.png */; };
+		B7D771601A81151F0059B0CB /* enable.png in Resources */ = {isa = PBXBuildFile; fileRef = 75975C30147D250A001D3B77 /* enable.png */; };
+		B7D771611A8115230059B0CB /* highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 75975C31147D250A001D3B77 /* highlight.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7501977D148395DF00C7B661 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7501977E148395DF00C7B661 /* MenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuController.m; sourceTree = "<group>"; };
+		7501977F148395DF00C7B661 /* MenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuController.h; sourceTree = "<group>"; };
+		75019780148395DF00C7B661 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		75019781148395DF00C7B661 /* CanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasView.h; sourceTree = "<group>"; };
+		75019782148395DF00C7B661 /* CanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasView.m; sourceTree = "<group>"; };
+		75019783148395DF00C7B661 /* CanvasWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasWindowController.h; sourceTree = "<group>"; };
+		75019784148395DF00C7B661 /* CanvasWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasWindowController.m; sourceTree = "<group>"; };
+		75019785148395DF00C7B661 /* CanvasWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasWindow.m; sourceTree = "<group>"; };
+		75019786148395DF00C7B661 /* CanvasWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasWindow.h; sourceTree = "<group>"; };
+		75975C2D147D24C5001D3B77 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		75975C2F147D250A001D3B77 /* disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disable.png; sourceTree = "<group>"; };
+		75975C30147D250A001D3B77 /* enable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enable.png; sourceTree = "<group>"; };
+		75975C31147D250A001D3B77 /* highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlight.png; sourceTree = "<group>"; };
+		75E082D91476BC7C00A459E5 /* MacGesture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacGesture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75E082DD1476BC7C00A459E5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		75E082E01476BC7C00A459E5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		75E082E11476BC7C00A459E5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		75E082E21476BC7C00A459E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		75E082E51476BC7C00A459E5 /* MacGesture-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacGesture-Info.plist"; sourceTree = "<group>"; };
+		75E082E91476BC7C00A459E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		75E082EB1476BC7C00A459E5 /* MacGesture-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MacGesture-Prefix.pch"; sourceTree = "<group>"; };
+		75E082ED1476BC7C00A459E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		B7D7715C1A8114D60059B0CB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		75E082D61476BC7C00A459E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75E082DE1476BC7C00A459E5 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		75975C2B147D249E001D3B77 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				75975C2D147D24C5001D3B77 /* MainMenu.xib */,
+				75975C2F147D250A001D3B77 /* disable.png */,
+				75975C30147D250A001D3B77 /* enable.png */,
+				75975C31147D250A001D3B77 /* highlight.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		75E082CE1476BC7C00A459E5 = {
+			isa = PBXGroup;
+			children = (
+				B7D7715C1A8114D60059B0CB /* README.md */,
+				75E082E31476BC7C00A459E5 /* MacGesture */,
+				75E082DC1476BC7C00A459E5 /* Frameworks */,
+				75E082DA1476BC7C00A459E5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		75E082DA1476BC7C00A459E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				75E082D91476BC7C00A459E5 /* MacGesture.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		75E082DC1476BC7C00A459E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75E082DD1476BC7C00A459E5 /* Cocoa.framework */,
+				75E082DF1476BC7C00A459E5 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		75E082DF1476BC7C00A459E5 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75E082E01476BC7C00A459E5 /* AppKit.framework */,
+				75E082E11476BC7C00A459E5 /* CoreData.framework */,
+				75E082E21476BC7C00A459E5 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		75E082E31476BC7C00A459E5 /* MacGesture */ = {
+			isa = PBXGroup;
+			children = (
+				75019780148395DF00C7B661 /* AppDelegate.h */,
+				7501977D148395DF00C7B661 /* AppDelegate.m */,
+				7501977F148395DF00C7B661 /* MenuController.h */,
+				7501977E148395DF00C7B661 /* MenuController.m */,
+				75019781148395DF00C7B661 /* CanvasView.h */,
+				75019782148395DF00C7B661 /* CanvasView.m */,
+				75019783148395DF00C7B661 /* CanvasWindowController.h */,
+				75019784148395DF00C7B661 /* CanvasWindowController.m */,
+				75019786148395DF00C7B661 /* CanvasWindow.h */,
+				75019785148395DF00C7B661 /* CanvasWindow.m */,
+				75975C2B147D249E001D3B77 /* Resources */,
+				75E082E41476BC7C00A459E5 /* Supporting Files */,
+			);
+			path = MacGesture;
+			sourceTree = "<group>";
+		};
+		75E082E41476BC7C00A459E5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				75E082E51476BC7C00A459E5 /* MacGesture-Info.plist */,
+				75E082E91476BC7C00A459E5 /* main.m */,
+				75E082EB1476BC7C00A459E5 /* MacGesture-Prefix.pch */,
+				75E082EC1476BC7C00A459E5 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		75E082D81476BC7C00A459E5 /* MacGesture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75E082F71476BC7C00A459E5 /* Build configuration list for PBXNativeTarget "MacGesture" */;
+			buildPhases = (
+				75E082D51476BC7C00A459E5 /* Sources */,
+				75E082D61476BC7C00A459E5 /* Frameworks */,
+				75E082D71476BC7C00A459E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacGesture;
+			productName = MouseGesture;
+			productReference = 75E082D91476BC7C00A459E5 /* MacGesture.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		75E082D01476BC7C00A459E5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "";
+			};
+			buildConfigurationList = 75E082D31476BC7C00A459E5 /* Build configuration list for PBXProject "MacGesture" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 75E082CE1476BC7C00A459E5;
+			productRefGroup = 75E082DA1476BC7C00A459E5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				75E082D81476BC7C00A459E5 /* MacGesture */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		75E082D71476BC7C00A459E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7D771611A8115230059B0CB /* highlight.png in Resources */,
+				B7D771601A81151F0059B0CB /* enable.png in Resources */,
+				B7D7715F1A81151B0059B0CB /* disable.png in Resources */,
+				B7D7715E1A8115170059B0CB /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		75E082D51476BC7C00A459E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75E082EA1476BC7C00A459E5 /* main.m in Sources */,
+				75019787148395DF00C7B661 /* AppDelegate.m in Sources */,
+				75019788148395DF00C7B661 /* MenuController.m in Sources */,
+				B7D7715D1A8114D60059B0CB /* README.md in Sources */,
+				75019789148395DF00C7B661 /* CanvasView.m in Sources */,
+				7501978A148395DF00C7B661 /* CanvasWindowController.m in Sources */,
+				7501978B148395DF00C7B661 /* CanvasWindow.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		75E082EC1476BC7C00A459E5 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75E082ED1476BC7C00A459E5 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		75E082F51476BC7C00A459E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		75E082F61476BC7C00A459E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		75E082F81476BC7C00A459E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MacGesture/MacGesture-Prefix.pch";
+				INFOPLIST_FILE = "MacGesture/MacGesture-Info.plist";
+				PRODUCT_NAME = MacGesture;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		75E082F91476BC7C00A459E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MacGesture/MacGesture-Prefix.pch";
+				INFOPLIST_FILE = "MacGesture/MacGesture-Info.plist";
+				PRODUCT_NAME = MacGesture;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		75E082D31476BC7C00A459E5 /* Build configuration list for PBXProject "MacGesture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75E082F51476BC7C00A459E5 /* Debug */,
+				75E082F61476BC7C00A459E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75E082F71476BC7C00A459E5 /* Build configuration list for PBXNativeTarget "MacGesture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75E082F81476BC7C00A459E5 /* Debug */,
+				75E082F91476BC7C00A459E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 75E082D01476BC7C00A459E5 /* Project object */;
+}
