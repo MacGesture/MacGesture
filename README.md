@@ -27,4 +27,4 @@ Mac 下的鼠标手势，主要为了在Safari中使用类似FireGesture的手�
 
 ## 下载
 
-(Releases)[https://github.com/CodeFalling/MacGesture/releases]
+[Releases](https://github.com/CodeFalling/MacGesture/releases)
