@@ -24,3 +24,7 @@ Mac 下的鼠标手势，主要为了在Safari中使用类似FireGesture的手�
 - 通过配置文件读取手势和快捷键组合
 
 - 增加设置界面
+
+## 下载
+
+(Releases)[https://github.com/CodeFalling/MacGesture/releases]
