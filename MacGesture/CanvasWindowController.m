@@ -66,4 +66,9 @@
 	[self.window.contentView resizeTo:frame];
 }
 
+- (void)writeDirection:(NSString *)directionStr;
+{
+    [self.window.contentView writeDirection:directionStr];
+}
+
 @end

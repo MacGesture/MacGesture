@@ -11,12 +11,14 @@
 @interface CanvasView : NSView {
 	NSColor *color;
 	NSImage *image;
-	NSPoint lastLocation;
+    NSImage *textImage;
+    NSPoint lastLocation;
 	NSUInteger radius;
 }
 
 - (void)clear;
 - (void)resizeTo:(NSRect)frame;
 - (void)setEnable:(BOOL)shouldEnable;
+- (void)writeDirection:(NSString *)directionStr;
 
 @end

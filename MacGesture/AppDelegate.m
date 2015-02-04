@@ -101,9 +101,15 @@ static void updateDirections(NSEvent* event) {
 	}
     char lastDirectionChar = directionstr[length-1];
 
-#define MAYBE(x) if (lastDirectionChar != x[0]) {strcat(directionstr,x);return;}
+#define MAYBE(x)\
+    if (lastDirectionChar != x[0]) { \
+        strcat(directionstr,x);\
+        [windowController writeDirection:[NSString stringWithCString:directionstr encoding:NSASCIIStringEncoding]];\
+        return;\
+    }
 	if (absX > absY) {
 		if (deltaX > 0) {
+
             MAYBE("R");
 		} else{
             MAYBE("L");
