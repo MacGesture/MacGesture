@@ -16,15 +16,19 @@
 	if (self) {
 		color = [NSColor.blueColor retain];
 		image = [[NSImage alloc] initWithSize:frame.size];
+        textImage = [[NSImage alloc] initWithSize:frame.size];
 		radius = 2;
 	}
-	
+
+    
 	return self;
 }
 
 - (void)drawRect:(NSRect)dirtyRect
 {
 	[image drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+	[textImage drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+
 }
 
 - (void)drawCircleAtPoint:(NSPoint)point
@@ -32,7 +36,7 @@
 	[image lockFocus];
 	NSBezierPath *path = [NSBezierPath bezierPathWithOvalInRect:NSMakeRect(point.x - radius, point.y - radius, radius * 2, radius * 2)];
 	[color set];
-	[path fill];
+    [path fill];
 	[image unlockFocus];
 }
 
@@ -45,14 +49,18 @@
 	[path moveToPoint:point1];
 	[path lineToPoint:point2];
 	[path stroke];
-	[image unlockFocus];
+    [image unlockFocus];
+    
+    [self setNeedsDisplay:true];
 }
 
 - (void)clear {
 	[color release];
 	[image release];
+    [textImage release];
 	image = [[NSImage alloc] initWithSize:NSScreen.mainScreen.frame.size];
-	self.needsDisplay = YES;
+  	textImage = [[NSImage alloc] initWithSize:NSScreen.mainScreen.frame.size];
+    self.needsDisplay = YES;
 }
 
 - (void)resizeTo:(NSRect)frame {
@@ -88,6 +96,8 @@
 		
 		lastLocation = newLocation;
 	}
+    
+
 }
 
 - (void)mouseUp:(NSEvent *)event
@@ -100,6 +110,34 @@
 	[super dealloc];
 	[color release];
 	[image release];
+    [textImage release];
+
+}
+
+- (void)writeDirection:(NSString *)directionStr;
+{
+    directionStr = [directionStr stringByReplacingOccurrencesOfString:@"U" withString:@"↑"];
+    directionStr = [directionStr stringByReplacingOccurrencesOfString:@"D" withString:@"↓"];
+    directionStr = [directionStr stringByReplacingOccurrencesOfString:@"L" withString:@"←"];
+    directionStr = [directionStr stringByReplacingOccurrencesOfString:@"R" withString:@"→"];
+    [textImage release];
+    textImage = [[NSImage alloc] initWithSize:NSScreen.mainScreen.frame.size];
+    [textImage lockFocus];
+
+    CGRect screenRect = [[NSScreen mainScreen] frame];
+
+    
+    NSFont *font = [NSFont fontWithName:@"Palatino-Roman" size:88.0];
+    
+    NSDictionary *textAttributes = @{NSFontAttributeName: font};
+    CGSize size = [directionStr sizeWithAttributes:textAttributes];
+    int x = ((screenRect.size.width - size.width) / 2);
+    int y = ((screenRect.size.height - size.height) / 2);
+    
+    [directionStr drawAtPoint:NSMakePoint(x, y) withAttributes:textAttributes];
+    
+    [textImage unlockFocus];
+    [self setNeedsDisplay:true];
 }
 
 @end

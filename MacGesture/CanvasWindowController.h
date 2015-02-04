@@ -16,5 +16,5 @@
 
 - (void)handleMouseEvent:(NSEvent *)event;
 - (void)handleScreenParametersChange:(NSNotification *)notification;
-
+- (void)writeDirection:(NSString *)directionStr;
 @end
