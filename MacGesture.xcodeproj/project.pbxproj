@@ -179,7 +179,7 @@
 		B78ACC361A8377D30011F8F4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B78ACC3B1A8377D40011F8F4 /* libLibHandle.dylib */,
+				B78ACC3B1A8377D40011F8F4 /* LibHandle.dylib */,
 				B78ACC3D1A8377D40011F8F4 /* LibHandleTests.xctest */,
 			);
 			name = Products;
@@ -261,10 +261,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		B78ACC3B1A8377D40011F8F4 /* libLibHandle.dylib */ = {
+		B78ACC3B1A8377D40011F8F4 /* LibHandle.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			path = libLibHandle.dylib;
+			path = LibHandle.dylib;
 			remoteRef = B78ACC3A1A8377D40011F8F4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
