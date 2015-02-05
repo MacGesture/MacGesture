@@ -12,6 +12,8 @@
 	NSMenu *statusMenu;
 	NSMenuItem *toggleEnableItem;
 	NSMenuItem *toggleLaunchAtStartupItem;
+    NSMenuItem *openHandleLuaItem;
+    NSMenuItem *reloadHandleLuaItem;
 	NSStatusItem *statusItem;
 	BOOL isLaunchAtStartup;
 }

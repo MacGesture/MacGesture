@@ -84,6 +84,18 @@ static LSSharedFileListItemRef itemRefInLoginItems() {
 	[image release];
 }
 
+- (IBAction)openHandleLua:(id)sender {
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSString *path = [mainBundle pathForResource: @"handle" ofType: @"lua"];
+    [[NSTask launchedTaskWithLaunchPath:@"/usr/bin/open"
+                              arguments:[NSArray arrayWithObject:path]] waitUntilExit];
+}
+
+- (IBAction)reloadHandleLua:(id)sender {
+    [(AppDelegate *)NSApplication.sharedApplication.delegate reloadLuaVM];
+}
+
+
 - (IBAction)toggleLaunchAtStartup:(id)sender {
 	LSSharedFileListRef loginItemsRef = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
 	if (loginItemsRef == NULL) {

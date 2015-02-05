@@ -50,9 +50,14 @@ static void alertLuaErr(const char* msg){
 }
 
 
-static lua_State* getLuaVM(){
+static lua_State* initLuaVM(bool reset){
     static lua_State *L = NULL;    // for lua vm
-    if(L==NULL){
+    if(reset == true && L!=NULL){
+        lua_close(L);
+        L = NULL;
+        initLuaVM(false);
+    }
+    if(L == NULL){
         NSBundle *mainBundle = [NSBundle mainBundle];
         L = luaL_newstate();
         luaL_openlibs(L);
@@ -65,6 +70,15 @@ static lua_State* getLuaVM(){
         PRINT_LUA_ERR(luaL_dofile(L, [path UTF8String]));
     }
     return L;
+}
+
+- (void) reloadLuaVM
+{
+    initLuaVM(true);
+}
+
+static lua_State* getLuaVM(){
+    return initLuaVM(false);
 }
 
 
