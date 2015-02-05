@@ -14,12 +14,40 @@
 		7501978B148395DF00C7B661 /* CanvasWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 75019785148395DF00C7B661 /* CanvasWindow.m */; };
 		75E082DE1476BC7C00A459E5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E082DD1476BC7C00A459E5 /* Cocoa.framework */; };
 		75E082EA1476BC7C00A459E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E082E91476BC7C00A459E5 /* main.m */; };
+		B75BA45E1A835BC4004669EC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75975C2D147D24C5001D3B77 /* MainMenu.xib */; };
+		B78ACC4B1A8378AF0011F8F4 /* LibHandle.dylib in Resources */ = {isa = PBXBuildFile; fileRef = B78ACC461A8378A60011F8F4 /* LibHandle.dylib */; };
+		B78ACC631A83A5810011F8F4 /* utils.lua in Resources */ = {isa = PBXBuildFile; fileRef = B78ACC5E1A83A5810011F8F4 /* utils.lua */; };
+		B78ACC641A83A5810011F8F4 /* handle.lua in Resources */ = {isa = PBXBuildFile; fileRef = B78ACC5F1A83A5810011F8F4 /* handle.lua */; };
+		B78ACC651A83A5810011F8F4 /* LibHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = B78ACC611A83A5810011F8F4 /* LibHandle.m */; };
 		B7D7715D1A8114D60059B0CB /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = B7D7715C1A8114D60059B0CB /* README.md */; };
-		B7D7715E1A8115170059B0CB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75975C2D147D24C5001D3B77 /* MainMenu.xib */; };
 		B7D7715F1A81151B0059B0CB /* disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 75975C2F147D250A001D3B77 /* disable.png */; };
 		B7D771601A81151F0059B0CB /* enable.png in Resources */ = {isa = PBXBuildFile; fileRef = 75975C30147D250A001D3B77 /* enable.png */; };
 		B7D771611A8115230059B0CB /* highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 75975C31147D250A001D3B77 /* highlight.png */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B78ACC3A1A8377D40011F8F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B78ACC351A8377D30011F8F4 /* LibHandle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B78ACC1B1A8377D30011F8F4;
+			remoteInfo = LibHandle;
+		};
+		B78ACC3C1A8377D40011F8F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B78ACC351A8377D30011F8F4 /* LibHandle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B78ACC261A8377D30011F8F4;
+			remoteInfo = LibHandleTests;
+		};
+		B78ACC441A83784C0011F8F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B78ACC351A8377D30011F8F4 /* LibHandle.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B78ACC1A1A8377D30011F8F4;
+			remoteInfo = LibHandle;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7501977D148395DF00C7B661 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -45,6 +73,13 @@
 		75E082E91476BC7C00A459E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75E082EB1476BC7C00A459E5 /* MacGesture-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MacGesture-Prefix.pch"; sourceTree = "<group>"; };
 		75E082ED1476BC7C00A459E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		B78ACC351A8377D30011F8F4 /* LibHandle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LibHandle.xcodeproj; path = LibHandle/LibHandle.xcodeproj; sourceTree = "<group>"; };
+		B78ACC461A8378A60011F8F4 /* LibHandle.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; name = LibHandle.dylib; path = "/Users/falling/Library/Developer/Xcode/DerivedData/MacGesture-durkulsqtkabufdetkrpjzonrnwx/Build/Products/Debug/LibHandle.dylib"; sourceTree = "<absolute>"; };
+		B78ACC471A8378A60011F8F4 /* LibHandleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = LibHandleTests.xctest; sourceTree = SOURCE_ROOT; };
+		B78ACC5E1A83A5810011F8F4 /* utils.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = utils.lua; sourceTree = "<group>"; };
+		B78ACC5F1A83A5810011F8F4 /* handle.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handle.lua; sourceTree = "<group>"; };
+		B78ACC601A83A5810011F8F4 /* LibHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibHandle.h; sourceTree = "<group>"; };
+		B78ACC611A83A5810011F8F4 /* LibHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibHandle.m; sourceTree = "<group>"; };
 		B7D7715C1A8114D60059B0CB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +109,7 @@
 		75E082CE1476BC7C00A459E5 = {
 			isa = PBXGroup;
 			children = (
+				B78ACC351A8377D30011F8F4 /* LibHandle.xcodeproj */,
 				B7D7715C1A8114D60059B0CB /* README.md */,
 				75E082E31476BC7C00A459E5 /* MacGesture */,
 				75E082DC1476BC7C00A459E5 /* Frameworks */,
@@ -111,6 +147,8 @@
 		75E082E31476BC7C00A459E5 /* MacGesture */ = {
 			isa = PBXGroup;
 			children = (
+				B78ACC621A83A5810011F8F4 /* LibHandle */,
+				B78ACC481A8378A60011F8F4 /* Products */,
 				75019780148395DF00C7B661 /* AppDelegate.h */,
 				7501977D148395DF00C7B661 /* AppDelegate.m */,
 				7501977F148395DF00C7B661 /* MenuController.h */,
@@ -138,6 +176,37 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B78ACC361A8377D30011F8F4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B78ACC3B1A8377D40011F8F4 /* LibHandle.dylib */,
+				B78ACC3D1A8377D40011F8F4 /* LibHandleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B78ACC481A8378A60011F8F4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B78ACC461A8378A60011F8F4 /* LibHandle.dylib */,
+				B78ACC471A8378A60011F8F4 /* LibHandleTests.xctest */,
+			);
+			name = Products;
+			path = ../LibHandle;
+			sourceTree = "<group>";
+		};
+		B78ACC621A83A5810011F8F4 /* LibHandle */ = {
+			isa = PBXGroup;
+			children = (
+				B78ACC5E1A83A5810011F8F4 /* utils.lua */,
+				B78ACC5F1A83A5810011F8F4 /* handle.lua */,
+				B78ACC601A83A5810011F8F4 /* LibHandle.h */,
+				B78ACC611A83A5810011F8F4 /* LibHandle.m */,
+			);
+			name = LibHandle;
+			path = ../LibHandle/LibHandle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,6 +221,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B78ACC451A83784C0011F8F4 /* PBXTargetDependency */,
 			);
 			name = MacGesture;
 			productName = MouseGesture;
@@ -177,6 +247,12 @@
 			mainGroup = 75E082CE1476BC7C00A459E5;
 			productRefGroup = 75E082DA1476BC7C00A459E5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B78ACC361A8377D30011F8F4 /* Products */;
+					ProjectRef = B78ACC351A8377D30011F8F4 /* LibHandle.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				75E082D81476BC7C00A459E5 /* MacGesture */,
@@ -184,15 +260,35 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		B78ACC3B1A8377D40011F8F4 /* LibHandle.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = LibHandle.dylib;
+			remoteRef = B78ACC3A1A8377D40011F8F4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B78ACC3D1A8377D40011F8F4 /* LibHandleTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = LibHandleTests.xctest;
+			remoteRef = B78ACC3C1A8377D40011F8F4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		75E082D71476BC7C00A459E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B78ACC631A83A5810011F8F4 /* utils.lua in Resources */,
+				B78ACC641A83A5810011F8F4 /* handle.lua in Resources */,
+				B78ACC4B1A8378AF0011F8F4 /* LibHandle.dylib in Resources */,
+				B75BA45E1A835BC4004669EC /* MainMenu.xib in Resources */,
 				B7D771611A8115230059B0CB /* highlight.png in Resources */,
 				B7D771601A81151F0059B0CB /* enable.png in Resources */,
 				B7D7715F1A81151B0059B0CB /* disable.png in Resources */,
-				B7D7715E1A8115170059B0CB /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75E082EA1476BC7C00A459E5 /* main.m in Sources */,
+				B78ACC651A83A5810011F8F4 /* LibHandle.m in Sources */,
 				75019787148395DF00C7B661 /* AppDelegate.m in Sources */,
 				75019788148395DF00C7B661 /* MenuController.m in Sources */,
 				B7D7715D1A8114D60059B0CB /* README.md in Sources */,
@@ -214,6 +311,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B78ACC451A83784C0011F8F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LibHandle;
+			targetProxy = B78ACC441A83784C0011F8F4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		75E082EC1476BC7C00A459E5 /* Credits.rtf */ = {
@@ -267,6 +372,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -279,6 +385,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -298,7 +405,19 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacGesture/MacGesture-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include,
+				);
 				INFOPLIST_FILE = "MacGesture/MacGesture-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/MacGesture-durkulsqtkabufdetkrpjzonrnwx/Build/Products/Debug",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = "-llua";
+				PRELINK_LIBS = "";
 				PRODUCT_NAME = MacGesture;
 				WRAPPER_EXTENSION = app;
 			};
@@ -307,11 +426,23 @@
 		75E082F91476BC7C00A459E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_USE_OPTIMIZATION_PROFILE = YES;
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacGesture/MacGesture-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include,
+				);
 				INFOPLIST_FILE = "MacGesture/MacGesture-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/MacGesture-durkulsqtkabufdetkrpjzonrnwx/Build/Products/Debug",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = "-llua";
+				PRELINK_LIBS = "";
 				PRODUCT_NAME = MacGesture;
 				WRAPPER_EXTENSION = app;
 			};

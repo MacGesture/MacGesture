@@ -6,8 +6,19 @@
 //  Copyright (c) 2011年 keakon.net. All rights reserved.
 //
 #include <Carbon/Carbon.h>
+
+#import <lua.h>
+#import <lualib.h>
+#import <lauxlib.h>
+
 #import "AppDelegate.h"
 #import "CanvasWindowController.h"
+
+#define PRINT_LUA_ERR(errcode)\
+    if((errcode) !=0){\
+        alertLuaErr(lua_tostring(getLuaVM(), -1));\
+        lua_pop(getLuaVM(), 1);\
+    }
 
 @implementation AppDelegate
 
@@ -27,24 +38,47 @@ static NSPoint lastLocation;
 static CFMachPortRef mouseEventTap;
 static bool isEnable;
 
-static inline pid_t getFrontProcessPID() {
-	ProcessSerialNumber psn;
-	pid_t pid;
-	if (GetFrontProcess(&psn) == noErr && GetProcessPID(&psn, &pid) == noErr) {
-		return pid;
-	}
-	return -1;
+static void alertLuaErr(const char* msg){
+    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:@"Cancel"];
+    [alert setMessageText:@"MacGesture Lua Error"];
+    [alert setInformativeText:[NSString stringWithUTF8String:msg]];
+    [alert setAlertStyle:NSWarningAlertStyle];
+    [alert runModal];
+
 }
 
-static inline NSString *getFrontProcessName() {
-	ProcessSerialNumber psn;
-	CFStringRef nameRef;
-	if (GetFrontProcess(&psn) == noErr && CopyProcessName(&psn, &nameRef) == noErr) {
-		NSString *name = [[(NSString *)nameRef copy] autorelease];
-		CFRelease(nameRef);
-		return name;
-	}
-	return nil;
+
+static lua_State* initLuaVM(bool reset){
+    static lua_State *L = NULL;    // for lua vm
+    if(reset == true && L!=NULL){
+        lua_close(L);
+        L = NULL;
+        initLuaVM(false);
+    }
+    if(L == NULL){
+        NSBundle *mainBundle = [NSBundle mainBundle];
+        L = luaL_newstate();
+        luaL_openlibs(L);
+        // load utils.lua
+        NSString *path = [mainBundle pathForResource: @"utils" ofType: @"lua"];
+        PRINT_LUA_ERR(luaL_dofile(L, [path UTF8String]));
+        
+        //load handle.lua
+        path = [mainBundle pathForResource: @"handle" ofType: @"lua"];
+        PRINT_LUA_ERR(luaL_dofile(L, [path UTF8String]));
+    }
+    return L;
+}
+
+- (void) reloadLuaVM
+{
+    initLuaVM(true);
+}
+
+static lua_State* getLuaVM(){
+    return initLuaVM(false);
 }
 
 
@@ -52,7 +86,7 @@ static inline void pressKey(CGKeyCode virtualKey) {
 	CGEventRef event = CGEventCreateKeyboardEvent(NULL, virtualKey, true);
 	CGEventPost(kCGSessionEventTap, event);
 	CFRelease(event);
-	
+
 	event = CGEventCreateKeyboardEvent(NULL, virtualKey, false);
 	CGEventPost(kCGSessionEventTap, event);
 	CFRelease(event);
@@ -70,17 +104,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
 	CFRelease(event);
 }
 
-static inline void typeSting(UnicodeStruct *unicodeStruct) {
-	CGEventRef event = CGEventCreateKeyboardEvent(NULL, 0, true);
-	CGEventKeyboardSetUnicodeString(event, unicodeStruct->length, unicodeStruct->string);
-	CGEventPost(kCGSessionEventTap, event);
-	CFRelease(event);
-	
-	event = CGEventCreateKeyboardEvent(NULL, 0, false); // not sure whether it's needed
-	CGEventKeyboardSetUnicodeString(event, unicodeStruct->length, unicodeStruct->string);
-	CGEventPost(kCGSessionEventTap, event);
-	CFRelease(event);
-}
+
 
 
 static void updateDirections(NSEvent* event) {
@@ -101,9 +125,15 @@ static void updateDirections(NSEvent* event) {
 	}
     char lastDirectionChar = directionstr[length-1];
 
-#define MAYBE(x) if (lastDirectionChar != x[0]) {strcat(directionstr,x);return;}
+#define MAYBE(x)\
+    if (lastDirectionChar != x[0]) { \
+        strcat(directionstr,x);\
+        [windowController writeDirection:[NSString stringWithCString:directionstr encoding:NSASCIIStringEncoding]];\
+        return;\
+    }
 	if (absX > absY) {
 		if (deltaX > 0) {
+
             MAYBE("R");
 		} else{
             MAYBE("L");
@@ -119,38 +149,14 @@ static void updateDirections(NSEvent* event) {
 
 static bool handleGesture() {
 	// not thread safe
+    char luacode[MAX_DIRECTIONS + 20];
+    sprintf(luacode,"handleGesture('%s')",directionstr);
+    
+    PRINT_LUA_ERR(luaL_dostring(getLuaVM(),luacode));
+    bool result = lua_toboolean(getLuaVM(),-1);
+    lua_pop(getLuaVM(),-1); // pop return value
+    return result;
 
-#define IF_DIR(x) if(strcmp(directionstr,x) == 0)
-    
-    IF_DIR("UR"){   // switch right tab
-        pressKeyWithFlags(kVK_ANSI_RightBracket, kCGEventFlagMaskShift | kCGEventFlagMaskCommand);
-        return true;
-    }
-    IF_DIR("UL"){   // switch left tab
-        pressKeyWithFlags(kVK_ANSI_LeftBracket, kCGEventFlagMaskShift | kCGEventFlagMaskCommand);
-        return true;
-    }
-    IF_DIR("DR"){   // close tab
-        pressKeyWithFlags(kVK_ANSI_W, kCGEventFlagMaskCommand);
-        return true;
-    }
-    IF_DIR("DL"){   // toggle maxize
-        pressKeyWithFlags(kVK_ANSI_F, kCGEventFlagMaskCommand | kCGEventFlagMaskControl);
-        return true;
-    }
-    
-    IF_DIR("L"){
-        pressKeyWithFlags(kVK_LeftArrow, kCGEventFlagMaskCommand);
-        return true;
-    }
-    
-    IF_DIR("R"){
-        pressKeyWithFlags(kVK_RightArrow, kCGEventFlagMaskCommand);
-        return true;
-    }
-    
-#undef IF_DIR
-    return false;
 }
 
 static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
@@ -235,6 +241,9 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
 	[super dealloc];
 	[windowController release];
 	[menuController release];
+    lua_close(getLuaVM());
+    free(getLuaVM());
+
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -249,8 +258,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
 	CFRelease(mouseEventTap);
 	CFRelease(runLoopSource);
 	isEnable = true;
-	
-	getFrontProcessPID();
+
 }
 
 @end
