@@ -14,5 +14,5 @@
 }
 
 - (BOOL)toggleEnable;
-
+- (void)reloadLuaVM;
 @end
