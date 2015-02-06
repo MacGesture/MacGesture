@@ -73,7 +73,6 @@ static lua_State* initLuaVM(bool reset){
         luaL_openlibs(L);
         
         NSString *search_path = [@";" stringByAppendingString:[mainBundle pathForResource: @"LibHandle" ofType: @"dylib"]];
-        puts([search_path UTF8String]);
         
         setLuaCPath(L, [search_path UTF8String]);
 
@@ -140,8 +139,9 @@ static void updateDirections(NSEvent* event) {
 		return; // ignore more directions
 	}
     char lastDirectionChar = directionstr[length-1];
-
+    lastLocation = event.locationInWindow;
 #define MAYBE(x)\
+    puts(x);\
     if (lastDirectionChar != x[0]) { \
         strcat(directionstr,x);\
         [windowController writeDirection:[NSString stringWithCString:directionstr encoding:NSASCIIStringEncoding]];\
