@@ -45,3 +45,7 @@ Mac 下的鼠标手势，主要为了在Safari中使用类似FireGesture的手�
 - 0.2
 
 增加`Lua`配置支持，用户可通过修改`handle.lua`来控制手势
+
+- 0.2.1
+
+
