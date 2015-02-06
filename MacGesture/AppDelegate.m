@@ -49,6 +49,16 @@ static void alertLuaErr(const char* msg){
 
 }
 
+static void setLuaCPath( lua_State* L, const char* path )    // should like ";/usr/local"
+{
+    lua_getglobal( L, "package" );
+    lua_getfield( L, -1, "cpath" );
+    lua_pop( L, 1 );
+    lua_pushstring( L, path );
+    lua_setfield( L, -2, "cpath" );
+    lua_pop( L, 1 );
+}
+
 
 static lua_State* initLuaVM(bool reset){
     static lua_State *L = NULL;    // for lua vm
@@ -61,6 +71,12 @@ static lua_State* initLuaVM(bool reset){
         NSBundle *mainBundle = [NSBundle mainBundle];
         L = luaL_newstate();
         luaL_openlibs(L);
+        
+        NSString *search_path = [@";" stringByAppendingString:[mainBundle pathForResource: @"LibHandle" ofType: @"dylib"]];
+        puts([search_path UTF8String]);
+        
+        setLuaCPath(L, [search_path UTF8String]);
+
         // load utils.lua
         NSString *path = [mainBundle pathForResource: @"utils" ofType: @"lua"];
         PRINT_LUA_ERR(luaL_dofile(L, [path UTF8String]));

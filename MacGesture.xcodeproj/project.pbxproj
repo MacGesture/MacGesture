@@ -15,10 +15,10 @@
 		75E082DE1476BC7C00A459E5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E082DD1476BC7C00A459E5 /* Cocoa.framework */; };
 		75E082EA1476BC7C00A459E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E082E91476BC7C00A459E5 /* main.m */; };
 		B75BA45E1A835BC4004669EC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75975C2D147D24C5001D3B77 /* MainMenu.xib */; };
-		B78ACC4B1A8378AF0011F8F4 /* LibHandle.dylib in Resources */ = {isa = PBXBuildFile; fileRef = B78ACC461A8378A60011F8F4 /* LibHandle.dylib */; };
 		B78ACC631A83A5810011F8F4 /* utils.lua in Resources */ = {isa = PBXBuildFile; fileRef = B78ACC5E1A83A5810011F8F4 /* utils.lua */; };
 		B78ACC641A83A5810011F8F4 /* handle.lua in Resources */ = {isa = PBXBuildFile; fileRef = B78ACC5F1A83A5810011F8F4 /* handle.lua */; };
 		B78ACC651A83A5810011F8F4 /* LibHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = B78ACC611A83A5810011F8F4 /* LibHandle.m */; };
+		B78ACC6A1A83B99B0011F8F4 /* LibHandle.dylib in Resources */ = {isa = PBXBuildFile; fileRef = B78ACC461A8378A60011F8F4 /* LibHandle.dylib */; };
 		B7D7715D1A8114D60059B0CB /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = B7D7715C1A8114D60059B0CB /* README.md */; };
 		B7D7715F1A81151B0059B0CB /* disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 75975C2F147D250A001D3B77 /* disable.png */; };
 		B7D771601A81151F0059B0CB /* enable.png in Resources */ = {isa = PBXBuildFile; fileRef = 75975C30147D250A001D3B77 /* enable.png */; };
@@ -282,9 +282,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B78ACC6A1A83B99B0011F8F4 /* LibHandle.dylib in Resources */,
 				B78ACC631A83A5810011F8F4 /* utils.lua in Resources */,
 				B78ACC641A83A5810011F8F4 /* handle.lua in Resources */,
-				B78ACC4B1A8378AF0011F8F4 /* LibHandle.dylib in Resources */,
 				B75BA45E1A835BC4004669EC /* MainMenu.xib in Resources */,
 				B7D771611A8115230059B0CB /* highlight.png in Resources */,
 				B7D771601A81151F0059B0CB /* enable.png in Resources */,
