@@ -87,8 +87,9 @@ static LSSharedFileListItemRef itemRefInLoginItems() {
 - (IBAction)openHandleLua:(id)sender {
     NSBundle *mainBundle = [NSBundle mainBundle];
     NSString *path = [mainBundle pathForResource: @"handle" ofType: @"lua"];
+    
     [[NSTask launchedTaskWithLaunchPath:@"/usr/bin/open"
-                              arguments:[NSArray arrayWithObject:path]] waitUntilExit];
+                              arguments:[NSArray arrayWithObjects:@"-t",path,nil]] waitUntilExit];
 }
 
 - (IBAction)reloadHandleLua:(id)sender {
