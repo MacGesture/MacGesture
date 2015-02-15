@@ -23,7 +23,7 @@ Mac 下的鼠标手势，主要为了在Safari中使用类似FireGesture的手�
 
 **Notice** `Open handle.lua`将调用默认的文本编辑器（使用`open -t`）打开`handle.lua`，关于如何修改默认文本编辑器可以参阅[how does mountain lion set the default text editor for the open t](http://apple.stackexchange.com/questions/73823/how-does-mountain-lion-set-the-default-text-editor-for-the-open-t-terminal-co)
 
-关于`handle.lua`的更多说明请阅读**[wiki](https://github.com/CodeFalling/MacGesture/wiki/handle.lua使用说明)**
+关于`handle.lua`的更多说明请阅读**[wiki](https://github.com/CodeFalling/MacGesture/wiki/handle.lua)**
 ## TODO
 
 - 通过配置文件读取手势和快捷键组合
