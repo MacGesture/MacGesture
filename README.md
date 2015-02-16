@@ -33,3 +33,22 @@ Mac 下的鼠标手势，主要为了在Safari中使用类似FireGesture的手�
 ## 下载
 
 [Releases](https://github.com/CodeFalling/MacGesture/releases)
+
+## Trouble Shotting
+
+```
+MacGesture Error
+/Applications/MacGesture.app/Contents/Resources/handle.lua:11:unexpected symbol near char(226)
+```
+
+是由于lua脚本中有不识别的字符，而第一次修改代码的用户几乎一定会碰到这个问题，因为Mac自带的TextEditor默认开启了**智能引号**功能，会将引号自动修改成中文引号。
+
+解决方案：
+
+- 在`文本编辑器->偏好设置`中关闭`智能引号`
+
+- **重启文本编辑器**
+
+如图：
+![pic](http://ww3.sinaimg.cn/large/005X3nOQjw1epbjd30jjdj30e90jbdi3.jpg)
+如果觉得麻烦也可以在其他编辑器中写好再复制回来，关于其他已安装代码编辑器的功能将在今后完善。
