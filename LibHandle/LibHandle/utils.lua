@@ -2,7 +2,7 @@ package.cpath = package.cpath .. ";?.dylib"
 
 require("LibHandle")
 
-function xor(a,b)
+function xor2(a,b)
         local floor = math.floor
         local r = 0
         for i = 0, 31 do
@@ -16,6 +16,14 @@ function xor(a,b)
     return r
 end
 
+function xor(...)
+    local arg = { ... }
+    local result = arg[1]
+    for i = 2,#arg do
+        result = xor2(result,arg[i])
+    end
+    return result
+end
 
 kVK_ANSI_A                    = 0x00
 kVK_ANSI_S                    = 0x01

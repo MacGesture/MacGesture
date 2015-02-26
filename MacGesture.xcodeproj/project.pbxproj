@@ -19,7 +19,7 @@
 		B78ACC641A83A5810011F8F4 /* handle.lua in Resources */ = {isa = PBXBuildFile; fileRef = B78ACC5F1A83A5810011F8F4 /* handle.lua */; };
 		B78ACC651A83A5810011F8F4 /* LibHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = B78ACC611A83A5810011F8F4 /* LibHandle.m */; };
 		B78ACC6A1A83B99B0011F8F4 /* LibHandle.dylib in Resources */ = {isa = PBXBuildFile; fileRef = B78ACC461A8378A60011F8F4 /* LibHandle.dylib */; };
-		B7AC66791A8A0B6600356F9D /* liblua.5.2.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = B7AC66781A8A0B6600356F9D /* liblua.5.2.3.dylib */; };
+		B7AC66791A8A0B6600356F9D /* liblua.5.2.3.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = B7AC66781A8A0B6600356F9D /* liblua.5.2.3.dylib */; };
 		B7D7715D1A8114D60059B0CB /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = B7D7715C1A8114D60059B0CB /* README.md */; };
 		B7D7715F1A81151B0059B0CB /* disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 75975C2F147D250A001D3B77 /* disable.png */; };
 		B7D771601A81151F0059B0CB /* enable.png in Resources */ = {isa = PBXBuildFile; fileRef = 75975C30147D250A001D3B77 /* enable.png */; };
@@ -51,14 +51,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B7AC66761A8A0B5300356F9D /* CopyFiles */ = {
+		B7AC66761A8A0B5300356F9D /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B7AC66791A8A0B6600356F9D /* liblua.5.2.3.dylib in CopyFiles */,
+				B7AC66791A8A0B6600356F9D /* liblua.5.2.3.dylib in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -233,7 +234,7 @@
 				75E082D51476BC7C00A459E5 /* Sources */,
 				75E082D61476BC7C00A459E5 /* Frameworks */,
 				75E082D71476BC7C00A459E5 /* Resources */,
-				B7AC66761A8A0B5300356F9D /* CopyFiles */,
+				B7AC66761A8A0B5300356F9D /* Copy Files */,
 				B7AC667A1A8A0E7A00356F9D /* ShellScript */,
 			);
 			buildRules = (
