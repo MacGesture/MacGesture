@@ -23,7 +23,7 @@ Mac 下的鼠标手势，主要为了在Safari中使用类似FireGesture的手�
 
 **Notice** `Open handle.lua`将调用默认的文本编辑器（使用`open -t`）打开`handle.lua`，关于如何修改默认文本编辑器可以参阅[how does mountain lion set the default text editor for the open t](http://apple.stackexchange.com/questions/73823/how-does-mountain-lion-set-the-default-text-editor-for-the-open-t-terminal-co)
 
-关于`handle.lua`的更多说明请阅读**[wiki](https://github.com/CodeFalling/MacGesture/wiki/handle.lua使用说明)**
+关于`handle.lua`的更多说明请阅读**[wiki](https://github.com/CodeFalling/MacGesture/wiki/handle.lua)**
 ## TODO
 
 - 通过配置文件读取手势和快捷键组合
@@ -33,17 +33,22 @@ Mac 下的鼠标手势，主要为了在Safari中使用类似FireGesture的手�
 ## 下载
 
 [Releases](https://github.com/CodeFalling/MacGesture/releases)
-=======
-## ChangLog
 
-- 0.1
+## Trouble Shotting
 
-第一版发布
+```
+MacGesture Error
+/Applications/MacGesture.app/Contents/Resources/handle.lua:11:unexpected symbol near char(226)
+```
 
-- 2015-2-4-nightly
+是由于lua脚本中有不识别的字符，而第一次修改代码的用户几乎一定会碰到这个问题，因为Mac自带的TextEditor默认开启了**智能引号**功能，会将引号自动修改成中文引号。
 
-增加手势识别预览
+解决方案：
 
-- 0.2
+- 在`文本编辑器->偏好设置`中关闭`智能引号`
 
-增加`Lua`配置支持，用户可通过修改`handle.lua`来控制手势
+- **重启文本编辑器**
+
+如图：
+![pic](http://ww3.sinaimg.cn/large/005X3nOQjw1epbjd30jjdj30e90jbdi3.jpg)
+如果觉得麻烦也可以在其他编辑器中写好再复制回来，关于其他已安装代码编辑器的功能将在今后完善。

@@ -302,7 +302,9 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include,
 				);
+				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = "-llua";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -319,7 +321,9 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include,
 				);
+				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = "-llua";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -376,6 +380,7 @@
 				B78ACC311A8377D30011F8F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B78ACC321A8377D30011F8F4 /* Build configuration list for PBXNativeTarget "LibHandleTests" */ = {
 			isa = XCConfigurationList;
@@ -384,6 +389,7 @@
 				B78ACC341A8377D30011F8F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
