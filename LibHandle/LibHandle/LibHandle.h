@@ -34,8 +34,22 @@ static int keyWithFlags(lua_State* L)
     return 0;
 }
 
+static void systemAction(lua_State* L)
+{
+    const char *buffer = luaL_checkstring(L, 1);
+    
+    NSString *scriptAction = [NSString stringWithUTF8String:buffer]; // @"restart"/@"shut down"/@"sleep"/@"log out"
+    NSString *scriptSource = [NSString stringWithFormat:@"tell application \"System Events\" to %@", scriptAction];
+    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:scriptSource];
+    NSDictionary *errDict = nil;
+    if (![appleScript executeAndReturnError:&errDict]) {
+        NSLog([@"LibHandle.systemAction Error with action " stringByAppendingString:scriptAction]);
+    }
+}
+
 static const luaL_Reg mylibs[] = {
-    {"keyWithFlags",keyWithFlags}
+    {"keyWithFlags",keyWithFlags},
+    {"systemAction",systemAction}
 };
 
 int luaopen_LibHandle(lua_State* L)
