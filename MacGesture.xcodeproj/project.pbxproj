@@ -20,6 +20,8 @@
 		B78ACC651A83A5810011F8F4 /* LibHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = B78ACC611A83A5810011F8F4 /* LibHandle.m */; };
 		B78ACC6A1A83B99B0011F8F4 /* LibHandle.dylib in Resources */ = {isa = PBXBuildFile; fileRef = B78ACC461A8378A60011F8F4 /* LibHandle.dylib */; };
 		B7AC66791A8A0B6600356F9D /* liblua.5.2.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = B7AC66781A8A0B6600356F9D /* liblua.5.2.3.dylib */; };
+		B7C2F7511AAE7C7F000DD114 /* enable_darkmode.png in Resources */ = {isa = PBXBuildFile; fileRef = B7C2F7501AAE7C7F000DD114 /* enable_darkmode.png */; };
+		B7C2F7541AAE7CDA000DD114 /* disable_darkmode.png in Resources */ = {isa = PBXBuildFile; fileRef = B7C2F7531AAE7CDA000DD114 /* disable_darkmode.png */; };
 		B7D7715D1A8114D60059B0CB /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = B7D7715C1A8114D60059B0CB /* README.md */; };
 		B7D7715F1A81151B0059B0CB /* disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 75975C2F147D250A001D3B77 /* disable.png */; };
 		B7D771601A81151F0059B0CB /* enable.png in Resources */ = {isa = PBXBuildFile; fileRef = 75975C30147D250A001D3B77 /* enable.png */; };
@@ -95,6 +97,8 @@
 		B78ACC601A83A5810011F8F4 /* LibHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibHandle.h; sourceTree = "<group>"; };
 		B78ACC611A83A5810011F8F4 /* LibHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibHandle.m; sourceTree = "<group>"; };
 		B7AC66781A8A0B6600356F9D /* liblua.5.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblua.5.2.3.dylib; path = ../../../../usr/local/Cellar/lua/5.2.3_1/lib/liblua.5.2.3.dylib; sourceTree = "<group>"; };
+		B7C2F7501AAE7C7F000DD114 /* enable_darkmode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enable_darkmode.png; sourceTree = "<group>"; };
+		B7C2F7531AAE7CDA000DD114 /* disable_darkmode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disable_darkmode.png; sourceTree = "<group>"; };
 		B7D7715C1A8114D60059B0CB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +117,8 @@
 		75975C2B147D249E001D3B77 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B7C2F7531AAE7CDA000DD114 /* disable_darkmode.png */,
+				B7C2F7501AAE7C7F000DD114 /* enable_darkmode.png */,
 				75975C2D147D24C5001D3B77 /* MainMenu.xib */,
 				75975C2F147D250A001D3B77 /* disable.png */,
 				75975C30147D250A001D3B77 /* enable.png */,
@@ -301,8 +307,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B78ACC6A1A83B99B0011F8F4 /* LibHandle.dylib in Resources */,
+				B7C2F7541AAE7CDA000DD114 /* disable_darkmode.png in Resources */,
 				B78ACC631A83A5810011F8F4 /* utils.lua in Resources */,
 				B78ACC641A83A5810011F8F4 /* handle.lua in Resources */,
+				B7C2F7511AAE7C7F000DD114 /* enable_darkmode.png in Resources */,
 				B75BA45E1A835BC4004669EC /* MainMenu.xib in Resources */,
 				B7D771611A8115230059B0CB /* highlight.png in Resources */,
 				B7D771601A81151F0059B0CB /* enable.png in Resources */,

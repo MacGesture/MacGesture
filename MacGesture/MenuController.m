@@ -43,10 +43,28 @@ static LSSharedFileListItemRef itemRefInLoginItems() {
 	return itemRef;
 }
 
+NSString* getIconResName(bool enable){
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] persistentDomainForName:NSGlobalDomain];
+    
+    id style = [dict objectForKey:@"AppleInterfaceStyle"];
+    
+    BOOL darkModeOn = ( style && [style isKindOfClass:[NSString class]] && NSOrderedSame == [style caseInsensitiveCompare:@"dark"] );
+    
+    if(darkModeOn&&enable){
+        return @"enable_darkmode";
+    }else if(darkModeOn&&!enable){
+        return @"disable_darkmode";
+    }else if(!darkModeOn&&enable){
+        return @"enable";
+    }else if(!darkModeOn&&!enable){
+        return @"disable";
+    }
+}
+
 - (void)awakeFromNib {
 	statusItem = [[NSStatusBar.systemStatusBar statusItemWithLength:NSSquareStatusItemLength] retain];
 	NSBundle *bundle = NSBundle.mainBundle;
-	NSImage *image = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"enable" ofType:@"png"]];
+	NSImage *image = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:getIconResName(true) ofType:@"png"]];
 	statusItem.image = image;
 	[image release];
 	image = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"highlight" ofType:@"png"]];
@@ -79,7 +97,7 @@ static LSSharedFileListItemRef itemRefInLoginItems() {
 - (IBAction)toggleEnable:(id)sender {
 	BOOL isEnable = [(AppDelegate *)NSApplication.sharedApplication.delegate toggleEnable];
 	toggleEnableItem.state = isEnable ? NSOnState : NSOffState;
-	NSImage *image = [[NSImage alloc] initWithContentsOfFile:[NSBundle.mainBundle pathForResource:isEnable ? @"enable" : @"disable" ofType:@"png"]];
+	NSImage *image = [[NSImage alloc] initWithContentsOfFile:[NSBundle.mainBundle pathForResource:getIconResName(isEnable) ofType:@"png"]];
 	statusItem.image = image;
 	[image release];
 }
