@@ -1,8 +1,8 @@
 # MacGesture 2
 
-Configureable global mouse gesture for Mac OS X.
-
 ![logo](logo.png)
+
+Configureable global mouse gesture for Mac OS X.
 
 # Feature
 
@@ -19,3 +19,7 @@ Configureable global mouse gesture for Mac OS X.
 # Q&A
 
 Feel free to open issue
+
+# Download
+
+Download latest zip from https://github.com/CodeFalling/MacGesture/releases

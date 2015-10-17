@@ -6,8 +6,9 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
       "size" : "16x16",
+      "idiom" : "mac",
+      "filename" : "logo_16x16.png",
       "scale" : "2x"
     },
     {
@@ -16,8 +17,9 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
       "size" : "32x32",
+      "idiom" : "mac",
+      "filename" : "logo_32x32.png",
       "scale" : "2x"
     },
     {
@@ -26,8 +28,9 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
       "size" : "128x128",
+      "idiom" : "mac",
+      "filename" : "logo.png",
       "scale" : "2x"
     },
     {
