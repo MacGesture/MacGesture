@@ -1,0 +1,123 @@
+//
+//  AppPrefsWindowController.m
+//
+
+
+#import "AppPrefsWindowController.h"
+#import "AppDelegate.h"
+#import "RulesList.h"
+#import "SRRecorderControl.h"
+#import "SRRecorderControlWithTagid.h"
+
+@implementation AppPrefsWindowController
+
+@synthesize rulesTableView = _rulesTableView;
+
+- (void)windowDidLoad {
+    [super windowDidLoad];
+    [self.openPreOnStartup bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"openPrefOnStartup" options:nil];
+    [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
+    [self.showGesturePreview bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGesturePreview" options:nil];
+}
+
+- (IBAction)addRule:(id)sender {
+    [[RulesList sharedRulesList] addRuleWithDirection:@"DR" filter:@"*safari|*chrome" filterType:FILETER_TYPE_WILD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:0 shortcutFlag:0 appleScript:nil];
+    [_rulesTableView reloadData];
+}
+
+- (IBAction)removeRule:(id)sender {
+    [[RulesList sharedRulesList] removeRuleAtIndex:_rulesTableView.selectedRow];
+    [_rulesTableView reloadData];
+}
+- (IBAction)resetRules:(id)sender {
+    [[RulesList sharedRulesList] reInit];
+    [[RulesList sharedRulesList] save];
+}
+
+- (void)setupToolbar{
+    [self addView:self.generalPreferenceView label:@"General"];
+    [self addView:self.rulesPreferenceView label:@"Rules"];
+
+    [self addView:self.updatesPreferenceView label:@"Updates"];
+    [self addFlexibleSpacer];
+    [self addView:self.aboutPreferenceView label:@"About"];
+
+    // Optional configuration settings.
+    [self setCrossFade:[[NSUserDefaults standardUserDefaults] boolForKey:@"fade"]];
+    [self setShiftSlowsAnimation:[[NSUserDefaults standardUserDefaults] boolForKey:@"shiftSlowsAnimation"]];
+
+
+}
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    return [[RulesList sharedRulesList] count];
+}
+
+
+- (void)shortcutRecorderDidEndRecording:(SRRecorderControl *)aRecorder {
+    NSInteger id = ((SRRecorderControlWithTagid *)aRecorder).tagid;
+    NSUInteger keycode = [aRecorder.objectValue[@"keyCode"] unsignedIntegerValue];
+    NSUInteger flag = [[aRecorder objectValue][@"modifierFlags"] unsignedIntegerValue];
+    [[RulesList sharedRulesList] setShortcutWithKeycode:keycode withFlag:flag atIndex:id];
+}
+
+- (void)close {
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [super close];
+}
+
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
+    // control is editfield,control.id == row,control.identifier == "Gesture"|"Filter"|Other(only saving)
+    if([control.identifier isEqualToString:@"Gesture"]){    // edit gesture
+        [[RulesList sharedRulesList] setDirection:control.stringValue atIndex:control.tag];
+    }else if([control.identifier isEqualToString:@"Filter"]){  // edit filter
+        [[RulesList sharedRulesList] setWildFilter:control.stringValue atIndex:control.tag];
+    }else{
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    return YES;
+}
+
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+    return 25;
+}
+
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+
+    NSView *result = nil;
+    RulesList *rulesList = [RulesList sharedRulesList];
+    if([tableColumn.identifier isEqualToString:@"Gesture"] || [tableColumn.identifier isEqualToString:@"Filter"]){
+        NSTextField *textfiled = [[NSTextField alloc] init];
+        textfiled.editable = YES;
+        textfiled.bezeled = NO;
+        if([tableColumn.identifier isEqualToString:@"Gesture"]){
+            textfiled.stringValue = [rulesList directionAtIndex:(NSUInteger)row];
+            textfiled.identifier = @"Gesture";
+        }else{
+            textfiled.stringValue = [rulesList filterAtIndex:(NSUInteger)row];
+            textfiled.identifier = @"Filter";
+        }
+        textfiled.delegate = self;
+        textfiled.tag = row;
+        result = textfiled;
+    }else{
+        // "Action"
+        // No only shortcut action support
+
+        SRRecorderControl *recordView = [[SRRecorderControlWithTagid alloc] init];
+
+        recordView.delegate = self;
+        ((SRRecorderControlWithTagid *)recordView).tagid = row;
+        recordView.objectValue = @{
+                @"keyCode": @([rulesList shortcutKeycodeAtIndex:row]),
+                @"modifierFlags": @([rulesList shortcutFlagAtIndex:row]),
+        };
+        result = recordView;
+    }
+
+
+
+    return result;
+}
+
+@end

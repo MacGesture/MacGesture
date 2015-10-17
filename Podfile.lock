@@ -1,0 +1,24 @@
+PODS:
+  - DBPrefsWindowController (0.0.1)
+  - ShortcutRecorder (2.13):
+    - ShortcutRecorder/PTHotKey (= 2.13)
+  - ShortcutRecorder/PTHotKey (2.13)
+
+DEPENDENCIES:
+  - DBPrefsWindowController
+  - ShortcutRecorder (from `https://github.com/Kentzo/ShortcutRecorder`)
+
+EXTERNAL SOURCES:
+  ShortcutRecorder:
+    :git: https://github.com/Kentzo/ShortcutRecorder
+
+CHECKOUT OPTIONS:
+  ShortcutRecorder:
+    :commit: 178f80fd607477073e13423a759fa11d3e1fece1
+    :git: https://github.com/Kentzo/ShortcutRecorder
+
+SPEC CHECKSUMS:
+  DBPrefsWindowController: ce0fe8de832c6931302736de5d938e98d2fd59ed
+  ShortcutRecorder: 683071e0106fb1408b6bb11521975d2be43861b5
+
+COCOAPODS: 0.39.0
