@@ -12,12 +12,12 @@
 		1381E4B81824E7E800E815F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4B71824E7E800E815F5 /* main.m */; };
 		1381E4BC1824E7E800E815F5 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4BA1824E7E800E815F5 /* Credits.rtf */; };
 		1381E4BF1824E7E800E815F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4BE1824E7E800E815F5 /* AppDelegate.m */; };
-		1381E4C21824E7E800E815F5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4C01824E7E800E815F5 /* MainMenu.xib */; };
 		1381E4C41824E7E800E815F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4C31824E7E800E815F5 /* Images.xcassets */; };
 		1381E4CC1824E7E800E815F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381E4AB1824E7E800E815F5 /* Cocoa.framework */; };
 		1381E4D41824E7E800E815F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4D21824E7E800E815F5 /* InfoPlist.strings */; };
 		1381E4D61824E7E800E815F5 /* MacGestureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4D51824E7E800E815F5 /* MacGestureTests.m */; };
 		2641800AADBF86F6E76A37B3 /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418B1111120858F175152C /* CanvasView.m */; };
+		2641804FA39EEA04BDDC27B2 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 26418DFD972C75FBEF81D049 /* right.png */; };
 		2641813EC194C60DC1B1806D /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418F4D8FB5BC803E3EB850 /* utils.m */; };
 		264182480FA70DFC89B87842 /* Updates.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 26418C0A252C6E5467076636 /* Updates.tiff */; };
 		264182B6681E0BAFA3949CF1 /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418BD1B6A90F924FECCC0E /* Action.m */; };
@@ -28,6 +28,10 @@
 		264185813821B17A6CF8761E /* Rules.png in Resources */ = {isa = PBXBuildFile; fileRef = 264188A38F5F48B61F3EF173 /* Rules.png */; };
 		2641871BACBB993F84AF778C /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 264188CA1FEAB47BE83286F8 /* About.png */; };
 		26418785A1CC885F4D2FFDF5 /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = 264182CCCB38C9FAD7896BD5 /* General.png */; };
+		26418990BAAA8C09484967DD /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 26418331BA0AD1E0D42A4E53 /* down.png */; };
+		26418AB7E1520EED88A179C1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26418E4815E00CCF5774C97C /* MainMenu.xib */; };
+		26418AD8D88FC1BA381305BA /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 264180FCC355082AC7EDFD74 /* left.png */; };
+		26418B30A89965ED65EC8209 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 2641860492954D6BD5AF2FD5 /* up.png */; };
 		26418C3B69408A43FB0E03F1 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2641846DC43DD915C2555D4C /* Preferences.xib */; };
 		26418E623E410EF207EFA2A8 /* RulesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418733B12703C123D16E95 /* RulesList.m */; };
 		68C087AD74CFB1C5E0528759 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1136B136EA3AC3F1862223E3 /* libPods.a */; };
@@ -58,18 +62,21 @@
 		1381E4BB1824E7E800E815F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		1381E4BD1824E7E800E815F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1381E4BE1824E7E800E815F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1381E4C11824E7E800E815F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1381E4C31824E7E800E815F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1381E4D11824E7E800E815F5 /* MacGestureTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacGestureTests-Info.plist"; sourceTree = "<group>"; };
 		1381E4D31824E7E800E815F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1381E4D51824E7E800E815F5 /* MacGestureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MacGestureTests.m; sourceTree = "<group>"; };
 		264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderControlWithTagid.m; sourceTree = "<group>"; };
+		264180FCC355082AC7EDFD74 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
+		2641816292D47EE5C6214369 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MacGesture/Base.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		264182CCCB38C9FAD7896BD5 /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = General.png; sourceTree = "<group>"; };
+		26418331BA0AD1E0D42A4E53 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
 		2641846D9674154891849969 /* SRRecorderControlWithTagid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderControlWithTagid.h; sourceTree = "<group>"; };
 		2641846DC43DD915C2555D4C /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		264184868E6F3B7E8747AAA2 /* AppPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPrefsWindowController.h; sourceTree = "<group>"; };
 		264184DD0A5ACE29690D7EF2 /* CanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasView.h; sourceTree = "<group>"; };
 		2641853CD8AE42C95077D980 /* RulesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesList.h; sourceTree = "<group>"; };
+		2641860492954D6BD5AF2FD5 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
 		26418733B12703C123D16E95 /* RulesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesList.m; sourceTree = "<group>"; };
 		264187BE8168A714F0DB88B7 /* CanvasWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasWindowController.h; sourceTree = "<group>"; };
 		2641881917BAF09AFC2A7CC7 /* CanvasWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasWindow.m; sourceTree = "<group>"; };
@@ -81,6 +88,7 @@
 		26418C0A252C6E5467076636 /* Updates.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Updates.tiff; sourceTree = "<group>"; };
 		26418C419A597E159158ED0D /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		26418D5612632F8BDA1AE8CA /* CanvasWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasWindow.h; sourceTree = "<group>"; };
+		26418DFD972C75FBEF81D049 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
 		26418F4D8FB5BC803E3EB850 /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
 		26418F65C3F7A9F255FAA94A /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPrefsWindowController.m; sourceTree = "<group>"; };
@@ -152,7 +160,6 @@
 			children = (
 				1381E4BD1824E7E800E815F5 /* AppDelegate.h */,
 				1381E4BE1824E7E800E815F5 /* AppDelegate.m */,
-				1381E4C01824E7E800E815F5 /* MainMenu.xib */,
 				1381E4C31824E7E800E815F5 /* Images.xcassets */,
 				1381E4B21824E7E800E815F5 /* Supporting Files */,
 				264184868E6F3B7E8747AAA2 /* AppPrefsWindowController.h */,
@@ -216,6 +223,11 @@
 				26418C0A252C6E5467076636 /* Updates.tiff */,
 				264188A38F5F48B61F3EF173 /* Rules.png */,
 				264188CA1FEAB47BE83286F8 /* About.png */,
+				26418E4815E00CCF5774C97C /* MainMenu.xib */,
+				26418DFD972C75FBEF81D049 /* right.png */,
+				2641860492954D6BD5AF2FD5 /* up.png */,
+				264180FCC355082AC7EDFD74 /* left.png */,
+				26418331BA0AD1E0D42A4E53 /* down.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -310,12 +322,16 @@
 				1381E4B61824E7E800E815F5 /* InfoPlist.strings in Resources */,
 				1381E4C41824E7E800E815F5 /* Images.xcassets in Resources */,
 				1381E4BC1824E7E800E815F5 /* Credits.rtf in Resources */,
-				1381E4C21824E7E800E815F5 /* MainMenu.xib in Resources */,
 				26418785A1CC885F4D2FFDF5 /* General.png in Resources */,
 				26418C3B69408A43FB0E03F1 /* Preferences.xib in Resources */,
 				264182480FA70DFC89B87842 /* Updates.tiff in Resources */,
 				264185813821B17A6CF8761E /* Rules.png in Resources */,
 				2641871BACBB993F84AF778C /* About.png in Resources */,
+				26418AB7E1520EED88A179C1 /* MainMenu.xib in Resources */,
+				2641804FA39EEA04BDDC27B2 /* right.png in Resources */,
+				26418B30A89965ED65EC8209 /* up.png in Resources */,
+				26418AD8D88FC1BA381305BA /* left.png in Resources */,
+				26418990BAAA8C09484967DD /* down.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,20 +446,20 @@
 			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
-		1381E4C01824E7E800E815F5 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1381E4C11824E7E800E815F5 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		1381E4D21824E7E800E815F5 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1381E4D31824E7E800E815F5 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		26418E4815E00CCF5774C97C /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2641816292D47EE5C6214369 /* Base */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
