@@ -134,6 +134,7 @@ static NSImage* downImage;
 
 	@autoreleasepool {
 		NSPoint newLocation = event.locationInWindow;
+
 		[self drawCircleAtPoint:newLocation];
 		[self drawLineFromPoint:lastLocation toPoint:newLocation];
 		[self setNeedsDisplayInRect:NSMakeRect(fmin(lastLocation.x - radius, newLocation.x - radius),

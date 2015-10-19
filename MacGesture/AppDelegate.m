@@ -72,7 +72,7 @@ static AppPrefsWindowController *_preferencesWindowController;
 
 - (IBAction)openPreferences:(id)sender {
     [NSApp activateIgnoringOtherApps:YES];
-
+    [_preferencesWindowController close];
     //instantiate preferences window controller
     if (_preferencesWindowController) {
         _preferencesWindowController = nil;
