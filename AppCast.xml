@@ -8,7 +8,7 @@
         <item>
             <title>Version 2.0.3 (2 bugs fixed; 1 new features)</title>
             <sparkle:releaseNotesLink>
-                https://raw.githubusercontent.com/CodeFalling/MacGesture/ChangeLog/master/2.0.3.html
+                https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changlog/2.0.3.html
             </sparkle:releaseNotesLink>
             <pubDate>2015-10-19 16:34 +8</pubDate>
             <enclosure url="https://github.com/CodeFalling/MacGesture/releases/download/2.0.3/MacGesture.zip" sparkle:version="2.0.3" length="1452892" type="application/octet-stream" sparkle:dsaSignature="MC0CFQDbsqzMghre1XLEuqxLXlzFPskqWgIULPwdxjyuwX0IUWt6WUzF34hgraE" />
