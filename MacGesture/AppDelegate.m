@@ -18,6 +18,7 @@ static AppPrefsWindowController *_preferencesWindowController;
 
 + (AppDelegate *)appDelegate
 {
+    
     return (AppDelegate *)[[NSApplication sharedApplication] delegate];
 }
 

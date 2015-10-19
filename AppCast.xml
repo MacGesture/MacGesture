@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>MacGesture Changelog</title>
+        <link>https://raw.githubusercontent.com/CodeFalling/MacGesture/master/AppCast.xml</link>
+        <description>Most recent changes with links to updates.</description>
+        <language>en</language>
+        <item>
+            <title>Version 2.0.3 (2 bugs fixed; 1 new features)</title>
+            <sparkle:releaseNotesLink>
+                https://raw.githubusercontent.com/CodeFalling/MacGesture/ChangeLog/master/2.0.3.html
+            </sparkle:releaseNotesLink>
+            <pubDate>2015-10-19 16:34 +8</pubDate>
+            <enclosure url="https://github.com/CodeFalling/MacGesture/releases/download/2.0.3/MacGesture.zip" sparkle:version="2.0.3" length="1452892" type="application/octet-stream" sparkle:dsaSignature="MC0CFQDbsqzMghre1XLEuqxLXlzFPskqWgIULPwdxjyuwX0IUWt6WUzF34hgraE" />
+            <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+        </item>
+
+    </channel>
+</rss>
