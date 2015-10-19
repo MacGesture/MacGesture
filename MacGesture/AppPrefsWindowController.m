@@ -107,7 +107,8 @@
         SRRecorderControl *recordView = [[SRRecorderControlWithTagid alloc] init];
 
         recordView.delegate = self;
-        ((SRRecorderControlWithTagid *)recordView).tagid = row;
+        [recordView setAllowedModifierFlags:SRCocoaModifierFlagsMask requiredModifierFlags:0 allowsEmptyModifierFlags:YES];
+                ((SRRecorderControlWithTagid *)recordView).tagid = row;
         recordView.objectValue = @{
                 @"keyCode": @([rulesList shortcutKeycodeAtIndex:row]),
                 @"modifierFlags": @([rulesList shortcutFlagAtIndex:row]),
