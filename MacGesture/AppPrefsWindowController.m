@@ -19,6 +19,8 @@
     [self.openPreOnStartup bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"openPrefOnStartup" options:nil];
     [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
     [self.showGesturePreview bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGesturePreview" options:nil];
+    [self.disableMousePathBtn bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"disableMousePath" options:nil];
+
     [self.autoCheckUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyChecksForUpdates" options:nil];
     [self.autoDownUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyDownloadsUpdates" options:nil];
 
@@ -148,12 +150,14 @@
         };
         result = recordView;
     }else if([tableColumn.identifier isEqualToString:@"AppPicker"]){
+        // Pick button
         NSButton* btnView = [[NSButton alloc] init];
         [btnView setButtonType:NSPushOnPushOffButton];
         btnView.title = @"Pick";
         btnView.tag = row;
         [btnView setTarget:self];
         [btnView setAction:@selector(pickBtnDidClick:)];
+        btnView.bezelStyle = NSRoundedBezelStyle;
         result = btnView;
     }
 
