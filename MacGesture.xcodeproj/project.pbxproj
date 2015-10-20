@@ -36,6 +36,8 @@
 		26418E623E410EF207EFA2A8 /* RulesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418733B12703C123D16E95 /* RulesList.m */; };
 		68C087AD74CFB1C5E0528759 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1136B136EA3AC3F1862223E3 /* libPods.a */; };
 		B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */; };
+		B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */; };
+		B6F75AE41BD65BDD00A8CF63 /* AppPickerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AE21BD65BDD00A8CF63 /* AppPickerWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,9 @@
 		26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPrefsWindowController.m; sourceTree = "<group>"; };
 		319D16D664048735E34A0C5E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPickerWindowController.h; sourceTree = "<group>"; };
+		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPickerWindowController.m; sourceTree = "<group>"; };
+		B6F75AE21BD65BDD00A8CF63 /* AppPickerWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppPickerWindowController.xib; sourceTree = "<group>"; };
 		F7252488598BED86D8B7C09B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,6 +165,9 @@
 		1381E4B11824E7E800E815F5 /* MacGesture */ = {
 			isa = PBXGroup;
 			children = (
+				B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */,
+				B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */,
+				B6F75AE21BD65BDD00A8CF63 /* AppPickerWindowController.xib */,
 				1381E4BD1824E7E800E815F5 /* AppDelegate.h */,
 				1381E4BE1824E7E800E815F5 /* AppDelegate.m */,
 				1381E4C31824E7E800E815F5 /* Images.xcassets */,
@@ -324,6 +332,7 @@
 			files = (
 				1381E4B61824E7E800E815F5 /* InfoPlist.strings in Resources */,
 				1381E4C41824E7E800E815F5 /* Images.xcassets in Resources */,
+				B6F75AE41BD65BDD00A8CF63 /* AppPickerWindowController.xib in Resources */,
 				1381E4BC1824E7E800E815F5 /* Credits.rtf in Resources */,
 				26418785A1CC885F4D2FFDF5 /* General.png in Resources */,
 				26418C3B69408A43FB0E03F1 /* Preferences.xib in Resources */,
@@ -410,6 +419,7 @@
 				264183EEE694EB7761D6066B /* CanvasWindowController.m in Sources */,
 				26418E623E410EF207EFA2A8 /* RulesList.m in Sources */,
 				264182B6681E0BAFA3949CF1 /* Action.m in Sources */,
+				B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */,
 				264183DA0542C17E1932F696 /* SRRecorderControlWithTagid.m in Sources */,
 				2641813EC194C60DC1B1806D /* utils.m in Sources */,
 			);

@@ -8,6 +8,7 @@
 #import "RulesList.h"
 #import "SRRecorderControl.h"
 #import "SRRecorderControlWithTagid.h"
+#import "AppPickerWindowController.h"
 
 @implementation AppPrefsWindowController
 
@@ -51,6 +52,17 @@
 
 
 }
+- (IBAction)blockFilterPickBtnDidClick:(id)sender {
+    AppPickerWindowController *windowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
+
+    [windowController showDialog];
+
+    if([windowController generateFilter]){
+        _blockFilter.stringValue = [windowController generateFilter];
+    }
+    [[RulesList sharedRulesList] save];
+}
+
 - (IBAction)autoCheckUpdateDidClick:(id)sender {
     //self.updater.automaticallyChecksForUpdates = (bool)(self.autoCheckUpdate.intValue);
 
@@ -89,25 +101,39 @@
     return 25;
 }
 
+- (void)pickBtnDidClick:(id)sender{
+    AppPickerWindowController *windowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
+
+    [windowController showDialog];
+    NSInteger index = ((NSButton*)sender).tag;
+    if([windowController generateFilter]){
+        [[RulesList sharedRulesList] setWildFilter:[windowController generateFilter] atIndex:index];
+    }
+    [[RulesList sharedRulesList] save];
+    [_rulesTableView reloadData];
+}
+
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
 
     NSView *result = nil;
     RulesList *rulesList = [RulesList sharedRulesList];
     if([tableColumn.identifier isEqualToString:@"Gesture"] || [tableColumn.identifier isEqualToString:@"Filter"]){
         NSTextField *textfiled = [[NSTextField alloc] init];
+        [textfiled.cell setWraps:NO];
+        [textfiled.cell setScrollable:YES];
         textfiled.editable = YES;
         textfiled.bezeled = NO;
         if([tableColumn.identifier isEqualToString:@"Gesture"]){
             textfiled.stringValue = [rulesList directionAtIndex:(NSUInteger)row];
             textfiled.identifier = @"Gesture";
-        }else{
+        }else if([tableColumn.identifier isEqualToString:@"Filter"]){
             textfiled.stringValue = [rulesList filterAtIndex:(NSUInteger)row];
             textfiled.identifier = @"Filter";
         }
         textfiled.delegate = self;
         textfiled.tag = row;
         result = textfiled;
-    }else{
+    }else if([tableColumn.identifier isEqualToString:@"Action"]){
         // "Action"
         // No only shortcut action support
 
@@ -121,6 +147,14 @@
                 @"modifierFlags": @([rulesList shortcutFlagAtIndex:row]),
         };
         result = recordView;
+    }else if([tableColumn.identifier isEqualToString:@"AppPicker"]){
+        NSButton* btnView = [[NSButton alloc] init];
+        [btnView setButtonType:NSPushOnPushOffButton];
+        btnView.title = @"Pick";
+        btnView.tag = row;
+        [btnView setTarget:self];
+        [btnView setAction:@selector(pickBtnDidClick:)];
+        result = btnView;
     }
 
 

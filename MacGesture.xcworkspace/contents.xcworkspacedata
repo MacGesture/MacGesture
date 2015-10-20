@@ -2,6 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:MacGesture/AppPickerWindowController.h">
+   </FileRef>
+   <FileRef
+      location = "group:MacGesture/AppPickerWindowController.m">
+   </FileRef>
+   <FileRef
+      location = "group:MacGesture/AppPickerWindowController.xib">
+   </FileRef>
+   <FileRef
       location = "group:MacGesture.xcodeproj">
    </FileRef>
    <FileRef
