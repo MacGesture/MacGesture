@@ -9,10 +9,14 @@
 #import "SRRecorderControl.h"
 #import "SRRecorderControlWithTagid.h"
 #import "AppPickerWindowController.h"
+#import "NSBundle+LoginItem.h"
+
 
 @implementation AppPrefsWindowController
 
 @synthesize rulesTableView = _rulesTableView;
+
+
 
 - (void)windowDidLoad {
     [super windowDidLoad];
@@ -24,6 +28,8 @@
     [self.autoCheckUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyChecksForUpdates" options:nil];
     [self.autoDownUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyDownloadsUpdates" options:nil];
 
+    self.autoStartAtLogin.state = [[NSBundle mainBundle] isLoginItem]?NSOnState : NSOffState;
+    
 }
 
 - (IBAction)addRule:(id)sender {
@@ -165,5 +171,14 @@
 
     return result;
 }
+
+
+- (IBAction)autoStartAction:(id)sender {
+    switch (self.autoStartAtLogin.state) {
+        case NSOnState:     [[NSBundle mainBundle] addToLoginItems]; break;
+        case NSOffState:    [[NSBundle mainBundle] removeFromLoginItems]; break;
+    }
+}
+
 
 @end

@@ -7,6 +7,8 @@
 #import "SRRecorderControl.h"
 #import <Sparkle/Sparkle.h>
 
+@class LaunchAtLoginController;
+
 @interface AppPrefsWindowController : DBPrefsWindowController<NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate, NSTextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet NSView *generalPreferenceView;
@@ -26,5 +28,9 @@
 @property (weak) IBOutlet NSButton *autoCheckUpdate;
 @property (weak) IBOutlet NSButton *autoDownUpdate;
 @property (strong) IBOutlet SUUpdater *updater;
+
+
+@property (weak) IBOutlet NSButton *autoStartAtLogin;
+
 
 @end

@@ -1,5 +1,6 @@
 PODS:
   - DBPrefsWindowController (0.0.1)
+  - IYLoginItem (0.1)
   - ShortcutRecorder (2.13):
     - ShortcutRecorder/PTHotKey (= 2.13)
   - ShortcutRecorder/PTHotKey (2.13)
@@ -7,6 +8,7 @@ PODS:
 
 DEPENDENCIES:
   - DBPrefsWindowController
+  - IYLoginItem
   - ShortcutRecorder (from `https://github.com/Kentzo/ShortcutRecorder`)
   - Sparkle
 
@@ -21,6 +23,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   DBPrefsWindowController: ce0fe8de832c6931302736de5d938e98d2fd59ed
+  IYLoginItem: e57a86b39d3b9ab0e2fc033adedae01efafd9adf
   ShortcutRecorder: 683071e0106fb1408b6bb11521975d2be43861b5
   Sparkle: cf10103ef35fd89caa35373bfd772c5d6f9c7d73
 
