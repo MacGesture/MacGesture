@@ -1,4 +1,9 @@
 # MacGesture 2
+![release](https://img.shields.io/github/release/codefalling/MacGesture.svg)
+
+![twitter](https://img.shields.io/twitter/url/https/github.com/CodeFalling/MacGesture.svg?style=social)
+
+
 
 ![logo](logo.png)
 
