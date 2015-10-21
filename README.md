@@ -14,7 +14,7 @@ Configureable global mouse gesture for Mac OS X.
 
 # Preview
 
-![Preview](MacGesture.gif)
+![Preview](http://i11.tietuku.com/0a7dee0f5cb31da2.gif)
 
 # Q&A
 
