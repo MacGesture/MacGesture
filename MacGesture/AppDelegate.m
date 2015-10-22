@@ -6,6 +6,7 @@
 #import "utils.h"
 #import "NSBundle+LoginItem.h"
 
+
 @implementation AppDelegate
 
 
@@ -66,11 +67,11 @@ static AppPrefsWindowController *_preferencesWindowController;
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
 
     NSImage *menuIcon = [NSImage imageNamed:@"Menu Icon"];
-    NSImage *highlightIcon = [NSImage imageNamed:@"Menu Icon"]; // Yes, we're using the exact same image asset.
-    [highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
-
+    //NSImage *highlightIcon = [NSImage imageNamed:@"Menu Icon"]; // Yes, we're using the exact same image asset.
+    //[highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
+    [menuIcon setTemplate:YES];
     [[self statusItem] setImage:menuIcon];
-    [[self statusItem] setAlternateImage:highlightIcon];
+//    [[self statusItem] setAlternateImage:highlightIcon];
     [[self statusItem] setMenu:[self menu]];
     [[self statusItem] setHighlightMode:YES];
 
