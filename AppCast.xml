@@ -31,7 +31,7 @@
                 https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changlog/2.0.5.html
             </sparkle:releaseNotesLink>
             <pubDate>2015-10-20 10:44 +8</pubDate>
-            <enclosure url="http://7lrvsy.com1.z0.glb.clouddn.com/MacGesture-2.0.5.zip" sparkle:version="2.0.5" length="1474926" type="application/octet-stream" sparkle:dsaSignature="MCwCFAXPhhaYuthVqimRzWKF1JvsXjTbAhRs0z/vXDN8qKsa2uO3w6+5vKNsEg==" />
+            <enclosure url="http://7lrvsy.com1.z0.glb.clouddn.com/MacGesture-2.0.5.zip" sparkle:version="2.0.5" length="1474925" type="application/octet-stream" sparkle:dsaSignature="MCwCFA8eYvggcGG/ENcJeik8705ouLuAAhR5kBD16FbdI+3B2m3JLSUM7e+MnA==" />
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
         </item>
     </channel>
