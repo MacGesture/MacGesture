@@ -24,6 +24,7 @@
 
 @property (weak) IBOutlet NSButton *disableMousePathBtn;
 
+@property (weak) IBOutlet NSButton *showGestureNote;
 @property (weak) IBOutlet NSButton *showGesturePreview;
 @property (weak) IBOutlet NSButton *autoCheckUpdate;
 @property (weak) IBOutlet NSButton *autoDownUpdate;

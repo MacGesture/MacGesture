@@ -26,7 +26,8 @@ typedef enum{
                   actionType:(ActionType)actionType
              shortcutKeyCode:(NSUInteger)shortcutKeyCode // when actionType == ACTION_TYPE_SHORTCUT required,or 0
                 shortcutFlag:(NSUInteger)shortcutFlag // when actionType == ACTION_TYPE_SHORTCUT required,or 0
-                 appleScript:(NSString *)appleScript; // when actionType == ACTION_TYPE_APPLE_SCRIPT required,or nil
+                 appleScript:(NSString *)appleScript // when actionType == ACTION_TYPE_APPLE_SCRIPT required,or nil
+                        note:(NSString *)note;
 
 - (void)removeRuleAtIndex:(NSInteger)index;
 
@@ -36,14 +37,20 @@ typedef enum{
 - (NSString *)filterAtIndex:(NSUInteger)index;
 - (FilterType)filterTypeAtIndex:(NSUInteger)index;
 - (ActionType)actionTypeAtIndex:(NSUInteger)index;
+- (NSString *)noteAtIndex:(NSUInteger)index;
+
 - (NSUInteger)shortcutKeycodeAtIndex:(NSUInteger)index;
 - (NSUInteger)shortcutFlagAtIndex:(NSUInteger)index;
 
 - (void)setShortcutWithKeycode:(NSUInteger)keycode withFlag:(NSUInteger)flag atIndex:(NSUInteger)index;
 - (void)setWildFilter:(NSString *)filter atIndex:(NSUInteger)index;
 - (void)setDirection:(NSString*)direction atIndex:(NSUInteger)index;
+- (void)setNote:(NSString*)note atIndex:(NSUInteger)index;
 
 - (bool)handleGesture:(NSString*)gesture;
+
+- (NSInteger)suitedRuleWithGesture:(NSString*)gesture;
+
 - (void)reInit;
 - (void)save;
 

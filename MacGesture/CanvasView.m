@@ -7,6 +7,7 @@
 //
 
 #import "CanvasView.h"
+#import "RulesList.h"
 
 @implementation CanvasView
 
@@ -35,6 +36,10 @@ static NSImage* downImage;
 }
 
 - (void)drawDirection{
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"showGesturePreview"]){
+        return;
+    }
+
     // This should be called in drawRect
     CGRect screenRect = [[NSScreen mainScreen] frame];
     NSInteger y = (screenRect.size.height - leftImage.size.height) / 2;
@@ -59,10 +64,38 @@ static NSImage* downImage;
         }
 
         [image drawAtPoint:NSMakePoint(beginx+i*leftImage.size.width,y) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-
     }
-}
 
+}
+- (void)drawNote{
+    // This should be called in drawRect
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"showGestureNote"]){
+        return;
+    }
+    NSInteger index = [[RulesList sharedRulesList] suitedRuleWithGesture:directionToDraw];
+    NSString* note = @"";
+    if(index == -1)
+        return;
+    else
+        note = [[RulesList sharedRulesList] noteAtIndex:index];
+    if(![note isEqualToString:@""]){
+
+        CGRect screenRect = [[NSScreen mainScreen] frame];
+
+        NSFont *font = [NSFont fontWithName:@"Palatino-Roman" size:88.0];
+
+        NSDictionary *textAttributes = @{NSFontAttributeName: font};
+
+        CGSize size = [note sizeWithAttributes:textAttributes];
+        int x = ((screenRect.size.width - size.width) / 2);
+        int y = ((screenRect.size.height - size.height) / 3 *2);
+
+        [note drawAtPoint:NSMakePoint(x, y) withAttributes:textAttributes];
+    }
+
+
+
+}
 
 - (void)drawRect:(NSRect)dirtyRect
 {
@@ -80,6 +113,7 @@ static NSImage* downImage;
 
     //[textImage drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
     [self drawDirection];
+    [self drawNote];
 
 }
 
@@ -156,10 +190,9 @@ static NSImage* downImage;
 
 - (void)writeDirection:(NSString *)directionStr;
 {
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"showGesturePreview"]){
-        return;
-    }
+
     directionToDraw = directionStr;
+
     self.needsDisplay = YES;
 }
 

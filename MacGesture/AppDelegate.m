@@ -26,7 +26,6 @@ static AppPrefsWindowController *_preferencesWindowController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
 
-
     windowController = [[CanvasWindowController alloc] init];
 
     CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) | CGEventMaskBit(kCGEventRightMouseUp);
@@ -50,6 +49,13 @@ static AppPrefsWindowController *_preferencesWindowController;
         [[NSBundle mainBundle] addToLoginItems];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun_2.0.4_Before"];
     }
+
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.5_Before"]){
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showGestureNote"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun_2.0.5_Before"];
+    }
+
+
 
     if([[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]){
         [self openPreferences:self];

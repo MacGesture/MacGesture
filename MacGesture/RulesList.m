@@ -70,13 +70,13 @@ NSMutableArray *_rulesList;  // private
     [rulesList clear];
 
 #define XOR ^
-#define ADD_RULE(_gesture,_keycode,_flag) [rulesList addRuleWithDirection:_gesture filter:@"*safari|*chrome" filterType:FILETER_TYPE_WILD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:_keycode shortcutFlag: _flag appleScript:nil];
-    ADD_RULE(@"UR",kVK_ANSI_RightBracket,NSShiftKeyMask XOR NSCommandKeyMask);
-    ADD_RULE(@"UL",kVK_ANSI_LeftBracket,NSShiftKeyMask XOR NSCommandKeyMask);
-    ADD_RULE(@"DL",kVK_ANSI_F,NSCommandKeyMask XOR NSControlKeyMask);
-    ADD_RULE(@"DR",kVK_ANSI_W,NSCommandKeyMask);
-    ADD_RULE(@"R",kVK_RightArrow,NSCommandKeyMask);
-    ADD_RULE(@"L",kVK_LeftArrow,NSCommandKeyMask);
+#define ADD_RULE(_gesture,_keycode,_flag,_note) [rulesList addRuleWithDirection:_gesture filter:@"*safari|*chrome" filterType:FILETER_TYPE_WILD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:_keycode shortcutFlag: _flag appleScript:nil note:_note];
+    ADD_RULE(@"UR",kVK_ANSI_RightBracket,NSShiftKeyMask XOR NSCommandKeyMask,@"Next Tab");
+    ADD_RULE(@"UL",kVK_ANSI_LeftBracket,NSShiftKeyMask XOR NSCommandKeyMask,@"Prev Tab");
+    ADD_RULE(@"DL",kVK_ANSI_F,NSCommandKeyMask XOR NSControlKeyMask,@"Full screen");
+    ADD_RULE(@"DR",kVK_ANSI_W,NSCommandKeyMask,@"Close Tab");
+    ADD_RULE(@"R",kVK_RightArrow,NSCommandKeyMask,@"Next");
+    ADD_RULE(@"L",kVK_LeftArrow,NSCommandKeyMask,@"Back");
 #undef ADD_RULE
 #undef XOR
 }
@@ -116,17 +116,40 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     return YES;
 }
 
-- (bool)handleGesture:(NSString *)gesture {
-
-    for(int i=0;i<[self count];i++){
+- (NSInteger)suitedRuleWithGesture:(NSString*)gesture {
+    for(NSUInteger i=0;i<[self count];i++){
         if(wildLike(frontBundleName(), [self filterAtIndex:i])){
             // wild filter ensured
             if([gesture isEqualToString:[self directionAtIndex:i]]){
-                return [self executeActionAt:i];
+                return i;
             }
         }
     }
-    return NO;
+    return -1;
+}
+
+- (bool)handleGesture:(NSString *)gesture {
+
+    NSInteger i = [self suitedRuleWithGesture:gesture];
+    if(i != -1){
+        [self executeActionAt:i];
+        return YES;
+    }
+    if(gesture.length<2){
+        return NO;
+    }else{
+        return YES;
+    }
+}
+
+- (NSString *)noteAtIndex:(NSUInteger)index {
+    NSString *value = ((NSMutableDictionary *) _rulesList[index])[@"note"];
+    return value?value:@"";
+}
+
+- (void)setNote:(NSString *)note atIndex:(NSUInteger)index {
+    ((NSMutableDictionary *) _rulesList[index])[@"note"] = note;
+    [self save];
 }
 
 - (void)addRuleWithDirection:(NSString *)direction
@@ -136,6 +159,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
              shortcutKeyCode:(NSUInteger)shortcutKeyCode
                 shortcutFlag:(NSUInteger)shortcutFlag
                  appleScript:(NSString *)appleScript
+                        note:(NSString *)note;
 {
     NSMutableDictionary *rule = [[NSMutableDictionary alloc] init];
     rule[@"direction"] = direction;
@@ -149,7 +173,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     }else if(actionType == ACTION_TYPE_APPLE_SCRIPT){
         rule[@"applescript"] = appleScript;
     }
-
+    rule[@"note"] = note;
     [_rulesList addObject:rule];
     [self save];
 }
