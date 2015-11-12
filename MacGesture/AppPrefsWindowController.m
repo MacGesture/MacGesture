@@ -17,6 +17,9 @@
 @synthesize rulesTableView = _rulesTableView;
 
 
+- (IBAction)blockFilterDidEdit:(id)sender {
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 - (void)windowDidLoad {
     [super windowDidLoad];
@@ -30,7 +33,7 @@
     [self.autoDownUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyDownloadsUpdates" options:nil];
 
     self.autoStartAtLogin.state = [[NSBundle mainBundle] isLoginItem]?NSOnState : NSOffState;
-    
+
 }
 
 - (IBAction)addRule:(id)sender {
@@ -69,8 +72,9 @@
 
     if([windowController generateFilter]){
         _blockFilter.stringValue = [windowController generateFilter];
+        [[NSUserDefaults standardUserDefaults] setObject:[windowController generateFilter] forKey:@"blockFilter"];
     }
-    [[RulesList sharedRulesList] save];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (IBAction)autoCheckUpdateDidClick:(id)sender {
@@ -104,7 +108,6 @@
     }else if([control.identifier isEqualToString:@"Note"]){  // edit filter
         [[RulesList sharedRulesList] setNote:control.stringValue atIndex:control.tag];
     }
-
     [[NSUserDefaults standardUserDefaults] synchronize];
     return YES;
 }
