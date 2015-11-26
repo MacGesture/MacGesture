@@ -100,15 +100,18 @@ static NSImage* downImage;
 - (void)drawRect:(NSRect)dirtyRect
 {
 	// draw mouse line
+
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"disableMousePath"]) {
-        for (int i = 0; i < points.count; i += 2) {
-            NSBezierPath *path = [NSBezierPath bezierPath];
-            path.lineWidth = radius * 2;
-            [color setStroke];
-            [path moveToPoint:[points[i] pointValue]];
-            [path lineToPoint:[points[i + 1] pointValue]];
-            [path stroke];
+        NSBezierPath *path = [NSBezierPath bezierPath];
+        path.lineWidth = radius * 2;
+        [color setStroke];
+        if(points.count>=1){
+            [path moveToPoint:[points[0] pointValue]];
         }
+        for (int i = 1; i < points.count; i++) {
+            [path lineToPoint:[points[i] pointValue]];
+        }
+        [path stroke];
     }
 
     //[textImage drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
@@ -161,8 +164,16 @@ static NSImage* downImage;
 }
 
 - (void)mouseDown:(NSEvent *)event {
-	lastLocation = event.locationInWindow;NSScreen.mainScreen;
-	[self drawCircleAtPoint:lastLocation];
+    lastLocation = [NSEvent mouseLocation];
+    NSWindow *w = self.window;
+    NSScreen *s = w.screen;
+    lastLocation.x -= s.frame.origin.x;
+    lastLocation.y -= s.frame.origin.y;
+#ifdef DEBUG
+    NSLog(@"frame:%@, window:%@, screen:%@",NSStringFromRect( self.frame),NSStringFromRect( w.frame),NSStringFromRect( s.frame));
+    NSLog(@"%@",NSStringFromPoint( lastLocation));
+#endif
+    [points addObject:[NSValue valueWithPoint:lastLocation]];
 }
 
 - (void)mouseDragged:(NSEvent *)event
@@ -170,13 +181,18 @@ static NSImage* downImage;
 
 	@autoreleasepool {
 		NSPoint newLocation = event.locationInWindow;
+        NSWindow *w = self.window;
+        NSScreen *s = w.screen;
+        newLocation.x -= s.frame.origin.x;
+        newLocation.y -= s.frame.origin.y;
 
-		[self drawCircleAtPoint:newLocation];
-		[self drawLineFromPoint:lastLocation toPoint:newLocation];
-		[self setNeedsDisplayInRect:NSMakeRect(fmin(lastLocation.x - radius, newLocation.x - radius),
-											   fmin(lastLocation.y - radius, newLocation.y - radius),
-											   abs(newLocation.x - lastLocation.x) + radius * 2,
-											   abs(newLocation.y - lastLocation.y) + radius * 2)];
+//		[self drawCircleAtPoint:newLocation];
+        [points addObject:[NSValue valueWithPoint:newLocation]];
+        self.needsDisplay=YES;
+//		[self setNeedsDisplayInRect:NSMakeRect(fmin(lastLocation.x - radius, newLocation.x - radius),
+//											   fmin(lastLocation.y - radius, newLocation.y - radius),
+//											   abs(newLocation.x - lastLocation.x) + radius * 2,
+//											   abs(newLocation.y - lastLocation.y) + radius * 2)];
 		lastLocation = newLocation;
 	}
 
