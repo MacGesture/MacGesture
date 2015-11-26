@@ -45,5 +45,14 @@
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
         </item>
 
+        <item>
+            <title>Version 2.0.7 (1 bugs fixed)</title>
+            <sparkle:releaseNotesLink>
+                https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changlog/2.0.7.html
+            </sparkle:releaseNotesLink>
+            <pubDate>2015-11-26 18:34 +8</pubDate>
+            <enclosure url="http://7lrvsy.com1.z0.glb.clouddn.com/MacGesture-2.0.7.zip" sparkle:version="2.0.7" length="1474183" type="application/octet-stream" sparkle:dsaSignature="MC0CFA+R3MfYBuqtwLDGPjPJDXtd4JOXAhUAjJR23W/cqjxh+0Rr38WBRRkJEnA=" />
+            <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+        </item>
     </channel>
 </rss>
