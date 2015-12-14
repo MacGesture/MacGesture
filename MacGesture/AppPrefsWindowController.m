@@ -47,11 +47,12 @@
 }
 
 - (IBAction)goBiggerOfGestureView:(id)sender {
-    [self.rulesPreferenceView setFrameSize:NSSizeFromCGSize(CGSizeMake(800,800))];
-    NSRect frame = [self.rulesPreferenceView bounds];
-    NSView* p= [self performSelector:@selector(contentSubview)];
-    frame.origin.y = NSHeight([p frame]) - NSHeight([self.rulesPreferenceView bounds]);
-    [self.rulesPreferenceView setFrame:frame];
+    if (self.rulesPreferenceView.frame.size.height<500){
+        [self.rulesPreferenceView setFrameSize:NSSizeFromCGSize(CGSizeMake(1000,640))];
+    }else{
+        [self.rulesPreferenceView setFrameSize:NSSizeFromCGSize(CGSizeMake(658,315))];
+    }
+    [self changeWindowSizeToFitInsideView:self.rulesPreferenceView];
 //    NSRect rectOfRules=self.rulesPreferenceView.frame;
 //    rectOfRules.size.width=1000;
 //    rectOfRules.size.height=640;
@@ -66,6 +67,13 @@
 
 //    self.window size
     [self loadViewForIdentifier:@"Rules" animate:YES];
+}
+
+-(void)changeWindowSizeToFitInsideView:(NSView*)view{
+    NSRect frame = [view bounds];
+    NSView* p= [self performSelector:@selector(contentSubview)];
+    frame.origin.y = NSHeight([p frame]) - NSHeight([view bounds]);
+    [view setFrame:frame];
 }
 
 
