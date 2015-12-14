@@ -45,6 +45,30 @@
     [[RulesList sharedRulesList] removeRuleAtIndex:_rulesTableView.selectedRow];
     [_rulesTableView reloadData];
 }
+
+- (IBAction)goBiggerOfGestureView:(id)sender {
+    [self.rulesPreferenceView setFrameSize:NSSizeFromCGSize(CGSizeMake(800,800))];
+    NSRect frame = [self.rulesPreferenceView bounds];
+    NSView* p= [self performSelector:@selector(contentSubview)];
+    frame.origin.y = NSHeight([p frame]) - NSHeight([self.rulesPreferenceView bounds]);
+    [self.rulesPreferenceView setFrame:frame];
+//    NSRect rectOfRules=self.rulesPreferenceView.frame;
+//    rectOfRules.size.width=1000;
+//    rectOfRules.size.height=640;
+//    rectOfRules.origin.x=0;
+//    rectOfRules.origin.y=0;
+//    self.rulesPreferenceView.frame=rectOfRules;
+//    [self.rulesPreferenceView needsLayout];
+//    [self.rulesPreferenceView needsDisplay];
+
+//    [self.rulesTableView sizeToFit];
+    [self crossFadeView:self.rulesPreferenceView withView:self.rulesPreferenceView];
+
+//    self.window size
+    [self loadViewForIdentifier:@"Rules" animate:YES];
+}
+
+
 - (IBAction)resetRules:(id)sender {
     [[RulesList sharedRulesList] reInit];
     [[RulesList sharedRulesList] save];
