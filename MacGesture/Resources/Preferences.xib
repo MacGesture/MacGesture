@@ -11,6 +11,8 @@
                 <outlet property="autoCheckUpdate" destination="69" id="362"/>
                 <outlet property="autoDownUpdate" destination="365" id="369"/>
                 <outlet property="autoStartAtLogin" destination="402" id="407"/>
+                <outlet property="blackListModeRadio" destination="yn2-oF-bXR" id="rhO-xt-Pkn"/>
+                <outlet property="blackListTextView" destination="IB6-jz-VHi" id="HIZ-RD-1ht"/>
                 <outlet property="blockFilter" destination="339" id="346"/>
                 <outlet property="disableMousePathBtn" destination="399" id="401"/>
                 <outlet property="generalPreferenceView" destination="99" id="126"/>
@@ -22,6 +24,8 @@
                 <outlet property="updater" destination="360" id="364"/>
                 <outlet property="updatesPreferenceView" destination="68" id="148"/>
                 <outlet property="versionCode" destination="Sfx-R9-Aqx" id="VHO-vz-PZV"/>
+                <outlet property="whiteListModeRadio" destination="jtj-ww-LUc" id="TB8-YB-Lnl"/>
+                <outlet property="whiteListTextView" destination="UlC-dc-fu7" id="D72-VG-Lgd"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -487,10 +491,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="262" height="296"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="281" height="296"/>
+                                <size key="minSize" width="262" height="296"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="281" height="296"/>
+                                <size key="minSize" width="262" height="296"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                             </textView>
                         </subviews>
@@ -547,9 +551,30 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Sj-y2-KlM">
+                    <rect key="frame" x="120" y="331" width="71" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="8L5-Pm-ug6"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="add.." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PQ5-fb-DKg">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h4u-DS-rrd">
+                    <rect key="frame" x="417" y="331" width="71" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="FRl-vV-mGZ"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="add.." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="seb-qO-V3w">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="g9Q-GW-wG8" firstAttribute="leading" secondItem="cal-FD-Bsi" secondAttribute="leading" constant="7" id="2Ni-Li-wcj"/>
+                <constraint firstItem="9Sj-y2-KlM" firstAttribute="leading" secondItem="yn2-oF-bXR" secondAttribute="trailing" constant="8" id="8kK-Wa-ZMq"/>
                 <constraint firstItem="O3m-tP-4Yw" firstAttribute="leading" secondItem="cal-FD-Bsi" secondAttribute="leading" constant="7" id="ADX-Ie-LtL"/>
                 <constraint firstItem="jtj-ww-LUc" firstAttribute="top" secondItem="cal-FD-Bsi" secondAttribute="top" constant="9" id="Cdp-MT-05s"/>
                 <constraint firstAttribute="bottom" secondItem="O3m-tP-4Yw" secondAttribute="bottom" constant="6" id="Dlf-4g-kzA"/>
@@ -561,9 +586,12 @@
                 <constraint firstItem="g9Q-GW-wG8" firstAttribute="leading" secondItem="yn2-oF-bXR" secondAttribute="leading" id="b8Y-X6-stD"/>
                 <constraint firstItem="HMP-af-6AM" firstAttribute="leading" secondItem="jtj-ww-LUc" secondAttribute="leading" id="bel-y7-pac"/>
                 <constraint firstItem="HMP-af-6AM" firstAttribute="top" secondItem="jtj-ww-LUc" secondAttribute="bottom" constant="8" id="cOy-v9-2Ok"/>
+                <constraint firstItem="h4u-DS-rrd" firstAttribute="leading" secondItem="jtj-ww-LUc" secondAttribute="trailing" constant="11" id="d1q-bX-Fvx"/>
                 <constraint firstItem="yn2-oF-bXR" firstAttribute="top" secondItem="cal-FD-Bsi" secondAttribute="top" constant="9" id="dK7-Cp-vZD"/>
+                <constraint firstItem="h4u-DS-rrd" firstAttribute="baseline" secondItem="jtj-ww-LUc" secondAttribute="baseline" id="dm4-4j-uop"/>
                 <constraint firstAttribute="trailing" secondItem="HMP-af-6AM" secondAttribute="trailing" constant="7" id="iy7-ls-mfW"/>
                 <constraint firstItem="HMP-af-6AM" firstAttribute="leading" secondItem="g9Q-GW-wG8" secondAttribute="trailing" constant="8" id="nwK-13-Z5S"/>
+                <constraint firstItem="9Sj-y2-KlM" firstAttribute="baseline" secondItem="yn2-oF-bXR" secondAttribute="baseline" id="o7R-16-Yac"/>
                 <constraint firstAttribute="trailing" secondItem="Zse-PN-yEi" secondAttribute="trailing" constant="5" id="pAQ-IM-rPQ"/>
                 <constraint firstItem="Zse-PN-yEi" firstAttribute="top" secondItem="HMP-af-6AM" secondAttribute="bottom" constant="8" id="w4C-Mq-hOi"/>
                 <constraint firstItem="g9Q-GW-wG8" firstAttribute="top" secondItem="yn2-oF-bXR" secondAttribute="bottom" constant="8" id="zkN-Ss-EHb"/>

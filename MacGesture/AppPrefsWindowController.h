@@ -34,5 +34,10 @@
 @property (weak) IBOutlet NSButton *autoStartAtLogin;
 
 @property (weak) IBOutlet NSTextField *versionCode;
+@property (weak) IBOutlet NSButton *blackListModeRadio;
+@property (weak) IBOutlet NSButton *whiteListModeRadio;
+@property (unsafe_unretained) IBOutlet NSTextView *blackListTextView;
+@property (unsafe_unretained) IBOutlet NSTextView *whiteListTextView;
+
 
 @end
