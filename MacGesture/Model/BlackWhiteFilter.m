@@ -25,6 +25,7 @@ static BlackWhiteFilter *filterSingle;
 
 - (void)setIsInWhiteListMode:(BOOL)isInWhiteListMode {
     [[NSUserDefaults standardUserDefaults] setBool:isInWhiteListMode forKey:KEY_IS_IN_WHITE_MODE];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSArray *)blackList {
@@ -33,6 +34,7 @@ static BlackWhiteFilter *filterSingle;
 - (void)setBlackList:(NSArray *)blackList {
     [[NSUserDefaults standardUserDefaults] setObject:blackList
                                               forKey:KEY_BLACK_LIST];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSString *)blackListText {
@@ -65,6 +67,7 @@ static BlackWhiteFilter *filterSingle;
 - (void)setWhiteList:(NSArray *)whiteList {
     [[NSUserDefaults standardUserDefaults] setObject:whiteList
                                               forKey:KEY_WHITE_LIST];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSString *)whiteListText {

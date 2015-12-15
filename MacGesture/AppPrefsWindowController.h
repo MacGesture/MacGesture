@@ -38,6 +38,7 @@
 @property (weak) IBOutlet NSButton *whiteListModeRadio;
 @property (unsafe_unretained) IBOutlet NSTextView *blackListTextView;
 @property (unsafe_unretained) IBOutlet NSTextView *whiteListTextView;
+@property (strong) IBOutlet NSView *filtersPrefrenceView;
 
 
 @end

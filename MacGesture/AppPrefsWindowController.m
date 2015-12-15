@@ -10,6 +10,9 @@
 #import "SRRecorderControlWithTagid.h"
 #import "AppPickerWindowController.h"
 #import "NSBundle+LoginItem.h"
+#import "BlackWhiteFilter.h"
+#import "HexColors.h"
+
 
 
 @implementation AppPrefsWindowController
@@ -34,6 +37,28 @@
 
     self.autoStartAtLogin.state = [[NSBundle mainBundle] isLoginItem]?NSOnState : NSOffState;
     self.versionCode.stringValue = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
+    [self refreshFilterRadioAndTextViewState];
+    self.blackListTextView.string=BWFilter.blackListText;
+    self.whiteListTextView.string=BWFilter.whiteListText;
+    self.blackListTextView.font=[NSFont systemFontOfSize:14];
+    self.whiteListTextView.font=[NSFont systemFontOfSize:14];
+}
+
+-(void)refreshFilterRadioAndTextViewState{
+//    self.blackListModeRadio.cell stat
+    NSLog(@"BWFilter.isInWhiteListMode: %d",BWFilter.isInWhiteListMode);
+    [self.blackListModeRadio  setState:BWFilter.isInWhiteListMode?NSOffState:NSOnState];
+    [self.whiteListModeRadio  setState:BWFilter.isInWhiteListMode?NSOnState:NSOffState];
+    NSColor *notActive= self.window.backgroundColor;//[NSColor hx_colorWithHexString:@"ffffff" alpha:0];//[NSColor colorWithCGColor: self.filtersPrefrenceView.layer.backgroundColor];
+    //[NSColor hx_colorWithHexString:@"E3E6EA"];
+    NSColor *active=[NSColor hx_colorWithHexString:@"ffffff"];
+    self.blackListTextView.backgroundColor=BWFilter.isInWhiteListMode?notActive:active;
+//    ((NSScrollView *)(self.blackListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?notActive:active;
+    self.whiteListTextView.backgroundColor=BWFilter.isInWhiteListMode?active:notActive;
+//    ((NSScrollView *)(self.whiteListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?active:notActive;
+
+    [self.whiteListTextView needsLayout];
+    [self.blackListTextView needsLayout];
 }
 
 - (IBAction)addRule:(id)sender {
@@ -66,7 +91,7 @@
     [self crossFadeView:self.rulesPreferenceView withView:self.rulesPreferenceView];
 
 //    self.window size
-    [self loadViewForIdentifier:@"Rules" animate:YES];
+//    [self loadViewForIdentifier:@"Rules" animate:YES];
 }
 
 -(void)changeWindowSizeToFitInsideView:(NSView*)view{
@@ -86,7 +111,7 @@
 - (void)setupToolbar{
     [self addView:self.generalPreferenceView label:@"General"];
     [self addView:self.rulesPreferenceView label:@"Rules"];
-
+    [self addView:self.filtersPrefrenceView label:@"Filters"];
     [self addView:self.updatesPreferenceView label:@"Updates"];
     [self addFlexibleSpacer];
     [self addView:self.aboutPreferenceView label:@"About"];
@@ -222,5 +247,33 @@
     }
 }
 
+- (IBAction)whiteBlackRadioClicked:(id)sender {
+    if(sender==self.whiteListModeRadio){
+        BWFilter.isInWhiteListMode=YES;
+    }else if(sender==self.blackListModeRadio){
+        BWFilter.isInWhiteListMode=NO;
+    }
+
+    [self refreshFilterRadioAndTextViewState];
+}
+- (IBAction)filterViewGoBiggerClicked:(id)sender {
+    if (self.filtersPrefrenceView.frame.size.height<500){
+        [self.filtersPrefrenceView setFrameSize:NSSizeFromCGSize(CGSizeMake(1000,640))];
+    }else{
+        [self.filtersPrefrenceView setFrameSize:NSSizeFromCGSize(CGSizeMake(588,366))];
+    }
+    [self changeWindowSizeToFitInsideView:self.filtersPrefrenceView];
+    [self crossFadeView:self.filtersPrefrenceView withView:self.filtersPrefrenceView];
+}
+- (IBAction)filterViewApplyClicked:(id)sender {
+    BWFilter.blackListText= [self.blackListTextView string];
+    BWFilter.whiteListText= [self.whiteListTextView string];
+}
+- (IBAction)filterBlackListAddClicked:(id)sender {
+
+}
+- (IBAction)filterWhiteListAddClicked:(id)sender {
+
+}
 
 @end
