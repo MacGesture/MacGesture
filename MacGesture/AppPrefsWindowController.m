@@ -13,7 +13,9 @@
 #import "BlackWhiteFilter.h"
 #import "HexColors.h"
 
-
+@interface AppPrefsWindowController()
+@property AppPickerWindowController *pickerWindowController;
+@end
 
 @implementation AppPrefsWindowController
 
@@ -123,15 +125,17 @@
 
 }
 - (IBAction)blockFilterPickBtnDidClick:(id)sender {
-    AppPickerWindowController *windowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
+    self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
 
-    [windowController showDialog];
 
-    if([windowController generateFilter]){
-        _blockFilter.stringValue = [windowController generateFilter];
-        [[NSUserDefaults standardUserDefaults] setObject:[windowController generateFilter] forKey:@"blockFilter"];
-    }
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [self.pickerWindowController  showDialog];
+    [self.pickerWindowController  showWindow:self];
+//
+//    if([windowController generateFilter]){
+//        _blockFilter.stringValue = [windowController generateFilter];
+//        [[NSUserDefaults standardUserDefaults] setObject:[windowController generateFilter] forKey:@"blockFilter"];
+//    }
+//    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (IBAction)autoCheckUpdateDidClick:(id)sender {

@@ -79,10 +79,10 @@ NSMutableString *_filter;
 }
 
 - (void)showDialog {
-    NSWindow *win = [self window];
-    [NSApp runModalForWindow:win];
-    [NSApp endSheet:win];
-    [win orderOut:self];    // show dialog
+//    NSWindow *win = [self window];
+//    [NSApp runModalForWindow:win];
+//    [NSApp endSheet:win];
+//    [win orderOut:self];    // show dialog
 }
 
 - (IBAction)okBtnDidClick:(id)sender {
@@ -96,12 +96,12 @@ NSMutableString *_filter;
         }
     }
 
-    [NSApp stopModal];
+//    [NSApp stopModal];
     [self close];
 }
 
 - (IBAction)concalBtnDidClick:(id)sender {
-    [NSApp stopModal];
+//    [NSApp stopModal];
     [self close];
 }
 

@@ -11,4 +11,5 @@
 @interface AppPickerWindowController : NSWindowController<NSTableViewDelegate, NSTableViewDataSource>
 - (NSString *)generateFilter;
 - (void)showDialog;
+@property (nonatomic, strong)NSTextView *addedToTextView;
 @end
