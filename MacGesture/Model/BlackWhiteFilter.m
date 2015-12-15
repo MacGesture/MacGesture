@@ -5,8 +5,9 @@
 
 #import "BlackWhiteFilter.h"
 
-#define KEY_BLACK_LIST @"filter_black_list"
-#define KEY_WHITE_LIST @"filter_white_list"
+#define KEY_BLACK_LIST @"filterBlackList"
+#define KEY_WHITE_LIST @"filterWhiteList"
+#define KEY_IS_IN_WHITE_MODE @"filterIsInWhiteMode"
 static BlackWhiteFilter *filterSingle;
 @implementation BlackWhiteFilter {}
 
@@ -16,6 +17,14 @@ static BlackWhiteFilter *filterSingle;
     }
 
     return filterSingle;
+}
+
+- (BOOL)isInWhiteListMode {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:KEY_IS_IN_WHITE_MODE];
+}
+
+- (void)setIsInWhiteListMode:(BOOL)isInWhiteListMode {
+    [[NSUserDefaults standardUserDefaults] setBool:isInWhiteListMode forKey:KEY_IS_IN_WHITE_MODE];
 }
 
 - (NSArray *)blackList {

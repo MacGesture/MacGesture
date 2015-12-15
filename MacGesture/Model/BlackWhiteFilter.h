@@ -13,4 +13,6 @@
 @property (nonatomic, strong)NSString *whiteListText;
 @property (nonatomic, strong)NSString *blackListText;
 
++ (BlackWhiteFilter *)current;
+#define BWFilter [BlackWhiteFilter current]
 @end
