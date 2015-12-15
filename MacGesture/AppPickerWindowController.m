@@ -90,9 +90,9 @@ NSMutableString *_filter;
     _filter = [[NSMutableString alloc] initWithString:@""];
     for(NSButton *btn in _checkBoxs){
         if([btn state] == NSOnState){ // YES
-            [_filter appendString:((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier];
-            [_filter appendString:@"|"];
-
+//            [_filter appendString:((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier];
+//            [_filter appendString:@"|"];
+            self.addedToTextView.string=[NSString stringWithFormat:@"%@\n%@",self.addedToTextView.string,(((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier)];
         }
     }
 
