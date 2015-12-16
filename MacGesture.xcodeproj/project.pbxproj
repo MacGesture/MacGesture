@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		075C1BC91C214E9A00B7211A /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075C1BC81C214E9A00B7211A /* list@2x.png */; };
 		1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381E4AB1824E7E800E815F5 /* Cocoa.framework */; };
 		1381E4B61824E7E800E815F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4B41824E7E800E815F5 /* InfoPlist.strings */; };
 		1381E4B81824E7E800E815F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4B71824E7E800E815F5 /* main.m */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		075C1BC81C214E9A00B7211A /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
 		1136B136EA3AC3F1862223E3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1331CD80182C50E500782D16 /* menu_icon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon_16x16.png; sourceTree = "<group>"; };
 		1331CD81182C50E500782D16 /* menu_icon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon_32x32.png; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 		264189E588806C286B6552A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				075C1BC81C214E9A00B7211A /* list@2x.png */,
 				B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */,
 				264182CCCB38C9FAD7896BD5 /* General.png */,
 				2641846DC43DD915C2555D4C /* Preferences.xib */,
@@ -352,6 +355,7 @@
 				1381E4C41824E7E800E815F5 /* Images.xcassets in Resources */,
 				B6F75AE41BD65BDD00A8CF63 /* AppPickerWindowController.xib in Resources */,
 				1381E4BC1824E7E800E815F5 /* Credits.rtf in Resources */,
+				075C1BC91C214E9A00B7211A /* list@2x.png in Resources */,
 				26418785A1CC885F4D2FFDF5 /* General.png in Resources */,
 				26418C3B69408A43FB0E03F1 /* Preferences.xib in Resources */,
 				264182480FA70DFC89B87842 /* Updates.tiff in Resources */,
