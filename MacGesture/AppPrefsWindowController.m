@@ -127,11 +127,11 @@
 
 }
 - (IBAction)blockFilterPickBtnDidClick:(id)sender {
-    self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
-
-
-//    [self.pickerWindowController  showDialog];
-    [self.pickerWindowController  showWindow:self];
+//    self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
+//
+//
+////    [self.pickerWindowController  showDialog];
+//    [self.pickerWindowController  showWindow:self];
 //
 //    if([windowController generateFilter]){
 //        _blockFilter.stringValue = [windowController generateFilter];
@@ -274,12 +274,19 @@
 - (IBAction)filterViewApplyClicked:(id)sender {
     BWFilter.blackListText= [self.blackListTextView string];
     BWFilter.whiteListText= [self.whiteListTextView string];
+    [self refreshFilterRadioAndTextViewState];
+    self.blackListTextView.string=BWFilter.blackListText;
+    self.whiteListTextView.string=BWFilter.whiteListText;
 }
 - (IBAction)filterBlackListAddClicked:(id)sender {
-
+    self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
+    self.pickerWindowController.addedToTextView=self.blackListTextView;
+    [self.pickerWindowController  showWindow:self];
 }
 - (IBAction)filterWhiteListAddClicked:(id)sender {
-
+    self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
+    self.pickerWindowController.addedToTextView=self.whiteListTextView;
+    [self.pickerWindowController  showWindow:self];
 }
 
 @end
