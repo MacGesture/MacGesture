@@ -92,7 +92,15 @@ NSMutableString *_filter;
         if([btn state] == NSOnState){ // YES
 //            [_filter appendString:((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier];
 //            [_filter appendString:@"|"];
-            self.addedToTextView.string=[NSString stringWithFormat:@"%@\n%@",self.addedToTextView.string,(((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier)];
+            if(self.addedToTextView){
+                self.addedToTextView.string=[NSString stringWithFormat:@"%@\n%@",self.addedToTextView.string,(((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier)];
+            }else{
+                [_filter appendString:((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier];
+                [_filter appendString:@"|"];
+                if(self.parentWindow){
+                    [self.parentWindow rulePickCallback:_filter atIndex:self.indexForParentWindow];
+                }
+            }
         }
     }
 

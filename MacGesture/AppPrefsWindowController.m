@@ -186,13 +186,22 @@
 }
 
 - (void)pickBtnDidClick:(id)sender{
-    AppPickerWindowController *windowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
-
-    [windowController showDialog];
+    self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
+    self.pickerWindowController.parentWindow=self;
     NSInteger index = ((NSButton*)sender).tag;
-    if([windowController generateFilter]){
-        [[RulesList sharedRulesList] setWildFilter:[windowController generateFilter] atIndex:index];
-    }
+    self.pickerWindowController.indexForParentWindow=index;
+    [self.pickerWindowController showWindow:self];
+
+//    [windowController showDialog];
+//    if([windowController generateFilter]){
+//        [[RulesList sharedRulesList] setWildFilter:[windowController generateFilter] atIndex:index];
+//    }
+//    [[RulesList sharedRulesList] save];
+//    [_rulesTableView reloadData];
+}
+
+- (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index{
+    [[RulesList sharedRulesList] setWildFilter:rulesStringSplitedByStick atIndex:index];
     [[RulesList sharedRulesList] save];
     [_rulesTableView reloadData];
 }
