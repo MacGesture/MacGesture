@@ -29,7 +29,7 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     [self.openPreOnStartup bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"openPrefOnStartup" options:nil];
-    [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
+//    [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
     [self.showGesturePreview bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGesturePreview" options:nil];
     [self.showGestureNote bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGestureNote" options:nil];
     [self.disableMousePathBtn bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"disableMousePath" options:nil];

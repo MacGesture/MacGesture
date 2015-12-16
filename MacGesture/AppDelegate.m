@@ -169,11 +169,11 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
     // not thread safe, but it's always called in main thread
     // check blocker apps
 //    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){
-    if([BWFilter willHookRightClickForApp:frontBundleName()]){
-        CGEventPost(kCGSessionEventTap, mouseDownEvent);
-        if (mouseDraggedEvent) {
-            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
-        }
+    if(![BWFilter willHookRightClickForApp:frontBundleName()]){
+//        CGEventPost(kCGSessionEventTap, mouseDownEvent);
+//        if (mouseDraggedEvent) {
+//            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
+//        }
         CGEventPost(kCGSessionEventTap, event);
         return NULL;
     }
