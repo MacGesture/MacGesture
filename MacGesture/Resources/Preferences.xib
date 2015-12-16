@@ -16,6 +16,7 @@
                 <outlet property="disableMousePathBtn" destination="399" id="401"/>
                 <outlet property="filtersPrefrenceView" destination="cal-FD-Bsi" id="1gw-dE-dvA"/>
                 <outlet property="generalPreferenceView" destination="99" id="126"/>
+                <outlet property="lineColorWell" destination="lVi-qT-AYg" id="gA9-SQ-9iB"/>
                 <outlet property="openPreOnStartup" destination="101" id="336"/>
                 <outlet property="rulesPreferenceView" destination="5" id="257"/>
                 <outlet property="rulesTableView" destination="289" id="324"/>
@@ -413,6 +414,21 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yFC-aS-4mO">
+                    <rect key="frame" x="35" y="26" width="129" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Line color:" id="eIp-tq-2xl">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lVi-qT-AYg">
+                    <rect key="frame" x="124" y="23" width="70" height="23"/>
+                    <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="colorChanged:" target="-2" id="0w8-33-wML"/>
+                    </connections>
+                </colorWell>
             </subviews>
             <connections>
                 <outlet property="nextKeyView" destination="101" id="220"/>

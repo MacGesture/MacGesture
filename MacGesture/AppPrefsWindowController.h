@@ -40,5 +40,6 @@
 @property (unsafe_unretained) IBOutlet NSTextView *whiteListTextView;
 @property (strong) IBOutlet NSView *filtersPrefrenceView;
 
+@property (weak) IBOutlet NSColorWell *lineColorWell;
 
 @end

@@ -34,6 +34,7 @@
 		26418B30A89965ED65EC8209 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 2641860492954D6BD5AF2FD5 /* up.png */; };
 		26418C3B69408A43FB0E03F1 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2641846DC43DD915C2555D4C /* Preferences.xib */; };
 		26418E623E410EF207EFA2A8 /* RulesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418733B12703C123D16E95 /* RulesList.m */; };
+		3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */; };
 		3CDC5543D4E5BD248515F7CA /* BlackWhiteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */; };
 		68C087AD74CFB1C5E0528759 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1136B136EA3AC3F1862223E3 /* libPods.a */; };
 		B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */; };
@@ -98,7 +99,9 @@
 		26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPrefsWindowController.m; sourceTree = "<group>"; };
 		319D16D664048735E34A0C5E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackWhiteFilter.m; sourceTree = "<group>"; };
+		3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOptionsDefine.h; sourceTree = "<group>"; };
 		3CDC5A614857FE77ADFEA4C8 /* BlackWhiteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackWhiteFilter.h; sourceTree = "<group>"; };
+		3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOptionsDefine.m; sourceTree = "<group>"; };
 		B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPickerWindowController.h; sourceTree = "<group>"; };
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPickerWindowController.m; sourceTree = "<group>"; };
@@ -252,6 +255,8 @@
 			children = (
 				3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */,
 				3CDC5A614857FE77ADFEA4C8 /* BlackWhiteFilter.h */,
+				3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */,
+				3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -436,6 +441,7 @@
 				264183DA0542C17E1932F696 /* SRRecorderControlWithTagid.m in Sources */,
 				2641813EC194C60DC1B1806D /* utils.m in Sources */,
 				3CDC5543D4E5BD248515F7CA /* BlackWhiteFilter.m in Sources */,
+				3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

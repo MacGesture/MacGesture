@@ -12,6 +12,7 @@
 #import "NSBundle+LoginItem.h"
 #import "BlackWhiteFilter.h"
 #import "HexColors.h"
+#import "MGOptionsDefine.h"
 
 @interface AppPrefsWindowController()
 @property AppPickerWindowController *pickerWindowController;
@@ -24,6 +25,8 @@
 
 - (IBAction)blockFilterDidEdit:(id)sender {
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+
 }
 
 - (void)windowDidLoad {
@@ -37,6 +40,9 @@
     [self.autoCheckUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyChecksForUpdates" options:nil];
     [self.autoDownUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyDownloadsUpdates" options:nil];
 
+//    [self.lineColorWell bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:OPTIONS_LINE_COLOR_ID options:nil];
+
+    self.lineColorWell.color=[MGOptionsDefine getLineColor];
     self.autoStartAtLogin.state = [[NSBundle mainBundle] isLoginItem]?NSOnState : NSOffState;
     self.versionCode.stringValue = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
     [self refreshFilterRadioAndTextViewState];
@@ -287,6 +293,11 @@
     self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
     self.pickerWindowController.addedToTextView=self.whiteListTextView;
     [self.pickerWindowController  showWindow:self];
+}
+- (IBAction)colorChanged:(id)sender {
+//    SET_LINE_COLOR(self.lineColorWell.color);
+
+    [MGOptionsDefine setLineColor:self.lineColorWell.color];
 }
 
 @end
