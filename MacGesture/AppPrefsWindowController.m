@@ -59,8 +59,10 @@
     self.whiteListTextView.backgroundColor=BWFilter.isInWhiteListMode?active:notActive;
 //    ((NSScrollView *)(self.whiteListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?active:notActive;
 
-    [self.whiteListTextView needsLayout];
-    [self.blackListTextView needsLayout];
+    [self.whiteListTextView.superview.superview needsLayout];
+    [self.whiteListTextView.superview.superview needsDisplay];
+    [self.blackListTextView.superview.superview needsLayout];
+    [self.blackListTextView.superview.superview needsDisplay];
 }
 
 - (IBAction)addRule:(id)sender {

@@ -91,5 +91,37 @@ static BlackWhiteFilter *filterSingle;
     self.whiteList=a;
 }
 
+-(BOOL)bundleName:(NSString *)bundleName FitWithRules:(NSArray *)rules{
+    for(NSString *filter in rules){
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"self LIKE %@", [filter lowercaseString]];
+        if([pred evaluateWithObject:[bundleName lowercaseString]]) return YES;
+    }
+    return NO;
+}
+
+
+-(BOOL)willHookRightClickForApp:(NSString *)bundleName{
+
+   if([self isInWhiteListMode]){
+       return [self bundleName:bundleName FitWithRules:self.whiteList];
+   }else{
+       return ![self bundleName:bundleName FitWithRules:self.blackList];
+   }
+    return NO;
+}
+
+-(void)compatibleProcedureWithPreviousVersionBlockRules{
+    NSString *s=[[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"];
+    if(s){
+        self.isInWhiteListMode=NO;
+        self.blackListText=[s stringByReplacingOccurrencesOfString:@"|" withString:@"\n"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"blockFilter"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
+    }else{
+        //nothing
+    }
+}
+
 
 @end

@@ -15,4 +15,8 @@
 
 + (BlackWhiteFilter *)current;
 #define BWFilter [BlackWhiteFilter current]
+
+- (BOOL)willHookRightClickForApp:(NSString *)bundleName;
+
+- (void)compatibleProcedureWithPreviousVersionBlockRules;
 @end
