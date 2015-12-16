@@ -13,7 +13,6 @@
                 <outlet property="autoStartAtLogin" destination="402" id="407"/>
                 <outlet property="blackListModeRadio" destination="yn2-oF-bXR" id="rhO-xt-Pkn"/>
                 <outlet property="blackListTextView" destination="IB6-jz-VHi" id="HIZ-RD-1ht"/>
-                <outlet property="blockFilter" destination="339" id="346"/>
                 <outlet property="disableMousePathBtn" destination="399" id="401"/>
                 <outlet property="filtersPrefrenceView" destination="cal-FD-Bsi" id="1gw-dE-dvA"/>
                 <outlet property="generalPreferenceView" destination="99" id="126"/>
@@ -383,25 +382,6 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="337">
-                    <rect key="frame" x="24" y="23" width="73" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Block filter:" id="338">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="339">
-                    <rect key="frame" x="103" y="20" width="232" height="22"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="340">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <outlet property="delegate" destination="-2" id="349"/>
-                    </connections>
-                </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="353">
                     <rect key="frame" x="35" y="160" width="255" height="18"/>
                     <buttonCell key="cell" type="check" title="Show Gesture Preview" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="354">
@@ -417,16 +397,6 @@
                     </buttonCell>
                     <connections>
                         <action selector="autoStartAction:" target="-2" id="408"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="395">
-                    <rect key="frame" x="334" y="13" width="62" height="32"/>
-                    <buttonCell key="cell" type="push" title="Pick" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="396">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="blockFilterPickBtnDidClick:" target="-2" id="398"/>
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hkg-rv-4UA">
@@ -454,15 +424,23 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="356">
-                    <rect key="frame" x="51" y="91" width="198" height="17"/>
+                    <rect key="frame" x="51" y="99" width="198" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Aurther:code.falling@gmail.com" id="357">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHr-Aw-yHh">
+                    <rect key="frame" x="51" y="46" width="207" height="46"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Co-developer:zhangciwu@github" id="MJR-m4-m46">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="565" y="475.5"/>
+            <point key="canvasLocation" x="504" y="432.5"/>
         </customView>
         <customView id="cal-FD-Bsi" userLabel="Filters">
             <rect key="frame" x="0.0" y="0.0" width="588" height="366"/>
