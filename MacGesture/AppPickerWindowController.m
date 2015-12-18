@@ -79,10 +79,10 @@ NSMutableString *_filter;
 }
 
 - (void)showDialog {
-    NSWindow *win = [self window];
-    [NSApp runModalForWindow:win];
-    [NSApp endSheet:win];
-    [win orderOut:self];    // show dialog
+//    NSWindow *win = [self window];
+//    [NSApp runModalForWindow:win];
+//    [NSApp endSheet:win];
+//    [win orderOut:self];    // show dialog
 }
 
 - (IBAction)okBtnDidClick:(id)sender {
@@ -90,18 +90,26 @@ NSMutableString *_filter;
     _filter = [[NSMutableString alloc] initWithString:@""];
     for(NSButton *btn in _checkBoxs){
         if([btn state] == NSOnState){ // YES
-            [_filter appendString:((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier];
-            [_filter appendString:@"|"];
-
+//            [_filter appendString:((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier];
+//            [_filter appendString:@"|"];
+            if(self.addedToTextView){
+                self.addedToTextView.string=[NSString stringWithFormat:@"%@\n%@",self.addedToTextView.string,(((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier)];
+            }else{
+                [_filter appendString:((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier];
+                [_filter appendString:@"|"];
+                if(self.parentWindow){
+                    [self.parentWindow rulePickCallback:_filter atIndex:self.indexForParentWindow];
+                }
+            }
         }
     }
 
-    [NSApp stopModal];
+//    [NSApp stopModal];
     [self close];
 }
 
 - (IBAction)concalBtnDidClick:(id)sender {
-    [NSApp stopModal];
+//    [NSApp stopModal];
     [self close];
 }
 

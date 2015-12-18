@@ -5,11 +5,12 @@
 #import <Cocoa/Cocoa.h>
 #import "DBPrefsWindowController.h"
 #import "SRRecorderControl.h"
+#import "AppPickerWindowController.h"
 #import <Sparkle/Sparkle.h>
 
 @class LaunchAtLoginController;
 
-@interface AppPrefsWindowController : DBPrefsWindowController<NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate, NSTextFieldDelegate>
+@interface AppPrefsWindowController : DBPrefsWindowController<NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate, NSTextFieldDelegate, AppPickerCallback>
 
 @property (strong, nonatomic) IBOutlet NSView *generalPreferenceView;
 @property (strong, nonatomic) IBOutlet NSView *rulesPreferenceView;
@@ -34,5 +35,13 @@
 @property (weak) IBOutlet NSButton *autoStartAtLogin;
 
 @property (weak) IBOutlet NSTextField *versionCode;
+@property (weak) IBOutlet NSButton *blackListModeRadio;
+@property (weak) IBOutlet NSButton *whiteListModeRadio;
+@property (unsafe_unretained) IBOutlet NSTextView *blackListTextView;
+@property (unsafe_unretained) IBOutlet NSTextView *whiteListTextView;
+@property (strong) IBOutlet NSView *filtersPrefrenceView;
 
+@property (weak) IBOutlet NSColorWell *lineColorWell;
+
+- (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index;
 @end
