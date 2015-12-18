@@ -27,9 +27,13 @@ Download latest zip from https://github.com/CodeFalling/MacGesture/releases
 
 # License
 
+This project is under GNU General Public License.
+
 Icon is design by [DanRabbit](http://www.iconarchive.com/artist/danrabbit.html) under [GNU General Public License](https://en.wikipedia.org/wiki/GNU_General_Public_License).
 
-This project is under GNU General Public License.
+# Contributor
+
+Thanks to [zhangciwu](https://github.com/zhangciwu)
 
 # Discuss
 
