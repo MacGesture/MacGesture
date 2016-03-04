@@ -31,7 +31,6 @@
 @property (weak) IBOutlet NSButton *autoDownUpdate;
 @property (strong) IBOutlet SUUpdater *updater;
 
-
 @property (weak) IBOutlet NSButton *autoStartAtLogin;
 
 @property (weak) IBOutlet NSTextField *versionCode;
@@ -40,6 +39,7 @@
 @property (unsafe_unretained) IBOutlet NSTextView *blackListTextView;
 @property (unsafe_unretained) IBOutlet NSTextView *whiteListTextView;
 @property (strong) IBOutlet NSView *filtersPrefrenceView;
+@property (weak) IBOutlet NSButton *changeSizeButton;
 
 @property (weak) IBOutlet NSColorWell *lineColorWell;
 

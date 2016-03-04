@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1070" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AppPrefsWindowController">
@@ -13,6 +13,7 @@
                 <outlet property="autoStartAtLogin" destination="402" id="407"/>
                 <outlet property="blackListModeRadio" destination="yn2-oF-bXR" id="rhO-xt-Pkn"/>
                 <outlet property="blackListTextView" destination="IB6-jz-VHi" id="HIZ-RD-1ht"/>
+                <outlet property="changeSizeButton" destination="ZxS-0a-wRT" id="hlZ-1m-Dpq"/>
                 <outlet property="disableMousePathBtn" destination="399" id="401"/>
                 <outlet property="filtersPrefrenceView" destination="cal-FD-Bsi" id="1gw-dE-dvA"/>
                 <outlet property="generalPreferenceView" destination="99" id="126"/>
@@ -291,7 +292,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="goBiggerOfGestureView:" target="-2" id="Tls-Wf-B7K"/>
+                        <action selector="changeSizeOfPreferenceWindow:" target="-2" id="xwh-PW-ijj"/>
                     </connections>
                 </button>
             </subviews>
