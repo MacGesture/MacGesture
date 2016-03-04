@@ -22,7 +22,7 @@
 
 @synthesize rulesTableView = _rulesTableView;
 
-static int PERF_const WINDOW_SIZES[3][2] = {{658, 315}, {800, 500}, {1000, 640}};
+static int const PERF_WINDOW_SIZES[3][2] = {{658, 315}, {800, 500}, {1000, 640}};
 static int const PERF_WINDOW_SIZECOUNT = 3;
 static int currentWindowSizeIndex = 0;
 
@@ -87,7 +87,7 @@ static int currentWindowSizeIndex = 0;
     currentWindowSizeIndex += 1;
     currentWindowSizeIndex %= PERF_WINDOW_SIZECOUNT;
 
-    NSString * title;
+    NSString *title;
 
     if (currentWindowSizeIndex != PERF_WINDOW_SIZECOUNT-1) {
         title = @"Go bigger";
