@@ -2,6 +2,10 @@
 
 NSString *frontBundleName() {
     NSRunningApplication* runningApp = [[NSWorkspace sharedWorkspace] frontmostApplication];
+    
+    if (runningApp.bundleIdentifier == NULL) {
+        return @"";
+    }
     return runningApp.bundleIdentifier;
 }
 

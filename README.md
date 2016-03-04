@@ -9,7 +9,7 @@ Configureable global mouse gesture for Mac OS X.
 
 - Global mouse gesture recognition
 
-- Filter app by their bundle name
+- Filter app by their bundle name (as a consequence, the apps without bundle identifiers are skipped and filtering by process name is on the roadmap)
 
 - Configure and send shortcut by gesture
 
