@@ -61,7 +61,7 @@ static int currentWindowSizeIndex = 0;
     [self.whiteListModeRadio  setState:BWFilter.isInWhiteListMode?NSOnState:NSOffState];
     NSColor *notActive= self.window.backgroundColor;//[NSColor hx_colorWithHexString:@"ffffff" alpha:0];//[NSColor colorWithCGColor: self.filtersPrefrenceView.layer.backgroundColor];
     //[NSColor hx_colorWithHexString:@"E3E6EA"];
-    NSColor *active=[NSColor hx_colorWithHexString:@"ffffff"];
+    NSColor *active=[NSColor hx_colorWithHexRGBAString:@"ffffff"];
     self.blackListTextView.backgroundColor=BWFilter.isInWhiteListMode?notActive:active;
 //    ((NSScrollView *)(self.blackListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?notActive:active;
     self.whiteListTextView.backgroundColor=BWFilter.isInWhiteListMode?active:notActive;

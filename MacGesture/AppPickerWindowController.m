@@ -9,23 +9,44 @@
 #import "AppPickerWindowController.h"
 #import "RulesList.h"
 
+@interface FilterData : NSObject
+{
+}
+
+@property (strong, nonatomic) NSString *text;
+@property (strong, nonatomic) NSImage *icon;
+@property NSInteger checkedState;
+
+@end
+
+@implementation FilterData
+
+-(instancetype)initFilterData:(NSString*)text icon:(NSImage*)icon checkedState:(NSInteger) checkedState
+{
+    self = [super init];
+    
+    self.text = text;
+    self.icon = icon;
+    self.checkedState = checkedState;
+    
+    return self;
+}
+
+@end
+
 @interface AppPickerWindowController ()
 
 @end
 
 @implementation AppPickerWindowController
 
-NSMutableArray *_filtersText;
-NSMutableArray *_filtersIcon;
-NSMutableArray *_filtersChecked;
+NSMutableArray *_filters;
 NSMutableArray *_checkBoxs;
 NSMutableString *_filter;
 
 - (instancetype)initWithWindowNibName:(NSString *)windowNibName {
     self = [super initWithWindowNibName:windowNibName];
-    _filtersText = [[NSMutableArray alloc] init];
-    _filtersIcon = [[NSMutableArray alloc] init];
-    _filtersChecked = [[NSMutableArray alloc] init];
+    _filters = [[NSMutableArray alloc] init];
     _checkBoxs = [[NSMutableArray alloc] init];
     return self;
 }
@@ -45,15 +66,8 @@ NSMutableString *_filter;
     for(NSRunningApplication *app in [[NSWorkspace sharedWorkspace] runningApplications]){
         if(app.activationPolicy == NSApplicationActivationPolicyRegular) {
             if (app.bundleIdentifier) {
-                [_filtersText addObject:app.bundleIdentifier];
-
-                if (app.icon) {
-                    [_filtersIcon addObject:app.icon];
-                } else {
-                    [_filtersIcon addObject:emptyIcon];
-                }
-
-                [_filtersChecked addObject:@(NSOffState)];
+                FilterData * filter = [[FilterData alloc] initFilterData:app.bundleIdentifier icon:(app.icon ? app.icon : emptyIcon) checkedState:NSOffState];
+                [_filters addObject:filter];
             }
         }
     }
@@ -62,13 +76,13 @@ NSMutableString *_filter;
     NSArray *filters = [originalFilter componentsSeparatedByString:@"|"];
     for (NSString *filter in filters) {
         if ([filter length]) {
-            NSUInteger index = [_filtersText indexOfObject:filter];
+            NSUInteger index = [_filters indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                return [obj text] == filter;
+            }];
             if (index == NSNotFound) {
-                [_filtersText addObject:filter];
-                [_filtersIcon addObject:emptyIcon];
-                [_filtersChecked addObject:@(NSOnState)];
+                [_filters addObject:[[FilterData alloc] initFilterData:filter icon:emptyIcon checkedState:NSOffState]];
             } else {
-                _filtersChecked[index] = @(NSOnState);
+                [_filters[index] setCheckedState:NSOnState];
             }
         }
     }
@@ -76,7 +90,7 @@ NSMutableString *_filter;
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return [_filtersText count];
+    return [_filters count];
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
@@ -88,7 +102,7 @@ NSMutableString *_filter;
     if([tableColumn.identifier isEqualToString:@"CheckBox"]){
         NSButton *checkbox = [[NSButton alloc] init];
         [checkbox setButtonType:NSSwitchButton];
-        checkbox.state = [_filtersChecked[row] intValue];
+        checkbox.state = [_filters[row] checkedState];
         [checkbox setTitle:@""];
         checkbox.tag = row;
         [_checkBoxs addObject:checkbox];
@@ -96,12 +110,12 @@ NSMutableString *_filter;
 
     }else if([tableColumn.identifier isEqualToString:@"Icon"]){
         NSImageView *imageView = [[NSImageView alloc] init];
-        imageView.image = _filtersIcon[row];
+        imageView.image = [_filters[row] icon];
         return imageView;
     }else{
         NSTextField *textField = [[NSTextField alloc] init];
         textField.bezeled = NO;
-        textField.stringValue = _filtersText[row];
+        textField.stringValue = [_filters[row] text];
         result = textField;
     }
 
@@ -118,16 +132,16 @@ NSMutableString *_filter;
 - (IBAction)okBtnDidClick:(id)sender {
     // generate filter
     _filter = [[NSMutableString alloc] initWithString:@""];
-    for(NSButton *btn in _checkBoxs){
-        if([btn state] == NSOnState){ // YES
+    for (NSButton *btn in _checkBoxs) {
+        if ([btn state] == NSOnState) { // YES
 //            [_filter appendString:((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier];
 //            [_filter appendString:@"|"];
-            if(self.addedToTextView){
-                self.addedToTextView.string=[NSString stringWithFormat:@"%@\n%@",self.addedToTextView.string,_filtersText[btn.tag]];
-            }else{
-                [_filter appendString:_filtersText[btn.tag]];
+            if (self.addedToTextView) {
+                self.addedToTextView.string=[NSString stringWithFormat:@"%@\n%@",self.addedToTextView.string,[_filters[btn.tag] text]];
+            } else {
+                [_filter appendString:[_filters[btn.tag] text]];
                 [_filter appendString:@"|"];
-                if(self.parentWindow){
+                if (self.parentWindow) {
                     [self.parentWindow rulePickCallback:_filter atIndex:self.indexForParentWindow];
                 }
             }

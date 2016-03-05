@@ -32,7 +32,7 @@ NSMutableArray *_rulesList;  // private
 
 - (NSUInteger)shortcutKeycodeAtIndex:(NSUInteger)index {
     NSUInteger keycode = [((NSMutableDictionary *) _rulesList[index])[@"shortcut_code"] unsignedIntegerValue];
-    NSUInteger flag = [((NSMutableDictionary *) _rulesList[index])[@"shortcut_flag"] unsignedIntegerValue];
+    // NSUInteger flag = [((NSMutableDictionary *) _rulesList[index])[@"shortcut_flag"] unsignedIntegerValue];
     return keycode;
 }
 
@@ -85,7 +85,7 @@ NSMutableArray *_rulesList;  // private
 + (RulesList *)sharedRulesList {
     static RulesList *rulesList = nil;
     NSData *data;
-    if(data = [self readRulesList]){
+    if((data = [self readRulesList])){
         rulesList = [[RulesList alloc] initWithNsData:data];
     }
 
