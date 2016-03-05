@@ -22,18 +22,18 @@
 
 @synthesize rulesTableView = _rulesTableView;
 
-static NSSize const PERF_WINDOW_SIZES[3] = {{658, 315}, {800, 500}, {1000, 640}};
-static NSInteger const PERF_WINDOW_SIZECOUNT = 3;
+static NSSize const PREF_WINDOW_SIZES[3] = {{658, 315}, {800, 500}, {1000, 640}};
+static NSInteger const PREF_WINDOW_SIZECOUNT = 3;
 static NSInteger currentRulesWindowSizeIndex = 0;
 static NSInteger currentFiltersWindowSizeIndex = 0;
 
 - (void)changeSize:(NSInteger*) index changeSizeButton:(NSButton*)button preferenceView:(NSView *)view {
     *index += 1;
-    *index %= PERF_WINDOW_SIZECOUNT;
+    *index %= PREF_WINDOW_SIZECOUNT;
     
     NSString *title;
     
-    if (*index != PERF_WINDOW_SIZECOUNT-1) {
+    if (*index != PREF_WINDOW_SIZECOUNT-1) {
         title = @"Go bigger";
     } else {
         title = @"Reset size";
@@ -41,7 +41,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     
     [button setTitle:title];
     
-    [view setFrameSize:PERF_WINDOW_SIZES[*index]];
+    [view setFrameSize:PREF_WINDOW_SIZES[*index]];
     [self changeWindowSizeToFitInsideView:view];
     [self crossFadeView:view withView:view];
 }
@@ -63,24 +63,24 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 
 //    [self.lineColorWell bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:OPTIONS_LINE_COLOR_ID options:nil];
 
-    self.lineColorWell.color=[MGOptionsDefine getLineColor];
+    self.lineColorWell.color = [MGOptionsDefine getLineColor];
     self.autoStartAtLogin.state = [[NSBundle mainBundle] isLoginItem]?NSOnState : NSOffState;
     self.versionCode.stringValue = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
     [self refreshFilterRadioAndTextViewState];
-    self.blackListTextView.string=BWFilter.blackListText;
-    self.whiteListTextView.string=BWFilter.whiteListText;
-    self.blackListTextView.font=[NSFont systemFontOfSize:14];
-    self.whiteListTextView.font=[NSFont systemFontOfSize:14];
+    self.blackListTextView.string = BWFilter.blackListText;
+    self.whiteListTextView.string = BWFilter.whiteListText;
+    self.blackListTextView.font = [NSFont systemFontOfSize:14];
+    self.whiteListTextView.font = [NSFont systemFontOfSize:14];
 }
 
 -(void)refreshFilterRadioAndTextViewState{
 //    self.blackListModeRadio.cell stat
     NSLog(@"BWFilter.isInWhiteListMode: %d",BWFilter.isInWhiteListMode);
-    [self.blackListModeRadio  setState:BWFilter.isInWhiteListMode?NSOffState:NSOnState];
-    [self.whiteListModeRadio  setState:BWFilter.isInWhiteListMode?NSOnState:NSOffState];
-    NSColor *notActive= self.window.backgroundColor;//[NSColor hx_colorWithHexString:@"ffffff" alpha:0];//[NSColor colorWithCGColor: self.filtersPrefrenceView.layer.backgroundColor];
+    [self.blackListModeRadio setState:BWFilter.isInWhiteListMode?NSOffState:NSOnState];
+    [self.whiteListModeRadio setState:BWFilter.isInWhiteListMode?NSOnState:NSOffState];
+    NSColor *notActive = self.window.backgroundColor;//[NSColor hx_colorWithHexString:@"ffffff" alpha:0];//[NSColor colorWithCGColor: self.filtersPrefrenceView.layer.backgroundColor];
     //[NSColor hx_colorWithHexString:@"E3E6EA"];
-    NSColor *active=[NSColor hx_colorWithHexRGBAString:@"ffffff"];
+    NSColor *active = [NSColor hx_colorWithHexRGBAString:@"ffffff"];
     self.blackListTextView.backgroundColor=BWFilter.isInWhiteListMode?notActive:active;
 //    ((NSScrollView *)(self.blackListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?notActive:active;
     self.whiteListTextView.backgroundColor=BWFilter.isInWhiteListMode?active:notActive;
@@ -125,7 +125,6 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     [view setFrame:frame];
 }
 
-
 - (IBAction)resetRules:(id)sender {
     [[RulesList sharedRulesList] reInit];
     [[RulesList sharedRulesList] save];
@@ -143,7 +142,6 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     // Optional configuration settings.
     [self setCrossFade:[[NSUserDefaults standardUserDefaults] boolForKey:@"fade"]];
     [self setShiftSlowsAnimation:[[NSUserDefaults standardUserDefaults] boolForKey:@"shiftSlowsAnimation"]];
-
 
 }
 - (IBAction)blockFilterPickBtnDidClick:(id)sender {
@@ -169,7 +167,6 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     return [[RulesList sharedRulesList] count];
 }
 
-
 - (void)shortcutRecorderDidEndRecording:(SRRecorderControl *)aRecorder {
     NSInteger id = ((SRRecorderControlWithTagid *)aRecorder).tagid;
     NSUInteger keycode = [aRecorder.objectValue[@"keyCode"] unsignedIntegerValue];
@@ -190,7 +187,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
         gestures = [gestures invertedSet];
         if ([gesture rangeOfCharacterFromSet:gestures].location != NSNotFound) {
             NSAlert *alert = [[NSAlert alloc] init];
-            [alert setMessageText:@"Gesture should only contains \"ULDR\""];
+            [alert setMessageText:@"Gesture should only contain \"ULDR\""];
             [alert runModal];
             return NO;
         }
