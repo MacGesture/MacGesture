@@ -90,7 +90,14 @@ static NSImage *downImage;
         CGSize size = [note sizeWithAttributes:textAttributes];
         float x = ((screenRect.size.width - size.width) / 2);
         float y = ((screenRect.size.height + leftImage.size.height) / 2);
-
+        
+        CGContextRef context = [[NSGraphicsContext currentContext]
+                                graphicsPort];
+        CGContextSetRGBFillColor (context, 0, 0, 0, 0.1);
+        CGContextFillRect (context, CGRectMake (x, y, size.width,
+                                                size.height));
+        
+        // NSRectFill(NSMakeRect(x, y, size.width, size.height));
         [note drawAtPoint:NSMakePoint(x, y) withAttributes:textAttributes];
     }
 
