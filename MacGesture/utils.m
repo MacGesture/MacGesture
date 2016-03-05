@@ -21,7 +21,7 @@ bool wildcardArray(NSString *bundleName, NSArray *wildFilters) {
 
 bool wildcardString(NSString *bundleName, NSString *wildFilter) {
     NSArray *filterArray = [wildFilter componentsSeparatedByCharactersInSet:
-            [NSCharacterSet characterSetWithCharactersInString:@"@\n"]];
+            [NSCharacterSet characterSetWithCharactersInString:@"|\n"]];
     return wildcardArray(bundleName, filterArray);
 }
 
