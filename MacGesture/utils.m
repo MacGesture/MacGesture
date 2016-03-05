@@ -3,28 +3,27 @@
 NSString *frontBundleName() {
     NSRunningApplication* runningApp = [[NSWorkspace sharedWorkspace] frontmostApplication];
     
-    if (runningApp.bundleIdentifier == NULL) {
+    if (!runningApp.bundleIdentifier) {
         return @"";
     }
     return runningApp.bundleIdentifier;
 }
 
-bool wildLike(NSString *bundlename,NSString *wildfilter){
-    NSArray *filterArray = [wildfilter componentsSeparatedByCharactersInSet:
-            [NSCharacterSet characterSetWithCharactersInString:@"|\n"]];
-    for(NSString *filter in filterArray){
+bool wildcardArray(NSString *bundleName, NSArray *wildFilters) {
+    for(NSString *filter in wildFilters){
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"self LIKE %@", [filter lowercaseString]];
-        if([pred evaluateWithObject:[bundlename lowercaseString]]) return YES;
+        if ([pred evaluateWithObject:[bundleName lowercaseString]]) {
+            return YES;
+        }
     }
     return NO;
 }
 
-bool wildLikeNameToArray(NSString *bundlename,NSArray *wildfilters){
-
-    for(NSString *filter in wildfilters){
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"self LIKE %@", [filter lowercaseString]];
-        if([pred evaluateWithObject:[bundlename lowercaseString]]) return YES;
-    }
-    return NO;
+bool wildcardString(NSString *bundleName, NSString *wildFilter) {
+    NSArray *filterArray = [wildFilter componentsSeparatedByCharactersInSet:
+            [NSCharacterSet characterSetWithCharactersInString:@"@\n"]];
+    return wildcardArray(bundleName, filterArray);
 }
+
+
 

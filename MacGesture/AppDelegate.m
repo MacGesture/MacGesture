@@ -1,4 +1,3 @@
-
 #import "AppDelegate.h"
 #import "AppPrefsWindowController.h"
 #import "CanvasWindowController.h"
@@ -7,9 +6,7 @@
 #import "NSBundle+LoginItem.h"
 #import "BlackWhiteFilter.h"
 
-
 @implementation AppDelegate
-
 
 static CanvasWindowController *windowController;
 static CGEventRef mouseDownEvent, mouseDraggedEvent;
@@ -119,16 +116,16 @@ static void updateDirections(NSEvent* event) {
 
 
     unichar lastDirectionChar;
-    if(direction.length>0) {
+    if (direction.length > 0) {
         lastDirectionChar = [direction characterAtIndex:direction.length - 1];
-    }else{
+    } else {
         lastDirectionChar = ' ';
     }
     lastLocation = event.locationInWindow;
 
 
-    if (absX> absY) {
-        if (deltaX> 0) {
+    if (absX > absY) {
+        if (deltaX > 0) {
             if (lastDirectionChar != [@"R" characterAtIndex:0]) {
                 [direction appendString:@"R"];
                 [windowController writeDirection:direction];
@@ -142,7 +139,7 @@ static void updateDirections(NSEvent* event) {
             }
         }
     } else {
-        if (deltaY> 0) {
+        if (deltaY > 0) {
             if (lastDirectionChar != [@"U" characterAtIndex:0]) {
                 [direction appendString:@"U"];
                 [windowController writeDirection:direction];
@@ -166,9 +163,6 @@ static bool handleGesture() {
 void resetDirection(){
     [direction setString:@""];
 }
-
-
-
 
 static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
     // not thread safe, but it's always called in main thread

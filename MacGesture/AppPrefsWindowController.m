@@ -73,7 +73,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     self.whiteListTextView.font = [NSFont systemFontOfSize:14];
 }
 
--(void)refreshFilterRadioAndTextViewState{
+- (void)refreshFilterRadioAndTextViewState{
 //    self.blackListModeRadio.cell stat
     NSLog(@"BWFilter.isInWhiteListMode: %d",BWFilter.isInWhiteListMode);
     [self.blackListModeRadio setState:BWFilter.isInWhiteListMode?NSOffState:NSOnState];
@@ -231,26 +231,26 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 
     NSView *result = nil;
     RulesList *rulesList = [RulesList sharedRulesList];
-    if([tableColumn.identifier isEqualToString:@"Gesture"] || [tableColumn.identifier isEqualToString:@"Filter"] || [tableColumn.identifier isEqualToString:@"Note"]){
+    if ([tableColumn.identifier isEqualToString:@"Gesture"] || [tableColumn.identifier isEqualToString:@"Filter"] || [tableColumn.identifier isEqualToString:@"Note"]) {
         NSTextField *textfiled = [[NSTextField alloc] init];
         [textfiled.cell setWraps:NO];
         [textfiled.cell setScrollable:YES];
         textfiled.editable = YES;
         textfiled.bezeled = NO;
-        if([tableColumn.identifier isEqualToString:@"Gesture"]){
+        if ([tableColumn.identifier isEqualToString:@"Gesture"]) {
             textfiled.stringValue = [rulesList directionAtIndex:(NSUInteger)row];
             textfiled.identifier = @"Gesture";
-        }else if([tableColumn.identifier isEqualToString:@"Filter"]){
+        } else if ([tableColumn.identifier isEqualToString:@"Filter"]) {
             textfiled.stringValue = [rulesList filterAtIndex:(NSUInteger)row];
             textfiled.identifier = @"Filter";
-        }else if([tableColumn.identifier isEqualToString:@"Note"]){
+        } else if ([tableColumn.identifier isEqualToString:@"Note"]) {
             textfiled.stringValue = [rulesList noteAtIndex:(NSUInteger)row];
             textfiled.identifier = @"Note";
         }
         textfiled.delegate = self;
         textfiled.tag = row;
         result = textfiled;
-    }else if([tableColumn.identifier isEqualToString:@"Action"]){
+    } else if ([tableColumn.identifier isEqualToString:@"Action"]) {
         // "Action"
         // No only shortcut action support
 
@@ -264,7 +264,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
                 @"modifierFlags": @([rulesList shortcutFlagAtIndex:row]),
         };
         result = recordView;
-    }else if([tableColumn.identifier isEqualToString:@"AppPicker"]){
+    } else if ([tableColumn.identifier isEqualToString:@"AppPicker"]) {
         // Pick button
         NSButton* btnView = [[NSButton alloc] init];
         [btnView setButtonType:NSPushOnPushOffButton];
@@ -276,11 +276,8 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
         result = btnView;
     }
 
-
-
     return result;
 }
-
 
 - (IBAction)autoStartAction:(id)sender {
     switch (self.autoStartAtLogin.state) {
@@ -298,6 +295,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 
     [self refreshFilterRadioAndTextViewState];
 }
+
 - (IBAction)filterViewGoBiggerClicked:(id)sender {
     [self changeSize:&currentFiltersWindowSizeIndex changeSizeButton:[self changeFiltersWindowSizeButton] preferenceView:[self filtersPrefrenceView]];
 }
