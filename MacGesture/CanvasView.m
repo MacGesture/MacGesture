@@ -83,13 +83,13 @@ static NSImage *downImage;
 
         CGRect screenRect = [[NSScreen mainScreen] frame];
 
-        NSFont *font = [NSFont fontWithName:@"Palatino-Roman" size:88.0];
+        NSFont *font = [NSFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"noteFontName"] size:[[NSUserDefaults standardUserDefaults] doubleForKey:@"noteFontSize"]];
 
         NSDictionary *textAttributes = @{NSFontAttributeName : font};
 
         CGSize size = [note sizeWithAttributes:textAttributes];
-        int x = ((screenRect.size.width - size.width) / 2);
-        int y = ((screenRect.size.height - size.height) / 3 * 2);
+        float x = ((screenRect.size.width - size.width) / 2);
+        float y = ((screenRect.size.height + leftImage.size.height) / 2);
 
         [note drawAtPoint:NSMakePoint(x, y) withAttributes:textAttributes];
     }

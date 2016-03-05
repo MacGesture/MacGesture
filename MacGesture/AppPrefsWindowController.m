@@ -68,6 +68,16 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     self.whiteListTextView.string = BWFilter.whiteListText;
     self.blackListTextView.font = [NSFont systemFontOfSize:14];
     self.whiteListTextView.font = [NSFont systemFontOfSize:14];
+    
+    if (![[NSUserDefaults standardUserDefaults] stringForKey:@"noteFontName"]) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"Monaco" forKey:@"noteFontName"];
+    }
+    if (![[NSUserDefaults standardUserDefaults] floatForKey:@"noteFontSize"]) {
+        [[NSUserDefaults standardUserDefaults] setDouble:88.0 forKey:@"noteFontSize"];
+    }
+    
+    [self.fontNameTextField bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"noteFontName" options:nil];
+    [self.fontSizeTextField bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"noteFontSize" options:nil];
 }
 
 - (void)refreshFilterRadioAndTextViewState {
@@ -326,6 +336,21 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 //    SET_LINE_COLOR(self.lineColorWell.color);
 
     [MGOptionsDefine setLineColor:self.lineColorWell.color];
+}
+     
+- (IBAction)chooseFont:(id)sender {
+    NSFontManager *fontManager = [NSFontManager sharedFontManager];
+    [fontManager setSelectedFont:[NSFont fontWithName:[self.fontNameTextField stringValue] size:[self.fontNameTextField floatValue]] isMultiple:NO];
+    [fontManager setDelegate:self];
+    
+    NSFontPanel *fontPanel = [fontManager fontPanel:YES];
+    [fontPanel makeKeyAndOrderFront:self];
+}
+
+- (void)changeFont:(id)sender {
+    NSFontManager *fontManager = (NSFontManager*) sender;
+    [[NSUserDefaults standardUserDefaults] setObject:[[fontManager selectedFont] fontName] forKey:@"noteFontName"];
+    [[NSUserDefaults standardUserDefaults] setDouble:[[fontManager selectedFont] pointSize] forKey:@"noteFontSize"];
 }
 
 @end

@@ -41,6 +41,8 @@
 @property(strong) IBOutlet NSView *filtersPrefrenceView;
 @property(weak) IBOutlet NSButton *changeRulesWindowSizeButton;
 @property(weak) IBOutlet NSButton *changeFiltersWindowSizeButton;
+@property(weak) IBOutlet NSTextField *fontNameTextField;
+@property(weak) IBOutlet NSTextField *fontSizeTextField;
 
 @property(weak) IBOutlet NSColorWell *lineColorWell;
 
