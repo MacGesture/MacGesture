@@ -22,11 +22,13 @@
 
 @synthesize rulesTableView = _rulesTableView;
 
+static int const PERF_WINDOW_SIZES[3][2] = {{658, 315}, {800, 500}, {1000, 640}};
+static int const PERF_WINDOW_SIZECOUNT = 3;
+static int currentWindowSizeIndex = 0;
+
 
 - (IBAction)blockFilterDidEdit:(id)sender {
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
-
 }
 
 - (void)windowDidLoad {
@@ -81,12 +83,23 @@
     [_rulesTableView reloadData];
 }
 
-- (IBAction)goBiggerOfGestureView:(id)sender {
-    if (self.rulesPreferenceView.frame.size.height<500){
-        [self.rulesPreferenceView setFrameSize:NSSizeFromCGSize(CGSizeMake(1000,640))];
-    }else{
-        [self.rulesPreferenceView setFrameSize:NSSizeFromCGSize(CGSizeMake(658,315))];
+- (IBAction)changeSizeOfPreferenceWindow:(id)sender {
+    currentWindowSizeIndex += 1;
+    currentWindowSizeIndex %= PERF_WINDOW_SIZECOUNT;
+
+    NSString *title;
+
+    if (currentWindowSizeIndex != PERF_WINDOW_SIZECOUNT-1) {
+        title = @"Go bigger";
+    } else {
+        title = @"Reset size";
     }
+    
+    [self.changeSizeButton setTitle:title];
+    
+    NSSize size = NSMakeSize(PERF_WINDOW_SIZES[currentWindowSizeIndex][0], PERF_WINDOW_SIZES[currentWindowSizeIndex][1]);
+    
+    [self.rulesPreferenceView setFrameSize:size];
     [self changeWindowSizeToFitInsideView:self.rulesPreferenceView];
 //    NSRect rectOfRules=self.rulesPreferenceView.frame;
 //    rectOfRules.size.width=1000;
