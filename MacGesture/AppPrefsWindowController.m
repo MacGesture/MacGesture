@@ -350,4 +350,13 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     [[NSUserDefaults standardUserDefaults] setDouble:[font pointSize] forKey:@"noteFontSize"];
 }
 
+- (IBAction)resetAllSettings:(id)sender {
+    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
+    NSDictionary * dict = [defs dictionaryRepresentation];
+    for (id key in dict) {
+        [defs removeObjectForKey:key];
+    }
+    [defs synchronize];
+}
+
 @end
