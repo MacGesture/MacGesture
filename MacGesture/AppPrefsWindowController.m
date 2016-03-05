@@ -348,9 +348,10 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 }
 
 - (void)changeFont:(id)sender {
-    NSFontManager *fontManager = (NSFontManager*) sender;
-    [[NSUserDefaults standardUserDefaults] setObject:[[fontManager selectedFont] fontName] forKey:@"noteFontName"];
-    [[NSUserDefaults standardUserDefaults] setDouble:[[fontManager selectedFont] pointSize] forKey:@"noteFontSize"];
+    NSFontManager *fontManager = [NSFontManager sharedFontManager];
+    NSFont *font = [fontManager convertFont:[NSFont systemFontOfSize:[NSFont systemFontSize]]];
+    [[NSUserDefaults standardUserDefaults] setObject:[font fontName] forKey:@"noteFontName"];
+    [[NSUserDefaults standardUserDefaults] setDouble:[font pointSize] forKey:@"noteFontSize"];
 }
 
 @end
