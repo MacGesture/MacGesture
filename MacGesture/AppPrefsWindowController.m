@@ -4,17 +4,14 @@
 
 
 #import "AppPrefsWindowController.h"
-#import "AppDelegate.h"
 #import "RulesList.h"
-#import "SRRecorderControl.h"
 #import "SRRecorderControlWithTagid.h"
-#import "AppPickerWindowController.h"
 #import "NSBundle+LoginItem.h"
 #import "BlackWhiteFilter.h"
 #import "HexColors.h"
 #import "MGOptionsDefine.h"
 
-@interface AppPrefsWindowController()
+@interface AppPrefsWindowController ()
 @property AppPickerWindowController *pickerWindowController;
 @end
 
@@ -27,20 +24,20 @@ static NSInteger const PREF_WINDOW_SIZECOUNT = 3;
 static NSInteger currentRulesWindowSizeIndex = 0;
 static NSInteger currentFiltersWindowSizeIndex = 0;
 
-- (void)changeSize:(NSInteger*) index changeSizeButton:(NSButton*)button preferenceView:(NSView *)view {
+- (void)changeSize:(NSInteger *)index changeSizeButton:(NSButton *)button preferenceView:(NSView *)view {
     *index += 1;
     *index %= PREF_WINDOW_SIZECOUNT;
-    
+
     NSString *title;
-    
-    if (*index != PREF_WINDOW_SIZECOUNT-1) {
+
+    if (*index != PREF_WINDOW_SIZECOUNT - 1) {
         title = @"Go bigger";
     } else {
         title = @"Reset size";
     }
-    
+
     [button setTitle:title];
-    
+
     [view setFrameSize:PREF_WINDOW_SIZES[*index]];
     [self changeWindowSizeToFitInsideView:view];
     [self crossFadeView:view withView:view];
@@ -52,11 +49,11 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    [self.openPreOnStartup bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"openPrefOnStartup" options:nil];
+    [self.openPreOnStartup bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"openPrefOnStartup" options:nil];
 //    [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
-    [self.showGesturePreview bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGesturePreview" options:nil];
-    [self.showGestureNote bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGestureNote" options:nil];
-    [self.disableMousePathBtn bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"disableMousePath" options:nil];
+    [self.showGesturePreview bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showGesturePreview" options:nil];
+    [self.showGestureNote bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showGestureNote" options:nil];
+    [self.disableMousePathBtn bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"disableMousePath" options:nil];
 
     [self.autoCheckUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyChecksForUpdates" options:nil];
     [self.autoDownUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyDownloadsUpdates" options:nil];
@@ -64,7 +61,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 //    [self.lineColorWell bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:OPTIONS_LINE_COLOR_ID options:nil];
 
     self.lineColorWell.color = [MGOptionsDefine getLineColor];
-    self.autoStartAtLogin.state = [[NSBundle mainBundle] isLoginItem]?NSOnState : NSOffState;
+    self.autoStartAtLogin.state = [[NSBundle mainBundle] isLoginItem] ? NSOnState : NSOffState;
     self.versionCode.stringValue = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
     [self refreshFilterRadioAndTextViewState];
     self.blackListTextView.string = BWFilter.blackListText;
@@ -73,17 +70,17 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     self.whiteListTextView.font = [NSFont systemFontOfSize:14];
 }
 
-- (void)refreshFilterRadioAndTextViewState{
+- (void)refreshFilterRadioAndTextViewState {
 //    self.blackListModeRadio.cell stat
-    NSLog(@"BWFilter.isInWhiteListMode: %d",BWFilter.isInWhiteListMode);
-    [self.blackListModeRadio setState:BWFilter.isInWhiteListMode?NSOffState:NSOnState];
-    [self.whiteListModeRadio setState:BWFilter.isInWhiteListMode?NSOnState:NSOffState];
+    NSLog(@"BWFilter.isInWhiteListMode: %d", BWFilter.isInWhiteListMode);
+    [self.blackListModeRadio setState:BWFilter.isInWhiteListMode ? NSOffState : NSOnState];
+    [self.whiteListModeRadio setState:BWFilter.isInWhiteListMode ? NSOnState : NSOffState];
     NSColor *notActive = self.window.backgroundColor;//[NSColor hx_colorWithHexString:@"ffffff" alpha:0];//[NSColor colorWithCGColor: self.filtersPrefrenceView.layer.backgroundColor];
     //[NSColor hx_colorWithHexString:@"E3E6EA"];
     NSColor *active = [NSColor hx_colorWithHexRGBAString:@"ffffff"];
-    self.blackListTextView.backgroundColor=BWFilter.isInWhiteListMode?notActive:active;
+    self.blackListTextView.backgroundColor = BWFilter.isInWhiteListMode ? notActive : active;
 //    ((NSScrollView *)(self.blackListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?notActive:active;
-    self.whiteListTextView.backgroundColor=BWFilter.isInWhiteListMode?active:notActive;
+    self.whiteListTextView.backgroundColor = BWFilter.isInWhiteListMode ? active : notActive;
 //    ((NSScrollView *)(self.whiteListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?active:notActive;
 
     [self.whiteListTextView.superview.superview needsLayout];
@@ -104,7 +101,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 
 - (IBAction)changeSizeOfPreferenceWindow:(id)sender {
     [self changeSize:&currentRulesWindowSizeIndex changeSizeButton:[self changeRulesWindowSizeButton] preferenceView:[self rulesPreferenceView]];
-    
+
 //    NSRect rectOfRules=self.rulesPreferenceView.frame;
 //    rectOfRules.size.width=1000;
 //    rectOfRules.size.height=640;
@@ -118,9 +115,9 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 //    [self loadViewForIdentifier:@"Rules" animate:YES];
 }
 
--(void)changeWindowSizeToFitInsideView:(NSView*)view{
+- (void)changeWindowSizeToFitInsideView:(NSView *)view {
     NSRect frame = [view bounds];
-    NSView* p = [self performSelector:@selector(contentSubview)];
+    NSView *p = [self performSelector:@selector(contentSubview)];
     frame.origin.y = NSHeight([p frame]) - NSHeight([view bounds]);
     [view setFrame:frame];
 }
@@ -131,7 +128,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     [_rulesTableView reloadData];
 }
 
-- (void)setupToolbar{
+- (void)setupToolbar {
     [self addView:self.generalPreferenceView label:@"General"];
     [self addView:self.rulesPreferenceView label:@"Rules"];
     [self addView:self.filtersPrefrenceView label:@"Filters" image:[NSImage imageNamed:@"list@2x.png"]];
@@ -144,6 +141,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     [self setShiftSlowsAnimation:[[NSUserDefaults standardUserDefaults] boolForKey:@"shiftSlowsAnimation"]];
 
 }
+
 - (IBAction)blockFilterPickBtnDidClick:(id)sender {
 //    self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
 //
@@ -168,7 +166,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 }
 
 - (void)shortcutRecorderDidEndRecording:(SRRecorderControl *)aRecorder {
-    NSInteger id = ((SRRecorderControlWithTagid *)aRecorder).tagid;
+    NSInteger id = ((SRRecorderControlWithTagid *) aRecorder).tagid;
     NSUInteger keycode = [aRecorder.objectValue[@"keyCode"] unsignedIntegerValue];
     NSUInteger flag = [[aRecorder objectValue][@"modifierFlags"] unsignedIntegerValue];
     [[RulesList sharedRulesList] setShortcutWithKeycode:keycode withFlag:flag atIndex:id];
@@ -181,7 +179,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
     // control is editfield,control.id == row,control.identifier == "Gesture"|"Filter"|Other(only saving)
-    if([control.identifier isEqualToString:@"Gesture"]){    // edit gesture
+    if ([control.identifier isEqualToString:@"Gesture"]) {    // edit gesture
         NSString *gesture = [control.stringValue uppercaseString];
         NSCharacterSet *gestures = [NSCharacterSet characterSetWithCharactersInString:@"ULDR"];
         gestures = [gestures invertedSet];
@@ -193,9 +191,9 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
         }
         [control setStringValue:gesture];
         [[RulesList sharedRulesList] setDirection:gesture atIndex:control.tag];
-    }else if([control.identifier isEqualToString:@"Filter"]){  // edit filter
+    } else if ([control.identifier isEqualToString:@"Filter"]) {  // edit filter
         [[RulesList sharedRulesList] setWildFilter:control.stringValue atIndex:control.tag];
-    }else if([control.identifier isEqualToString:@"Note"]){  // edit filter
+    } else if ([control.identifier isEqualToString:@"Note"]) {  // edit filter
         [[RulesList sharedRulesList] setNote:control.stringValue atIndex:control.tag];
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -206,11 +204,11 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     return 25;
 }
 
-- (void)pickBtnDidClick:(id)sender{
+- (void)pickBtnDidClick:(id)sender {
     self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
     self.pickerWindowController.parentWindow = self;
     NSInteger index = [sender tag];
-    self.pickerWindowController.indexForParentWindow=index;
+    self.pickerWindowController.indexForParentWindow = index;
     [self.pickerWindowController showWindow:self];
 
 //    [windowController showDialog];
@@ -221,7 +219,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 //    [_rulesTableView reloadData];
 }
 
-- (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index{
+- (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index {
     [[RulesList sharedRulesList] setWildFilter:rulesStringSplitedByStick atIndex:index];
     [[RulesList sharedRulesList] save];
     [_rulesTableView reloadData];
@@ -238,13 +236,13 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
         textfiled.editable = YES;
         textfiled.bezeled = NO;
         if ([tableColumn.identifier isEqualToString:@"Gesture"]) {
-            textfiled.stringValue = [rulesList directionAtIndex:(NSUInteger)row];
+            textfiled.stringValue = [rulesList directionAtIndex:(NSUInteger) row];
             textfiled.identifier = @"Gesture";
         } else if ([tableColumn.identifier isEqualToString:@"Filter"]) {
-            textfiled.stringValue = [rulesList filterAtIndex:(NSUInteger)row];
+            textfiled.stringValue = [rulesList filterAtIndex:(NSUInteger) row];
             textfiled.identifier = @"Filter";
         } else if ([tableColumn.identifier isEqualToString:@"Note"]) {
-            textfiled.stringValue = [rulesList noteAtIndex:(NSUInteger)row];
+            textfiled.stringValue = [rulesList noteAtIndex:(NSUInteger) row];
             textfiled.identifier = @"Note";
         }
         textfiled.delegate = self;
@@ -258,15 +256,15 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 
         recordView.delegate = self;
         [recordView setAllowedModifierFlags:SRCocoaModifierFlagsMask requiredModifierFlags:0 allowsEmptyModifierFlags:YES];
-                ((SRRecorderControlWithTagid *)recordView).tagid = row;
+        ((SRRecorderControlWithTagid *) recordView).tagid = row;
         recordView.objectValue = @{
-                @"keyCode": @([rulesList shortcutKeycodeAtIndex:row]),
-                @"modifierFlags": @([rulesList shortcutFlagAtIndex:row]),
+                @"keyCode" : @([rulesList shortcutKeycodeAtIndex:row]),
+                @"modifierFlags" : @([rulesList shortcutFlagAtIndex:row]),
         };
         result = recordView;
     } else if ([tableColumn.identifier isEqualToString:@"AppPicker"]) {
         // Pick button
-        NSButton* btnView = [[NSButton alloc] init];
+        NSButton *btnView = [[NSButton alloc] init];
         [btnView setButtonType:NSPushOnPushOffButton];
         btnView.title = @"Pick";
         btnView.tag = row;
@@ -281,16 +279,20 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 
 - (IBAction)autoStartAction:(id)sender {
     switch (self.autoStartAtLogin.state) {
-        case NSOnState:     [[NSBundle mainBundle] addToLoginItems]; break;
-        case NSOffState:    [[NSBundle mainBundle] removeFromLoginItems]; break;
+        case NSOnState:
+            [[NSBundle mainBundle] addToLoginItems];
+            break;
+        case NSOffState:
+            [[NSBundle mainBundle] removeFromLoginItems];
+            break;
     }
 }
 
 - (IBAction)whiteBlackRadioClicked:(id)sender {
-    if(sender==self.whiteListModeRadio){
-        BWFilter.isInWhiteListMode=YES;
-    }else if(sender==self.blackListModeRadio){
-        BWFilter.isInWhiteListMode=NO;
+    if (sender == self.whiteListModeRadio) {
+        BWFilter.isInWhiteListMode = YES;
+    } else if (sender == self.blackListModeRadio) {
+        BWFilter.isInWhiteListMode = NO;
     }
 
     [self refreshFilterRadioAndTextViewState];
@@ -301,24 +303,25 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 }
 
 - (IBAction)filterViewApplyClicked:(id)sender {
-    BWFilter.blackListText= [self.blackListTextView string];
-    BWFilter.whiteListText= [self.whiteListTextView string];
+    BWFilter.blackListText = [self.blackListTextView string];
+    BWFilter.whiteListText = [self.whiteListTextView string];
     [self refreshFilterRadioAndTextViewState];
-    self.blackListTextView.string=BWFilter.blackListText;
-    self.whiteListTextView.string=BWFilter.whiteListText;
+    self.blackListTextView.string = BWFilter.blackListText;
+    self.whiteListTextView.string = BWFilter.whiteListText;
 }
 
 - (IBAction)filterBlackListAddClicked:(id)sender {
     self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
-    self.pickerWindowController.addedToTextView=self.blackListTextView;
-    [self.pickerWindowController  showWindow:self];
+    self.pickerWindowController.addedToTextView = self.blackListTextView;
+    [self.pickerWindowController showWindow:self];
 }
 
 - (IBAction)filterWhiteListAddClicked:(id)sender {
     self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
-    self.pickerWindowController.addedToTextView=self.whiteListTextView;
-    [self.pickerWindowController  showWindow:self];
+    self.pickerWindowController.addedToTextView = self.whiteListTextView;
+    [self.pickerWindowController showWindow:self];
 }
+
 - (IBAction)colorChanged:(id)sender {
 //    SET_LINE_COLOR(self.lineColorWell.color);
 

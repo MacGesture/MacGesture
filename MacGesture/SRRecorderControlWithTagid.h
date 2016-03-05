@@ -9,5 +9,5 @@
 
 @interface SRRecorderControlWithTagid : SRRecorderControl
 
-@property (assign)NSInteger tagid;
+@property(assign) NSInteger tagid;
 @end

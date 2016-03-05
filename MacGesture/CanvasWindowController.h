@@ -9,13 +9,15 @@
 #import <Cocoa/Cocoa.h>
 
 @interface CanvasWindowController : NSWindowController {
-	BOOL enable;
+    BOOL enable;
 }
 
-@property (assign, nonatomic) BOOL enable;
+@property(assign, nonatomic) BOOL enable;
 
 - (void)handleMouseEvent:(NSEvent *)event;
+
 - (void)handleScreenParametersChange:(NSNotification *)notification;
+
 - (void)writeDirection:(NSString *)directionStr;
 
 - (void)reinitWindow; // reinit canvas window for dual screen

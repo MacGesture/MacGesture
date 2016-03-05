@@ -16,10 +16,9 @@ static CFMachPortRef mouseEventTap;
 static bool isEnable;
 static AppPrefsWindowController *_preferencesWindowController;
 
-+ (AppDelegate *)appDelegate
-{
++ (AppDelegate *)appDelegate {
 
-    return (AppDelegate *)[[NSApplication sharedApplication] delegate];
+    return (AppDelegate *) [[NSApplication sharedApplication] delegate];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
@@ -36,27 +35,25 @@ static AppPrefsWindowController *_preferencesWindowController;
     direction = [NSMutableString string];
     isEnable = true;
 
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRunBefore"]){
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRunBefore"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"openPrefOnStartup"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showGesturePreview"];
-
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRunBefore"];
     }
 
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.4_Before"]){
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.4_Before"]) {
         [[NSBundle mainBundle] addToLoginItems];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun_2.0.4_Before"];
     }
 
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.5_Before"]){
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.5_Before"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showGestureNote"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun_2.0.5_Before"];
     }
 
     [BWFilter compatibleProcedureWithPreviousVersionBlockRules];
 
-
-    if([[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]){
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]) {
         [self openPreferences:self];
     }
 }
@@ -97,12 +94,12 @@ static AppPrefsWindowController *_preferencesWindowController;
     [_preferencesWindowController showWindow:self];
 }
 
-static void updateDirections(NSEvent* event) {
-    
+static void updateDirections(NSEvent *event) {
+
     if (![[RulesList sharedRulesList] frontAppSuitedRule]) {
-        return ;
+        return;
     }
-    
+
     // not thread safe
     NSPoint newLocation = event.locationInWindow;
     double deltaX = newLocation.x - lastLocation.x;
@@ -131,7 +128,7 @@ static void updateDirections(NSEvent* event) {
                 [windowController writeDirection:direction];
                 return;
             }
-        } else{
+        } else {
             if (lastDirectionChar != [@"L" characterAtIndex:0]) {
                 [direction appendString:@"L"];
                 [windowController writeDirection:direction];
@@ -160,7 +157,7 @@ static bool handleGesture() {
     return [[RulesList sharedRulesList] handleGesture:direction];
 }
 
-void resetDirection(){
+void resetDirection() {
     [direction setString:@""];
 }
 
@@ -168,7 +165,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
     // not thread safe, but it's always called in main thread
     // check blocker apps
 //    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){
-    if(![BWFilter willHookRightClickForApp:frontBundleName()]){
+    if (![BWFilter willHookRightClickForApp:frontBundleName()]) {
 //        CGEventPost(kCGSessionEventTap, mouseDownEvent);
 //        if (mouseDraggedEvent) {
 //            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);

@@ -9,20 +9,19 @@
 #import <Cocoa/Cocoa.h>
 
 @interface CanvasView : NSView {
-	NSColor *color;
-
+    NSColor *color;
     NSPoint lastLocation;
-
-
-	NSUInteger radius;
-
-	NSMutableArray *points; // NSPoint array
-	NSString* directionToDraw;
+    NSUInteger radius;
+    NSMutableArray *points; // NSPoint array
+    NSString *directionToDraw;
 }
 
 - (void)clear;
+
 - (void)resizeTo:(NSRect)frame;
+
 - (void)setEnable:(BOOL)shouldEnable;
+
 - (void)writeDirection:(NSString *)directionStr;
 
 @end

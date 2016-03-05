@@ -9,26 +9,25 @@
 #import "AppPickerWindowController.h"
 #import "RulesList.h"
 
-@interface FilterData : NSObject
-{
+@interface FilterData : NSObject {
+
 }
 
-@property (strong) NSString *text;
-@property (strong) NSImage *icon;
+@property(strong) NSString *text;
+@property(strong) NSImage *icon;
 @property NSInteger checkedState;
 
 @end
 
 @implementation FilterData
 
--(instancetype)initFilterData:(NSString*)text icon:(NSImage*)icon checkedState:(NSInteger) checkedState
-{
+- (instancetype)initFilterData:(NSString *)text icon:(NSImage *)icon checkedState:(NSInteger)checkedState {
     self = [super init];
-    
+
     self.text = text;
     self.icon = icon;
     self.checkedState = checkedState;
-    
+
     return self;
 }
 
@@ -40,8 +39,8 @@
 
 @implementation AppPickerWindowController
 
-NSMutableArray<FilterData*> *_filters;
-NSMutableArray<NSButton*> *_checkBoxs;
+NSMutableArray<FilterData *> *_filters;
+NSMutableArray<NSButton *> *_checkBoxs;
 NSMutableString *_filter;
 
 - (instancetype)initWithWindowNibName:(NSString *)windowNibName {
@@ -52,7 +51,7 @@ NSMutableString *_filter;
 }
 
 - (NSString *)generateFilter {
-    if(_filter){
+    if (_filter) {
         return _filter;
     }
     return nil;
@@ -60,18 +59,18 @@ NSMutableString *_filter;
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    
-    NSImage* emptyIcon = [[NSImage alloc] initWithSize:NSMakeSize(64,64)];
 
-    for(NSRunningApplication *app in [[NSWorkspace sharedWorkspace] runningApplications]){
-        if(app.activationPolicy == NSApplicationActivationPolicyRegular) {
+    NSImage *emptyIcon = [[NSImage alloc] initWithSize:NSMakeSize(64, 64)];
+
+    for (NSRunningApplication *app in [[NSWorkspace sharedWorkspace] runningApplications]) {
+        if (app.activationPolicy == NSApplicationActivationPolicyRegular) {
             if (app.bundleIdentifier) {
-                FilterData * filter = [[FilterData alloc] initFilterData:app.bundleIdentifier icon:(app.icon ? app.icon : emptyIcon) checkedState:NSOffState];
+                FilterData *filter = [[FilterData alloc] initFilterData:app.bundleIdentifier icon:(app.icon ? app.icon : emptyIcon) checkedState:NSOffState];
                 [_filters addObject:filter];
             }
         }
     }
-    
+
     if (!self.addedToTextView) {
         NSArray *filters;
         NSString *originalFilter;
@@ -79,7 +78,7 @@ NSMutableString *_filter;
         filters = [originalFilter componentsSeparatedByString:@"|"];
         for (NSString *filter in filters) {
             if ([filter length]) {
-                NSUInteger index = [_filters indexOfObjectPassingTest:^BOOL(FilterData * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                NSUInteger index = [_filters indexOfObjectPassingTest:^BOOL(FilterData *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
                     return [obj text] == filter;
                 }];
                 if (index == NSNotFound) {
@@ -90,7 +89,7 @@ NSMutableString *_filter;
             }
         }
     }
-    
+
     [self.filtersTableView reloadData];
 }
 
@@ -141,14 +140,14 @@ NSMutableString *_filter;
 //            [_filter appendString:((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier];
 //            [_filter appendString:@"|"];
             if (self.addedToTextView) {
-                [self.addedToTextView setString:[NSString stringWithFormat:@"%@\n%@",[self.addedToTextView string],[_filters[btn.tag] text]]];
+                [self.addedToTextView setString:[NSString stringWithFormat:@"%@\n%@", [self.addedToTextView string], [_filters[[btn tag]] text]]];
             } else {
-                [_filter appendString:[_filters[btn.tag] text]];
+                [_filter appendString:[_filters[[btn tag]] text]];
                 [_filter appendString:@"|"];
             }
         }
     }
-    
+
     if (!self.addedToTextView && self.parentWindow) {
         [self.parentWindow rulePickCallback:_filter atIndex:self.indexForParentWindow];
     }

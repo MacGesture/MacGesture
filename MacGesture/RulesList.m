@@ -23,11 +23,11 @@ NSMutableArray *_rulesList;  // private
 }
 
 - (FilterType)filterTypeAtIndex:(NSUInteger)index {
-    return (FilterType)[((NSMutableDictionary *) _rulesList[index])[@"filterType"] integerValue];
+    return (FilterType) [((NSMutableDictionary *) _rulesList[index])[@"filterType"] integerValue];
 }
 
 - (ActionType)actionTypeAtIndex:(NSUInteger)index {
-    return (ActionType)[((NSMutableDictionary *) _rulesList[index])[@"actionType"] integerValue];
+    return (ActionType) [((NSMutableDictionary *) _rulesList[index])[@"actionType"] integerValue];
 }
 
 - (NSUInteger)shortcutKeycodeAtIndex:(NSUInteger)index {
@@ -41,12 +41,11 @@ NSMutableArray *_rulesList;  // private
     return flag;
 }
 
-
 - (NSInteger)count {
     return [_rulesList count];
 }
 
-- (void)clear{
+- (void)clear {
     [_rulesList removeAllObjects];
 }
 
@@ -60,9 +59,9 @@ NSMutableArray *_rulesList;  // private
 + (id)readRulesList {
     id result;
 
-    NSUserDefaults *defaults= [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     result = [defaults objectForKey:@"rules"];
-    return  result;
+    return result;
 }
 
 - (void)reInit {
@@ -70,13 +69,19 @@ NSMutableArray *_rulesList;  // private
     [rulesList clear];
 
 #define XOR ^
-#define ADD_RULE(_gesture,_keycode,_flag,_note) [rulesList addRuleWithDirection:_gesture filter:@"*safari|*chrome" filterType:FILETER_TYPE_WILD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:_keycode shortcutFlag: _flag appleScript:nil note:_note];
-    ADD_RULE(@"UR",kVK_ANSI_RightBracket,NSShiftKeyMask XOR NSCommandKeyMask,@"Next Tab");
-    ADD_RULE(@"UL",kVK_ANSI_LeftBracket,NSShiftKeyMask XOR NSCommandKeyMask,@"Prev Tab");
-    ADD_RULE(@"DL",kVK_ANSI_F,NSCommandKeyMask XOR NSControlKeyMask,@"Full screen");
-    ADD_RULE(@"DR",kVK_ANSI_W,NSCommandKeyMask,@"Close Tab");
-    ADD_RULE(@"R",kVK_RightArrow,NSCommandKeyMask,@"Next");
-    ADD_RULE(@"L",kVK_LeftArrow,NSCommandKeyMask,@"Back");
+#define ADD_RULE(_gesture, _keycode, _flag, _note) [rulesList addRuleWithDirection:_gesture filter:@"*safari|*chrome" filterType:FILETER_TYPE_WILD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:_keycode shortcutFlag: _flag appleScript:nil note:_note];
+    ADD_RULE(@"UR", kVK_ANSI_RightBracket, NSShiftKeyMask
+            XOR
+            NSCommandKeyMask, @"Next Tab");
+    ADD_RULE(@"UL", kVK_ANSI_LeftBracket, NSShiftKeyMask
+            XOR
+            NSCommandKeyMask, @"Prev Tab");
+    ADD_RULE(@"DL", kVK_ANSI_F, NSCommandKeyMask
+            XOR
+            NSControlKeyMask, @"Full screen");
+    ADD_RULE(@"DR", kVK_ANSI_W, NSCommandKeyMask, @"Close Tab");
+    ADD_RULE(@"R", kVK_RightArrow, NSCommandKeyMask, @"Next");
+    ADD_RULE(@"L", kVK_LeftArrow, NSCommandKeyMask, @"Back");
 #undef ADD_RULE
 #undef XOR
 }
@@ -85,19 +90,17 @@ NSMutableArray *_rulesList;  // private
 + (RulesList *)sharedRulesList {
     static RulesList *rulesList = nil;
     NSData *data;
-    if((data = [self readRulesList])){
+    if ((data = [self readRulesList])) {
         rulesList = [[RulesList alloc] initWithNsData:data];
     }
 
-    if(rulesList == nil){
+    if (rulesList == nil) {
         rulesList = [[RulesList alloc] init];
         [rulesList reInit];
         [rulesList save];
     }
     return rulesList;
 }
-
-
 
 static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     CGEventRef event = CGEventCreateKeyboardEvent(NULL, virtualKey, true);
@@ -111,16 +114,16 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     CFRelease(event);
 }
 
-- (bool)executeActionAt:(NSUInteger)i{
+- (bool)executeActionAt:(NSUInteger)i {
     pressKeyWithFlags([self shortcutKeycodeAtIndex:i], [self shortcutFlagAtIndex:i]);
     return YES;
 }
 
-- (NSInteger)suitedRuleWithGesture:(NSString*)gesture {
-    for(NSUInteger i=0;i<[self count];i++){
-        if(wildcardString(frontBundleName(), [self filterAtIndex:i])){
+- (NSInteger)suitedRuleWithGesture:(NSString *)gesture {
+    for (NSUInteger i = 0; i < [self count]; i++) {
+        if (wildcardString(frontBundleName(), [self filterAtIndex:i])) {
             // wild filter ensured
-            if([gesture isEqualToString:[self directionAtIndex:i]]){
+            if ([gesture isEqualToString:[self directionAtIndex:i]]) {
                 return i;
             }
         }
@@ -129,8 +132,8 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
 }
 
 - (BOOL)frontAppSuitedRule {
-    for(NSUInteger i=0;i<[self count];i++){
-        if(wildcardString(frontBundleName(), [self filterAtIndex:i])){
+    for (NSUInteger i = 0; i < [self count]; i++) {
+        if (wildcardString(frontBundleName(), [self filterAtIndex:i])) {
             return YES;
         }
     }
@@ -139,20 +142,20 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
 
 - (bool)handleGesture:(NSString *)gesture {
     NSInteger i = [self suitedRuleWithGesture:gesture];
-    if(i != -1){
+    if (i != -1) {
         [self executeActionAt:i];
         return YES;
     }
-    if(gesture.length<2){
+    if (gesture.length < 2) {
         return NO;
-    }else{
+    } else {
         return YES;
     }
 }
 
 - (NSString *)noteAtIndex:(NSUInteger)index {
     NSString *value = ((NSMutableDictionary *) _rulesList[index])[@"note"];
-    return value?value:@"";
+    return value ? value : @"";
 }
 
 - (void)setNote:(NSString *)note atIndex:(NSUInteger)index {
@@ -167,18 +170,17 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
              shortcutKeyCode:(NSUInteger)shortcutKeyCode
                 shortcutFlag:(NSUInteger)shortcutFlag
                  appleScript:(NSString *)appleScript
-                        note:(NSString *)note;
-{
+                        note:(NSString *)note; {
     NSMutableDictionary *rule = [[NSMutableDictionary alloc] init];
     rule[@"direction"] = direction;
     rule[@"filter"] = filter;
     rule[@"filterType"] = @(filterType);
     rule[@"actionType"] = @(actionType);
-    if(actionType == ACTION_TYPE_SHORTCUT) {
+    if (actionType == ACTION_TYPE_SHORTCUT) {
         rule[@"shortcut_code"] = @(shortcutKeyCode);
         rule[@"shortcut_flag"] = @(shortcutFlag);
 
-    }else if(actionType == ACTION_TYPE_APPLE_SCRIPT){
+    } else if (actionType == ACTION_TYPE_APPLE_SCRIPT) {
         rule[@"applescript"] = appleScript;
     }
     rule[@"note"] = note;
