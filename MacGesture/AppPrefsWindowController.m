@@ -22,10 +22,29 @@
 
 @synthesize rulesTableView = _rulesTableView;
 
-static int const PERF_WINDOW_SIZES[3][2] = {{658, 315}, {800, 500}, {1000, 640}};
-static int const PERF_WINDOW_SIZECOUNT = 3;
-static int currentWindowSizeIndex = 0;
+static NSSize const PERF_WINDOW_SIZES[3] = {{658, 315}, {800, 500}, {1000, 640}};
+static NSInteger const PERF_WINDOW_SIZECOUNT = 3;
+static NSInteger currentRulesWindowSizeIndex = 0;
+static NSInteger currentFiltersWindowSizeIndex = 0;
 
+- (void)changeSize:(NSInteger*) index changeSizeButton:(NSButton*)button preferenceView:(NSView *)view {
+    *index += 1;
+    *index %= PERF_WINDOW_SIZECOUNT;
+    
+    NSString *title;
+    
+    if (*index != PERF_WINDOW_SIZECOUNT-1) {
+        title = @"Go bigger";
+    } else {
+        title = @"Reset size";
+    }
+    
+    [button setTitle:title];
+    
+    [view setFrameSize:PERF_WINDOW_SIZES[*index]];
+    [self changeWindowSizeToFitInsideView:view];
+    [self crossFadeView:view withView:view];
+}
 
 - (IBAction)blockFilterDidEdit:(id)sender {
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -84,23 +103,8 @@ static int currentWindowSizeIndex = 0;
 }
 
 - (IBAction)changeSizeOfPreferenceWindow:(id)sender {
-    currentWindowSizeIndex += 1;
-    currentWindowSizeIndex %= PERF_WINDOW_SIZECOUNT;
-
-    NSString *title;
-
-    if (currentWindowSizeIndex != PERF_WINDOW_SIZECOUNT-1) {
-        title = @"Go bigger";
-    } else {
-        title = @"Reset size";
-    }
+    [self changeSize:&currentRulesWindowSizeIndex changeSizeButton:[self changeRulesWindowSizeButton] preferenceView:[self rulesPreferenceView]];
     
-    [self.changeSizeButton setTitle:title];
-    
-    NSSize size = NSMakeSize(PERF_WINDOW_SIZES[currentWindowSizeIndex][0], PERF_WINDOW_SIZES[currentWindowSizeIndex][1]);
-    
-    [self.rulesPreferenceView setFrameSize:size];
-    [self changeWindowSizeToFitInsideView:self.rulesPreferenceView];
 //    NSRect rectOfRules=self.rulesPreferenceView.frame;
 //    rectOfRules.size.width=1000;
 //    rectOfRules.size.height=640;
@@ -109,17 +113,14 @@ static int currentWindowSizeIndex = 0;
 //    self.rulesPreferenceView.frame=rectOfRules;
 //    [self.rulesPreferenceView needsLayout];
 //    [self.rulesPreferenceView needsDisplay];
-
-//    [self.rulesTableView sizeToFit];
-    [self crossFadeView:self.rulesPreferenceView withView:self.rulesPreferenceView];
-
+//    [self.rulesTableView sizeToFit]
 //    self.window size
 //    [self loadViewForIdentifier:@"Rules" animate:YES];
 }
 
 -(void)changeWindowSizeToFitInsideView:(NSView*)view{
     NSRect frame = [view bounds];
-    NSView* p= [self performSelector:@selector(contentSubview)];
+    NSView* p = [self performSelector:@selector(contentSubview)];
     frame.origin.y = NSHeight([p frame]) - NSHeight([view bounds]);
     [view setFrame:frame];
 }
@@ -184,7 +185,17 @@ static int currentWindowSizeIndex = 0;
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
     // control is editfield,control.id == row,control.identifier == "Gesture"|"Filter"|Other(only saving)
     if([control.identifier isEqualToString:@"Gesture"]){    // edit gesture
-        [[RulesList sharedRulesList] setDirection:control.stringValue atIndex:control.tag];
+        NSString *gesture = [control.stringValue uppercaseString];
+        NSCharacterSet *gestures = [NSCharacterSet characterSetWithCharactersInString:@"ULDR"];
+        gestures = [gestures invertedSet];
+        if ([gesture rangeOfCharacterFromSet:gestures].location != NSNotFound) {
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:@"Gesture should only contains \"ULDR\""];
+            [alert runModal];
+            return NO;
+        }
+        [control setStringValue:gesture];
+        [[RulesList sharedRulesList] setDirection:gesture atIndex:control.tag];
     }else if([control.identifier isEqualToString:@"Filter"]){  // edit filter
         [[RulesList sharedRulesList] setWildFilter:control.stringValue atIndex:control.tag];
     }else if([control.identifier isEqualToString:@"Note"]){  // edit filter
@@ -200,8 +211,8 @@ static int currentWindowSizeIndex = 0;
 
 - (void)pickBtnDidClick:(id)sender{
     self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
-    self.pickerWindowController.parentWindow=self;
-    NSInteger index = ((NSButton*)sender).tag;
+    self.pickerWindowController.parentWindow = self;
+    NSInteger index = [sender tag];
     self.pickerWindowController.indexForParentWindow=index;
     [self.pickerWindowController showWindow:self];
 
@@ -291,14 +302,9 @@ static int currentWindowSizeIndex = 0;
     [self refreshFilterRadioAndTextViewState];
 }
 - (IBAction)filterViewGoBiggerClicked:(id)sender {
-    if (self.filtersPrefrenceView.frame.size.height<500){
-        [self.filtersPrefrenceView setFrameSize:NSSizeFromCGSize(CGSizeMake(1000,640))];
-    }else{
-        [self.filtersPrefrenceView setFrameSize:NSSizeFromCGSize(CGSizeMake(588,366))];
-    }
-    [self changeWindowSizeToFitInsideView:self.filtersPrefrenceView];
-    [self crossFadeView:self.filtersPrefrenceView withView:self.filtersPrefrenceView];
+    [self changeSize:&currentFiltersWindowSizeIndex changeSizeButton:[self changeFiltersWindowSizeButton] preferenceView:[self filtersPrefrenceView]];
 }
+
 - (IBAction)filterViewApplyClicked:(id)sender {
     BWFilter.blackListText= [self.blackListTextView string];
     BWFilter.whiteListText= [self.whiteListTextView string];
@@ -306,11 +312,13 @@ static int currentWindowSizeIndex = 0;
     self.blackListTextView.string=BWFilter.blackListText;
     self.whiteListTextView.string=BWFilter.whiteListText;
 }
+
 - (IBAction)filterBlackListAddClicked:(id)sender {
     self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
     self.pickerWindowController.addedToTextView=self.blackListTextView;
     [self.pickerWindowController  showWindow:self];
 }
+
 - (IBAction)filterWhiteListAddClicked:(id)sender {
     self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
     self.pickerWindowController.addedToTextView=self.whiteListTextView;

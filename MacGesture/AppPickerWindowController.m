@@ -13,8 +13,8 @@
 {
 }
 
-@property (strong, nonatomic) NSString *text;
-@property (strong, nonatomic) NSImage *icon;
+@property (strong) NSString *text;
+@property (strong) NSImage *icon;
 @property NSInteger checkedState;
 
 @end
@@ -40,8 +40,8 @@
 
 @implementation AppPickerWindowController
 
-NSMutableArray *_filters;
-NSMutableArray *_checkBoxs;
+NSMutableArray<FilterData*> *_filters;
+NSMutableArray<NSButton*> *_checkBoxs;
 NSMutableString *_filter;
 
 - (instancetype)initWithWindowNibName:(NSString *)windowNibName {
@@ -72,20 +72,25 @@ NSMutableString *_filter;
         }
     }
     
-    NSString *originalFilter = [[RulesList sharedRulesList] filterAtIndex:self.indexForParentWindow];
-    NSArray *filters = [originalFilter componentsSeparatedByString:@"|"];
-    for (NSString *filter in filters) {
-        if ([filter length]) {
-            NSUInteger index = [_filters indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                return [obj text] == filter;
-            }];
-            if (index == NSNotFound) {
-                [_filters addObject:[[FilterData alloc] initFilterData:filter icon:emptyIcon checkedState:NSOffState]];
-            } else {
-                [_filters[index] setCheckedState:NSOnState];
+    if (!self.addedToTextView) {
+        NSArray *filters;
+        NSString *originalFilter;
+        originalFilter = [[RulesList sharedRulesList] filterAtIndex:self.indexForParentWindow];
+        filters = [originalFilter componentsSeparatedByString:@"|"];
+        for (NSString *filter in filters) {
+            if ([filter length]) {
+                NSUInteger index = [_filters indexOfObjectPassingTest:^BOOL(FilterData * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    return [obj text] == filter;
+                }];
+                if (index == NSNotFound) {
+                    [_filters addObject:[[FilterData alloc] initFilterData:filter icon:emptyIcon checkedState:NSOnState]];
+                } else {
+                    [_filters[index] setCheckedState:NSOnState];
+                }
             }
         }
     }
+    
     [self.filtersTableView reloadData];
 }
 
@@ -99,23 +104,22 @@ NSMutableString *_filter;
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSView *result;
-    if([tableColumn.identifier isEqualToString:@"CheckBox"]){
-        NSButton *checkbox = [[NSButton alloc] init];
-        [checkbox setButtonType:NSSwitchButton];
-        checkbox.state = [_filters[row] checkedState];
-        [checkbox setTitle:@""];
-        checkbox.tag = row;
-        [_checkBoxs addObject:checkbox];
-        result = checkbox;
-
-    }else if([tableColumn.identifier isEqualToString:@"Icon"]){
+    if ([tableColumn.identifier isEqualToString:@"CheckBox"]) {
+        NSButton *checkBox = [[NSButton alloc] init];
+        [checkBox setButtonType:NSSwitchButton];
+        [checkBox setState:[_filters[row] checkedState]];
+        [checkBox setTitle:@""];
+        [checkBox setTag:row];
+        [_checkBoxs addObject:checkBox];
+        result = checkBox;
+    } else if ([tableColumn.identifier isEqualToString:@"Icon"]) {
         NSImageView *imageView = [[NSImageView alloc] init];
-        imageView.image = [_filters[row] icon];
+        [imageView setImage:[_filters[row] icon]];
         return imageView;
-    }else{
+    } else {
         NSTextField *textField = [[NSTextField alloc] init];
-        textField.bezeled = NO;
-        textField.stringValue = [_filters[row] text];
+        [textField setBezeled:NO];
+        [textField setStringValue:[_filters[row] text]];
         result = textField;
     }
 
@@ -137,15 +141,16 @@ NSMutableString *_filter;
 //            [_filter appendString:((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier];
 //            [_filter appendString:@"|"];
             if (self.addedToTextView) {
-                self.addedToTextView.string=[NSString stringWithFormat:@"%@\n%@",self.addedToTextView.string,[_filters[btn.tag] text]];
+                [self.addedToTextView setString:[NSString stringWithFormat:@"%@\n%@",[self.addedToTextView string],[_filters[btn.tag] text]]];
             } else {
                 [_filter appendString:[_filters[btn.tag] text]];
                 [_filter appendString:@"|"];
-                if (self.parentWindow) {
-                    [self.parentWindow rulePickCallback:_filter atIndex:self.indexForParentWindow];
-                }
             }
         }
+    }
+    
+    if (!self.addedToTextView && self.parentWindow) {
+        [self.parentWindow rulePickCallback:_filter atIndex:self.indexForParentWindow];
     }
 
 //    [NSApp stopModal];

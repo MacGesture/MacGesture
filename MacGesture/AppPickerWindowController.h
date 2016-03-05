@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSWindowController <AppPickerCallback>*parentWindow;
 @property (nonatomic, strong) IBOutlet NSTableView *filtersTableView;
 @property (nonatomic, assign) NSInteger indexForParentWindow;
+
 @end
 
 @protocol AppPickerCallback

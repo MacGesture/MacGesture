@@ -20,5 +20,4 @@ typedef enum{
 
 - (instancetype)initWithShortcut:(MASShortcut *)shortcut;
 
-- (void)execute;
 @end
