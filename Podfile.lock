@@ -6,6 +6,7 @@ PODS:
     - ShortcutRecorder/PTHotKey (= 2.13)
   - ShortcutRecorder/PTHotKey (2.13)
   - Sparkle (1.13.1)
+  - TMCache (2.1.0)
 
 DEPENDENCIES:
   - DBPrefsWindowController
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - IYLoginItem
   - ShortcutRecorder (from `https://github.com/Kentzo/ShortcutRecorder`)
   - Sparkle
+  - TMCache
 
 EXTERNAL SOURCES:
   ShortcutRecorder:
@@ -29,5 +31,6 @@ SPEC CHECKSUMS:
   IYLoginItem: e57a86b39d3b9ab0e2fc033adedae01efafd9adf
   ShortcutRecorder: 683071e0106fb1408b6bb11521975d2be43861b5
   Sparkle: 2fbd47b869621d1e679c7554e3e19dda02104818
+  TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
 
 COCOAPODS: 0.39.0

@@ -8,6 +8,7 @@
 
 #import "AppPickerWindowController.h"
 #import "RulesList.h"
+#import "TMCache.h"
 
 @interface FilterData : NSObject {
 
@@ -57,40 +58,66 @@ NSMutableString *_filter;
     return nil;
 }
 
+- (NSImage *)getImageForApp:(NSString*)bundleIdentifier newIcon:(NSImage*)icon {
+    static NSImage *emptyIcon;
+    if (!emptyIcon) {
+        emptyIcon = [[NSImage alloc] initWithSize:NSMakeSize(16, 16)];
+    }
+    
+    if (icon) {
+        [[TMCache sharedCache] setObject:icon forKey:bundleIdentifier block:nil];
+        return icon;
+    }
+    
+    NSImage *cachedImage = [[TMCache sharedCache] objectForKey:bundleIdentifier];
+    
+    return cachedImage ? cachedImage : emptyIcon;
+}
+
+- (NSImage *)getImageForApp:(NSString*)bundleIdentifier {
+    return [self getImageForApp:bundleIdentifier newIcon:nil];
+}
+
 - (void)windowDidLoad {
     [super windowDidLoad];
-
-    NSImage *emptyIcon = [[NSImage alloc] initWithSize:NSMakeSize(64, 64)];
-
-    for (NSRunningApplication *app in [[NSWorkspace sharedWorkspace] runningApplications]) {
-        if (app.activationPolicy == NSApplicationActivationPolicyRegular) {
-            if (app.bundleIdentifier) {
-                FilterData *filter = [[FilterData alloc] initFilterData:app.bundleIdentifier icon:(app.icon ? app.icon : emptyIcon) checkedState:NSOffState];
-                [_filters addObject:filter];
-            }
-        }
-    }
-
-    if (!self.addedToTextView) {
-        NSArray *filters;
-        NSString *originalFilter;
-        originalFilter = [[RulesList sharedRulesList] filterAtIndex:self.indexForParentWindow];
-        filters = [originalFilter componentsSeparatedByString:@"|"];
-        for (NSString *filter in filters) {
-            if ([filter length]) {
-                NSUInteger index = [_filters indexOfObjectPassingTest:^BOOL(FilterData *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-                    return [obj text] == filter;
-                }];
-                if (index == NSNotFound) {
-                    [_filters addObject:[[FilterData alloc] initFilterData:filter icon:emptyIcon checkedState:NSOnState]];
-                } else {
-                    [_filters[index] setCheckedState:NSOnState];
+    
+    dispatch_async(dispatch_get_global_queue(0,0), ^{
+        for (NSRunningApplication *app in [[NSWorkspace sharedWorkspace] runningApplications]) {
+            if (app.activationPolicy == NSApplicationActivationPolicyRegular) {
+                if (app.bundleIdentifier) {
+                    FilterData *filter = [[FilterData alloc] initFilterData:app.bundleIdentifier icon:[self getImageForApp:app.bundleIdentifier newIcon:app.icon] checkedState:NSOffState];
+                    [_filters addObject:filter];
                 }
             }
         }
-    }
-
-    [self.filtersTableView reloadData];
+        
+        if (!self.addedToTextView) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.filtersTableView reloadData];
+                [self.loadingLabel setStringValue:@"Loading.."];
+            });
+            NSArray *filters;
+            NSString *originalFilter;
+            originalFilter = [[RulesList sharedRulesList] filterAtIndex:self.indexForParentWindow];
+            filters = [originalFilter componentsSeparatedByString:@"|"];
+            for (NSString *filter in filters) {
+                if ([filter length]) {
+                    NSUInteger index = [_filters indexOfObjectPassingTest:^BOOL(FilterData *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+                        return [obj text] == filter;
+                    }];
+                    if (index == NSNotFound) {
+                        [_filters addObject:[[FilterData alloc] initFilterData:filter icon:[self getImageForApp:filter] checkedState:NSOnState]];
+                    } else {
+                        [_filters[index] setCheckedState:NSOnState];
+                    }
+                }
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.filtersTableView reloadData];
+            [self.loadingLabel setHidden:YES];
+        });
+    });
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
@@ -118,6 +145,8 @@ NSMutableString *_filter;
     } else {
         NSTextField *textField = [[NSTextField alloc] init];
         [textField setBezeled:NO];
+        [textField setEditable:NO];
+        [textField setDrawsBackground:NO];
         [textField setStringValue:[_filters[row] text]];
         result = textField;
     }

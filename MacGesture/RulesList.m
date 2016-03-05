@@ -32,7 +32,6 @@ NSMutableArray *_rulesList;  // private
 
 - (NSUInteger)shortcutKeycodeAtIndex:(NSUInteger)index {
     NSUInteger keycode = [((NSMutableDictionary *) _rulesList[index])[@"shortcut_code"] unsignedIntegerValue];
-    // NSUInteger flag = [((NSMutableDictionary *) _rulesList[index])[@"shortcut_flag"] unsignedIntegerValue];
     return keycode;
 }
 
@@ -64,28 +63,20 @@ NSMutableArray *_rulesList;  // private
     return result;
 }
 
-- (void)reInit {
-    RulesList *rulesList = self;
-    [rulesList clear];
-
-#define XOR ^
-#define ADD_RULE(_gesture, _keycode, _flag, _note) [rulesList addRuleWithDirection:_gesture filter:@"*safari|*chrome" filterType:FILETER_TYPE_WILD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:_keycode shortcutFlag: _flag appleScript:nil note:_note];
-    ADD_RULE(@"UR", kVK_ANSI_RightBracket, NSShiftKeyMask
-            XOR
-            NSCommandKeyMask, @"Next Tab");
-    ADD_RULE(@"UL", kVK_ANSI_LeftBracket, NSShiftKeyMask
-            XOR
-            NSCommandKeyMask, @"Prev Tab");
-    ADD_RULE(@"DL", kVK_ANSI_F, NSCommandKeyMask
-            XOR
-            NSControlKeyMask, @"Full screen");
-    ADD_RULE(@"DR", kVK_ANSI_W, NSCommandKeyMask, @"Close Tab");
-    ADD_RULE(@"R", kVK_RightArrow, NSCommandKeyMask, @"Next");
-    ADD_RULE(@"L", kVK_LeftArrow, NSCommandKeyMask, @"Back");
-#undef ADD_RULE
-#undef XOR
+static inline void addRule(RulesList *rulesList, NSString *gesture, NSInteger keycode, NSInteger flag, NSString *note) {
+    [rulesList addRuleWithDirection:gesture filter:@"*safari|*chrome" filterType:FILETER_TYPE_WILD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:keycode shortcutFlag: flag appleScript:nil note:note];
 }
 
+- (void)reInit {
+    [self clear];
+    
+    addRule(self, @"UR", kVK_ANSI_RightBracket, NSShiftKeyMask|NSCommandKeyMask, @"Next Tab");
+    addRule(self, @"UL", kVK_ANSI_LeftBracket, NSShiftKeyMask|NSCommandKeyMask, @"Prev Tab");
+    addRule(self, @"DL", kVK_ANSI_F, NSCommandKeyMask|NSControlKeyMask, @"Full screen");
+    addRule(self, @"DR", kVK_ANSI_W, NSCommandKeyMask, @"Close Tab");
+    addRule(self, @"R", kVK_RightArrow, NSCommandKeyMask, @"Next");
+    addRule(self, @"L", kVK_LeftArrow, NSCommandKeyMask, @"Back");
+}
 
 + (RulesList *)sharedRulesList {
     static RulesList *rulesList = nil;

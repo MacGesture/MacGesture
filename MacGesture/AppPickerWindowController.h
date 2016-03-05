@@ -19,6 +19,7 @@
 @property(nonatomic, strong) NSWindowController <AppPickerCallback> *parentWindow;
 @property(nonatomic, strong) IBOutlet NSTableView *filtersTableView;
 @property(nonatomic, assign) NSUInteger indexForParentWindow;
+@property(nonatomic, strong) IBOutlet NSTextField *loadingLabel;
 
 @end
 

@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="AppPickerWindowController">
             <connections>
                 <outlet property="filtersTableView" destination="t7Y-QZ-PBP" id="BbF-2c-1A6"/>
+                <outlet property="loadingLabel" destination="Ndz-2N-BTN" id="b4F-su-3Yt"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -81,7 +82,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView id="Uv7-ds-Ozu">
-                                                    <rect key="frame" x="1" y="1" width="40" height="17"/>
+                                                    <rect key="frame" x="44" y="1" width="40" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ug8-qR-0PJ">
@@ -113,7 +114,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView id="gAw-VN-wve">
-                                                    <rect key="frame" x="44" y="1" width="410" height="17"/>
+                                                    <rect key="frame" x="87" y="1" width="410" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xzg-2I-YhH">
@@ -187,6 +188,14 @@ DQ
                             <action selector="okBtnDidClick:" target="-2" id="B72-Lw-ZDU"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ndz-2N-BTN">
+                        <rect key="frame" x="8" y="9" width="307" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Loading." id="Ymi-rV-CmX">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="83j-L3-uNs" secondAttribute="bottom" constant="7" id="6Jc-yV-HlO"/>
