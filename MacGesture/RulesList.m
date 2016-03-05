@@ -128,6 +128,15 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     return -1;
 }
 
+- (BOOL)frontAppSuitedRule {
+    for(NSUInteger i=0;i<[self count];i++){
+        if(wildLike(frontBundleName(), [self filterAtIndex:i])){
+            return YES;
+        }
+    }
+    return NO;
+}
+
 - (bool)handleGesture:(NSString *)gesture {
 
     NSInteger i = [self suitedRuleWithGesture:gesture];

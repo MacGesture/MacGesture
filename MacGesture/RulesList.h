@@ -50,6 +50,7 @@ typedef enum{
 - (bool)handleGesture:(NSString*)gesture;
 
 - (NSInteger)suitedRuleWithGesture:(NSString*)gesture;
+- (BOOL)frontAppSuitedRule;
 
 - (void)reInit;
 - (void)save;
