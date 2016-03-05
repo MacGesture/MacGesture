@@ -35,6 +35,10 @@ static NSImage *downImage;
     return self;
 }
 
+- (float)getGestureImageScale {
+    return [[NSUserDefaults standardUserDefaults] doubleForKey:@"gestureSize"] / 100 * 5;
+}
+
 - (void)drawDirection {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"showGesturePreview"]) {
         return;
@@ -42,8 +46,8 @@ static NSImage *downImage;
 
     // This should be called in drawRect
     CGRect screenRect = [[NSScreen mainScreen] frame];
-    NSInteger y = (screenRect.size.height - leftImage.size.height) / 2;
-    NSInteger beginx = (screenRect.size.width - leftImage.size.width * directionToDraw.length) / 2;
+    NSInteger y = (screenRect.size.height - leftImage.size.height * [self getGestureImageScale]) / 2;
+    NSInteger beginx = (screenRect.size.width - leftImage.size.width * [self getGestureImageScale]* directionToDraw.length) / 2;
     for (NSInteger i = 0; i < directionToDraw.length; i++) {
         NSImage *image = nil;
         switch ([directionToDraw characterAtIndex:i]) {
@@ -63,7 +67,7 @@ static NSImage *downImage;
                 break;
         }
 
-        [image drawAtPoint:NSMakePoint(beginx + i * leftImage.size.width, y) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+        [image drawInRect:NSMakeRect(beginx + i * leftImage.size.width * [self getGestureImageScale], y, leftImage.size.width * [self getGestureImageScale], leftImage.size.height * [self getGestureImageScale]) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
     }
 
 }
@@ -89,7 +93,7 @@ static NSImage *downImage;
 
         CGSize size = [note sizeWithAttributes:textAttributes];
         float x = ((screenRect.size.width - size.width) / 2);
-        float y = ((screenRect.size.height + leftImage.size.height) / 2);
+        float y = ((screenRect.size.height + leftImage.size.height * [self getGestureImageScale]) / 2);
         
         CGContextRef context = [[NSGraphicsContext currentContext]
                                 graphicsPort];

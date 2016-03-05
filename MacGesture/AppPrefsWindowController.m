@@ -71,6 +71,9 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     
     [self.fontNameTextField bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"noteFontName" options:nil];
     [self.fontSizeTextField bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"noteFontSize" options:nil];
+    
+    [self.gestureSizeTextField bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"gestureSize" options:nil];
+    [self.gestureSizeSlider bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"gestureSize" options:nil];
 }
 
 - (void)refreshFilterRadioAndTextViewState {

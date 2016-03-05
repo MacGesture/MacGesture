@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>gestureSize</key>
+	<integer>20</integer>
+	<key>noteFontSize</key>
+	<integer>88</integer>
+	<key>noteFontName</key>
+	<string>Monaco</string>
+	<key>openPrefOnStartup</key>
+	<true/>
+	<key>showGesturePreview</key>
+	<true/>
+</dict>
+</plist>

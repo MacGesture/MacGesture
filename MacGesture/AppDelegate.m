@@ -34,13 +34,15 @@ static AppPrefsWindowController *_preferencesWindowController;
 
     direction = [NSMutableString string];
     isEnable = true;
+    
+    NSURL *defaultPrefsFile = [[NSBundle mainBundle]
+                               URLForResource:@"DefaultPreferences" withExtension:@"plist"];
+    NSDictionary *defaultPrefs =
+    [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPrefs];
 
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRunBefore"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"openPrefOnStartup"];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showGesturePreview"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRunBefore"];
-        [[NSUserDefaults standardUserDefaults] setObject:@"Monaco" forKey:@"noteFontName"];
-        [[NSUserDefaults standardUserDefaults] setDouble:88.0 forKey:@"noteFontSize"];
     }
 
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.4_Before"]) {

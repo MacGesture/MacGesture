@@ -20,6 +20,8 @@
                 <outlet property="fontNameTextField" destination="1Hb-sg-HeG" id="9dM-2B-zc5"/>
                 <outlet property="fontSizeTextField" destination="qbi-2F-Re6" id="Rtt-6Y-zdf"/>
                 <outlet property="generalPreferenceView" destination="99" id="126"/>
+                <outlet property="gestureSizeSlider" destination="bP7-3k-KUa" id="Vxp-up-3GG"/>
+                <outlet property="gestureSizeTextField" destination="nqw-AN-D6f" id="BUN-Fp-xYu"/>
                 <outlet property="lineColorWell" destination="lVi-qT-AYg" id="gA9-SQ-9iB"/>
                 <outlet property="openPreOnStartup" destination="101" id="336"/>
                 <outlet property="rulesPreferenceView" destination="5" id="257"/>
@@ -453,7 +455,7 @@
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Hb-sg-HeG">
                     <rect key="frame" x="224" y="130" width="66" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" id="fEL-3U-jlH">
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="FontName" id="fEL-3U-jlH">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -461,7 +463,27 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qbi-2F-Re6">
                     <rect key="frame" x="294" y="130" width="37" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="oRe-ac-8qu">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="FontSize" id="oRe-ac-8qu">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bP7-3k-KUa">
+                    <rect key="frame" x="294" y="160" width="104" height="19"/>
+                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="2ai-cR-izv"/>
+                </slider>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gw6-Zj-Tad">
+                    <rect key="frame" x="202" y="161" width="37" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Size:" id="c53-qo-yp4">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqw-AN-D6f">
+                    <rect key="frame" x="236" y="162" width="54" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="FontScale" id="8SO-RX-LQO">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -667,5 +689,14 @@
                 <font key="font" metaFont="system"/>
             </buttonCell>
         </button>
+        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="IgJ-QC-Hmn">
+            <rect key="frame" x="0.0" y="0.0" width="38" height="17"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="WvU-0W-GUr">
+                <font key="font" metaFont="system"/>
+                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+            </textFieldCell>
+        </textField>
     </objects>
 </document>
