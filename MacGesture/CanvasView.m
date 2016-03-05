@@ -97,7 +97,6 @@ static NSImage *downImage;
         CGContextFillRect (context, CGRectMake (x, y, size.width,
                                                 size.height));
         
-        // NSRectFill(NSMakeRect(x, y, size.width, size.height));
         [note drawAtPoint:NSMakePoint(x, y) withAttributes:textAttributes];
     }
 
