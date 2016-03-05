@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>gestureSize</key>
-	<integer>20</integer>
+	<integer>80</integer>
 	<key>noteFontSize</key>
 	<integer>88</integer>
 	<key>noteFontName</key>

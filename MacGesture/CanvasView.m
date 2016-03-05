@@ -36,7 +36,7 @@ static NSImage *downImage;
 }
 
 - (float)getGestureImageScale {
-    return [[NSUserDefaults standardUserDefaults] doubleForKey:@"gestureSize"] / 100 * 5;
+    return [[NSUserDefaults standardUserDefaults] doubleForKey:@"gestureSize"] / 100 * 1.25;
 }
 
 - (void)drawDirection {
@@ -66,8 +66,10 @@ static NSImage *downImage;
             default:
                 break;
         }
-
+        [NSGraphicsContext saveGraphicsState];
+        [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationNone];
         [image drawInRect:NSMakeRect(beginx + i * leftImage.size.width * [self getGestureImageScale], y, leftImage.size.width * [self getGestureImageScale], leftImage.size.height * [self getGestureImageScale]) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+        [NSGraphicsContext restoreGraphicsState];
     }
 
 }

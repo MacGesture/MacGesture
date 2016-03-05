@@ -38,7 +38,7 @@ static AppPrefsWindowController *_preferencesWindowController;
     NSURL *defaultPrefsFile = [[NSBundle mainBundle]
                                URLForResource:@"DefaultPreferences" withExtension:@"plist"];
     NSDictionary *defaultPrefs =
-    [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
+        [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPrefs];
 
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRunBefore"]) {
