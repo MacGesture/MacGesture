@@ -39,6 +39,8 @@ static AppPrefsWindowController *_preferencesWindowController;
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"openPrefOnStartup"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showGesturePreview"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRunBefore"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"Monaco" forKey:@"noteFontName"];
+        [[NSUserDefaults standardUserDefaults] setDouble:88.0 forKey:@"noteFontSize"];
     }
 
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.4_Before"]) {

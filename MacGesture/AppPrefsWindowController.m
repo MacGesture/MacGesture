@@ -69,13 +69,6 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     self.blackListTextView.font = [NSFont systemFontOfSize:14];
     self.whiteListTextView.font = [NSFont systemFontOfSize:14];
     
-    if (![[NSUserDefaults standardUserDefaults] stringForKey:@"noteFontName"]) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"Monaco" forKey:@"noteFontName"];
-    }
-    if (![[NSUserDefaults standardUserDefaults] floatForKey:@"noteFontSize"]) {
-        [[NSUserDefaults standardUserDefaults] setDouble:88.0 forKey:@"noteFontSize"];
-    }
-    
     [self.fontNameTextField bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"noteFontName" options:nil];
     [self.fontSizeTextField bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"noteFontSize" options:nil];
 }
