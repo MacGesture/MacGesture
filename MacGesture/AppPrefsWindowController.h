@@ -27,6 +27,7 @@
 
 @property(weak) IBOutlet NSButton *showGestureNote;
 @property(weak) IBOutlet NSButton *showGesturePreview;
+@property(weak) IBOutlet NSButton *showUIInWhateverApp;
 @property(weak) IBOutlet NSButton *autoCheckUpdate;
 @property(weak) IBOutlet NSButton *autoDownUpdate;
 @property(strong) IBOutlet SUUpdater *updater;

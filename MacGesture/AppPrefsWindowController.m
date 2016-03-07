@@ -54,6 +54,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     [self.showGesturePreview bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showGesturePreview" options:nil];
     [self.showGestureNote bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showGestureNote" options:nil];
     [self.disableMousePathBtn bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"disableMousePath" options:nil];
+    [self.showUIInWhateverApp bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults] withKeyPath:@"showUIInWhateverApp" options:nil];
 
     [self.autoCheckUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyChecksForUpdates" options:nil];
     [self.autoDownUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyDownloadsUpdates" options:nil];
@@ -350,7 +351,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     [[NSUserDefaults standardUserDefaults] setDouble:[font pointSize] forKey:@"noteFontSize"];
 }
 
-- (IBAction)resetAllSettings:(id)sender {
+- (IBAction)resetDefaults:(id)sender {
     NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
     NSDictionary * dict = [defs dictionaryRepresentation];
     for (id key in dict) {

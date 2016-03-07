@@ -28,6 +28,7 @@
                 <outlet property="rulesTableView" destination="289" id="324"/>
                 <outlet property="showGestureNote" destination="Hkg-rv-4UA" id="cFP-1D-YqU"/>
                 <outlet property="showGesturePreview" destination="353" id="355"/>
+                <outlet property="showUIInWhateverApp" destination="5rb-jA-QTU" id="do9-It-S0z"/>
                 <outlet property="updater" destination="360" id="364"/>
                 <outlet property="updatesPreferenceView" destination="68" id="148"/>
                 <outlet property="versionCode" destination="Sfx-R9-Aqx" id="VHO-vz-PZV"/>
@@ -379,25 +380,25 @@
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="72" userLabel="Shared Defaults"/>
         <customView id="99" userLabel="General">
-            <rect key="frame" x="0.0" y="0.0" width="416" height="239"/>
+            <rect key="frame" x="0.0" y="0.0" width="416" height="271"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101">
-                    <rect key="frame" x="35" y="194" width="285" height="18"/>
+                    <rect key="frame" x="35" y="226" width="285" height="18"/>
                     <buttonCell key="cell" type="check" title="Open Preferences Window at Startup" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="245">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="353">
-                    <rect key="frame" x="35" y="160" width="255" height="18"/>
+                    <rect key="frame" x="35" y="196" width="255" height="18"/>
                     <buttonCell key="cell" type="check" title="Show Gesture Preview" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="354">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="402">
-                    <rect key="frame" x="35" y="63" width="255" height="18"/>
+                    <rect key="frame" x="35" y="105" width="255" height="18"/>
                     <buttonCell key="cell" type="check" title="Auto Start at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="403">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -407,21 +408,21 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hkg-rv-4UA">
-                    <rect key="frame" x="35" y="129" width="255" height="18"/>
+                    <rect key="frame" x="35" y="166" width="255" height="18"/>
                     <buttonCell key="cell" type="check" title="Show Gesture Note" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kHw-iF-xLb">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="399">
-                    <rect key="frame" x="35" y="96" width="255" height="18"/>
+                    <rect key="frame" x="35" y="135" width="255" height="18"/>
                     <buttonCell key="cell" type="check" title="Disable Mouse Path" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="400">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yFC-aS-4mO">
-                    <rect key="frame" x="35" y="26" width="129" height="17"/>
+                    <rect key="frame" x="35" y="23" width="129" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Line color:" id="eIp-tq-2xl">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -429,22 +430,22 @@
                     </textFieldCell>
                 </textField>
                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lVi-qT-AYg">
-                    <rect key="frame" x="124" y="23" width="70" height="23"/>
+                    <rect key="frame" x="124" y="20" width="70" height="23"/>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="colorChanged:" target="-2" id="0w8-33-wML"/>
                     </connections>
                 </colorWell>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3wU-L9-5Kf">
-                    <rect key="frame" x="190" y="124" width="35" height="23"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Font:" id="0ye-8N-1Bv">
+                    <rect key="frame" x="190" y="167" width="35" height="16"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Font:" id="0ye-8N-1Bv">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X4V-8y-v3n">
-                    <rect key="frame" x="331" y="121" width="81" height="32"/>
+                    <rect key="frame" x="331" y="157" width="81" height="32"/>
                     <buttonCell key="cell" type="push" title="Choose" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="02o-xA-KDH">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -454,15 +455,15 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Hb-sg-HeG">
-                    <rect key="frame" x="224" y="130" width="66" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="FontName" id="fEL-3U-jlH">
+                    <rect key="frame" x="224" y="166" width="66" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="FontName" id="fEL-3U-jlH">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qbi-2F-Re6">
-                    <rect key="frame" x="294" y="130" width="37" height="17"/>
+                    <rect key="frame" x="294" y="166" width="37" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="FontSize" id="oRe-ac-8qu">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -470,11 +471,11 @@
                     </textFieldCell>
                 </textField>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bP7-3k-KUa">
-                    <rect key="frame" x="294" y="160" width="114" height="21"/>
+                    <rect key="frame" x="294" y="194" width="114" height="21"/>
                     <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="2ai-cR-izv"/>
                 </slider>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gw6-Zj-Tad">
-                    <rect key="frame" x="202" y="161" width="37" height="17"/>
+                    <rect key="frame" x="202" y="196" width="37" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Size:" id="c53-qo-yp4">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -482,7 +483,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqw-AN-D6f">
-                    <rect key="frame" x="236" y="162" width="54" height="17"/>
+                    <rect key="frame" x="236" y="196" width="54" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="FontScale" id="8SO-RX-LQO">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -490,20 +491,27 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Csn-Ze-z2D">
-                    <rect key="frame" x="272" y="13" width="140" height="32"/>
-                    <buttonCell key="cell" type="push" title="Reset All Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9qA-nt-g9l">
+                    <rect key="frame" x="272" y="16" width="140" height="32"/>
+                    <buttonCell key="cell" type="push" title="Reset Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9qA-nt-g9l">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="resetAllSettings:" target="-2" id="OWH-Mx-YVv"/>
+                        <action selector="resetDefaults:" target="-2" id="vhD-LC-fMz"/>
                     </connections>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5rb-jA-QTU">
+                    <rect key="frame" x="35" y="75" width="335" height="18"/>
+                    <buttonCell key="cell" type="check" title="Show UI In Whatever App" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Pif-49-STQ">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
                 </button>
             </subviews>
             <connections>
                 <outlet property="nextKeyView" destination="101" id="220"/>
             </connections>
-            <point key="canvasLocation" x="-67" y="506.5"/>
+            <point key="canvasLocation" x="-67" y="522.5"/>
         </customView>
         <customView id="100" userLabel="About">
             <rect key="frame" x="0.0" y="0.0" width="300" height="195"/>

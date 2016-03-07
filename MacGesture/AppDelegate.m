@@ -99,11 +99,10 @@ static AppPrefsWindowController *_preferencesWindowController;
 }
 
 static void updateDirections(NSEvent *event) {
-
-    if (![[RulesList sharedRulesList] frontAppSuitedRule]) {
-        return;
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] && ![[RulesList sharedRulesList] frontAppSuitedRule]) {
+        return ;
     }
-
+    
     // not thread safe
     NSPoint newLocation = event.locationInWindow;
     double deltaX = newLocation.x - lastLocation.x;

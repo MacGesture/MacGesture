@@ -49,7 +49,7 @@
 }
 
 - (void)handleMouseEvent:(NSEvent *)event {
-    if ([[RulesList sharedRulesList] frontAppSuitedRule]) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] || [[RulesList sharedRulesList] frontAppSuitedRule]) {
         switch (event.type) {
             case NSRightMouseDown:
                 [self.window.contentView mouseDown:event];
