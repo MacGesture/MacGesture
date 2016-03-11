@@ -211,21 +211,6 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     return 25;
 }
 
-- (void)pickBtnDidClick:(id)sender {
-    self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
-    self.pickerWindowController.parentWindow = self;
-    NSInteger index = [sender tag];
-    self.pickerWindowController.indexForParentWindow = index;
-    [self.pickerWindowController showWindow:self];
-
-//    [windowController showDialog];
-//    if([windowController generateFilter]){
-//        [[RulesList sharedRulesList] setWildFilter:[windowController generateFilter] atIndex:index];
-//    }
-//    [[RulesList sharedRulesList] save];
-//    [_rulesTableView reloadData];
-}
-
 - (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index {
     [[RulesList sharedRulesList] setWildFilter:rulesStringSplitedByStick atIndex:index];
     [[RulesList sharedRulesList] save];
@@ -233,15 +218,15 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-
     NSView *result = nil;
     RulesList *rulesList = [RulesList sharedRulesList];
     if ([tableColumn.identifier isEqualToString:@"Gesture"] || [tableColumn.identifier isEqualToString:@"Filter"] || [tableColumn.identifier isEqualToString:@"Note"]) {
         NSTextField *textfiled = [[NSTextField alloc] init];
         [textfiled.cell setWraps:NO];
         [textfiled.cell setScrollable:YES];
-        textfiled.editable = YES;
-        textfiled.bezeled = NO;
+        [textfiled setEditable:YES];
+        [textfiled setBezeled:NO];
+        [textfiled setDrawsBackground:NO];
         if ([tableColumn.identifier isEqualToString:@"Gesture"]) {
             textfiled.stringValue = [rulesList directionAtIndex:(NSUInteger) row];
             textfiled.identifier = @"Gesture";
@@ -269,18 +254,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
                 @"modifierFlags" : @([rulesList shortcutFlagAtIndex:row]),
         };
         result = recordView;
-    } else if ([tableColumn.identifier isEqualToString:@"AppPicker"]) {
-        // Pick button
-        NSButton *btnView = [[NSButton alloc] init];
-        [btnView setButtonType:NSPushOnPushOffButton];
-        btnView.title = @"Pick";
-        btnView.tag = row;
-        [btnView setTarget:self];
-        [btnView setAction:@selector(pickBtnDidClick:)];
-        btnView.bezelStyle = NSRoundedBezelStyle;
-        result = btnView;
     }
-
     return result;
 }
 
@@ -358,6 +332,27 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
         [defs removeObjectForKey:key];
     }
     [defs synchronize];
+}
+
+- (IBAction)pickBtnDidClick:(id)sender {
+    if ([_rulesTableView selectedRow] == -1) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"Select a filter first!"];
+        [alert runModal];
+        return ;
+    }
+    
+    self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
+    self.pickerWindowController.parentWindow = self;
+    self.pickerWindowController.indexForParentWindow = [_rulesTableView selectedRow];
+    [self.pickerWindowController showWindow:self];
+    
+    //    [windowController showDialog];
+    //    if([windowController generateFilter]){
+    //        [[RulesList sharedRulesList] setWildFilter:[windowController generateFilter] atIndex:index];
+    //    }
+    //    [[RulesList sharedRulesList] save];
+    //    [_rulesTableView reloadData];
 }
 
 @end

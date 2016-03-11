@@ -168,38 +168,6 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="AppPicker" width="53.890625" minWidth="40" maxWidth="1000" id="389">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="391">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        <prototypeCellViews>
-                                            <tableCellView id="390">
-                                                <rect key="frame" x="333" y="1" width="54" height="17"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="392">
-                                                        <rect key="frame" x="0.0" y="0.0" width="55" height="17"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Pick" id="393">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                </subviews>
-                                                <connections>
-                                                    <outlet property="textField" destination="392" id="394"/>
-                                                </connections>
-                                            </tableCellView>
-                                        </prototypeCellViews>
-                                    </tableColumn>
                                     <tableColumn identifier="Action" width="118.640625" minWidth="40" maxWidth="1000" id="306">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Action">
                                             <font key="font" metaFont="smallSystem"/>
@@ -214,7 +182,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="307">
-                                                <rect key="frame" x="390" y="1" width="119" height="17"/>
+                                                <rect key="frame" x="333" y="1" width="119" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="309">
@@ -246,7 +214,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="hve-W3-Gqb">
-                                                <rect key="frame" x="512" y="1" width="129" height="17"/>
+                                                <rect key="frame" x="455" y="1" width="129" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMs-WT-40f">
@@ -301,6 +269,20 @@
                         <action selector="changeSizeOfPreferenceWindow:" target="-2" id="xwh-PW-ijj"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2vX-WF-Pfn">
+                    <rect key="frame" x="243" y="-1" width="153" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="141" id="UUO-w9-0dh"/>
+                        <constraint firstAttribute="height" constant="21" id="cra-41-aWf"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Pick a running app" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WsD-th-NkZ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="pickBtnDidClick:" target="-2" id="Wja-Ya-pPC"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="318" secondAttribute="bottom" constant="6" id="5br-cs-BOy"/>
@@ -309,6 +291,7 @@
                 <constraint firstAttribute="bottom" secondItem="ZxS-0a-wRT" secondAttribute="bottom" constant="6" id="F6Q-jp-cTQ"/>
                 <constraint firstItem="285" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="6" id="Lt2-pq-eMj"/>
                 <constraint firstAttribute="trailing" secondItem="325" secondAttribute="trailing" constant="6" id="Luc-ne-2hk"/>
+                <constraint firstAttribute="bottom" secondItem="2vX-WF-Pfn" secondAttribute="bottom" constant="6" id="XHn-k6-vgy"/>
                 <constraint firstItem="285" firstAttribute="top" secondItem="5" secondAttribute="top" constant="8" id="XMO-xd-cbs"/>
                 <constraint firstItem="ZxS-0a-wRT" firstAttribute="leading" secondItem="320" secondAttribute="trailing" constant="12" id="a44-AU-0G6"/>
                 <constraint firstAttribute="bottom" secondItem="320" secondAttribute="bottom" constant="6" id="dyb-pW-Cof"/>

@@ -8,7 +8,6 @@
 
 #import "AppPickerWindowController.h"
 #import "RulesList.h"
-#import "TMCache.h"
 
 @interface FilterData : NSObject {
 
@@ -58,24 +57,21 @@ NSMutableString *_filter;
     return nil;
 }
 
-- (NSImage *)getImageForApp:(NSString*)bundleIdentifier newIcon:(NSImage*)icon {
+- (NSImage *)getImageForApp:(NSString*)bundleIdentifier icon:(NSImage*)icon {
     static NSImage *emptyIcon;
     if (!emptyIcon) {
         emptyIcon = [[NSImage alloc] initWithSize:NSMakeSize(16, 16)];
     }
     
     if (icon) {
-        [[TMCache sharedCache] setObject:icon forKey:bundleIdentifier block:nil];
         return icon;
+    } else {
+        return emptyIcon;
     }
-    
-    NSImage *cachedImage = [[TMCache sharedCache] objectForKey:bundleIdentifier];
-    
-    return cachedImage ? cachedImage : emptyIcon;
 }
 
 - (NSImage *)getImageForApp:(NSString*)bundleIdentifier {
-    return [self getImageForApp:bundleIdentifier newIcon:nil];
+    return [self getImageForApp:bundleIdentifier icon:nil];
 }
 
 - (void)windowDidLoad {
@@ -85,7 +81,7 @@ NSMutableString *_filter;
         for (NSRunningApplication *app in [[NSWorkspace sharedWorkspace] runningApplications]) {
             if (app.activationPolicy == NSApplicationActivationPolicyRegular) {
                 if (app.bundleIdentifier) {
-                    FilterData *filter = [[FilterData alloc] initFilterData:app.bundleIdentifier icon:[self getImageForApp:app.bundleIdentifier newIcon:app.icon] checkedState:NSOffState];
+                    FilterData *filter = [[FilterData alloc] initFilterData:app.bundleIdentifier icon:[self getImageForApp:app.bundleIdentifier icon:app.icon] checkedState:NSOffState];
                     [_filters addObject:filter];
                 }
             }
