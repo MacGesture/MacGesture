@@ -59,7 +59,7 @@ typedef enum {
 
 - (NSInteger)suitedRuleWithGesture:(NSString *)gesture;
 
-- (BOOL)frontAppSuitedRule;
+- (BOOL)appSuitedRule:(NSString*)bundleId;
 
 - (void)reInit;
 

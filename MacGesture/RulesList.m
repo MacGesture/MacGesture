@@ -80,6 +80,10 @@ static inline void addRule(RulesList *rulesList, NSString *gesture, NSInteger ke
 
 + (RulesList *)sharedRulesList {
     static RulesList *rulesList = nil;
+    if (rulesList) {
+        return rulesList;
+    }
+    
     NSData *data;
     if ((data = [self readRulesList])) {
         rulesList = [[RulesList alloc] initWithNsData:data];
@@ -111,8 +115,9 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
 }
 
 - (NSInteger)suitedRuleWithGesture:(NSString *)gesture {
+    NSString *frontApp = frontBundleName();
     for (NSUInteger i = 0; i < [self count]; i++) {
-        if (wildcardString(frontBundleName(), [self filterAtIndex:i])) {
+        if (wildcardString(frontApp, [self filterAtIndex:i])) {
             // wild filter ensured
             if ([gesture isEqualToString:[self directionAtIndex:i]]) {
                 return i;
@@ -122,9 +127,9 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     return -1;
 }
 
-- (BOOL)frontAppSuitedRule {
+- (BOOL)appSuitedRule:(NSString*)bundleId {
     for (NSUInteger i = 0; i < [self count]; i++) {
-        if (wildcardString(frontBundleName(), [self filterAtIndex:i])) {
+        if (wildcardString(bundleId, [self filterAtIndex:i])) {
             return YES;
         }
     }

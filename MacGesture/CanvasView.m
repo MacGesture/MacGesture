@@ -45,9 +45,16 @@ static NSImage *downImage;
     }
 
     // This should be called in drawRect
+    float scale = [self getGestureImageScale];
+    float scaledHeight = scale * leftImage.size.height;
+    float scaledWidth = scale * leftImage.size.width;
+    
     CGRect screenRect = [[NSScreen mainScreen] frame];
-    NSInteger y = (screenRect.size.height - leftImage.size.height * [self getGestureImageScale]) / 2;
-    NSInteger beginx = (screenRect.size.width - leftImage.size.width * [self getGestureImageScale]* directionToDraw.length) / 2;
+    NSInteger y = (screenRect.size.height - scaledHeight) / 2;
+    NSInteger beginx = (screenRect.size.width - scaledWidth * directionToDraw.length) / 2;
+    
+    [NSGraphicsContext saveGraphicsState];
+    [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationNone];
     for (NSInteger i = 0; i < directionToDraw.length; i++) {
         NSImage *image = nil;
         switch ([directionToDraw characterAtIndex:i]) {
@@ -66,12 +73,9 @@ static NSImage *downImage;
             default:
                 break;
         }
-        [NSGraphicsContext saveGraphicsState];
-        [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationNone];
-        [image drawInRect:NSMakeRect(beginx + i * leftImage.size.width * [self getGestureImageScale], y, leftImage.size.width * [self getGestureImageScale], leftImage.size.height * [self getGestureImageScale]) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-        [NSGraphicsContext restoreGraphicsState];
+        [image drawInRect:NSMakeRect(beginx + i * scaledWidth, y, scaledWidth, scaledHeight) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
     }
-
+    [NSGraphicsContext restoreGraphicsState];
 }
 
 - (void)drawNote {
@@ -105,8 +109,6 @@ static NSImage *downImage;
         
         [note drawAtPoint:NSMakePoint(x, y) withAttributes:textAttributes];
     }
-
-
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -128,7 +130,6 @@ static NSImage *downImage;
     //[textImage drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
     [self drawDirection];
     [self drawNote];
-
 }
 
 - (void)drawCircleAtPoint:(NSPoint)point {
@@ -145,7 +146,6 @@ static NSImage *downImage;
 }
 
 - (void)drawLineFromPoint:(NSPoint)point1 toPoint:(NSPoint)point2 {
-
     [points addObject:[NSValue valueWithPoint:point1]];
     [points addObject:[NSValue valueWithPoint:point2]];
     self.needsDisplay = YES;
@@ -213,7 +213,6 @@ static NSImage *downImage;
 
 
 - (void)writeDirection:(NSString *)directionStr; {
-
     directionToDraw = directionStr;
 
     self.needsDisplay = YES;
