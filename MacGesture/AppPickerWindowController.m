@@ -181,7 +181,7 @@ NSMutableString *_filter;
     [self close];
 }
 
-- (IBAction)concalBtnDidClick:(id)sender {
+- (IBAction)cancelBtnDidClick:(id)sender {
 //    [NSApp stopModal];
     [self close];
 }

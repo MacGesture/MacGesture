@@ -7,11 +7,10 @@
 
 @class MASShortcut;
 
-
 @interface RulesList : NSObject
 typedef enum {
-    FILETER_TYPE_WILD, // for example chrom*
-            FILETER_TYPE_REGEX
+    FILTER_TYPE_WILDCARD, // for example *chrome
+    FILTER_TYPE_REGEX
 } FilterType;
 
 typedef enum {

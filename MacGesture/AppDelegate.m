@@ -62,13 +62,6 @@ static AppPrefsWindowController *_preferencesWindowController;
     }
 }
 
-- (BOOL)toggleEnable {
-    windowController.enable = isEnable = !isEnable;
-
-    CGEventTapEnable(mouseEventTap, isEnable);
-    return isEnable;
-}
-
 - (void)awakeFromNib {
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
 
@@ -120,13 +113,13 @@ static void updateDirections(NSEvent *event) {
 
     if (absX > absY) {
         if (deltaX > 0) {
-            if (lastDirectionChar != [@"R" characterAtIndex:0]) {
+            if (lastDirectionChar != 'R') {
                 [direction appendString:@"R"];
                 [windowController writeDirection:direction];
                 return;
             }
         } else {
-            if (lastDirectionChar != [@"L" characterAtIndex:0]) {
+            if (lastDirectionChar != 'L') {
                 [direction appendString:@"L"];
                 [windowController writeDirection:direction];
                 return;
@@ -134,13 +127,13 @@ static void updateDirections(NSEvent *event) {
         }
     } else {
         if (deltaY > 0) {
-            if (lastDirectionChar != [@"U" characterAtIndex:0]) {
+            if (lastDirectionChar != 'U') {
                 [direction appendString:@"U"];
                 [windowController writeDirection:direction];
                 return;
             }
         } else {
-            if (lastDirectionChar != [@"D" characterAtIndex:0]) {
+            if (lastDirectionChar != 'D') {
                 [direction appendString:@"D"];
                 [windowController writeDirection:direction];
                 return;
@@ -159,6 +152,10 @@ void resetDirection() {
 }
 
 static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
+    if (type != kCGEventRightMouseDown && type != kCGEventRightMouseDragged && type != kCGEventRightMouseUp && type != kCGEventTapDisabledByTimeout) {
+        return NULL;
+    }
+    
     // not thread safe, but it's always called in main thread
     // check blocker apps
 //    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){

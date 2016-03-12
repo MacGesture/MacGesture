@@ -30,27 +30,4 @@
     return self;
 }
 
-static inline void pressKey(CGKeyCode virtualKey) {
-    CGEventRef event = CGEventCreateKeyboardEvent(NULL, virtualKey, true);
-    CGEventPost(kCGSessionEventTap, event);
-    CFRelease(event);
-
-    event = CGEventCreateKeyboardEvent(NULL, virtualKey, false);
-    CGEventPost(kCGSessionEventTap, event);
-    CFRelease(event);
-}
-
-static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
-    CGEventRef event = CGEventCreateKeyboardEvent(NULL, virtualKey, true);
-    CGEventSetFlags(event, flags);
-    CGEventPost(kCGSessionEventTap, event);
-    CFRelease(event);
-
-    event = CGEventCreateKeyboardEvent(NULL, virtualKey, false);
-    CGEventSetFlags(event, flags);
-    CGEventPost(kCGSessionEventTap, event);
-    CFRelease(event);
-}
-
-
 @end

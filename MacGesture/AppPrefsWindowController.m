@@ -16,7 +16,7 @@
 @end
 
 // A hack for the private getter of contentSubview
-@interface DBPrefsWindowController ()
+@interface DBPrefsWindowController (PrivateMethodHack)
 -(NSView *)contentSubview;
 @end
 
@@ -85,7 +85,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 }
 
 - (IBAction)addRule:(id)sender {
-    [[RulesList sharedRulesList] addRuleWithDirection:@"DR" filter:@"*safari|*chrome" filterType:FILETER_TYPE_WILD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:0 shortcutFlag:0 appleScript:nil note:@"note"];
+    [[RulesList sharedRulesList] addRuleWithDirection:@"DR" filter:@"*safari|*chrome" filterType:FILTER_TYPE_WILDCARD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:0 shortcutFlag:0 appleScript:nil note:@"note"];
     [_rulesTableView reloadData];
 }
 
@@ -151,94 +151,9 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 //    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return [[RulesList sharedRulesList] count];
-}
-
-- (void)shortcutRecorderDidEndRecording:(SRRecorderControl *)aRecorder {
-    NSInteger id = ((SRRecorderControlWithTagid *) aRecorder).tagid;
-    NSUInteger keycode = [aRecorder.objectValue[@"keyCode"] unsignedIntegerValue];
-    NSUInteger flag = [[aRecorder objectValue][@"modifierFlags"] unsignedIntegerValue];
-    [[RulesList sharedRulesList] setShortcutWithKeycode:keycode withFlag:flag atIndex:id];
-}
-
 - (void)close {
     [[NSUserDefaults standardUserDefaults] synchronize];
     [super close];
-}
-
-- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
-    // control is editfield,control.id == row,control.identifier == "Gesture"|"Filter"|Other(only saving)
-    if ([control.identifier isEqualToString:@"Gesture"]) {    // edit gesture
-        NSString *gesture = [control.stringValue uppercaseString];
-        NSCharacterSet *gestures = [NSCharacterSet characterSetWithCharactersInString:@"ULDR"];
-        gestures = [gestures invertedSet];
-        if ([gesture rangeOfCharacterFromSet:gestures].location != NSNotFound) {
-            NSAlert *alert = [[NSAlert alloc] init];
-            [alert setMessageText:@"Gesture should only contain \"ULDR\""];
-            [alert runModal];
-            return NO;
-        }
-        [control setStringValue:gesture];
-        [[RulesList sharedRulesList] setDirection:gesture atIndex:control.tag];
-    } else if ([control.identifier isEqualToString:@"Filter"]) {  // edit filter
-        [[RulesList sharedRulesList] setWildFilter:control.stringValue atIndex:control.tag];
-    } else if ([control.identifier isEqualToString:@"Note"]) {  // edit filter
-        [[RulesList sharedRulesList] setNote:control.stringValue atIndex:control.tag];
-    }
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    return YES;
-}
-
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
-    return 25;
-}
-
-- (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index {
-    [[RulesList sharedRulesList] setWildFilter:rulesStringSplitedByStick atIndex:index];
-    [[RulesList sharedRulesList] save];
-    [_rulesTableView reloadData];
-}
-
-- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    NSView *result = nil;
-    RulesList *rulesList = [RulesList sharedRulesList];
-    if ([tableColumn.identifier isEqualToString:@"Gesture"] || [tableColumn.identifier isEqualToString:@"Filter"] || [tableColumn.identifier isEqualToString:@"Note"]) {
-        NSTextField *textfiled = [[NSTextField alloc] init];
-        [textfiled.cell setWraps:NO];
-        [textfiled.cell setScrollable:YES];
-        [textfiled setEditable:YES];
-        [textfiled setBezeled:NO];
-        [textfiled setDrawsBackground:NO];
-        if ([tableColumn.identifier isEqualToString:@"Gesture"]) {
-            textfiled.stringValue = [rulesList directionAtIndex:(NSUInteger) row];
-            textfiled.identifier = @"Gesture";
-        } else if ([tableColumn.identifier isEqualToString:@"Filter"]) {
-            textfiled.stringValue = [rulesList filterAtIndex:(NSUInteger) row];
-            textfiled.identifier = @"Filter";
-        } else if ([tableColumn.identifier isEqualToString:@"Note"]) {
-            textfiled.stringValue = [rulesList noteAtIndex:(NSUInteger) row];
-            textfiled.identifier = @"Note";
-        }
-        textfiled.delegate = self;
-        textfiled.tag = row;
-        result = textfiled;
-    } else if ([tableColumn.identifier isEqualToString:@"Action"]) {
-        // "Action"
-        // No only shortcut action support
-
-        SRRecorderControl *recordView = [[SRRecorderControlWithTagid alloc] init];
-
-        recordView.delegate = self;
-        [recordView setAllowedModifierFlags:SRCocoaModifierFlagsMask requiredModifierFlags:0 allowsEmptyModifierFlags:YES];
-        ((SRRecorderControlWithTagid *) recordView).tagid = row;
-        recordView.objectValue = @{
-                @"keyCode" : @([rulesList shortcutKeycodeAtIndex:row]),
-                @"modifierFlags" : @([rulesList shortcutFlagAtIndex:row]),
-        };
-        result = recordView;
-    }
-    return result;
 }
 
 - (IBAction)autoStartAction:(id)sender {
@@ -294,13 +209,13 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 - (IBAction)chooseFont:(id)sender {
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
     [fontManager setSelectedFont:[NSFont fontWithName:[self.fontNameTextField stringValue] size:[self.fontNameTextField floatValue]] isMultiple:NO];
-    [fontManager setDelegate:self];
+    [fontManager setTarget:self];
     
     NSFontPanel *fontPanel = [fontManager fontPanel:YES];
     [fontPanel makeKeyAndOrderFront:self];
 }
 
-- (void)changeFont:(id)sender {
+- (void)changeFont:(nullable id)sender {
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
     NSFont *font = [fontManager convertFont:[NSFont systemFontOfSize:[NSFont systemFontSize]]];
     [[NSUserDefaults standardUserDefaults] setObject:[font fontName] forKey:@"noteFontName"];
@@ -337,6 +252,106 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     //    }
     //    [[RulesList sharedRulesList] save];
     //    [_rulesTableView reloadData];
+}
+
+#pragma mark -
+#pragma mark SRRecorderControlDelegate Implementation
+
+- (void)shortcutRecorderDidEndRecording:(SRRecorderControl *)aRecorder {
+    NSInteger id = ((SRRecorderControlWithTagid *) aRecorder).tagid;
+    NSUInteger keycode = [aRecorder.objectValue[@"keyCode"] unsignedIntegerValue];
+    NSUInteger flag = [[aRecorder objectValue][@"modifierFlags"] unsignedIntegerValue];
+    [[RulesList sharedRulesList] setShortcutWithKeycode:keycode withFlag:flag atIndex:id];
+}
+
+#pragma mark -
+#pragma mark NSControlTextEditingDelegate Implementation
+
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
+    // control is editfield,control.id == row,control.identifier == "Gesture"|"Filter"|Other(only saving)
+    if ([control.identifier isEqualToString:@"Gesture"]) {    // edit gesture
+        NSString *gesture = [control.stringValue uppercaseString];
+        NSCharacterSet *invalidGestureCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ULDR"];
+        invalidGestureCharacters = [invalidGestureCharacters invertedSet];
+        if ([gesture rangeOfCharacterFromSet:invalidGestureCharacters].location != NSNotFound) {
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:@"Gesture should only contain \"ULDR\""];
+            [alert runModal];
+            return NO;
+        }
+        [control setStringValue:gesture];
+        [[RulesList sharedRulesList] setDirection:gesture atIndex:control.tag];
+    } else if ([control.identifier isEqualToString:@"Filter"]) {  // edit filter
+        [[RulesList sharedRulesList] setWildFilter:control.stringValue atIndex:control.tag];
+    } else if ([control.identifier isEqualToString:@"Note"]) {  // edit filter
+        [[RulesList sharedRulesList] setNote:control.stringValue atIndex:control.tag];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    return YES;
+}
+
+#pragma mark -
+#pragma mark AppPickerCallback Implementation
+
+- (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index {
+    [[RulesList sharedRulesList] setWildFilter:rulesStringSplitedByStick atIndex:index];
+    [[RulesList sharedRulesList] save];
+    [_rulesTableView reloadData];
+}
+
+#pragma mark -
+#pragma mark NSTableViewDataSource Implementation
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    return [[RulesList sharedRulesList] count];
+}
+
+#pragma mark -
+#pragma mark NSTableViewDelegate Implementation
+
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+    return 25;
+}
+
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    NSView *result = nil;
+    RulesList *rulesList = [RulesList sharedRulesList];
+    if ([tableColumn.identifier isEqualToString:@"Gesture"] || [tableColumn.identifier isEqualToString:@"Filter"] || [tableColumn.identifier isEqualToString:@"Note"]) {
+        NSTextField *textfiled = [[NSTextField alloc] init];
+        [textfiled.cell setWraps:NO];
+        [textfiled.cell setScrollable:YES];
+        [textfiled setEditable:YES];
+        [textfiled setBezeled:NO];
+        [textfiled setDrawsBackground:NO];
+        if ([tableColumn.identifier isEqualToString:@"Gesture"]) {
+            textfiled.stringValue = [rulesList directionAtIndex:(NSUInteger) row];
+            textfiled.identifier = @"Gesture";
+        } else if ([tableColumn.identifier isEqualToString:@"Filter"]) {
+            textfiled.stringValue = [rulesList filterAtIndex:(NSUInteger) row];
+            textfiled.identifier = @"Filter";
+        } else if ([tableColumn.identifier isEqualToString:@"Note"]) {
+            textfiled.stringValue = [rulesList noteAtIndex:(NSUInteger) row];
+            textfiled.identifier = @"Note";
+        }
+        textfiled.delegate = self;
+        textfiled.tag = row;
+        result = textfiled;
+    } else if ([tableColumn.identifier isEqualToString:@"Action"]) {
+        // "Action"
+        // No only shortcut action support
+        
+        SRRecorderControl *recordView = [[SRRecorderControlWithTagid alloc] init];
+        
+        recordView.delegate = self;
+        [recordView setAllowedModifierFlags:SRCocoaModifierFlagsMask requiredModifierFlags:0 allowsEmptyModifierFlags:YES];
+        ((SRRecorderControlWithTagid *) recordView).tagid = row;
+        recordView.objectValue = @{
+                                   @"keyCode" : @([rulesList shortcutKeycodeAtIndex:row]),
+                                   @"modifierFlags" : @([rulesList shortcutFlagAtIndex:row]),
+                                   };
+        result = recordView;
+    }
+    return result;
 }
 
 @end

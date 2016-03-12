@@ -168,7 +168,7 @@ Gw
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="concalBtnDidClick:" target="-2" id="wHg-wF-SzZ"/>
+                            <action selector="cancelBtnDidClick:" target="-2" id="m8Q-4f-Bp5"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hLc-Nj-7x5">
