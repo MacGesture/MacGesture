@@ -127,7 +127,6 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     [self addView:self.generalPreferenceView label:@"General"];
     [self addView:self.rulesPreferenceView label:@"Rules"];
     [self addView:self.filtersPrefrenceView label:@"Filters" image:[NSImage imageNamed:@"list@2x.png"]];
-    [self addView:self.updatesPreferenceView label:@"Updates"];
     [self addFlexibleSpacer];
     [self addView:self.aboutPreferenceView label:@"About"];
 

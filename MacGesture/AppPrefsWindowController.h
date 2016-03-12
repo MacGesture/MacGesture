@@ -15,7 +15,6 @@
 @property(strong, nonatomic) IBOutlet NSView *generalPreferenceView;
 @property(strong, nonatomic) IBOutlet NSView *rulesPreferenceView;
 @property(strong, nonatomic) IBOutlet NSView *playbackPreferenceView;
-@property(strong, nonatomic) IBOutlet NSView *updatesPreferenceView;
 @property(strong, nonatomic) IBOutlet NSView *aboutPreferenceView;
 
 @property(weak) IBOutlet NSTableView *rulesTableView;
