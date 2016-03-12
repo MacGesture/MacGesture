@@ -20,16 +20,7 @@
 
 @property(weak) IBOutlet NSTableView *rulesTableView;
 
-@property(weak) IBOutlet NSButton *openPreOnStartup;
 @property(weak) IBOutlet NSTextField *blockFilter;
-
-@property(weak) IBOutlet NSButton *disableMousePathBtn;
-
-@property(weak) IBOutlet NSButton *showGestureNote;
-@property(weak) IBOutlet NSButton *showGesturePreview;
-@property(weak) IBOutlet NSButton *showUIInWhateverApp;
-@property(weak) IBOutlet NSButton *autoCheckUpdate;
-@property(weak) IBOutlet NSButton *autoDownUpdate;
 @property(strong) IBOutlet SUUpdater *updater;
 
 @property(weak) IBOutlet NSButton *autoStartAtLogin;

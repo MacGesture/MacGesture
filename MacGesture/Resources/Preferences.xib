@@ -8,14 +8,11 @@
         <customObject id="-2" userLabel="File's Owner" customClass="AppPrefsWindowController">
             <connections>
                 <outlet property="aboutPreferenceView" destination="100" id="125"/>
-                <outlet property="autoCheckUpdate" destination="69" id="362"/>
-                <outlet property="autoDownUpdate" destination="365" id="369"/>
                 <outlet property="autoStartAtLogin" destination="402" id="407"/>
                 <outlet property="blackListModeRadio" destination="yn2-oF-bXR" id="rhO-xt-Pkn"/>
                 <outlet property="blackListTextView" destination="IB6-jz-VHi" id="HIZ-RD-1ht"/>
                 <outlet property="changeFiltersWindowSizeButton" destination="O3m-tP-4Yw" id="7uN-LQ-1EY"/>
                 <outlet property="changeRulesWindowSizeButton" destination="ZxS-0a-wRT" id="yWx-fd-53b"/>
-                <outlet property="disableMousePathBtn" destination="399" id="401"/>
                 <outlet property="filtersPrefrenceView" destination="cal-FD-Bsi" id="1gw-dE-dvA"/>
                 <outlet property="fontNameTextField" destination="1Hb-sg-HeG" id="9dM-2B-zc5"/>
                 <outlet property="fontSizeTextField" destination="qbi-2F-Re6" id="Rtt-6Y-zdf"/>
@@ -23,12 +20,8 @@
                 <outlet property="gestureSizeSlider" destination="bP7-3k-KUa" id="Vxp-up-3GG"/>
                 <outlet property="gestureSizeTextField" destination="nqw-AN-D6f" id="BUN-Fp-xYu"/>
                 <outlet property="lineColorWell" destination="lVi-qT-AYg" id="gA9-SQ-9iB"/>
-                <outlet property="openPreOnStartup" destination="101" id="336"/>
                 <outlet property="rulesPreferenceView" destination="5" id="257"/>
                 <outlet property="rulesTableView" destination="289" id="324"/>
-                <outlet property="showGestureNote" destination="Hkg-rv-4UA" id="cFP-1D-YqU"/>
-                <outlet property="showGesturePreview" destination="353" id="355"/>
-                <outlet property="showUIInWhateverApp" destination="5rb-jA-QTU" id="do9-It-S0z"/>
                 <outlet property="updater" destination="360" id="364"/>
                 <outlet property="updatesPreferenceView" destination="68" id="148"/>
                 <outlet property="versionCode" destination="Sfx-R9-Aqx" id="VHO-vz-PZV"/>
@@ -269,7 +262,7 @@
                         <action selector="changeSizeOfPreferenceWindow:" target="-2" id="xwh-PW-ijj"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2vX-WF-Pfn">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2vX-WF-Pfn">
                     <rect key="frame" x="243" y="-1" width="153" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="141" id="UUO-w9-0dh"/>
@@ -285,6 +278,7 @@
                 </button>
             </subviews>
             <constraints>
+                <constraint firstItem="2vX-WF-Pfn" firstAttribute="leading" secondItem="ZxS-0a-wRT" secondAttribute="trailing" constant="12" id="2b1-tm-WCR"/>
                 <constraint firstAttribute="bottom" secondItem="318" secondAttribute="bottom" constant="6" id="5br-cs-BOy"/>
                 <constraint firstAttribute="bottom" secondItem="ZxS-0a-wRT" secondAttribute="bottom" constant="6" id="6ha-8j-VKe"/>
                 <constraint firstItem="320" firstAttribute="leading" secondItem="318" secondAttribute="trailing" constant="11" id="ChN-a5-i7k"/>
@@ -324,7 +318,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="autoCheckUpdateDidClick:" target="-2" id="363"/>
+                        <binding destination="360" name="value" keyPath="automaticallyChecksForUpdates" id="23l-3z-D3f"/>
                         <outlet property="nextKeyView" destination="70" id="218"/>
                     </connections>
                 </button>
@@ -335,7 +329,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="autoCheckUpdateDidClick:" target="-2" id="367"/>
+                        <binding destination="360" name="value" keyPath="automaticallyDownloadsUpdates" id="pSw-Hn-aZv"/>
                         <outlet property="nextKeyView" destination="70" id="368"/>
                     </connections>
                 </button>
@@ -372,6 +366,9 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="72" name="value" keyPath="values.openPrefOnStartup" id="1Mk-GP-9MR"/>
+                    </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="353">
                     <rect key="frame" x="35" y="196" width="255" height="18"/>
@@ -379,6 +376,9 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="72" name="value" keyPath="values.showGesturePreview" id="vvd-7v-vgb"/>
+                    </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="402">
                     <rect key="frame" x="35" y="105" width="255" height="18"/>
@@ -396,6 +396,9 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="72" name="value" keyPath="values.showGestureNote" id="DeW-R0-Rnj"/>
+                    </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="399">
                     <rect key="frame" x="35" y="135" width="255" height="18"/>
@@ -403,6 +406,9 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="72" name="value" keyPath="values.disableMousePath" id="L2i-2U-ffY"/>
+                    </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yFC-aS-4mO">
                     <rect key="frame" x="35" y="23" width="129" height="17"/>
@@ -417,6 +423,11 @@
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="colorChanged:" target="-2" id="0w8-33-wML"/>
+                        <binding destination="72" name="value" keyPath="values.lineColor" id="o0v-jy-LzA">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </colorWell>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3wU-L9-5Kf">
@@ -444,6 +455,9 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="72" name="value" keyPath="values.noteFontName" id="ZeM-Yk-NEE"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qbi-2F-Re6">
                     <rect key="frame" x="294" y="166" width="37" height="17"/>
@@ -452,10 +466,16 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="72" name="value" keyPath="values.noteFontSize" id="lYg-oT-dkP"/>
+                    </connections>
                 </textField>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bP7-3k-KUa">
                     <rect key="frame" x="294" y="194" width="114" height="21"/>
                     <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="2ai-cR-izv"/>
+                    <connections>
+                        <binding destination="72" name="value" keyPath="values.gestureSize" id="QJk-RX-xdC"/>
+                    </connections>
                 </slider>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gw6-Zj-Tad">
                     <rect key="frame" x="202" y="196" width="37" height="17"/>
@@ -472,6 +492,9 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="72" name="value" keyPath="values.gestureSize" id="7kE-qy-smY"/>
+                    </connections>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Csn-Ze-z2D">
                     <rect key="frame" x="272" y="16" width="140" height="32"/>
@@ -489,6 +512,9 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="72" name="value" keyPath="values.showUIInWhateverApp" id="HHF-Xg-i3Q"/>
+                    </connections>
                 </button>
             </subviews>
             <connections>
