@@ -25,7 +25,7 @@ typedef enum {
                   actionType:(ActionType)actionType
              shortcutKeyCode:(NSUInteger)shortcutKeyCode // when actionType == ACTION_TYPE_SHORTCUT required,or 0
                 shortcutFlag:(NSUInteger)shortcutFlag // when actionType == ACTION_TYPE_SHORTCUT required,or 0
-                 appleScript:(NSString *)appleScript // when actionType == ACTION_TYPE_APPLE_SCRIPT required,or nil
+                 appleScriptId:(NSString *)appleScriptId // when actionType == ACTION_TYPE_APPLE_SCRIPT required,or nil
                         note:(NSString *)note;
 
 - (void)removeRuleAtIndex:(NSInteger)index;
@@ -42,6 +42,8 @@ typedef enum {
 
 - (NSString *)noteAtIndex:(NSUInteger)index;
 
+- (NSString *)appleScriptIdAtIndex:(NSUInteger)index;
+
 - (NSUInteger)shortcutKeycodeAtIndex:(NSUInteger)index;
 
 - (NSUInteger)shortcutFlagAtIndex:(NSUInteger)index;
@@ -51,6 +53,8 @@ typedef enum {
 - (void)setWildFilter:(NSString *)filter atIndex:(NSUInteger)index;
 
 - (void)setDirection:(NSString *)direction atIndex:(NSUInteger)index;
+
+- (void)setAppleScriptId:(NSString *)id atIndex:(NSUInteger)index;
 
 - (void)setNote:(NSString *)note atIndex:(NSUInteger)index;
 
@@ -69,6 +73,5 @@ typedef enum {
 - (RulesList *)initWithNsData:(NSData *)data;
 
 + (RulesList *)sharedRulesList;
-
 
 @end

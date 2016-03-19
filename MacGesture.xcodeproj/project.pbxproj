@@ -21,7 +21,6 @@
 		2641804FA39EEA04BDDC27B2 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 26418DFD972C75FBEF81D049 /* right.png */; };
 		2641813EC194C60DC1B1806D /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418F4D8FB5BC803E3EB850 /* utils.m */; };
 		264182480FA70DFC89B87842 /* Updates.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 26418C0A252C6E5467076636 /* Updates.tiff */; };
-		264182B6681E0BAFA3949CF1 /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418BD1B6A90F924FECCC0E /* Action.m */; };
 		264183649CB68AD1A072883A /* AppPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */; };
 		264183DA0542C17E1932F696 /* SRRecorderControlWithTagid.m in Sources */ = {isa = PBXBuildFile; fileRef = 264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */; };
 		264183EEE694EB7761D6066B /* CanvasWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 264188F91072F914D0FF443E /* CanvasWindowController.m */; };
@@ -38,7 +37,11 @@
 		3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */; };
 		3CDC5543D4E5BD248515F7CA /* BlackWhiteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */; };
 		68C087AD74CFB1C5E0528759 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1136B136EA3AC3F1862223E3 /* libPods.a */; };
+		8815F63B1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */; };
+		88331A381C9402810064ADD5 /* AppleScript_Editor_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 88331A371C9402810064ADD5 /* AppleScript_Editor_Logo.png */; };
+		88331A3B1C9D22290064ADD5 /* AppleScriptsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */; };
 		887E09251C8B0FD0003A4CC0 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */; };
+		88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */; };
 		B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */; };
 		B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */; };
 		B6F75AE41BD65BDD00A8CF63 /* AppPickerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AE21BD65BDD00A8CF63 /* AppPickerWindowController.xib */; };
@@ -92,24 +95,26 @@
 		264188CA1FEAB47BE83286F8 /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About.png; sourceTree = "<group>"; };
 		264188F91072F914D0FF443E /* CanvasWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasWindowController.m; sourceTree = "<group>"; };
 		26418B1111120858F175152C /* CanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasView.m; sourceTree = "<group>"; };
-		26418BD1B6A90F924FECCC0E /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
 		26418C0A252C6E5467076636 /* Updates.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Updates.tiff; sourceTree = "<group>"; };
 		26418C419A597E159158ED0D /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		26418D5612632F8BDA1AE8CA /* CanvasWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasWindow.h; sourceTree = "<group>"; };
 		26418DFD972C75FBEF81D049 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
 		26418F4D8FB5BC803E3EB850 /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
-		26418F65C3F7A9F255FAA94A /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPrefsWindowController.m; sourceTree = "<group>"; };
 		319D16D664048735E34A0C5E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackWhiteFilter.m; sourceTree = "<group>"; };
 		3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOptionsDefine.h; sourceTree = "<group>"; };
 		3CDC5A614857FE77ADFEA4C8 /* BlackWhiteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackWhiteFilter.h; sourceTree = "<group>"; };
 		3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOptionsDefine.m; sourceTree = "<group>"; };
+		8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ChromeCloseTabsToTheRight.applescript; sourceTree = "<group>"; };
+		88331A371C9402810064ADD5 /* AppleScript_Editor_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppleScript_Editor_Logo.png; sourceTree = "<group>"; };
+		88331A391C9D22290064ADD5 /* AppleScriptsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleScriptsList.h; sourceTree = "<group>"; };
+		88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleScriptsList.m; sourceTree = "<group>"; };
 		887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPickerWindowController.h; sourceTree = "<group>"; };
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPickerWindowController.m; sourceTree = "<group>"; };
-		B6F75AE21BD65BDD00A8CF63 /* AppPickerWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppPickerWindowController.xib; sourceTree = "<group>"; };
+		B6F75AE21BD65BDD00A8CF63 /* AppPickerWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AppPickerWindowController.xib; path = ../AppPickerWindowController.xib; sourceTree = "<group>"; };
 		F7252488598BED86D8B7C09B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,7 +182,6 @@
 			children = (
 				B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */,
 				B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */,
-				B6F75AE21BD65BDD00A8CF63 /* AppPickerWindowController.xib */,
 				1381E4BD1824E7E800E815F5 /* AppDelegate.h */,
 				1381E4BE1824E7E800E815F5 /* AppDelegate.m */,
 				1381E4C31824E7E800E815F5 /* Images.xcassets */,
@@ -193,13 +197,13 @@
 				264188F91072F914D0FF443E /* CanvasWindowController.m */,
 				26418733B12703C123D16E95 /* RulesList.m */,
 				2641853CD8AE42C95077D980 /* RulesList.h */,
-				26418BD1B6A90F924FECCC0E /* Action.m */,
-				26418F65C3F7A9F255FAA94A /* Action.h */,
 				264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */,
 				2641846D9674154891849969 /* SRRecorderControlWithTagid.h */,
 				26418C419A597E159158ED0D /* utils.h */,
 				26418F4D8FB5BC803E3EB850 /* utils.m */,
 				3CDC5D998F35E9F8C91C7789 /* Model */,
+				88331A391C9D22290064ADD5 /* AppleScriptsList.h */,
+				88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */,
 			);
 			path = MacGesture;
 			sourceTree = "<group>";
@@ -239,6 +243,9 @@
 		264189E588806C286B6552A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */,
+				88331A371C9402810064ADD5 /* AppleScript_Editor_Logo.png */,
+				B6F75AE21BD65BDD00A8CF63 /* AppPickerWindowController.xib */,
 				075C1BC81C214E9A00B7211A /* list@2x.png */,
 				B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */,
 				264182CCCB38C9FAD7896BD5 /* General.png */,
@@ -354,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript in Resources */,
 				1381E4B61824E7E800E815F5 /* InfoPlist.strings in Resources */,
 				1381E4C41824E7E800E815F5 /* Images.xcassets in Resources */,
 				B6F75AE41BD65BDD00A8CF63 /* AppPickerWindowController.xib in Resources */,
@@ -369,6 +377,7 @@
 				26418AB7E1520EED88A179C1 /* MainMenu.xib in Resources */,
 				2641804FA39EEA04BDDC27B2 /* right.png in Resources */,
 				26418B30A89965ED65EC8209 /* up.png in Resources */,
+				88331A381C9402810064ADD5 /* AppleScript_Editor_Logo.png in Resources */,
 				26418AD8D88FC1BA381305BA /* left.png in Resources */,
 				26418990BAAA8C09484967DD /* down.png in Resources */,
 			);
@@ -439,12 +448,13 @@
 			files = (
 				1381E4B81824E7E800E815F5 /* main.m in Sources */,
 				1381E4BF1824E7E800E815F5 /* AppDelegate.m in Sources */,
+				8815F63B1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript in Sources */,
+				88331A3B1C9D22290064ADD5 /* AppleScriptsList.m in Sources */,
 				264183649CB68AD1A072883A /* AppPrefsWindowController.m in Sources */,
 				264184A9FF52175212CBE73F /* CanvasWindow.m in Sources */,
 				2641800AADBF86F6E76A37B3 /* CanvasView.m in Sources */,
 				264183EEE694EB7761D6066B /* CanvasWindowController.m in Sources */,
 				26418E623E410EF207EFA2A8 /* RulesList.m in Sources */,
-				264182B6681E0BAFA3949CF1 /* Action.m in Sources */,
 				B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */,
 				264183DA0542C17E1932F696 /* SRRecorderControlWithTagid.m in Sources */,
 				2641813EC194C60DC1B1806D /* utils.m in Sources */,

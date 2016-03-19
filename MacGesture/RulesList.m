@@ -5,6 +5,7 @@
 
 
 #import "RulesList.h"
+#import "AppleScriptsList.h"
 #import <Carbon/Carbon.h>
 #import "utils.h"
 
@@ -40,8 +41,8 @@ NSMutableArray<NSMutableDictionary *> *_rulesList;  // private
     return flag;
 }
 
-- (NSString *)appleScriptAtIndex:(NSUInteger)index {
-    return _rulesList[index][@"applescript"];
+- (NSString *)appleScriptIdAtIndex:(NSUInteger)index {
+    return _rulesList[index][@"apple_script_id"];
 }
 
 - (NSInteger)count {
@@ -55,7 +56,6 @@ NSMutableArray<NSMutableDictionary *> *_rulesList;  // private
 - (void)save {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:self.nsData forKey:@"rules"];
-
     [userDefaults synchronize];
 }
 
@@ -68,7 +68,7 @@ NSMutableArray<NSMutableDictionary *> *_rulesList;  // private
 }
 
 static inline void addWildcardShortcutRule(RulesList *rulesList, NSString *gesture, NSInteger keycode, NSInteger flag, NSString *note) {
-    [rulesList addRuleWithDirection:gesture filter:@"*safari|*chrome" filterType:FILTER_TYPE_WILDCARD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:keycode shortcutFlag: flag appleScript:nil note:note];
+    [rulesList addRuleWithDirection:gesture filter:@"*safari|*chrome" filterType:FILTER_TYPE_WILDCARD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:keycode shortcutFlag: flag appleScriptId:nil note:note];
 }
 
 - (void)reInit {
@@ -83,10 +83,11 @@ static inline void addWildcardShortcutRule(RulesList *rulesList, NSString *gestu
 }
 
 + (RulesList *)sharedRulesList {
+    static dispatch_once_t pred;
     static RulesList *rulesList = nil;
-    if (rulesList) {
-        return rulesList;
-    }
+    dispatch_once(&pred, ^{
+        rulesList = [[RulesList alloc] init];
+    });
     
     NSData *data;
     if ((data = [self readRulesList])) {
@@ -115,6 +116,8 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
 
 - (bool)executeActionAt:(NSUInteger)index {
     NSAppleScript *script;
+    NSString *appleScriptId;
+    NSString *appleScript;
     NSDictionary *errorDict;
     NSAppleEventDescriptor *returnDescriptor;
     switch ([self actionTypeAtIndex:index]) {
@@ -122,7 +125,9 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
             pressKeyWithFlags([self shortcutKeycodeAtIndex:index], [self shortcutFlagAtIndex:index]);
             break;
         case ACTION_TYPE_APPLE_SCRIPT:
-            script = [[NSAppleScript alloc] initWithSource:[self appleScriptAtIndex:index]];
+            appleScriptId = [self appleScriptIdAtIndex:index];
+            appleScript = [[AppleScriptsList sharedAppleScriptsList] getScriptById:appleScriptId];
+            script = [[NSAppleScript alloc] initWithSource:appleScript];
             returnDescriptor = [script executeAndReturnError:&errorDict];
             NSLog(@"returnDescriptor: %@, errorDict: %@", returnDescriptor, errorDict);
             break;
@@ -176,13 +181,18 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     [self save];
 }
 
+- (void)setAppleScriptId:(NSString *)id atIndex:(NSUInteger)index {
+    _rulesList[index][@"apple_script_id"] = id;
+    [self save];
+}
+
 - (void)addRuleWithDirection:(NSString *)direction
                       filter:(NSString *)filter
                   filterType:(FilterType)filterType
                   actionType:(ActionType)actionType
              shortcutKeyCode:(NSUInteger)shortcutKeyCode
                 shortcutFlag:(NSUInteger)shortcutFlag
-                 appleScript:(NSString *)appleScript
+                 appleScriptId:(NSString *)appleScriptId
                         note:(NSString *)note; {
     NSMutableDictionary *rule = [[NSMutableDictionary alloc] init];
     rule[@"direction"] = direction;
@@ -194,7 +204,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
         rule[@"shortcut_flag"] = @(shortcutFlag);
 
     } else if (actionType == ACTION_TYPE_APPLE_SCRIPT) {
-        rule[@"applescript"] = appleScript;
+        rule[@"apple_script_id"] = appleScriptId;
     }
     rule[@"note"] = note;
     [_rulesList addObject:rule];

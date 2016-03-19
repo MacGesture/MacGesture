@@ -10,12 +10,13 @@
 
 @class LaunchAtLoginController;
 
-@interface AppPrefsWindowController : DBPrefsWindowController <NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate, NSTextFieldDelegate, AppPickerCallback>
+@interface AppPrefsWindowController : DBPrefsWindowController <NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate, NSTextFieldDelegate, AppPickerCallback, NSComboBoxDataSource>
 
 @property(strong, nonatomic) IBOutlet NSView *generalPreferenceView;
 @property(strong, nonatomic) IBOutlet NSView *rulesPreferenceView;
-@property(strong, nonatomic) IBOutlet NSView *playbackPreferenceView;
+@property(strong, nonatomic) IBOutlet NSView *appleScriptPreferenceView;
 @property(strong, nonatomic) IBOutlet NSView *aboutPreferenceView;
+@property(strong, nonatomic) IBOutlet NSView *filtersPrefrenceView;
 
 @property(weak) IBOutlet NSTableView *rulesTableView;
 
@@ -29,13 +30,15 @@
 @property(weak) IBOutlet NSButton *whiteListModeRadio;
 @property(unsafe_unretained) IBOutlet NSTextView *blackListTextView;
 @property(unsafe_unretained) IBOutlet NSTextView *whiteListTextView;
-@property(strong) IBOutlet NSView *filtersPrefrenceView;
 @property(weak) IBOutlet NSButton *changeRulesWindowSizeButton;
 @property(weak) IBOutlet NSButton *changeFiltersWindowSizeButton;
+@property(weak) IBOutlet NSButton *editInExternalEditorButton;
 @property(weak) IBOutlet NSTextField *fontNameTextField;
 @property(weak) IBOutlet NSTextField *fontSizeTextField;
 @property(weak) IBOutlet NSTextField *gestureSizeTextField;
 @property(weak) IBOutlet NSSlider *gestureSizeSlider;
+@property(weak) IBOutlet NSTableView *appleScriptTableView;
+@property(weak) IBOutlet NSTextField *appleScriptTextField;
 
 @property(weak) IBOutlet NSColorWell *lineColorWell;
 
