@@ -11,6 +11,7 @@
 #import "BlackWhiteFilter.h"
 #import "HexColors.h"
 #import "MGOptionsDefine.h"
+#import "AppDelegate.h"
 
 @interface AppPrefsWindowController ()
 @property AppPickerWindowController *pickerWindowController;
@@ -235,9 +236,12 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 
 - (IBAction)resetDefaults:(id)sender {
     NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
-    NSDictionary * dict = [defs dictionaryRepresentation];
-    for (NSString *key in dict) {
-        [defs removeObjectForKey:key];
+    NSURL *defaultPrefsFile = [[NSBundle mainBundle]
+                               URLForResource:@"DefaultPreferences" withExtension:@"plist"];
+    NSDictionary *defaultPrefs =
+        [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
+    for (NSString *key in defaultPrefs) {
+        [defs setObject:[defaultPrefs objectForKey:key] forKey:key];
     }
     [defs synchronize];
     
@@ -292,16 +296,21 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
         [[AppleScriptsList sharedAppleScriptsList] removeAtIndex:index];
         [[AppleScriptsList sharedAppleScriptsList] save];
         [[self appleScriptTableView] reloadData];
-        index = MIN(index, [[AppleScriptsList sharedAppleScriptsList] count] - 1);
-        [[self appleScriptTableView] selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];
+        if ([[AppleScriptsList sharedAppleScriptsList] count] > 0) {
+            index = MIN(index, [[AppleScriptsList sharedAppleScriptsList] count] - 1);
+            [[self appleScriptTableView] selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];
+        } else {
+            [[self appleScriptTextField] setEnabled:NO];
+            [[self appleScriptTextField] setStringValue:@""];
+        }
+        
         [[self rulesTableView] reloadData];
     }
 }
 
-static volatile int alreadyInQueue = 0;
 static BOOL isEditing = NO;
-static dispatch_source_t sourceVNode;
-static dispatch_source_t sourceWrite;
+static NSString *currentScriptPath = nil;
+static NSString *currentScriptId = nil;
 
 - (IBAction)editAppleScriptInExternalEditor:(id)sender {
     NSInteger index = [[self appleScriptTableView] selectedRow];
@@ -310,96 +319,47 @@ static dispatch_source_t sourceWrite;
     }
     
     if (!isEditing) {
-        NSString *scriptId = [[AppleScriptsList sharedAppleScriptsList] idAtIndex:index];
+        currentScriptId = [[AppleScriptsList sharedAppleScriptsList] idAtIndex:index];
         NSError *error = nil;
         
-        NSString *path = [NSString stringWithFormat:@"%@/%@", NSTemporaryDirectory(), scriptId];
-        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
+        currentScriptPath = [NSString stringWithFormat:@"%@/%@", NSTemporaryDirectory(), currentScriptId];
+        [[NSFileManager defaultManager] createDirectoryAtPath:currentScriptPath withIntermediateDirectories:NO attributes:nil error:nil];
         
-        path = [NSString stringWithFormat:@"%@/%@", path, @"MacGesture.applescript"];
+        currentScriptPath = [NSString stringWithFormat:@"%@/%@", currentScriptPath, @"MacGesture.applescript"];
         
-        [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
-        [[[AppleScriptsList sharedAppleScriptsList] scriptAtIndex:index] writeToFile:path atomically:NO
+        [[NSFileManager defaultManager] removeItemAtPath:currentScriptPath error:&error];
+        [[[AppleScriptsList sharedAppleScriptsList] scriptAtIndex:index] writeToFile:currentScriptPath atomically:YES
                                                                             encoding:NSUTF8StringEncoding error:&error];
-        
-        // From http://stackoverflow.com/questions/12343833/cocoa-monitor-a-file-for-modifications
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        int fildes = open([path UTF8String], O_EVTONLY);
-        
-        sourceVNode = dispatch_source_create(DISPATCH_SOURCE_TYPE_VNODE, fildes,
-                                                                       DISPATCH_VNODE_DELETE | DISPATCH_VNODE_WRITE | DISPATCH_VNODE_EXTEND |
-                                                                       DISPATCH_VNODE_ATTRIB | DISPATCH_VNODE_LINK | DISPATCH_VNODE_RENAME |
-                                                                       DISPATCH_VNODE_REVOKE, queue);
-        
-        sourceWrite = dispatch_source_create(DISPATCH_SOURCE_TYPE_WRITE, fildes, 0, queue);
-        
-        dispatch_block_t handler = ^{
-            if (OSAtomicCompareAndSwapInt(0, 1, &alreadyInQueue)) {
-                dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 500 * NSEC_PER_MSEC); // 500ms delay
-                dispatch_after(time, dispatch_get_main_queue(), ^{
-                    NSInteger index = [[AppleScriptsList sharedAppleScriptsList] getIndexById:scriptId];
-                    if (index != -1) {
-                        NSError *error = nil;
-                        NSString *content = [NSString stringWithContentsOfFile:path
-                                                                      encoding:NSUTF8StringEncoding
-                                                                         error:&error];
-                        if (content != nil) {
-                            [[AppleScriptsList sharedAppleScriptsList] setScriptAtIndex:index script:content];
-                            [[AppleScriptsList sharedAppleScriptsList] save];
-                            
-                            NSInteger currentIndex = [[self appleScriptTableView] selectedRow];
-                            NSString *currentId = [[AppleScriptsList sharedAppleScriptsList] idAtIndex:currentIndex];
-                            if (currentId == scriptId && ![content isEqualToString:[[self appleScriptTextField] stringValue]]) {
-                                [[self appleScriptTextField] setStringValue:content];
-                            }
-                        }
-                    }
-                    alreadyInQueue = 0;
-                });
-            }
-        };
-        
-        dispatch_source_set_event_handler(sourceVNode, ^{
-            unsigned long flags = dispatch_source_get_data(sourceVNode);
-            if (flags & DISPATCH_VNODE_WRITE) {
-                handler();
-            }
-            
-            if(flags & DISPATCH_VNODE_DELETE)
-            {
-                dispatch_source_cancel(sourceVNode);
-                dispatch_source_cancel(sourceWrite);
-            }
-        });
-        dispatch_source_set_cancel_handler(sourceVNode, ^(void) {
-            close(fildes);
-        });
-        dispatch_resume(sourceVNode);
-        
-        dispatch_source_set_event_handler(sourceWrite, ^{
-            handler();
-        });
-        dispatch_source_set_cancel_handler(sourceWrite, ^(void) {
-            close(fildes);
-        });
-        dispatch_resume(sourceWrite);
-        
-        [[NSWorkspace sharedWorkspace] openFile:path];
-
+        [[NSWorkspace sharedWorkspace] openFile:currentScriptPath];
+    
         isEditing = YES;
         [[self editInExternalEditorButton] setTitle:@"Stop"];
     } else {
+        NSError *error = nil;
+        NSString *content = [NSString stringWithContentsOfFile:currentScriptPath
+                                                      encoding:NSUTF8StringEncoding
+                                                         error:&error];
+        
+        if (content != nil) {
+            [[AppleScriptsList sharedAppleScriptsList] setScriptAtIndex:index script:content];
+            [[AppleScriptsList sharedAppleScriptsList] save];
+            
+            NSInteger currentIndex = [[self appleScriptTableView] selectedRow];
+            NSString *currentId = [[AppleScriptsList sharedAppleScriptsList] idAtIndex:currentIndex];
+            if (currentId == currentScriptId && ![content isEqualToString:[[self appleScriptTextField] stringValue]]) {
+                [[self appleScriptTextField] setStringValue:content];
+            }
+        }
+        
         isEditing = NO;
-        
-        if (sourceVNode) {
-            dispatch_source_cancel(sourceVNode);
-        }
-        
-        if (sourceWrite) {
-            dispatch_source_cancel(sourceWrite);
-        }
         [[self editInExternalEditorButton] setTitle:@"Edit in External Editor"];
     }
+    
+    [[self appleScriptTableView] setEnabled:!isEditing];
+    [[self loadAppleScriptExampleButton] setEnabled:!isEditing];
+    [[self addAppleScriptButton] setEnabled:!isEditing];
+    [[self removeAppleScriptButton] setEnabled:!isEditing];
+    [[self appleScriptTextField] setEnabled:!isEditing];
     
 }
 
@@ -420,6 +380,10 @@ static dispatch_source_t sourceWrite;
         [[self appleScriptTextField] setEnabled:NO];
         [[self appleScriptTextField] setStringValue:@""];
     }
+}
+
+- (IBAction)showInStatusBarCheckChanged:(id)sender {
+    [[AppDelegate appDelegate] updateStatusBarItem];
 }
 
 #pragma mark -

@@ -129,7 +129,9 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
             appleScript = [[AppleScriptsList sharedAppleScriptsList] getScriptById:appleScriptId];
             script = [[NSAppleScript alloc] initWithSource:appleScript];
             returnDescriptor = [script executeAndReturnError:&errorDict];
-            NSLog(@"returnDescriptor: %@, errorDict: %@", returnDescriptor, errorDict);
+            if (errorDict != nil) {
+                NSLog(@"Execute Apple Script: returnDescriptor: %@, errorDict: %@", returnDescriptor, errorDict);
+            }
             break;
         default:
             break;

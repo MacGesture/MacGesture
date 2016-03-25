@@ -33,14 +33,19 @@
 @property(weak) IBOutlet NSButton *changeRulesWindowSizeButton;
 @property(weak) IBOutlet NSButton *changeFiltersWindowSizeButton;
 @property(weak) IBOutlet NSButton *editInExternalEditorButton;
+@property(weak) IBOutlet NSButton *loadAppleScriptExampleButton;
+@property(weak) IBOutlet NSButton *addAppleScriptButton;
+@property(weak) IBOutlet NSButton *removeAppleScriptButton;
 @property(weak) IBOutlet NSTextField *fontNameTextField;
 @property(weak) IBOutlet NSTextField *fontSizeTextField;
 @property(weak) IBOutlet NSTextField *gestureSizeTextField;
 @property(weak) IBOutlet NSSlider *gestureSizeSlider;
 @property(weak) IBOutlet NSTableView *appleScriptTableView;
 @property(weak) IBOutlet NSTextField *appleScriptTextField;
+@property(weak) IBOutlet NSButton *showIconInStatusBarButton;
 
 @property(weak) IBOutlet NSColorWell *lineColorWell;
 
 - (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index;
+- (void)openPreferencesNotified:(NSNotification *)notification;
 @end

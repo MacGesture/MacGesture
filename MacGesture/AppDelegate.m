@@ -22,7 +22,17 @@ static AppPrefsWindowController *_preferencesWindowController;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-
+    
+    NSArray *apps = [NSRunningApplication runningApplicationsWithBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+    if ([apps count] > 1)
+    {
+        NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
+        NSString *name = @"MacGestureOpenPreferences";
+        [center postNotificationName:name object:nil userInfo:nil options:NSDistributedNotificationPostToAllSessions|NSDistributedNotificationDeliverImmediately];
+        [NSApp terminate:self];
+        return ;
+    }
+    
     windowController = [[CanvasWindowController alloc] init];
 
     CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) | CGEventMaskBit(kCGEventRightMouseUp);
@@ -60,33 +70,54 @@ static AppPrefsWindowController *_preferencesWindowController;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]) {
         [self openPreferences:self];
     }
+    
+    [self updateStatusBarItem];
+    
+    NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
+    NSString *name = @"MacGestureOpenPreferences";
+    [center addObserver:self selector:@selector(openPreferencesNotified:) name:name object:nil suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 }
 
-- (void)awakeFromNib {
-    _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-
-    NSImage *menuIcon = [NSImage imageNamed:@"Menu Icon"];
-    //NSImage *highlightIcon = [NSImage imageNamed:@"Menu Icon"]; // Yes, we're using the exact same image asset.
-    //[highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
-    [menuIcon setTemplate:YES];
-    [[self statusItem] setImage:menuIcon];
-//    [[self statusItem] setAlternateImage:highlightIcon];
-    [[self statusItem] setMenu:[self menu]];
-    [[self statusItem] setHighlightMode:YES];
+- (void)updateStatusBarItem {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showIconInStatusBar"]) {
+        [self setStatusItem:[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength]];
+        
+        NSImage *menuIcon = [NSImage imageNamed:@"Menu Icon"];
+        //NSImage *highlightIcon = [NSImage imageNamed:@"Menu Icon"]; // Yes, we're using the exact same image asset.
+        //[highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
+        [menuIcon setTemplate:YES];
+        [[self statusItem] setImage:menuIcon];
+        //    [[self statusItem] setAlternateImage:highlightIcon];
+        [[self statusItem] setMenu:[self menu]];
+        [[self statusItem] setHighlightMode:YES];
+    } else {
+        if ([self statusItem]) {
+            [[NSStatusBar systemStatusBar] removeStatusItem:[self statusItem]];
+            [self setStatusItem:nil];
+        }
+    }
 }
 
-- (IBAction)openPreferences:(id)sender {
+- (void)showPreferences {
     [NSApp activateIgnoringOtherApps:YES];
-    [_preferencesWindowController close];
     //instantiate preferences window controller
     if (_preferencesWindowController) {
+        [_preferencesWindowController close];
         _preferencesWindowController = nil;
     }
     //init from nib but the real initialization happens in the
     //PreferencesWindowController setupToolbar method
     _preferencesWindowController = [[AppPrefsWindowController alloc] initWithWindowNibName:@"Preferences"];
-
+    
     [_preferencesWindowController showWindow:self];
+}
+
+- (IBAction)openPreferences:(id)sender {
+    [self showPreferences];
+}
+
+- (void)openPreferencesNotified:(NSNotification *)notification {
+    [self showPreferences];
 }
 
 static void updateDirections(NSEvent *event) {
