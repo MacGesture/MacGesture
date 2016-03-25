@@ -38,9 +38,9 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     NSString *title;
 
     if (*index != PREF_WINDOW_SIZECOUNT - 1) {
-        title = @"Go bigger";
+        title = NSLocalizedString(@"Go bigger", nil);
     } else {
-        title = @"Reset size";
+        title = NSLocalizedString(@"Reset size", nil);
     }
 
     [button setTitle:title];
@@ -136,12 +136,12 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 }
 
 - (void)setupToolbar {
-    [self addView:self.generalPreferenceView label:@"General"];
-    [self addView:self.rulesPreferenceView label:@"Rules"];
-    [self addView:self.filtersPrefrenceView label:@"Filters" image:[NSImage imageNamed:@"list@2x.png"]];
-    [self addView:self.appleScriptPreferenceView label:@"AppleScript" image:[NSImage imageNamed:@"AppleScript_Editor_Logo.png"]];
+    [self addView:self.generalPreferenceView label:NSLocalizedString(@"General", nil) image:[NSImage imageNamed:@"General.png"]];
+    [self addView:self.rulesPreferenceView label:NSLocalizedString(@"Rules", nil) image:[NSImage imageNamed:@"Rules.png"]];
+    [self addView:self.filtersPrefrenceView label:NSLocalizedString(@"Filters", nil) image:[NSImage imageNamed:@"list@2x.png"]];
+    [self addView:self.appleScriptPreferenceView label:NSLocalizedString(@"AppleScript", nil) image:[NSImage imageNamed:@"AppleScript_Editor_Logo.png"]];
     [self addFlexibleSpacer];
-    [self addView:self.aboutPreferenceView label:@"About"];
+    [self addView:self.aboutPreferenceView label:NSLocalizedString(@"About", nil)];
 
     // Optional configuration settings.
     [self setCrossFade:[[NSUserDefaults standardUserDefaults] boolForKey:@"fade"]];

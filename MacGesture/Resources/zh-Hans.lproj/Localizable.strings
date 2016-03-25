@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  MacGesture
+
+  Created by iMac on 3/25/16.
+  Copyright © 2016 Codefalling. All rights reserved.
+*/
+
+"Go bigger" = "放大窗口";
+"Reset size" = "重置大小";
+"General" = "常规";
+"Rules" = "规则";
+"Filters" = "过滤";
+"AppleScript" = "AppleScript";
+"About" = "关于";
+"Loading.." = "正在加载。。";

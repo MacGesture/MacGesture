@@ -3,7 +3,7 @@
 //  MacGesture
 //
 //  Created by iMac on 3/19/16.
-//  Copyright © 2016 Chivalry Software. All rights reserved.
+//  Copyright © 2016 Codefalling. All rights reserved.
 //
 
 #import "AppleScriptsList.h"

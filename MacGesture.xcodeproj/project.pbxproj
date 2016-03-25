@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		075C1BC91C214E9A00B7211A /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075C1BC81C214E9A00B7211A /* list@2x.png */; };
 		1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381E4AB1824E7E800E815F5 /* Cocoa.framework */; };
-		1381E4B61824E7E800E815F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4B41824E7E800E815F5 /* InfoPlist.strings */; };
 		1381E4B81824E7E800E815F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4B71824E7E800E815F5 /* main.m */; };
-		1381E4BC1824E7E800E815F5 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4BA1824E7E800E815F5 /* Credits.rtf */; };
 		1381E4BF1824E7E800E815F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4BE1824E7E800E815F5 /* AppDelegate.m */; };
 		1381E4C41824E7E800E815F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4C31824E7E800E815F5 /* Images.xcassets */; };
 		1381E4CC1824E7E800E815F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381E4AB1824E7E800E815F5 /* Cocoa.framework */; };
@@ -29,14 +27,18 @@
 		2641871BACBB993F84AF778C /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 264188CA1FEAB47BE83286F8 /* About.png */; };
 		26418785A1CC885F4D2FFDF5 /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = 264182CCCB38C9FAD7896BD5 /* General.png */; };
 		26418990BAAA8C09484967DD /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 26418331BA0AD1E0D42A4E53 /* down.png */; };
-		26418AB7E1520EED88A179C1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26418E4815E00CCF5774C97C /* MainMenu.xib */; };
 		26418AD8D88FC1BA381305BA /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 264180FCC355082AC7EDFD74 /* left.png */; };
 		26418B30A89965ED65EC8209 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 2641860492954D6BD5AF2FD5 /* up.png */; };
-		26418C3B69408A43FB0E03F1 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2641846DC43DD915C2555D4C /* Preferences.xib */; };
 		26418E623E410EF207EFA2A8 /* RulesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418733B12703C123D16E95 /* RulesList.m */; };
 		3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */; };
 		3CDC5543D4E5BD248515F7CA /* BlackWhiteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */; };
 		68C087AD74CFB1C5E0528759 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1136B136EA3AC3F1862223E3 /* libPods.a */; };
+		880AA7571CA5738A006E7A74 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7591CA5738A006E7A74 /* Preferences.xib */; };
+		880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */; };
+		880AA7651CA5745D006E7A74 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75F1CA5745D006E7A74 /* Credits.rtf */; };
+		880AA7661CA5745D006E7A74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7611CA5745D006E7A74 /* InfoPlist.strings */; };
+		880AA7691CA57491006E7A74 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7671CA57491006E7A74 /* MainMenu.xib */; };
+		880AA7741CA57884006E7A74 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7721CA57884006E7A74 /* Localizable.strings */; };
 		8815F63B1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */; };
 		88331A381C9402810064ADD5 /* AppleScript_Editor_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 88331A371C9402810064ADD5 /* AppleScript_Editor_Logo.png */; };
 		88331A3B1C9D22290064ADD5 /* AppleScriptsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */; };
@@ -44,7 +46,6 @@
 		88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */; };
 		B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */; };
 		B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */; };
-		B6F75AE41BD65BDD00A8CF63 /* AppPickerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AE21BD65BDD00A8CF63 /* AppPickerWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,10 +68,8 @@
 		1381E4AF1824E7E800E815F5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1381E4B01824E7E800E815F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1381E4B31824E7E800E815F5 /* MacGesture-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacGesture-Info.plist"; sourceTree = "<group>"; };
-		1381E4B51824E7E800E815F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1381E4B71824E7E800E815F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1381E4B91824E7E800E815F5 /* MacGesture-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MacGesture-Prefix.pch"; sourceTree = "<group>"; };
-		1381E4BB1824E7E800E815F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		1381E4BD1824E7E800E815F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1381E4BE1824E7E800E815F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1381E4C31824E7E800E815F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -79,11 +78,9 @@
 		1381E4D51824E7E800E815F5 /* MacGestureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MacGestureTests.m; sourceTree = "<group>"; };
 		264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderControlWithTagid.m; sourceTree = "<group>"; };
 		264180FCC355082AC7EDFD74 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
-		2641816292D47EE5C6214369 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MacGesture/Base.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		264182CCCB38C9FAD7896BD5 /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = General.png; sourceTree = "<group>"; };
 		26418331BA0AD1E0D42A4E53 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
 		2641846D9674154891849969 /* SRRecorderControlWithTagid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderControlWithTagid.h; sourceTree = "<group>"; };
-		2641846DC43DD915C2555D4C /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		264184868E6F3B7E8747AAA2 /* AppPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPrefsWindowController.h; sourceTree = "<group>"; };
 		264184DD0A5ACE29690D7EF2 /* CanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasView.h; sourceTree = "<group>"; };
 		2641853CD8AE42C95077D980 /* RulesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesList.h; sourceTree = "<group>"; };
@@ -106,6 +103,18 @@
 		3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOptionsDefine.h; sourceTree = "<group>"; };
 		3CDC5A614857FE77ADFEA4C8 /* BlackWhiteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackWhiteFilter.h; sourceTree = "<group>"; };
 		3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOptionsDefine.m; sourceTree = "<group>"; };
+		880AA7581CA5738A006E7A74 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Preferences.xib; sourceTree = "<group>"; };
+		880AA75E1CA5745D006E7A74 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AppPickerWindowController.xib; sourceTree = "<group>"; };
+		880AA7601CA5745D006E7A74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		880AA7621CA5745D006E7A74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		880AA7681CA57491006E7A74 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		880AA76A1CA575D5006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		880AA76B1CA575D5006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.xib"; sourceTree = "<group>"; };
+		880AA76C1CA575D6006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/AppPickerWindowController.xib"; sourceTree = "<group>"; };
+		880AA76D1CA575D6006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/Credits.rtf"; sourceTree = "<group>"; };
+		880AA76E1CA575D6006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		880AA76F1CA575D6006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.xib"; sourceTree = "<group>"; };
+		880AA7731CA57884006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ChromeCloseTabsToTheRight.applescript; sourceTree = "<group>"; };
 		88331A371C9402810064ADD5 /* AppleScript_Editor_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppleScript_Editor_Logo.png; sourceTree = "<group>"; };
 		88331A391C9D22290064ADD5 /* AppleScriptsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleScriptsList.h; sourceTree = "<group>"; };
@@ -114,7 +123,6 @@
 		B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPickerWindowController.h; sourceTree = "<group>"; };
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPickerWindowController.m; sourceTree = "<group>"; };
-		B6F75AE21BD65BDD00A8CF63 /* AppPickerWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AppPickerWindowController.xib; path = ../AppPickerWindowController.xib; sourceTree = "<group>"; };
 		F7252488598BED86D8B7C09B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,10 +222,8 @@
 				1331CD80182C50E500782D16 /* menu_icon_16x16.png */,
 				1331CD81182C50E500782D16 /* menu_icon_32x32.png */,
 				1381E4B31824E7E800E815F5 /* MacGesture-Info.plist */,
-				1381E4B41824E7E800E815F5 /* InfoPlist.strings */,
 				1381E4B71824E7E800E815F5 /* main.m */,
 				1381E4B91824E7E800E815F5 /* MacGesture-Prefix.pch */,
-				1381E4BA1824E7E800E815F5 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -243,17 +249,20 @@
 		264189E588806C286B6552A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				880AA7721CA57884006E7A74 /* Localizable.strings */,
+				880AA7671CA57491006E7A74 /* MainMenu.xib */,
+				880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */,
+				880AA75F1CA5745D006E7A74 /* Credits.rtf */,
+				880AA7611CA5745D006E7A74 /* InfoPlist.strings */,
 				8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */,
 				88331A371C9402810064ADD5 /* AppleScript_Editor_Logo.png */,
-				B6F75AE21BD65BDD00A8CF63 /* AppPickerWindowController.xib */,
 				075C1BC81C214E9A00B7211A /* list@2x.png */,
 				B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */,
 				264182CCCB38C9FAD7896BD5 /* General.png */,
-				2641846DC43DD915C2555D4C /* Preferences.xib */,
+				880AA7591CA5738A006E7A74 /* Preferences.xib */,
 				26418C0A252C6E5467076636 /* Updates.tiff */,
 				264188A38F5F48B61F3EF173 /* Rules.png */,
 				264188CA1FEAB47BE83286F8 /* About.png */,
-				26418E4815E00CCF5774C97C /* MainMenu.xib */,
 				26418DFD972C75FBEF81D049 /* right.png */,
 				2641860492954D6BD5AF2FD5 /* up.png */,
 				264180FCC355082AC7EDFD74 /* left.png */,
@@ -344,6 +353,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 1381E49F1824E7E800E815F5;
 			productRefGroup = 1381E4A91824E7E800E815F5 /* Products */;
@@ -362,20 +372,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript in Resources */,
-				1381E4B61824E7E800E815F5 /* InfoPlist.strings in Resources */,
+				880AA7661CA5745D006E7A74 /* InfoPlist.strings in Resources */,
 				1381E4C41824E7E800E815F5 /* Images.xcassets in Resources */,
-				B6F75AE41BD65BDD00A8CF63 /* AppPickerWindowController.xib in Resources */,
-				1381E4BC1824E7E800E815F5 /* Credits.rtf in Resources */,
+				880AA7691CA57491006E7A74 /* MainMenu.xib in Resources */,
 				075C1BC91C214E9A00B7211A /* list@2x.png in Resources */,
+				880AA7741CA57884006E7A74 /* Localizable.strings in Resources */,
 				26418785A1CC885F4D2FFDF5 /* General.png in Resources */,
-				26418C3B69408A43FB0E03F1 /* Preferences.xib in Resources */,
+				880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */,
+				880AA7571CA5738A006E7A74 /* Preferences.xib in Resources */,
 				264182480FA70DFC89B87842 /* Updates.tiff in Resources */,
 				264185813821B17A6CF8761E /* Rules.png in Resources */,
 				B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */,
 				887E09251C8B0FD0003A4CC0 /* DefaultPreferences.plist in Resources */,
 				2641871BACBB993F84AF778C /* About.png in Resources */,
-				26418AB7E1520EED88A179C1 /* MainMenu.xib in Resources */,
 				2641804FA39EEA04BDDC27B2 /* right.png in Resources */,
+				880AA7651CA5745D006E7A74 /* Credits.rtf in Resources */,
 				26418B30A89965ED65EC8209 /* up.png in Resources */,
 				88331A381C9402810064ADD5 /* AppleScript_Editor_Logo.png in Resources */,
 				26418AD8D88FC1BA381305BA /* left.png in Resources */,
@@ -482,36 +493,66 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1381E4B41824E7E800E815F5 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1381E4B51824E7E800E815F5 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		1381E4BA1824E7E800E815F5 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1381E4BB1824E7E800E815F5 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
 		1381E4D21824E7E800E815F5 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1381E4D31824E7E800E815F5 /* en */,
+				880AA76A1CA575D5006E7A74 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		26418E4815E00CCF5774C97C /* MainMenu.xib */ = {
+		880AA7591CA5738A006E7A74 /* Preferences.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2641816292D47EE5C6214369 /* Base */,
+				880AA7581CA5738A006E7A74 /* en */,
+				880AA76F1CA575D6006E7A74 /* zh-Hans */,
+			);
+			name = Preferences.xib;
+			sourceTree = "<group>";
+		};
+		880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				880AA75E1CA5745D006E7A74 /* en */,
+				880AA76C1CA575D6006E7A74 /* zh-Hans */,
+			);
+			name = AppPickerWindowController.xib;
+			sourceTree = "<group>";
+		};
+		880AA75F1CA5745D006E7A74 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				880AA7601CA5745D006E7A74 /* en */,
+				880AA76D1CA575D6006E7A74 /* zh-Hans */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		880AA7611CA5745D006E7A74 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				880AA7621CA5745D006E7A74 /* en */,
+				880AA76E1CA575D6006E7A74 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		880AA7671CA57491006E7A74 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				880AA7681CA57491006E7A74 /* en */,
+				880AA76B1CA575D5006E7A74 /* zh-Hans */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		880AA7721CA57884006E7A74 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				880AA7731CA57884006E7A74 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
