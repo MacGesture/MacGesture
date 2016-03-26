@@ -70,6 +70,13 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
                                              selector:@selector(tableViewSelectionChanged:)
                                                  name:NSTableViewSelectionDidChangeNotification
                                                object:[self appleScriptTableView]];
+    
+    [[self languageComboBox] addItemsWithObjectValues:[NSArray arrayWithObjects:@"en", @"zh-Hans", nil]];
+    
+    NSArray *languages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
+    if (languages) {
+        [[self languageComboBox] selectItemWithObjectValue:languages[0]];
+    }
 }
 
 - (void)refreshFilterRadioAndTextViewState {
@@ -141,7 +148,7 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     [self addView:self.filtersPrefrenceView label:NSLocalizedString(@"Filters", nil) image:[NSImage imageNamed:@"list@2x.png"]];
     [self addView:self.appleScriptPreferenceView label:NSLocalizedString(@"AppleScript", nil) image:[NSImage imageNamed:@"AppleScript_Editor_Logo.png"]];
     [self addFlexibleSpacer];
-    [self addView:self.aboutPreferenceView label:NSLocalizedString(@"About", nil)];
+    [self addView:self.aboutPreferenceView label:NSLocalizedString(@"About", nil) image:[NSImage imageNamed:@"About.png"]];
 
     // Optional configuration settings.
     [self setCrossFade:[[NSUserDefaults standardUserDefaults] boolForKey:@"fade"]];
@@ -250,9 +257,12 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 
 - (IBAction)pickBtnDidClick:(id)sender {
     if ([_rulesTableView selectedRow] == -1) {
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"Select a filter first!"];
-        [alert runModal];
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = @"MacGesture";
+        notification.informativeText = NSLocalizedString(@"Select a filter first!", nil);
+        notification.soundName = NSUserNotificationDefaultSoundName;
+        
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
         return ;
     }
     
@@ -315,6 +325,12 @@ static NSString *currentScriptId = nil;
 - (IBAction)editAppleScriptInExternalEditor:(id)sender {
     NSInteger index = [[self appleScriptTableView] selectedRow];
     if (index == -1) {
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = @"MacGesture";
+        notification.informativeText = NSLocalizedString(@"Select a AppleScript first!", nil);
+        notification.soundName = NSUserNotificationDefaultSoundName;
+        
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
         return ;
     }
     
@@ -333,7 +349,7 @@ static NSString *currentScriptId = nil;
         [[NSWorkspace sharedWorkspace] openFile:currentScriptPath];
     
         isEditing = YES;
-        [[self editInExternalEditorButton] setTitle:@"Stop"];
+        [[self editInExternalEditorButton] setTitle:NSLocalizedString(@"Stop",nil)];
     } else {
         NSError *error = nil;
         NSString *content = [NSString stringWithContentsOfFile:currentScriptPath
@@ -352,7 +368,7 @@ static NSString *currentScriptId = nil;
         }
         
         isEditing = NO;
-        [[self editInExternalEditorButton] setTitle:@"Edit in External Editor"];
+        [[self editInExternalEditorButton] setTitle:NSLocalizedString(@"Edit in External Editor",nil)];
     }
     
     [[self appleScriptTableView] setEnabled:!isEditing];
@@ -386,6 +402,19 @@ static NSString *currentScriptId = nil;
     [[AppDelegate appDelegate] updateStatusBarItem];
 }
 
+- (IBAction)languageChanged:(id)sender {
+    NSString *language = [[self languageComboBox] objectValueOfSelectedItem];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObject:language] forKey:@"AppleLanguages"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    notification.title = @"MacGesture";
+    notification.informativeText = NSLocalizedString(@"Restart MacGesture to take effect", nil);
+    notification.soundName = NSUserNotificationDefaultSoundName;
+    
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+}
+
 #pragma mark -
 #pragma mark NSComboBoxDataSource Implementation
 
@@ -417,9 +446,12 @@ static NSString *currentScriptId = nil;
         NSCharacterSet *invalidGestureCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ULDR"];
         invalidGestureCharacters = [invalidGestureCharacters invertedSet];
         if ([gesture rangeOfCharacterFromSet:invalidGestureCharacters].location != NSNotFound) {
-            NSAlert *alert = [[NSAlert alloc] init];
-            [alert setMessageText:@"Gesture should only contain \"ULDR\""];
-            [alert runModal];
+            NSUserNotification *notification = [[NSUserNotification alloc] init];
+            notification.title = @"MacGesture";
+            notification.informativeText = NSLocalizedString(@"Gesture must only contain \"ULDR\"", nil);
+            notification.soundName = NSUserNotificationDefaultSoundName;
+            
+            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
             return NO;
         }
         [control setStringValue:gesture];

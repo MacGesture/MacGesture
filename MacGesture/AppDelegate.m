@@ -22,14 +22,16 @@ static AppPrefsWindowController *_preferencesWindowController;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-    
     NSArray *apps = [NSRunningApplication runningApplicationsWithBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+    NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
+    NSString *name = @"MacGestureOpenPreferences";
     if ([apps count] > 1)
     {
-        NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
-        NSString *name = @"MacGestureOpenPreferences";
-        [center postNotificationName:name object:nil userInfo:nil options:NSDistributedNotificationPostToAllSessions|NSDistributedNotificationDeliverImmediately];
-        [NSApp terminate:self];
+        [center postNotificationName:name object:nil userInfo:nil deliverImmediately:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [NSApp terminate:self];
+        });
+        NSLog(@"Send");
         return ;
     }
     
@@ -73,9 +75,10 @@ static AppPrefsWindowController *_preferencesWindowController;
     
     [self updateStatusBarItem];
     
-    NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
-    NSString *name = @"MacGestureOpenPreferences";
-    [center addObserver:self selector:@selector(openPreferencesNotified:) name:name object:nil suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
+    [center setSuspended:NO];
+    [center addObserver:self selector:@selector(receiveOpenPreferencesNotification:) name:name object:nil suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
+    
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 }
 
 - (void)updateStatusBarItem {
@@ -98,6 +101,10 @@ static AppPrefsWindowController *_preferencesWindowController;
     }
 }
 
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
+    return YES;
+}
+
 - (void)showPreferences {
     [NSApp activateIgnoringOtherApps:YES];
     //instantiate preferences window controller
@@ -116,7 +123,11 @@ static AppPrefsWindowController *_preferencesWindowController;
     [self showPreferences];
 }
 
-- (void)openPreferencesNotified:(NSNotification *)notification {
+- (void)receiveOpenPreferencesNotification:(NSNotification *)notification {
+    [self showPreferences];
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
     [self showPreferences];
 }
 

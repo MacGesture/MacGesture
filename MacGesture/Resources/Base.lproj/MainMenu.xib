@@ -666,13 +666,13 @@
         <customObject id="420" customClass="NSFontManager"/>
         <menu id="Aae-oF-AsY">
             <items>
-                <menuItem title="偏好设置" id="E8a-Fn-In1">
+                <menuItem title="Preferences" id="E8a-Fn-In1">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="openPreferences:" target="494" id="1Td-yP-hQe"/>
                     </connections>
                 </menuItem>
-                <menuItem title="退出" id="MTY-xM-R0q">
+                <menuItem title="Quit" id="MTY-xM-R0q">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="terminate:" target="-3" id="dg4-2P-OUs"/>

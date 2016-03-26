@@ -3,7 +3,7 @@
 @class RulesList;
 
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate>
 
 @property(assign) IBOutlet NSWindow *window;
 
@@ -12,5 +12,6 @@
 
 + (AppDelegate *)appDelegate;
 - (void)updateStatusBarItem;
+- (void)receiveOpenPreferencesNotification:(NSNotification *)notification;
 
 @end

@@ -43,9 +43,9 @@
 @property(weak) IBOutlet NSTableView *appleScriptTableView;
 @property(weak) IBOutlet NSTextField *appleScriptTextField;
 @property(weak) IBOutlet NSButton *showIconInStatusBarButton;
+@property(weak) IBOutlet NSComboBox *languageComboBox;
 
 @property(weak) IBOutlet NSColorWell *lineColorWell;
 
 - (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index;
-- (void)openPreferencesNotified:(NSNotification *)notification;
 @end

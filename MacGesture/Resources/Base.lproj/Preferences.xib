@@ -24,6 +24,7 @@
                 <outlet property="generalPreferenceView" destination="99" id="126"/>
                 <outlet property="gestureSizeSlider" destination="bP7-3k-KUa" id="Vxp-up-3GG"/>
                 <outlet property="gestureSizeTextField" destination="nqw-AN-D6f" id="BUN-Fp-xYu"/>
+                <outlet property="languageComboBox" destination="0fU-Oh-h2G" id="hS4-zl-2V8"/>
                 <outlet property="lineColorWell" destination="lVi-qT-AYg" id="gA9-SQ-9iB"/>
                 <outlet property="loadAppleScriptExampleButton" destination="q9F-62-ePq" id="tXa-pa-dLn"/>
                 <outlet property="removeAppleScriptButton" destination="UOw-ZI-7c4" id="bKb-nE-UBD"/>
@@ -82,9 +83,9 @@
                         <action selector="removeRule:" target="-2" id="323"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="325">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="325">
                     <rect key="frame" x="583" y="-2" width="75" height="32"/>
-                    <buttonCell key="cell" type="push" title="重置" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="326">
+                    <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="326">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                         <connections>
@@ -106,7 +107,7 @@
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
                                     <tableColumn identifier="Gesture" width="111.91796875" minWidth="40" maxWidth="1000" id="291">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="手势">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Gesture">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -145,7 +146,7 @@
                                         </connections>
                                     </tableColumn>
                                     <tableColumn identifier="Filter" width="213.8515625" minWidth="40" maxWidth="1000" id="290">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="过滤">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Filter">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -177,7 +178,7 @@
                                         </prototypeCellViews>
                                     </tableColumn>
                                     <tableColumn identifier="Action" width="118.640625" minWidth="40" maxWidth="1000" id="306">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="动作">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Action">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -209,7 +210,7 @@
                                         </prototypeCellViews>
                                     </tableColumn>
                                     <tableColumn identifier="Note" width="129" minWidth="40" maxWidth="1000" id="Urw-VE-VYr">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="说明">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Note">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -263,9 +264,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZxS-0a-wRT">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZxS-0a-wRT">
                     <rect key="frame" x="151" y="-1" width="100" height="32"/>
-                    <buttonCell key="cell" type="push" title="放大窗口" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q7Q-zb-iKX">
+                    <buttonCell key="cell" type="push" title="Go bigger" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q7Q-zb-iKX">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -273,9 +274,9 @@
                         <action selector="changeSizeOfPreferenceWindow:" target="-2" id="xwh-PW-ijj"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2vX-WF-Pfn">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2vX-WF-Pfn">
                     <rect key="frame" x="251" y="-1" width="153" height="32"/>
-                    <buttonCell key="cell" type="push" title="从运行的App中选取" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WsD-th-NkZ">
+                    <buttonCell key="cell" type="push" title="Pick a running app" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WsD-th-NkZ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -312,7 +313,7 @@
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHr-Aw-yHh">
                     <rect key="frame" x="46" y="20" width="207" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="联合开发者： zhangciwu@github" id="MJR-m4-m46">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Co-developer: zhangciwu@github" id="MJR-m4-m46">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -320,7 +321,7 @@
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IvI-o3-JLI">
                     <rect key="frame" x="83" y="60" width="111" height="32"/>
-                    <buttonCell key="cell" type="push" title="检查更新" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="Z4w-5n-8OX">
+                    <buttonCell key="cell" type="push" title="Check Now" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="Z4w-5n-8OX">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -331,7 +332,7 @@
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4G-u8-9Le">
                     <rect key="frame" x="24" y="134" width="229" height="18"/>
-                    <buttonCell key="cell" type="check" title="自动检查更新" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Yev-5n-cgO">
+                    <buttonCell key="cell" type="check" title="Automatically Check for Updates" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Yev-5n-cgO">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -342,7 +343,7 @@
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fxG-XN-bbL">
                     <rect key="frame" x="24" y="114" width="252" height="18"/>
-                    <buttonCell key="cell" type="check" title="自动下载更新" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="rOi-wV-Iez">
+                    <buttonCell key="cell" type="check" title="Automatically Download Updates" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="rOi-wV-Iez">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -361,7 +362,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ldi-VE-YXO">
                     <rect key="frame" x="80" y="96" width="86" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="版本：" id="b8r-Ju-Lat">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version:" id="b8r-Ju-Lat">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -369,7 +370,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="356">
                     <rect key="frame" x="51" y="42" width="198" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="作者： code.falling@gmail.com" id="357">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Author: code.falling@gmail.com" id="357">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -405,7 +406,7 @@
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q9F-62-ePq">
                     <rect key="frame" x="447" y="13" width="125" height="32"/>
-                    <buttonCell key="cell" type="push" title="载入样例脚本" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aqv-sE-iud">
+                    <buttonCell key="cell" type="push" title="Load Example" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aqv-sE-iud">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -415,7 +416,7 @@
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="klG-Yb-lXf">
                     <rect key="frame" x="572" y="13" width="170" height="32"/>
-                    <buttonCell key="cell" type="push" title="在外部编辑器编辑" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cl6-Yg-6iY">
+                    <buttonCell key="cell" type="push" title="Edit in External Editor" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cl6-Yg-6iY">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -503,9 +504,9 @@
             <rect key="frame" x="0.0" y="0.0" width="588" height="366"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yn2-oF-bXR">
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="yn2-oF-bXR">
                     <rect key="frame" x="6" y="340" width="114" height="18"/>
-                    <buttonCell key="cell" type="radio" title="黑名单模式" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="BDA-RK-czZ">
+                    <buttonCell key="cell" type="radio" title="Black list mode" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="BDA-RK-czZ">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -513,9 +514,9 @@
                         <action selector="whiteBlackRadioClicked:" target="-2" id="JvM-QE-Z0v"/>
                     </connections>
                 </button>
-                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jtj-ww-LUc">
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="jtj-ww-LUc">
                     <rect key="frame" x="297" y="340" width="117" height="18"/>
-                    <buttonCell key="cell" type="radio" title="白名单模式" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="ztb-nI-iil">
+                    <buttonCell key="cell" type="radio" title="White list mode" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="ztb-nI-iil">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -523,9 +524,9 @@
                         <action selector="whiteBlackRadioClicked:" target="-2" id="vx4-Rs-qiN"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O3m-tP-4Yw">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O3m-tP-4Yw">
                     <rect key="frame" x="1" y="-1" width="100" height="32"/>
-                    <buttonCell key="cell" type="push" title="放大窗口" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7xg-Hp-Yhw">
+                    <buttonCell key="cell" type="push" title="Go bigger" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7xg-Hp-Yhw">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -533,9 +534,9 @@
                         <action selector="filterViewGoBiggerClicked:" target="-2" id="CNM-RL-Vmn"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zse-PN-yEi">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zse-PN-yEi">
                     <rect key="frame" x="482" y="-1" width="107" height="32"/>
-                    <buttonCell key="cell" type="push" title="应用规则" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VCT-WP-3Oh">
+                    <buttonCell key="cell" type="push" title="apply rules" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VCT-WP-3Oh">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -571,12 +572,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Sj-y2-KlM">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Sj-y2-KlM">
                     <rect key="frame" x="120" y="331" width="71" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="8L5-Pm-ug6"/>
                     </constraints>
-                    <buttonCell key="cell" type="push" title="添加.." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PQ5-fb-DKg">
+                    <buttonCell key="cell" type="push" title="add.." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PQ5-fb-DKg">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -584,12 +585,12 @@
                         <action selector="filterBlackListAddClicked:" target="-2" id="hfn-NF-X3V"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h4u-DS-rrd">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h4u-DS-rrd">
                     <rect key="frame" x="417" y="331" width="71" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="FRl-vV-mGZ"/>
                     </constraints>
-                    <buttonCell key="cell" type="push" title="添加.." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="seb-qO-V3w">
+                    <buttonCell key="cell" type="push" title="add.." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="seb-qO-V3w">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -659,7 +660,7 @@
             <subviews>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101">
                     <rect key="frame" x="35" y="257" width="285" height="18"/>
-                    <buttonCell key="cell" type="check" title="在启动时打开偏好面板" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="245">
+                    <buttonCell key="cell" type="check" title="Open Preferences Window at Startup" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="245">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -669,7 +670,7 @@
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="353">
                     <rect key="frame" x="35" y="227" width="255" height="18"/>
-                    <buttonCell key="cell" type="check" title="显示手势预览" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="354">
+                    <buttonCell key="cell" type="check" title="Show Gesture Preview" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="354">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -679,7 +680,7 @@
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="402">
                     <rect key="frame" x="35" y="136" width="255" height="18"/>
-                    <buttonCell key="cell" type="check" title="登录时自动启动" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="403">
+                    <buttonCell key="cell" type="check" title="Auto Start at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="403">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -689,7 +690,7 @@
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hkg-rv-4UA">
                     <rect key="frame" x="35" y="197" width="255" height="18"/>
-                    <buttonCell key="cell" type="check" title="显示手势说明" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kHw-iF-xLb">
+                    <buttonCell key="cell" type="check" title="Show Gesture Note" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kHw-iF-xLb">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -699,7 +700,7 @@
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="399">
                     <rect key="frame" x="35" y="166" width="255" height="18"/>
-                    <buttonCell key="cell" type="check" title="不绘制鼠标路径" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="400">
+                    <buttonCell key="cell" type="check" title="Disable Mouse Path" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="400">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -709,7 +710,7 @@
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3wU-L9-5Kf">
                     <rect key="frame" x="190" y="198" width="35" height="16"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="字体:" id="0ye-8N-1Bv">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Font:" id="0ye-8N-1Bv">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -717,7 +718,7 @@
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X4V-8y-v3n">
                     <rect key="frame" x="331" y="188" width="81" height="32"/>
-                    <buttonCell key="cell" type="push" title="选择" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="02o-xA-KDH">
+                    <buttonCell key="cell" type="push" title="Choose" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="02o-xA-KDH">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -756,7 +757,7 @@
                 </slider>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gw6-Zj-Tad">
                     <rect key="frame" x="202" y="227" width="37" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="大小:" id="c53-qo-yp4">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Size:" id="c53-qo-yp4">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -775,7 +776,7 @@
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5rb-jA-QTU">
                     <rect key="frame" x="35" y="106" width="335" height="18"/>
-                    <buttonCell key="cell" type="check" title="在所有App中显示" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Pif-49-STQ">
+                    <buttonCell key="cell" type="check" title="Show UI In Whatever App" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Pif-49-STQ">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -785,7 +786,7 @@
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ccx-Tb-9cw">
                     <rect key="frame" x="35" y="76" width="204" height="18"/>
-                    <buttonCell key="cell" type="check" title="在状态栏中显示图标" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ztS-80-zXz">
+                    <buttonCell key="cell" type="check" title="Show Icon In Status Bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ztS-80-zXz">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -796,7 +797,7 @@
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yFC-aS-4mO">
                     <rect key="frame" x="35" y="23" width="129" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="线的颜色：" id="eIp-tq-2xl">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Line color:" id="eIp-tq-2xl">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -816,7 +817,7 @@
                 </colorWell>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Csn-Ze-z2D">
                     <rect key="frame" x="272" y="16" width="140" height="32"/>
-                    <buttonCell key="cell" type="push" title="重置到预设" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9qA-nt-g9l">
+                    <buttonCell key="cell" type="push" title="Reset Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9qA-nt-g9l">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -824,6 +825,25 @@
                         <action selector="resetDefaults:" target="-2" id="vhD-LC-fMz"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZPH-L7-3sd">
+                    <rect key="frame" x="35" y="49" width="92" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Language:" id="5rs-3N-RX4">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0fU-Oh-h2G">
+                    <rect key="frame" x="124" y="43" width="73" height="26"/>
+                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="vO1-Ay-86c">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </comboBoxCell>
+                    <connections>
+                        <action selector="languageChanged:" target="-2" id="dmR-iw-ZQ4"/>
+                    </connections>
+                </comboBox>
             </subviews>
             <connections>
                 <outlet property="nextKeyView" destination="101" id="220"/>
