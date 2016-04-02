@@ -122,7 +122,8 @@ static NSImage *downImage;
             [path moveToPoint:[points[0] pointValue]];
         }
         for (int i = 1; i < points.count; i++) {
-            [path lineToPoint:[points[i] pointValue]];
+            if (i % 3 == 0)
+                [path lineToPoint:[points[i] pointValue]];
         }
         [path stroke];
     }
