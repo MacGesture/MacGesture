@@ -16,7 +16,7 @@ Configureable global mouse gesture for Mac OS X.
 
 # Preview
 
-![Preview](http://m1.yea.im/3Hr.gif)
+![Preview](https://cloud.githubusercontent.com/assets/5436704/14278725/bb126d36-fb5b-11e5-9fe8-5990ea4c1c28.gif)
 
 # Q&A
 
