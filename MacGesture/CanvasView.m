@@ -113,7 +113,7 @@ static NSImage *downImage;
 
 - (void)drawRect:(NSRect)dirtyRect {
     // draw mouse line
-
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableMousePath"]) {
         NSBezierPath *path = [NSBezierPath bezierPath];
         path.lineWidth = radius * 2;
@@ -122,29 +122,18 @@ static NSImage *downImage;
             [path moveToPoint:[points[0] pointValue]];
         }
         for (int i = 1; i < points.count; i++) {
-            if (i % 3 == 0)
-                [path lineToPoint:[points[i] pointValue]];
+            [path lineToPoint:[points[i] pointValue]];
         }
+
         [path stroke];
     }
 
     //[textImage drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
     [self drawDirection];
     [self drawNote];
-}
-
-- (void)drawCircleAtPoint:(NSPoint)point {
-    /*
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [image lockFocus];
-        NSBezierPath *path = [NSBezierPath bezierPathWithOvalInRect:NSMakeRect(point.x - radius, point.y - radius, radius * 2, radius * 2)];
-        [color set];
-        [path fill];
-
-        [image unlockFocus];
-    });*/
 
 }
+
 
 - (void)drawLineFromPoint:(NSPoint)point1 toPoint:(NSPoint)point2 {
     [points addObject:[NSValue valueWithPoint:point1]];
@@ -164,15 +153,6 @@ static NSImage *downImage;
     self.needsDisplay = YES;
 }
 
-- (void)setEnable:(BOOL)shouldEnable {
-/*
-	if (!shouldEnable) {
-		image = nil;
-	} else if (image == nil) {
-		image = [[NSImage alloc] initWithSize:NSScreen.mainScreen.frame.size];
-	}
-*/
-}
 
 - (void)mouseDown:(NSEvent *)event {
     lastLocation = [NSEvent mouseLocation];

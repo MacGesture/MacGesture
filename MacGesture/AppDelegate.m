@@ -194,28 +194,34 @@ void resetDirection() {
 }
 
 static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
+    static bool shouldShow;
     if (type != kCGEventRightMouseDown && type != kCGEventRightMouseDragged && type != kCGEventRightMouseUp && type != kCGEventTapDisabledByTimeout) {
         return NULL;
     }
     
-    // not thread safe, but it's always called in main thread
-    // check blocker apps
-//    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){
-    NSString *frontBundle = frontBundleName();
-    if (![BWFilter willHookRightClickForApp:frontBundle] || !([[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] || [[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
-//        CGEventPost(kCGSessionEventTap, mouseDownEvent);
-//        if (mouseDraggedEvent) {
-//            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
-//        }
-        CGEventPost(kCGSessionEventTap, event);
-        return NULL;
-    }
-
+    
     NSEvent *mouseEvent;
     switch (type) {
         case kCGEventRightMouseDown:
+            // not thread safe, but it's always called in main thread
+            // check blocker apps
+            //    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){
+        {
+            NSString *frontBundle = frontBundleName();
+            if (![BWFilter willHookRightClickForApp:frontBundle] || !([[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] || [[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
+                //        CGEventPost(kCGSessionEventTap, mouseDownEvent);
+                //        if (mouseDraggedEvent) {
+                //            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
+                //        }
+                shouldShow = NO;
+                CGEventPost(kCGSessionEventTap, event);
+                return NULL;
+            }
+            shouldShow = YES;
+        }
             if (mouseDownEvent) { // mouseDownEvent may not release when kCGEventTapDisabledByTimeout
                 resetDirection();
+
                 CGPoint location = CGEventGetLocation(mouseDownEvent);
                 CGEventPost(kCGSessionEventTap, mouseDownEvent);
                 CFRelease(mouseDownEvent);
@@ -238,6 +244,10 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             lastLocation = mouseEvent.locationInWindow;
             break;
         case kCGEventRightMouseDragged:
+            if (!shouldShow){
+                CGEventPost(kCGSessionEventTap, event);
+                return NULL;
+            }
             if (mouseDownEvent) {
                 mouseEvent = [NSEvent eventWithCGEvent:event];
                 if (mouseDraggedEvent) {
