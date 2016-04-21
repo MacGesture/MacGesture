@@ -193,12 +193,9 @@ void resetDirection() {
     [direction setString:@""];
 }
 
+// See https://developer.apple.com/library/mac/documentation/Carbon/Reference/QuartzEventServicesRef/#//apple_ref/c/tdef/CGEventTapCallBack
 static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
     static bool shouldShow;
-    if (type != kCGEventRightMouseDown && type != kCGEventRightMouseDragged && type != kCGEventRightMouseUp && type != kCGEventTapDisabledByTimeout) {
-        return NULL;
-    }
-    
     
     NSEvent *mouseEvent;
     switch (type) {
@@ -206,6 +203,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             // not thread safe, but it's always called in main thread
             // check blocker apps
             //    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){
+            if (true)
             {
                 NSString *frontBundle = frontBundleName();
                 if (![BWFilter willHookRightClickForApp:frontBundle] || !([[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] || [[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
@@ -214,8 +212,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 //            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
                 //        }
                     shouldShow = NO;
-                    CGEventPost(kCGSessionEventTap, event);
-                    return NULL;
+                    return event;
                 }
                 shouldShow = YES;
             }
@@ -246,8 +243,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             break;
         case kCGEventRightMouseDragged:
             if (!shouldShow){
-                CGEventPost(kCGSessionEventTap, event);
-                return NULL;
+                return event;
             }
             
             if (mouseDownEvent) {
@@ -264,8 +260,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             break;
         case kCGEventRightMouseUp: {
             if (!shouldShow){
-                CGEventPost(kCGSessionEventTap, event);
-                return NULL;
+                return event;
             }
             
             if (mouseDownEvent) {
@@ -299,7 +294,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             return event;
     }
 
-    return NULL;
+    return event;
 }
 
 @end
