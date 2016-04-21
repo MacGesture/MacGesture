@@ -206,19 +206,20 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             // not thread safe, but it's always called in main thread
             // check blocker apps
             //    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){
-        {
-            NSString *frontBundle = frontBundleName();
-            if (![BWFilter willHookRightClickForApp:frontBundle] || !([[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] || [[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
+            {
+                NSString *frontBundle = frontBundleName();
+                if (![BWFilter willHookRightClickForApp:frontBundle] || !([[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] || [[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
                 //        CGEventPost(kCGSessionEventTap, mouseDownEvent);
                 //        if (mouseDraggedEvent) {
                 //            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
                 //        }
-                shouldShow = NO;
-                CGEventPost(kCGSessionEventTap, event);
-                return NULL;
+                    shouldShow = NO;
+                    CGEventPost(kCGSessionEventTap, event);
+                    return NULL;
+                }
+                shouldShow = YES;
             }
-            shouldShow = YES;
-        }
+            
             if (mouseDownEvent) { // mouseDownEvent may not release when kCGEventTapDisabledByTimeout
                 resetDirection();
 
@@ -248,6 +249,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 CGEventPost(kCGSessionEventTap, event);
                 return NULL;
             }
+            
             if (mouseDownEvent) {
                 mouseEvent = [NSEvent eventWithCGEvent:event];
                 if (mouseDraggedEvent) {
@@ -261,6 +263,11 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             }
             break;
         case kCGEventRightMouseUp: {
+            if (!shouldShow){
+                CGEventPost(kCGSessionEventTap, event);
+                return NULL;
+            }
+            
             if (mouseDownEvent) {
                 mouseEvent = [NSEvent eventWithCGEvent:event];
                 [windowController handleMouseEvent:mouseEvent];
