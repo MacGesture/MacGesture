@@ -292,7 +292,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             return event;
     }
 
-    return event;
+    return NULL;
 }
 
 @end
