@@ -48,7 +48,7 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="71" id="jZB-ch-0Oy"/>
                     </constraints>
-                    <popUpButtonCell key="cell" type="push" title="+" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="BT0-6L-6TA" id="DFS-xx-271">
+                    <popUpButtonCell key="cell" type="push" title="+" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="DFS-xx-271">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="VLI-wA-P9u">
@@ -412,16 +412,6 @@
                         <action selector="createAppleScript:" target="-2" id="p3Z-Dx-uE3"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q9F-62-ePq">
-                    <rect key="frame" x="447" y="13" width="125" height="32"/>
-                    <buttonCell key="cell" type="push" title="Load Example" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aqv-sE-iud">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="loadExampleAppleScript:" target="-2" id="DPP-Td-NDH"/>
-                    </connections>
-                </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="klG-Yb-lXf">
                     <rect key="frame" x="572" y="13" width="170" height="32"/>
                     <buttonCell key="cell" type="push" title="Edit in External Editor" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cl6-Yg-6iY">
@@ -487,7 +477,7 @@
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="pPv-0a-vIb">
-                        <rect key="frame" x="1" y="-14" width="0.0" height="15"/>
+                        <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="9g8-Dy-j0E">
@@ -505,6 +495,34 @@
                         <action selector="removeAppleScript:" target="-2" id="AKT-r8-YBM"/>
                     </connections>
                 </button>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q9F-62-ePq">
+                    <rect key="frame" x="447" y="17" width="126" height="26"/>
+                    <popUpButtonCell key="cell" type="push" title="Load Example" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="aqv-sE-iud" userLabel="Load Example">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="aab-dw-fgg">
+                            <items>
+                                <menuItem title="Load Example" state="on" hidden="YES" id="adc-de-fgh">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="njG-SY-RQX">
+                    <rect key="frame" x="359" y="17" width="76" height="26"/>
+                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="GFT-3S-r6r" id="1oV-du-tOz">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="trJ-5B-qGG">
+                            <items>
+                                <menuItem title="Item 1" state="on" id="GFT-3S-r6r"/>
+                                <menuItem title="Item 2" id="FWE-xq-kXU"/>
+                                <menuItem title="Item 3" id="y7f-hO-Zic"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
             </subviews>
             <point key="canvasLocation" x="804" y="807"/>
         </customView>
@@ -562,10 +580,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="281" height="296"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="266" height="296"/>
+                                <size key="minSize" width="281" height="296"/>
                                 <size key="maxSize" width="481" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="266" height="296"/>
+                                <size key="minSize" width="281" height="296"/>
                                 <size key="maxSize" width="481" height="10000000"/>
                             </textView>
                         </subviews>
@@ -576,7 +594,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="yBO-uj-USp">
-                        <rect key="frame" x="267" y="1" width="15" height="296"/>
+                        <rect key="frame" x="266" y="1" width="16" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -616,10 +634,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="281" height="296"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="266" height="296"/>
+                                <size key="minSize" width="281" height="296"/>
                                 <size key="maxSize" width="10000" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="266" height="296"/>
+                                <size key="minSize" width="281" height="296"/>
                                 <size key="maxSize" width="10000" height="10000000"/>
                             </textView>
                         </subviews>
@@ -630,7 +648,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="DhI-gZ-AER">
-                        <rect key="frame" x="267" y="1" width="15" height="296"/>
+                        <rect key="frame" x="266" y="1" width="16" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
