@@ -58,6 +58,8 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     [super windowDidLoad];
 //    [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
     
+    [[self window] setDelegate:self];
+    
     self.autoStartAtLogin.state = [[NSBundle mainBundle] isLoginItem] ? NSOnState : NSOffState;
     self.versionCode.stringValue = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
     [self refreshFilterRadioAndTextViewState];
@@ -77,6 +79,11 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     if (languages) {
         [[self languageComboBox] selectItemWithObjectValue:languages[0]];
     }
+}
+
+- (BOOL)windowShouldClose:(id)sender {
+    [[self window] orderOut:self];
+    return NO;
 }
 
 - (void)refreshFilterRadioAndTextViewState {

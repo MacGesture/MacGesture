@@ -107,16 +107,14 @@ static AppPrefsWindowController *_preferencesWindowController;
 
 - (void)showPreferences {
     [NSApp activateIgnoringOtherApps:YES];
-    //instantiate preferences window controller
-    if (_preferencesWindowController) {
-        [_preferencesWindowController close];
-        _preferencesWindowController = nil;
-    }
-    //init from nib but the real initialization happens in the
-    //PreferencesWindowController setupToolbar method
-    _preferencesWindowController = [[AppPrefsWindowController alloc] initWithWindowNibName:@"Preferences"];
     
-    [_preferencesWindowController showWindow:self];
+    //instantiate preferences window controller
+    if (!_preferencesWindowController) {
+        _preferencesWindowController = [[AppPrefsWindowController alloc] initWithWindowNibName:@"Preferences"];
+        [_preferencesWindowController showWindow:self];
+    } else {
+       [[_preferencesWindowController window] orderFront:self];
+    }
 }
 
 - (IBAction)openPreferences:(id)sender {
@@ -195,7 +193,7 @@ void resetDirection() {
 
 // See https://developer.apple.com/library/mac/documentation/Carbon/Reference/QuartzEventServicesRef/#//apple_ref/c/tdef/CGEventTapCallBack
 static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
-    static bool shouldShow;
+    static BOOL shouldShow;
     
     NSEvent *mouseEvent;
     switch (type) {

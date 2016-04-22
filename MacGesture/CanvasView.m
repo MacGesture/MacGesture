@@ -188,10 +188,13 @@ static NSImage *downImage;
 
 }
 
+- (void)setEnable:(BOOL)shouldEnable {
+    // No op. Supress warning and avoid possible selector not found errors.
+}
+
 - (void)mouseUp:(NSEvent *)event {
     [self clear];
 }
-
 
 - (void)writeDirection:(NSString *)directionStr; {
     directionToDraw = directionStr;
