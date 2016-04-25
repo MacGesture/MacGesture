@@ -80,8 +80,8 @@
           <sparkle:releaseNotesLink>
             https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changelog/2.1.1.html
           </sparkle:releaseNotesLink>
-          <pubDate>2016-04-25 21:53 +8</pubDate>
-          <enclosure url="https://github.com/CodeFalling/MacGesture/releases/download/2.1.1/MacGesture-2.1.1.zip" sparkle:version="2.1.1" length="1589970" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCeIH7ZV4x/3E7GsUfzp5/iNY1HmwIVAMjphx7oScFLDBd0jwxRbFpBGBM9" />
+          <pubDate>2016-04-25 22:41 +8</pubDate>
+          <enclosure url="https://github.com/CodeFalling/MacGesture/releases/download/2.1.1/MacGesture-2.1.1.zip" sparkle:version="2.1.1" length="1589313" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCxlDmNxAmes+q9adgQvKAinF8fGgIUbAydp2oVv26i/s9NwUVhaqAqyrA=" />
           <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
   </item>
   
