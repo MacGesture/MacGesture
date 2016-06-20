@@ -35,7 +35,8 @@ static NSArray *exampleAppleScripts;
 
 + (void)initialize {
     exampleAppleScripts = [NSArray arrayWithObjects:@"ChromeCloseTabsToTheRight", @"Close Tabs To The Right In Chrome",
-                           @"OpenMacGesturePreferences", @"Open MacGesture Preferences", nil];
+                           @"OpenMacGesturePreferences", @"Open MacGesture Preferences",
+                           @"SearchInWeb", @"Search in Web", nil];
 }
 
 - (void)changeSize:(NSInteger *)index changeSizeButton:(NSButton *)button preferenceView:(NSView *)view {

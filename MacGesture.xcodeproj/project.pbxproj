@@ -15,6 +15,7 @@
 		1381E4CC1824E7E800E815F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381E4AB1824E7E800E815F5 /* Cocoa.framework */; };
 		1381E4D41824E7E800E815F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4D21824E7E800E815F5 /* InfoPlist.strings */; };
 		1381E4D61824E7E800E815F5 /* MacGestureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4D51824E7E800E815F5 /* MacGestureTests.m */; };
+		21D5AAF88B7E00E52401122E /* libPods-MacGesture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4389FB13810EBE5934C100 /* libPods-MacGesture.a */; };
 		2641800AADBF86F6E76A37B3 /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418B1111120858F175152C /* CanvasView.m */; };
 		2641804FA39EEA04BDDC27B2 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 26418DFD972C75FBEF81D049 /* right.png */; };
 		2641813EC194C60DC1B1806D /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418F4D8FB5BC803E3EB850 /* utils.m */; };
@@ -32,7 +33,6 @@
 		26418E623E410EF207EFA2A8 /* RulesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418733B12703C123D16E95 /* RulesList.m */; };
 		3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */; };
 		3CDC5543D4E5BD248515F7CA /* BlackWhiteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */; };
-		68C087AD74CFB1C5E0528759 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1136B136EA3AC3F1862223E3 /* libPods.a */; };
 		880AA7571CA5738A006E7A74 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7591CA5738A006E7A74 /* Preferences.xib */; };
 		880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */; };
 		880AA7651CA5745D006E7A74 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75F1CA5745D006E7A74 /* Credits.rtf */; };
@@ -48,6 +48,8 @@
 		88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript */; };
 		B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */; };
 		B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */; };
+		D065A3C91D18154E0062900A /* SearchInWeb.applescript in Sources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript */; };
+		D065A3CA1D18155E0062900A /* SearchInWeb.applescript in Resources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +64,6 @@
 
 /* Begin PBXFileReference section */
 		075C1BC81C214E9A00B7211A /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
-		1136B136EA3AC3F1862223E3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1331CD80182C50E500782D16 /* menu_icon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon_16x16.png; sourceTree = "<group>"; };
 		1331CD81182C50E500782D16 /* menu_icon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon_32x32.png; sourceTree = "<group>"; };
 		1381E4AB1824E7E800E815F5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -78,6 +79,7 @@
 		1381E4D11824E7E800E815F5 /* MacGestureTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacGestureTests-Info.plist"; sourceTree = "<group>"; };
 		1381E4D31824E7E800E815F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1381E4D51824E7E800E815F5 /* MacGestureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MacGestureTests.m; sourceTree = "<group>"; };
+		1ACB654207F7BCBC992336E4 /* Pods-MacGesture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture.debug.xcconfig"; sourceTree = "<group>"; };
 		264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderControlWithTagid.m; sourceTree = "<group>"; };
 		264180FCC355082AC7EDFD74 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		264182CCCB38C9FAD7896BD5 /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = General.png; sourceTree = "<group>"; };
@@ -100,7 +102,6 @@
 		26418DFD972C75FBEF81D049 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
 		26418F4D8FB5BC803E3EB850 /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
 		26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPrefsWindowController.m; sourceTree = "<group>"; };
-		319D16D664048735E34A0C5E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackWhiteFilter.m; sourceTree = "<group>"; };
 		3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOptionsDefine.h; sourceTree = "<group>"; };
 		3CDC5A614857FE77ADFEA4C8 /* BlackWhiteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackWhiteFilter.h; sourceTree = "<group>"; };
@@ -127,7 +128,9 @@
 		B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPickerWindowController.h; sourceTree = "<group>"; };
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPickerWindowController.m; sourceTree = "<group>"; };
-		F7252488598BED86D8B7C09B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CE4389FB13810EBE5934C100 /* libPods-MacGesture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MacGesture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D065A3C81D18154E0062900A /* SearchInWeb.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SearchInWeb.applescript; sourceTree = "<group>"; };
+		E051A121D93E759C89CE3094 /* Pods-MacGesture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */,
-				68C087AD74CFB1C5E0528759 /* libPods.a in Frameworks */,
+				21D5AAF88B7E00E52401122E /* libPods-MacGesture.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,7 +161,7 @@
 				1381E4CF1824E7E800E815F5 /* MacGestureTests */,
 				1381E4AA1824E7E800E815F5 /* Frameworks */,
 				1381E4A91824E7E800E815F5 /* Products */,
-				B5530CC817F36DD4BE1A0A9B /* Pods */,
+				CCE209CCED2C3EF90609FF7E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,7 +177,7 @@
 			children = (
 				1381E4AB1824E7E800E815F5 /* Cocoa.framework */,
 				1381E4AD1824E7E800E815F5 /* Other Frameworks */,
-				1136B136EA3AC3F1862223E3 /* libPods.a */,
+				CE4389FB13810EBE5934C100 /* libPods-MacGesture.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 		264189E588806C286B6552A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D065A3C81D18154E0062900A /* SearchInWeb.applescript */,
 				880AA7721CA57884006E7A74 /* Localizable.strings */,
 				880AA7671CA57491006E7A74 /* MainMenu.xib */,
 				880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */,
@@ -288,11 +292,11 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		B5530CC817F36DD4BE1A0A9B /* Pods */ = {
+		CCE209CCED2C3EF90609FF7E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				319D16D664048735E34A0C5E /* Pods.debug.xcconfig */,
-				F7252488598BED86D8B7C09B /* Pods.release.xcconfig */,
+				1ACB654207F7BCBC992336E4 /* Pods-MacGesture.debug.xcconfig */,
+				E051A121D93E759C89CE3094 /* Pods-MacGesture.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -304,12 +308,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1381E4D91824E7E800E815F5 /* Build configuration list for PBXNativeTarget "MacGesture" */;
 			buildPhases = (
-				6FA8FD7ACD567068767132B6 /* Check Pods Manifest.lock */,
+				67400C116298A8804058BA6A /* [CP] Check Pods Manifest.lock */,
 				1381E4A41824E7E800E815F5 /* Sources */,
 				1381E4A51824E7E800E815F5 /* Frameworks */,
 				1381E4A61824E7E800E815F5 /* Resources */,
-				2BFB184CE7E1856704AE9FCC /* Embed Pods Frameworks */,
-				7F94634C533F656853C9D03A /* Copy Pods Resources */,
+				C2CC8958184B6BE82579F7B1 /* [CP] Embed Pods Frameworks */,
+				78ED3B33608EAD983CB74225 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -376,6 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D065A3CA1D18155E0062900A /* SearchInWeb.applescript in Resources */,
 				88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript in Resources */,
 				88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript in Resources */,
 				880AA7661CA5745D006E7A74 /* InfoPlist.strings in Resources */,
@@ -411,29 +416,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2BFB184CE7E1856704AE9FCC /* Embed Pods Frameworks */ = {
+		67400C116298A8804058BA6A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6FA8FD7ACD567068767132B6 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,19 +431,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		7F94634C533F656853C9D03A /* Copy Pods Resources */ = {
+		78ED3B33608EAD983CB74225 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2CC8958184B6BE82579F7B1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -470,6 +475,7 @@
 				264183649CB68AD1A072883A /* AppPrefsWindowController.m in Sources */,
 				264184A9FF52175212CBE73F /* CanvasWindow.m in Sources */,
 				2641800AADBF86F6E76A37B3 /* CanvasView.m in Sources */,
+				D065A3C91D18154E0062900A /* SearchInWeb.applescript in Sources */,
 				264183EEE694EB7761D6066B /* CanvasWindowController.m in Sources */,
 				26418E623E410EF207EFA2A8 /* RulesList.m in Sources */,
 				B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */,
@@ -637,7 +643,7 @@
 		};
 		1381E4DA1824E7E800E815F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 319D16D664048735E34A0C5E /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 1ACB654207F7BCBC992336E4 /* Pods-MacGesture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -652,7 +658,7 @@
 		};
 		1381E4DB1824E7E800E815F5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7252488598BED86D8B7C09B /* Pods.release.xcconfig */;
+			baseConfigurationReference = E051A121D93E759C89CE3094 /* Pods-MacGesture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;

@@ -2,9 +2,12 @@ PODS:
   - DBPrefsWindowController (0.0.1)
   - HexColors (4.0.0)
   - IYLoginItem (0.1)
-  - ShortcutRecorder (2.13):
-    - ShortcutRecorder/PTHotKey (= 2.13)
-  - ShortcutRecorder/PTHotKey (2.13)
+  - ShortcutRecorder (2.17):
+    - ShortcutRecorder/Core (= 2.17)
+    - ShortcutRecorder/PTHotKey (= 2.17)
+  - ShortcutRecorder/Core (2.17)
+  - ShortcutRecorder/PTHotKey (2.17):
+    - ShortcutRecorder/Core
   - Sparkle (1.13.1)
 
 DEPENDENCIES:
@@ -20,14 +23,16 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ShortcutRecorder:
-    :commit: 0b3df2b9eabff0638e503fa109af45818c683d9f
+    :commit: 3adf5909a503b6ebf769a1e2a24fc389a3556ed3
     :git: https://github.com/Kentzo/ShortcutRecorder
 
 SPEC CHECKSUMS:
   DBPrefsWindowController: ce0fe8de832c6931302736de5d938e98d2fd59ed
   HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379
   IYLoginItem: e57a86b39d3b9ab0e2fc033adedae01efafd9adf
-  ShortcutRecorder: 683071e0106fb1408b6bb11521975d2be43861b5
+  ShortcutRecorder: c0e1ae0e97917925feab04e8817d2be6ef1b0548
   Sparkle: 2fbd47b869621d1e679c7554e3e19dda02104818
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 283447948450a2f1284c65be7721366d453fcf7e
+
+COCOAPODS: 1.0.1
