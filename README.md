@@ -34,6 +34,7 @@ Icon is design by [DanRabbit](http://www.iconarchive.com/artist/danrabbit.html) 
 
 # Contributor
 
+- [CodeFalling](https://github.com/codefalling)
 - [jiegec](https://github.com/jiegec)
 - [zhangciwu](https://github.com/zhangciwu)
 
