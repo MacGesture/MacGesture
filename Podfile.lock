@@ -8,7 +8,7 @@ PODS:
   - ShortcutRecorder/Core (2.17)
   - ShortcutRecorder/PTHotKey (2.17):
     - ShortcutRecorder/Core
-  - Sparkle (1.13.1)
+  - Sparkle (1.14.0)
 
 DEPENDENCIES:
   - DBPrefsWindowController
@@ -31,7 +31,7 @@ SPEC CHECKSUMS:
   HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379
   IYLoginItem: e57a86b39d3b9ab0e2fc033adedae01efafd9adf
   ShortcutRecorder: c0e1ae0e97917925feab04e8817d2be6ef1b0548
-  Sparkle: 2fbd47b869621d1e679c7554e3e19dda02104818
+  Sparkle: ccd95233b12a3e3d4eeb55ff01dd4c8bb8188b07
 
 PODFILE CHECKSUM: 283447948450a2f1284c65be7721366d453fcf7e
 
