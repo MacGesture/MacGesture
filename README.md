@@ -1,4 +1,4 @@
-# MacGesture 2 ![twitter](https://img.shields.io/twitter/url/https/github.com/CodeFalling/MacGesture.svg?style=social)
+# MacGesture 2 ![tweet](https://img.shields.io/twitter/url/https/github.com/CodeFalling/MacGesture.svg?style=social)
 
 ![logo](logo.png)
 
@@ -17,6 +17,22 @@ Configurable global mouse gesture for Mac OS X.
 # Preview
 
 ![Preview](https://cloud.githubusercontent.com/assets/5436704/14278725/bb126d36-fb5b-11e5-9fe8-5990ea4c1c28.gif)
+
+# The format of gesture
+
++---------+---------+
+| Gesture | Acronym |
++---------+---------+
+| Left    | L       |
+| Up      | U       |
+| Right   | R       |
+| Down    | D       |
+| Mouse L | Z       |
++---------+---------+
+
+Z is the acronym of pinyin of '左' which means 'left' in English.
+So to distinguish 'clicking the left mouse' from 'dragging your mouse left-ward',
+we chose 'Z'.
 
 # Q&A
 

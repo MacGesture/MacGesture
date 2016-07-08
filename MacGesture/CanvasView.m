@@ -70,6 +70,8 @@ static NSImage *downImage;
             case 'D':
                 image = downImage;
                 break;
+            case 'Z':
+                image = [[NSCursor arrowCursor] image];
             default:
                 break;
         }

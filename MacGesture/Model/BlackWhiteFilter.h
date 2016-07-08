@@ -17,7 +17,7 @@
 
 #define BWFilter [BlackWhiteFilter current]
 
-- (BOOL)willHookRightClickForApp:(NSString *)bundleName;
+- (BOOL)shouldHookMouseEventForApp:(NSString *)bundleName;
 
 - (void)compatibleProcedureWithPreviousVersionBlockRules;
 @end
