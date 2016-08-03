@@ -20,15 +20,13 @@ Configurable global mouse gesture for Mac OS X.
 
 # The format of gesture
 
-+---------+---------+
 | Gesture | Acronym |
-+---------+---------+
+|---------|---------|
 | Left    | L       |
 | Up      | U       |
 | Right   | R       |
 | Down    | D       |
 | Mouse L | Z       |
-+---------+---------+
 
 Z is the acronym of pinyin of '左' which means 'left' in English.
 So to distinguish 'clicking the left mouse' from 'dragging your mouse left-ward',
