@@ -36,7 +36,7 @@ static AppPrefsWindowController *_preferencesWindowController;
     
     windowController = [[CanvasWindowController alloc] init];
 
-    CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) | CGEventMaskBit(kCGEventRightMouseUp) | CGEventMaskBit(kCGEventLeftMouseDown);
+    CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) | CGEventMaskBit(kCGEventRightMouseUp) | CGEventMaskBit(kCGEventLeftMouseDown) | CGEventMaskBit(kCGEventScrollWheel);
     mouseEventTap = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, kCGEventTapOptionDefault, eventMask, mouseEventCallback, NULL);
     CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, mouseEventTap, 0);
     CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
@@ -139,7 +139,6 @@ static void updateDirections(NSEvent *event) {
 
         return; // ignore short distance
     }
-
 
     unichar lastDirectionChar;
     if (direction.length > 0) {
@@ -282,6 +281,32 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             
             resetDirection();
             break;
+        }
+        case kCGEventScrollWheel: {
+            if (!shouldShow) {
+                return event;
+            }
+            double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
+            
+            unichar lastDirectionChar;
+            if (direction.length > 0) {
+                lastDirectionChar = [direction characterAtIndex:direction.length - 1];
+            } else {
+                lastDirectionChar = ' ';
+            }
+            if (delta > 0) {
+                // NSLog(@"Down!");
+                if (lastDirectionChar != 'd') {
+                    [direction appendString:@"d"];
+                    [windowController writeDirection:direction];
+                }
+            } else if (delta < 0){
+                // NSLog(@"Up!");
+                if (lastDirectionChar != 'u') {
+                    [direction appendString:@"u"];
+                    [windowController writeDirection:direction];
+                }
+            }
         }
         case kCGEventTapDisabledByTimeout:
             CGEventTapEnable(mouseEventTap, isEnable); // re-enable

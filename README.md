@@ -27,10 +27,16 @@ Configurable global mouse gesture for Mac OS X.
 | Right   | R       |
 | Down    | D       |
 | Mouse L | Z       |
+| Wheel U | u       |
+| Wheel D | d       |
 
 Z is the acronym of pinyin of '左' which means 'left' in English.
 So to distinguish 'clicking the left mouse' from 'dragging your mouse left-ward',
 we chose 'Z'.
+
+Wheel directions may vary according to system configurations or some tweaks (Karabiner's Reverse Vertical Scrolling, for example).
+
+Gestures must begin with one of 'L', 'U', 'R' and 'D'.
 
 # Q&A
 

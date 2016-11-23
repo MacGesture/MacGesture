@@ -468,13 +468,13 @@ static NSString *currentScriptId = nil;
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
     // control is editfield,control.id == row,control.identifier == "Gesture"|"Filter"|Other(only saving)
     if ([control.identifier isEqualToString:@"Gesture"]) {    // edit gesture
-        NSString *gesture = [control.stringValue uppercaseString];
-        NSCharacterSet *invalidGestureCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ULDRZ"];
+        NSString *gesture = control.stringValue;
+        NSCharacterSet *invalidGestureCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ULDRZud"];
         invalidGestureCharacters = [invalidGestureCharacters invertedSet];
         if ([gesture rangeOfCharacterFromSet:invalidGestureCharacters].location != NSNotFound) {
             NSUserNotification *notification = [[NSUserNotification alloc] init];
             notification.title = @"MacGesture";
-            notification.informativeText = NSLocalizedString(@"Gesture must only contain \"ULDRZ\"", nil);
+            notification.informativeText = NSLocalizedString(@"Gesture must only contain \"ULDRZud\"", nil);
             notification.soundName = NSUserNotificationDefaultSoundName;
             
             [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
