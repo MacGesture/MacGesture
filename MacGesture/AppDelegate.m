@@ -283,7 +283,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             break;
         }
         case kCGEventScrollWheel: {
-            if (!shouldShow) {
+            if (!shouldShow || !mouseDownEvent) {
                 return event;
             }
             double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);

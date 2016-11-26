@@ -95,6 +95,11 @@ static NSArray *exampleAppleScripts;
         [item setAction:@selector(exampleAppleScriptSelected:)];
         [[[self loadAppleScriptExampleButton] menu] addItem:item];
     }
+    
+    NSString *readme = [[NSBundle mainBundle] pathForResource:@"README" ofType:@"html"];
+    NSString *content = [NSString stringWithContentsOfFile:readme encoding:NSUTF8StringEncoding error:NULL];
+    
+    [[[self webView] mainFrame] loadHTMLString:content baseURL:[NSURL URLWithString:readme]];
 }
 
 - (BOOL)windowShouldClose:(id)sender {
