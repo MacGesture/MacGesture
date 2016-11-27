@@ -6,6 +6,8 @@ Configurable global mouse gesture for Mac OS X.
 
 <!-- **(2016-03-13) A lot of work is in the to-do list, but the collaborators are students in school so they may not be able to contribute to this project very often. If you are interested in this project, you can join us as a collaborator. If you want to, please contact @codefalling. Issues and pull requests are highly welcomed, and we are often on line. If this little tool have improved your experience a lot, please spread it so more people would be able to help us. Gracias.** -->
 
+** Multiple issues are reported in Sierra. Please file issues and roll back to earlier versions before we fix all of them. **
+
 # Feature
 
 - Global mouse gesture recognition
