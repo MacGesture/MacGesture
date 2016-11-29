@@ -11,6 +11,12 @@
 #import "MGOptionsDefine.h"
 #import <CoreImage/CoreImage.h>
 
+@interface CanvasView () {
+    NSColor *noteColor;
+}
+
+@end
+
 @implementation CanvasView
 
 static NSImage *leftImage;
@@ -43,17 +49,18 @@ static NSColor *loadedColor;
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
 
-    color = [MGOptionsDefine getLineColor];
-    if( ![color isEqualTo:loadedColor] ) {
-        leftImage   = [self convertImage:[NSImage imageNamed:@"left.png"]   toSpecifiedColor:color];
-        rightImage  = [self convertImage:[NSImage imageNamed:@"right.png"]  toSpecifiedColor:color];
-        downImage   = [self convertImage:[NSImage imageNamed:@"down.png"]   toSpecifiedColor:color];
-        upImage     = [self convertImage:[NSImage imageNamed:@"up.png"]     toSpecifiedColor:color];
-        scrollImage = [self convertImage:[NSImage imageNamed:@"scroll.png"] toSpecifiedColor:color];
-        loadedColor = color;
+    noteColor = [MGOptionsDefine getNoteColor];
+    if( ![noteColor isEqualTo:loadedColor] ) {
+        leftImage   = [self convertImage:[NSImage imageNamed:@"left.png"]   toSpecifiedColor:noteColor];
+        rightImage  = [self convertImage:[NSImage imageNamed:@"right.png"]  toSpecifiedColor:noteColor];
+        downImage   = [self convertImage:[NSImage imageNamed:@"down.png"]   toSpecifiedColor:noteColor];
+        upImage     = [self convertImage:[NSImage imageNamed:@"up.png"]     toSpecifiedColor:noteColor];
+        scrollImage = [self convertImage:[NSImage imageNamed:@"scroll.png"] toSpecifiedColor:noteColor];
+        loadedColor = noteColor;
     }
 
     if (self) {
+        color = [MGOptionsDefine getLineColor];
         points = [[NSMutableArray alloc] init];
         directionToDraw = @"";
         radius = 2;
@@ -131,7 +138,7 @@ static NSColor *loadedColor;
 
         NSFont *font = [NSFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"noteFontName"] size:[[NSUserDefaults standardUserDefaults] doubleForKey:@"noteFontSize"]];
 
-        NSDictionary *textAttributes = @{NSFontAttributeName : font, NSForegroundColorAttributeName : color};
+        NSDictionary *textAttributes = @{NSFontAttributeName : font, NSForegroundColorAttributeName : noteColor};
 
         CGSize size = [note sizeWithAttributes:textAttributes];
         float x = ((screenRect.size.width - size.width) / 2);
