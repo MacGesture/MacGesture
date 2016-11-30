@@ -307,19 +307,19 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                     [windowController writeDirection:direction];
                 }
             }
+            break;
         }
         case kCGEventTapDisabledByTimeout:
             CGEventTapEnable(mouseEventTap, isEnable); // re-enable
             windowController.enable = isEnable;
             break;
         case kCGEventLeftMouseDown: {
-            if (mouseDownEvent) {
-                [direction appendString:@"Z"];
-                [windowController writeDirection:direction];
-                return NULL;
+            if (!shouldShow || !mouseDownEvent) {
+                return event;
             }
-            
-            return event;
+            [direction appendString:@"Z"];
+            [windowController writeDirection:direction];
+            break;
         }
         default:
             return event;
