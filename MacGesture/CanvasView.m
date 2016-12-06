@@ -9,6 +9,13 @@
 #import "CanvasView.h"
 #import "RulesList.h"
 #import "MGOptionsDefine.h"
+#import <CoreImage/CoreImage.h>
+
+@interface CanvasView () {
+    NSColor *noteColor;
+}
+
+@end
 
 @implementation CanvasView
 
@@ -18,14 +25,39 @@ static NSImage *upImage;
 static NSImage *downImage;
 static NSImage *scrollImage;
 
+static NSColor *loadedColor;
+
+- (NSImage*)convertImage:(NSImage*)image toSpecifiedColor:(NSColor *)col
+{
+    CIImage *ciImage = [[CIImage alloc] initWithData:[image TIFFRepresentation]];
+    CIFilter *filter = [CIFilter filterWithName:@"CIColorMatrix"];
+    [filter setValue:ciImage forKey: kCIInputImageKey];
+    [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:0] forKey: @"inputRVector"];
+    [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:0] forKey: @"inputGVector"];
+    [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:0] forKey: @"inputBVector"];
+    [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:1] forKey: @"inputAVector"];
+    [filter setValue:[CIVector vectorWithX:col.redComponent Y:col.greenComponent Z:col.blueComponent W:0] forKey: @"inputBiasVector"];
+    
+    CIImage *output = filter.outputImage;
+    
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CGImageRef cgImage = [context createCGImage:output fromRect:[output extent]];
+    
+    return [[NSImage alloc] initWithCGImage:cgImage size:output.extent.size];
+}
+
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
 
-    leftImage = [NSImage imageNamed:@"left.png"];
-    rightImage = [NSImage imageNamed:@"right.png"];
-    downImage = [NSImage imageNamed:@"down.png"];
-    upImage = [NSImage imageNamed:@"up.png"];
-    scrollImage = [NSImage imageNamed:@"scroll.png"];
+    noteColor = [MGOptionsDefine getNoteColor];
+    if( ![noteColor isEqualTo:loadedColor] ) {
+        leftImage   = [self convertImage:[NSImage imageNamed:@"left.png"]   toSpecifiedColor:noteColor];
+        rightImage  = [self convertImage:[NSImage imageNamed:@"right.png"]  toSpecifiedColor:noteColor];
+        downImage   = [self convertImage:[NSImage imageNamed:@"down.png"]   toSpecifiedColor:noteColor];
+        upImage     = [self convertImage:[NSImage imageNamed:@"up.png"]     toSpecifiedColor:noteColor];
+        scrollImage = [self convertImage:[NSImage imageNamed:@"scroll.png"] toSpecifiedColor:noteColor];
+        loadedColor = noteColor;
+    }
 
     if (self) {
         color = [MGOptionsDefine getLineColor];
@@ -106,7 +138,7 @@ static NSImage *scrollImage;
 
         NSFont *font = [NSFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"noteFontName"] size:[[NSUserDefaults standardUserDefaults] doubleForKey:@"noteFontSize"]];
 
-        NSDictionary *textAttributes = @{NSFontAttributeName : font};
+        NSDictionary *textAttributes = @{NSFontAttributeName : font, NSForegroundColorAttributeName : noteColor};
 
         CGSize size = [note sizeWithAttributes:textAttributes];
         float x = ((screenRect.size.width - size.width) / 2);
