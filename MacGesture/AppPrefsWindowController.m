@@ -260,6 +260,7 @@ static NSArray *exampleAppleScripts;
     
     NSFontPanel *fontPanel = [fontManager fontPanel:YES];
     [fontPanel makeKeyAndOrderFront:self];
+    // This allow to change note color via font panel
     [fontManager setSelectedAttributes:@{NSForegroundColorAttributeName:[MGOptionsDefine getNoteColor]} isMultiple:NO]; //must setup color AFTER displayed or it will keeps black...
 }
 
@@ -269,6 +270,7 @@ static NSArray *exampleAppleScripts;
     [[NSUserDefaults standardUserDefaults] setObject:[font fontName] forKey:@"noteFontName"];
     [[NSUserDefaults standardUserDefaults] setDouble:[font pointSize] forKey:@"noteFontSize"];
 }
+
 - (void)setColor:(NSColor *)col forAttribute:(NSString *)attr {
     if ([attr isEqualToString:@"NSColor"]) {
         [MGOptionsDefine setNoteColor:col];
@@ -278,9 +280,6 @@ static NSArray *exampleAppleScripts;
     NSDictionary * newAttributes = [sender convertAttributes:@{}];
     NSLog(@"attr:%@",newAttributes);
 }
-
-
-
 
 - (IBAction)resetDefaults:(id)sender {
     NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];

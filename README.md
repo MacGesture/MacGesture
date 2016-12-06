@@ -38,8 +38,6 @@ we chose 'Z'.
 
 Wheel directions may vary according to system configurations or some tweaks (Karabiner's Reverse Vertical Scrolling, for example).
 
-Gestures must begin with one of 'L', 'U', 'R' and 'D'.
-
 # Q&A
 
 Feel free to open issue

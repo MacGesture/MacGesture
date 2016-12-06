@@ -7,7 +7,7 @@
 	<key>defaultLineColor</key>
 	<string>#0000ff</string>
 	<key>defaultNoteColor</key>
-	<string>#0000ff</string>
+	<string>#000000</string>
 	<key>showUIInWhateverApp</key>
 	<false/>
 	<key>showGestureNote</key>
