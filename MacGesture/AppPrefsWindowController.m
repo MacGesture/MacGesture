@@ -271,11 +271,13 @@ static NSArray *exampleAppleScripts;
     [[NSUserDefaults standardUserDefaults] setDouble:[font pointSize] forKey:@"noteFontSize"];
 }
 
+// These two functions repond to text color change.
 - (void)setColor:(NSColor *)col forAttribute:(NSString *)attr {
     if ([attr isEqualToString:@"NSColor"]) {
         [MGOptionsDefine setNoteColor:col];
     }
 }
+
 - (void)changeAttributes:(id)sender{
     NSDictionary * newAttributes = [sender convertAttributes:@{}];
     NSLog(@"attr:%@",newAttributes);
@@ -456,6 +458,12 @@ static NSString *currentScriptId = nil;
     notification.soundName = NSUserNotificationDefaultSoundName;
     
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+}
+
+- (IBAction)onToggleMacGestureEnabled:(id)sender {
+    NSButton *button = (NSButton *)sender;
+    bool enabled = [button state];
+    [[AppDelegate appDelegate] setEnabled:enabled];
 }
 
 #pragma mark -

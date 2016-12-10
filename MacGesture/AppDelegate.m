@@ -13,7 +13,7 @@ static CGEventRef mouseDownEvent, mouseDraggedEvent;
 static NSMutableString *direction;
 static NSPoint lastLocation;
 static CFMachPortRef mouseEventTap;
-static bool isEnable;
+static BOOL isEnabled;
 static AppPrefsWindowController *_preferencesWindowController;
 
 + (AppDelegate *)appDelegate {
@@ -44,7 +44,7 @@ static AppPrefsWindowController *_preferencesWindowController;
     CFRelease(runLoopSource);
 
     direction = [NSMutableString string];
-    isEnable = true;
+    isEnabled = YES;
     
     NSURL *defaultPrefsFile = [[NSBundle mainBundle]
                                URLForResource:@"DefaultPreferences" withExtension:@"plist"];
@@ -84,7 +84,7 @@ static AppPrefsWindowController *_preferencesWindowController;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showIconInStatusBar"]) {
         [self setStatusItem:[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength]];
         
-        NSImage *menuIcon = [NSImage imageNamed:@"Menu Icon"];
+        NSImage *menuIcon = [NSImage imageNamed:@"Menu Icon Enabled"];
         //NSImage *highlightIcon = [NSImage imageNamed:@"Menu Icon"]; // Yes, we're using the exact same image asset.
         //[highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
         [menuIcon setTemplate:YES];
@@ -113,6 +113,19 @@ static AppPrefsWindowController *_preferencesWindowController;
         [_preferencesWindowController showWindow:self];
     } else {
        [[_preferencesWindowController window] orderFront:self];
+    }
+}
+
+- (void)setEnabled:(BOOL)enabled {
+    isEnabled = enabled;
+    if ([self statusItem]) {
+        NSImage *menuIcon;
+        if (isEnabled) {
+            menuIcon = [NSImage imageNamed:@"Menu Icon Enabled"];
+        } else {
+            menuIcon = [NSImage imageNamed:@"Menu Icon Disabled"];
+        }
+        [[self statusItem] setImage:menuIcon];
     }
 }
 
@@ -192,6 +205,10 @@ void resetDirection() {
 // See https://developer.apple.com/library/mac/documentation/Carbon/Reference/QuartzEventServicesRef/#//apple_ref/c/tdef/CGEventTapCallBack
 static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
     static BOOL shouldShow;
+    
+    if (!isEnabled) {
+        return event;
+    }
     
     NSEvent *mouseEvent;
     switch (type) {
@@ -311,8 +328,8 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             break;
         }
         case kCGEventTapDisabledByTimeout:
-            CGEventTapEnable(mouseEventTap, isEnable); // re-enable
-            windowController.enable = isEnable;
+            CGEventTapEnable(mouseEventTap, true); // re-enable
+            // windowController.enable = isEnable;
             break;
         case kCGEventLeftMouseDown: {
             if (!shouldShow || !mouseDownEvent) {

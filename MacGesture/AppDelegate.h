@@ -13,5 +13,6 @@
 + (AppDelegate *)appDelegate;
 - (void)updateStatusBarItem;
 - (void)receiveOpenPreferencesNotification:(NSNotification *)notification;
+- (void)setEnabled:(BOOL)enabled;
 
 @end
