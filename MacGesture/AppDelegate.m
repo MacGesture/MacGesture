@@ -15,9 +15,9 @@ static NSPoint lastLocation;
 static CFMachPortRef mouseEventTap;
 static BOOL isEnabled;
 static AppPrefsWindowController *_preferencesWindowController;
+static NSTimeInterval lastMouseWheelEventTime;
 
 + (AppDelegate *)appDelegate {
-
     return (AppDelegate *) [[NSApplication sharedApplication] delegate];
 }
 
@@ -78,6 +78,8 @@ static AppPrefsWindowController *_preferencesWindowController;
     [center addObserver:self selector:@selector(receiveOpenPreferencesNotification:) name:name object:nil suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
     
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+    
+    lastMouseWheelEventTime = 0;
 }
 
 - (void)updateStatusBarItem {
@@ -141,6 +143,21 @@ static AppPrefsWindowController *_preferencesWindowController;
     [self showPreferences];
 }
 
+static void addDirection(unichar dir, bool allowSameDirection) {
+    unichar lastDirectionChar;
+    if (direction.length > 0) {
+        lastDirectionChar = [direction characterAtIndex:direction.length - 1];
+    } else {
+        lastDirectionChar = ' ';
+    }
+    
+    if (dir != lastDirectionChar || allowSameDirection) {
+        NSString *temp = [NSString stringWithCharacters:&dir length:1];
+        [direction appendString:temp];
+        [windowController writeDirection:direction];
+    }
+}
+
 static void updateDirections(NSEvent *event) {
     // not thread safe
     NSPoint newLocation = event.locationInWindow;
@@ -149,46 +166,27 @@ static void updateDirections(NSEvent *event) {
     double absX = fabs(deltaX);
     double absY = fabs(deltaY);
     if (absX + absY < 20) {
-
         return; // ignore short distance
     }
-
-    unichar lastDirectionChar;
-    if (direction.length > 0) {
-        lastDirectionChar = [direction characterAtIndex:direction.length - 1];
-    } else {
-        lastDirectionChar = ' ';
-    }
+    
     lastLocation = event.locationInWindow;
 
 
     if (absX > absY) {
         if (deltaX > 0) {
-            if (lastDirectionChar != 'R') {
-                [direction appendString:@"R"];
-                [windowController writeDirection:direction];
-                return;
-            }
+            addDirection('R', false);
+            return;
         } else {
-            if (lastDirectionChar != 'L') {
-                [direction appendString:@"L"];
-                [windowController writeDirection:direction];
-                return;
-            }
+            addDirection('L', false);
+            return;
         }
     } else {
         if (deltaY > 0) {
-            if (lastDirectionChar != 'U') {
-                [direction appendString:@"U"];
-                [windowController writeDirection:direction];
-                return;
-            }
+            addDirection('U', false);
+            return;
         } else {
-            if (lastDirectionChar != 'D') {
-                [direction appendString:@"D"];
-                [windowController writeDirection:direction];
-                return;
-            }
+            addDirection('D', false);
+            return;
         }
     }
 
@@ -305,25 +303,17 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 return event;
             }
             double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
-            
-            unichar lastDirectionChar;
-            if (direction.length > 0) {
-                lastDirectionChar = [direction characterAtIndex:direction.length - 1];
-            } else {
-                lastDirectionChar = ' ';
-            }
-            if (delta > 0) {
-                // NSLog(@"Down!");
-                if (lastDirectionChar != 'd') {
-                    [direction appendString:@"d"];
-                    [windowController writeDirection:direction];
+
+            NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate];
+            if (current - lastMouseWheelEventTime > 0.3) {
+                if (delta > 0) {
+                    // NSLog(@"Down!");
+                    addDirection('d', true);
+                } else if (delta < 0){
+                    // NSLog(@"Up!");
+                    addDirection('u', true);
                 }
-            } else if (delta < 0){
-                // NSLog(@"Up!");
-                if (lastDirectionChar != 'u') {
-                    [direction appendString:@"u"];
-                    [windowController writeDirection:direction];
-                }
+                lastMouseWheelEventTime = current;
             }
             break;
         }

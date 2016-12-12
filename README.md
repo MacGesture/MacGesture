@@ -32,11 +32,15 @@ Configurable global mouse gesture for Mac OS X.
 | Wheel U | u       |
 | Wheel D | d       |
 
+Gesture can contain wildcard matching('?' and '*'). Only supported in development version yet.
+
+The first rule matching will take effect.
+
 Z is the acronym of pinyin of '左' which means 'left' in English.
 So to distinguish 'clicking the left mouse' from 'dragging your mouse left-ward',
 we chose 'Z'.
 
-Wheel directions may vary according to system configurations or some tweaks (Karabiner's Reverse Vertical Scrolling, for example).
+Wheel directions may vary according to system configurations or some system tweaks (Karabiner's Reverse Vertical Scrolling, for example).
 
 # Q&A
 

@@ -494,12 +494,12 @@ static NSString *currentScriptId = nil;
     // control is editfield,control.id == row,control.identifier == "Gesture"|"Filter"|Other(only saving)
     if ([control.identifier isEqualToString:@"Gesture"]) {    // edit gesture
         NSString *gesture = control.stringValue;
-        NSCharacterSet *invalidGestureCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ULDRZud"];
+        NSCharacterSet *invalidGestureCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ULDRZud?*"];
         invalidGestureCharacters = [invalidGestureCharacters invertedSet];
         if ([gesture rangeOfCharacterFromSet:invalidGestureCharacters].location != NSNotFound) {
             NSUserNotification *notification = [[NSUserNotification alloc] init];
             notification.title = @"MacGesture";
-            notification.informativeText = NSLocalizedString(@"Gesture must only contain \"ULDRZud\"", nil);
+            notification.informativeText = NSLocalizedString(@"Gesture must only contain \"ULDRZud?*\"", nil);
             notification.soundName = NSUserNotificationDefaultSoundName;
             
             [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];

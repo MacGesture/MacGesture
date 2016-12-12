@@ -757,13 +757,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yFC-aS-4mO">
-                                <rect key="frame" x="18" y="67" width="129" height="22"/>
+                                <rect key="frame" x="18" y="50" width="129" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Line color:" id="eIp-tq-2xl">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lVi-qT-AYg">
+                                <rect key="frame" x="104" y="50" width="70" height="22"/>
+                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="colorChanged:" target="-2" id="0w8-33-wML"/>
+                                    <binding destination="72" name="value" keyPath="values.lineColor" id="o0v-jy-LzA">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </colorWell>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="353">
                                 <rect key="frame" x="18" y="161" width="166" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show Gesture Preview" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="354">
@@ -785,7 +797,7 @@
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="399">
-                                <rect key="frame" x="18" y="115" width="255" height="18"/>
+                                <rect key="frame" x="18" y="118" width="255" height="18"/>
                                 <buttonCell key="cell" type="check" title="Disable Mouse Path" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="400">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -862,7 +874,7 @@
                                 </connections>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5rb-jA-QTU">
-                                <rect key="frame" x="18" y="95" width="335" height="18"/>
+                                <rect key="frame" x="18" y="98" width="335" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show Gesture In Whatever App" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Pif-49-STQ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -871,18 +883,16 @@
                                     <binding destination="72" name="value" keyPath="values.showUIInWhateverApp" id="HHF-Xg-i3Q"/>
                                 </connections>
                             </button>
-                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lVi-qT-AYg">
-                                <rect key="frame" x="104" y="67" width="70" height="22"/>
-                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sbW-is-hRM">
+                                <rect key="frame" x="18" y="78" width="271" height="18"/>
+                                <buttonCell key="cell" type="check" title="Merge Consecutive Identical Gestures" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Tzh-fR-TUh">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
                                 <connections>
-                                    <action selector="colorChanged:" target="-2" id="0w8-33-wML"/>
-                                    <binding destination="72" name="value" keyPath="values.lineColor" id="o0v-jy-LzA">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
-                                        </dictionary>
-                                    </binding>
+                                    <binding destination="72" name="value" keyPath="values.mergeConsecutiveIdenticalGestures" id="yn6-xi-Tyi"/>
                                 </connections>
-                            </colorWell>
+                            </button>
                         </subviews>
                     </view>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>

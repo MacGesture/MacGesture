@@ -83,12 +83,31 @@ static NSColor *loadedColor;
     float scaledHeight = scale * leftImage.size.height;
     float scaledWidth = scale * leftImage.size.width;
     
+    // Can be more efficient, though
+    int numberToDraw = 0;
+    bool merge = [[NSUserDefaults standardUserDefaults] boolForKey:@"mergeConsecutiveIdenticalGestures"];
+    
+    if (merge) {
+        for (NSInteger i = 0;i < directionToDraw.length;i++) {
+            numberToDraw++;
+            char ch = [directionToDraw characterAtIndex:i];
+            if (ch == 'u' || ch == 'd') {
+                for (;i < directionToDraw.length && [directionToDraw characterAtIndex:i] == ch;i++);
+                i--;
+            }
+        }
+    } else {
+        numberToDraw = directionToDraw.length;
+    }
+    
+    
     CGRect screenRect = [[NSScreen mainScreen] frame];
     NSInteger y = (screenRect.size.height - scaledHeight) / 2;
-    NSInteger beginx = (screenRect.size.width - scaledWidth * directionToDraw.length) / 2;
+    NSInteger beginx = (screenRect.size.width - scaledWidth * numberToDraw) / 2;
     
     [NSGraphicsContext saveGraphicsState];
     [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationNone];
+    int index = 0;
     for (NSInteger i = 0; i < directionToDraw.length; i++) {
         NSImage *image = nil;
         char ch = [directionToDraw characterAtIndex:i];
@@ -112,11 +131,31 @@ static NSColor *loadedColor;
             default:
                 break;
         }
-        [image drawInRect:NSMakeRect(beginx + i * scaledWidth, y, scaledWidth, scaledHeight) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
         if (ch == 'u' || ch == 'd') {
             double frac = 0.65;
-            [scrollImage drawInRect:NSMakeRect(beginx + i * scaledWidth + frac * scaledWidth, y - (frac - 0.5)*scaledHeight, scaledWidth*(1-frac), scaledHeight*(1-frac)) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+            
+            if (merge) {
+                int count = 0;
+                for (;i < directionToDraw.length && [directionToDraw characterAtIndex:i] == ch;i++) {
+                    count++;
+                }
+                i--;
+            }
+            
+            /*
+            if (count > 1) {
+                [[NSString stringWithFormat:@"%d", count] drawWithRect: NSMakeRect(beginx + index * scaledWidth, y - (frac - 0.5)*scaledHeight, scaledWidth*(1-frac), scaledHeight*(1-frac))
+                                                               options: NSStringDrawingUsesFontLeading
+                                                            attributes: nil
+                                                               context: nil];
+            }
+             */
+            
+            [scrollImage drawInRect:NSMakeRect(beginx + index * scaledWidth + frac * scaledWidth, y - (frac - 0.5)*scaledHeight, scaledWidth*(1-frac), scaledHeight*(1-frac)) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+            
         }
+        [image drawInRect:NSMakeRect(beginx + index * scaledWidth, y, scaledWidth, scaledHeight) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+        index++;
     }
     [NSGraphicsContext restoreGraphicsState];
 }
