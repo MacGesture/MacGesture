@@ -48,7 +48,7 @@ Feel free to open issue
 
 # Download
 
-Download the latest zip from https://github.com/CodeFalling/MacGesture/releases
+Download the latest zip from https://github.com/MacGesture/MacGesture/releases
 
 # License
 
