@@ -242,8 +242,7 @@ static NSColor *loadedColor;
     lastLocation.x -= s.frame.origin.x;
     lastLocation.y -= s.frame.origin.y;
 #ifdef DEBUG
-    NSLog(@"frame:%@, window:%@, screen:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame));
-    NSLog(@"%@", NSStringFromPoint(lastLocation));
+    NSLog(@"mouseDown frame:%@, window:%@, screen:%@, point:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame), NSStringFromPoint(lastLocation));
 #endif
     [points addObject:[NSValue valueWithPoint:lastLocation]];
 }
@@ -256,6 +255,10 @@ static NSColor *loadedColor;
         NSScreen *s = w.screen;
         newLocation.x -= s.frame.origin.x;
         newLocation.y -= s.frame.origin.y;
+        
+#ifdef DEBUG
+        NSLog(@"mouseDragged frame:%@, window:%@, screen:%@, point:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame), NSStringFromPoint(newLocation));
+#endif
 
 //		[self drawCircleAtPoint:newLocation];
         [points addObject:[NSValue valueWithPoint:newLocation]];
