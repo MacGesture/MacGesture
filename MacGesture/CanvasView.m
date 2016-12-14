@@ -84,11 +84,11 @@ static NSColor *loadedColor;
     float scaledWidth = scale * leftImage.size.width;
     
     // Can be more efficient, though
-    int numberToDraw = 0;
+    NSUInteger numberToDraw = 0;
     bool merge = [[NSUserDefaults standardUserDefaults] boolForKey:@"mergeConsecutiveIdenticalGestures"];
     
     if (merge) {
-        for (NSInteger i = 0;i < directionToDraw.length;i++) {
+        for (NSUInteger i = 0;i < directionToDraw.length;i++) {
             numberToDraw++;
             char ch = [directionToDraw characterAtIndex:i];
             if (ch == 'u' || ch == 'd') {
@@ -99,7 +99,6 @@ static NSColor *loadedColor;
     } else {
         numberToDraw = directionToDraw.length;
     }
-    
     
     CGRect screenRect = [[NSScreen mainScreen] frame];
     NSInteger y = (screenRect.size.height - scaledHeight) / 2;

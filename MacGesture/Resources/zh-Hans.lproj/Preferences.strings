@@ -14,12 +14,6 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "293"; */
 "293.title" = "Text Cell";
 
-/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "296"; */
-"296.title" = "Table View Cell";
-
-/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "300"; */
-"300.title" = "Table View Cell";
-
 /* Class = "BindingConnection"; ibShadowedDisplayPattern = "%{value1}@"; ObjectID = "302"; */
 "302.ibShadowedDisplayPattern" = "%{value1}@";
 
@@ -28,9 +22,6 @@
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "308"; */
 "308.title" = "Text Cell";
-
-/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "310"; */
-"310.title" = "Table View Cell";
 
 /* Class = "NSButtonCell"; title = "-"; ObjectID = "321"; */
 "321.title" = "-";
@@ -67,9 +58,6 @@
 
 /* Class = "NSButtonCell"; title = "Go bigger"; ObjectID = "7xg-Hp-Yhw"; */
 "7xg-Hp-Yhw.title" = "放大窗口";
-
-/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "8RE-6W-jOp"; */
-"8RE-6W-jOp.title" = "Table View Cell";
 
 /* Class = "NSTextFieldCell"; title = "FontScale"; ObjectID = "8SO-RX-LQO"; */
 "8SO-RX-LQO.title" = "FontScale";
@@ -140,11 +128,17 @@
 /* Class = "NSButtonCell"; title = "+"; ObjectID = "fo8-ZY-CtD"; */
 "fo8-ZY-CtD.title" = "+";
 
+/* Class = "NSButtonCell"; title = "Check"; ObjectID = "gPX-Pa-jb5"; */
+"gPX-Pa-jb5.title" = "Check";
+
 /* Class = "NSTextFieldCell"; placeholderString = "Enter AppleScript here"; ObjectID = "gTD-R3-oZl"; */
 "gTD-R3-oZl.placeholderString" = "Enter AppleScript here";
 
 /* Class = "NSButtonCell"; title = "Enable MacGesture"; ObjectID = "gbg-RG-zrR"; */
 "gbg-RG-zrR.title" = "启用MacGesture";
+
+/* Class = "NSTableColumn"; headerCell.title = "Trigger on every match"; ObjectID = "gla-Uy-MuL"; */
+"gla-Uy-MuL.headerCell.title" = "每次匹配时触发";
 
 /* Class = "NSButtonCell"; title = "-"; ObjectID = "hFe-TH-zPF"; */
 "hFe-TH-zPF.title" = "-";

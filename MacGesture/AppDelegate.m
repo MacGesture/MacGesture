@@ -155,6 +155,7 @@ static void addDirection(unichar dir, bool allowSameDirection) {
         NSString *temp = [NSString stringWithCharacters:&dir length:1];
         [direction appendString:temp];
         [windowController writeDirection:direction];
+        handleGesture(NO);
     }
 }
 
@@ -192,8 +193,8 @@ static void updateDirections(NSEvent *event) {
 
 }
 
-static bool handleGesture() {
-    return [[RulesList sharedRulesList] handleGesture:direction];
+static bool handleGesture(BOOL lastGesture) {
+    return [[RulesList sharedRulesList] handleGesture:direction isLastGesture:lastGesture];
 }
 
 void resetDirection() {
@@ -278,7 +279,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 mouseEvent = [NSEvent eventWithCGEvent:event];
                 [windowController handleMouseEvent:mouseEvent];
                 updateDirections(mouseEvent);
-                if (!handleGesture()) {
+                if (!handleGesture(true)) {
                     CGEventPost(kCGSessionEventTap, mouseDownEvent);
                     if (mouseDraggedEvent) {
                         CGEventPost(kCGSessionEventTap, mouseDraggedEvent);

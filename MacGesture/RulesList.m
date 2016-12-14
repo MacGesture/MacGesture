@@ -165,22 +165,40 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     return NO;
 }
 
-- (bool)handleGesture:(NSString *)gesture {
-    NSInteger i = [self suitedRuleWithGesture:gesture];
-    if (i != -1) {
+- (bool)handleGesture:(NSString *)gesture isLastGesture:(BOOL)last {
+    // if last, only match rules without trigger_on_every_match
+    // if last = false, only match rules with trigger_on_every_match
+    NSString *frontApp = frontBundleName();
+    NSUInteger i = 0;
+    for (; i < [self count]; i++) {
+        if ((last ^ [self triggerOnEveryMatchAtIndex:i]) && [self matchFilter:frontApp atIndex:i]) {
+            //if ([gesture isEqualToString:[self directionAtIndex:i]]) {
+            if (wildcardString(gesture, [self directionAtIndex:i])) {
+                break;
+            }
+        }
+    }
+    
+    if (i != [self count]) {
         [self executeActionAt:i];
         return YES;
     }
-    if (gesture.length < 2) {
-        return NO;
-    } else {
-        return YES;
-    }
+    return NO;
 }
 
 - (NSString *)noteAtIndex:(NSUInteger)index {
     NSString *value = _rulesList[index][@"note"];
     return value ? value : @"";
+}
+
+- (BOOL)triggerOnEveryMatchAtIndex:(NSUInteger)index {
+    NSNumber *b = _rulesList[index][@"trigger_on_every_match"];
+    return [b boolValue];
+}
+
+- (void)setTriggerOnEveryMatch:(BOOL)match atIndex:(NSUInteger)index {
+    _rulesList[index][@"trigger_on_every_match"] = [[NSNumber alloc] initWithBool:match];
+    [self save];
 }
 
 - (void)setNote:(NSString *)note atIndex:(NSUInteger)index {

@@ -430,6 +430,12 @@ static NSString *currentScriptId = nil;
     [[RulesList sharedRulesList] setAppleScriptId:[[AppleScriptsList sharedAppleScriptsList] idAtIndex:[comboBox indexOfSelectedItem]] atIndex:row];
 }
 
+- (IBAction)onTriggerOnEveryMatchChanged:(id)sender {
+    NSButton *button = sender;
+    NSInteger index = [button tag];
+    [[RulesList sharedRulesList] setTriggerOnEveryMatch:[button state] atIndex:index];
+}
+
 - (void)tableViewSelectionChanged:(NSNotification* )notification
 {
     NSInteger selectedRow = [[self appleScriptTableView] selectedRow];
@@ -599,6 +605,15 @@ static NSString *currentScriptId = nil;
                                                        object:comboBox];
             result = comboBox;
         }
+    } else if ([tableColumn.identifier isEqualToString:@"TriggerOnEveryMatch"]) {
+        NSButton *checkButton = [[NSButton alloc] init];
+        [checkButton setButtonType:NSSwitchButton];
+        [checkButton setState:[rulesList triggerOnEveryMatchAtIndex:row]];
+        [checkButton setTag:row];
+        [checkButton setAction:@selector(onTriggerOnEveryMatchChanged:)];
+        [checkButton setImagePosition:NSImageOnly];
+        
+        result = checkButton;
     }
     return result;
 }

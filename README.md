@@ -50,6 +50,19 @@ Feel free to open issue
 
 Download the latest zip from https://github.com/MacGesture/MacGesture/releases
 
+# Tips
+
+1. If you want to achieve something like this:
+
+Right click, drag upwards, then every 'u' triggers a 'Next Tab', every 'd' triggers a 'Prev Tab', without releasing right mouse.
+
+Then, create a rule like this:
+
+| Gesture | Filter             | Action             | Note       | Trigger on every match |
+|---------|--------------------|--------------------|------------|------------------------|
+|U*d      | \*safari\|\*chrome | "shift-command-\]" | "Next Tab" | Checked                |
+|U*u      | \*safari\|\*chrome | "shift-command-\[" | "Prev Tab" | Checked                |
+
 # License
 
 This project is under GNU General Public License.

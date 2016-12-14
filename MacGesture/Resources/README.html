@@ -80,7 +80,47 @@ we chose &lsquo;Z&rsquo;.</p>
 
 <h1>Download</h1>
 
-<p>Download the latest zip from https://github.com/CodeFalling/MacGesture/releases</p>
+<p>Download the latest zip from https://github.com/MacGesture/MacGesture/releases</p>
+
+<h1>Tips</h1>
+
+<ol>
+<li>If you want to achieve something like this:</li>
+</ol>
+
+
+<p>Right click, drag upwards, then every &lsquo;u&rsquo; triggers a &lsquo;Next Tab&rsquo;, every &rsquo;d' triggers a &lsquo;Prev Tab&rsquo;, without releasing right mouse.</p>
+
+<p>Then, create a rule like this:</p>
+
+<table>
+<thead>
+<tr>
+<th> Gesture </th>
+<th> Filter             </th>
+<th> Action             </th>
+<th> Note       </th>
+<th> Trigger on every match </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U*d      </td>
+<td> *safari|*chrome </td>
+<td> &ldquo;shift-command-]&rdquo; </td>
+<td> &ldquo;Next Tab&rdquo; </td>
+<td> Checked                </td>
+</tr>
+<tr>
+<td>U*u      </td>
+<td> *safari|*chrome </td>
+<td> &ldquo;shift-command-[&rdquo; </td>
+<td> &ldquo;Prev Tab&rdquo; </td>
+<td> Checked                </td>
+</tr>
+</tbody>
+</table>
+
 
 <h1>License</h1>
 
