@@ -260,6 +260,32 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             
             if (mouseDownEvent) {
                 mouseEvent = [NSEvent eventWithCGEvent:event];
+                
+                // Hack when Synergy is started after MacGesture
+                // -- when dragging to a client, the mouse point resets to (server_screenwidth/2+rnd(-1,1),server_screenheight/2+rnd(-1,1))
+                if (mouseDraggedEvent) {
+                    NSPoint lastPoint = CGEventGetLocation(mouseDraggedEvent);
+                    NSPoint currentPoint = [mouseEvent locationInWindow];
+                    NSRect screen = [[NSScreen mainScreen] frame];
+                    float d1 = fabs(lastPoint.x - screen.origin.x), d2 = fabs(lastPoint.x - screen.origin.x - screen.size.width);
+                    float d3 = fabs(lastPoint.y - screen.origin.y), d4 = fabs(lastPoint.y - screen.origin.y - screen.size.height);
+                    
+                    float d5 = fabs(currentPoint.x - screen.origin.x - screen.size.width/2), d6 = fabs(currentPoint.y - screen.origin.y - screen.size.height/2);
+                    
+                    const float threshold = 30.0;
+                    if ((d1 < threshold || d2 < threshold || d3 < threshold || d4 < threshold) &&
+                        d5 < threshold && d6 < threshold) {
+                        CFRelease(mouseDraggedEvent);
+                        CFRelease(mouseDownEvent);
+                        mouseDownEvent = mouseDraggedEvent = NULL;
+                        shouldShow = NO;
+                        [windowController reinitWindow];
+                        resetDirection();
+                        break;
+                    }
+                    
+                }
+                
                 if (mouseDraggedEvent) {
                     CFRelease(mouseDraggedEvent);
                 }
@@ -281,9 +307,9 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 updateDirections(mouseEvent);
                 if (!handleGesture(true)) {
                     CGEventPost(kCGSessionEventTap, mouseDownEvent);
-                    if (mouseDraggedEvent) {
-                        CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
-                    }
+                    //if (mouseDraggedEvent) {
+                    //    CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
+                    //}
                     CGEventPost(kCGSessionEventTap, event);
                 }
                 CFRelease(mouseDownEvent);
