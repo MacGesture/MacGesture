@@ -140,7 +140,8 @@ static NSTimeInterval lastMouseWheelEventTime;
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
-    [self showPreferences];
+    // This event can be triggered when switching desktops in Sierra. See BUG #37
+    // [self showPreferences];
 }
 
 static void addDirection(unichar dir, bool allowSameDirection) {
