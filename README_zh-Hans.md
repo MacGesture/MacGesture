@@ -62,6 +62,22 @@ Z是“左”的拼音首字母，所以我们让Z代表鼠标左键事件。
 |U*d      | \*safari\|\*chrome | "shift-command-\]" | "Next Tab" | Checked                |
 |U*u      | \*safari\|\*chrome | "shift-command-\[" | "Prev Tab" | Checked                |
 
+2. 如果你想导入和导出MacGesture的配置文件：
+
+打开一个Terminal，在你的旧电脑上这么做：
+
+``` shell
+defaults read com.codefalling.MacGesture backup.plist
+```
+
+然后把这个文件复制到新年脑上，然后：
+
+``` shell
+defaults import com.codefalling.MacGesture backup.plist
+```
+
+你应该可以看到你之前的设置回来了。如果没有的话，请在项目主页提交问题。
+
 # 使用许可
 
 该项目遵循GPL（GNU通用公共许可证）。

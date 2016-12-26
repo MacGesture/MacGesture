@@ -12,7 +12,7 @@
 
 <ul>
 <li><p>Global mouse gesture recognition</p></li>
-<li><p>Filter app by their bundle name (as a consequence, the apps without bundle identifiers are skipped and filtering by process name is on the roadmap)</p></li>
+<li><p>Filter app by their bundle name (as a consequence, the apps without bundle identifiers are skipped and filtering by process name is on the road map)</p></li>
 <li><p>Configure and send shortcut by gesture</p></li>
 </ul>
 
@@ -120,6 +120,25 @@ we chose &lsquo;Z&rsquo;.</p>
 </tbody>
 </table>
 
+
+<ol>
+<li>If you want to export and import MacGesture preferences:</li>
+</ol>
+
+
+<p>Open a terminal, Do this in your old computer:</p>
+
+<p><code>shell
+defaults read com.codefalling.MacGesture backup.plist
+</code></p>
+
+<p>And then copy that file to your new computer, then:</p>
+
+<p><code>shell
+defaults import com.codefalling.MacGesture backup.plist
+</code></p>
+
+<p>You should get your preferences back now. If is doesn&rsquo;t, file an issue on the project home.</p>
 
 <h1>License</h1>
 

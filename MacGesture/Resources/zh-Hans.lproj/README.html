@@ -119,6 +119,25 @@
 </table>
 
 
+<ol>
+<li>如果你想导入和导出MacGesture的配置文件：</li>
+</ol>
+
+
+<p>打开一个Terminal，在你的旧电脑上这么做：</p>
+
+<p><code>shell
+defaults read com.codefalling.MacGesture backup.plist
+</code></p>
+
+<p>然后把这个文件复制到新年脑上，然后：</p>
+
+<p><code>shell
+defaults import com.codefalling.MacGesture backup.plist
+</code></p>
+
+<p>你应该可以看到你之前的设置回来了。如果没有的话，请在项目主页提交问题。</p>
+
 <h1>使用许可</h1>
 
 <p>该项目遵循GPL（GNU通用公共许可证）。</p>

@@ -12,7 +12,7 @@ You can read this README in About section.
 
 - Global mouse gesture recognition
 
-- Filter app by their bundle name (as a consequence, the apps without bundle identifiers are skipped and filtering by process name is on the roadmap)
+- Filter app by their bundle name (as a consequence, the apps without bundle identifiers are skipped and filtering by process name is on the road map)
 
 - Configure and send shortcut by gesture
 
@@ -62,6 +62,22 @@ Then, create a rule like this:
 |---------|--------------------|--------------------|------------|------------------------|
 |U*d      | \*safari\|\*chrome | "shift-command-\]" | "Next Tab" | Checked                |
 |U*u      | \*safari\|\*chrome | "shift-command-\[" | "Prev Tab" | Checked                |
+
+2. If you want to export and import MacGesture preferences:
+
+Open a terminal, Do this in your old computer:
+
+``` shell
+defaults read com.codefalling.MacGesture backup.plist
+```
+
+And then copy that file to your new computer, then:
+
+``` shell
+defaults import com.codefalling.MacGesture backup.plist
+```
+
+You should get your preferences back now. If is doesn't, file an issue on the project home.
 
 # License
 
