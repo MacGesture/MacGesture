@@ -52,7 +52,7 @@ Download the latest zip from https://github.com/MacGesture/MacGesture/releases
 
 # Tips
 
-1. If you want to achieve something like this:
+* If you want to achieve something like this:
 
 Right click, drag upwards, then every 'u' triggers a 'Next Tab', every 'd' triggers a 'Prev Tab', without releasing right mouse.
 
@@ -63,7 +63,7 @@ Then, create a rule like this:
 |U*d      | \*safari\|\*chrome | "shift-command-\]" | "Next Tab" | Checked                |
 |U*u      | \*safari\|\*chrome | "shift-command-\[" | "Prev Tab" | Checked                |
 
-2. If you want to export and import MacGesture preferences:
+* If you want to export and import MacGesture preferences:
 
 Recommended way:
 

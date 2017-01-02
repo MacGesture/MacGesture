@@ -51,7 +51,7 @@ Z是“左”的拼音首字母，所以我们让Z代表鼠标左键事件。
 
 # 贴士
 
-1. 如果你要实现这个功能：
+* 如果你要实现这个功能：
 
 鼠标右击，向上脱拽，然后每次鼠标滚轮向上触发“下一个标签页“，每次鼠标滚轮向下触发”上一个标签页“，期间不松开鼠标右键。
 
@@ -62,7 +62,7 @@ Z是“左”的拼音首字母，所以我们让Z代表鼠标左键事件。
 |U*d      | \*safari\|\*chrome | "shift-command-\]" | "Next Tab" | Checked                |
 |U*u      | \*safari\|\*chrome | "shift-command-\[" | "Prev Tab" | Checked                |
 
-2. 如果你想导入和导出MacGesture的配置文件：
+* 如果你想导入和导出MacGesture的配置文件：
 
 推荐方法：
 
@@ -76,7 +76,7 @@ Geek使用的方法：（也是实际上代码用的方法）
 defaults read com.codefalling.MacGesture backup.plist
 ```
 
-然后把这个文件复制到新年脑上，然后：
+然后把这个文件复制到新电脑上，然后：
 
 ``` shell
 defaults import com.codefalling.MacGesture backup.plist
