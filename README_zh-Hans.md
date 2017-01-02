@@ -1,5 +1,6 @@
-
 # MacGesture 2 ![tweet](https://img.shields.io/twitter/url/https/github.com/CodeFalling/MacGesture.svg?style=social)
+
+[英文版 English Version](https://github.com/MacGesture/MacGesture/blob/release/README.md)
 
 ![logo](logo.png)
 

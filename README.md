@@ -1,5 +1,7 @@
 # MacGesture 2 ![tweet](https://img.shields.io/twitter/url/https/github.com/CodeFalling/MacGesture.svg?style=social)
 
+[Chinese version 中文版](https://github.com/MacGesture/MacGesture/blob/release/README_zh-Hans.md)
+
 ![logo](logo.png)
 
 Configurable global mouse gesture for macOS.
