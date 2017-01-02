@@ -472,6 +472,78 @@ static NSString *currentScriptId = nil;
     [[AppDelegate appDelegate] setEnabled:enabled];
 }
 
+- (IBAction)doImport:(id)sender {
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    
+    if ([panel runModal] == NSOKButton) {
+        NSURL *url = [panel URL];
+        NSTask *task = [[NSTask alloc] init];
+        [task setLaunchPath:@"/bin/sh"];
+        
+        NSArray *arguments = [NSArray arrayWithObjects:
+                              @"-c" ,
+                              @"defaults import com.codefalling.MacGesture -",
+                              nil];
+        
+        [task setArguments:arguments];
+        NSPipe *pipe = [NSPipe pipe];
+        [task setStandardInput:pipe];
+         
+        NSFileHandle *file = [pipe fileHandleForWriting];
+        
+        [task launch];
+
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        if (data) {
+            [file writeData:data];
+        }
+        [file closeFile];
+
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = @"MacGesture";
+        notification.informativeText = NSLocalizedString(@"Restart MacGesture to take effect", nil);
+        notification.soundName = NSUserNotificationDefaultSoundName;
+        
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    }
+}
+
+- (IBAction)doExport:(id)sender {
+    NSSavePanel *panel = [NSSavePanel savePanel];
+    
+    if ([panel runModal] == NSOKButton) {
+        NSURL *url = [panel URL];
+        NSTask *task = [[NSTask alloc] init];
+        [task setLaunchPath:@"/bin/sh"];
+        
+        NSArray *arguments = [NSArray arrayWithObjects:
+                              @"-c" ,
+                              @"defaults export com.codefalling.MacGesture -",
+                              nil];
+        
+        [task setArguments:arguments];
+        NSPipe *pipe = [NSPipe pipe];
+        [task setStandardOutput:pipe];
+        
+        NSFileHandle *file = [pipe fileHandleForReading];
+        
+        [task launch];
+        
+        NSData *data = [file readDataToEndOfFile];
+        if (data) {
+            [data writeToURL:url atomically:YES];
+        }
+        [file closeFile];
+        
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = @"MacGesture";
+        notification.informativeText = NSLocalizedString(@"Export succeeded", nil);
+        notification.soundName = NSUserNotificationDefaultSoundName;
+        
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    }
+}
+
 #pragma mark -
 #pragma mark NSComboBoxDataSource Implementation
 
@@ -641,5 +713,4 @@ static NSString *currentScriptId = nil;
     }
     return nil;
 }
-
 @end

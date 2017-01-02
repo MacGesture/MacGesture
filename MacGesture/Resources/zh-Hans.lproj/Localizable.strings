@@ -20,3 +20,4 @@
 "Gesture must only contain \"ULDRZud?*\"" = "手势只允许包含 \"ULDRZud?*\"";
 "Select a filter first!" = "请先选择一个规则！";
 "Restart MacGesture to take effect" = "重启MacGesture后生效";
+"Export succeeded" = "导出成功";
