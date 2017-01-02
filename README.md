@@ -65,6 +65,12 @@ Then, create a rule like this:
 
 2. If you want to export and import MacGesture preferences:
 
+Recommended way:
+
+Use the buttons 'Import' and 'Export' in the ‘General' Panel.
+
+Geek-ish way: (the underlying way as well)
+
 Open a terminal, Do this in your old computer:
 
 ``` shell
