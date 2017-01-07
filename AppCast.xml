@@ -95,8 +95,6 @@
           <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
   </item>
 
-
-  
     <item>
           <title>Version 2.2.0</title>
           <sparkle:releaseNotesLink>
@@ -104,6 +102,16 @@
           </sparkle:releaseNotesLink>
           <pubDate>2016-12-18 22:24 +8</pubDate>
           <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/2.2.0/MacGesture-2.2.0.zip" sparkle:version="2.2.0" length="1616129" type="application/octet-stream" sparkle:dsaSignature="MC0CFCMut0VY0pT3eGR3qxOunJoWif1jAhUAr+uiN8AFhov61El0kKZYo2GFy30=" />
+          <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+  </item>
+
+    <item>
+          <title>Version 2.2.1</title>
+          <sparkle:releaseNotesLink>
+            https://raw.githubusercontent.com/MacGesture/MacGesture/master/Changelog/2.2.1.html
+          </sparkle:releaseNotesLink>
+          <pubDate>2017-1-7 21:53 +8</pubDate>
+          <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/2.2.1/MacGesture-2.2.1.zip" sparkle:version="2.2.1" length="1618030" type="application/octet-stream" sparkle:dsaSignature="MCwCFA2eXPu1/ylsJXEpevxkfq2hph7/AhQTRVkc2SreqY8OT5ZBJTOhZN5S3g==" />
           <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
   </item>
     </channel>
