@@ -236,6 +236,21 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     [self save];
 }
 
+- (void)moveRuleFrom:(NSInteger)from
+              ruleTo:(NSInteger)to {
+    if (from != to) {
+        NSMutableDictionary *rule = [_rulesList objectAtIndex:from];
+        [_rulesList removeObjectAtIndex:from];
+        if (to >= [_rulesList count]) {
+            [_rulesList addObject:rule];
+        } else {
+            [_rulesList insertObject:rule atIndex:to];
+        }
+        [self save];
+    }
+    //[_rulesList exchangeObjectAtIndex:from withObjectAtIndex:to];
+}
+
 - (void)removeRuleAtIndex:(NSInteger)index {
     [_rulesList removeObjectAtIndex:index];
     [self save];

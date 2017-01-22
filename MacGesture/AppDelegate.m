@@ -16,6 +16,7 @@ static CFMachPortRef mouseEventTap;
 static BOOL isEnabled;
 static AppPrefsWindowController *_preferencesWindowController;
 static NSTimeInterval lastMouseWheelEventTime;
+static BOOL eventTriggered;
 
 + (AppDelegate *)appDelegate {
     return (AppDelegate *) [[NSApplication sharedApplication] delegate];
@@ -177,17 +178,21 @@ static void updateDirections(NSEvent *event) {
     if (absX > absY) {
         if (deltaX > 0) {
             addDirection('R', false);
+            eventTriggered = YES;
             return;
         } else {
             addDirection('L', false);
+            eventTriggered = YES;
             return;
         }
     } else {
         if (deltaY > 0) {
             addDirection('U', false);
+            eventTriggered = YES;
             return;
         } else {
             addDirection('D', false);
+            eventTriggered = YES;
             return;
         }
     }
@@ -228,6 +233,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                     return event;
                 }
                 shouldShow = YES;
+                eventTriggered = NO;
             }
             
             if (mouseDownEvent) { // mouseDownEvent may not release when kCGEventTapDisabledByTimeout
@@ -306,7 +312,11 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 mouseEvent = [NSEvent eventWithCGEvent:event];
                 [windowController handleMouseEvent:mouseEvent];
                 updateDirections(mouseEvent);
-                if (!handleGesture(true)) {
+                if (handleGesture(true)) {
+                    eventTriggered = YES;
+                }
+                
+                if (!eventTriggered) {
                     CGEventPost(kCGSessionEventTap, mouseDownEvent);
                     //if (mouseDraggedEvent) {
                     //    CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
@@ -331,15 +341,19 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 return event;
             }
             double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
+            
+            NSLog(@"scrollWheel delta:%f", delta);
 
             NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate];
             if (current - lastMouseWheelEventTime > 0.3) {
                 if (delta > 0) {
-                    // NSLog(@"Down!");
+                    NSLog(@"scrollWheel Down!");
                     addDirection('d', true);
+                    eventTriggered = YES;
                 } else if (delta < 0){
-                    // NSLog(@"Up!");
+                    NSLog(@"scrollWheel Up!");
                     addDirection('u', true);
+                    eventTriggered = YES;
                 }
                 lastMouseWheelEventTime = current;
             }
@@ -353,8 +367,8 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             if (!shouldShow || !mouseDownEvent) {
                 return event;
             }
-            [direction appendString:@"Z"];
-            [windowController writeDirection:direction];
+            addDirection('Z', true);
+            eventTriggered = YES;
             break;
         }
         default:

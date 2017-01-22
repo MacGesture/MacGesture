@@ -31,6 +31,8 @@ static NSInteger const PREF_WINDOW_SIZECOUNT = 3;
 static NSInteger currentRulesWindowSizeIndex = 0;
 static NSInteger currentFiltersWindowSizeIndex = 0;
 
+#define MacGestureRuleDataType @"MacGestureRuleDataType"
+
 static NSArray *exampleAppleScripts;
 
 + (void)initialize {
@@ -100,6 +102,8 @@ static NSArray *exampleAppleScripts;
     NSString *content = [NSString stringWithContentsOfFile:readme encoding:NSUTF8StringEncoding error:NULL];
     
     [[[self webView] mainFrame] loadHTMLString:content baseURL:[NSURL URLWithString:readme]];
+    
+    [[self rulesTableView] registerForDraggedTypes:[NSArray arrayWithObject:MacGestureRuleDataType]];
 }
 
 - (BOOL)windowShouldClose:(id)sender {
@@ -621,6 +625,36 @@ static NSString *currentScriptId = nil;
 
 #pragma mark -
 #pragma mark NSTableViewDelegate Implementation
+
+- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
+    [pboard declareTypes:[NSArray arrayWithObject:MacGestureRuleDataType] owner:self];
+    [pboard setData:data forType:MacGestureRuleDataType];
+    return YES;
+}
+
+- (NSDragOperation)tableView:(NSTableView*)tv validateDrop:(id)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)op {
+    if(op == NSTableViewDropAbove) {
+        return NSDragOperationMove;
+    }
+    return NSDragOperationNone;
+}
+
+- (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation {
+    NSPasteboard* pboard = [info draggingPasteboard];
+    NSData* rowData = [pboard dataForType:MacGestureRuleDataType];
+    NSIndexSet* rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
+    NSInteger dragRow = [rowIndexes firstIndex];
+    
+    [[RulesList sharedRulesList] moveRuleFrom:dragRow ruleTo:row];
+    [_rulesTableView noteNumberOfRowsChanged];
+    if (dragRow < row) {
+        [_rulesTableView moveRowAtIndex:dragRow toIndex:row-1];
+    } else {
+        [_rulesTableView moveRowAtIndex:dragRow toIndex:row];
+    }
+    return YES;
+}
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
     return 25;

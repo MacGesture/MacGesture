@@ -28,6 +28,9 @@ typedef enum {
                  appleScriptId:(NSString *)appleScriptId // when actionType == ACTION_TYPE_APPLE_SCRIPT required,or nil
                         note:(NSString *)note;
 
+- (void)moveRuleFrom:(NSInteger)from
+              ruleTo:(NSInteger)to;
+
 - (void)removeRuleAtIndex:(NSInteger)index;
 
 - (NSInteger)count;
