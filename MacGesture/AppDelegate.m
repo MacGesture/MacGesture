@@ -168,7 +168,8 @@ static void updateDirections(NSEvent *event) {
     double deltaY = newLocation.y - lastLocation.y;
     double absX = fabs(deltaX);
     double absY = fabs(deltaY);
-    if (absX + absY < 20) {
+    double threshold = [[NSUserDefaults standardUserDefaults] doubleForKey:@"directionDetectionThreshold"];
+    if (absX + absY < threshold) {
         return; // ignore short distance
     }
     
