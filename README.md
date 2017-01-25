@@ -89,7 +89,7 @@ You should get your preferences back now. If is doesn't, file an issue on the pr
 
 * If you want to exclude an app in a certain rule:
 
-You can prepend '!', then the app you want to exclude (still wildcard).
+You can append '!', then the app you want to exclude (still wildcard).
 
 For example, the original one:
 

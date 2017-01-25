@@ -45,6 +45,10 @@ NSMutableArray<NSMutableDictionary *> *_rulesList;  // private
     return _rulesList[index][@"apple_script_id"];
 }
 
+- (BOOL)enabledAtIndex:(NSUInteger)index {
+    return [_rulesList[index][@"enabled"] boolValue];
+}
+
 - (NSInteger)count {
     return [_rulesList count];
 }
@@ -171,10 +175,12 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     NSString *frontApp = frontBundleName();
     NSUInteger i = 0;
     for (; i < [self count]; i++) {
-        if ((last ^ [self triggerOnEveryMatchAtIndex:i]) && [self matchFilter:frontApp atIndex:i]) {
-            //if ([gesture isEqualToString:[self directionAtIndex:i]]) {
-            if (wildcardString(gesture, [self directionAtIndex:i], NO)) {
-                break;
+        if ([self enabledAtIndex:i]) {
+            if ((last ^ [self triggerOnEveryMatchAtIndex:i]) && [self matchFilter:frontApp atIndex:i]) {
+                //if ([gesture isEqualToString:[self directionAtIndex:i]]) {
+                if (wildcardString(gesture, [self directionAtIndex:i], NO)) {
+                    break;
+                }
             }
         }
     }
@@ -232,6 +238,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
         rule[@"apple_script_id"] = appleScriptId;
     }
     rule[@"note"] = note;
+    rule[@"enabled"] = @(YES);
     [_rulesList addObject:rule];
     [self save];
 }
@@ -253,6 +260,12 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
 
 - (void)removeRuleAtIndex:(NSInteger)index {
     [_rulesList removeObjectAtIndex:index];
+    [self save];
+}
+
+- (void)toggleRule:(NSUInteger)index {
+    BOOL current = [_rulesList[index][@"enabled"] boolValue];
+    _rulesList[index][@"enabled"] = @(!current);
     [self save];
 }
 

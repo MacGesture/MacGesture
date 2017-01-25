@@ -51,6 +51,8 @@ typedef enum {
 
 - (NSUInteger)shortcutFlagAtIndex:(NSUInteger)index;
 
+- (BOOL)enabledAtIndex:(NSUInteger)index;
+
 - (BOOL)triggerOnEveryMatchAtIndex:(NSUInteger)index;
 
 - (void)setShortcutWithKeycode:(NSUInteger)keycode withFlag:(NSUInteger)flag atIndex:(NSUInteger)index;
@@ -66,6 +68,8 @@ typedef enum {
 - (void)setTriggerOnEveryMatch:(BOOL)match atIndex:(NSUInteger)index;
 
 - (bool)handleGesture:(NSString *)gesture isLastGesture:(BOOL)last;
+
+- (void)toggleRule:(NSUInteger)index;
 
 - (NSInteger)suitedRuleWithGesture:(NSString *)gesture;
 

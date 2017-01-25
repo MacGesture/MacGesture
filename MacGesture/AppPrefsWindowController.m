@@ -479,7 +479,7 @@ static NSString *currentScriptId = nil;
 - (IBAction)doImport:(id)sender {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     
-    if ([panel runModal] == NSOKButton) {
+    if ([panel runModal] == NSModalResponseOK) {
         NSURL *url = [panel URL];
         NSTask *task = [[NSTask alloc] init];
         [task setLaunchPath:@"/bin/sh"];
@@ -515,7 +515,7 @@ static NSString *currentScriptId = nil;
 - (IBAction)doExport:(id)sender {
     NSSavePanel *panel = [NSSavePanel savePanel];
     
-    if ([panel runModal] == NSOKButton) {
+    if ([panel runModal] == NSModalResponseOK) {
         NSURL *url = [panel URL];
         NSTask *task = [[NSTask alloc] init];
         [task setLaunchPath:@"/bin/sh"];
@@ -545,6 +545,14 @@ static NSString *currentScriptId = nil;
         notification.soundName = NSUserNotificationDefaultSoundName;
         
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    }
+}
+
+-(IBAction)toggleRule:(id)sender {
+    NSInteger row = [_rulesTableView clickedRow];
+    if (row != -1) {
+        [[RulesList sharedRulesList] toggleRule:row];
+        [_rulesTableView reloadData];
     }
 }
 
@@ -660,9 +668,18 @@ static NSString *currentScriptId = nil;
     return 25;
 }
 
+- (void)tableView:(NSTableView *)tableView
+    didAddRowView:(NSTableRowView *)rowView
+           forRow:(NSInteger)row {
+    if (![[RulesList sharedRulesList] enabledAtIndex:row]) {
+        [rowView setBackgroundColor:[[NSColor blackColor] colorWithAlphaComponent:0.3]];
+    }
+}
+
 - (NSView *)tableViewForRules:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSView *result = nil;
     RulesList *rulesList = [RulesList sharedRulesList];
+    BOOL isEnabled = [rulesList enabledAtIndex:row];
     if ([tableColumn.identifier isEqualToString:@"Gesture"] || [tableColumn.identifier isEqualToString:@"Filter"] || [tableColumn.identifier isEqualToString:@"Note"]) {
         NSTextField *textField = [[NSTextField alloc] init];
         [textField.cell setWraps:NO];
@@ -670,6 +687,7 @@ static NSString *currentScriptId = nil;
         [textField setEditable:YES];
         [textField setBezeled:NO];
         [textField setDrawsBackground:NO];
+        [textField setEnabled:isEnabled];
         if ([tableColumn.identifier isEqualToString:@"Gesture"]) {
             textField.stringValue = [rulesList directionAtIndex:row];
             textField.identifier = @"Gesture";
@@ -694,6 +712,8 @@ static NSString *currentScriptId = nil;
                                        @"keyCode" : @([rulesList shortcutKeycodeAtIndex:row]),
                                        @"modifierFlags" : @([rulesList shortcutFlagAtIndex:row]),
                                        };
+            [recordView setEnabled:isEnabled];
+            
             result = recordView;
         } else if ([rulesList actionTypeAtIndex:row] == ACTION_TYPE_APPLE_SCRIPT) {
             NSComboBox *comboBox = [[NSComboBox alloc]init];
@@ -705,10 +725,13 @@ static NSString *currentScriptId = nil;
             if (index != -1) {
                 [comboBox selectItemAtIndex:index];
             }
+            [comboBox setEnabled:isEnabled];
+            
             [[NSNotificationCenter defaultCenter] addObserver:self
                                                      selector:@selector(appleScriptSelectionChanged:)
                                                          name:NSComboBoxSelectionDidChangeNotification
                                                        object:comboBox];
+            
             result = comboBox;
         }
     } else if ([tableColumn.identifier isEqualToString:@"TriggerOnEveryMatch"]) {
@@ -718,9 +741,11 @@ static NSString *currentScriptId = nil;
         [checkButton setTag:row];
         [checkButton setAction:@selector(onTriggerOnEveryMatchChanged:)];
         [checkButton setImagePosition:NSImageOnly];
+        [checkButton setEnabled:isEnabled];
         
         result = checkButton;
     }
+    
     return result;
 }
 
