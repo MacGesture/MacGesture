@@ -87,6 +87,24 @@ defaults import com.codefalling.MacGesture backup.plist
 
 You should get your preferences back now. If is doesn't, file an issue on the project home.
 
+* If you want to exclude an app in a certain rule:
+
+You can prepend '!', then the app you want to exclude (still wildcard).
+
+For example, the original one:
+
+| Gesture | Filter             | Action             | Note       | Trigger on every match |
+|---------|--------------------|--------------------|------------|------------------------|
+|U*d      | \*                 | "shift-command-\]" | "Next Tab" | Checked                |
+
+Then, in order to exclude Safari, change this to:
+
+| Gesture | Filter             | Action             | Note       | Trigger on every match |
+|---------|--------------------|--------------------|------------|------------------------|
+|U*d      | \*\|!*safari       | "shift-command-\]" | "Next Tab" | Checked                |
+
+Then you will see the expected behavior.
+
 # License
 
 This project is under GNU General Public License.

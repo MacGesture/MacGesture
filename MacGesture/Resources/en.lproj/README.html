@@ -148,6 +148,63 @@ defaults import com.codefalling.MacGesture backup.plist
 
 <p>You should get your preferences back now. If is doesn&rsquo;t, file an issue on the project home.</p>
 
+<ul>
+<li>If you want to exclude an app in a certain rule:</li>
+</ul>
+
+
+<p>You can prepend &lsquo;!&rsquo;, then the app you want to exclude (still wildcard).</p>
+
+<p>For example, the original one:</p>
+
+<table>
+<thead>
+<tr>
+<th> Gesture </th>
+<th> Filter             </th>
+<th> Action             </th>
+<th> Note       </th>
+<th> Trigger on every match </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U*d      </td>
+<td> *                 </td>
+<td> &ldquo;shift-command-]&rdquo; </td>
+<td> &ldquo;Next Tab&rdquo; </td>
+<td> Checked                </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Then, in order to exclude Safari, change this to:</p>
+
+<table>
+<thead>
+<tr>
+<th> Gesture </th>
+<th> Filter             </th>
+<th> Action             </th>
+<th> Note       </th>
+<th> Trigger on every match </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U*d      </td>
+<td> *|!*safari       </td>
+<td> &ldquo;shift-command-]&rdquo; </td>
+<td> &ldquo;Next Tab&rdquo; </td>
+<td> Checked                </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Then you will see the expected behavior.</p>
+
 <h1>License</h1>
 
 <p>This project is under GNU General Public License.</p>
