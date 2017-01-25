@@ -42,8 +42,10 @@ static NSColor *loadedColor;
     
     CIContext *context = [CIContext contextWithOptions:nil];
     CGImageRef cgImage = [context createCGImage:output fromRect:[output extent]];
+    NSImage *result = [[NSImage alloc] initWithCGImage:cgImage size:output.extent.size];
+    CGImageRelease(cgImage);
     
-    return [[NSImage alloc] initWithCGImage:cgImage size:output.extent.size];
+    return result;
 }
 
 - (id)initWithFrame:(NSRect)frame {

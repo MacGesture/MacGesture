@@ -39,7 +39,7 @@
 "400.title" = "不绘制鼠标路径";
 
 /* Class = "NSButtonCell"; title = "Auto Start at Login"; ObjectID = "403"; */
-"403.title" = "不绘制鼠标路径";
+"403.title" = "登录时自动启动";
 
 /* Class = "NSButtonCell"; title = "Choose"; ObjectID = "02o-xA-KDH"; */
 "02o-xA-KDH.title" = "选择";

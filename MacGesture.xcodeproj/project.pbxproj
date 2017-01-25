@@ -54,6 +54,8 @@
 		D065A3CA1D18155E0062900A /* SearchInWeb.applescript in Resources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript */; };
 		D09794D11DE5DA1900E88F73 /* scroll.png in Resources */ = {isa = PBXBuildFile; fileRef = D09794D01DE5DA1900E88F73 /* scroll.png */; };
 		D09FDBF51E06CDB50085FC36 /* README.html in Resources */ = {isa = PBXBuildFile; fileRef = D09FDBF31E06CDB50085FC36 /* README.html */; };
+		D0B19D421E3841FD00619F4A /* AppleScript.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D0B19D411E3841FD00619F4A /* AppleScript.sdef */; };
+		D0B19D481E384BAE00619F4A /* AppleScriptCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +141,9 @@
 		D09794D01DE5DA1900E88F73 /* scroll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scroll.png; sourceTree = "<group>"; };
 		D09FDBF41E06CDB50085FC36 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/README.html; sourceTree = "<group>"; };
 		D09FDBF61E06CDC60085FC36 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/README.html"; sourceTree = "<group>"; };
+		D0B19D411E3841FD00619F4A /* AppleScript.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AppleScript.sdef; sourceTree = "<group>"; };
+		D0B19D461E384BAE00619F4A /* AppleScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleScriptCommand.h; sourceTree = "<group>"; };
+		D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleScriptCommand.m; sourceTree = "<group>"; };
 		E051A121D93E759C89CE3094 /* Pods-MacGesture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +211,7 @@
 		1381E4B11824E7E800E815F5 /* MacGesture */ = {
 			isa = PBXGroup;
 			children = (
+				D0B19D411E3841FD00619F4A /* AppleScript.sdef */,
 				B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */,
 				B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */,
 				1381E4BD1824E7E800E815F5 /* AppDelegate.h */,
@@ -229,6 +235,8 @@
 				3CDC5D998F35E9F8C91C7789 /* Model */,
 				88331A391C9D22290064ADD5 /* AppleScriptsList.h */,
 				88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */,
+				D0B19D461E384BAE00619F4A /* AppleScriptCommand.h */,
+				D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */,
 			);
 			path = MacGesture;
 			sourceTree = "<group>";
@@ -407,6 +415,7 @@
 				880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */,
 				880AA7571CA5738A006E7A74 /* Preferences.xib in Resources */,
 				264182480FA70DFC89B87842 /* Updates.tiff in Resources */,
+				D0B19D421E3841FD00619F4A /* AppleScript.sdef in Resources */,
 				264185813821B17A6CF8761E /* Rules.png in Resources */,
 				B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */,
 				887E09251C8B0FD0003A4CC0 /* DefaultPreferences.plist in Resources */,
@@ -492,6 +501,7 @@
 				264183649CB68AD1A072883A /* AppPrefsWindowController.m in Sources */,
 				264184A9FF52175212CBE73F /* CanvasWindow.m in Sources */,
 				2641800AADBF86F6E76A37B3 /* CanvasView.m in Sources */,
+				D0B19D481E384BAE00619F4A /* AppleScriptCommand.m in Sources */,
 				D065A3C91D18154E0062900A /* SearchInWeb.applescript in Sources */,
 				264183EEE694EB7761D6066B /* CanvasWindowController.m in Sources */,
 				26418E623E410EF207EFA2A8 /* RulesList.m in Sources */,

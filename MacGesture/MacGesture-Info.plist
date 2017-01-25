@@ -34,5 +34,9 @@
 	<string>https://raw.githubusercontent.com/MacGesture/MacGesture/master/AppCast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
+	<key>NSAppleScriptEnabled</key>
+	<true/>
+	<key>OSAScriptingDefinition</key>
+	<string>AppleScript.sdef</string>
 </dict>
 </plist>

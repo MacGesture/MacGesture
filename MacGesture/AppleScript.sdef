@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary title="MacGesture">
+    <suite name="Standard Suite" code="stds" description="Standard suite for MacGesture.">
+        <command name="openPreferences" code="stdspref" description="Open preferences panel.">
+            <cocoa class="AppleScriptCommand"/>
+        </command>
+    </suite>
+</dictionary>
+

@@ -14,5 +14,6 @@
 - (void)updateStatusBarItem;
 - (void)receiveOpenPreferencesNotification:(NSNotification *)notification;
 - (void)setEnabled:(BOOL)enabled;
+- (void)showPreferences;
 
 @end
