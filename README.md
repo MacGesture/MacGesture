@@ -44,13 +44,20 @@ we chose 'Z'.
 
 Wheel directions may vary according to system configurations or some system tweaks (Karabiner's Reverse Vertical Scrolling, for example).
 
-# Q&A
-
-Feel free to open issue
-
 # Download
 
 Download the latest zip from https://github.com/MacGesture/MacGesture/releases
+
+# Known Issues
+
+* Right click does not work in some Java applications.
+
+An imperfect fix:
+Take WebStorm for example, open Preferences, then KeyMap, set the shortcut of "Show Context Menu" to "Button3 Click"
+
+# Q&A
+
+Feel free to open issue
 
 # Tips
 

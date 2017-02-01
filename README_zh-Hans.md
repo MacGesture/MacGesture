@@ -42,13 +42,20 @@ Z是“左”的拼音首字母，所以我们让Z代表鼠标左键事件。
 
 鼠标滚轮事件可能随设备和系统设置变化而不同（比如Karabiner有反转滚轮方向的功能）
 
-# Q&A
-
-可以尽管提交问题
-
 # 下载
 
 从这里下载最新版本： https://github.com/MacGesture/MacGesture/releases
+
+# 已知问题
+
+* 右键点击在一些Java应用中失效。
+
+一个不完美的修复：
+拿WebStorm作为例子，打开Preferences，在KeyMap中设置“Show Context Menu”的快捷键为“Button3 Click”。
+
+# Q&A
+
+可以尽管提交问题
 
 # 贴士
 
