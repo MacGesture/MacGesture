@@ -14,7 +14,7 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "293"; */
 "293.title" = "Text Cell";
 
-/* Class = "BindingConnection"; ibShadowedDisplayPattern = "%{value1}@"; ObjectID = "302"; */
+/* Class = "CocoaBindingsConnection"; ibShadowedDisplayPattern = "%{value1}@"; ObjectID = "302"; */
 "302.ibShadowedDisplayPattern" = "%{value1}@";
 
 /* Class = "NSTableColumn"; headerCell.title = "Action"; ObjectID = "306"; */
@@ -81,7 +81,7 @@
 "PQ5-fb-DKg.title" = "添加..";
 
 /* Class = "NSButtonCell"; title = "Show Gesture In Whatever App"; ObjectID = "Pif-49-STQ"; */
-"Pif-49-STQ.title" = "在所有App中显示";
+"Pif-49-STQ.title" = "在所有 App 中显示";
 
 /* Class = "NSButtonCell"; title = "Go bigger"; ObjectID = "Q7Q-zb-iKX"; */
 "Q7Q-zb-iKX.title" = "放大窗口";
@@ -99,7 +99,7 @@
 "VCT-WP-3Oh.title" = "应用规则";
 
 /* Class = "NSButtonCell"; title = "Pick a running app"; ObjectID = "WsD-th-NkZ"; */
-"WsD-th-NkZ.title" = "从运行中的App中选取";
+"WsD-th-NkZ.title" = "从运行中的 App 中选取";
 
 /* Class = "NSButtonCell"; title = "Automatically Check for Updates"; ObjectID = "Yev-5n-cgO"; */
 "Yev-5n-cgO.title" = "自动检查更新";
@@ -138,7 +138,7 @@
 "gTD-R3-oZl.placeholderString" = "Enter AppleScript here";
 
 /* Class = "NSButtonCell"; title = "Enable MacGesture"; ObjectID = "gbg-RG-zrR"; */
-"gbg-RG-zrR.title" = "启用MacGesture";
+"gbg-RG-zrR.title" = "启用 MacGesture";
 
 /* Class = "NSTableColumn"; headerCell.title = "Trigger on every match"; ObjectID = "gla-Uy-MuL"; */
 "gla-Uy-MuL.headerCell.title" = "每次匹配时触发";
@@ -159,7 +159,7 @@
 "oRe-ac-8qu.title" = "FontSize";
 
 /* Class = "NSMenuItem"; title = "Add a AppleScript Rule"; ObjectID = "pqG-Ck-V2g"; */
-"pqG-Ck-V2g.title" = "添加一个AppleScript规则";
+"pqG-Ck-V2g.title" = "添加一个 AppleScript 规则";
 
 /* Class = "NSButtonCell"; title = "Automatically Download Updates"; ObjectID = "rOi-wV-Iez"; */
 "rOi-wV-Iez.title" = "自动下载更新";
