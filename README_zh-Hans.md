@@ -53,6 +53,14 @@ Z是“左”的拼音首字母，所以我们让Z代表鼠标左键事件。
 一个不完美的修复：
 拿WebStorm作为例子，打开Preferences，在KeyMap中设置“Show Context Menu”的快捷键为“Button3 Click”。
 
+* 不能设置一些全系统可用的快捷键。
+
+原因：
+macOS在MacGesture响应之前做出了相应处理。
+
+修复：
+先禁用快捷键（比如在系统配置->键盘->快捷键），然后在MacGesture中设置以后再重新启用快捷键。
+
 # Q&A
 
 可以尽管提交问题

@@ -74,6 +74,9 @@
 /* Class = "NSButtonCell"; title = "Export"; ObjectID = "JCy-Wc-jcu"; */
 "JCy-Wc-jcu.title" = "导出";
 
+/* Class = "NSTextFieldCell"; title = "You are advised to go through the README below:"; ObjectID = "Jc2-FY-LoP"; */
+"Jc2-FY-LoP.title" = "建议您浏览以下的自述文件：";
+
 /* Class = "NSTextFieldCell"; title = "Co-developer: @zhangciwu in github"; ObjectID = "MJR-m4-m46"; */
 "MJR-m4-m46.title" = "联合开发者： @zhangciwu in github";
 
@@ -135,7 +138,7 @@
 "gPX-Pa-jb5.title" = "Check";
 
 /* Class = "NSTextFieldCell"; placeholderString = "Enter AppleScript here"; ObjectID = "gTD-R3-oZl"; */
-"gTD-R3-oZl.placeholderString" = "Enter AppleScript here";
+"gTD-R3-oZl.placeholderString" = "在这里输入 AppleScript";
 
 /* Class = "NSButtonCell"; title = "Enable MacGesture"; ObjectID = "gbg-RG-zrR"; */
 "gbg-RG-zrR.title" = "启用 MacGesture";

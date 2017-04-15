@@ -55,6 +55,14 @@ Download the latest zip from https://github.com/MacGesture/MacGesture/releases
 An imperfect fix:
 Take WebStorm for example, open Preferences, then KeyMap, set the shortcut of "Show Context Menu" to "Button3 Click"
 
+* Cannot assign some system-wide shortcuts to rules.
+
+Reason:
+macOS respond to system-wide shortcuts before MacGesture.
+
+Fix:
+Disable the shortcut first (for example in System Preferences->Keyboard->Shortcuts), then assign the shortcut in MacGesture, and re-enable the shortcut.
+
 # Q&A
 
 Feel free to open issue
@@ -96,7 +104,7 @@ You should get your preferences back now. If is doesn't, file an issue on the pr
 
 * If you want to exclude an app in a certain rule:
 
-You can append '!', then the app you want to exclude (still wildcard).
+You can prepend '!', then the app you want to exclude (still wildcard).
 
 For example, the original one:
 
