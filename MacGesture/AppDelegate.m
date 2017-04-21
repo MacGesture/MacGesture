@@ -362,6 +362,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             }
             break;
         }
+        case kCGEventTapDisabledByUserInput:
         case kCGEventTapDisabledByTimeout:
             CGEventTapEnable(mouseEventTap, true); // re-enable
             // windowController.enable = isEnable;

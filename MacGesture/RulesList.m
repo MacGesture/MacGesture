@@ -46,6 +46,9 @@ NSMutableArray<NSMutableDictionary *> *_rulesList;  // private
 }
 
 - (BOOL)enabledAtIndex:(NSUInteger)index {
+    if ([_rulesList[index] objectForKey:@"enabled"] == nil) {
+        _rulesList[index][@"enabled"] = @(YES);
+    }
     return [_rulesList[index][@"enabled"] boolValue];
 }
 
