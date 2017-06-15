@@ -63,6 +63,11 @@ macOS respond to system-wide shortcuts before MacGesture.
 Fix:
 Disable the shortcut first (for example in System Preferences->Keyboard->Shortcuts), then assign the shortcut in MacGesture, and re-enable the shortcut.
 
+Caveats:
+Some shortcuts still do not work with the fix above. When you are encountering this, here are two possible solutions:
+1. Change them to others (e.g. Control+0, Control+9).
+2. Tick "Invert Fn When Control Is Pressed".
+
 # Q&A
 
 Feel free to open issue
