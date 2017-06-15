@@ -111,7 +111,7 @@ static inline void addWildcardShortcutRule(RulesList *rulesList, NSString *gestu
 
 static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     // Fix issue #36. Dunno why it sends Control+Up as Fn+Control+Up. Invert the behavior.
-    if (flags == kCGEventFlagMaskControl) {
+    if (flags == kCGEventFlagMaskControl && [[NSUserDefaults standardUserDefaults] boolForKey:@"invertFnWhenControl"]) {
         flags ^= kCGEventFlagMaskSecondaryFn;
     }
     CGEventSourceRef source = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
@@ -124,6 +124,8 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     CGEventSetFlags(event, flags);
     CGEventPost(kCGHIDEventTap, event);
     CFRelease(event);
+    
+    CFRelease(source);
 }
 
 - (bool)executeActionAt:(NSUInteger)index {

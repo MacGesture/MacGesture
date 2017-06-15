@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
@@ -101,7 +101,7 @@
                     <rect key="frame" x="6" y="30" width="646" height="277"/>
                     <clipView key="contentView" id="dRt-B1-99d">
                         <rect key="frame" x="1" y="0.0" width="644" height="276"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="287" id="289">
                                 <rect key="frame" x="0.0" y="0.0" width="644" height="253"/>
@@ -446,7 +446,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="pPv-0a-vIb">
-                        <rect key="frame" x="1" y="-14" width="0.0" height="15"/>
+                        <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="9g8-Dy-j0E">
@@ -530,14 +530,14 @@
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9Q-GW-wG8">
                     <rect key="frame" x="7" y="35" width="283" height="298"/>
                     <clipView key="contentView" id="w6q-uf-DH3">
-                        <rect key="frame" x="1" y="1" width="266" height="296"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <rect key="frame" x="1" y="1" width="281" height="296"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" horizontallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="IB6-jz-VHi">
-                                <rect key="frame" x="0.0" y="0.0" width="266" height="296"/>
+                                <rect key="frame" x="0.0" y="0.0" width="281" height="296"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="266" height="296"/>
+                                <size key="minSize" width="281" height="296"/>
                                 <size key="maxSize" width="481" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             </textView>
@@ -582,14 +582,14 @@
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMP-af-6AM">
                     <rect key="frame" x="298" y="35" width="283" height="298"/>
                     <clipView key="contentView" id="Bk2-kE-aKD">
-                        <rect key="frame" x="1" y="1" width="266" height="296"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <rect key="frame" x="1" y="1" width="281" height="296"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" horizontallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="UlC-dc-fu7">
-                                <rect key="frame" x="0.0" y="0.0" width="266" height="296"/>
+                                <rect key="frame" x="0.0" y="0.0" width="281" height="296"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="266" height="296"/>
+                                <size key="minSize" width="281" height="296"/>
                                 <size key="maxSize" width="10000" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             </textView>
@@ -634,18 +634,18 @@
         </customView>
         <customObject id="360" customClass="SUUpdater"/>
         <customView id="99" userLabel="General">
-            <rect key="frame" x="0.0" y="0.0" width="560" height="480"/>
+            <rect key="frame" x="0.0" y="0.0" width="560" height="679"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <box fixedFrame="YES" borderType="line" title="General" translatesAutoresizingMaskIntoConstraints="NO" id="zLw-Oi-GBf">
-                    <rect key="frame" x="17" y="274" width="526" height="186"/>
+                    <rect key="frame" x="17" y="473" width="526" height="186"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="Ei1-dP-sWp">
                         <rect key="frame" x="1" y="1" width="524" height="170"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="402">
-                                <rect key="frame" x="18" y="92" width="255" height="18"/>
+                                <rect key="frame" x="18" y="94" width="255" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Auto Start at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="403">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -656,7 +656,7 @@
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101">
-                                <rect key="frame" x="18" y="112" width="285" height="18"/>
+                                <rect key="frame" x="18" y="114" width="285" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Open Preferences Window at Startup" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="245">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -667,7 +667,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPH-L7-3sd">
-                                <rect key="frame" x="18" y="49" width="92" height="17"/>
+                                <rect key="frame" x="18" y="51" width="92" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Language:" id="5rs-3N-RX4">
                                     <font key="font" metaFont="system"/>
@@ -676,7 +676,7 @@
                                 </textFieldCell>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ccx-Tb-9cw">
-                                <rect key="frame" x="18" y="72" width="204" height="18"/>
+                                <rect key="frame" x="18" y="74" width="204" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Show Icon In Status Bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ztS-80-zXz">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -688,7 +688,7 @@
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fU-Oh-h2G">
-                                <rect key="frame" x="100" y="42" width="73" height="26"/>
+                                <rect key="frame" x="100" y="44" width="73" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="vO1-Ay-86c">
                                     <font key="font" metaFont="system"/>
@@ -714,7 +714,7 @@
                     </view>
                 </box>
                 <box fixedFrame="YES" borderType="line" title="Gesture" translatesAutoresizingMaskIntoConstraints="NO" id="4xM-Ya-MxN">
-                    <rect key="frame" x="17" y="57" width="526" height="213"/>
+                    <rect key="frame" x="17" y="256" width="526" height="213"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="nbd-3i-kYj">
                         <rect key="frame" x="1" y="1" width="524" height="197"/>
@@ -743,7 +743,7 @@
                                 </connections>
                             </colorWell>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="353">
-                                <rect key="frame" x="18" y="161" width="166" height="18"/>
+                                <rect key="frame" x="18" y="163" width="166" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Show Gesture Preview" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="354">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -751,17 +751,6 @@
                                 </buttonCell>
                                 <connections>
                                     <binding destination="72" name="value" keyPath="values.showGesturePreview" id="vvd-7v-vgb"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hkg-rv-4UA">
-                                <rect key="frame" x="18" y="138" width="166" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Show Gesture Note" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kHw-iF-xLb">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <binding destination="72" name="value" keyPath="values.showGestureNote" id="DeW-R0-Rnj"/>
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="399">
@@ -871,6 +860,17 @@
                                     <binding destination="72" name="value" keyPath="values.noteFontSize" id="lYg-oT-dkP"/>
                                 </connections>
                             </textField>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hkg-rv-4UA">
+                                <rect key="frame" x="18" y="138" width="166" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show Gesture Note" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kHw-iF-xLb">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="72" name="value" keyPath="values.showGestureNote" id="DeW-R0-Rnj"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                 </box>
@@ -907,11 +907,43 @@
                         <action selector="doImport:" target="-2" id="0LS-ge-YTi"/>
                     </connections>
                 </button>
+                <box fixedFrame="YES" title="Advanced (Don't touch unless you are told to)" translatesAutoresizingMaskIntoConstraints="NO" id="grB-jA-OPZ">
+                    <rect key="frame" x="17" y="57" width="526" height="195"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <view key="contentView" id="Ooq-wl-bgm">
+                        <rect key="frame" x="2" y="2" width="522" height="178"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzJ-AE-xFk">
+                                <rect key="frame" x="18" y="142" width="380" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Open Preferences Window Upon Activation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YZQ-P5-4Yq">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="72" name="value" keyPath="values.openPrefOnActivate" id="XvT-ws-tSb"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CQT-jN-oql">
+                                <rect key="frame" x="18" y="122" width="317" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Invert Fn When Control Is Pressed" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Rc0-gx-DHr">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="72" name="value" keyPath="values.invertFnWhenControl" id="JEC-LG-tND"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                </box>
             </subviews>
             <connections>
                 <outlet property="nextKeyView" destination="101" id="220"/>
             </connections>
-            <point key="canvasLocation" x="-434" y="231"/>
+            <point key="canvasLocation" x="-434" y="330.5"/>
         </customView>
         <objectController objectClassName="AppleScriptsList" id="HTh-1d-wjb"/>
     </objects>

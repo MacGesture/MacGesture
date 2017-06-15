@@ -4,5 +4,5 @@ target 'MacGesture' do
   pod 'ShortcutRecorder', :git => 'https://github.com/Kentzo/ShortcutRecorder'
   pod 'Sparkle'
   pod 'IYLoginItem'
-  pod 'HexColors'
+  pod 'HexColors', '~> 4.0'
 end

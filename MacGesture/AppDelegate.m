@@ -144,7 +144,11 @@ static BOOL eventTriggered;
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
     // This event can be triggered when switching desktops in Sierra. See BUG #37
-    // [self showPreferences];
+    if ((![[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]
+        && ![[NSUserDefaults standardUserDefaults] boolForKey:@"showIconInStatusBar"])
+        || [[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnActivate"]) {
+        [self openPreferences:self];
+    }
 }
 
 static void addDirection(unichar dir, bool allowSameDirection) {
