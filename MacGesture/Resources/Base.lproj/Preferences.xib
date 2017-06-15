@@ -907,7 +907,7 @@
                         <action selector="doImport:" target="-2" id="0LS-ge-YTi"/>
                     </connections>
                 </button>
-                <box fixedFrame="YES" title="Advanced (Don't touch unless you are told to)" translatesAutoresizingMaskIntoConstraints="NO" id="grB-jA-OPZ">
+                <box fixedFrame="YES" title="Advanced" translatesAutoresizingMaskIntoConstraints="NO" id="grB-jA-OPZ">
                     <rect key="frame" x="17" y="57" width="526" height="195"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="Ooq-wl-bgm">
