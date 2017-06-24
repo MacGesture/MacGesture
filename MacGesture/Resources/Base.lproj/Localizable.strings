@@ -1,5 +1,11 @@
 
-/* No comment provided by engineer. */
+/*
+ Localizable.strings
+ MacGesture
+ 
+ Created by iMac on 3/25/16.
+ Copyright © 2016 Codefalling. All rights reserved.
+ */
 "About" = "About & Help";
 
 /* No comment provided by engineer. */
@@ -9,43 +15,49 @@
 "Edit in External Editor" = "Edit in External Editor";
 
 /* No comment provided by engineer. */
+"Export succeeded" = "Export succeeded";
+
+/* No comment provided by engineer. */
 "Filters" = "Filters";
 
 /* No comment provided by engineer. */
 "General" = "General";
 
-/* 
-  Localizable.strings
-  MacGesture
+/* No comment provided by engineer. */
+"Gesture must only contain \"ULDRZud?*\"" = "Gesture must only contain \"ULDRZud?*\"";
 
-  Created by iMac on 3/25/16.
-  Copyright © 2016 Codefalling. All rights reserved.
-*/
+/* No comment provided by engineer. */
 "Go bigger" = "Go bigger";
 
 /* No comment provided by engineer. */
 "Loading.." = "Loading..";
 
 /* No comment provided by engineer. */
+"Much information is elaborated in README. A copy of README is included in 'About & Help'." = "Much information is elaborated in README. A copy of README is included in 'About & Help'.";
+
+/* No comment provided by engineer. */
+"Okay, I know" = "Okay, I know";
+
+/* No comment provided by engineer. */
+"Open README in browser" = "Open README in browser";
+
+/* No comment provided by engineer. */
 "Reset size" = "Reset size";
+
+/* No comment provided by engineer. */
+"Restart MacGesture to take effect" = "Restart MacGesture to take effect";
 
 /* No comment provided by engineer. */
 "Rules" = "Rules";
 
 /* No comment provided by engineer. */
+"Select a filter first!" = "Select a filter first!";
+
+/* No comment provided by engineer. */
+"Select an AppleScript first!" = "Select an AppleScript first!";
+
+/* No comment provided by engineer. */
+"Skip" = "Skip";
+
+/* No comment provided by engineer. */
 "Stop" = "Stop";
-
-/* No comment provided by engineer. */
-"Export succeeded" = "";
-
-/* No comment provided by engineer. */
-"Gesture must only contain \"ULDRZud?*\"" = "";
-
-/* No comment provided by engineer. */
-"Restart MacGesture to take effect" = "";
-
-/* No comment provided by engineer. */
-"Select a AppleScript first!" = "";
-
-/* No comment provided by engineer. */
-"Select a filter first!" = "";

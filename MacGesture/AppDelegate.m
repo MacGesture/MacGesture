@@ -57,6 +57,17 @@ static BOOL eventTriggered;
 
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRunBefore"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRunBefore"];
+        
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"Open README in browser", nil)];
+        [alert addButtonWithTitle:NSLocalizedString(@"Skip", nil)];
+        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert setMessageText:NSLocalizedString(@"Much information is elaborated in README. A copy of README is included in 'About & Help'.", nil)];
+        NSModalResponse result = [alert runModal];
+        if (result == NSAlertFirstButtonReturn) {
+            NSString *readme = [[NSBundle mainBundle] pathForResource:@"README" ofType:@"html"];
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"file://%@", readme]]];
+        }
     }
 
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.4_Before"]) {

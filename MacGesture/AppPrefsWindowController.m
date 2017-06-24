@@ -303,12 +303,11 @@ static NSArray *exampleAppleScripts;
 
 - (IBAction)pickBtnDidClick:(id)sender {
     if ([_rulesTableView selectedRow] == -1) {
-        NSUserNotification *notification = [[NSUserNotification alloc] init];
-        notification.title = @"MacGesture";
-        notification.informativeText = NSLocalizedString(@"Select a filter first!", nil);
-        notification.soundName = NSUserNotificationDefaultSoundName;
-        
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"Okay, I know", nil)];
+        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert setMessageText:NSLocalizedString(@"Select a filter first!", nil)];
+        [alert runModal];
         return ;
     }
     
@@ -374,12 +373,11 @@ static NSString *currentScriptId = nil;
 - (IBAction)editAppleScriptInExternalEditor:(id)sender {
     NSInteger index = [[self appleScriptTableView] selectedRow];
     if (index == -1) {
-        NSUserNotification *notification = [[NSUserNotification alloc] init];
-        notification.title = @"MacGesture";
-        notification.informativeText = NSLocalizedString(@"Select a AppleScript first!", nil);
-        notification.soundName = NSUserNotificationDefaultSoundName;
-        
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"Okay, I know", nil)];
+        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert setMessageText:NSLocalizedString(@"Select an AppleScript first!", nil)];
+        [alert runModal];
         return ;
     }
     
@@ -587,12 +585,12 @@ static NSString *currentScriptId = nil;
         NSCharacterSet *invalidGestureCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ULDRZud?*"];
         invalidGestureCharacters = [invalidGestureCharacters invertedSet];
         if ([gesture rangeOfCharacterFromSet:invalidGestureCharacters].location != NSNotFound) {
-            NSUserNotification *notification = [[NSUserNotification alloc] init];
-            notification.title = @"MacGesture";
-            notification.informativeText = NSLocalizedString(@"Gesture must only contain \"ULDRZud?*\"", nil);
-            notification.soundName = NSUserNotificationDefaultSoundName;
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:NSLocalizedString(@"Okay, I know", nil)];
+            [alert setAlertStyle:NSInformationalAlertStyle];
+            [alert setMessageText:NSLocalizedString(@"Gesture must only contain \"ULDRZud?*\"", nil)];
+            [alert runModal];
             
-            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
             return NO;
         }
         [control setStringValue:gesture];
