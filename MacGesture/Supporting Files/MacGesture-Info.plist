@@ -35,7 +35,7 @@
 	<key>OSAScriptingDefinition</key>
 	<string>AppleScript.sdef</string>
 	<key>SUFeedURL</key>
-	<string>https://raw.githubusercontent.com/MacGesture/MacGesture/master/AppCast.xml</string>
+	<string>https://raw.githubusercontent.com/MacGesture/MacGesture/release/AppCast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 </dict>
