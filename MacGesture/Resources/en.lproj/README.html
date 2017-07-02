@@ -75,13 +75,39 @@ we chose &lsquo;Z&rsquo;.</p>
 
 <p>Wheel directions may vary according to system configurations or some system tweaks (Karabiner&rsquo;s Reverse Vertical Scrolling, for example).</p>
 
-<h1>Q&amp;A</h1>
-
-<p>Feel free to open issue</p>
-
 <h1>Download</h1>
 
 <p>Download the latest zip from https://github.com/MacGesture/MacGesture/releases</p>
+
+<h1>Known Issues</h1>
+
+<ul>
+<li>Right click does not work in some Java applications.</li>
+</ul>
+
+
+<p>An imperfect fix:
+Take WebStorm for example, open Preferences, then KeyMap, set the shortcut of &ldquo;Show Context Menu&rdquo; to &ldquo;Button3 Click&rdquo;</p>
+
+<ul>
+<li>Cannot assign some system-wide shortcuts to rules.</li>
+</ul>
+
+
+<p>Reason:
+macOS respond to system-wide shortcuts before MacGesture.</p>
+
+<p>Fix:
+Disable the shortcut first (for example in System Preferences->Keyboard->Shortcuts), then assign the shortcut in MacGesture, and re-enable the shortcut.</p>
+
+<p>Caveats:
+Some shortcuts still do not work with the fix above. When you are encountering this, here are two possible solutions:
+1. Change them to others (e.g. Control+0, Control+9).
+2. Tick &ldquo;Invert Fn When Control Is Pressed&rdquo;.</p>
+
+<h1>Q&amp;A</h1>
+
+<p>Feel free to open issue</p>
 
 <h1>Tips</h1>
 
