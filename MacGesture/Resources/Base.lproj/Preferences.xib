@@ -936,6 +936,17 @@
                                     <binding destination="72" name="value" keyPath="values.invertFnWhenControl" id="JEC-LG-tND"/>
                                 </connections>
                             </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmp-wu-kpI">
+                                <rect key="frame" x="18" y="102" width="326" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Enable Direction Extension" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Q8K-pK-bO8">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="72" name="value" keyPath="values.directionExtension" id="sL6-7I-DaE"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                 </box>

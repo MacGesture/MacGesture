@@ -130,6 +130,9 @@
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPickerWindowController.m; sourceTree = "<group>"; };
 		C610961B1DED98C700FCC263 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		CE4389FB13810EBE5934C100 /* libPods-MacGesture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MacGesture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D013DE1D1F08DEA7006003DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppPickerWindowController.strings; sourceTree = "<group>"; };
+		D013DE1F1F08DEBE006003DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		D013DE211F08DECA006003DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		D01C87CA1DE9DF2600B47E7D /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D02885DF1EF29B8A0082A660 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppPickerWindowController.strings"; sourceTree = "<group>"; };
 		D02885E01EF29B9E0082A660 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
@@ -501,7 +504,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which bartycrouch > /dev/null; then\n# Incrementally update all Storyboards/XIBs strings files\nbartycrouch interfaces -p \"$PROJECT_DIR/MacGesture\"\n\n# Add new keys to Localizable.strings files from NSLocalizedString in code\nbartycrouch code -p \"$PROJECT_DIR/MacGesture\" -l \"$PROJECT_DIR/MacGesture\" -s\nelse\necho \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi";
+			shellScript = "if which bartycrouch > /dev/null; then\n# Incrementally update all Storyboards/XIBs strings files\nbartycrouch interfaces -p \"$PROJECT_DIR/MacGesture\" -b\n\n# Add new keys to Localizable.strings files from NSLocalizedString in code\nbartycrouch code -p \"$PROJECT_DIR/MacGesture\" -l \"$PROJECT_DIR/MacGesture\" -s -k\nelse\necho \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -563,6 +566,7 @@
 			children = (
 				880AA77C1CA64E88006E7A74 /* Base */,
 				D02A45361EA0E84800E32EC5 /* zh-Hans */,
+				D013DE211F08DECA006003DD /* en */,
 			);
 			name = Preferences.xib;
 			path = .;
@@ -573,6 +577,7 @@
 			children = (
 				880AA7781CA64E62006E7A74 /* Base */,
 				D02885DF1EF29B8A0082A660 /* zh-Hans */,
+				D013DE1D1F08DEA7006003DD /* en */,
 			);
 			name = AppPickerWindowController.xib;
 			path = .;
@@ -603,6 +608,7 @@
 			children = (
 				880AA7751CA64DDB006E7A74 /* Base */,
 				D02885E01EF29B9E0082A660 /* zh-Hans */,
+				D013DE1F1F08DEBE006003DD /* en */,
 			);
 			name = MainMenu.xib;
 			path = .;
