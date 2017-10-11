@@ -391,6 +391,9 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                     //if (mouseDraggedEvent) {
                     //    CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
                     //}
+                    
+                    // Fix issue #70 dunno why here
+                    usleep(1000);
                     CGEventPost(kCGSessionEventTap, event);
                 }
                 CFRelease(mouseDownEvent);

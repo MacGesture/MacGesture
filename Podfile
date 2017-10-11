@@ -6,3 +6,4 @@ target 'MacGesture' do
   pod 'IYLoginItem'
   pod 'HexColors', '~> 4.0'
 end
+source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
