@@ -162,19 +162,17 @@ static BOOL eventTriggered;
     }
 }
 
-
-static void addDirection(NSString *dir, bool allowSameDirection) {
-    /*
+static void addDirection(unichar dir, bool allowSameDirection) {
     unichar lastDirectionChar;
     if (direction.length > 0) {
         lastDirectionChar = [direction characterAtIndex:direction.length - 1];
     } else {
         lastDirectionChar = ' ';
-    }*/
+    }
     
-    if (![direction hasSuffix:dir] || allowSameDirection) {
-        // NSString *temp = [NSString stringWithCharacters:&dir length:1];
-        [direction appendString:dir];
+    if (dir != lastDirectionChar || allowSameDirection) {
+        NSString *temp = [NSString stringWithCharacters:&dir length:1];
+        [direction appendString:temp];
         [windowController writeDirection:direction];
         handleGesture(NO);
     }
@@ -188,62 +186,13 @@ static void updateDirections(NSEvent *event) {
     double absX = fabs(deltaX);
     double absY = fabs(deltaY);
     double threshold = [[NSUserDefaults standardUserDefaults] doubleForKey:@"directionDetectionThreshold"];
-    bool directionExtension = [[NSUserDefaults standardUserDefaults] boolForKey:@"directionExtension"];
     if (absX + absY < threshold) {
         return; // ignore short distance
     }
     
     lastLocation = event.locationInWindow;
-    
-    double angle = atan2(deltaY, deltaX); // (-pi, pi]
-    NSMutableString *direction = [[NSMutableString alloc] init];
-    const double pi = 3.1415926535;
-    if (-pi/4 < angle && angle <= pi/4) {
-        [direction appendString:@"R"];
-        if (directionExtension) {
-            if (angle > pi/8) {
-                // [direction appendString:@"U"];
-                [direction setString:@"UR"];
-            } else if (angle < -pi/8) {
-                // [direction appendString:@"D"];
-                [direction setString:@"DR"];
-            }
-        }
-    } else if (pi/4 < angle && angle <= pi/4*3) {
-        [direction appendString:@"U"];
-        if (directionExtension) {
-            if (angle < pi/8*3) {
-                [direction appendString:@"R"];
-            } else if (angle > pi/8*5) {
-                [direction appendString:@"L"];
-            }
-        }
-    } else if (pi/4*3 < angle || angle <= -pi/4*3) {
-        [direction appendString:@"L"];
-        if (directionExtension) {
-            if (pi/4*3 < angle && angle < pi/8*7) {
-                // [direction appendString:@"U"];
-                [direction setString:@"UL"];
-            } else if (-pi/4*3 >= angle && angle > -pi/8*7) {
-                // [direction appendString:@"D"];
-                [direction setString:@"DL"];
-            }
-        }
-    } else { // if (-pi/4*3 < angle && angle <= -pi/4) {
-        [direction appendString:@"D"];
-        if (directionExtension) {
-            if (angle > -pi/8*3) {
-                [direction appendString:@"R"];
-            } else if (angle < -pi/8*5) {
-                [direction appendString:@"L"];
-            }
-        }
-    }
-    
-    addDirection(direction, false);
-    eventTriggered = YES;
 
-    /*
+
     if (absX > absY) {
         if (deltaX > 0) {
             addDirection('R', false);
@@ -265,7 +214,6 @@ static void updateDirections(NSEvent *event) {
             return;
         }
     }
-     */
 
 }
 
@@ -421,11 +369,11 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             if (current - lastMouseWheelEventTime > 0.3) {
                 if (delta > 0) {
                     NSLog(@"scrollWheel Down!");
-                    addDirection(@"d", true);
+                    addDirection('d', true);
                     eventTriggered = YES;
                 } else if (delta < 0){
                     NSLog(@"scrollWheel Up!");
-                    addDirection(@"u", true);
+                    addDirection('u', true);
                     eventTriggered = YES;
                 }
                 lastMouseWheelEventTime = current;
@@ -441,7 +389,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             if (!shouldShow || !mouseDownEvent) {
                 return event;
             }
-            addDirection(@"Z", true);
+            addDirection('Z', true);
             eventTriggered = YES;
             break;
         }

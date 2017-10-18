@@ -461,7 +461,7 @@ static NSString *currentScriptId = nil;
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSUserNotification *notification = [[NSUserNotification alloc] init];
-    notification.title = NSLocalizedString(@"MacGesture", nil);
+    notification.title = @"MacGesture";
     notification.informativeText = NSLocalizedString(@"Restart MacGesture to take effect", nil);
     notification.soundName = NSUserNotificationDefaultSoundName;
     
@@ -502,7 +502,7 @@ static NSString *currentScriptId = nil;
         [file closeFile];
 
         NSUserNotification *notification = [[NSUserNotification alloc] init];
-        notification.title = NSLocalizedString(@"MacGesture", nil);
+        notification.title = @"MacGesture";
         notification.informativeText = NSLocalizedString(@"Restart MacGesture to take effect", nil);
         notification.soundName = NSUserNotificationDefaultSoundName;
         
@@ -538,7 +538,7 @@ static NSString *currentScriptId = nil;
         [file closeFile];
         
         NSUserNotification *notification = [[NSUserNotification alloc] init];
-        notification.title = NSLocalizedString(@"MacGesture", nil);
+        notification.title = @"MacGesture";
         notification.informativeText = NSLocalizedString(@"Export succeeded", nil);
         notification.soundName = NSUserNotificationDefaultSoundName;
         

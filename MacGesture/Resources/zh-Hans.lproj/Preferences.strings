@@ -193,6 +193,3 @@
 
 /* Class = "NSBox"; title = "Advanced"; ObjectID = "grB-jA-OPZ"; */
 "grB-jA-OPZ.title" = "高级设置";
-
-/* Class = "NSButtonCell"; title = "Enable Direction Extension"; ObjectID = "Q8K-pK-bO8"; */
-"Q8K-pK-bO8.title" = "启用手势扩展";
