@@ -129,8 +129,8 @@
           <sparkle:releaseNotesLink>
             https://raw.githubusercontent.com/MacGesture/MacGesture/release/Changelog/2.2.3.html
           </sparkle:releaseNotesLink>
-          <pubDate>2017-10-24 15495 +8</pubDate>
-          <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/2.2.3/MacGesture-2.2.3.zip" sparkle:version="2.2.2" length="1902224" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCuB3VyONoatx/XzaJNH5HF5ASJ0gIVAKrdBswgydO0fd7jN5gTUhVECqXt" />
+          <pubDate>2017-10-24 15:49 +8</pubDate>
+          <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/2.2.3/MacGesture-2.2.3.zip" sparkle:version="2.2.3" length="1902224" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCuB3VyONoatx/XzaJNH5HF5ASJ0gIVAKrdBswgydO0fd7jN5gTUhVECqXt" />
           <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
   </item>
     </channel>
