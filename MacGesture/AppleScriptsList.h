@@ -13,7 +13,7 @@
 + (AppleScriptsList *)sharedAppleScriptsList;
 
 - (void)addAppleScript:(NSString *)title
-                      script:(NSString *)script;
+                script:(NSString *)script;
 
 - (void)reInit;
 

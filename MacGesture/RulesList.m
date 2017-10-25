@@ -10,7 +10,7 @@
 #import "utils.h"
 
 @implementation RulesList {
-
+    
 }
 
 NSMutableArray<NSMutableDictionary *> *_rulesList;  // private
@@ -68,7 +68,7 @@ NSMutableArray<NSMutableDictionary *> *_rulesList;  // private
 
 + (id)readRulesList {
     id result;
-
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     result = [defaults objectForKey:@"rules"];
     return result;
@@ -100,7 +100,7 @@ static inline void addWildcardShortcutRule(RulesList *rulesList, NSString *gestu
     if ((data = [self readRulesList])) {
         rulesList = [[RulesList alloc] initWithNsData:data];
     }
-
+    
     if (rulesList == nil) {
         rulesList = [[RulesList alloc] init];
         [rulesList reInit];
@@ -119,7 +119,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     CGEventSetFlags(event, flags);
     CGEventPost(kCGHIDEventTap, event);
     CFRelease(event);
-
+    
     event = CGEventCreateKeyboardEvent(source, virtualKey, false);
     CGEventSetFlags(event, flags);
     CGEventPost(kCGHIDEventTap, event);
@@ -233,7 +233,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
                   actionType:(ActionType)actionType
              shortcutKeyCode:(NSUInteger)shortcutKeyCode
                 shortcutFlag:(NSUInteger)shortcutFlag
-                 appleScriptId:(NSString *)appleScriptId
+               appleScriptId:(NSString *)appleScriptId
                         note:(NSString *)note; {
     NSMutableDictionary *rule = [[NSMutableDictionary alloc] init];
     rule[@"direction"] = direction;
@@ -243,7 +243,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     if (actionType == ACTION_TYPE_SHORTCUT) {
         rule[@"shortcut_code"] = @(shortcutKeyCode);
         rule[@"shortcut_flag"] = @(shortcutFlag);
-
+        
     } else if (actionType == ACTION_TYPE_APPLE_SCRIPT) {
         rule[@"apple_script_id"] = appleScriptId;
     }
@@ -326,7 +326,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     if (self) {
         _rulesList = [[NSMutableArray alloc] init];
     }
-
+    
     return self;
 }
 
@@ -339,7 +339,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     if (self) {
         _rulesList = [[NSMutableArray alloc] initWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
     }
-
+    
     return self;
 }
 

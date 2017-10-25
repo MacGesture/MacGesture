@@ -43,17 +43,17 @@ static NSArray *exampleAppleScripts;
 - (void)changeSize:(NSInteger *)index changeSizeButton:(NSButton *)button preferenceView:(NSView *)view {
     *index += 1;
     *index %= PREF_WINDOW_SIZECOUNT;
-
+    
     NSString *title;
-
+    
     if (*index != PREF_WINDOW_SIZECOUNT - 1) {
         title = NSLocalizedString(@"Go bigger", nil);
     } else {
         title = NSLocalizedString(@"Reset size", nil);
     }
-
+    
     [button setTitle:title];
-
+    
     [view setFrameSize:PREF_WINDOW_SIZES[*index]];
     [self changeWindowSizeToFitInsideView:view];
     [self crossFadeView:view withView:view];
@@ -105,7 +105,7 @@ static NSArray *exampleAppleScripts;
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-//    [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
+    //    [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
     
     [[self window] setDelegate:self];
     
@@ -152,7 +152,7 @@ static NSArray *exampleAppleScripts;
 }
 
 - (void)refreshFilterRadioAndTextViewState {
-//    self.blackListModeRadio.cell stat
+    //    self.blackListModeRadio.cell stat
     NSLog(@"BWFilter.isInWhiteListMode: %d", BWFilter.isInWhiteListMode);
     [self.blackListModeRadio setState:BWFilter.isInWhiteListMode ? NSOffState : NSOnState];
     [self.whiteListModeRadio setState:BWFilter.isInWhiteListMode ? NSOnState : NSOffState];
@@ -160,10 +160,10 @@ static NSArray *exampleAppleScripts;
     //[NSColor hx_colorWithHexString:@"E3E6EA"];
     NSColor *active = [NSColor hx_colorWithHexRGBAString:@"#ffffff"];
     self.blackListTextView.backgroundColor = BWFilter.isInWhiteListMode ? notActive : active;
-//    ((NSScrollView *)(self.blackListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?notActive:active;
+    //    ((NSScrollView *)(self.blackListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?notActive:active;
     self.whiteListTextView.backgroundColor = BWFilter.isInWhiteListMode ? active : notActive;
-//    ((NSScrollView *)(self.whiteListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?active:notActive;
-
+    //    ((NSScrollView *)(self.whiteListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?active:notActive;
+    
     [self.whiteListTextView.superview.superview needsLayout];
     [self.whiteListTextView.superview.superview needsDisplay];
     [self.blackListTextView.superview.superview needsLayout];
@@ -187,18 +187,18 @@ static NSArray *exampleAppleScripts;
 
 - (IBAction)changeSizeOfPreferenceWindow:(id)sender {
     [self changeSize:&currentRulesWindowSizeIndex changeSizeButton:[self changeRulesWindowSizeButton] preferenceView:[self rulesPreferenceView]];
-
-//    NSRect rectOfRules=self.rulesPreferenceView.frame;
-//    rectOfRules.size.width=1000;
-//    rectOfRules.size.height=640;
-//    rectOfRules.origin.x=0;
-//    rectOfRules.origin.y=0;
-//    self.rulesPreferenceView.frame=rectOfRules;
-//    [self.rulesPreferenceView needsLayout];
-//    [self.rulesPreferenceView needsDisplay];
-//    [self.rulesTableView sizeToFit]
-//    self.window size
-//    [self loadViewForIdentifier:@"Rules" animate:YES];
+    
+    //    NSRect rectOfRules=self.rulesPreferenceView.frame;
+    //    rectOfRules.size.width=1000;
+    //    rectOfRules.size.height=640;
+    //    rectOfRules.origin.x=0;
+    //    rectOfRules.origin.y=0;
+    //    self.rulesPreferenceView.frame=rectOfRules;
+    //    [self.rulesPreferenceView needsLayout];
+    //    [self.rulesPreferenceView needsDisplay];
+    //    [self.rulesTableView sizeToFit]
+    //    self.window size
+    //    [self loadViewForIdentifier:@"Rules" animate:YES];
 }
 
 - (void)changeWindowSizeToFitInsideView:(NSView *)view {
@@ -221,25 +221,25 @@ static NSArray *exampleAppleScripts;
     [self addView:self.appleScriptPreferenceView label:NSLocalizedString(@"AppleScript", nil) image:[NSImage imageNamed:@"AppleScript_Editor_Logo.png"]];
     [self addFlexibleSpacer];
     [self addView:self.aboutPreferenceView label:NSLocalizedString(@"About", nil) image:[NSImage imageNamed:@"About.png"]];
-
+    
     // Optional configuration settings.
     [self setCrossFade:[[NSUserDefaults standardUserDefaults] boolForKey:@"fade"]];
     [self setShiftSlowsAnimation:[[NSUserDefaults standardUserDefaults] boolForKey:@"shiftSlowsAnimation"]];
-
+    
 }
 
 - (IBAction)blockFilterPickBtnDidClick:(id)sender {
-//    self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
-//
-//
-////    [self.pickerWindowController  showDialog];
-//    [self.pickerWindowController  showWindow:self];
-//
-//    if([windowController generateFilter]){
-//        _blockFilter.stringValue = [windowController generateFilter];
-//        [[NSUserDefaults standardUserDefaults] setObject:[windowController generateFilter] forKey:@"blockFilter"];
-//    }
-//    [[NSUserDefaults standardUserDefaults] synchronize];
+    //    self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
+    //
+    //
+    ////    [self.pickerWindowController  showDialog];
+    //    [self.pickerWindowController  showWindow:self];
+    //
+    //    if([windowController generateFilter]){
+    //        _blockFilter.stringValue = [windowController generateFilter];
+    //        [[NSUserDefaults standardUserDefaults] setObject:[windowController generateFilter] forKey:@"blockFilter"];
+    //    }
+    //    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)close {
@@ -259,12 +259,12 @@ static NSArray *exampleAppleScripts;
             }
             
             item = LSSharedFileListInsertItemURL(loginItems,
-                                                                         kLSSharedFileListItemLast,
-                                                                         NULL,
-                                                                         NULL,
-                                                                         (__bridge CFURLRef)bundleURL,
-                                                                         NULL,
-                                                                         NULL);
+                                                 kLSSharedFileListItemLast,
+                                                 NULL,
+                                                 NULL,
+                                                 (__bridge CFURLRef)bundleURL,
+                                                 NULL,
+                                                 NULL);
             
             if (item) {
                 CFRelease(item);
@@ -297,7 +297,7 @@ static NSArray *exampleAppleScripts;
     } else if (sender == self.blackListModeRadio) {
         BWFilter.isInWhiteListMode = NO;
     }
-
+    
     [self refreshFilterRadioAndTextViewState];
 }
 
@@ -326,10 +326,10 @@ static NSArray *exampleAppleScripts;
 }
 
 - (IBAction)colorChanged:(id)sender {
-//    SET_LINE_COLOR(self.lineColorWell.color);
+    //    SET_LINE_COLOR(self.lineColorWell.color);
     [MGOptionsDefine setLineColor:self.lineColorWell.color];
 }
-     
+
 - (IBAction)chooseFont:(id)sender {
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
     [fontManager setSelectedFont:[NSFont fontWithName:[self.fontNameTextField stringValue] size:[self.fontNameTextField floatValue]] isMultiple:NO];
@@ -365,7 +365,7 @@ static NSArray *exampleAppleScripts;
     NSURL *defaultPrefsFile = [[NSBundle mainBundle]
                                URLForResource:@"DefaultPreferences" withExtension:@"plist"];
     NSDictionary *defaultPrefs =
-        [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
+    [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
     for (NSString *key in defaultPrefs) {
         [defs setObject:[defaultPrefs objectForKey:key] forKey:key];
     }
@@ -467,7 +467,7 @@ static NSString *currentScriptId = nil;
         [[[AppleScriptsList sharedAppleScriptsList] scriptAtIndex:index] writeToFile:currentScriptPath atomically:YES
                                                                             encoding:NSUTF8StringEncoding error:&error];
         [[NSWorkspace sharedWorkspace] openFile:currentScriptPath];
-    
+        
         isEditing = YES;
         [[self editInExternalEditorButton] setTitle:NSLocalizedString(@"Stop",nil)];
     } else {
@@ -563,17 +563,17 @@ static NSString *currentScriptId = nil;
         [task setArguments:arguments];
         NSPipe *pipe = [NSPipe pipe];
         [task setStandardInput:pipe];
-         
+        
         NSFileHandle *file = [pipe fileHandleForWriting];
         
         [task launch];
-
+        
         NSData *data = [NSData dataWithContentsOfURL:url];
         if (data) {
             [file writeData:data];
         }
         [file closeFile];
-
+        
         NSUserNotification *notification = [[NSUserNotification alloc] init];
         notification.title = @"MacGesture";
         notification.informativeText = NSLocalizedString(@"Restart MacGesture to take effect", nil);

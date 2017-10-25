@@ -35,7 +35,7 @@
             _appleScriptsList = [[NSMutableArray alloc] init];
         }
     }
-
+    
     return self;
 }
 

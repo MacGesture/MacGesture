@@ -50,7 +50,7 @@ static NSColor *loadedColor;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
-
+    
     noteColor = [MGOptionsDefine getNoteColor];
     if( ![noteColor isEqualTo:loadedColor] ) {
         leftImage   = [self convertImage:[NSImage imageNamed:@"left.png"]   toSpecifiedColor:noteColor];
@@ -60,14 +60,14 @@ static NSColor *loadedColor;
         scrollImage = [self convertImage:[NSImage imageNamed:@"scroll.png"] toSpecifiedColor:noteColor];
         loadedColor = noteColor;
     }
-
+    
     if (self) {
         color = [MGOptionsDefine getLineColor];
         points = [[NSMutableArray alloc] init];
         directionToDraw = @"";
         radius = 2;
     }
-
+    
     return self;
 }
 
@@ -79,7 +79,7 @@ static NSColor *loadedColor;
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"showGesturePreview"]) {
         return;
     }
-
+    
     // This should be called in drawRect
     float scale = [self getGestureImageScale];
     float scaledHeight = scale * leftImage.size.height;
@@ -145,12 +145,12 @@ static NSColor *loadedColor;
             double frac = 0.65;
             
             /*
-            if (count > 1) {
-                [[NSString stringWithFormat:@"%d", count] drawWithRect: NSMakeRect(beginx + index * scaledWidth, y - (frac - 0.5)*scaledHeight, scaledWidth*(1-frac), scaledHeight*(1-frac))
-                                                               options: NSStringDrawingUsesFontLeading
-                                                            attributes: nil
-                                                               context: nil];
-            }
+             if (count > 1) {
+             [[NSString stringWithFormat:@"%d", count] drawWithRect: NSMakeRect(beginx + index * scaledWidth, y - (frac - 0.5)*scaledHeight, scaledWidth*(1-frac), scaledHeight*(1-frac))
+             options: NSStringDrawingUsesFontLeading
+             attributes: nil
+             context: nil];
+             }
              */
             
             [scrollImage drawInRect:NSMakeRect(beginx + index * scaledWidth + frac * scaledWidth, y - (frac - 0.5)*scaledHeight, scaledWidth*(1-frac), scaledHeight*(1-frac)) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
@@ -174,13 +174,13 @@ static NSColor *loadedColor;
     else
         note = [[RulesList sharedRulesList] noteAtIndex:index];
     if (![note isEqualToString:@""]) {
-
+        
         CGRect screenRect = [[NSScreen mainScreen] frame];
-
+        
         NSFont *font = [NSFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"noteFontName"] size:[[NSUserDefaults standardUserDefaults] doubleForKey:@"noteFontSize"]];
-
+        
         NSDictionary *textAttributes = @{NSFontAttributeName : font, NSForegroundColorAttributeName : noteColor};
-
+        
         CGSize size = [note sizeWithAttributes:textAttributes];
         float x = ((screenRect.size.width - size.width) / 2);
         float y = ((screenRect.size.height + leftImage.size.height * [self getGestureImageScale]) / 2);
@@ -207,14 +207,14 @@ static NSColor *loadedColor;
         for (int i = 1; i < points.count; i++) {
             [path lineToPoint:[points[i] pointValue]];
         }
-
+        
         [path stroke];
     }
-
+    
     //[textImage drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
     [self drawDirection];
     [self drawNote];
-
+    
 }
 
 
@@ -232,7 +232,7 @@ static NSColor *loadedColor;
 
 - (void)resizeTo:(NSRect)frame {
     self.frame = frame;
-
+    
     self.needsDisplay = YES;
 }
 
@@ -250,7 +250,7 @@ static NSColor *loadedColor;
 }
 
 - (void)mouseDragged:(NSEvent *)event {
-
+    
     @autoreleasepool {
         NSPoint newLocation = event.locationInWindow;
         NSWindow *w = self.window;
@@ -261,17 +261,17 @@ static NSColor *loadedColor;
 #ifdef DEBUG
         //NSLog(@"mouseDragged frame:%@, window:%@, screen:%@, point:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame), NSStringFromPoint(newLocation));
 #endif
-
-//		[self drawCircleAtPoint:newLocation];
+        
+        //		[self drawCircleAtPoint:newLocation];
         [points addObject:[NSValue valueWithPoint:newLocation]];
         self.needsDisplay = YES;
-//		[self setNeedsDisplayInRect:NSMakeRect(fmin(lastLocation.x - radius, newLocation.x - radius),
-//											   fmin(lastLocation.y - radius, newLocation.y - radius),
-//											   abs(newLocation.x - lastLocation.x) + radius * 2,
-//											   abs(newLocation.y - lastLocation.y) + radius * 2)];
+        //		[self setNeedsDisplayInRect:NSMakeRect(fmin(lastLocation.x - radius, newLocation.x - radius),
+        //											   fmin(lastLocation.y - radius, newLocation.y - radius),
+        //											   abs(newLocation.x - lastLocation.x) + radius * 2,
+        //											   abs(newLocation.y - lastLocation.y) + radius * 2)];
         lastLocation = newLocation;
     }
-
+    
 }
 
 - (void)setEnable:(BOOL)shouldEnable {
@@ -284,7 +284,7 @@ static NSColor *loadedColor;
 
 - (void)writeDirection:(NSString *)directionStr; {
     directionToDraw = directionStr;
-
+    
     self.needsDisplay = YES;
 }
 

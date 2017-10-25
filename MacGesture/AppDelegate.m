@@ -37,23 +37,23 @@ static BOOL eventTriggered;
     //AXIsProcessTrustedWithOptions(CFDictionaryCreate(NULL, (const void*[]){ kAXTrustedCheckOptionPrompt }, (const void*[]){ kCFBooleanTrue }, 1, NULL, NULL));
     
     windowController = [[CanvasWindowController alloc] init];
-
+    
     CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) | CGEventMaskBit(kCGEventRightMouseUp) | CGEventMaskBit(kCGEventLeftMouseDown) | CGEventMaskBit(kCGEventScrollWheel);
     mouseEventTap = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, kCGEventTapOptionDefault, eventMask, mouseEventCallback, NULL);
     CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, mouseEventTap, 0);
     CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
     CFRelease(mouseEventTap);
     CFRelease(runLoopSource);
-
+    
     direction = [NSMutableString string];
     isEnabled = YES;
     
     NSURL *defaultPrefsFile = [[NSBundle mainBundle]
                                URLForResource:@"DefaultPreferences" withExtension:@"plist"];
     NSDictionary *defaultPrefs =
-        [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
+    [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPrefs];
-
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRunBefore"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRunBefore"];
         
@@ -68,18 +68,18 @@ static BOOL eventTriggered;
             [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"file://%@", readme]]];
         }
     }
-
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.4_Before"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun_2.0.4_Before"];
     }
-
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.5_Before"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showGestureNote"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun_2.0.5_Before"];
     }
-
+    
     [BWFilter compatibleProcedureWithPreviousVersionBlockRules];
-
+    
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]) {
         [self openPreferences:self];
     }
@@ -126,7 +126,7 @@ static BOOL eventTriggered;
         _preferencesWindowController = [[AppPrefsWindowController alloc] initWithWindowNibName:@"Preferences"];
         [_preferencesWindowController showWindow:self];
     } else {
-       [[_preferencesWindowController window] orderFront:self];
+        [[_preferencesWindowController window] orderFront:self];
     }
 }
 
@@ -154,7 +154,7 @@ static BOOL eventTriggered;
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
     // This event can be triggered when switching desktops in Sierra. See BUG #37
     if ((![[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]
-        && ![[NSUserDefaults standardUserDefaults] boolForKey:@"showIconInStatusBar"])
+         && ![[NSUserDefaults standardUserDefaults] boolForKey:@"showIconInStatusBar"])
         || [[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnActivate"]) {
         [self openPreferences:self];
     }
@@ -189,8 +189,8 @@ static void updateDirections(NSEvent *event) {
     }
     
     lastLocation = event.locationInWindow;
-
-
+    
+    
     if (absX > absY) {
         if (deltaX > 0) {
             addDirection('R', false);
@@ -212,7 +212,7 @@ static void updateDirections(NSEvent *event) {
             return;
         }
     }
-
+    
 }
 
 static bool handleGesture(BOOL lastGesture) {
@@ -241,10 +241,10 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             {
                 NSString *frontBundle = frontBundleName();
                 if (![BWFilter shouldHookMouseEventForApp:frontBundle] || (![[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] && ![[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
-                //        CGEventPost(kCGSessionEventTap, mouseDownEvent);
-                //        if (mouseDraggedEvent) {
-                //            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
-                //        }
+                    //        CGEventPost(kCGSessionEventTap, mouseDownEvent);
+                    //        if (mouseDraggedEvent) {
+                    //            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
+                    //        }
                     shouldShow = NO;
                     return event;
                 }
@@ -254,7 +254,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             
             if (mouseDownEvent) { // mouseDownEvent may not release when kCGEventTapDisabledByTimeout
                 resetDirection();
-
+                
                 CGPoint location = CGEventGetLocation(mouseDownEvent);
                 CGEventPost(kCGSessionEventTap, mouseDownEvent);
                 CFRelease(mouseDownEvent);
@@ -271,7 +271,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             mouseEvent = [NSEvent eventWithCGEvent:event];
             mouseDownEvent = event;
             CFRetain(mouseDownEvent);
-
+            
             [windowController reinitWindow];
             [windowController handleMouseEvent:mouseEvent];
             lastLocation = mouseEvent.locationInWindow;
@@ -362,7 +362,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
             
             // NSLog(@"scrollWheel delta:%f", delta);
-
+            
             NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate];
             if (current - lastMouseWheelEventTime > 0.3) {
                 if (delta > 0) {
@@ -394,7 +394,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
         default:
             return event;
     }
-
+    
     return NULL;
 }
 

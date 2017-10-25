@@ -18,7 +18,7 @@
     NSWindow *window = [[CanvasWindow alloc] initWithContentRect:frame];
     NSView *view = [[CanvasView alloc] initWithFrame:frame];
     window.contentView = view;
-
+    
     window.collectionBehavior = NSWindowCollectionBehaviorCanJoinAllSpaces;
     self.window = window;
     [window orderFront:self];
@@ -28,7 +28,7 @@
     self = [super init];
     if (self) {
         [self reinitWindow];
-
+        
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleScreenParametersChange:) name:NSApplicationDidChangeScreenParametersNotification object:nil];
     }
     return self;
