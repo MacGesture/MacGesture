@@ -3,7 +3,6 @@
 #import "CanvasWindowController.h"
 #import "RulesList.h"
 #import "utils.h"
-#import "NSBundle+LoginItem.h"
 #import "BlackWhiteFilter.h"
 
 @implementation AppDelegate
@@ -71,7 +70,6 @@ static BOOL eventTriggered;
     }
 
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.4_Before"]) {
-        [[NSBundle mainBundle] addToLoginItems];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun_2.0.4_Before"];
     }
 
@@ -242,7 +240,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             if (true)
             {
                 NSString *frontBundle = frontBundleName();
-                if (![BWFilter shouldHookMouseEventForApp:frontBundle] || !([[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] || [[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
+                if (![BWFilter shouldHookMouseEventForApp:frontBundle] || (![[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] && ![[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
                 //        CGEventPost(kCGSessionEventTap, mouseDownEvent);
                 //        if (mouseDraggedEvent) {
                 //            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
@@ -363,16 +361,16 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             }
             double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
             
-            NSLog(@"scrollWheel delta:%f", delta);
+            // NSLog(@"scrollWheel delta:%f", delta);
 
             NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate];
             if (current - lastMouseWheelEventTime > 0.3) {
                 if (delta > 0) {
-                    NSLog(@"scrollWheel Down!");
+                    // NSLog(@"scrollWheel Down!");
                     addDirection('d', true);
                     eventTriggered = YES;
                 } else if (delta < 0){
-                    NSLog(@"scrollWheel Up!");
+                    // NSLog(@"scrollWheel Up!");
                     addDirection('u', true);
                     eventTriggered = YES;
                 }

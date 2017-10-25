@@ -1,7 +1,6 @@
 PODS:
   - DBPrefsWindowController (0.0.1)
   - HexColors (4.0.0)
-  - IYLoginItem (0.1)
   - ShortcutRecorder (2.17):
     - ShortcutRecorder/Core (= 2.17)
     - ShortcutRecorder/PTHotKey (= 2.17)
@@ -13,7 +12,6 @@ PODS:
 DEPENDENCIES:
   - DBPrefsWindowController
   - HexColors (~> 4.0)
-  - IYLoginItem
   - ShortcutRecorder (from `https://github.com/Kentzo/ShortcutRecorder`)
   - Sparkle
 
@@ -29,10 +27,9 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   DBPrefsWindowController: ce0fe8de832c6931302736de5d938e98d2fd59ed
   HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379
-  IYLoginItem: e57a86b39d3b9ab0e2fc033adedae01efafd9adf
   ShortcutRecorder: c0e1ae0e97917925feab04e8817d2be6ef1b0548
   Sparkle: 06ea33170007c5937ee54da481b4481af98fac79
 
-PODFILE CHECKSUM: 296acd4fee999d1cc4ca747232996fb45a786ce7
+PODFILE CHECKSUM: 34fa30527a3dc3ed1b33375f450a8997f8290f11
 
 COCOAPODS: 1.3.1

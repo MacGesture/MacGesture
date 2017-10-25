@@ -1,4 +1,4 @@
-NSString *frontBundleName();
+NSString *frontBundleName(void);
 
 bool wildcardArray(NSString *bundleName, NSArray *wildFilters, BOOL ignoreCase);
 

@@ -1,6 +1,6 @@
 #import "utils.h"
 
-NSString *frontBundleName() {
+NSString *frontBundleName(void) {
     NSRunningApplication *runningApp = [[NSWorkspace sharedWorkspace] frontmostApplication];
 
     if (!runningApp.bundleIdentifier) {

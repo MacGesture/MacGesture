@@ -7,7 +7,6 @@
 #import "RulesList.h"
 #import "AppleScriptsList.h"
 #import "SRRecorderControlWithTagid.h"
-#import "NSBundle+LoginItem.h"
 #import "BlackWhiteFilter.h"
 #import "HexColors.h"
 #import "MGOptionsDefine.h"
@@ -64,13 +63,54 @@ static NSArray *exampleAppleScripts;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (LSSharedFileListItemRef)itemRefWithListRef:(LSSharedFileListRef)listRef {
+    NSURL *bundleURL = [NSBundle mainBundle].bundleURL;
+    CFArrayRef arr = LSSharedFileListCopySnapshot(listRef, NULL);
+    
+    for (NSInteger i = 0; i < CFArrayGetCount(arr); ++i) {
+        LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(arr, i);
+        CFURLRef urlRef;
+        OSStatus error = LSSharedFileListItemResolve(itemRef, 0, &urlRef, NULL);
+        
+        if (error != noErr) {
+            CFRelease(itemRef);
+            continue;
+        }
+        
+        if (CFEqual(urlRef, (__bridge CFURLRef)bundleURL)) {
+            CFRetain(itemRef);
+            CFRelease(arr);
+            CFRelease(urlRef);
+            return itemRef;
+        }
+        CFRelease(urlRef);
+    }
+    CFRelease(arr);
+    return NULL;
+}
+
+- (BOOL)isLoginItem {
+    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    if (!loginItems) return NO;
+    
+    LSSharedFileListItemRef loginItemRef = [self itemRefWithListRef:loginItems];
+    if (!loginItemRef) {
+        CFRelease(loginItems);
+        return NO;
+    }
+    CFRelease(loginItems);
+    CFRelease(loginItemRef);
+    return YES;
+}
+
 - (void)windowDidLoad {
     [super windowDidLoad];
 //    [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
     
     [[self window] setDelegate:self];
     
-    self.autoStartAtLogin.state = [[NSBundle mainBundle] isLoginItem] ? NSOnState : NSOffState;
+    
+    self.autoStartAtLogin.state = [self isLoginItem] ? NSOnState : NSOffState;
     self.versionCode.stringValue = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
     [self refreshFilterRadioAndTextViewState];
     self.blackListTextView.string = BWFilter.blackListText;
@@ -208,12 +248,45 @@ static NSArray *exampleAppleScripts;
 }
 
 - (IBAction)autoStartAction:(id)sender {
+    NSURL *bundleURL = [NSBundle mainBundle].bundleURL;
+    LSSharedFileListRef loginItems;
+    LSSharedFileListItemRef item, loginItemRef;
     switch (self.autoStartAtLogin.state) {
         case NSOnState:
-            [[NSBundle mainBundle] addToLoginItems];
+            loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+            if (!loginItems) {
+                return;
+            }
+            
+            item = LSSharedFileListInsertItemURL(loginItems,
+                                                                         kLSSharedFileListItemLast,
+                                                                         NULL,
+                                                                         NULL,
+                                                                         (__bridge CFURLRef)bundleURL,
+                                                                         NULL,
+                                                                         NULL);
+            
+            if (item) {
+                CFRelease(item);
+            }
+            CFRelease(loginItems);
             break;
         case NSOffState:
-            [[NSBundle mainBundle] removeFromLoginItems];
+            loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+            if (!loginItems) {
+                return;
+            }
+            
+            loginItemRef = [self itemRefWithListRef:loginItems];
+            if (!loginItemRef) {
+                CFRelease(loginItems);
+                return;
+            }
+            
+            LSSharedFileListItemRemove(loginItems, loginItemRef);
+            
+            CFRelease(loginItems);
+            CFRelease(loginItemRef);
             break;
     }
 }

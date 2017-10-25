@@ -185,8 +185,7 @@ static NSColor *loadedColor;
         float x = ((screenRect.size.width - size.width) / 2);
         float y = ((screenRect.size.height + leftImage.size.height * [self getGestureImageScale]) / 2);
         
-        CGContextRef context = [[NSGraphicsContext currentContext]
-                                graphicsPort];
+        CGContextRef context = [NSGraphicsContext currentContext].CGContext;
         CGContextSetRGBFillColor (context, 0, 0, 0, 0.1);
         CGContextFillRect (context, CGRectMake (x, y, size.width,
                                                 size.height));
@@ -245,7 +244,7 @@ static NSColor *loadedColor;
     lastLocation.x -= s.frame.origin.x;
     lastLocation.y -= s.frame.origin.y;
 #ifdef DEBUG
-    NSLog(@"mouseDown frame:%@, window:%@, screen:%@, point:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame), NSStringFromPoint(lastLocation));
+    //NSLog(@"mouseDown frame:%@, window:%@, screen:%@, point:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame), NSStringFromPoint(lastLocation));
 #endif
     [points addObject:[NSValue valueWithPoint:lastLocation]];
 }
@@ -260,7 +259,7 @@ static NSColor *loadedColor;
         newLocation.y -= s.frame.origin.y;
         
 #ifdef DEBUG
-        NSLog(@"mouseDragged frame:%@, window:%@, screen:%@, point:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame), NSStringFromPoint(newLocation));
+        //NSLog(@"mouseDragged frame:%@, window:%@, screen:%@, point:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame), NSStringFromPoint(newLocation));
 #endif
 
 //		[self drawCircleAtPoint:newLocation];
