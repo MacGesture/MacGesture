@@ -263,16 +263,15 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                     CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
                     CFRelease(mouseDraggedEvent);
                 }
-                CGEventRef event = CGEventCreateMouseEvent(NULL, kCGEventRightMouseUp, location, kCGMouseButtonRight);
-                CGEventPost(kCGSessionEventTap, event);
-                CFRelease(event);
+                CGEventRef event_up = CGEventCreateMouseEvent(NULL, kCGEventRightMouseUp, location, kCGMouseButtonRight);
+                CGEventPost(kCGSessionEventTap, event_up);
+                CFRelease(event_up);
                 mouseDownEvent = mouseDraggedEvent = NULL;
             }
             mouseEvent = [NSEvent eventWithCGEvent:event];
             mouseDownEvent = event;
             CFRetain(mouseDownEvent);
             
-            [windowController reinitWindow];
             [windowController handleMouseEvent:mouseEvent];
             lastLocation = mouseEvent.locationInWindow;
             break;
@@ -302,7 +301,6 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                         CFRelease(mouseDownEvent);
                         mouseDownEvent = mouseDraggedEvent = NULL;
                         shouldShow = NO;
-                        [windowController reinitWindow];
                         resetDirection();
                         break;
                     }
