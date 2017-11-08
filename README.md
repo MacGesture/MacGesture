@@ -6,7 +6,9 @@
 
 Configurable global mouse gesture for macOS.
 
-** Multiple issues are reported in macOS High Sierra. Please file issues and roll back to earlier versions before we fix all of them. **
+**Multiple issues are reported in macOS High Sierra. Please file issues and roll back to earlier versions before we fix all of them.**
+
+<u>***LOOKING FOR NEW MAINTAINER***</u>
 
 You can read this README in About section.
 
