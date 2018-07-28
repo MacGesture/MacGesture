@@ -14,7 +14,7 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "293"; */
 "293.title" = "Text Cell";
 
-/* Class = "BindingConnection"; ibShadowedDisplayPattern = "%{value1}@"; ObjectID = "302"; */
+/* Class = "CocoaBindingsConnection"; ibShadowedDisplayPattern = "%{value1}@"; ObjectID = "302"; */
 "302.ibShadowedDisplayPattern" = "%{value1}@";
 
 /* Class = "NSTableColumn"; headerCell.title = "Action"; ObjectID = "306"; */
@@ -74,6 +74,9 @@
 /* Class = "NSButtonCell"; title = "Export"; ObjectID = "JCy-Wc-jcu"; */
 "JCy-Wc-jcu.title" = "Export";
 
+/* Class = "NSTextFieldCell"; title = "You are advised to go through the README below:"; ObjectID = "Jc2-FY-LoP"; */
+"Jc2-FY-LoP.title" = "You are advised to go through the README below:";
+
 /* Class = "NSTextFieldCell"; title = "Co-developer: @zhangciwu in github"; ObjectID = "MJR-m4-m46"; */
 "MJR-m4-m46.title" = "Co-developer: @zhangciwu in github";
 
@@ -89,6 +92,9 @@
 /* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "RUf-9S-74q"; */
 "RUf-9S-74q.title" = "Table View Cell";
 
+/* Class = "NSButtonCell"; title = "Invert Fn When Control Is Pressed"; ObjectID = "Rc0-gx-DHr"; */
+"Rc0-gx-DHr.title" = "Invert Fn When Control Is Pressed";
+
 /* Class = "NSButtonCell"; title = "Merge Consecutive Identical Gestures"; ObjectID = "Tzh-fR-TUh"; */
 "Tzh-fR-TUh.title" = "Merge Consecutive Identical Gestures";
 
@@ -100,6 +106,9 @@
 
 /* Class = "NSButtonCell"; title = "Pick a running app"; ObjectID = "WsD-th-NkZ"; */
 "WsD-th-NkZ.title" = "Pick a running app";
+
+/* Class = "NSButtonCell"; title = "Open Preferences Window Upon Activation"; ObjectID = "YZQ-P5-4Yq"; */
+"YZQ-P5-4Yq.title" = "Open Preferences Window Upon Activation";
 
 /* Class = "NSButtonCell"; title = "Automatically Check for Updates"; ObjectID = "Yev-5n-cgO"; */
 "Yev-5n-cgO.title" = "Automatically Check for Updates";
@@ -142,6 +151,9 @@
 
 /* Class = "NSTableColumn"; headerCell.title = "Trigger on every match"; ObjectID = "gla-Uy-MuL"; */
 "gla-Uy-MuL.headerCell.title" = "Trigger on every match";
+
+/* Class = "NSBox"; title = "Advanced"; ObjectID = "grB-jA-OPZ"; */
+"grB-jA-OPZ.title" = "Advanced";
 
 /* Class = "NSButtonCell"; title = "-"; ObjectID = "hFe-TH-zPF"; */
 "hFe-TH-zPF.title" = "-";

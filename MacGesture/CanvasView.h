@@ -12,7 +12,7 @@
     NSColor *color;
     NSPoint lastLocation;
     NSUInteger radius;
-    NSMutableArray *points; // NSPoint array
+    NSMutableArray<NSValue*> *points; // NSPoint array
     NSString *directionToDraw;
 }
 

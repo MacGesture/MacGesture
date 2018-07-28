@@ -14,11 +14,15 @@
 @implementation CanvasWindowController
 
 - (void)reinitWindow {
+    if (self.window != NULL) {
+        [self.window close];
+    }
+
     NSRect frame = NSScreen.mainScreen.frame;
     NSWindow *window = [[CanvasWindow alloc] initWithContentRect:frame];
     NSView *view = [[CanvasView alloc] initWithFrame:frame];
     window.contentView = view;
-
+    
     window.collectionBehavior = NSWindowCollectionBehaviorCanJoinAllSpaces;
     self.window = window;
     [window orderFront:self];
@@ -28,7 +32,7 @@
     self = [super init];
     if (self) {
         [self reinitWindow];
-
+        
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleScreenParametersChange:) name:NSApplicationDidChangeScreenParametersNotification object:nil];
     }
     return self;
@@ -45,7 +49,7 @@
     } else {
         [self.window orderOut:self];
     }
-    [self.window.contentView setEnable:shouldEnable];
+    [(CanvasView *) self.window.contentView setEnable:shouldEnable];
 }
 
 - (void)handleMouseEvent:(NSEvent *)event {
@@ -67,11 +71,11 @@
 - (void)handleScreenParametersChange:(NSNotification *)notification {
     NSRect frame = NSScreen.mainScreen.frame;
     [self.window setFrame:frame display:NO];
-    [self.window.contentView resizeTo:frame];
+    [(CanvasView *) self.window.contentView resizeTo:frame];
 }
 
 - (void)writeDirection:(NSString *)directionStr; {
-    [self.window.contentView writeDirection:directionStr];
+    [(CanvasView *) self.window.contentView writeDirection:directionStr];
 }
 
 @end

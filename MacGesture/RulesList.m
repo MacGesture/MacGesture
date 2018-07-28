@@ -10,7 +10,7 @@
 #import "utils.h"
 
 @implementation RulesList {
-
+    
 }
 
 NSMutableArray<NSMutableDictionary *> *_rulesList;  // private
@@ -45,6 +45,13 @@ NSMutableArray<NSMutableDictionary *> *_rulesList;  // private
     return _rulesList[index][@"apple_script_id"];
 }
 
+- (BOOL)enabledAtIndex:(NSUInteger)index {
+    if ([_rulesList[index] objectForKey:@"enabled"] == nil) {
+        _rulesList[index][@"enabled"] = @(YES);
+    }
+    return [_rulesList[index][@"enabled"] boolValue];
+}
+
 - (NSInteger)count {
     return [_rulesList count];
 }
@@ -61,7 +68,7 @@ NSMutableArray<NSMutableDictionary *> *_rulesList;  // private
 
 + (id)readRulesList {
     id result;
-
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     result = [defaults objectForKey:@"rules"];
     return result;
@@ -93,7 +100,7 @@ static inline void addWildcardShortcutRule(RulesList *rulesList, NSString *gestu
     if ((data = [self readRulesList])) {
         rulesList = [[RulesList alloc] initWithNsData:data];
     }
-
+    
     if (rulesList == nil) {
         rulesList = [[RulesList alloc] init];
         [rulesList reInit];
@@ -103,15 +110,22 @@ static inline void addWildcardShortcutRule(RulesList *rulesList, NSString *gestu
 }
 
 static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
-    CGEventRef event = CGEventCreateKeyboardEvent(NULL, virtualKey, true);
+    // Fix issue #36. Dunno why it sends Control+Up as Fn+Control+Up. Invert the behavior.
+    if (flags == kCGEventFlagMaskControl && [[NSUserDefaults standardUserDefaults] boolForKey:@"invertFnWhenControl"]) {
+        flags ^= kCGEventFlagMaskSecondaryFn;
+    }
+    CGEventSourceRef source = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
+    CGEventRef event = CGEventCreateKeyboardEvent(source, virtualKey, true);
     CGEventSetFlags(event, flags);
-    CGEventPost(kCGSessionEventTap, event);
+    CGEventPost(kCGHIDEventTap, event);
     CFRelease(event);
-
-    event = CGEventCreateKeyboardEvent(NULL, virtualKey, false);
+    
+    event = CGEventCreateKeyboardEvent(source, virtualKey, false);
     CGEventSetFlags(event, flags);
-    CGEventPost(kCGSessionEventTap, event);
+    CGEventPost(kCGHIDEventTap, event);
     CFRelease(event);
+    
+    CFRelease(source);
 }
 
 - (bool)executeActionAt:(NSUInteger)index {
@@ -171,10 +185,12 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     NSString *frontApp = frontBundleName();
     NSUInteger i = 0;
     for (; i < [self count]; i++) {
-        if ((last ^ [self triggerOnEveryMatchAtIndex:i]) && [self matchFilter:frontApp atIndex:i]) {
-            //if ([gesture isEqualToString:[self directionAtIndex:i]]) {
-            if (wildcardString(gesture, [self directionAtIndex:i], NO)) {
-                break;
+        if ([self enabledAtIndex:i]) {
+            if ((last ^ [self triggerOnEveryMatchAtIndex:i]) && [self matchFilter:frontApp atIndex:i]) {
+                //if ([gesture isEqualToString:[self directionAtIndex:i]]) {
+                if (wildcardString(gesture, [self directionAtIndex:i], NO)) {
+                    break;
+                }
             }
         }
     }
@@ -217,7 +233,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
                   actionType:(ActionType)actionType
              shortcutKeyCode:(NSUInteger)shortcutKeyCode
                 shortcutFlag:(NSUInteger)shortcutFlag
-                 appleScriptId:(NSString *)appleScriptId
+               appleScriptId:(NSString *)appleScriptId
                         note:(NSString *)note; {
     NSMutableDictionary *rule = [[NSMutableDictionary alloc] init];
     rule[@"direction"] = direction;
@@ -227,17 +243,39 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     if (actionType == ACTION_TYPE_SHORTCUT) {
         rule[@"shortcut_code"] = @(shortcutKeyCode);
         rule[@"shortcut_flag"] = @(shortcutFlag);
-
+        
     } else if (actionType == ACTION_TYPE_APPLE_SCRIPT) {
         rule[@"apple_script_id"] = appleScriptId;
     }
     rule[@"note"] = note;
+    rule[@"enabled"] = @(YES);
     [_rulesList addObject:rule];
     [self save];
 }
 
+- (void)moveRuleFrom:(NSInteger)from
+              ruleTo:(NSInteger)to {
+    if (from != to) {
+        NSMutableDictionary *rule = [_rulesList objectAtIndex:from];
+        [_rulesList removeObjectAtIndex:from];
+        if (to >= [_rulesList count]) {
+            [_rulesList addObject:rule];
+        } else {
+            [_rulesList insertObject:rule atIndex:to];
+        }
+        [self save];
+    }
+    //[_rulesList exchangeObjectAtIndex:from withObjectAtIndex:to];
+}
+
 - (void)removeRuleAtIndex:(NSInteger)index {
     [_rulesList removeObjectAtIndex:index];
+    [self save];
+}
+
+- (void)toggleRule:(NSUInteger)index {
+    BOOL current = [_rulesList[index][@"enabled"] boolValue];
+    _rulesList[index][@"enabled"] = @(!current);
     [self save];
 }
 
@@ -288,7 +326,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     if (self) {
         _rulesList = [[NSMutableArray alloc] init];
     }
-
+    
     return self;
 }
 
@@ -301,7 +339,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     if (self) {
         _rulesList = [[NSMutableArray alloc] initWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
     }
-
+    
     return self;
 }
 

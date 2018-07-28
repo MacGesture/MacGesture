@@ -6,7 +6,7 @@
 
 <p>macOS上一款高度可配置的全局鼠标手势软件。</p>
 
-<p><strong> 有不止一个用户上报MacGesture在Sierra系统上运行不正常。如果你也发现同样的问题，也请在项目页面提交并且回滚到更旧的可用的版本。</strong></p>
+<p><strong> 有不止一个用户上报MacGesture在macOS High Sierra系统上运行不正常。如果你也发现同样的问题，也请在项目页面提交并且回滚到更旧的可用的版本。</strong></p>
 
 <p>你可以在软件的关于里阅读这个自述文件。</p>
 
@@ -28,38 +28,38 @@
 <table>
 <thead>
 <tr>
-<th> 手势    </th>
-<th> 缩写    </th>
+<th> 手势   </th>
+<th> 缩写   </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td> 左      </td>
-<td> L       </td>
+<td> 左    </td>
+<td> L    </td>
 </tr>
 <tr>
-<td> 上      </td>
-<td> U       </td>
+<td> 上    </td>
+<td> U    </td>
 </tr>
 <tr>
-<td> 右      </td>
-<td> R       </td>
+<td> 右    </td>
+<td> R    </td>
 </tr>
 <tr>
-<td> 下      </td>
-<td> D       </td>
+<td> 下    </td>
+<td> D    </td>
 </tr>
 <tr>
-<td> 鼠标右键</td>
-<td> Z       </td>
+<td> 鼠标左键 </td>
+<td> Z    </td>
 </tr>
 <tr>
-<td> 滚轮向上</td>
-<td> u       </td>
+<td> 滚轮向上 </td>
+<td> u    </td>
 </tr>
 <tr>
-<td> 滚轮向下</td>
-<td> d       </td>
+<td> 滚轮向下 </td>
+<td> d    </td>
 </tr>
 </tbody>
 </table>
@@ -67,19 +67,45 @@
 
 <p>手势可以包含通配符（“?”和“*”）。</p>
 
-<p>被匹配到的第一个规则会生效</p>
+<p>被匹配到的第一个规则会生效。</p>
 
 <p>Z是“左”的拼音首字母，所以我们让Z代表鼠标左键事件。</p>
 
 <p>鼠标滚轮事件可能随设备和系统设置变化而不同（比如Karabiner有反转滚轮方向的功能）</p>
 
-<h1>Q&amp;A</h1>
-
-<p>可以尽管提交问题</p>
-
 <h1>下载</h1>
 
 <p>从这里下载最新版本： https://github.com/MacGesture/MacGesture/releases</p>
+
+<h1>已知问题</h1>
+
+<ul>
+<li>右键点击在一些Java应用中失效。</li>
+</ul>
+
+
+<p>一个不完美的修复：
+拿WebStorm作为例子，打开Preferences，在KeyMap中设置“Show Context Menu”的快捷键为“Button3 Click”。</p>
+
+<ul>
+<li>不能设置一些全系统可用的快捷键。</li>
+</ul>
+
+
+<p>原因：
+macOS在MacGesture响应之前做出了相应处理。</p>
+
+<p>修复：
+先禁用快捷键（比如在系统配置->键盘->快捷键），然后在MacGesture中设置以后再重新启用快捷键。</p>
+
+<p>注意：
+即便用了以上的修复，一些快捷键仍然不能使用。当你遇到这个问题时，有两种可能的解决方案：
+1. 修改快捷键为其它（比如Control+0, Control+9）。
+2. 勾上“当 Control 按下时，抵消 Fn 键的作用”。</p>
+
+<h1>Q&amp;A</h1>
+
+<p>可以尽管提交问题</p>
 
 <h1>贴士</h1>
 
@@ -95,27 +121,27 @@
 <table>
 <thead>
 <tr>
-<th> 手势    </th>
-<th> 过滤               </th>
-<th> 动作               </th>
-<th> 说明       </th>
-<th> 每次匹配时触发         </th>
+<th> 手势   </th>
+<th> 过滤                 </th>
+<th> 动作                 </th>
+<th> 说明         </th>
+<th> 每次匹配时触发 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>U*d      </td>
+<td> U*d  </td>
 <td> *safari|*chrome </td>
 <td> &ldquo;shift-command-]&rdquo; </td>
 <td> &ldquo;Next Tab&rdquo; </td>
-<td> Checked                </td>
+<td> Checked </td>
 </tr>
 <tr>
-<td>U*u      </td>
+<td> U*u  </td>
 <td> *safari|*chrome </td>
 <td> &ldquo;shift-command-[&rdquo; </td>
 <td> &ldquo;Prev Tab&rdquo; </td>
-<td> Checked                </td>
+<td> Checked </td>
 </tr>
 </tbody>
 </table>
@@ -145,6 +171,63 @@ defaults import com.codefalling.MacGesture backup.plist
 </code></p>
 
 <p>你应该可以看到你之前的设置回来了。如果没有的话，请在项目主页提交问题。</p>
+
+<ul>
+<li>如果想要在某个规则中排除某个App：</li>
+</ul>
+
+
+<p>可以在过滤中加上'!&lsquo;，再加上你想要排除的App（仍然是通配符）。</p>
+
+<p>比如，原来是：</p>
+
+<table>
+<thead>
+<tr>
+<th> 手势   </th>
+<th> 过滤   </th>
+<th> 动作                 </th>
+<th> 说明         </th>
+<th> 每次匹配时触发 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> U*d  </td>
+<td> *   </td>
+<td> &ldquo;shift-command-]&rdquo; </td>
+<td> &ldquo;Next Tab&rdquo; </td>
+<td> Checked </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>现在想在Safari中禁用这个手势，那么，它应该改成：</p>
+
+<table>
+<thead>
+<tr>
+<th> 手势   </th>
+<th> 过滤           </th>
+<th> 动作                 </th>
+<th> 说明         </th>
+<th> 每次匹配时触发 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> U*d  </td>
+<td> *|!*safari </td>
+<td> &ldquo;shift-command-]&rdquo; </td>
+<td> &ldquo;Next Tab&rdquo; </td>
+<td> Checked </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>就可以实现这个目标了。</p>
 
 <h1>使用许可</h1>
 

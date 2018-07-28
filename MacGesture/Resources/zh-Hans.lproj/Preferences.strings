@@ -14,7 +14,7 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "293"; */
 "293.title" = "Text Cell";
 
-/* Class = "BindingConnection"; ibShadowedDisplayPattern = "%{value1}@"; ObjectID = "302"; */
+/* Class = "CocoaBindingsConnection"; ibShadowedDisplayPattern = "%{value1}@"; ObjectID = "302"; */
 "302.ibShadowedDisplayPattern" = "%{value1}@";
 
 /* Class = "NSTableColumn"; headerCell.title = "Action"; ObjectID = "306"; */
@@ -39,7 +39,7 @@
 "400.title" = "不绘制鼠标路径";
 
 /* Class = "NSButtonCell"; title = "Auto Start at Login"; ObjectID = "403"; */
-"403.title" = "不绘制鼠标路径";
+"403.title" = "登录时自动启动";
 
 /* Class = "NSButtonCell"; title = "Choose"; ObjectID = "02o-xA-KDH"; */
 "02o-xA-KDH.title" = "选择";
@@ -74,6 +74,9 @@
 /* Class = "NSButtonCell"; title = "Export"; ObjectID = "JCy-Wc-jcu"; */
 "JCy-Wc-jcu.title" = "导出";
 
+/* Class = "NSTextFieldCell"; title = "You are advised to go through the README below:"; ObjectID = "Jc2-FY-LoP"; */
+"Jc2-FY-LoP.title" = "建议您浏览以下的自述文件：";
+
 /* Class = "NSTextFieldCell"; title = "Co-developer: @zhangciwu in github"; ObjectID = "MJR-m4-m46"; */
 "MJR-m4-m46.title" = "联合开发者： @zhangciwu in github";
 
@@ -81,7 +84,7 @@
 "PQ5-fb-DKg.title" = "添加..";
 
 /* Class = "NSButtonCell"; title = "Show Gesture In Whatever App"; ObjectID = "Pif-49-STQ"; */
-"Pif-49-STQ.title" = "在所有App中显示";
+"Pif-49-STQ.title" = "在所有 App 中显示";
 
 /* Class = "NSButtonCell"; title = "Go bigger"; ObjectID = "Q7Q-zb-iKX"; */
 "Q7Q-zb-iKX.title" = "放大窗口";
@@ -99,7 +102,7 @@
 "VCT-WP-3Oh.title" = "应用规则";
 
 /* Class = "NSButtonCell"; title = "Pick a running app"; ObjectID = "WsD-th-NkZ"; */
-"WsD-th-NkZ.title" = "从运行中的App中选取";
+"WsD-th-NkZ.title" = "从运行中的 App 中选取";
 
 /* Class = "NSButtonCell"; title = "Automatically Check for Updates"; ObjectID = "Yev-5n-cgO"; */
 "Yev-5n-cgO.title" = "自动检查更新";
@@ -123,7 +126,7 @@
 "cl6-Yg-6iY.title" = "在外部编辑器编辑";
 
 /* Class = "NSTextFieldCell"; title = "Line color:"; ObjectID = "eIp-tq-2xl"; */
-"eIp-tq-2xl.title" = "鼠标路经颜色：";
+"eIp-tq-2xl.title" = "鼠标路径颜色：";
 
 /* Class = "NSTextFieldCell"; title = "FontName"; ObjectID = "fEL-3U-jlH"; */
 "fEL-3U-jlH.title" = "FontName";
@@ -135,10 +138,10 @@
 "gPX-Pa-jb5.title" = "Check";
 
 /* Class = "NSTextFieldCell"; placeholderString = "Enter AppleScript here"; ObjectID = "gTD-R3-oZl"; */
-"gTD-R3-oZl.placeholderString" = "Enter AppleScript here";
+"gTD-R3-oZl.placeholderString" = "在这里输入 AppleScript";
 
 /* Class = "NSButtonCell"; title = "Enable MacGesture"; ObjectID = "gbg-RG-zrR"; */
-"gbg-RG-zrR.title" = "启用MacGesture";
+"gbg-RG-zrR.title" = "启用 MacGesture";
 
 /* Class = "NSTableColumn"; headerCell.title = "Trigger on every match"; ObjectID = "gla-Uy-MuL"; */
 "gla-Uy-MuL.headerCell.title" = "每次匹配时触发";
@@ -159,7 +162,7 @@
 "oRe-ac-8qu.title" = "FontSize";
 
 /* Class = "NSMenuItem"; title = "Add a AppleScript Rule"; ObjectID = "pqG-Ck-V2g"; */
-"pqG-Ck-V2g.title" = "添加一个AppleScript规则";
+"pqG-Ck-V2g.title" = "添加一个 AppleScript 规则";
 
 /* Class = "NSButtonCell"; title = "Automatically Download Updates"; ObjectID = "rOi-wV-Iez"; */
 "rOi-wV-Iez.title" = "自动下载更新";
@@ -181,3 +184,12 @@
 
 /* Class = "NSButtonCell"; title = "White list mode"; ObjectID = "ztb-nI-iil"; */
 "ztb-nI-iil.title" = "白名单模式";
+
+/* Class = "NSButtonCell"; title = "Invert Fn When Control Is Pressed"; ObjectID = "Rc0-gx-DHr"; */
+"Rc0-gx-DHr.title" = "当 Control 按下时，抵消 Fn 键的作用";
+
+/* Class = "NSButtonCell"; title = "Open Preferences Window Upon Activation"; ObjectID = "YZQ-P5-4Yq"; */
+"YZQ-P5-4Yq.title" = "在激活时，打开偏好设置";
+
+/* Class = "NSBox"; title = "Advanced"; ObjectID = "grB-jA-OPZ"; */
+"grB-jA-OPZ.title" = "高级设置";

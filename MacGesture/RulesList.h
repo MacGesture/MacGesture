@@ -25,8 +25,11 @@ typedef enum {
                   actionType:(ActionType)actionType
              shortcutKeyCode:(NSUInteger)shortcutKeyCode // when actionType == ACTION_TYPE_SHORTCUT required,or 0
                 shortcutFlag:(NSUInteger)shortcutFlag // when actionType == ACTION_TYPE_SHORTCUT required,or 0
-                 appleScriptId:(NSString *)appleScriptId // when actionType == ACTION_TYPE_APPLE_SCRIPT required,or nil
+               appleScriptId:(NSString *)appleScriptId // when actionType == ACTION_TYPE_APPLE_SCRIPT required,or nil
                         note:(NSString *)note;
+
+- (void)moveRuleFrom:(NSInteger)from
+              ruleTo:(NSInteger)to;
 
 - (void)removeRuleAtIndex:(NSInteger)index;
 
@@ -48,6 +51,8 @@ typedef enum {
 
 - (NSUInteger)shortcutFlagAtIndex:(NSUInteger)index;
 
+- (BOOL)enabledAtIndex:(NSUInteger)index;
+
 - (BOOL)triggerOnEveryMatchAtIndex:(NSUInteger)index;
 
 - (void)setShortcutWithKeycode:(NSUInteger)keycode withFlag:(NSUInteger)flag atIndex:(NSUInteger)index;
@@ -63,6 +68,8 @@ typedef enum {
 - (void)setTriggerOnEveryMatch:(BOOL)match atIndex:(NSUInteger)index;
 
 - (bool)handleGesture:(NSString *)gesture isLastGesture:(BOOL)last;
+
+- (void)toggleRule:(NSUInteger)index;
 
 - (NSInteger)suitedRuleWithGesture:(NSString *)gesture;
 
