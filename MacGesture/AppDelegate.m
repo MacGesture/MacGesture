@@ -288,6 +288,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 if (mouseDraggedEvent) {
                     NSPoint lastPoint = CGEventGetLocation(mouseDraggedEvent);
                     NSPoint currentPoint = [mouseEvent locationInWindow];
+                    // FIXME: use which screen?
                     NSRect screen = [[NSScreen mainScreen] frame];
                     float d1 = fabs(lastPoint.x - screen.origin.x), d2 = fabs(lastPoint.x - screen.origin.x - screen.size.width);
                     float d3 = fabs(lastPoint.y - screen.origin.y), d4 = fabs(lastPoint.y - screen.origin.y - screen.size.height);
