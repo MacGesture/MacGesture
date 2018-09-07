@@ -1,0 +1,5 @@
+How to package a update:
+1. Bump version number
+2. ditto -c -k --sequesterRsrc --keepParent MacGesture.app/ MacGesture-version.zip
+3. Sparkle/bin/sign_update MacGesture-version.zip path_to_dsa_priv.pem | pbcopy
+4. update AppCast
