@@ -9,8 +9,6 @@
 #import "AppPickerWindowController.h"
 #import <Sparkle/Sparkle.h>
 
-@class LaunchAtLoginController;
-
 @interface AppPrefsWindowController : DBPrefsWindowController <NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate, NSTextFieldDelegate, AppPickerCallback, NSComboBoxDataSource, NSWindowDelegate>
 
 @property(strong, nonatomic) IBOutlet NSView *generalPreferenceView;

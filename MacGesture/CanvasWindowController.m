@@ -53,6 +53,16 @@
 }
 
 - (void)handleMouseEvent:(NSEvent *)event {
+    NSPoint point = [NSEvent mouseLocation];
+    if (!NSPointInRect(point, self.window.frame)) {
+        NSArray<NSScreen *> *screens = [NSScreen screens];
+        for (NSScreen * screen in screens) {
+            if (NSPointInRect(point, [screen frame])) {
+                [self.window setFrame:[screen frame] display:NO];
+                break;
+            }
+        }
+    }
     switch (event.type) {
         case NSRightMouseDown:
             [self.window.contentView mouseDown:event];

@@ -101,7 +101,7 @@ static NSColor *loadedColor;
         numberToDraw = directionToDraw.length;
     }
 
-    CGRect screenRect = [[NSScreen mainScreen] frame];
+    CGRect screenRect = [self.window frame];
     NSInteger y = (screenRect.size.height - scaledHeight) / 2;
     NSInteger beginx = (screenRect.size.width - scaledWidth * numberToDraw) / 2;
 
@@ -174,15 +174,16 @@ static NSColor *loadedColor;
         note = [[RulesList sharedRulesList] noteAtIndex:index];
     if (![note isEqualToString:@""]) {
 
-        CGRect screenRect = [[NSScreen mainScreen] frame];
+        CGRect screenRect = [self.window frame];
 
         NSFont *font = [NSFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"noteFontName"] size:[[NSUserDefaults standardUserDefaults] doubleForKey:@"noteFontSize"]];
 
+        NSLog(@"%p %p", font, noteColor);
         NSDictionary *textAttributes = @{NSFontAttributeName: font, NSForegroundColorAttributeName: noteColor};
 
         CGSize size = [note sizeWithAttributes:textAttributes];
-        float x = ((screenRect.size.width - size.width) / 2);
-        float y = ((screenRect.size.height + leftImage.size.height * [self getGestureImageScale]) / 2);
+        CGFloat x = ((screenRect.size.width - size.width) / 2);
+        CGFloat y = ((screenRect.size.height + leftImage.size.height * [self getGestureImageScale]) / 2);
 
         CGContextRef context = [NSGraphicsContext currentContext].CGContext;
         CGContextSetRGBFillColor(context, 0, 0, 0, 0.1);
@@ -239,9 +240,8 @@ static NSColor *loadedColor;
 - (void)mouseDown:(NSEvent *)event {
     lastLocation = [NSEvent mouseLocation];
     NSWindow *w = self.window;
-    NSScreen *s = w.screen;
-    lastLocation.x -= s.frame.origin.x;
-    lastLocation.y -= s.frame.origin.y;
+    lastLocation.x -= w.frame.origin.x;
+    lastLocation.y -= w.frame.origin.y;
 #ifdef DEBUG
     //NSLog(@"mouseDown frame:%@, window:%@, screen:%@, point:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame), NSStringFromPoint(lastLocation));
 #endif
@@ -254,9 +254,8 @@ static NSColor *loadedColor;
 - (void)mouseDragged:(NSEvent *)event {
     NSPoint newLocation = event.locationInWindow;
     NSWindow *w = self.window;
-    NSScreen *s = w.screen;
-    newLocation.x -= s.frame.origin.x;
-    newLocation.y -= s.frame.origin.y;
+    newLocation.x -= w.frame.origin.x;
+    newLocation.y -= w.frame.origin.y;
 
 #ifdef DEBUG
     //NSLog(@"mouseDragged frame:%@, window:%@, screen:%@, point:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame), NSStringFromPoint(newLocation));

@@ -46,7 +46,7 @@ NSMutableArray<NSMutableDictionary *> *_rulesList;  // private
 }
 
 - (BOOL)enabledAtIndex:(NSUInteger)index {
-    if ([_rulesList[index] objectForKey:@"enabled"] == nil) {
+    if (_rulesList[index][@"enabled"] == nil) {
         _rulesList[index][@"enabled"] = @(YES);
     }
     return [_rulesList[index][@"enabled"] boolValue];
@@ -256,7 +256,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
 - (void)moveRuleFrom:(NSInteger)from
               ruleTo:(NSInteger)to {
     if (from != to) {
-        NSMutableDictionary *rule = [_rulesList objectAtIndex:from];
+        NSMutableDictionary *rule = _rulesList[from];
         [_rulesList removeObjectAtIndex:from];
         if (to >= [_rulesList count]) {
             [_rulesList addObject:rule];
@@ -311,7 +311,6 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
             break;
         case FILTER_TYPE_WILDCARD:
             return wildcardString(text, [self filterAtIndex:index], YES);
-            break;
     }
     return NO;
 }

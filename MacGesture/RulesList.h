@@ -5,8 +5,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class MASShortcut;
-
 @interface RulesList : NSObject
 typedef enum {
     FILTER_TYPE_WILDCARD, // for example *chrome

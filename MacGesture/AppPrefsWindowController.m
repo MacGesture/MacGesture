@@ -35,9 +35,9 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 static NSArray *exampleAppleScripts;
 
 + (void)initialize {
-    exampleAppleScripts = [NSArray arrayWithObjects:@"ChromeCloseTabsToTheRight", @"Close Tabs To The Right In Chrome",
-                           @"OpenMacGesturePreferences", @"Open MacGesture Preferences",
-                           @"SearchInWeb", @"Search in Web", nil];
+    exampleAppleScripts = @[@"ChromeCloseTabsToTheRight", @"Close Tabs To The Right In Chrome",
+            @"OpenMacGesturePreferences", @"Open MacGesture Preferences",
+            @"SearchInWeb", @"Search in Web"];
 }
 
 - (void)changeSize:(NSInteger *)index changeSizeButton:(NSButton *)button preferenceView:(NSView *)view {
@@ -73,7 +73,6 @@ static NSArray *exampleAppleScripts;
         OSStatus error = LSSharedFileListItemResolve(itemRef, 0, &urlRef, NULL);
         
         if (error != noErr) {
-            CFRelease(itemRef);
             continue;
         }
         
@@ -122,8 +121,8 @@ static NSArray *exampleAppleScripts;
                                              selector:@selector(tableViewSelectionChanged:)
                                                  name:NSTableViewSelectionDidChangeNotification
                                                object:[self appleScriptTableView]];
-    
-    [[self languageComboBox] addItemsWithObjectValues:[NSArray arrayWithObjects:@"en", @"zh-Hans", nil]];
+
+    [[self languageComboBox] addItemsWithObjectValues:@[@"en", @"zh-Hans"]];
     
     NSArray *languages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
     if (languages) {
@@ -142,8 +141,8 @@ static NSArray *exampleAppleScripts;
     NSString *content = [NSString stringWithContentsOfFile:readme encoding:NSUTF8StringEncoding error:NULL];
     
     [[[self webView] mainFrame] loadHTMLString:content baseURL:[NSURL URLWithString:readme]];
-    
-    [[self rulesTableView] registerForDraggedTypes:[NSArray arrayWithObject:MacGestureRuleDataType]];
+
+    [[self rulesTableView] registerForDraggedTypes:@[MacGestureRuleDataType]];
 }
 
 - (BOOL)windowShouldClose:(id)sender {
@@ -288,6 +287,8 @@ static NSArray *exampleAppleScripts;
             CFRelease(loginItems);
             CFRelease(loginItemRef);
             break;
+        default:
+            break;
     }
 }
 
@@ -367,7 +368,7 @@ static NSArray *exampleAppleScripts;
     NSDictionary *defaultPrefs =
     [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
     for (NSString *key in defaultPrefs) {
-        [defs setObject:[defaultPrefs objectForKey:key] forKey:key];
+        [defs setObject:defaultPrefs[key] forKey:key];
     }
     [defs synchronize];
     
@@ -530,7 +531,7 @@ static NSString *currentScriptId = nil;
 
 - (IBAction)languageChanged:(id)sender {
     NSString *language = [[self languageComboBox] objectValueOfSelectedItem];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObject:language] forKey:@"AppleLanguages"];
+    [[NSUserDefaults standardUserDefaults] setObject:@[language] forKey:@"AppleLanguages"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSUserNotification *notification = [[NSUserNotification alloc] init];
@@ -555,10 +556,8 @@ static NSString *currentScriptId = nil;
         NSTask *task = [[NSTask alloc] init];
         [task setLaunchPath:@"/bin/sh"];
         
-        NSArray *arguments = [NSArray arrayWithObjects:
-                              @"-c" ,
-                              @"defaults import com.codefalling.MacGesture -",
-                              nil];
+        NSArray *arguments = @[@"-c",
+                @"defaults import com.codefalling.MacGesture -"];
         
         [task setArguments:arguments];
         NSPipe *pipe = [NSPipe pipe];
@@ -591,10 +590,8 @@ static NSString *currentScriptId = nil;
         NSTask *task = [[NSTask alloc] init];
         [task setLaunchPath:@"/bin/sh"];
         
-        NSArray *arguments = [NSArray arrayWithObjects:
-                              @"-c" ,
-                              @"defaults export com.codefalling.MacGesture -",
-                              nil];
+        NSArray *arguments = @[@"-c",
+                @"defaults export com.codefalling.MacGesture -"];
         
         [task setArguments:arguments];
         NSPipe *pipe = [NSPipe pipe];
@@ -707,7 +704,7 @@ static NSString *currentScriptId = nil;
 
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
-    [pboard declareTypes:[NSArray arrayWithObject:MacGestureRuleDataType] owner:self];
+    [pboard declareTypes:@[MacGestureRuleDataType] owner:self];
     [pboard setData:data forType:MacGestureRuleDataType];
     return YES;
 }
