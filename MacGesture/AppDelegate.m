@@ -40,11 +40,35 @@ static BOOL eventTriggered;
     
     CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) | CGEventMaskBit(kCGEventRightMouseUp) | CGEventMaskBit(kCGEventLeftMouseDown) | CGEventMaskBit(kCGEventScrollWheel);
     mouseEventTap = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, kCGEventTapOptionDefault, eventMask, mouseEventCallback, NULL);
-    CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, mouseEventTap, 0);
-    CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
-    CFRelease(mouseEventTap);
-    CFRelease(runLoopSource);
     
+
+    const void * keys[] = { kAXTrustedCheckOptionPrompt };
+    const void * values[] = { kCFBooleanTrue };
+    
+    CFDictionaryRef options = CFDictionaryCreate(
+                                                 kCFAllocatorDefault,
+                                                 keys,
+                                                 values,
+                                                 sizeof(keys) / sizeof(*keys),
+                                                 &kCFCopyStringDictionaryKeyCallBacks,
+                                                 &kCFTypeDictionaryValueCallBacks);
+    
+    BOOL accessibilityEnabled = AXIsProcessTrustedWithOptions(options);
+    
+    if (accessibilityEnabled) {
+        CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, mouseEventTap, 0);
+        CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
+        CFRelease(mouseEventTap);
+        CFRelease(runLoopSource);
+    } else {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert setMessageText:@"macOS Mojave 后的系统需要开启隐私权限才能使用鼠标手势。\n请到 系统-安全性及隐私-辅助功能 中启用 MacGesture。\n 如果已经启用但仍不工作，请先移除再重新打开此应用并启用"];
+        
+        [alert runModal];
+        
+    }
+
     direction = [NSMutableString string];
     isEnabled = YES;
     

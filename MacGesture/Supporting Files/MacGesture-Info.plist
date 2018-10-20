@@ -38,5 +38,8 @@
 	<string>https://raw.githubusercontent.com/MacGesture/MacGesture/release/AppCast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
+	
+	 <key>NSAppleEventsUsageDescription</key>
+  <string></string>
 </dict>
 </plist>
