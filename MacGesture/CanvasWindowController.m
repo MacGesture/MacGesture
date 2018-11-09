@@ -59,6 +59,10 @@
         for (NSScreen * screen in screens) {
             if (NSPointInRect(point, [screen frame])) {
                 [self.window setFrame:[screen frame] display:NO];
+                NSRect curFrame = [screen frame];
+                curFrame.origin.x = 0;
+                curFrame.origin.y = 0;
+                [(CanvasView *) self.window.contentView resizeTo:curFrame];
                 break;
             }
         }
@@ -81,8 +85,12 @@
 - (void)handleScreenParametersChange:(NSNotification *)notification {
     NSRect frame = NSScreen.mainScreen.frame;
     [self.window setFrame:frame display:NO];
+    frame.origin.x = 0;
+    frame.origin.y = 0;
     [(CanvasView *) self.window.contentView resizeTo:frame];
 }
+
+
 
 - (void)writeDirection:(NSString *)directionStr; {
     [(CanvasView *) self.window.contentView writeDirection:directionStr];
