@@ -178,8 +178,8 @@ static NSColor *loadedColor;
 
         NSFont *font = [NSFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"noteFontName"] size:[[NSUserDefaults standardUserDefaults] doubleForKey:@"noteFontSize"]];
 
-        NSLog(@"%p %p", font, noteColor);
-        NSDictionary *textAttributes = @{NSFontAttributeName: font, NSForegroundColorAttributeName: noteColor};
+//        NSLog(@"%p %p", font, noteColor);
+        NSDictionary *textAttributes = @{NSFontAttributeName: font, NSForegroundColorAttributeName: color};
 
         CGSize size = [note sizeWithAttributes:textAttributes];
         CGFloat x = ((screenRect.size.width - size.width) / 2);

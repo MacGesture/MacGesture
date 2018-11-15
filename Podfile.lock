@@ -16,7 +16,7 @@ DEPENDENCIES:
   - Sparkle
 
 SPEC REPOS:
-  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+  https://mirrors.tuna.tsinghua.edu.cn/git/cocoapods/specs.git:
     - DBPrefsWindowController
     - HexColors
     - Sparkle
