@@ -63,7 +63,7 @@ static BOOL eventTriggered;
     } else {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert setAlertStyle:NSInformationalAlertStyle];
-        [alert setMessageText:@"macOS Mojave 后的系统需要开启隐私权限才能使用鼠标手势。\n请到 系统-安全性及隐私-辅助功能 中启用 MacGesture。\n 如果已经启用但仍不工作，请先移除再重新打开此应用并启用"];
+        [alert setMessageText:NSLocalizedString(@"On macOS Mojave(10.14) and later, you must manually enable Accessibility permission for MacGesture to work.\n Please goto System Preferences -> Security & Privacy -> Privacy -> Accessibility to enable it for MacGesture.\nIf is is already enabled but MacGesture is still not working, please re-open MacGesture.", nil)];
         
         [alert runModal];
         

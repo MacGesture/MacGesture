@@ -60,6 +60,7 @@
             if (NSPointInRect(point, [screen frame])) {
                 [self.window setFrame:[screen frame] display:NO];
                 NSRect curFrame = [screen frame];
+                // See pr #91
                 curFrame.origin.x = 0;
                 curFrame.origin.y = 0;
                 [(CanvasView *) self.window.contentView resizeTo:curFrame];
@@ -85,6 +86,7 @@
 - (void)handleScreenParametersChange:(NSNotification *)notification {
     NSRect frame = NSScreen.mainScreen.frame;
     [self.window setFrame:frame display:NO];
+    // See pr #91
     frame.origin.x = 0;
     frame.origin.y = 0;
     [(CanvasView *) self.window.contentView resizeTo:frame];

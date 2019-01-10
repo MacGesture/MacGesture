@@ -15,15 +15,17 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2.4</string>
+	<string>2.2.5</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2.2.4</string>
+	<string>2.2.5</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
 	<key>LSUIElement</key>
 	<true/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string></string>
 	<key>NSAppleScriptEnabled</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
@@ -38,8 +40,5 @@
 	<string>https://raw.githubusercontent.com/MacGesture/MacGesture/release/AppCast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
-	
-	 <key>NSAppleEventsUsageDescription</key>
-  <string></string>
 </dict>
 </plist>
