@@ -152,10 +152,10 @@ static NSColor *loadedColor;
              }
              */
 
-            [scrollImage drawInRect:NSMakeRect(beginx + index * scaledWidth + frac * scaledWidth, y - (frac - 0.5) * scaledHeight, scaledWidth * (1 - frac), scaledHeight * (1 - frac)) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+            [scrollImage drawInRect:NSMakeRect(beginx + index * scaledWidth + frac * scaledWidth, y - (frac - 0.5) * scaledHeight, scaledWidth * (1 - frac), scaledHeight * (1 - frac)) fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0];
 
         }
-        [image drawInRect:NSMakeRect(beginx + index * scaledWidth, y, scaledWidth, scaledHeight) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+        [image drawInRect:NSMakeRect(beginx + index * scaledWidth, y, scaledWidth, scaledHeight) fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0];
         index++;
     }
     [NSGraphicsContext restoreGraphicsState];
@@ -211,7 +211,7 @@ static NSColor *loadedColor;
         [path stroke];
     }
 
-    //[textImage drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+    //[textImage drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0];
     [self drawDirection];
     [self drawNote];
 

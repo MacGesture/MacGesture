@@ -157,12 +157,12 @@ static NSArray *exampleAppleScripts;
     [self.whiteListModeRadio setState:BWFilter.isInWhiteListMode ? NSOnState : NSOffState];
     NSColor *notActive = self.window.backgroundColor;//[NSColor hx_colorWithHexString:@"ffffff" alpha:0];//[NSColor colorWithCGColor: self.filtersPrefrenceView.layer.backgroundColor];
     //[NSColor hx_colorWithHexString:@"E3E6EA"];
-    NSColor *active = [NSColor hx_colorWithHexRGBAString:@"#ffffff"];
+    NSColor *active = [NSColor textBackgroundColor];//[NSColor hx_colorWithHexRGBAString:@"#ffffff"];
     self.blackListTextView.backgroundColor = BWFilter.isInWhiteListMode ? notActive : active;
     //    ((NSScrollView *)(self.blackListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?notActive:active;
     self.whiteListTextView.backgroundColor = BWFilter.isInWhiteListMode ? active : notActive;
     //    ((NSScrollView *)(self.whiteListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?active:notActive;
-    
+
     [self.whiteListTextView.superview.superview needsLayout];
     [self.whiteListTextView.superview.superview needsDisplay];
     [self.blackListTextView.superview.superview needsLayout];
@@ -379,7 +379,7 @@ static NSArray *exampleAppleScripts;
     if ([_rulesTableView selectedRow] == -1) {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:NSLocalizedString(@"Okay, I know", nil)];
-        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert setAlertStyle:NSAlertStyleInformational];
         [alert setMessageText:NSLocalizedString(@"Select a filter first!", nil)];
         [alert runModal];
         return ;
@@ -449,7 +449,7 @@ static NSString *currentScriptId = nil;
     if (index == -1) {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:NSLocalizedString(@"Okay, I know", nil)];
-        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert setAlertStyle:NSAlertStyleInformational];
         [alert setMessageText:NSLocalizedString(@"Select an AppleScript first!", nil)];
         [alert runModal];
         return ;
@@ -638,7 +638,7 @@ static NSString *currentScriptId = nil;
 #pragma mark -
 #pragma mark SRRecorderControlDelegate Implementation
 
-- (void)shortcutRecorderDidEndRecording:(SRRecorderControl *)aRecorder {
+- (void)recorderControlDidEndRecording:(SRRecorderControl *)aRecorder {
     NSInteger id = ((SRRecorderControlWithTagid *) aRecorder).tagid;
     NSUInteger keycode = [aRecorder.objectValue[@"keyCode"] unsignedIntegerValue];
     NSUInteger flag = [[aRecorder objectValue][@"modifierFlags"] unsignedIntegerValue];
@@ -657,7 +657,7 @@ static NSString *currentScriptId = nil;
         if ([gesture rangeOfCharacterFromSet:invalidGestureCharacters].location != NSNotFound) {
             NSAlert *alert = [[NSAlert alloc] init];
             [alert addButtonWithTitle:NSLocalizedString(@"Okay, I know", nil)];
-            [alert setAlertStyle:NSInformationalAlertStyle];
+            [alert setAlertStyle:NSAlertStyleInformational];
             [alert setMessageText:NSLocalizedString(@"Gesture must only contain \"ULDRZud?*\"", nil)];
             [alert runModal];
             
@@ -773,13 +773,16 @@ static NSString *currentScriptId = nil;
         if ([rulesList actionTypeAtIndex:row] == ACTION_TYPE_SHORTCUT) {
             SRRecorderControlWithTagid *recordView = [[SRRecorderControlWithTagid alloc] init];
             
+            // TODO: Nicer types
+            NSUInteger keyCode = [rulesList shortcutKeycodeAtIndex:row];
+            NSUInteger modFlag = [rulesList shortcutFlagAtIndex:row];
+            
             recordView.delegate = self;
-            [recordView setAllowedModifierFlags:SRCocoaModifierFlagsMask requiredModifierFlags:0 allowsEmptyModifierFlags:YES];
+            [recordView setAllowedModifierFlags:SRCocoaModifierFlagsMask
+                requiredModifierFlags:0 allowsEmptyModifierFlags:YES];
             recordView.tagid = row;
-            recordView.objectValue = @{
-                                       @"keyCode" : @([rulesList shortcutKeycodeAtIndex:row]),
-                                       @"modifierFlags" : @([rulesList shortcutFlagAtIndex:row]),
-                                       };
+            recordView.objectValue = [SRShortcut shortcutWithCode:
+                keyCode modifierFlags:modFlag characters:nil charactersIgnoringModifiers:nil];
             [recordView setEnabled:isEnabled];
             
             result = recordView;

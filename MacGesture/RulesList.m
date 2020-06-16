@@ -81,12 +81,12 @@ static inline void addWildcardShortcutRule(RulesList *rulesList, NSString *gestu
 - (void)reInit {
     [self clear];
     
-    addWildcardShortcutRule(self, @"UR", kVK_ANSI_RightBracket, NSShiftKeyMask|NSCommandKeyMask, @"Next Tab");
-    addWildcardShortcutRule(self, @"UL", kVK_ANSI_LeftBracket, NSShiftKeyMask|NSCommandKeyMask, @"Prev Tab");
-    addWildcardShortcutRule(self, @"DL", kVK_ANSI_F, NSCommandKeyMask|NSControlKeyMask, @"Full screen");
-    addWildcardShortcutRule(self, @"DR", kVK_ANSI_W, NSCommandKeyMask, @"Close Tab");
-    addWildcardShortcutRule(self, @"R", kVK_RightArrow, NSCommandKeyMask, @"Next");
-    addWildcardShortcutRule(self, @"L", kVK_LeftArrow, NSCommandKeyMask, @"Back");
+    addWildcardShortcutRule(self, @"UR", kVK_ANSI_RightBracket, NSEventModifierFlagShift|NSEventModifierFlagCommand, @"Next Tab");
+    addWildcardShortcutRule(self, @"UL", kVK_ANSI_LeftBracket, NSEventModifierFlagShift|NSEventModifierFlagCommand, @"Prev Tab");
+    addWildcardShortcutRule(self, @"DL", kVK_ANSI_F, NSEventModifierFlagCommand|NSEventModifierFlagControl, @"Full screen");
+    addWildcardShortcutRule(self, @"DR", kVK_ANSI_W, NSEventModifierFlagCommand, @"Close Tab");
+    addWildcardShortcutRule(self, @"R", kVK_RightArrow, NSEventModifierFlagCommand, @"Next");
+    addWildcardShortcutRule(self, @"L", kVK_LeftArrow, NSEventModifierFlagCommand, @"Back");
 }
 
 + (RulesList *)sharedRulesList {

@@ -3,7 +3,7 @@
 @implementation CanvasWindow
 
 - (id)initWithContentRect:(NSRect)contentRect {
-    self = [super initWithContentRect:contentRect styleMask:(NSBorderlessWindowMask) backing:NSBackingStoreBuffered defer:NO];
+    self = [super initWithContentRect:contentRect styleMask:(NSWindowStyleMaskBorderless) backing:NSBackingStoreBuffered defer:NO];
     if (self) {
         self.backgroundColor = [NSColor clearColor];
         

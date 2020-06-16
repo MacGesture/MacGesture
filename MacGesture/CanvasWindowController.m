@@ -69,13 +69,13 @@
         }
     }
     switch (event.type) {
-        case NSRightMouseDown:
+        case NSEventTypeRightMouseDown:
             [self.window.contentView mouseDown:event];
             break;
-        case NSRightMouseDragged:
+        case NSEventTypeRightMouseDragged:
             [self.window.contentView mouseDragged:event];
             break;
-        case NSRightMouseUp:
+        case NSEventTypeRightMouseUp:
             [self.window.contentView mouseUp:event];
             break;
         default:

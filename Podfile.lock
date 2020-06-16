@@ -1,13 +1,8 @@
 PODS:
   - DBPrefsWindowController (0.0.1)
   - HexColors (4.0.0)
-  - ShortcutRecorder (2.17):
-    - ShortcutRecorder/Core (= 2.17)
-    - ShortcutRecorder/PTHotKey (= 2.17)
-  - ShortcutRecorder/Core (2.17)
-  - ShortcutRecorder/PTHotKey (2.17):
-    - ShortcutRecorder/Core
-  - Sparkle (1.21.2)
+  - ShortcutRecorder (3.2)
+  - Sparkle (1.23.0)
 
 DEPENDENCIES:
   - DBPrefsWindowController
@@ -16,7 +11,7 @@ DEPENDENCIES:
   - Sparkle
 
 SPEC REPOS:
-  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+  trunk:
     - DBPrefsWindowController
     - HexColors
     - Sparkle
@@ -28,15 +23,15 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ShortcutRecorder:
-    :commit: c978ce9bb482c31acfabe23baa2b075808a1fdd8
+    :commit: 133dd8ec8dc780abd0ccdba1309ea35f7784a439
     :git: https://github.com/Kentzo/ShortcutRecorder
 
 SPEC CHECKSUMS:
   DBPrefsWindowController: ce0fe8de832c6931302736de5d938e98d2fd59ed
   HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379
-  ShortcutRecorder: c0e1ae0e97917925feab04e8817d2be6ef1b0548
-  Sparkle: 1678d4707e7665960c7d1b43aca125e6392d11c4
+  ShortcutRecorder: f741c23b11b1d9718fa404463eb08f7b88249924
+  Sparkle: 55b1a87ba69d56913375a281546b7c82dec95bb0
 
-PODFILE CHECKSUM: 9fb18018d88e3516dae4fff2fabaee268da43727
+PODFILE CHECKSUM: d1f7cfecd76d72226815949b94eebed5c86e68cd
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.9.3

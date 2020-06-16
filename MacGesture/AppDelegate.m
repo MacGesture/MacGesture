@@ -62,7 +62,7 @@ static BOOL eventTriggered;
         CFRelease(runLoopSource);
     } else {
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert setAlertStyle:NSAlertStyleInformational];
         [alert setMessageText:NSLocalizedString(@"On macOS Mojave(10.14) and later, you must manually enable Accessibility permission for MacGesture to work.\n Please goto System Preferences -> Security & Privacy -> Privacy -> Accessibility to enable it for MacGesture.\nIf is is already enabled but MacGesture is still not working, please re-open MacGesture.", nil)];
         
         [alert runModal];
@@ -84,7 +84,7 @@ static BOOL eventTriggered;
         NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:NSLocalizedString(@"Open README in browser", nil)];
         [alert addButtonWithTitle:NSLocalizedString(@"Skip", nil)];
-        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert setAlertStyle:NSAlertStyleInformational];
         [alert setMessageText:NSLocalizedString(@"Much information is elaborated in README. A copy of README is included in 'About & Help'.", nil)];
         NSModalResponse result = [alert runModal];
         if (result == NSAlertFirstButtonReturn) {
