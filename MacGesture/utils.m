@@ -40,6 +40,3 @@ bool wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase)
                             [NSCharacterSet characterSetWithCharactersInString:@"|\n"]];
     return wildcardArray(bundleName, filterArray, ignoreCase);
 }
-
-
-

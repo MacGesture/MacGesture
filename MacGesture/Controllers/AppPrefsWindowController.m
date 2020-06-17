@@ -214,12 +214,17 @@ static NSArray *exampleAppleScripts;
 }
 
 - (void)setupToolbar {
-    [self addView:self.generalPreferenceView label:NSLocalizedString(@"General", nil) image:[NSImage imageNamed:@"General.png"]];
-    [self addView:self.rulesPreferenceView label:NSLocalizedString(@"Rules", nil) image:[NSImage imageNamed:@"Rules.png"]];
-    [self addView:self.filtersPrefrenceView label:NSLocalizedString(@"Filters", nil) image:[NSImage imageNamed:@"list@2x.png"]];
-    [self addView:self.appleScriptPreferenceView label:NSLocalizedString(@"AppleScript", nil) image:[NSImage imageNamed:@"AppleScript_Editor_Logo.png"]];
+    [self addView:self.generalPreferenceView label:NSLocalizedString(@"General", nil)
+            image:[NSImage imageNamed:@"prefs-general"]];
+    [self addView:self.rulesPreferenceView label:NSLocalizedString(@"Gestures", nil)
+            image:[NSImage imageNamed:@"prefs-gestures"]];
+    [self addView:self.filtersPrefrenceView label:NSLocalizedString(@"Filters", nil)
+            image:[NSImage imageNamed:@"prefs-filters"]];
+    [self addView:self.appleScriptPreferenceView label:NSLocalizedString(@"AppleScript", nil)
+            image:[NSImage imageNamed:@"prefs-applescript"]];
     [self addFlexibleSpacer];
-    [self addView:self.aboutPreferenceView label:NSLocalizedString(@"About", nil) image:[NSImage imageNamed:@"About.png"]];
+    [self addView:self.aboutPreferenceView label:NSLocalizedString(@"About", nil)
+            image:[NSImage imageNamed:@"prefs-about"]];
     
     // Optional configuration settings.
     [self setCrossFade:[[NSUserDefaults standardUserDefaults] boolForKey:@"fade"]];

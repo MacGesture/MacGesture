@@ -63,7 +63,7 @@ static BOOL eventTriggered;
     } else {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert setAlertStyle:NSAlertStyleInformational];
-        [alert setMessageText:NSLocalizedString(@"On macOS Mojave(10.14) and later, you must manually enable Accessibility permission for MacGesture to work.\n Please goto System Preferences -> Security & Privacy -> Privacy -> Accessibility to enable it for MacGesture.\nIf is is already enabled but MacGesture is still not working, please re-open MacGesture.", nil)];
+        [alert setMessageText:NSLocalizedString(@"On macOS Mojave (10.14) and later, you must manually enable Accessibility permission for MacGesture to work.\n Please goto System Preferences -> Security & Privacy -> Privacy -> Accessibility to enable it for MacGesture.\nIf is is already enabled but MacGesture is still not working, please re-open MacGesture.", nil)];
         
         [alert runModal];
         
@@ -116,14 +116,23 @@ static BOOL eventTriggered;
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
     
     lastMouseWheelEventTime = 0;
+
+    // The application is an ordinary app that appears in the Dock and may
+    // have a user interface.
+//    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+
+    // The application does not appear in the Dock and does not have a menu
+    // bar, but it may be activated programmatically or by clicking on one
+    // of its windows.
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
 }
 
 - (void)updateStatusBarItem {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showIconInStatusBar"]) {
         [self setStatusItem:[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength]];
         
-        NSImage *menuIcon = [NSImage imageNamed:@"Menu Icon Enabled"];
-        //NSImage *highlightIcon = [NSImage imageNamed:@"Menu Icon"]; // Yes, we're using the exact same image asset.
+        NSImage *menuIcon = [NSImage imageNamed:@"menubar_icon"];
+        //NSImage *highlightIcon = [NSImage imageNamed:@"menubar_icon-disabled"]; // Yes, we're using the exact same image asset.
         //[highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
         [menuIcon setTemplate:YES];
         [[self statusItem] setImage:menuIcon];
@@ -159,9 +168,9 @@ static BOOL eventTriggered;
     if ([self statusItem]) {
         NSImage *menuIcon;
         if (isEnabled) {
-            menuIcon = [NSImage imageNamed:@"Menu Icon Enabled"];
+            menuIcon = [NSImage imageNamed:@"menubar_icon"];
         } else {
-            menuIcon = [NSImage imageNamed:@"Menu Icon Disabled"];
+            menuIcon = [NSImage imageNamed:@"menubar_icon-disabled"];
         }
         [[self statusItem] setImage:menuIcon];
     }

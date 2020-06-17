@@ -1,13 +1,12 @@
 {
   "images" : [
     {
+      "filename" : "up.png",
       "idiom" : "universal",
-      "filename" : "menu_icon_disabled_16x16.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "menu_icon_disabled_32x32.png",
       "scale" : "2x"
     },
     {
@@ -16,7 +15,7 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

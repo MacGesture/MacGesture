@@ -52,11 +52,11 @@ static NSColor *loadedColor;
 
     noteColor = [MGOptionsDefine getNoteColor];
     if (![noteColor isEqualTo:loadedColor]) {
-        leftImage = [self convertImage:[NSImage imageNamed:@"left.png"] toSpecifiedColor:noteColor];
-        rightImage = [self convertImage:[NSImage imageNamed:@"right.png"] toSpecifiedColor:noteColor];
-        downImage = [self convertImage:[NSImage imageNamed:@"down.png"] toSpecifiedColor:noteColor];
-        upImage = [self convertImage:[NSImage imageNamed:@"up.png"] toSpecifiedColor:noteColor];
-        scrollImage = [self convertImage:[NSImage imageNamed:@"scroll.png"] toSpecifiedColor:noteColor];
+        leftImage = [self convertImage:[NSImage imageNamed:@"left"] toSpecifiedColor:noteColor];
+        rightImage = [self convertImage:[NSImage imageNamed:@"right"] toSpecifiedColor:noteColor];
+        downImage = [self convertImage:[NSImage imageNamed:@"down"] toSpecifiedColor:noteColor];
+        upImage = [self convertImage:[NSImage imageNamed:@"up"] toSpecifiedColor:noteColor];
+        scrollImage = [self convertImage:[NSImage imageNamed:@"scroll"] toSpecifiedColor:noteColor];
         loadedColor = noteColor;
     }
 
@@ -176,19 +176,27 @@ static NSColor *loadedColor;
 
         CGRect screenRect = [self.window frame];
 
-        NSFont *font = [NSFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"noteFontName"] size:[[NSUserDefaults standardUserDefaults] doubleForKey:@"noteFontSize"]];
+        NSString *fontName = [[NSUserDefaults standardUserDefaults] objectForKey:@"noteFontName"];
+        double fontSize = [[NSUserDefaults standardUserDefaults] doubleForKey:@"noteFontSize"];
+
+        NSFont *font = [NSFont fontWithName:fontName size:fontSize];
 
 //        NSLog(@"%p %p", font, noteColor);
-        NSDictionary *textAttributes = @{NSFontAttributeName: font, NSForegroundColorAttributeName: color};
+        NSDictionary *textAttributes = @{
+            NSFontAttributeName: font,
+            NSForegroundColorAttributeName: noteColor,
+        };
 
         CGSize size = [note sizeWithAttributes:textAttributes];
+        size.width += fontSize/2;
         CGFloat x = ((screenRect.size.width - size.width) / 2);
         CGFloat y = ((screenRect.size.height + leftImage.size.height * [self getGestureImageScale]) / 2);
 
         CGContextRef context = [NSGraphicsContext currentContext].CGContext;
         CGContextSetRGBFillColor(context, 0, 0, 0, 0.1);
-        CGContextFillRect(context, CGRectMake(x, y, size.width,
-                size.height));
+        CGContextFillRect(context, CGRectMake(x, y, size.width, size.height));
+
+        x += fontSize/4;
 
         [note drawAtPoint:NSMakePoint(x, y) withAttributes:textAttributes];
     }
