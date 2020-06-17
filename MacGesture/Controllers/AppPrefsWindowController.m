@@ -147,7 +147,13 @@ static NSArray *exampleAppleScripts;
 
 - (BOOL)windowShouldClose:(id)sender {
     [[self window] orderOut:self];
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
     return NO;
+}
+
+- (void)windowDidBecomeKey:(NSNotification *)notification
+{
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
 }
 
 - (void)refreshFilterRadioAndTextViewState {

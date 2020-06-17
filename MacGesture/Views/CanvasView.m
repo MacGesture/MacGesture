@@ -24,6 +24,7 @@ static NSImage *rightImage;
 static NSImage *upImage;
 static NSImage *downImage;
 static NSImage *scrollImage;
+static NSImage *cursorImage;
 
 static NSColor *loadedColor;
 
@@ -52,11 +53,12 @@ static NSColor *loadedColor;
 
     noteColor = [MGOptionsDefine getNoteColor];
     if (![noteColor isEqualTo:loadedColor]) {
-        leftImage = [self convertImage:[NSImage imageNamed:@"left"] toSpecifiedColor:noteColor];
-        rightImage = [self convertImage:[NSImage imageNamed:@"right"] toSpecifiedColor:noteColor];
-        downImage = [self convertImage:[NSImage imageNamed:@"down"] toSpecifiedColor:noteColor];
-        upImage = [self convertImage:[NSImage imageNamed:@"up"] toSpecifiedColor:noteColor];
-        scrollImage = [self convertImage:[NSImage imageNamed:@"scroll"] toSpecifiedColor:noteColor];
+        leftImage = [self convertImage:[NSImage imageNamed:@"gesture-icon-left"] toSpecifiedColor:noteColor];
+        rightImage = [self convertImage:[NSImage imageNamed:@"gesture-icon-right"] toSpecifiedColor:noteColor];
+        downImage = [self convertImage:[NSImage imageNamed:@"gesture-icon-down"] toSpecifiedColor:noteColor];
+        upImage = [self convertImage:[NSImage imageNamed:@"gesture-icon-up"] toSpecifiedColor:noteColor];
+        scrollImage = [self convertImage:[NSImage imageNamed:@"gesture-icon-scroll"] toSpecifiedColor:noteColor];
+        cursorImage = [self convertImage:[NSImage imageNamed:@"gesture-icon-mouse"] toSpecifiedColor:noteColor];
         loadedColor = noteColor;
     }
 
@@ -127,7 +129,7 @@ static NSColor *loadedColor;
                 image = downImage;
                 break;
             case 'Z':
-                image = [[NSCursor arrowCursor] image];
+                image = cursorImage; // [[NSCursor arrowCursor] image]
             default:
                 break;
         }
@@ -180,11 +182,12 @@ static NSColor *loadedColor;
         double fontSize = [[NSUserDefaults standardUserDefaults] doubleForKey:@"noteFontSize"];
 
         NSFont *font = [NSFont fontWithName:fontName size:fontSize];
+        NSColor *fontColor = noteColor ?: [NSColor blackColor];
 
 //        NSLog(@"%p %p", font, noteColor);
         NSDictionary *textAttributes = @{
             NSFontAttributeName: font,
-            NSForegroundColorAttributeName: noteColor,
+            NSForegroundColorAttributeName: fontColor,
         };
 
         CGSize size = [note sizeWithAttributes:textAttributes];
