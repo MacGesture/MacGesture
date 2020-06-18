@@ -1,5 +1,4 @@
 #import "MGOptionsDefine.h"
-#import "HexColors.h"
 
 @implementation MGOptionsDefine
 + (void)setLineColor:(NSColor *)color {
@@ -41,9 +40,9 @@
 }
 
 + (NSColor *)defaultLineColor {
-    return [NSColor hx_colorWithHexRGBAString:[[NSUserDefaults standardUserDefaults] stringForKey:@"defaultLineColor"]];
+    return [NSColor textColor];
 }
 + (NSColor *)defaultNoteColor {
-    return [NSColor hx_colorWithHexRGBAString:[[NSUserDefaults standardUserDefaults] stringForKey:@"defaultNoteColor"]];
+    return [NSColor textColor];
 }
 @end

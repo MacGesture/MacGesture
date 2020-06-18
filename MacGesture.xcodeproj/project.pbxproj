@@ -29,18 +29,15 @@
 		880AA7661CA5745D006E7A74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7611CA5745D006E7A74 /* InfoPlist.strings */; };
 		880AA7691CA57491006E7A74 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7671CA57491006E7A74 /* MainMenu.xib */; };
 		880AA7741CA57884006E7A74 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7721CA57884006E7A74 /* Localizable.strings */; };
-		8815F63B1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */; };
 		88331A3B1C9D22290064ADD5 /* AppleScriptsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */; };
 		887E09251C8B0FD0003A4CC0 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */; };
-		88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */; };
-		88EB641C1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript */; };
-		88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript */; };
+		88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = 8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript-src */; };
+		88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = 88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */; };
 		AD2A27AE66A5D1C335139B5B /* Pods_MacGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */; };
 		B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */; };
 		B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */; };
 		C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C610961B1DED98C700FCC263 /* CoreImage.framework */; };
-		D065A3C91D18154E0062900A /* SearchInWeb.applescript in Sources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript */; };
-		D065A3CA1D18155E0062900A /* SearchInWeb.applescript in Resources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript */; };
+		D065A3CA1D18155E0062900A /* SearchInWeb.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */; };
 		D09FDBF51E06CDB50085FC36 /* README.html in Resources */ = {isa = PBXBuildFile; fileRef = D09FDBF31E06CDB50085FC36 /* README.html */; };
 		D0B19D421E3841FD00619F4A /* AppleScript.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D0B19D411E3841FD00619F4A /* AppleScript.sdef */; };
 		D0B19D481E384BAE00619F4A /* AppleScriptCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */; };
@@ -90,18 +87,17 @@
 		3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MGOptionsDefine.m; sourceTree = "<group>"; usesTabs = 0; };
 		866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacGesture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		880AA76A1CA575D5006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		880AA76D1CA575D6006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/Credits.rtf"; sourceTree = "<group>"; };
 		880AA7731CA57884006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		880AA7751CA64DDB006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		880AA7781CA64E62006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AppPickerWindowController.xib; sourceTree = "<group>"; };
 		880AA77A1CA64E7C006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
 		880AA77C1CA64E88006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Preferences.xib; sourceTree = "<group>"; };
 		880AA77E1CA64EB7006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ChromeCloseTabsToTheRight.applescript; sourceTree = "<group>"; };
+		8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ChromeCloseTabsToTheRight.applescript-src"; sourceTree = "<group>"; };
 		88331A391C9D22290064ADD5 /* AppleScriptsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppleScriptsList.h; sourceTree = "<group>"; usesTabs = 0; };
 		88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppleScriptsList.m; sourceTree = "<group>"; usesTabs = 0; };
 		887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
-		88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = OpenMacGesturePreferences.applescript; sourceTree = "<group>"; };
+		88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "OpenMacGesturePreferences.applescript-src"; sourceTree = "<group>"; };
 		B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppPickerWindowController.h; sourceTree = "<group>"; usesTabs = 0; };
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppPickerWindowController.m; sourceTree = "<group>"; usesTabs = 0; };
@@ -111,7 +107,7 @@
 		D02885E11EF29CDE0082A660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D02885E21EF29CE40082A660 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D02A45361EA0E84800E32EC5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
-		D065A3C81D18154E0062900A /* SearchInWeb.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SearchInWeb.applescript; sourceTree = "<group>"; };
+		D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SearchInWeb.applescript-src"; sourceTree = "<group>"; };
 		D09FDBF61E06CDC60085FC36 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/README.html"; sourceTree = "<group>"; };
 		D0B19D411E3841FD00619F4A /* AppleScript.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AppleScript.sdef; sourceTree = "<group>"; };
 		D0B19D461E384BAE00619F4A /* AppleScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppleScriptCommand.h; sourceTree = "<group>"; usesTabs = 0; };
@@ -242,9 +238,9 @@
 				880AA7671CA57491006E7A74 /* MainMenu.xib */,
 				880AA7591CA5738A006E7A74 /* Preferences.xib */,
 				880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */,
-				8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */,
-				88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript */,
-				D065A3C81D18154E0062900A /* SearchInWeb.applescript */,
+				8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript-src */,
+				88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */,
+				D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */,
 				880AA75F1CA5745D006E7A74 /* Credits.rtf */,
 				887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */,
 				880AA7611CA5745D006E7A74 /* InfoPlist.strings */,
@@ -389,9 +385,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D09FDBF51E06CDB50085FC36 /* README.html in Resources */,
-				D065A3CA1D18155E0062900A /* SearchInWeb.applescript in Resources */,
-				88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript in Resources */,
-				88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript in Resources */,
+				D065A3CA1D18155E0062900A /* SearchInWeb.applescript-src in Resources */,
+				88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript-src in Resources */,
+				88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript-src in Resources */,
 				880AA7661CA5745D006E7A74 /* InfoPlist.strings in Resources */,
 				1381E4C41824E7E800E815F5 /* Images.xcassets in Resources */,
 				880AA7691CA57491006E7A74 /* MainMenu.xib in Resources */,
@@ -442,7 +438,6 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DBPrefsWindowController/DBPrefsWindowController.framework",
-				"${BUILT_PRODUCTS_DIR}/HexColors/HexColors.framework",
 				"${BUILT_PRODUCTS_DIR}/ShortcutRecorder/ShortcutRecorder.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
@@ -450,7 +445,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DBPrefsWindowController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HexColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ShortcutRecorder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
@@ -482,20 +476,17 @@
 			files = (
 				1381E4B81824E7E800E815F5 /* main.m in Sources */,
 				1381E4BF1824E7E800E815F5 /* AppDelegate.m in Sources */,
-				8815F63B1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript in Sources */,
 				88331A3B1C9D22290064ADD5 /* AppleScriptsList.m in Sources */,
 				264183649CB68AD1A072883A /* AppPrefsWindowController.m in Sources */,
 				264184A9FF52175212CBE73F /* CanvasWindow.m in Sources */,
 				2641800AADBF86F6E76A37B3 /* CanvasView.m in Sources */,
 				D0B19D481E384BAE00619F4A /* AppleScriptCommand.m in Sources */,
-				D065A3C91D18154E0062900A /* SearchInWeb.applescript in Sources */,
 				264183EEE694EB7761D6066B /* CanvasWindowController.m in Sources */,
 				26418E623E410EF207EFA2A8 /* RulesList.m in Sources */,
 				B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */,
 				264183DA0542C17E1932F696 /* SRRecorderControlWithTagid.m in Sources */,
 				2641813EC194C60DC1B1806D /* utils.m in Sources */,
 				3CDC5543D4E5BD248515F7CA /* BlackWhiteFilter.m in Sources */,
-				88EB641C1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript in Sources */,
 				3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,7 +545,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				880AA77A1CA64E7C006E7A74 /* Base */,
-				880AA76D1CA575D6006E7A74 /* zh-Hans */,
 			);
 			name = Credits.rtf;
 			path = .;

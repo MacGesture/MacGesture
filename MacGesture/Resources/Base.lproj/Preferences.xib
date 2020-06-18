@@ -419,7 +419,7 @@
                     <rect key="frame" x="6" y="30" width="646" height="277"/>
                     <clipView key="contentView" id="dRt-B1-99d">
                         <rect key="frame" x="1" y="0.0" width="644" height="276"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="287" id="289">
                                 <rect key="frame" x="0.0" y="0.0" width="644" height="253"/>
@@ -722,7 +722,7 @@
                     <rect key="frame" x="211" y="43" width="426" height="363"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Enter AppleScript here" drawsBackground="YES" id="gTD-R3-oZl">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="fixedUser" size="11"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -746,7 +746,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="HAd-Pq-7NJ">
                         <rect key="frame" x="1" y="1" width="188" height="392"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="T1p-6B-s66">
                                 <rect key="frame" x="0.0" y="0.0" width="188" height="392"/>

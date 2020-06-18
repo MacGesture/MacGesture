@@ -29,6 +29,8 @@ static NSImage *cursorImage;
 static NSColor *loadedColor;
 
 - (NSImage *)convertImage:(NSImage *)image toSpecifiedColor:(NSColor *)col {
+    NSColorSpace *colSpace = [[self window] colorSpace] ?: [NSColorSpace deviceRGBColorSpace];
+    col = [col colorUsingColorSpace:colSpace];
     CIImage *ciImage = [[CIImage alloc] initWithData:[image TIFFRepresentation]];
     CIFilter *filter = [CIFilter filterWithName:@"CIColorMatrix"];
     [filter setValue:ciImage forKey:kCIInputImageKey];
@@ -182,7 +184,7 @@ static NSColor *loadedColor;
         double fontSize = [[NSUserDefaults standardUserDefaults] doubleForKey:@"noteFontSize"];
 
         NSFont *font = [NSFont fontWithName:fontName size:fontSize];
-        NSColor *fontColor = noteColor ?: [NSColor blackColor];
+        NSColor *fontColor = noteColor ?: [MGOptionsDefine getNoteColor];
 
 //        NSLog(@"%p %p", font, noteColor);
         NSDictionary *textAttributes = @{

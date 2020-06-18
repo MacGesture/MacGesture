@@ -1,19 +1,16 @@
 PODS:
   - DBPrefsWindowController (0.0.1)
-  - HexColors (4.0.0)
   - ShortcutRecorder (3.2)
   - Sparkle (1.23.0)
 
 DEPENDENCIES:
   - DBPrefsWindowController
-  - HexColors (~> 4.0)
   - ShortcutRecorder (from `https://github.com/Kentzo/ShortcutRecorder`, branch `master`)
   - Sparkle
 
 SPEC REPOS:
   trunk:
     - DBPrefsWindowController
-    - HexColors
     - Sparkle
 
 EXTERNAL SOURCES:
@@ -28,10 +25,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   DBPrefsWindowController: ce0fe8de832c6931302736de5d938e98d2fd59ed
-  HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379
   ShortcutRecorder: f741c23b11b1d9718fa404463eb08f7b88249924
   Sparkle: 55b1a87ba69d56913375a281546b7c82dec95bb0
 
-PODFILE CHECKSUM: c3c7561e2578d6d4f9d6b2eda0745087d1ffb053
+PODFILE CHECKSUM: c96f7aa14df70692ad55d8028cc15cb36b5585e6
 
 COCOAPODS: 1.9.3

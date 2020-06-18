@@ -90,7 +90,7 @@ NSMutableString *_filter;
         if (!self.addedToTextView) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.filtersTableView reloadData];
-                [self.loadingLabel setStringValue:NSLocalizedString(@"Loading..", nil)];
+                [self.loadingLabel setStringValue:NSLocalizedString(@"Loading…", nil)];
             });
             NSArray *filters;
             NSString *originalFilter;

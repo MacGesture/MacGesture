@@ -662,6 +662,7 @@
                         <action selector="openPreferences:" target="494" id="1Td-yP-hQe"/>
                     </connections>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="a2g-OR-T7f"/>
                 <menuItem title="Quit" id="MTY-xM-R0q">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
