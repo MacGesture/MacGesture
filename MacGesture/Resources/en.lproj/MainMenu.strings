@@ -383,8 +383,8 @@
 /* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "534"; */
 "534.title" = "Find and Replace…";
 
-/* Class = "NSMenuItem"; title = "Preferences"; ObjectID = "E8a-Fn-In1"; */
-"E8a-Fn-In1.title" = "Preferences";
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "E8a-Fn-In1"; */
+"E8a-Fn-In1.title" = "Preferences…";
 
 /* Class = "NSMenuItem"; title = "Quit"; ObjectID = "MTY-xM-R0q"; */
 "MTY-xM-R0q.title" = "Quit";
