@@ -61,12 +61,14 @@ static BOOL eventTriggered;
         CFRelease(mouseEventTap);
         CFRelease(runLoopSource);
     } else {
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setAlertStyle:NSAlertStyleInformational];
-        [alert setMessageText:NSLocalizedString(@"On macOS Mojave (10.14) and later, you must manually enable Accessibility permission for MacGesture to work.\n Please goto System Preferences -> Security & Privacy -> Privacy -> Accessibility to enable it for MacGesture.\nIf is is already enabled but MacGesture is still not working, please re-open MacGesture.", nil)];
-        
+        NSAlert *alert = [NSAlert new];
+        alert.alertStyle = NSAlertStyleInformational;
+        alert.messageText = NSLocalizedString(@"On macOS Mojave (10.14) and later, you must manually "
+            "enable Accessibility permission for MacGesture to work.", nil);
+        alert.informativeText = [NSString stringWithFormat:@"%@\n\n%@",
+            NSLocalizedString(@"Please goto System Preferences → Security & Privacy → Privacy → Accessibility to enable it for MacGesture.", nil),
+            NSLocalizedString(@"If it's already enabled but MacGesture is still not working, please re-open MacGesture.", nil)];
         [alert runModal];
-        
     }
 
     direction = [NSMutableString string];

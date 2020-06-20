@@ -84,7 +84,7 @@ static NSArray *exampleAppleScripts;
                                                  name:NSTableViewSelectionDidChangeNotification
                                                object:[self appleScriptTableView]];
 
-    [[self languageComboBox] addItemsWithObjectValues:@[@"en", @"zh-Hans"]];
+    [[self languageComboBox] addItemsWithObjectValues:@[@"en"]];
     
     NSArray *languages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
     if (languages) {
