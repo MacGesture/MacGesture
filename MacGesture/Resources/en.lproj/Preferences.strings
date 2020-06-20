@@ -23,9 +23,6 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "308"; */
 "308.title" = "Text Cell";
 
-/* Class = "NSButtonCell"; title = "-"; ObjectID = "321"; */
-"321.title" = "-";
-
 /* Class = "NSButtonCell"; title = "Reset"; ObjectID = "326"; */
 "326.title" = "Reset";
 
@@ -35,8 +32,8 @@
 /* Class = "NSTextFieldCell"; title = "Author: code.falling@gmail.com"; ObjectID = "357"; */
 "357.title" = "Author: code.falling@gmail.com";
 
-/* Class = "NSButtonCell"; title = "Disable Mouse Path"; ObjectID = "400"; */
-"400.title" = "Disable Mouse Path";
+/* Class = "NSButtonCell"; title = "Show Mouse Path"; ObjectID = "400"; */
+"400.title" = "Show Mouse Path";
 
 /* Class = "NSButtonCell"; title = "Auto Start at Login"; ObjectID = "403"; */
 "403.title" = "Auto Start at Login";
@@ -47,8 +44,8 @@
 /* Class = "NSTextFieldCell"; title = "Font:"; ObjectID = "0ye-8N-1Bv"; */
 "0ye-8N-1Bv.title" = "Font:";
 
-/* Class = "NSTextFieldCell"; title = "jiegec@qq.com"; ObjectID = "3XA-Af-eIC"; */
-"3XA-Af-eIC.title" = "jiegec@qq.com";
+/* Class = "NSTextFieldCell"; title = "@zhangciwu on GitHub"; ObjectID = "3XA-Af-eIC"; */
+"3XA-Af-eIC.title" = "@zhangciwu on GitHub";
 
 /* Class = "NSBox"; title = "Gesture"; ObjectID = "4xM-Ya-MxN"; */
 "4xM-Ya-MxN.title" = "Gesture";
@@ -59,8 +56,8 @@
 /* Class = "NSButtonCell"; title = "Go bigger"; ObjectID = "7xg-Hp-Yhw"; */
 "7xg-Hp-Yhw.title" = "Go bigger";
 
-/* Class = "NSTextFieldCell"; title = "FontScale"; ObjectID = "8SO-RX-LQO"; */
-"8SO-RX-LQO.title" = "FontScale";
+/* Class = "NSTextFieldCell"; title = "GestureScale"; ObjectID = "8SO-RX-LQO"; */
+"8SO-RX-LQO.title" = "GestureScale";
 
 /* Class = "NSButtonCell"; title = "Reset Defaults"; ObjectID = "9qA-nt-g9l"; */
 "9qA-nt-g9l.title" = "Reset Defaults";
@@ -68,20 +65,17 @@
 /* Class = "NSButtonCell"; title = "Black list mode"; ObjectID = "BDA-RK-czZ"; */
 "BDA-RK-czZ.title" = "Black list mode";
 
-/* Class = "NSMenuItem"; title = "+"; ObjectID = "BT0-6L-6TA"; */
-"BT0-6L-6TA.title" = "+";
-
 /* Class = "NSButtonCell"; title = "Export"; ObjectID = "JCy-Wc-jcu"; */
 "JCy-Wc-jcu.title" = "Export";
 
 /* Class = "NSTextFieldCell"; title = "You are advised to go through the README below:"; ObjectID = "Jc2-FY-LoP"; */
 "Jc2-FY-LoP.title" = "You are advised to go through the README below:";
 
-/* Class = "NSTextFieldCell"; title = "Co-developer: @zhangciwu in github"; ObjectID = "MJR-m4-m46"; */
-"MJR-m4-m46.title" = "Co-developer: @zhangciwu in github";
+/* Class = "NSTextFieldCell"; title = "Co-developers:"; ObjectID = "MJR-m4-m46"; */
+"MJR-m4-m46.title" = "Co-developers:";
 
-/* Class = "NSButtonCell"; title = "add.."; ObjectID = "PQ5-fb-DKg"; */
-"PQ5-fb-DKg.title" = "add..";
+/* Class = "NSButtonCell"; title = "Add…"; ObjectID = "PQ5-fb-DKg"; */
+"PQ5-fb-DKg.title" = "Add…";
 
 /* Class = "NSButtonCell"; title = "Show Gesture In Whatever App"; ObjectID = "Pif-49-STQ"; */
 "Pif-49-STQ.title" = "Show Gesture In Whatever App";
@@ -101,8 +95,8 @@
 /* Class = "NSTableColumn"; headerCell.title = "Note"; ObjectID = "Urw-VE-VYr"; */
 "Urw-VE-VYr.headerCell.title" = "Note";
 
-/* Class = "NSButtonCell"; title = "apply rules"; ObjectID = "VCT-WP-3Oh"; */
-"VCT-WP-3Oh.title" = "apply rules";
+/* Class = "NSButtonCell"; title = "Apply rules"; ObjectID = "VCT-WP-3Oh"; */
+"VCT-WP-3Oh.title" = "Apply rules";
 
 /* Class = "NSButtonCell"; title = "Pick a running app"; ObjectID = "WsD-th-NkZ"; */
 "WsD-th-NkZ.title" = "Pick a running app";
@@ -137,9 +131,6 @@
 /* Class = "NSTextFieldCell"; title = "FontName"; ObjectID = "fEL-3U-jlH"; */
 "fEL-3U-jlH.title" = "FontName";
 
-/* Class = "NSButtonCell"; title = "+"; ObjectID = "fo8-ZY-CtD"; */
-"fo8-ZY-CtD.title" = "+";
-
 /* Class = "NSButtonCell"; title = "Check"; ObjectID = "gPX-Pa-jb5"; */
 "gPX-Pa-jb5.title" = "Check";
 
@@ -155,8 +146,8 @@
 /* Class = "NSBox"; title = "Advanced"; ObjectID = "grB-jA-OPZ"; */
 "grB-jA-OPZ.title" = "Advanced";
 
-/* Class = "NSButtonCell"; title = "-"; ObjectID = "hFe-TH-zPF"; */
-"hFe-TH-zPF.title" = "-";
+/* Class = "NSTextFieldCell"; title = "@username0x0a on GitHub"; ObjectID = "hyC-z8-Zae"; */
+"hyC-z8-Zae.title" = "@username0x0a on GitHub";
 
 /* Class = "NSButtonCell"; title = "Show Gesture Note"; ObjectID = "kHw-iF-xLb"; */
 "kHw-iF-xLb.title" = "Show Gesture Note";
@@ -179,8 +170,8 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "rUX-BY-P9Y"; */
 "rUX-BY-P9Y.title" = "Text Cell";
 
-/* Class = "NSButtonCell"; title = "add.."; ObjectID = "seb-qO-V3w"; */
-"seb-qO-V3w.title" = "add..";
+/* Class = "NSButtonCell"; title = "Add…"; ObjectID = "seb-qO-V3w"; */
+"seb-qO-V3w.title" = "Add…";
 
 /* Class = "NSButtonCell"; title = "Import"; ObjectID = "yDp-B1-8NE"; */
 "yDp-B1-8NE.title" = "Import";

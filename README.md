@@ -1,42 +1,26 @@
-# MacGesture 2 ![tweet](https://img.shields.io/twitter/url/https/github.com/CodeFalling/MacGesture.svg?style=social)
+# MacGesture ![tweet](https://img.shields.io/twitter/url/https/github.com/username0x0a/MacGesture.svg?style=social)
 
-[Chinese version 中文版](https://github.com/MacGesture/MacGesture/blob/release/README_zh-Hans.md)
-
-![logo](logo.png)
+![logo](https://raw.githubusercontent.com/username0x0a/MacGesture/2020-update/logo.png)
 
 Configurable global mouse gesture for macOS.
 
-**Multiple issues are reported in macOS High Sierra. Please file issues and roll back to earlier versions before we fix all of them.**
+**Some issues may still occur on macOS High Sierra and newer. Please file issues if possible! 🙌**
 
-<u>***LOOKING FOR NEW MAINTAINER***</u>
-
-You can read this README in About section.
+You can read this README in About section of the App Preferences.
 
 # Download
 
-## Via Homebrew Cask
+Download the latest ZIP release from [GitHub releases](https://github.com/username0x0a/MacGesture/releases) page.
 
-```
-brew cask install macgesture
-```
+# Features
 
-## Download Manually
+- Global mouse gestures recognition
 
-Download the latest zip from https://github.com/MacGesture/MacGesture/releases
-
-# Feature
-
-- Global mouse gesture recognition
-
-- Filter app by their bundle name (as a consequence, the apps without bundle identifiers are skipped and filtering by process name is on the road map)
+- Filter app by their bundle name
 
 - Configure and send shortcut by gesture
 
-# Preview
-
-![Preview](https://cloud.githubusercontent.com/assets/5436704/14278725/bb126d36-fb5b-11e5-9fe8-5990ea4c1c28.gif)
-
-# The format of gesture
+# Gestures format
 
 | Gesture | Acronym |
 | ------- | ------- |
@@ -48,7 +32,7 @@ Download the latest zip from https://github.com/MacGesture/MacGesture/releases
 | Wheel U | u       |
 | Wheel D | d       |
 
-Gesture can contain wildcard matching('?' and '*').
+Gesture can contain wildcard matching(`?` and `*`).
 
 The first rule matching will take effect.
 
@@ -60,18 +44,18 @@ Wheel directions may vary according to system configurations or some system twea
 
 # Known Issues
 
-* Right click does not work in some Java applications.
+### Right click does not work in some Java applications.
 
 An imperfect fix:
 Take WebStorm for example, open Preferences, then KeyMap, set the shortcut of "Show Context Menu" to "Button3 Click"
 
-* Cannot assign some system-wide shortcuts to rules.
+### Cannot assign some system-wide shortcuts to rules.
 
 Reason:
 macOS respond to system-wide shortcuts before MacGesture.
 
 Fix:
-Disable the shortcut first (for example in System Preferences->Keyboard->Shortcuts), then assign the shortcut in MacGesture, and re-enable the shortcut.
+Disable the shortcut first (for example in System Preferences → Keyboard → Shortcuts), then assign the shortcut in MacGesture, and re-enable the shortcut.
 
 Caveats:
 Some shortcuts still do not work with the fix above. When you are encountering this, here are two possible solutions:
@@ -80,11 +64,11 @@ Some shortcuts still do not work with the fix above. When you are encountering t
 
 # Q&A
 
-Feel free to open issue
+Feel free to open an issue on GitHub 👍
 
 # Tips
 
-* If you want to achieve something like this:
+### Mouse scroll gesture example
 
 Right click, drag upwards, then every 'u' triggers a 'Next Tab', every 'd' triggers a 'Prev Tab', without releasing right mouse.
 
@@ -95,7 +79,7 @@ Then, create a rule like this:
 | U*d     | \*safari\|\*chrome | "shift-command-\]" | "Next Tab" | Checked                |
 | U*u     | \*safari\|\*chrome | "shift-command-\[" | "Prev Tab" | Checked                |
 
-* If you want to export and import MacGesture preferences:
+### Exporting and importing MacGesture preferences
 
 Recommended way:
 
@@ -117,7 +101,7 @@ defaults import com.codefalling.MacGesture backup.plist
 
 You should get your preferences back now. If is doesn't, file an issue on the project home.
 
-* If you want to exclude an app in a certain rule:
+### Excluding an app in a certain rule
 
 You can prepend '!', then the app you want to exclude (still wildcard).
 
@@ -133,20 +117,17 @@ Then, in order to exclude Safari, change this to:
 | ------- | ------------ | ------------------ | ---------- | ---------------------- |
 | U*d     | \*\|!*safari | "shift-command-\]" | "Next Tab" | Checked                |
 
-Then you will see the expected behavior.
+Then you will see the expected behaviour.
 
 # License
 
-This project is under GNU General Public License.
+This project is made under [GNU General Public License](https://en.wikipedia.org/wiki/GNU_General_Public_License).
 
-Icon is designed by [DanRabbit](http://www.iconarchive.com/artist/danrabbit.html) under [GNU General Public License](https://en.wikipedia.org/wiki/GNU_General_Public_License).
+App icon & other icons designed by [username0x0a](https://github.com/username0x0a).
 
-# Contributor
+# Contributors
 
-- [CodeFalling](https://github.com/codefalling)
+- [CodeFalling](https://github.com/codefalling) – original author
+- [username0x0a](https://github.com/username0x0a) – maintainer
 - [jiegec](https://github.com/jiegec)
 - [zhangciwu](https://github.com/zhangciwu)
-
-# Discuss
-
-讨论可以加入qq群：498035635 (You can join the discussion in QQ Group 498035635).

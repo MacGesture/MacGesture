@@ -1,3 +1,4 @@
+
 #import "utils.h"
 
 NSString *frontBundleName(void) {
@@ -42,4 +43,80 @@ bool wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase)
 }
 
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 
+@implementation LoginServicesHelper
+
++ (LSSharedFileListItemRef)itemRefWithListRef:(LSSharedFileListRef)listRef {
+    NSURL *bundleURL = [NSBundle mainBundle].bundleURL;
+    CFArrayRef arr = LSSharedFileListCopySnapshot(listRef, NULL);
+
+    for (NSInteger i = 0; i < CFArrayGetCount(arr); ++i) {
+        LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(arr, i);
+        CFURLRef urlRef;
+        OSStatus error = LSSharedFileListItemResolve(itemRef, 0, &urlRef, NULL);
+
+        if (error != noErr) {
+            continue;
+        }
+
+        if (CFEqual(urlRef, (__bridge CFURLRef)bundleURL)) {
+            CFRetain(itemRef);
+            CFRelease(arr);
+            CFRelease(urlRef);
+            return itemRef;
+        }
+        CFRelease(urlRef);
+    }
+    CFRelease(arr);
+    return NULL;
+}
+
++ (BOOL)isLoginItem {
+    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    if (!loginItems) return NO;
+
+    LSSharedFileListItemRef loginItemRef = [self itemRefWithListRef:loginItems];
+    if (!loginItemRef) {
+        CFRelease(loginItems);
+        return NO;
+    }
+    CFRelease(loginItems);
+    CFRelease(loginItemRef);
+    return YES;
+}
+
++ (void)makeLoginItemActive:(BOOL)active
+{
+    NSURL *bundleURL = [NSBundle mainBundle].bundleURL;
+
+    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+
+    if (loginItems)
+    {
+        LSSharedFileListItemRef item;
+
+        if (active)
+        {
+            item = LSSharedFileListInsertItemURL(loginItems,
+                kLSSharedFileListItemLast, NULL, NULL, (__bridge CFURLRef)bundleURL, NULL, NULL);
+
+            if (item)
+                CFRelease(item);
+        }
+        else
+        {
+            item = [self itemRefWithListRef:loginItems];
+
+            if (item)
+                LSSharedFileListItemRemove(loginItems, item);
+        }
+
+        CFRelease(loginItems);
+    }
+}
+
+@end
+
+#pragma clang diagnostic pop

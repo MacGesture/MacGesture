@@ -14,8 +14,8 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "NDn-VV-wyU"; */
 "NDn-VV-wyU.title" = "Text Cell";
 
-/* Class = "NSTextFieldCell"; title = "Loading."; ObjectID = "Ymi-rV-CmX"; */
-"Ymi-rV-CmX.title" = "Loading.";
+/* Class = "NSTextFieldCell"; title = "Loading…"; ObjectID = "Ymi-rV-CmX"; */
+"Ymi-rV-CmX.title" = "Loading…";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "b80-vw-EhN"; */
 "b80-vw-EhN.title" = "Text Cell";
