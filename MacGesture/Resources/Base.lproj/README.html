@@ -289,21 +289,6 @@ sup {
     vertical-align: super;
     line-height: 0;
 }
-
-kbd {
-  display: inline-block;
-  padding: 3px 5px;
-  font-size: 11px;
-  line-height: 10px;
-  color: #555;
-  vertical-align: middle;
-  background-color: #fcfcfc;
-  border: solid 1px #ccc;
-  border-bottom-color: #bbb;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #bbb
-}
-
 * {
 	-webkit-print-color-adjust: exact;
 }
@@ -320,9 +305,6 @@ kbd {
 	pre {
 		word-wrap: break-word;
 	}
-  body {
-    padding: 2cm; 
-  }
 }
 </style>
 
@@ -331,9 +313,7 @@ kbd {
 
 <body>
 
-<p><head><style>body { font-family: -apple-system; &quot;Helvetica Neue&quot;; Arial; }</style></head></p>
-
-<h1 id="toc_0">MacGesture 2 <img src="https://img.shields.io/twitter/url/https/github.com/username0x0a/MacGesture.svg?style=social" alt="tweet"></h1>
+<h1 id="toc_0">MacGesture <img src="https://img.shields.io/twitter/url/https/github.com/username0x0a/MacGesture.svg?style=social" alt="tweet"></h1>
 
 <p><img src="https://raw.githubusercontent.com/username0x0a/MacGesture/2020-update/logo.png" alt="logo"></p>
 
@@ -341,7 +321,7 @@ kbd {
 
 <p><strong>Some issues may still occur on macOS High Sierra and newer. Please file issues if possible! 🙌</strong></p>
 
-<p>You can read this README in About section.</p>
+<p>You can read this README in About section of the App Preferences.</p>
 
 <h1 id="toc_1">Download</h1>
 
@@ -351,8 +331,8 @@ kbd {
 
 <ul>
 <li><p>Global mouse gestures recognition</p></li>
-<li><p>Filter app by their bundle name</p></li>
-<li><p>Configure and send shortcut by gesture</p></li>
+<li><p>App filtering based on their bundle name</p></li>
+<li><p>Configure and invoke shortcut by gesture</p></li>
 </ul>
 
 <h1 id="toc_3">Gestures format</h1>
@@ -368,78 +348,70 @@ kbd {
 <tbody>
 <tr>
 <td>Left</td>
-<td>L</td>
+<td><code>L</code></td>
 </tr>
 <tr>
 <td>Up</td>
-<td>U</td>
+<td><code>U</code></td>
 </tr>
 <tr>
 <td>Right</td>
-<td>R</td>
+<td><code>R</code></td>
 </tr>
 <tr>
 <td>Down</td>
-<td>D</td>
+<td><code>D</code></td>
 </tr>
 <tr>
 <td>Mouse L</td>
-<td>Z</td>
+<td><code>Z</code></td>
 </tr>
 <tr>
 <td>Wheel U</td>
-<td>u</td>
+<td><code>u</code></td>
 </tr>
 <tr>
 <td>Wheel D</td>
-<td>d</td>
+<td><code>d</code></td>
 </tr>
 </tbody>
 </table>
 
-<p>Gesture can contain wildcard matching(&#39;?&#39; and &#39;*&#39;).</p>
+<p>Gestures can contain wildcard matching (<code>?</code> and <code>*</code>).</p>
 
 <p>The first rule matching will take effect.</p>
 
-<p>Z is the acronym of pinyin of &#39;左&#39; which means &#39;left&#39; in English.
-So to distinguish &#39;clicking the left mouse&#39; from &#39;dragging your mouse left-ward&#39;,
-we chose &#39;Z&#39;.</p>
+<p><code>Z</code> is the acronym of pinyin of &#39;左&#39; which means &#39;left&#39; in English. So to distinguish &#39;clicking the left mouse button&#39; from &#39;dragging your mouse to the left&#39;, we chose <code>Z</code>.</p>
 
-<p>Wheel directions may vary according to system configurations or some system tweaks (Karabiner&#39;s Reverse Vertical Scrolling, for example).</p>
+<p>Wheel directions may vary according to system configuration (Natural scroll direction) or some system tweaks (Karabiner&#39;s Reverse Vertical Scrolling, for example).</p>
 
 <h1 id="toc_4">Known Issues</h1>
 
-<ul>
-<li>Right click does not work in some Java applications.</li>
-</ul>
+<h3 id="toc_5">Right click does not work in some Java applications.</h3>
 
 <p>An imperfect fix:
 Take WebStorm for example, open Preferences, then KeyMap, set the shortcut of &quot;Show Context Menu&quot; to &quot;Button3 Click&quot;</p>
 
-<ul>
-<li>Cannot assign some system-wide shortcuts to rules.</li>
-</ul>
+<h3 id="toc_6">Cannot assign some system-wide shortcuts to rules.</h3>
 
 <p>Reason:
 macOS respond to system-wide shortcuts before MacGesture.</p>
 
 <p>Fix:
-Disable the shortcut first (for example in System Preferences-&gt;Keyboard-&gt;Shortcuts), then assign the shortcut in MacGesture, and re-enable the shortcut.</p>
+Disable the shortcut first (for example in System Preferences → Keyboard → Shortcuts), then assign the shortcut in MacGesture, and re-enable the shortcut.</p>
 
 <p>Caveats:
 Some shortcuts still do not work with the fix above. When you are encountering this, here are two possible solutions:
 1. Change them to others (e.g. Control+0, Control+9).
 2. Tick &quot;Invert Fn When Control Is Pressed&quot;.</p>
 
-<h1 id="toc_5">Q&amp;A</h1>
+<h1 id="toc_7">Q&amp;A</h1>
 
-<p>Feel free to open an issue on GitHub 👍</p>
+<p>Feel free to open <a href="https://github.com/username0x0a/MacGesture/issues">an issue on GitHub</a>! 👍</p>
 
-<h1 id="toc_6">Tips</h1>
+<h1 id="toc_8">Tips</h1>
 
-<ul>
-<li>If you want to achieve something like this:</li>
-</ul>
+<h3 id="toc_9">Mouse scroll gesture example</h3>
 
 <p>Right click, drag upwards, then every &#39;u&#39; triggers a &#39;Next Tab&#39;, every &#39;d&#39; triggers a &#39;Prev Tab&#39;, without releasing right mouse.</p>
 
@@ -474,15 +446,13 @@ Some shortcuts still do not work with the fix above. When you are encountering t
 </tbody>
 </table>
 
-<ul>
-<li>If you want to export and import MacGesture preferences:</li>
-</ul>
+<h3 id="toc_10">Exporting and importing MacGesture preferences</h3>
 
-<p>Recommended way:</p>
+<h4 id="toc_11">Recommended way</h4>
 
 <p>Use the buttons &#39;Import&#39; and &#39;Export&#39; in the ‘General&#39; Panel.</p>
 
-<p>Geek-ish way: (the underlying way as well)</p>
+<h4 id="toc_12">Geek-ish way</h4>
 
 <p>Open a terminal, Do this in your old computer:</p>
 
@@ -494,9 +464,7 @@ Some shortcuts still do not work with the fix above. When you are encountering t
 
 <p>You should get your preferences back now. If is doesn&#39;t, file an issue on the project home.</p>
 
-<ul>
-<li>If you want to exclude an app in a certain rule:</li>
-</ul>
+<h3 id="toc_13">Excluding an app in a certain rule</h3>
 
 <p>You can prepend &#39;!&#39;, then the app you want to exclude (still wildcard).</p>
 
@@ -548,21 +516,21 @@ Some shortcuts still do not work with the fix above. When you are encountering t
 </tbody>
 </table>
 
-<p>Then you will see the expected behavior.</p>
+<p>Then you will experience the expected behaviour.</p>
 
-<h1 id="toc_7">License</h1>
+<h1 id="toc_14">License</h1>
 
-<p>This project is under GNU General Public License.</p>
+<p>This project is made under <a href="https://en.wikipedia.org/wiki/GNU_General_Public_License">GNU General Public License</a>.</p>
 
-<p>Icon is designed by <a href="https://github.com/username0x0a">username0x0a</a> under <a href="https://en.wikipedia.org/wiki/GNU_General_Public_License">GNU General Public License</a>.</p>
+<p>App icon &amp; other icons designed by <a href="https://github.com/username0x0a">username0x0a</a>.</p>
 
-<h1 id="toc_8">Contributors</h1>
+<h1 id="toc_15">Contributors</h1>
 
 <ul>
-<li><a href="https://github.com/codefalling">CodeFalling</a></li>
+<li><a href="https://github.com/codefalling">CodeFalling</a> – original author</li>
+<li><a href="https://github.com/username0x0a">username0x0a</a> – maintainer</li>
 <li><a href="https://github.com/jiegec">jiegec</a></li>
 <li><a href="https://github.com/zhangciwu">zhangciwu</a></li>
-<li><a href="https://github.com/username0x0a">username0x0a</a></li>
 </ul>
 
 

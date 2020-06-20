@@ -16,31 +16,29 @@ Download the latest ZIP release from [GitHub releases](https://github.com/userna
 
 - Global mouse gestures recognition
 
-- Filter app by their bundle name
+- App filtering based on their bundle name
 
-- Configure and send shortcut by gesture
+- Configure and invoke shortcut by gesture
 
 # Gestures format
 
 | Gesture | Acronym |
 | ------- | ------- |
-| Left    | L       |
-| Up      | U       |
-| Right   | R       |
-| Down    | D       |
-| Mouse L | Z       |
-| Wheel U | u       |
-| Wheel D | d       |
+| Left    | `L`     |
+| Up      | `U`     |
+| Right   | `R`     |
+| Down    | `D`     |
+| Mouse L | `Z`     |
+| Wheel U | `u`     |
+| Wheel D | `d`     |
 
-Gesture can contain wildcard matching(`?` and `*`).
+Gestures can contain wildcard matching (`?` and `*`).
 
 The first rule matching will take effect.
 
-Z is the acronym of pinyin of '左' which means 'left' in English.
-So to distinguish 'clicking the left mouse' from 'dragging your mouse left-ward',
-we chose 'Z'.
+`Z` is the acronym of pinyin of '左' which means 'left' in English. So to distinguish 'clicking the left mouse button' from 'dragging your mouse to the left', we chose `Z`.
 
-Wheel directions may vary according to system configurations or some system tweaks (Karabiner's Reverse Vertical Scrolling, for example).
+Wheel directions may vary according to system configuration (Natural scroll direction) or some system tweaks (Karabiner's Reverse Vertical Scrolling, for example).
 
 # Known Issues
 
@@ -64,7 +62,7 @@ Some shortcuts still do not work with the fix above. When you are encountering t
 
 # Q&A
 
-Feel free to open an issue on GitHub 👍
+Feel free to open [an issue on GitHub](https://github.com/username0x0a/MacGesture/issues)! 👍
 
 # Tips
 
@@ -81,11 +79,11 @@ Then, create a rule like this:
 
 ### Exporting and importing MacGesture preferences
 
-Recommended way:
+#### Recommended way
 
 Use the buttons 'Import' and 'Export' in the ‘General' Panel.
 
-Geek-ish way: (the underlying way as well)
+#### Geek-ish way
 
 Open a terminal, Do this in your old computer:
 
@@ -117,7 +115,7 @@ Then, in order to exclude Safari, change this to:
 | ------- | ------------ | ------------------ | ---------- | ---------------------- |
 | U*d     | \*\|!*safari | "shift-command-\]" | "Next Tab" | Checked                |
 
-Then you will see the expected behaviour.
+Then you will experience the expected behaviour.
 
 # License
 
