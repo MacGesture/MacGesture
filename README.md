@@ -1,8 +1,8 @@
 # MacGesture ![tweet](https://img.shields.io/twitter/url/https/github.com/username0x0a/MacGesture.svg?style=social)
 
-![logo](https://raw.githubusercontent.com/username0x0a/MacGesture/2020-update/logo.png)
+![logo](https://raw.githubusercontent.com/username0x0a/MacGesture/master/logo.png)
 
-Configurable global mouse gesture for macOS.
+Configurable global mouse gestures for macOS.
 
 **Some issues may still occur on macOS High Sierra and newer. Please file issues if possible! 🙌**
 
@@ -16,11 +16,11 @@ Download the latest ZIP release from [GitHub releases](https://github.com/userna
 
 - Global mouse gestures recognition
 
-- App filtering based on their bundle name
+- App filtering based on bundle identifiers
 
 - Configure and invoke shortcut by gesture
 
-# Gestures format
+# Gestures Format
 
 | Gesture | Acronym |
 | ------- | ------- |
@@ -59,10 +59,6 @@ Caveats:
 Some shortcuts still do not work with the fix above. When you are encountering this, here are two possible solutions:
 1. Change them to others (e.g. Control+0, Control+9).
 2. Tick "Invert Fn When Control Is Pressed".
-
-# Q&A
-
-Feel free to open [an issue on GitHub](https://github.com/username0x0a/MacGesture/issues)! 👍
 
 # Tips
 
@@ -116,6 +112,10 @@ Then, in order to exclude Safari, change this to:
 | U*d     | \*\|!*safari | "shift-command-\]" | "Next Tab" | Checked                |
 
 Then you will experience the expected behaviour.
+
+# Found a Bug?
+
+Feel free to open [an issue on GitHub](https://github.com/username0x0a/MacGesture/issues)! 👍
 
 # License
 
