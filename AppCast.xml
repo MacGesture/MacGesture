@@ -6,19 +6,11 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
     <item>
-      <title>Version 2.2.5</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/username0x0a/MacGesture/release/Changelog/2.2.5.html
-          </sparkle:releaseNotesLink>
-      <pubDate>2018-09-08 01:33 +8</pubDate>
-      <enclosure length="2144791" sparkle:dsaSignature="MC0CFGHZEpTrGv7FMfer6v5w1n3+yTq9AhUA0pdFHh9QP+KyckjXZL4zvNoYgms=" sparkle:version="2.2.5" type="application/octet-stream" url="https://github.com/username0x0a/MacGesture/releases/download/2.2.5/MacGesture-2.2.5.zip"/>
-      <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-    </item>
-    <item>
       <title>Version 3.0</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/username0x0a/MacGesture/release/Changelog/3.0.html
+      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/username0x0a/MacGesture/master/Changelog/3.0.html
           </sparkle:releaseNotesLink>
-      <pubDate>XXXXXX</pubDate>
-      <enclosure length="XXXXXXX" sparkle:dsaSignature="XXXXXXXX" sparkle:version="3.0" type="application/octet-stream" url="https://github.com/username0x0a/MacGesture/releases/download/3.0/MacGesture-3.0.zip"/>
+      <pubDate>Sun, 21 Jun 2020 18:00:00 +0000</pubDate>
+      <enclosure length="2496008" sparkle:edSignature="q44R9gt+EB9BZrDsgzSR1Mioiqb0hSyzvZd81WM9gum1FOIzjvNsblNeEoNKz4gaQzahNkw0AuORgOAedKRtBg==" sparkle:shortVersionString="3.0" sparkle:version="152" type="application/octet-stream" url="https://github.com/username0x0a/MacGesture/releases/download/3.0/MacGesture-3.0.zip"/>
       <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
     </item>
   </channel>
