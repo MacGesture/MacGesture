@@ -65,8 +65,8 @@
 /* Class = "NSButtonCell"; title = "Reset Defaults"; ObjectID = "9qA-nt-g9l"; */
 "9qA-nt-g9l.title" = "Reset Defaults";
 
-/* Class = "NSButtonCell"; title = "Black list mode"; ObjectID = "BDA-RK-czZ"; */
-"BDA-RK-czZ.title" = "Black list mode";
+/* Class = "NSButtonCell"; title = "Block list mode"; ObjectID = "BDA-RK-czZ"; */
+"BDA-RK-czZ.title" = "Block list mode";
 
 /* Class = "NSMenuItem"; title = "+"; ObjectID = "BT0-6L-6TA"; */
 "BT0-6L-6TA.title" = "+";
@@ -191,5 +191,5 @@
 /* Class = "NSButtonCell"; title = "Show Icon In Status Bar"; ObjectID = "ztS-80-zXz"; */
 "ztS-80-zXz.title" = "Show Icon In Status Bar";
 
-/* Class = "NSButtonCell"; title = "White list mode"; ObjectID = "ztb-nI-iil"; */
-"ztb-nI-iil.title" = "White list mode";
+/* Class = "NSButtonCell"; title = "Allow list mode"; ObjectID = "ztb-nI-iil"; */
+"ztb-nI-iil.title" = "Allow list mode";
