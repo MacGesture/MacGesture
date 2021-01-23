@@ -109,8 +109,20 @@ static NSColor *loadedColor;
     NSInteger y = (screenRect.size.height - scaledHeight) / 2;
     NSInteger beginx = (screenRect.size.width - scaledWidth * numberToDraw) / 2;
 
+    NSRect bgRect = NSMakeRect(0, 0, scaledWidth * numberToDraw, scaledHeight);
+    bgRect.size.width += 32; bgRect.size.height += 32;
+    bgRect.origin.x = beginx - 16; bgRect.origin.y = (screenRect.size.height - scaledHeight) / 2 - 16;
+
     [NSGraphicsContext saveGraphicsState];
     [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationNone];
+
+    if (numberToDraw > 0) {
+        NSBezierPath *bgPath = [NSBezierPath bezierPathWithRoundedRect:bgRect xRadius:16 yRadius:16];
+        NSColor *bgColor = [NSColor colorWithWhite:0 alpha:0.2];
+        [bgColor setFill];
+        [bgPath fill];
+    }
+
     int index = 0;
     for (NSInteger i = 0; i < directionToDraw.length; i++) {
         NSImage *image = nil;
@@ -195,11 +207,13 @@ static NSColor *loadedColor;
         CGSize size = [note sizeWithAttributes:textAttributes];
         size.width += fontSize/2;
         CGFloat x = ((screenRect.size.width - size.width) / 2);
-        CGFloat y = ((screenRect.size.height + leftImage.size.height * [self getGestureImageScale]) / 2);
+        CGFloat y = ((screenRect.size.height + leftImage.size.height * [self getGestureImageScale] + 64) / 2);
 
-        CGContextRef context = [NSGraphicsContext currentContext].CGContext;
-        CGContextSetRGBFillColor(context, 0, 0, 0, 0.1);
-        CGContextFillRect(context, CGRectMake(x, y, size.width, size.height));
+        NSRect rect = NSMakeRect(x, y, size.width, size.height);
+        NSBezierPath *bgPath = [NSBezierPath bezierPathWithRoundedRect:rect xRadius:16 yRadius:16];
+        NSColor *bgColor = [NSColor colorWithWhite:0 alpha:0.2];
+        [bgColor setFill];
+        [bgPath fill];
 
         x += fontSize/4;
 
