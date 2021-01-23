@@ -7,7 +7,7 @@
 #import "RulesList.h"
 #import "AppleScriptsList.h"
 #import "SRRecorderControlWithTagid.h"
-#import "BlackWhiteFilter.h"
+#import "BlockAllowFilter.h"
 #import "MGOptionsDefine.h"
 #import "AppDelegate.h"
 #import "utils.h"
@@ -74,10 +74,10 @@ static NSArray *exampleAppleScripts;
             NSOnState : NSOffState;
     self.versionCode.stringValue = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
     [self refreshFilterRadioAndTextViewState];
-    self.blackListTextView.string = BWFilter.blackListText;
-    self.whiteListTextView.string = BWFilter.whiteListText;
-    self.blackListTextView.font = [NSFont systemFontOfSize:14];
-    self.whiteListTextView.font = [NSFont systemFontOfSize:14];
+    self.blockListTextView.string = BWFilter.blockListText;
+    self.allowListTextView.string = BWFilter.allowListText;
+    self.blockListTextView.font = [NSFont systemFontOfSize:14];
+    self.allowListTextView.font = [NSFont systemFontOfSize:14];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(tableViewSelectionChanged:)
@@ -119,21 +119,21 @@ static NSArray *exampleAppleScripts;
 }
 
 - (void)refreshFilterRadioAndTextViewState {
-    //    self.blackListModeRadio.cell stat
-    NSLog(@"BWFilter.isInWhiteListMode: %d", BWFilter.isInWhiteListMode);
-    [self.blackListModeRadio setState:BWFilter.isInWhiteListMode ? NSOffState : NSOnState];
-    [self.whiteListModeRadio setState:BWFilter.isInWhiteListMode ? NSOnState : NSOffState];
+    //    self.blockListModeRadio.cell stat
+    NSLog(@"BWFilter.isInAllowListMode: %d", BWFilter.isInAllowListMode);
+    [self.blockListModeRadio setState:BWFilter.isInAllowListMode ? NSOffState : NSOnState];
+    [self.allowListModeRadio setState:BWFilter.isInAllowListMode ? NSOnState : NSOffState];
     NSColor *notActive = self.window.backgroundColor;
     NSColor *active = [NSColor textBackgroundColor];
-    self.blackListTextView.backgroundColor = BWFilter.isInWhiteListMode ? notActive : active;
-    //    ((NSScrollView *)(self.blackListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?notActive:active;
-    self.whiteListTextView.backgroundColor = BWFilter.isInWhiteListMode ? active : notActive;
-    //    ((NSScrollView *)(self.whiteListTextView.superview.superview)).backgroundColor=BWFilter.isInWhiteListMode?active:notActive;
+    self.blockListTextView.backgroundColor = BWFilter.isInAllowListMode ? notActive : active;
+    //    ((NSScrollView *)(self.blockListTextView.superview.superview)).backgroundColor=BWFilter.isInAllowListMode?notActive:active;
+    self.allowListTextView.backgroundColor = BWFilter.isInAllowListMode ? active : notActive;
+    //    ((NSScrollView *)(self.allowListTextView.superview.superview)).backgroundColor=BWFilter.isInAllowListMode?active:notActive;
 
-    [self.whiteListTextView.superview.superview needsLayout];
-    [self.whiteListTextView.superview.superview needsDisplay];
-    [self.blackListTextView.superview.superview needsLayout];
-    [self.blackListTextView.superview.superview needsDisplay];
+    [self.allowListTextView.superview.superview needsLayout];
+    [self.allowListTextView.superview.superview needsDisplay];
+    [self.blockListTextView.superview.superview needsLayout];
+    [self.blockListTextView.superview.superview needsDisplay];
 }
 
 - (IBAction) addShortcutRule:(id)sender {
@@ -223,11 +223,11 @@ static NSArray *exampleAppleScripts;
         self.autoStartAtLogin.state == NSOnState];
 }
 
-- (IBAction)whiteBlackRadioClicked:(id)sender {
-    if (sender == self.whiteListModeRadio) {
-        BWFilter.isInWhiteListMode = YES;
-    } else if (sender == self.blackListModeRadio) {
-        BWFilter.isInWhiteListMode = NO;
+- (IBAction)allowBlockRadioClicked:(id)sender {
+    if (sender == self.allowListModeRadio) {
+        BWFilter.isInAllowListMode = YES;
+    } else if (sender == self.blockListModeRadio) {
+        BWFilter.isInAllowListMode = NO;
     }
     
     [self refreshFilterRadioAndTextViewState];
@@ -238,22 +238,22 @@ static NSArray *exampleAppleScripts;
 }
 
 - (IBAction)filterViewApplyClicked:(id)sender {
-    BWFilter.blackListText = [self.blackListTextView string];
-    BWFilter.whiteListText = [self.whiteListTextView string];
+    BWFilter.blockListText = [self.blockListTextView string];
+    BWFilter.allowListText = [self.allowListTextView string];
     [self refreshFilterRadioAndTextViewState];
-    self.blackListTextView.string = BWFilter.blackListText;
-    self.whiteListTextView.string = BWFilter.whiteListText;
+    self.blockListTextView.string = BWFilter.blockListText;
+    self.allowListTextView.string = BWFilter.allowListText;
 }
 
-- (IBAction)filterBlackListAddClicked:(id)sender {
+- (IBAction)filterBlockListAddClicked:(id)sender {
     self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
-    self.pickerWindowController.addedToTextView = self.blackListTextView;
+    self.pickerWindowController.addedToTextView = self.blockListTextView;
     [self.pickerWindowController showWindow:self];
 }
 
-- (IBAction)filterWhiteListAddClicked:(id)sender {
+- (IBAction)filterAllowListAddClicked:(id)sender {
     self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
-    self.pickerWindowController.addedToTextView = self.whiteListTextView;
+    self.pickerWindowController.addedToTextView = self.allowListTextView;
     [self.pickerWindowController showWindow:self];
 }
 

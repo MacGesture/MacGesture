@@ -3,7 +3,7 @@
 #import "CanvasWindowController.h"
 #import "RulesList.h"
 #import "utils.h"
-#import "BlackWhiteFilter.h"
+#import "BlockAllowFilter.h"
 
 @implementation AppDelegate
 

@@ -25,10 +25,10 @@
 @property(weak) IBOutlet NSButton *autoStartAtLogin;
 
 @property(weak) IBOutlet NSTextField *versionCode;
-@property(weak) IBOutlet NSButton *blackListModeRadio;
-@property(weak) IBOutlet NSButton *whiteListModeRadio;
-@property(unsafe_unretained) IBOutlet NSTextView *blackListTextView;
-@property(unsafe_unretained) IBOutlet NSTextView *whiteListTextView;
+@property(weak) IBOutlet NSButton *blockListModeRadio;
+@property(weak) IBOutlet NSButton *allowListModeRadio;
+@property(unsafe_unretained) IBOutlet NSTextView *blockListTextView;
+@property(unsafe_unretained) IBOutlet NSTextView *allowListTextView;
 @property(weak) IBOutlet NSButton *changeRulesWindowSizeButton;
 @property(weak) IBOutlet NSButton *changeFiltersWindowSizeButton;
 @property(weak) IBOutlet NSButton *editInExternalEditorButton;

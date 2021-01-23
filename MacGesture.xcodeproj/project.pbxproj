@@ -21,7 +21,7 @@
 		264184A9FF52175212CBE73F /* CanvasWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2641881917BAF09AFC2A7CC7 /* CanvasWindow.m */; };
 		26418E623E410EF207EFA2A8 /* RulesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418733B12703C123D16E95 /* RulesList.m */; };
 		3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */; };
-		3CDC5543D4E5BD248515F7CA /* BlackWhiteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */; };
+		3CDC5543D4E5BD248515F7CA /* BlockAllowFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC55835ADD1CA85B9CCC91 /* BlockAllowFilter.m */; };
 		880AA7571CA5738A006E7A74 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7591CA5738A006E7A74 /* Preferences.xib */; };
 		880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */; };
 		880AA7651CA5745D006E7A74 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75F1CA5745D006E7A74 /* Credits.rtf */; };
@@ -76,9 +76,9 @@
 		26418D5612632F8BDA1AE8CA /* CanvasWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CanvasWindow.h; sourceTree = "<group>"; usesTabs = 0; };
 		26418F4D8FB5BC803E3EB850 /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = utils.m; sourceTree = "<group>"; usesTabs = 0; };
 		26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppPrefsWindowController.m; sourceTree = "<group>"; usesTabs = 0; };
-		3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BlackWhiteFilter.m; sourceTree = "<group>"; usesTabs = 0; };
+		3CDC55835ADD1CA85B9CCC91 /* BlockAllowFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BlockAllowFilter.m; sourceTree = "<group>"; usesTabs = 0; };
 		3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MGOptionsDefine.h; sourceTree = "<group>"; usesTabs = 0; };
-		3CDC5A614857FE77ADFEA4C8 /* BlackWhiteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BlackWhiteFilter.h; sourceTree = "<group>"; usesTabs = 0; };
+		3CDC5A614857FE77ADFEA4C8 /* BlockAllowFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BlockAllowFilter.h; sourceTree = "<group>"; usesTabs = 0; };
 		3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MGOptionsDefine.m; sourceTree = "<group>"; usesTabs = 0; };
 		866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacGesture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		880AA7751CA64DDB006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -237,8 +237,8 @@
 				D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */,
 				88331A391C9D22290064ADD5 /* AppleScriptsList.h */,
 				88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */,
-				3CDC5A614857FE77ADFEA4C8 /* BlackWhiteFilter.h */,
-				3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */,
+				3CDC5A614857FE77ADFEA4C8 /* BlockAllowFilter.h */,
+				3CDC55835ADD1CA85B9CCC91 /* BlockAllowFilter.m */,
 				3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */,
 				3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */,
 				2641853CD8AE42C95077D980 /* RulesList.h */,
@@ -427,14 +427,12 @@
 				"${BUILT_PRODUCTS_DIR}/DBPrefsWindowController/DBPrefsWindowController.framework",
 				"${BUILT_PRODUCTS_DIR}/ShortcutRecorder/ShortcutRecorder.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DBPrefsWindowController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ShortcutRecorder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -473,7 +471,7 @@
 				B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */,
 				264183DA0542C17E1932F696 /* SRRecorderControlWithTagid.m in Sources */,
 				2641813EC194C60DC1B1806D /* utils.m in Sources */,
-				3CDC5543D4E5BD248515F7CA /* BlackWhiteFilter.m in Sources */,
+				3CDC5543D4E5BD248515F7CA /* BlockAllowFilter.m in Sources */,
 				3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
