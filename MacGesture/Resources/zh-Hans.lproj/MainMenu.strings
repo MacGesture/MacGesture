@@ -20,10 +20,10 @@
 "131.title" = "Services";
 
 /* Class = "NSMenuItem"; title = "Hide MacGesture"; ObjectID = "134"; */
-"134.title" = "Hide MacGesture";
+"134.title" = "Hide MenuBarApp";
 
 /* Class = "NSMenuItem"; title = "Quit MacGesture"; ObjectID = "136"; */
-"136.title" = "Quit MacGesture";
+"136.title" = "Quit MenuBarApp";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
 "145.title" = "Hide Others";
@@ -347,13 +347,13 @@
 "534.title" = "Find and Replace…";
 
 /* Class = "NSMenuItem"; title = "MacGesture"; ObjectID = "56"; */
-"56.title" = "MacGesture";
+"56.title" = "MenuBarApp";
 
 /* Class = "NSMenu"; title = "MacGesture"; ObjectID = "57"; */
-"57.title" = "MacGesture";
+"57.title" = "MenuBarApp";
 
 /* Class = "NSMenuItem"; title = "About MacGesture"; ObjectID = "58"; */
-"58.title" = "About MacGesture";
+"58.title" = "About MenuBarApp";
 
 /* Class = "NSMenuItem"; title = "Open…"; ObjectID = "72"; */
 "72.title" = "Open…";
@@ -380,7 +380,7 @@
 "83.title" = "File";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "E8a-Fn-In1"; */
-"E8a-Fn-In1.title" = "Preferences…";
+"E8a-Fn-In1.title" = "偏好设置";
 
 /* Class = "NSMenuItem"; title = "Quit"; ObjectID = "MTY-xM-R0q"; */
-"MTY-xM-R0q.title" = "Quit";
+"MTY-xM-R0q.title" = "退出";

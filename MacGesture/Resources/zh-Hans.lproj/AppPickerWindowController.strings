@@ -5,16 +5,16 @@
 "ClB-Xx-HPK.title" = "Text Cell";
 
 /* Class = "NSWindow"; title = "Pick from running apps"; ObjectID = "F0z-JX-Cv5"; */
-"F0z-JX-Cv5.title" = "Pick from running apps";
+"F0z-JX-Cv5.title" = "从正在运行的 App 中选取";
 
 /* Class = "NSButtonCell"; title = "OK"; ObjectID = "Gxe-MI-oFk"; */
-"Gxe-MI-oFk.title" = "OK";
+"Gxe-MI-oFk.title" = "确定";
 
 /* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "gy8-QK-WI6"; */
 "gy8-QK-WI6.title" = "Table View Cell";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "Hdt-AI-EhJ"; */
-"Hdt-AI-EhJ.title" = "Cancel";
+"Hdt-AI-EhJ.title" = "取消";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "NDn-VV-wyU"; */
 "NDn-VV-wyU.title" = "Text Cell";
@@ -23,4 +23,4 @@
 "o3z-Wb-uMG.title" = "Table View Cell";
 
 /* Class = "NSTextFieldCell"; title = "Loading…"; ObjectID = "Ymi-rV-CmX"; */
-"Ymi-rV-CmX.title" = "Loading…";
+"Ymi-rV-CmX.title" = "正在加载。";

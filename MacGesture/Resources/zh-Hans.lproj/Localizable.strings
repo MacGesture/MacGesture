@@ -1,0 +1,80 @@
+/*
+ Localizable.strings
+ MacGesture
+ 
+ Created by iMac on 3/25/16.
+ Copyright © 2016 Codefalling. All rights reserved.
+ */
+"About" = "关于 & 帮助";
+
+/* No comment provided by engineer. */
+"AppleScript" = "AppleScript";
+
+/* No comment provided by engineer. */
+"Edit in External Editor" = "在外部编辑器编辑";
+
+/* No comment provided by engineer. */
+"Export succeeded" = "导出成功";
+
+/* No comment provided by engineer. */
+"Filters" = "过滤";
+
+/* No comment provided by engineer. */
+"General" = "常规";
+
+/* No comment provided by engineer. */
+"Gesture must only contain \"ULDRZud?*\"" = "手势只允许包含 \"ULDRZud?*\"";
+
+/* No comment provided by engineer. */
+"Go bigger" = "放大窗口";
+
+/* No comment provided by engineer. */
+"Loading.." = "正在加载。。";
+
+/* No comment provided by engineer. */
+"Much information is elaborated in README. A copy of README is included in 'About & Help'." = "自述文件中有许多对MacGesture的详细阐述。你也可以在“关于和帮助”中查看自述文件。";
+
+/* No comment provided by engineer. */
+"Okay, I know" = "好，我知道了";
+
+/* No comment provided by engineer. */
+"Open README in browser" = "在浏览器中查看自述文件";
+
+/* No comment provided by engineer. */
+"Reset size" = "重置大小";
+
+/* No comment provided by engineer. */
+"Restart MacGesture to take effect" = "重启MacGesture后生效";
+
+/* No comment provided by engineer. */
+"Rules" = "规则";
+
+/* No comment provided by engineer. */
+"Select a filter first!" = "请先选择一个规则！";
+
+/* No comment provided by engineer. */
+"Select an AppleScript first!" = "请先选择一个AppleScript！";
+
+/* No comment provided by engineer. */
+"Skip" = "跳过";
+
+/* No comment provided by engineer. */
+"Stop" = "停止";
+
+/* No comment provided by engineer. */
+"On macOS Mojave(10.14) and later, you must manually enable Accessibility permission for MacGesture to work.\n Please goto System Preferences -> Security & Privacy -> Privacy -> Accessibility to enable it for MacGesture.\nIf is is already enabled but MacGesture is still not working, please re-open MacGesture." = "macOS Mojave 后的系统需要开启隐私权限才能使用鼠标手势。\n请到 系统-安全性及隐私-隐私-辅助功能 中启用 MacGesture。\n如果已经启用但仍不工作，请先移除再重新打开此应用并启用。";
+
+/* No comment provided by engineer. */
+"Gestures" = "";
+
+/* No comment provided by engineer. */
+"If it's already enabled but MacGesture is still not working, please re-open MacGesture." = "";
+
+/* No comment provided by engineer. */
+"Loading…" = "";
+
+/* No comment provided by engineer. */
+"On macOS Mojave (10.14) and later, you must manually enable Accessibility permission for MacGesture to work." = "";
+
+/* No comment provided by engineer. */
+"Please goto System Preferences → Security & Privacy → Privacy → Accessibility to enable it for MacGesture." = "";

@@ -93,6 +93,10 @@
 		88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "OpenMacGesturePreferences.applescript-src"; sourceTree = "<group>"; };
 		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppPickerWindowController.h; sourceTree = "<group>"; usesTabs = 0; };
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppPickerWindowController.m; sourceTree = "<group>"; usesTabs = 0; };
+		BBC1C8C525BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		BBC1C8C625BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
+		BBC1C8C725BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppPickerWindowController.strings"; sourceTree = "<group>"; };
+		BBC1C8C825BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C610961B1DED98C700FCC263 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		D02885E11EF29CDE0082A660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SearchInWeb.applescript-src"; sourceTree = "<group>"; };
@@ -338,7 +342,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MBA;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Chivalry Software";
 				TargetAttributes = {
 					1381E4A71824E7E800E815F5 = {
@@ -356,6 +360,7 @@
 			knownRegions = (
 				Base,
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 1381E49F1824E7E800E815F5;
 			productRefGroup = 1381E4A91824E7E800E815F5 /* Products */;
@@ -450,7 +455,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which bartycrouch > /dev/null; then\n# Incrementally update all Storyboards/XIBs strings files\nbartycrouch interfaces -p \"$PROJECT_DIR/MacGesture\" -b\n\n# Add new keys to Localizable.strings files from NSLocalizedString in code\nbartycrouch code -p \"$PROJECT_DIR/MacGesture\" -l \"$PROJECT_DIR/MacGesture\" -s -k\nelse\necho \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi\n";
+			shellScript = "if which bartycrouch > /dev/null; then\n    bartycrouch update\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\n    echo \"         or using Homebrew by running `brew install bartycrouch` command\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -500,6 +505,7 @@
 			children = (
 				880AA77C1CA64E88006E7A74 /* Base */,
 				D6B1318F249E55C90014F55E /* en */,
+				BBC1C8C625BCA21F00DE6816 /* zh-Hans */,
 			);
 			name = Preferences.xib;
 			path = .;
@@ -510,6 +516,7 @@
 			children = (
 				880AA7781CA64E62006E7A74 /* Base */,
 				D6B1318D249E54E10014F55E /* en */,
+				BBC1C8C725BCA21F00DE6816 /* zh-Hans */,
 			);
 			name = AppPickerWindowController.xib;
 			path = .;
@@ -538,6 +545,7 @@
 			children = (
 				880AA7751CA64DDB006E7A74 /* Base */,
 				D6B1318B249E54D00014F55E /* en */,
+				BBC1C8C525BCA21F00DE6816 /* zh-Hans */,
 			);
 			name = MainMenu.xib;
 			path = .;
@@ -547,6 +555,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				880AA77E1CA64EB7006E7A74 /* Base */,
+				BBC1C8C825BCA21F00DE6816 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			path = .;
@@ -585,6 +594,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -635,6 +645,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
