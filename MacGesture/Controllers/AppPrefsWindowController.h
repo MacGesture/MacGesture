@@ -46,7 +46,7 @@
 
 @property(weak) IBOutlet NSColorWell *lineColorWell;
 
-@property(assign) IBOutlet WebView *webView;
+@property(assign) IBOutlet WKWebView *webView;
 
 - (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index;
 @end

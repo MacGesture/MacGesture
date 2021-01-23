@@ -3,7 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="17701"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -37,7 +37,7 @@
                 <outlet property="showIconInStatusBarButton" destination="ccx-Tb-9cw" id="M8p-za-0vX"/>
                 <outlet property="updater" destination="360" id="364"/>
                 <outlet property="versionCode" destination="num-fq-Ld9" id="JsU-bx-3Ga"/>
-                <outlet property="webView" destination="GwU-Ng-Wic" id="cNR-fg-lsI"/>
+                <outlet property="webView" destination="RnK-th-XV0" id="aLo-J9-gH3"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -419,7 +419,7 @@
                     <rect key="frame" x="6" y="29" width="646" height="278"/>
                     <clipView key="contentView" id="dRt-B1-99d">
                         <rect key="frame" x="1" y="1" width="644" height="276"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="287" id="289">
                                 <rect key="frame" x="0.0" y="0.0" width="644" height="253"/>
@@ -483,7 +483,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="TriggerOnEveryMatch" width="46.5" minWidth="40" maxWidth="1000" id="gla-Uy-MuL">
+                                    <tableColumn identifier="TriggerOnEveryMatch" width="40" minWidth="40" maxWidth="1000" id="gla-Uy-MuL">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Trigger on every match">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -504,14 +504,14 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="288">
-                        <rect key="frame" x="1" y="260" width="644" height="16"/>
+                        <rect key="frame" x="1" y="261" width="644" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="286">
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <tableHeaderView key="headerView" id="287">
+                    <tableHeaderView key="headerView" wantsLayer="YES" id="287">
                         <rect key="frame" x="0.0" y="0.0" width="644" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
@@ -584,7 +584,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zse-PN-yEi">
-                    <rect key="frame" x="462" y="-1" width="126" height="32"/>
+                    <rect key="frame" x="462" y="0.0" width="126" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="112" id="csW-g3-y4p"/>
                     </constraints>
@@ -677,7 +677,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O3m-tP-4Yw">
-                    <rect key="frame" x="0.0" y="-1" width="94" height="32"/>
+                    <rect key="frame" x="0.0" y="0.0" width="94" height="32"/>
                     <buttonCell key="cell" type="push" title="Go bigger" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7xg-Hp-Yhw">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -692,10 +692,10 @@
                 <constraint firstItem="9Sj-y2-KlM" firstAttribute="leading" secondItem="yn2-oF-bXR" secondAttribute="trailing" constant="8" id="4hE-jB-6Fb"/>
                 <constraint firstItem="O3m-tP-4Yw" firstAttribute="leading" secondItem="cal-FD-Bsi" secondAttribute="leading" constant="7" id="ADX-Ie-LtL"/>
                 <constraint firstItem="jtj-ww-LUc" firstAttribute="top" secondItem="cal-FD-Bsi" secondAttribute="top" constant="9" id="Cdp-MT-05s"/>
-                <constraint firstAttribute="bottom" secondItem="O3m-tP-4Yw" secondAttribute="bottom" constant="6" id="Dlf-4g-kzA"/>
+                <constraint firstAttribute="bottom" secondItem="O3m-tP-4Yw" secondAttribute="bottom" constant="7" id="Dlf-4g-kzA"/>
                 <constraint firstItem="9Sj-y2-KlM" firstAttribute="baseline" secondItem="yn2-oF-bXR" secondAttribute="baseline" id="Fd6-gp-kk7"/>
                 <constraint firstAttribute="trailing" secondItem="h4u-DS-rrd" secondAttribute="trailing" constant="8" id="L1n-YL-y2t"/>
-                <constraint firstItem="O3m-tP-4Yw" firstAttribute="top" secondItem="g9Q-GW-wG8" secondAttribute="bottom" constant="8" id="P4G-pH-upC"/>
+                <constraint firstItem="O3m-tP-4Yw" firstAttribute="top" secondItem="g9Q-GW-wG8" secondAttribute="bottom" constant="7" id="P4G-pH-upC"/>
                 <constraint firstItem="HMP-af-6AM" firstAttribute="width" secondItem="g9Q-GW-wG8" secondAttribute="width" id="Qk0-UN-P5e"/>
                 <constraint firstItem="Zse-PN-yEi" firstAttribute="trailing" secondItem="HMP-af-6AM" secondAttribute="trailing" id="R1x-If-6ux"/>
                 <constraint firstItem="HMP-af-6AM" firstAttribute="leading" secondItem="g9Q-GW-wG8" secondAttribute="trailing" constant="8" id="YK6-1z-1Rb"/>
@@ -706,7 +706,7 @@
                 <constraint firstItem="h4u-DS-rrd" firstAttribute="baseline" secondItem="jtj-ww-LUc" secondAttribute="baseline" id="dm4-4j-uop"/>
                 <constraint firstItem="9Sj-y2-KlM" firstAttribute="trailing" secondItem="g9Q-GW-wG8" secondAttribute="trailing" id="eRV-aQ-rll"/>
                 <constraint firstItem="h4u-DS-rrd" firstAttribute="leading" secondItem="jtj-ww-LUc" secondAttribute="trailing" constant="8" id="g1y-5i-zdi"/>
-                <constraint firstItem="Zse-PN-yEi" firstAttribute="top" secondItem="HMP-af-6AM" secondAttribute="bottom" constant="8" id="igb-gD-mc0"/>
+                <constraint firstItem="Zse-PN-yEi" firstAttribute="top" secondItem="HMP-af-6AM" secondAttribute="bottom" constant="7" id="igb-gD-mc0"/>
                 <constraint firstAttribute="trailing" secondItem="HMP-af-6AM" secondAttribute="trailing" constant="7" id="iy7-ls-mfW"/>
                 <constraint firstItem="Zse-PN-yEi" firstAttribute="baseline" secondItem="O3m-tP-4Yw" secondAttribute="baseline" id="jvo-2j-Bc6"/>
                 <constraint firstItem="HMP-af-6AM" firstAttribute="leading" secondItem="g9Q-GW-wG8" secondAttribute="trailing" constant="8" id="nwK-13-Z5S"/>
@@ -746,7 +746,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="HAd-Pq-7NJ">
                         <rect key="frame" x="1" y="1" width="188" height="392"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="T1p-6B-s66">
                                 <rect key="frame" x="0.0" y="0.0" width="188" height="392"/>
@@ -755,7 +755,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="176" minWidth="40" maxWidth="1000" id="7Yd-vi-kxa" userLabel="Title">
+                                    <tableColumn width="147" minWidth="40" maxWidth="1000" id="7Yd-vi-kxa" userLabel="Title">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -768,7 +768,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="Yyb-fv-uXh">
-                                                <rect key="frame" x="1" y="1" width="185" height="17"/>
+                                                <rect key="frame" x="11" y="1" width="156" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0PA-iQ-2S2">
@@ -938,13 +938,14 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <webView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GwU-Ng-Wic">
+                <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RnK-th-XV0">
                     <rect key="frame" x="20" y="20" width="548" height="386"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
-                        <nil key="identifier"/>
-                    </webPreferences>
-                </webView>
+                    <wkWebViewConfiguration key="configuration" allowsAirPlayForMediaPlayback="NO">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sap-en-Pdg">
                     <rect key="frame" x="18" y="414" width="552" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>

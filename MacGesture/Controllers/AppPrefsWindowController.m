@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 #import "utils.h"
 
-@interface AppPrefsWindowController ()
+@interface AppPrefsWindowController () <WKNavigationDelegate>
 @property AppPickerWindowController *pickerWindowController;
 @end
 
@@ -84,7 +84,7 @@ static NSArray *exampleAppleScripts;
                                                  name:NSTableViewSelectionDidChangeNotification
                                                object:[self appleScriptTableView]];
 
-    [[self languageComboBox] addItemsWithObjectValues:@[@"en"]];
+    [[self languageComboBox] addItemsWithObjectValues:@[@"en", @"zh-Hans"]];
     
     NSArray *languages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
     if (languages) {
@@ -99,11 +99,10 @@ static NSArray *exampleAppleScripts;
         [[[self loadAppleScriptExampleButton] menu] addItem:item];
     }
     
-    NSString *readme = [[NSBundle mainBundle] pathForResource:@"README" ofType:@"html"];
-    NSString *content = [NSString stringWithContentsOfFile:readme encoding:NSUTF8StringEncoding error:NULL];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"README" withExtension:@"html"];
+    [self.webView loadFileURL:url allowingReadAccessToURL:url];
+    self.webView.navigationDelegate = self;
     
-    [[[self webView] mainFrame] loadHTMLString:content baseURL:[NSURL URLWithString:readme]];
-
     [[self rulesTableView] registerForDraggedTypes:@[MacGestureRuleDataType]];
 }
 
@@ -180,22 +179,28 @@ static NSArray *exampleAppleScripts;
     [_rulesTableView reloadData];
 }
 
+- (NSString *)toolbarImageNameAdjusted:(NSString *)originalName {
+    NSString *name = originalName;
+    if (@available(macOS 11.0, *)) name = [name stringByAppendingString:@"-big_sur"];
+    return name;
+}
+
 - (void)setupToolbar {
     [self addView:self.generalPreferenceView label:NSLocalizedString(@"General", nil)
-            image:[NSImage imageNamed:@"prefs-general"]];
+            image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-general"]]];
     [self addView:self.rulesPreferenceView label:NSLocalizedString(@"Gestures", nil)
-            image:[NSImage imageNamed:@"prefs-gestures"]];
+            image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-gestures"]]];
     [self addView:self.filtersPrefrenceView label:NSLocalizedString(@"Filters", nil)
-            image:[NSImage imageNamed:@"prefs-filters"]];
+            image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-filters"]]];
     [self addView:self.appleScriptPreferenceView label:NSLocalizedString(@"AppleScript", nil)
-            image:[NSImage imageNamed:@"prefs-applescript"]];
-    [self addFlexibleSpacer];
+            image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-applescript"]]];
+    if (@available(macOS 11.0, *)) {} else [self addFlexibleSpacer];
     [self addView:self.aboutPreferenceView label:NSLocalizedString(@"About", nil)
-            image:[NSImage imageNamed:@"prefs-about"]];
+            image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-about"]]];
     
     // Optional configuration settings.
-    [self setCrossFade:[[NSUserDefaults standardUserDefaults] boolForKey:@"fade"]];
-    [self setShiftSlowsAnimation:[[NSUserDefaults standardUserDefaults] boolForKey:@"shiftSlowsAnimation"]];
+    self.crossFade = YES; // [[NSUserDefaults standardUserDefaults] boolForKey:@"fade"]]
+    self.shiftSlowsAnimation = [[NSUserDefaults standardUserDefaults] boolForKey:@"shiftSlowsAnimation"];
     
 }
 
@@ -774,4 +779,23 @@ static NSString *currentScriptId = nil;
     }
     return nil;
 }
+
+#pragma mark -
+#pragma mark WKNavigationDelegate Implementation
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
+    decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
+{
+    WKNavigationActionPolicy action = WKNavigationActionPolicyAllow;
+
+    NSURL *url = navigationAction.request.URL;
+
+    if (![url.absoluteString hasPrefix:@"file://"]) {
+        [[NSWorkspace sharedWorkspace] openURL:navigationAction.request.URL];
+        action = WKNavigationActionPolicyCancel;
+    }
+
+    decisionHandler(action);
+}
+
 @end

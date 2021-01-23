@@ -134,6 +134,7 @@ static BOOL eventTriggered;
         [self setStatusItem:[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength]];
         
         NSImage *menuIcon = [NSImage imageNamed:@"menubar_icon"];
+        if (@available(macOS 11.0, *)) menuIcon = [NSImage imageNamed:@"menubar_icon-big_sur"];
         //NSImage *highlightIcon = [NSImage imageNamed:@"menubar_icon-disabled"]; // Yes, we're using the exact same image asset.
         //[highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
         [menuIcon setTemplate:YES];
@@ -168,12 +169,10 @@ static BOOL eventTriggered;
 - (void)setEnabled:(BOOL)enabled {
     isEnabled = enabled;
     if ([self statusItem]) {
-        NSImage *menuIcon;
-        if (isEnabled) {
-            menuIcon = [NSImage imageNamed:@"menubar_icon"];
-        } else {
-            menuIcon = [NSImage imageNamed:@"menubar_icon-disabled"];
-        }
+        NSString *menuIconName = @"menubar_icon-disabled";
+        if (isEnabled) menuIconName = @"menubar_icon";
+        if (@available(macOS 11.0, *)) menuIconName = [menuIconName stringByAppendingString:@"-big_sur"];
+        NSImage *menuIcon = [NSImage imageNamed:menuIconName];
         [[self statusItem] setImage:menuIcon];
     }
 }

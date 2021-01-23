@@ -34,6 +34,7 @@
 		88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = 88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */; };
 		AD2A27AE66A5D1C335139B5B /* Pods_MacGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */; };
 		B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */; };
+		BBC1C8E625BCCDC600DE6816 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC1C8E525BCCDC600DE6816 /* WebKit.framework */; };
 		C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C610961B1DED98C700FCC263 /* CoreImage.framework */; };
 		D065A3CA1D18155E0062900A /* SearchInWeb.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */; };
 		D09FDBF51E06CDB50085FC36 /* README.html in Resources */ = {isa = PBXBuildFile; fileRef = D09FDBF31E06CDB50085FC36 /* README.html */; };
@@ -97,6 +98,7 @@
 		BBC1C8C625BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		BBC1C8C725BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppPickerWindowController.strings"; sourceTree = "<group>"; };
 		BBC1C8C825BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BBC1C8E525BCCDC600DE6816 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C610961B1DED98C700FCC263 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		D02885E11EF29CDE0082A660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SearchInWeb.applescript-src"; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			files = (
 				C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */,
 				1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */,
+				BBC1C8E625BCCDC600DE6816 /* WebKit.framework in Frameworks */,
 				AD2A27AE66A5D1C335139B5B /* Pods_MacGesture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +168,7 @@
 				D6B13185249E54300014F55E /* CoreData.framework */,
 				C610961B1DED98C700FCC263 /* CoreImage.framework */,
 				D6B13186249E54330014F55E /* Foundation.framework */,
+				BBC1C8E525BCCDC600DE6816 /* WebKit.framework */,
 				866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */,
 			);
 			name = Frameworks;
@@ -307,7 +311,7 @@
 				1381E4A51824E7E800E815F5 /* Frameworks */,
 				1381E4A61824E7E800E815F5 /* Resources */,
 				C2CC8958184B6BE82579F7B1 /* [CP] Embed Pods Frameworks */,
-				D02885E91EF29E1B0082A660 /* ShellScript */,
+				D02885E91EF29E1B0082A660 /* Update Translations */,
 			);
 			buildRules = (
 			);
@@ -444,13 +448,14 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D02885E91EF29E1B0082A660 /* ShellScript */ = {
+		D02885E91EF29E1B0082A660 /* Update Translations */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Update Translations";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
