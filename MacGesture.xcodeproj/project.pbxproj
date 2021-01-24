@@ -34,6 +34,7 @@
 		88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = 88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */; };
 		AD2A27AE66A5D1C335139B5B /* Pods_MacGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */; };
 		B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */; };
+		BB004AFA25BD001900A7373F /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB004AF825BD001900A7373F /* DBPrefsWindowController.m */; };
 		BBC1C8E625BCCDC600DE6816 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC1C8E525BCCDC600DE6816 /* WebKit.framework */; };
 		C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C610961B1DED98C700FCC263 /* CoreImage.framework */; };
 		D065A3CA1D18155E0062900A /* SearchInWeb.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */; };
@@ -94,6 +95,8 @@
 		88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "OpenMacGesturePreferences.applescript-src"; sourceTree = "<group>"; };
 		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppPickerWindowController.h; sourceTree = "<group>"; usesTabs = 0; };
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppPickerWindowController.m; sourceTree = "<group>"; usesTabs = 0; };
+		BB004AF825BD001900A7373F /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
+		BB004AF925BD001900A7373F /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
 		BBC1C8C525BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		BBC1C8C625BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		BBC1C8C725BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppPickerWindowController.strings"; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 		EF8ECEC9249FC4A8004C2563 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				BB004AF925BD001900A7373F /* DBPrefsWindowController.h */,
+				BB004AF825BD001900A7373F /* DBPrefsWindowController.m */,
 				2641846D9674154891849969 /* SRRecorderControlWithTagid.h */,
 				264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */,
 				26418C419A597E159158ED0D /* utils.h */,
@@ -433,13 +438,11 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/DBPrefsWindowController/DBPrefsWindowController.framework",
 				"${BUILT_PRODUCTS_DIR}/ShortcutRecorder/ShortcutRecorder.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DBPrefsWindowController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ShortcutRecorder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
 			);
@@ -472,6 +475,7 @@
 				1381E4B81824E7E800E815F5 /* main.m in Sources */,
 				1381E4BF1824E7E800E815F5 /* AppDelegate.m in Sources */,
 				88331A3B1C9D22290064ADD5 /* AppleScriptsList.m in Sources */,
+				BB004AFA25BD001900A7373F /* DBPrefsWindowController.m in Sources */,
 				264183649CB68AD1A072883A /* AppPrefsWindowController.m in Sources */,
 				264184A9FF52175212CBE73F /* CanvasWindow.m in Sources */,
 				2641800AADBF86F6E76A37B3 /* CanvasView.m in Sources */,

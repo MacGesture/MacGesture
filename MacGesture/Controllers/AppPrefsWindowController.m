@@ -66,8 +66,14 @@ static NSArray *exampleAppleScripts;
 - (void)windowDidLoad {
     [super windowDidLoad];
     //    [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
-    
-    [[self window] setDelegate:self];
+
+    NSWindow *window = [self window];
+    window.delegate = self;
+
+    if (@available(macOS 11.0, *)) {
+        window.titleVisibility = NSWindowTitleHidden;
+        window.toolbarStyle = NSWindowToolbarStyleUnified;
+    }
     
     self.autoStartAtLogin.state =
         [LoginServicesHelper isLoginItem] ?
@@ -186,6 +192,7 @@ static NSArray *exampleAppleScripts;
 }
 
 - (void)setupToolbar {
+    if (@available(macOS 11.0, *)) [self addFlexibleSpacer];
     [self addView:self.generalPreferenceView label:NSLocalizedString(@"General", nil)
             image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-general"]]];
     [self addView:self.rulesPreferenceView label:NSLocalizedString(@"Gestures", nil)
@@ -197,6 +204,7 @@ static NSArray *exampleAppleScripts;
     if (@available(macOS 11.0, *)) {} else [self addFlexibleSpacer];
     [self addView:self.aboutPreferenceView label:NSLocalizedString(@"About", nil)
             image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-about"]]];
+    if (@available(macOS 11.0, *)) [self addFlexibleSpacer];
     
     // Optional configuration settings.
     self.crossFade = YES; // [[NSUserDefaults standardUserDefaults] boolForKey:@"fade"]]
