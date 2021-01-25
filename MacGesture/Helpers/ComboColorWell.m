@@ -36,9 +36,10 @@
 - (void)drawRect:(NSRect)cellFrame
 {
     BOOL drawButtonArea = _showsColorWellButton && cellFrame.size.width >= 2*cellFrame.size.height;
+    CGFloat actualRadius = floor(MIN(_cornerRadius, MIN(cellFrame.size.width/2, cellFrame.size.height/2)));
 
     __auto_type fillPath = ^(NSBezierPath *path, NSColor *color) {
-        if (!color) color = [NSColor controlColor];
+        if (!color) color = [NSColor colorNamed:@"controlAlt"];
         [color setFill];
         [path fill];
     };
@@ -56,7 +57,7 @@
 
     NSRect smoothRect = NSInsetRect(cellFrame, 0.5, 0.5);
 
-    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:smoothRect xRadius:_cornerRadius yRadius:_cornerRadius];
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:smoothRect xRadius:actualRadius yRadius:actualRadius];
     path.lineWidth = 0.5;
 
     if (self.isActive) {
@@ -87,20 +88,20 @@
         [[NSImage imageNamed:NSImageNameColorPanel] drawInRect:imageRect];
         [NSBezierPath clipRect:colorArea(NO)];
     } else {
-        CGFloat adjustedRadius = _cornerRadius * ((cellFrame.size.height - 3) / cellFrame.size.height);
-        NSRect smoothRect = NSInsetRect(cellFrame, 3.0, 3.0);
+        CGFloat adjustedRadius = floor(actualRadius * ((cellFrame.size.height - 3) / cellFrame.size.height));
+        smoothRect = NSInsetRect(cellFrame, 3.0, 3.0);
         path = [NSBezierPath bezierPathWithRoundedRect:smoothRect xRadius:adjustedRadius yRadius:adjustedRadius];
     }
 
     if (self.color.alphaComponent < 1) {
         fillPath(path, [NSColor whiteColor]);
-        NSRect area = colorArea(NO);
+        NSRect area = smoothRect;
         NSBezierPath *blackPath = [NSBezierPath new];
         CGPoint point = area.origin;
         [blackPath moveToPoint:point];
-        point = NSMakePoint(area.size.width, area.size.height);
+        point.y += area.size.height;
         [blackPath lineToPoint:point];
-        point.x = area.origin.x;
+        point.x += area.size.width;
         [blackPath lineToPoint:point];
         [blackPath closePath];
         [path addClip];

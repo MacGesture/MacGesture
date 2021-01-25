@@ -8,13 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface CanvasView : NSView {
-    NSColor *color;
-    NSPoint lastLocation;
-    NSUInteger radius;
-    NSMutableArray<NSValue*> *points; // NSPoint array
-    NSString *directionToDraw;
-}
+@interface CanvasView : NSView
+
+@property (atomic) NSPoint lastLocation;
+@property (atomic) NSUInteger radius;
+@property (nonatomic, copy) NSArray<NSValue *> *points; // `NSPoint`
+@property (nonatomic, copy) NSString *directionToDraw;
 
 - (void)clear;
 
@@ -23,5 +22,7 @@
 - (void)setEnable:(BOOL)shouldEnable;
 
 - (void)writeDirection:(NSString *)directionStr;
+
+- (void)reload;
 
 @end

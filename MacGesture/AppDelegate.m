@@ -268,7 +268,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
     NSEvent *mouseEvent;
     switch (type) {
         case kCGEventRightMouseDown:
-            // not thread safe, but it's always called in main thread
+            // not thread safe, but it's always called on main thread
             // check blocker apps
             //    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){
             if (true)

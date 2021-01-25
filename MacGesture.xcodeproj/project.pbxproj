@@ -10,7 +10,7 @@
 		1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381E4AB1824E7E800E815F5 /* Cocoa.framework */; };
 		1381E4B81824E7E800E815F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4B71824E7E800E815F5 /* main.m */; };
 		1381E4BF1824E7E800E815F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4BE1824E7E800E815F5 /* AppDelegate.m */; };
-		1381E4C41824E7E800E815F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4C31824E7E800E815F5 /* Images.xcassets */; };
+		1381E4C41824E7E800E815F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4C31824E7E800E815F5 /* Assets.xcassets */; };
 		1381E4CC1824E7E800E815F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381E4AB1824E7E800E815F5 /* Cocoa.framework */; };
 		1381E4D61824E7E800E815F5 /* MacGestureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4D51824E7E800E815F5 /* MacGestureTests.m */; };
 		2641800AADBF86F6E76A37B3 /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418B1111120858F175152C /* CanvasView.m */; };
@@ -61,7 +61,7 @@
 		1381E4B91824E7E800E815F5 /* MacGesture-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MacGesture-Prefix.pch"; sourceTree = "<group>"; };
 		1381E4BD1824E7E800E815F5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppDelegate.h; sourceTree = "<group>"; usesTabs = 0; };
 		1381E4BE1824E7E800E815F5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; usesTabs = 0; };
-		1381E4C31824E7E800E815F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1381E4C31824E7E800E815F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1381E4D11824E7E800E815F5 /* MacGestureTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacGestureTests-Info.plist"; sourceTree = "<group>"; };
 		1381E4D51824E7E800E815F5 /* MacGestureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MacGestureTests.m; sourceTree = "<group>"; usesTabs = 0; };
 		1ACB654207F7BCBC992336E4 /* Pods-MacGesture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture.debug.xcconfig"; sourceTree = "<group>"; };
@@ -228,10 +228,10 @@
 		264189E588806C286B6552A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1381E4C31824E7E800E815F5 /* Assets.xcassets */,
 				880AA7671CA57491006E7A74 /* MainMenu.xib */,
 				880AA7591CA5738A006E7A74 /* Preferences.xib */,
 				880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */,
-				1381E4C31824E7E800E815F5 /* Images.xcassets */,
 				8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript-src */,
 				88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */,
 				D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */,
@@ -397,7 +397,7 @@
 				88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript-src in Resources */,
 				88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript-src in Resources */,
 				880AA7661CA5745D006E7A74 /* InfoPlist.strings in Resources */,
-				1381E4C41824E7E800E815F5 /* Images.xcassets in Resources */,
+				1381E4C41824E7E800E815F5 /* Assets.xcassets in Resources */,
 				880AA7691CA57491006E7A74 /* MainMenu.xib in Resources */,
 				880AA7741CA57884006E7A74 /* Localizable.strings in Resources */,
 				880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */,

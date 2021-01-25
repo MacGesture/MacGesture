@@ -1,9 +1,3 @@
-/* Class = "NSButtonCell"; title = "Choose"; ObjectID = "02o-xA-KDH"; */
-"02o-xA-KDH.title" = "选择";
-
-/* Class = "NSTextFieldCell"; title = "Font:"; ObjectID = "0ye-8N-1Bv"; */
-"0ye-8N-1Bv.title" = "字体：";
-
 /* Class = "NSButtonCell"; title = "Open Preferences Window at Startup"; ObjectID = "245"; */
 "245.title" = "在启动时打开偏好面板";
 
@@ -70,14 +64,8 @@
 /* Class = "NSButtonCell"; title = "Block list mode"; ObjectID = "BDA-RK-czZ"; */
 "BDA-RK-czZ.title" = "黑名单模式";
 
-/* Class = "NSTextFieldCell"; title = "Gesture Size:"; ObjectID = "c53-qo-yp4"; */
-"c53-qo-yp4.title" = "手势大小：";
-
 /* Class = "NSButtonCell"; title = "Edit in External Editor"; ObjectID = "cl6-Yg-6iY"; */
 "cl6-Yg-6iY.title" = "在外部编辑器编辑";
-
-/* Class = "NSTextFieldCell"; title = "Line color:"; ObjectID = "eIp-tq-2xl"; */
-"eIp-tq-2xl.title" = "鼠标路径颜色：";
 
 /* Class = "NSTextFieldCell"; title = "FontName"; ObjectID = "fEL-3U-jlH"; */
 "fEL-3U-jlH.title" = "FontName";

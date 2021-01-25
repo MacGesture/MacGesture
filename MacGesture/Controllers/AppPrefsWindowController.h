@@ -19,7 +19,6 @@
 
 @property(weak) IBOutlet NSTableView *rulesTableView;
 
-@property(weak) IBOutlet NSTextField *blockFilter;
 @property(strong) IBOutlet SUUpdater *updater;
 
 @property(weak) IBOutlet NSButton *autoStartAtLogin;
@@ -45,6 +44,10 @@
 @property(weak) IBOutlet NSComboBox *languageComboBox;
 
 @property(weak) IBOutlet NSColorWell *lineColorWell;
+@property(weak) IBOutlet NSColorWell *previewColorWell;
+@property(weak) IBOutlet NSColorWell *previewBgColorWell;
+@property(weak) IBOutlet NSColorWell *noteColorWell;
+@property(weak) IBOutlet NSColorWell *noteBgColorWell;
 
 @property(assign) IBOutlet WKWebView *webView;
 

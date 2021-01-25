@@ -12,14 +12,21 @@
 #import "AppDelegate.h"
 #import "utils.h"
 
+#pragma mark Preferences controller Interface
+
 @interface AppPrefsWindowController () <WKNavigationDelegate>
-@property AppPickerWindowController *pickerWindowController;
+
+@property (nonatomic, strong) AppPickerWindowController *pickerWindowController;
+
 @end
 
 // A hack for the private getter of contentSubview
 @interface DBPrefsWindowController (PrivateMethodHack)
 -(NSView *)contentSubview;
 @end
+
+#pragma mark -
+#pragma mark Preferences controller Implementation
 
 @implementation AppPrefsWindowController
 
@@ -30,11 +37,14 @@ static NSInteger const PREF_WINDOW_SIZECOUNT = 3;
 static NSInteger currentRulesWindowSizeIndex = 0;
 static NSInteger currentFiltersWindowSizeIndex = 0;
 
+static NSUserDefaults *defaults;
+
 #define MacGestureRuleDataType @"MacGestureRuleDataType"
 
 static NSArray *exampleAppleScripts;
 
 + (void)initialize {
+    defaults = [NSUserDefaults standardUserDefaults];
     exampleAppleScripts = @[@"ChromeCloseTabsToTheRight", @"Close Tabs To The Right In Chrome",
             @"OpenMacGesturePreferences", @"Open MacGesture Preferences",
             @"SearchInWeb", @"Search in Web"];
@@ -59,13 +69,8 @@ static NSArray *exampleAppleScripts;
     [self crossFadeView:view withView:view];
 }
 
-- (IBAction)blockFilterDidEdit:(id)sender {
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 - (void)windowDidLoad {
     [super windowDidLoad];
-    //    [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
 
     NSWindow *window = [self window];
     window.delegate = self;
@@ -98,7 +103,7 @@ static NSArray *exampleAppleScripts;
         _gestureSizeSlider.frame = rect;
     }
     
-    NSArray *languages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
+    NSArray *languages = [defaults objectForKey:@"AppleLanguages"];
     if (languages) {
         [[self languageComboBox] selectItemWithObjectValue:languages[0]];
     }
@@ -121,6 +126,7 @@ static NSArray *exampleAppleScripts;
 - (BOOL)windowShouldClose:(id)sender {
     [[self window] orderOut:self];
     [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PrefsDidClose" object:nil];
     return NO;
 }
 
@@ -213,27 +219,13 @@ static NSArray *exampleAppleScripts;
     if (@available(macOS 11.0, *)) [self addFlexibleSpacer];
     
     // Optional configuration settings.
-    self.crossFade = YES; // [[NSUserDefaults standardUserDefaults] boolForKey:@"fade"]]
-    self.shiftSlowsAnimation = [[NSUserDefaults standardUserDefaults] boolForKey:@"shiftSlowsAnimation"];
+    self.crossFade = YES; // [defaults boolForKey:@"fade"]]
+    self.shiftSlowsAnimation = [defaults boolForKey:@"shiftSlowsAnimation"];
     
 }
 
-- (IBAction)blockFilterPickBtnDidClick:(id)sender {
-    //    self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
-    //
-    //
-    ////    [self.pickerWindowController  showDialog];
-    //    [self.pickerWindowController  showWindow:self];
-    //
-    //    if([windowController generateFilter]){
-    //        _blockFilter.stringValue = [windowController generateFilter];
-    //        [[NSUserDefaults standardUserDefaults] setObject:[windowController generateFilter] forKey:@"blockFilter"];
-    //    }
-    //    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 - (void)close {
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [defaults synchronize];
     [super close];
 }
 
@@ -277,8 +269,12 @@ static NSArray *exampleAppleScripts;
 }
 
 - (IBAction)colorChanged:(id)sender {
-    //    SET_LINE_COLOR(self.lineColorWell.color);
-    [MGOptionsDefine setLineColor:self.lineColorWell.color];
+    if (sender == _lineColorWell)
+        [MGOptionsDefine setLineColor:_lineColorWell.color];
+    else if (sender == _previewColorWell)
+        [MGOptionsDefine setPreviewColor:_previewColorWell.color];
+    else if (sender == _noteColorWell)
+        [MGOptionsDefine setNoteColor:_noteColorWell.color];
 }
 
 - (IBAction)chooseFont:(id)sender {
@@ -297,21 +293,21 @@ static NSArray *exampleAppleScripts;
 - (NSFontPanelModeMask)validModesForFontPanel:(NSFontPanel *)fontPanel
 {
     return NSFontPanelModeMaskFace | NSFontPanelModeMaskSize |
-           NSFontPanelModeMaskCollection | NSFontPanelModeMaskTextColorEffect;
+        NSFontPanelModeMaskCollection; // | NSFontPanelModeMaskTextColorEffect;
 }
 
 - (void)changeFont:(nullable id)sender {
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
     NSFont *font = [fontManager convertFont:[NSFont systemFontOfSize:[NSFont systemFontSize]]];
-    [[NSUserDefaults standardUserDefaults] setObject:[font fontName] forKey:@"noteFontName"];
-    [[NSUserDefaults standardUserDefaults] setDouble:[font pointSize] forKey:@"noteFontSize"];
+    [defaults setObject:[font fontName] forKey:@"noteFontName"];
+    [defaults setDouble:[font pointSize] forKey:@"noteFontSize"];
 }
 
 // These two functions repond to text color change.
 - (void)setColor:(NSColor *)col forAttribute:(NSString *)attr {
-    if ([attr isEqualToString:@"NSColor"]) {
-        [MGOptionsDefine setNoteColor:col];
-    }
+//    if ([attr isEqualToString:@"NSColor"]) {
+//        [MGOptionsDefine setNoteColor:col];
+//    }
 }
 
 - (void)changeAttributes:(id)sender{
@@ -320,7 +316,7 @@ static NSArray *exampleAppleScripts;
 }
 
 - (IBAction)resetDefaults:(id)sender {
-    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults * defs = defaults;
     NSURL *defaultPrefsFile = [[NSBundle mainBundle]
                                URLForResource:@"DefaultPreferences" withExtension:@"plist"];
     NSDictionary *defaultPrefs =
@@ -371,9 +367,7 @@ static NSArray *exampleAppleScripts;
                                                      ofType:@"applescript-src"];
     NSError* error = nil;
     [[AppleScriptsList sharedAppleScriptsList] addAppleScript:exampleAppleScripts[index+1]
-                                                       script:[NSString stringWithContentsOfFile:path
-                                                                                        encoding:NSUTF8StringEncoding
-                                                                                           error:&error]];
+        script:[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error]];
     [[AppleScriptsList sharedAppleScriptsList] save];
     
     [[self appleScriptTableView] reloadData];
@@ -489,8 +483,8 @@ static NSString *currentScriptId = nil;
 
 - (IBAction)languageChanged:(id)sender {
     NSString *language = [[self languageComboBox] objectValueOfSelectedItem];
-    [[NSUserDefaults standardUserDefaults] setObject:@[language] forKey:@"AppleLanguages"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [defaults setObject:@[language] forKey:@"AppleLanguages"];
+    [defaults synchronize];
     
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     notification.title = @"MacGesture";
@@ -706,7 +700,7 @@ static NSString *currentScriptId = nil;
     NSView *result = nil;
     RulesList *rulesList = [RulesList sharedRulesList];
     BOOL isEnabled = [rulesList enabledAtIndex:row];
-    if ([tableColumn.identifier isEqualToString:@"Gesture"] || [tableColumn.identifier isEqualToString:@"Filter"] || [tableColumn.identifier isEqualToString:@"Note"]) {
+    if (@{ @"Gesture": @1, @"Filter": @2, @"Note": @3 }[tableColumn.identifier] != nil) {
         NSTextField *textField = [[NSTextField alloc] init];
         [textField.cell setWraps:NO];
         [textField.cell setScrollable:YES];
@@ -818,6 +812,20 @@ static NSString *currentScriptId = nil;
     }
 
     decisionHandler(action);
+}
+
+@end
+
+#pragma mark -
+#pragma mark Non-clickable text field
+
+@interface NonClickableTextField: NSTextField @end
+
+@implementation NonClickableTextField
+
+- (NSView *)hitTest:(NSPoint)point
+{
+    return nil;
 }
 
 @end
