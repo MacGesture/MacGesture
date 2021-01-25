@@ -28,7 +28,7 @@
                 <outlet property="generalPreferenceView" destination="99" id="126"/>
                 <outlet property="gestureSizeSlider" destination="bP7-3k-KUa" id="Vxp-up-3GG"/>
                 <outlet property="gestureSizeTextField" destination="nqw-AN-D6f" id="BUN-Fp-xYu"/>
-                <outlet property="languageComboBox" destination="0fU-Oh-h2G" id="hS4-zl-2V8"/>
+                <outlet property="languageComboBox" destination="izH-oA-xiH" id="vQq-yz-zdp"/>
                 <outlet property="lineColorWell" destination="lVi-qT-AYg" id="gA9-SQ-9iB"/>
                 <outlet property="loadAppleScriptExampleButton" destination="q9F-62-ePq" id="tXa-pa-dLn"/>
                 <outlet property="noteBgColorWell" destination="BuK-wF-VFG" id="xDr-9o-AVw"/>
@@ -105,7 +105,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZPH-L7-3sd">
-                                <rect key="frame" x="385" y="104" width="117" height="18"/>
+                                <rect key="frame" x="349" y="104" width="153" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Language:" id="5rs-3N-RX4">
                                     <font key="font" metaFont="system"/>
@@ -113,18 +113,18 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0fU-Oh-h2G">
-                                <rect key="frame" x="387" y="77" width="116" height="26"/>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="izH-oA-xiH">
+                                <rect key="frame" x="348" y="77" width="156" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="vO1-Ay-86c">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </comboBoxCell>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="bE1-Zj-aiu">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="oys-iY-XbH"/>
+                                </popUpButtonCell>
                                 <connections>
-                                    <action selector="languageChanged:" target="-2" id="dmR-iw-ZQ4"/>
+                                    <action selector="languageChanged:" target="-2" id="uKR-4u-kG6"/>
                                 </connections>
-                            </comboBox>
+                            </popUpButton>
                         </subviews>
                     </view>
                 </box>

@@ -37,17 +37,28 @@ static NSInteger const PREF_WINDOW_SIZECOUNT = 3;
 static NSInteger currentRulesWindowSizeIndex = 0;
 static NSInteger currentFiltersWindowSizeIndex = 0;
 
+static NSDictionary<NSString *, NSString *> *languages;
+static NSArray<NSString *> *languagesOrder;
+
 static NSUserDefaults *defaults;
 
 #define MacGestureRuleDataType @"MacGestureRuleDataType"
 
 static NSArray *exampleAppleScripts;
 
-+ (void)initialize {
++ (void)initialize
+{
+    languages = @{
+        @"": NSLocalizedString(@"System", nil),
+        @"en": NSLocalizedString(@"English", nil),
+        @"zh-Hans": NSLocalizedString(@"Chinese", nil),
+    };
+    languagesOrder = @[ @"", @"en", @"zh-Hans" ];
     defaults = [NSUserDefaults standardUserDefaults];
     exampleAppleScripts = @[@"ChromeCloseTabsToTheRight", @"Close Tabs To The Right In Chrome",
             @"OpenMacGesturePreferences", @"Open MacGesture Preferences",
             @"SearchInWeb", @"Search in Web"];
+    assert(languages.count == languagesOrder.count);
 }
 
 - (void)changeSize:(NSInteger *)index changeSizeButton:(NSButton *)button preferenceView:(NSView *)view {
@@ -95,7 +106,12 @@ static NSArray *exampleAppleScripts;
                                                  name:NSTableViewSelectionDidChangeNotification
                                                object:[self appleScriptTableView]];
 
-    [[self languageComboBox] addItemsWithObjectValues:@[@"en", @"zh-Hans"]];
+    NSArray<NSString *> *langs = languagesOrder;
+    langs = [langs mappedArrayUsingBlock:^NSString *(NSString *obj, NSUInteger idx) {
+        return languages[obj] ?: obj;
+    }];
+
+    [_languageComboBox addItemsWithTitles:langs];
 
     if (@available(macOS 11.0, *)) {
         NSRect rect = _gestureSizeSlider.frame;
@@ -103,11 +119,11 @@ static NSArray *exampleAppleScripts;
         _gestureSizeSlider.frame = rect;
     }
     
-    NSArray *languages = [defaults objectForKey:@"AppleLanguages"];
-    if (languages) {
-        [[self languageComboBox] selectItemWithObjectValue:languages[0]];
-    }
-    
+    NSString *language = [defaults arrayForKey:@"AppleLanguages"].firstObject;
+    NSUInteger idx = ([languagesOrder containsObject:language]) ?
+        [languagesOrder indexOfObject:language] : 0;
+    [_languageComboBox selectItemAtIndex:idx];
+
     for (NSUInteger i = 0;i < [exampleAppleScripts count];i += 2) {
         NSMenuItem *item = [[NSMenuItem alloc] init];
         [item setTitle:exampleAppleScripts[i+1]];
@@ -482,8 +498,10 @@ static NSString *currentScriptId = nil;
 }
 
 - (IBAction)languageChanged:(id)sender {
-    NSString *language = [[self languageComboBox] objectValueOfSelectedItem];
-    [defaults setObject:@[language] forKey:@"AppleLanguages"];
+    NSInteger idx = [_languageComboBox indexOfSelectedItem] % languagesOrder.count;
+    if (idx != 0)
+        [defaults setObject:@[languagesOrder[idx]] forKey:@"AppleLanguages"];
+    else [defaults removeObjectForKey:@"AppleLanguages"];
     [defaults synchronize];
     
     NSUserNotification *notification = [[NSUserNotification alloc] init];

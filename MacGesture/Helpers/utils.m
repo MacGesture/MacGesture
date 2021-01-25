@@ -42,6 +42,21 @@ bool wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase)
     return wildcardArray(bundleName, filterArray, ignoreCase);
 }
 
+@implementation NSArray (Utils)
+
+- (NSArray<__kindof NSObject *> *)mappedArrayUsingBlock:(__kindof NSObject *(NS_NOESCAPE ^)(id, NSUInteger))block
+{
+    NSMutableArray *results = [NSMutableArray arrayWithCapacity:self.count];
+
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        id remapped = block(obj, idx);
+        if (remapped) [results addObject:remapped];
+    }];
+
+    return results;
+}
+
+@end
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated"

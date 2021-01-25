@@ -41,7 +41,7 @@
 @property(weak) IBOutlet NSTableView *appleScriptTableView;
 @property(weak) IBOutlet NSTextField *appleScriptTextField;
 @property(weak) IBOutlet NSButton *showIconInStatusBarButton;
-@property(weak) IBOutlet NSComboBox *languageComboBox;
+@property(weak) IBOutlet NSPopUpButton *languageComboBox;
 
 @property(weak) IBOutlet NSColorWell *lineColorWell;
 @property(weak) IBOutlet NSColorWell *previewColorWell;

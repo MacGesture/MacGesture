@@ -78,3 +78,12 @@
 
 /* No comment provided by engineer. */
 "Please goto System Preferences → Security & Privacy → Privacy → Accessibility to enable it for MacGesture." = "";
+
+/* No comment provided by engineer. */
+"Chinese" = "Chinese";
+
+/* No comment provided by engineer. */
+"English" = "English";
+
+/* No comment provided by engineer. */
+"System" = "System";
