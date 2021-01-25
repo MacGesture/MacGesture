@@ -35,6 +35,7 @@
 		AD2A27AE66A5D1C335139B5B /* Pods_MacGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */; };
 		B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */; };
 		BB004AFA25BD001900A7373F /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB004AF825BD001900A7373F /* DBPrefsWindowController.m */; };
+		BB004AFF25BDA30300A7373F /* ComboColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB004AFE25BDA30300A7373F /* ComboColorWell.m */; };
 		BBC1C8E625BCCDC600DE6816 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC1C8E525BCCDC600DE6816 /* WebKit.framework */; };
 		C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C610961B1DED98C700FCC263 /* CoreImage.framework */; };
 		D065A3CA1D18155E0062900A /* SearchInWeb.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */; };
@@ -97,6 +98,8 @@
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppPickerWindowController.m; sourceTree = "<group>"; usesTabs = 0; };
 		BB004AF825BD001900A7373F /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
 		BB004AF925BD001900A7373F /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
+		BB004AFD25BDA30300A7373F /* ComboColorWell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComboColorWell.h; sourceTree = "<group>"; };
+		BB004AFE25BDA30300A7373F /* ComboColorWell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComboColorWell.m; sourceTree = "<group>"; };
 		BBC1C8C525BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		BBC1C8C625BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		BBC1C8C725BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppPickerWindowController.strings"; sourceTree = "<group>"; };
@@ -294,6 +297,8 @@
 		EF8ECEC9249FC4A8004C2563 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				BB004AFD25BDA30300A7373F /* ComboColorWell.h */,
+				BB004AFE25BDA30300A7373F /* ComboColorWell.m */,
 				BB004AF925BD001900A7373F /* DBPrefsWindowController.h */,
 				BB004AF825BD001900A7373F /* DBPrefsWindowController.m */,
 				2641846D9674154891849969 /* SRRecorderControlWithTagid.h */,
@@ -486,6 +491,7 @@
 				264183DA0542C17E1932F696 /* SRRecorderControlWithTagid.m in Sources */,
 				2641813EC194C60DC1B1806D /* utils.m in Sources */,
 				3CDC5543D4E5BD248515F7CA /* BlockAllowFilter.m in Sources */,
+				BB004AFF25BDA30300A7373F /* ComboColorWell.m in Sources */,
 				3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

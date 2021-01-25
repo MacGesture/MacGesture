@@ -101,7 +101,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZPH-L7-3sd">
-                                <rect key="frame" x="36" y="18" width="122" height="18"/>
+                                <rect key="frame" x="38" y="18" width="120" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Language:" id="5rs-3N-RX4">
                                     <font key="font" metaFont="system"/>
@@ -243,19 +243,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lVi-qT-AYg">
-                                <rect key="frame" x="305" y="70" width="70" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="colorChanged:" target="-2" id="0w8-33-wML"/>
-                                    <binding destination="72" name="value" keyPath="values.lineColor" id="o0v-jy-LzA">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </colorWell>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5rb-jA-QTU">
                                 <rect key="frame" x="18" y="46" width="335" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -286,6 +273,26 @@
                                     <binding destination="72" name="value" keyPath="values.gestureSize" id="QJk-RX-xdC"/>
                                 </connections>
                             </slider>
+                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lVi-qT-AYg" customClass="ComboColorWell">
+                                <rect key="frame" x="295" y="69" width="24" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsClearColor" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showsColorWellButton" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="colorChanged:" target="-2" id="0w8-33-wML"/>
+                                    <binding destination="72" name="value" keyPath="values.lineColor" id="o0v-jy-LzA">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </colorWell>
                         </subviews>
                     </view>
                 </box>
@@ -419,7 +426,7 @@
                     <rect key="frame" x="6" y="29" width="646" height="278"/>
                     <clipView key="contentView" id="dRt-B1-99d">
                         <rect key="frame" x="1" y="1" width="644" height="276"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="287" id="289">
                                 <rect key="frame" x="0.0" y="0.0" width="644" height="253"/>
@@ -746,7 +753,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="HAd-Pq-7NJ">
                         <rect key="frame" x="1" y="1" width="188" height="392"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="T1p-6B-s66">
                                 <rect key="frame" x="0.0" y="0.0" width="188" height="392"/>

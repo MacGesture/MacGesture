@@ -91,6 +91,12 @@ static NSArray *exampleAppleScripts;
                                                object:[self appleScriptTableView]];
 
     [[self languageComboBox] addItemsWithObjectValues:@[@"en", @"zh-Hans"]];
+
+    if (@available(macOS 11.0, *)) {
+        NSRect rect = _gestureSizeSlider.frame;
+        rect.origin.y -= 5; rect.size.height += 6;
+        _gestureSizeSlider.frame = rect;
+    }
     
     NSArray *languages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
     if (languages) {
@@ -277,13 +283,21 @@ static NSArray *exampleAppleScripts;
 
 - (IBAction)chooseFont:(id)sender {
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
-    [fontManager setSelectedFont:[NSFont fontWithName:[self.fontNameTextField stringValue] size:[self.fontNameTextField floatValue]] isMultiple:NO];
+    [fontManager setSelectedFont:[NSFont fontWithName:[self.fontNameTextField stringValue] size:[self.fontSizeTextField floatValue]] isMultiple:NO];
     [fontManager setTarget:self];
     
     NSFontPanel *fontPanel = [fontManager fontPanel:YES];
     [fontPanel makeKeyAndOrderFront:self];
     // This allow to change note color via font panel
-    [fontManager setSelectedAttributes:@{NSForegroundColorAttributeName:[MGOptionsDefine getNoteColor]} isMultiple:NO]; //must setup color AFTER displayed or it will keeps black...
+    [fontManager setSelectedAttributes:@{
+        NSForegroundColorAttributeName: [MGOptionsDefine getNoteColor]
+    } isMultiple:NO]; // Must setup color AFTER displayed or it will keeps black...
+}
+
+- (NSFontPanelModeMask)validModesForFontPanel:(NSFontPanel *)fontPanel
+{
+    return NSFontPanelModeMaskFace | NSFontPanelModeMaskSize |
+           NSFontPanelModeMaskCollection | NSFontPanelModeMaskTextColorEffect;
 }
 
 - (void)changeFont:(nullable id)sender {

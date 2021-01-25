@@ -227,6 +227,8 @@ static NSColor *loadedColor;
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableMousePath"]) {
         NSBezierPath *path = [NSBezierPath bezierPath];
         path.lineWidth = radius * 2;
+        path.lineCapStyle = NSLineCapStyleRound;
+        path.lineJoinStyle = NSLineJoinStyleRound;
         [color setStroke];
         if (points.count >= 1) {
             [path moveToPoint:[points[0] pointValue]];
@@ -238,7 +240,6 @@ static NSColor *loadedColor;
         [path stroke];
     }
 
-    //[textImage drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0];
     [self drawDirection];
     [self drawNote];
 
