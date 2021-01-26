@@ -17,6 +17,7 @@
 
 @property (nonatomic) BOOL crossFade;
 @property (nonatomic) BOOL shiftSlowsAnimation;
+@property (nonatomic) BOOL updateWindowTitle;
 
 + (DBPrefsWindowController *)sharedPrefsWindowController;
 + (NSString *)nibName;

@@ -89,11 +89,6 @@ static BOOL isBigSur = NO;
     NSWindow *window = [self window];
     window.delegate = self;
 
-    if (isBigSur) {
-        window.titleVisibility = NSWindowTitleHidden;
-        window.toolbarStyle = NSWindowToolbarStyleUnified;
-    }
-    
     self.autoStartAtLogin.state =
         [LoginServicesHelper isLoginItem] ?
             NSOnState : NSOffState;
@@ -223,7 +218,6 @@ static BOOL isBigSur = NO;
 }
 
 - (void)setupToolbar {
-    if (isBigSur) [self addFlexibleSpacer];
     [self addView:self.generalPreferenceView label:NSLocalizedString(@"General", nil)
             image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-general"]]];
     [self addView:self.rulesPreferenceView label:NSLocalizedString(@"Gestures", nil)
@@ -235,8 +229,7 @@ static BOOL isBigSur = NO;
     if (!isBigSur) [self addFlexibleSpacer];
     [self addView:self.aboutPreferenceView label:NSLocalizedString(@"About", nil)
             image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-about"]]];
-    if (isBigSur) [self addFlexibleSpacer];
-    
+
     // Optional configuration settings.
     self.crossFade = isBigSur; // Pre-Big Sur OSes glitch when crossfading // [defaults boolForKey:@"fade"]]
     self.shiftSlowsAnimation = [defaults boolForKey:@"shiftSlowsAnimation"];

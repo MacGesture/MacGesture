@@ -223,7 +223,10 @@
             [[self window] setFrame:[self frameForView:newView] display:YES animate:animate];
         }
 
-        [[self window] setTitle:[(self.toolbarItems)[identifier] label]];
+        if (_updateWindowTitle)
+            self.window.title = [(self.toolbarItems)[identifier] label];
+        else self.window.title = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"] ?:
+                                 [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
     }
 }
 
