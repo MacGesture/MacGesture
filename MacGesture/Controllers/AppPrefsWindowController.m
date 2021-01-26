@@ -45,9 +45,12 @@ static NSUserDefaults *defaults;
 #define MacGestureRuleDataType @"MacGestureRuleDataType"
 
 static NSArray *exampleAppleScripts;
+static BOOL isBigSur = NO;
 
 + (void)initialize
 {
+    if (@available(macOS 11.0, *))
+        isBigSur = YES;
     languages = @{
         @"": NSLocalizedString(@"System", nil),
         @"en": NSLocalizedString(@"English", nil),
@@ -86,7 +89,7 @@ static NSArray *exampleAppleScripts;
     NSWindow *window = [self window];
     window.delegate = self;
 
-    if (@available(macOS 11.0, *)) {
+    if (isBigSur) {
         window.titleVisibility = NSWindowTitleHidden;
         window.toolbarStyle = NSWindowToolbarStyleUnified;
     }
@@ -113,7 +116,7 @@ static NSArray *exampleAppleScripts;
 
     [_languageComboBox addItemsWithTitles:langs];
 
-    if (@available(macOS 11.0, *)) {
+    if (isBigSur) {
         NSRect rect = _gestureSizeSlider.frame;
         rect.origin.y -= 5; rect.size.height += 6;
         _gestureSizeSlider.frame = rect;
@@ -215,12 +218,12 @@ static NSArray *exampleAppleScripts;
 
 - (NSString *)toolbarImageNameAdjusted:(NSString *)originalName {
     NSString *name = originalName;
-    if (@available(macOS 11.0, *)) name = [name stringByAppendingString:@"-big_sur"];
+    if (isBigSur) name = [name stringByAppendingString:@"-big_sur"];
     return name;
 }
 
 - (void)setupToolbar {
-    if (@available(macOS 11.0, *)) [self addFlexibleSpacer];
+    if (isBigSur) [self addFlexibleSpacer];
     [self addView:self.generalPreferenceView label:NSLocalizedString(@"General", nil)
             image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-general"]]];
     [self addView:self.rulesPreferenceView label:NSLocalizedString(@"Gestures", nil)
@@ -229,15 +232,14 @@ static NSArray *exampleAppleScripts;
             image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-filters"]]];
     [self addView:self.appleScriptPreferenceView label:NSLocalizedString(@"AppleScript", nil)
             image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-applescript"]]];
-    if (@available(macOS 11.0, *)) {} else [self addFlexibleSpacer];
+    if (!isBigSur) [self addFlexibleSpacer];
     [self addView:self.aboutPreferenceView label:NSLocalizedString(@"About", nil)
             image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-about"]]];
-    if (@available(macOS 11.0, *)) [self addFlexibleSpacer];
+    if (isBigSur) [self addFlexibleSpacer];
     
     // Optional configuration settings.
-    self.crossFade = YES; // [defaults boolForKey:@"fade"]]
+    self.crossFade = isBigSur; // Pre-Big Sur OSes glitch when crossfading // [defaults boolForKey:@"fade"]]
     self.shiftSlowsAnimation = [defaults boolForKey:@"shiftSlowsAnimation"];
-    
 }
 
 - (void)close {

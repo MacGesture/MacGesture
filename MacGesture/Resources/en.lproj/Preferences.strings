@@ -169,5 +169,5 @@
 /* Class = "NSButtonCell"; title = "Allow list mode"; ObjectID = "ztb-nI-iil"; */
 "ztb-nI-iil.title" = "Allow list mode";
 
-/* Class = "NSButtonCell"; title = "Show Icon In Status Bar"; ObjectID = "ztS-80-zXz"; */
-"ztS-80-zXz.title" = "Show Icon In Status Bar";
+/* Class = "NSButtonCell"; title = "Show Icon In Menu Bar"; ObjectID = "ztS-80-zXz"; */
+"ztS-80-zXz.title" = "Show Icon In Menu Bar";

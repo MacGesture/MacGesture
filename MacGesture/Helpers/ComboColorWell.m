@@ -48,10 +48,16 @@
         [gradient drawInBezierPath:path angle:90.0];
     };
 
-    NSGradient * buttonGradient = [[NSGradient alloc] initWithStartingColor:
-        [NSColor blueColor] endingColor:[NSColor systemBlueColor]];
-//        [NSColor altColorWithRed:17 green:103 blue:255 alpha:1] endingColor:
-//        [NSColor altColorWithRed:95 green:165 blue:255 alpha:1]];
+    NSColor *accent = [NSColor systemBlueColor];
+    if (@available(macOS 10.14, *))
+        accent = [NSColor controlAccentColor];
+
+    CGFloat r, g, b, a;
+    [[accent colorUsingColorSpace:[NSColorSpace sRGBColorSpace]] getRed:&r green:&g blue:&b alpha:&a];
+    r += 0.1; g += 0.1; b += 0.1;
+    NSColor *lightAccent = [NSColor colorWithRed:r green:g blue:b alpha:a];
+
+    NSGradient *buttonGradient = [[NSGradient alloc] initWithStartingColor:lightAccent endingColor:accent];
 
     [[[NSColor blackColor] colorWithAlphaComponent:0.25] setStroke];
 
@@ -120,11 +126,16 @@
 
 - (void)applyActive
 {
+    static __weak ComboColorWell *current = nil;
     NSColorPanel *colorPanel = [NSColorPanel sharedColorPanel];
 
-    if (self.isActive)
+    if (self.isActive) {
+        current = self;
         colorPanel.showsAlpha = _allowsClearColor;
-    else [colorPanel close];
+    } else {
+        if (!current || current == self)
+            [colorPanel close];
+    }
 }
 
 @end

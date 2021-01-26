@@ -166,7 +166,7 @@
 /* Class = "NSButtonCell"; title = "Allow list mode"; ObjectID = "ztb-nI-iil"; */
 "ztb-nI-iil.title" = "白名单模式";
 
-/* Class = "NSButtonCell"; title = "Show Icon In Status Bar"; ObjectID = "ztS-80-zXz"; */
+/* Class = "NSButtonCell"; title = "Show Icon In Menu Bar"; ObjectID = "ztS-80-zXz"; */
 "ztS-80-zXz.title" = "在状态栏中显示图标";
 
 /* Class = "NSTextFieldCell"; title = "@username0x0a on GitHub"; ObjectID = "hyC-z8-Zae"; */
