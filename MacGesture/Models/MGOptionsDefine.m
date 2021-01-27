@@ -13,7 +13,6 @@ static NSUserDefaults *defaults;
 + (void)setLineColor:(NSColor *)color {
     NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:color];
     [defaults setObject:colorData forKey:OPTIONS_LINE_COLOR_ID];
-    [defaults synchronize];
 }
 
 + (NSColor *)getLineColor {
@@ -26,7 +25,6 @@ static NSUserDefaults *defaults;
 + (void)setPreviewColor:(NSColor *)color {
     NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:color];
     [defaults setObject:colorData forKey:OPTIONS_PREVIEW_COLOR_ID];
-    [defaults synchronize];
 }
 
 + (NSColor *)getPreviewColor {
@@ -39,7 +37,6 @@ static NSUserDefaults *defaults;
 + (void)setPreviewBgColor:(NSColor *)color {
     NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:color];
     [defaults setObject:colorData forKey:OPTIONS_PREVIEW_BG_COLOR_ID];
-    [defaults synchronize];
 }
 
 + (NSColor *)getPreviewBgColor {
@@ -52,7 +49,6 @@ static NSUserDefaults *defaults;
 + (void)setNoteColor:(NSColor *)color {
     NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:color];
     [defaults setObject:colorData forKey:OPTIONS_NOTE_COLOR_ID];
-    [defaults synchronize];
 }
 
 + (NSColor *)getNoteColor {
@@ -65,7 +61,6 @@ static NSUserDefaults *defaults;
 + (void)setNoteBgColor:(NSColor *)color {
     NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:color];
     [defaults setObject:colorData forKey:OPTIONS_NOTE_BG_COLOR_ID];
-    [defaults synchronize];
 }
 
 + (NSColor *)getNoteBgColor {
@@ -75,7 +70,16 @@ static NSUserDefaults *defaults;
     return color ?: [self defaultBgColor];
 }
 
-+ (void)resetColors {
++ (void)setPreviewPosition:(MGPreviewPosition)position {
+    [defaults setInteger:position forKey:OPTIONS_PREVIEW_POSITION];
+}
+
++ (MGPreviewPosition)getPreviewPosition {
+    MGPreviewPosition position = [defaults integerForKey:OPTIONS_PREVIEW_POSITION];
+    return (position != 0) ? position : MGPreviewPositionCenter;
+}
+
++ (void)restoreDefaults {
     NSColor *defaultColor = [self defaultColor];
     NSColor *defaultBgColor = [self defaultBgColor];
     [self setLineColor:defaultColor];
@@ -83,6 +87,7 @@ static NSUserDefaults *defaults;
     [self setPreviewBgColor:defaultBgColor];
     [self setNoteColor:defaultColor];
     [self setNoteBgColor:defaultBgColor];
+    [self setPreviewPosition:MGPreviewPositionCenter];
 }
 
 + (NSColor *)defaultColor {

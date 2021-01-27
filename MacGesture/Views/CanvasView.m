@@ -13,13 +13,13 @@
 
 @interface CanvasView ()
 
+@property (nonatomic, weak) NSUserDefaults *defaults;
+
 @property (nonatomic, strong) NSColor *lineColor;
 @property (nonatomic, strong) NSColor *noteColor;
 @property (nonatomic, strong) NSColor *noteBgColor;
 @property (nonatomic, strong) NSColor *previewColor;
 @property (nonatomic, strong) NSColor *previewBgColor;
-
-@property (nonatomic, weak) NSUserDefaults *defaults;
 
 @end
 
@@ -31,6 +31,13 @@ static NSImage *upImage;
 static NSImage *downImage;
 static NSImage *scrollImage;
 static NSImage *cursorImage;
+
+static CGFloat screenInset = 32;
+static CGFloat previewPadding = 16;
+static CGFloat notePadding = 10;
+static CGFloat previewNoteGap = 32;
+static CGFloat previewCornerRadius = 16;
+static CGFloat noteCornerRadius = 16;
 
 - (NSImage *)convertImage:(NSImage *)image toSpecifiedColor:(NSColor *)col {
     NSColorSpace *colSpace = [[self window] colorSpace] ?: [NSColorSpace deviceRGBColorSpace];
@@ -110,18 +117,88 @@ static NSImage *cursorImage;
     return [_defaults floatForKey:@"gestureSize"] / 100 * 1.25;
 }
 
-- (void)drawDirection
-{
-    // This should be called in drawRect
-    float scale = [self getGestureImageScale];
-    float scaledHeight = scale * leftImage.size.height;
-    float scaledWidth = scale * leftImage.size.width;
 
-    // Can be more efficient, though
-    NSUInteger numberToDraw = 0;
-    bool merge = [_defaults boolForKey:@"mergeConsecutiveIdenticalGestures"];
+
+- (NSRect)rawPreviewRectWithElementWidth:(CGFloat)elmWidth elementHeight:(CGFloat)elmHeight
+                           elementsCount:(NSUInteger)elmsCount paddingReserve:(CGFloat)paddingReserve
+{
+
+    MGPreviewPosition position = [MGOptionsDefine getPreviewPosition];
+
+    // Screen elements
+    CGSize screenSize = self.window.frame.size;
+    CGFloat menuBarHeight = 25;
+
+    // Width + Height
+    CGFloat width = elmsCount * elmWidth;
+    CGFloat height = elmHeight;
+
+    // X position
+    CGFloat x = (screenSize.width - width) / 2; // centered
+
+    if (position & MGPreviewPositionOptionLeft || position & MGPreviewPositionOptionRight) {
+        x = screenInset + paddingReserve;
+        if (position & MGPreviewPositionOptionRight)
+            x = screenSize.width - width - paddingReserve - x;
+    }
+
+    // Y position
+    CGFloat y = (screenSize.height - height) / 2; // centered
+
+    if (position & MGPreviewPositionOptionTop || position & MGPreviewPositionOptionBottom) {
+        y = screenInset + paddingReserve;
+        if (position & MGPreviewPositionOptionTop)
+            y = screenSize.height - height - y - menuBarHeight;
+    }
+
+    return NSMakeRect(x, y, width, height);
+}
+
+- (NSRect)positionedNoteSize:(CGSize)noteSize elementHeight:(CGFloat)elmHeight
+              paddingReserve:(CGFloat)paddingReserve elementPaddingReserve:(CGFloat)elementPaddingReserve
+{
+    MGPreviewPosition position = [MGOptionsDefine getPreviewPosition];
+
+    // Screen elements
+    CGSize screenSize = self.window.frame.size;
+    CGFloat menuBarHeight = 25;
+
+    // Width + Height
+    CGFloat width = noteSize.width;
+    CGFloat height = noteSize.height;
+
+    // X position
+    CGFloat x = (screenSize.width - width) / 2; // centered
+
+    if (position & MGPreviewPositionOptionLeft || position & MGPreviewPositionOptionRight) {
+        x = screenInset + paddingReserve;
+        if (position & MGPreviewPositionOptionRight)
+            x = screenSize.width - width - paddingReserve - x;
+    }
+
+    // Y position
+    CGFloat y = (screenSize.height - height) / 2; // centered, above preview
+    CGFloat yPreviewShift = elmHeight + elementPaddingReserve + previewNoteGap;
+
+    if (position & MGPreviewPositionOptionTop || position & MGPreviewPositionOptionBottom) {
+        y = screenInset + paddingReserve;
+        if (position & MGPreviewPositionOptionTop) {
+            y = screenSize.height - height - y - menuBarHeight;
+            yPreviewShift *= -1;
+        }
+    } else yPreviewShift += (height - elmHeight)/2;
+
+    y += yPreviewShift;
+
+    return NSMakeRect(x, y, width, height);
+}
+
+- (void)drawPreview
+{
+    BOOL merge = [_defaults boolForKey:@"mergeConsecutiveIdenticalGestures"];
 
     NSString *direction = _directionToDraw;
+    NSUInteger numberToDraw = direction.length;
 
     if (merge) {
         for (NSUInteger i = 0; i < direction.length; i++) {
@@ -132,51 +209,44 @@ static NSImage *cursorImage;
                 i--;
             }
         }
-    } else {
-        numberToDraw = direction.length;
     }
 
-    CGRect screenRect = [self.window frame];
-    NSInteger y = (screenRect.size.height - scaledHeight) / 2;
-    NSInteger beginx = (screenRect.size.width - scaledWidth * numberToDraw) / 2;
+    if (numberToDraw < 1) return;
 
-    NSRect bgRect = NSMakeRect(0, 0, scaledWidth * numberToDraw, scaledHeight);
-    bgRect.size.width += 32; bgRect.size.height += 32;
-    bgRect.origin.x = beginx - 16; bgRect.origin.y = (screenRect.size.height - scaledHeight) / 2 - 16;
+    CGFloat scale = [self getGestureImageScale];
+    CGFloat scaledHeight = scale * leftImage.size.height;
+    CGFloat scaledWidth = scale * leftImage.size.width;
+
+    CGFloat bgPadding = previewPadding;
+    NSRect rawRect = [self rawPreviewRectWithElementWidth:scaledWidth
+        elementHeight:scaledHeight elementsCount:numberToDraw paddingReserve:bgPadding];
+    NSRect bgRect = NSInsetRect(rawRect, -bgPadding, -bgPadding);
 
     [NSGraphicsContext saveGraphicsState];
     [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationNone];
 
-    if (numberToDraw > 0) {
-        NSBezierPath *bgPath = [NSBezierPath bezierPathWithRoundedRect:bgRect xRadius:16 yRadius:16];
-        NSColor *bgColor = _previewBgColor;
-        [bgColor setFill];
-        [bgPath fill];
-    }
+    NSBezierPath *bgPath = [NSBezierPath bezierPathWithRoundedRect:
+        bgRect xRadius:previewCornerRadius yRadius:previewCornerRadius];
+    NSColor *bgColor = _previewBgColor;
+    [bgColor setFill];
+    [bgPath fill];
 
+    NSInteger y = rawRect.origin.y;
+    NSInteger beginx = rawRect.origin.x;
     int index = 0;
+
     for (NSInteger i = 0; i < direction.length; i++) {
         NSImage *image = nil;
         char ch = [direction characterAtIndex:i];
         switch (ch) {
-            case 'L':
-                image = leftImage;
-                break;
-            case 'R':
-                image = rightImage;
-                break;
+            case 'L': image = leftImage; break;
+            case 'R': image = rightImage; break;
             case 'U':
-            case 'u':
-                image = upImage;
-                break;
+            case 'u': image = upImage; break;
             case 'D':
-            case 'd':
-                image = downImage;
-                break;
-            case 'Z':
-                image = cursorImage; // [[NSCursor arrowCursor] image]
-            default:
-                break;
+            case 'd': image = downImage; break;
+            case 'Z': image = cursorImage; break; // [[NSCursor arrowCursor] image]
+            default:  break;
         }
 
         if (merge) {
@@ -201,12 +271,14 @@ static NSImage *cursorImage;
                 beginx + index * scaledWidth + frac * scaledWidth, y - (frac - 0.5) * scaledHeight,
                 scaledWidth * (1 - frac), scaledHeight * (1 - frac)
             ) fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0];
-
         }
+
         [image drawInRect:NSMakeRect(beginx + index * scaledWidth, y, scaledWidth, scaledHeight)
             fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0];
+
         index++;
     }
+
     [NSGraphicsContext restoreGraphicsState];
 }
 
@@ -220,12 +292,13 @@ static NSImage *cursorImage;
         return;
     else
         note = [[RulesList sharedRulesList] noteAtIndex:index];
-    if (![note isEqualToString:@""]) {
 
-        CGRect screenRect = [self.window frame];
+    if (![note isEqualToString:@""]) {
 
         NSString *fontName = [_defaults objectForKey:@"noteFontName"];
         double fontSize = [_defaults doubleForKey:@"noteFontSize"];
+
+        if (!fontName) return;
 
         NSFont *font = [NSFont fontWithName:fontName size:fontSize];
         NSColor *fontColor = _noteColor;
@@ -238,12 +311,19 @@ static NSImage *cursorImage;
 
         CGSize size = [note sizeWithAttributes:textAttributes];
         size.width += fontSize/2;
-        CGFloat x = ((screenRect.size.width - size.width) / 2);
-        CGFloat y = ((screenRect.size.height + leftImage.size.height * [self getGestureImageScale] + 64) / 2);
 
-        NSRect rect = NSMakeRect(x, y, size.width, size.height);
-        NSRect bgRect = NSInsetRect(rect, -10, -10);
-        CGFloat bgRadius = MIN(16, MIN(bgRect.size.width/2, bgRect.size.height/2));
+        CGFloat previewBgPadding = previewPadding;
+        CGFloat noteBgPadding = notePadding;
+        CGFloat imageScale = [self getGestureImageScale];
+        CGFloat scaledImageHeight = imageScale * leftImage.size.height;
+        NSRect textRect = [self positionedNoteSize:size elementHeight:
+            scaledImageHeight paddingReserve:noteBgPadding elementPaddingReserve:previewBgPadding];
+
+        CGFloat x = textRect.origin.x;
+        CGFloat y = textRect.origin.y;
+
+        NSRect bgRect = NSInsetRect(textRect, -noteBgPadding, -noteBgPadding);
+        CGFloat bgRadius = MIN(noteCornerRadius, MIN(bgRect.size.width/2, bgRect.size.height/2));
         NSBezierPath *bgPath = [NSBezierPath bezierPathWithRoundedRect:bgRect xRadius:bgRadius yRadius:bgRadius];
         NSColor *bgColor = _noteBgColor;
         [bgColor setFill];
@@ -263,7 +343,7 @@ static NSImage *cursorImage;
 
     // Draw gesture preview
     if ([_defaults boolForKey:@"showGesturePreview"])
-        [self drawDirection];
+        [self drawPreview];
 
     // Draw gesture note
     if ([_defaults boolForKey:@"showGestureNote"])

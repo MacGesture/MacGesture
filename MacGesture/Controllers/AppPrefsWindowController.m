@@ -85,6 +85,24 @@ static BOOL isBigSur = NO;
     [self crossFadeView:view withView:view];
 }
 
+//- (void)displayViewForIdentifier:(NSString *)identifier animate:(BOOL)animate
+//{
+//    BOOL rules = [identifier isEqual:NSLocalizedString(@"Gestures", nil)];
+//
+//    [super displayViewForIdentifier:identifier animate:animate];
+//
+//    if (rules) {
+//        self.window.styleMask |= NSWindowStyleMaskResizable;
+//        self.window.minSize = PREF_WINDOW_SIZES[0];
+//        self.window.maxSize = PREF_WINDOW_SIZES[PREF_WINDOW_SIZECOUNT-1];
+//    }
+//    else
+//        self.window.styleMask &= ~NSWindowStyleMaskResizable;
+//
+////    self.rulesPreferenceView.translatesAutoresizingMaskIntoConstraints = YES;
+////    self.rulesPreferenceView.autoresizingMask |= NSViewWidthSizable | NSViewHeightSizable;
+//}
+
 - (void)windowDidLoad {
     [super windowDidLoad];
 
@@ -150,6 +168,18 @@ static BOOL isBigSur = NO;
 {
     [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
 }
+
+//- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
+//{
+//    if (_rulesPreferenceView.superview) {
+//        CGFloat titleHeight = self.contentSubview.superview.superview.frame.size.height -
+//                              self.contentSubview.superview.frame.size.height;
+//        NSRect superRect = _rulesPreferenceView.superview.frame;
+//        _rulesPreferenceView.frame = NSMakeRect(0, superRect.size.height-frameSize.height, frameSize.width, frameSize.height-(frameSize.height - self.contentSubview.superview.frame.size.height));
+//    }
+//
+//    return frameSize;
+//}
 
 - (void)refreshFilterRadioAndTextViewState {
     //    self.blockListModeRadio.cell stat
@@ -350,7 +380,7 @@ static BOOL isBigSur = NO;
     }
     [defs synchronize];
     
-    [MGOptionsDefine resetColors];
+    [MGOptionsDefine restoreDefaults];
 }
 
 - (IBAction)pickBtnDidClick:(id)sender {
