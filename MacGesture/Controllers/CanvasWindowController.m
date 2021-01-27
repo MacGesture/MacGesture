@@ -34,6 +34,15 @@
         [self reinitWindow];
         
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleScreenParametersChange:) name:NSApplicationDidChangeScreenParametersNotification object:nil];
+
+        [[NSNotificationCenter defaultCenter] addObserverForName:@"PrefsDidClose" object:nil
+          queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [self reinitWindow];
+                [self.window orderFrontRegardless];
+            });
+        }];
+
     }
     return self;
 }
