@@ -242,9 +242,11 @@
 - (void)crossFadeView:(NSView *)oldView withView:(NSView *)newView{
     [self.viewAnimation stopAnimation];
 
-    if([self shiftSlowsAnimation] && [[[self window] currentEvent] modifierFlags] & NSEventModifierFlagShift){
+    NSEventModifierFlags flags = self.window.currentEvent.modifierFlags;
+
+    if (_shiftSlowsAnimation && (flags & NSEventModifierFlagShift) != 0) {
         [self.viewAnimation setDuration:1.25];
-    }else{
+    } else {
         [self.viewAnimation setDuration:0.25];
     }
 
@@ -261,10 +263,11 @@
      NSViewAnimationStartFrameKey: [NSValue valueWithRect:[[self window] frame]],
      NSViewAnimationEndFrameKey: [NSValue valueWithRect:[self frameForView:newView]]};
 
-    NSArray *animationArray = 
-    @[fadeOutDictionary,
-     fadeInDictionary,
-     resizeDictionary];
+    NSArray *animationArray = @[
+        fadeOutDictionary,
+        fadeInDictionary,
+        resizeDictionary,
+    ];
 
     [self.viewAnimation setViewAnimations:animationArray];
     [self.viewAnimation startAnimation];

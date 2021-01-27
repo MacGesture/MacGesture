@@ -25,6 +25,8 @@
 -(NSView *)contentSubview;
 @end
 
+@interface VerticalTextFieldCell: NSTextFieldCell @end
+
 #pragma mark -
 #pragma mark Preferences controller Implementation
 
@@ -32,7 +34,7 @@
 
 @synthesize rulesTableView = _rulesTableView;
 
-static NSSize const PREF_WINDOW_SIZES[3] = {{658, 315}, {800, 500}, {1000, 640}};
+static NSSize const PREF_WINDOW_SIZES[3] = {{660, 520}, {800, 660}, {1000, 800}};
 static NSInteger const PREF_WINDOW_SIZECOUNT = 3;
 static NSInteger currentRulesWindowSizeIndex = 0;
 static NSInteger currentFiltersWindowSizeIndex = 0;
@@ -284,16 +286,27 @@ static BOOL isBigSur = NO;
         [MGOptionsDefine setLineColor:_lineColorWell.color];
     else if (sender == _previewColorWell)
         [MGOptionsDefine setPreviewColor:_previewColorWell.color];
+    else if (sender == _previewBgColorWell)
+        [MGOptionsDefine setPreviewBgColor:_previewBgColorWell.color];
     else if (sender == _noteColorWell)
         [MGOptionsDefine setNoteColor:_noteColorWell.color];
+    else if (sender == _noteBgColorWell)
+        [MGOptionsDefine setNoteBgColor:_noteBgColorWell.color];
 }
 
 - (IBAction)chooseFont:(id)sender {
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
+
     [fontManager setSelectedFont:[NSFont fontWithName:[self.fontNameTextField stringValue] size:[self.fontSizeTextField floatValue]] isMultiple:NO];
     [fontManager setTarget:self];
     
     NSFontPanel *fontPanel = [fontManager fontPanel:YES];
+
+    if (fontPanel.isVisible) {
+        [fontPanel close];
+        return;
+    }
+
     [fontPanel makeKeyAndOrderFront:self];
     // This allow to change note color via font panel
     [fontManager setSelectedAttributes:@{
@@ -698,7 +711,7 @@ static NSString *currentScriptId = nil;
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
-    return 25;
+    return 36;
 }
 
 - (void)tableView:(NSTableView *)tableView
@@ -714,13 +727,14 @@ static NSString *currentScriptId = nil;
     RulesList *rulesList = [RulesList sharedRulesList];
     BOOL isEnabled = [rulesList enabledAtIndex:row];
     if (@{ @"Gesture": @1, @"Filter": @2, @"Note": @3 }[tableColumn.identifier] != nil) {
-        NSTextField *textField = [[NSTextField alloc] init];
-        [textField.cell setWraps:NO];
-        [textField.cell setScrollable:YES];
-        [textField setEditable:YES];
-        [textField setBezeled:NO];
-        [textField setDrawsBackground:NO];
-        [textField setEnabled:isEnabled];
+        NSTextField *textField = [NSTextField new];
+        textField.cell = [VerticalTextFieldCell new];
+        textField.cell.wraps = NO;
+        textField.cell.scrollable = YES;
+        textField.editable = YES;
+        textField.bezeled = NO;
+        textField.drawsBackground = NO;
+        textField.enabled = isEnabled;
         if ([tableColumn.identifier isEqualToString:@"Gesture"]) {
             textField.stringValue = [rulesList directionAtIndex:row];
             textField.identifier = @"Gesture";
@@ -839,6 +853,30 @@ static NSString *currentScriptId = nil;
 - (NSView *)hitTest:(NSPoint)point
 {
     return nil;
+}
+
+@end
+
+@implementation VerticalTextFieldCell
+
+- (NSRect)titleRectForBounds:(NSRect)rect
+{
+    CGFloat stringHeight = self.attributedStringValue.size.height;
+    NSRect titleRect = [super titleRectForBounds:rect];
+    CGFloat oldOriginY = rect.origin.y;
+    titleRect.origin.y = rect.origin.y + (rect.size.height - stringHeight) / 2.0;
+    titleRect.size.height = titleRect.size.height - (titleRect.origin.y - oldOriginY);
+    return titleRect;
+}
+
+- (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
+{
+    [super drawInteriorWithFrame:[self titleRectForBounds:cellFrame] inView:controlView];
+}
+
+- (void)prepareForInterfaceBuilder
+{
+    [super prepareForInterfaceBuilder];
 }
 
 @end
