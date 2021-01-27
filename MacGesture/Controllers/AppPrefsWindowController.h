@@ -9,7 +9,15 @@
 #import "AppPickerWindowController.h"
 #import <Sparkle/Sparkle.h>
 
+@protocol AppPrefsDelegate <NSObject>
+
+- (void)appPrefsDidClose;
+
+@end
+
 @interface AppPrefsWindowController : DBPrefsWindowController <NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate, NSTextFieldDelegate, AppPickerCallback, NSComboBoxDataSource, NSWindowDelegate>
+
+@property(weak, nonatomic) id<AppPrefsDelegate> delegate;
 
 @property(strong, nonatomic) IBOutlet NSView *generalPreferenceView;
 @property(strong, nonatomic) IBOutlet NSView *rulesPreferenceView;
@@ -25,7 +33,9 @@
 
 @property(weak) IBOutlet NSTextField *versionCode;
 @property(weak) IBOutlet NSButton *blockListModeRadio;
+@property(weak) IBOutlet NSButton *blockListModeAddButton;
 @property(weak) IBOutlet NSButton *allowListModeRadio;
+@property(weak) IBOutlet NSButton *allowListModeAddButton;
 @property(unsafe_unretained) IBOutlet NSTextView *blockListTextView;
 @property(unsafe_unretained) IBOutlet NSTextView *allowListTextView;
 @property(weak) IBOutlet NSButton *changeRulesWindowSizeButton;
@@ -50,7 +60,9 @@
 @property(weak) IBOutlet NSColorWell *noteColorWell;
 @property(weak) IBOutlet NSColorWell *noteBgColorWell;
 
-@property(assign) IBOutlet WKWebView *webView;
+@property(weak) IBOutlet NSView *webViewBox;
+@property(strong) WKWebView *webView;
 
 - (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index;
+
 @end

@@ -100,11 +100,14 @@ static BOOL isBigSur = NO;
     [self crossFadeView:view withView:view];
 }
 
-//- (void)displayViewForIdentifier:(NSString *)identifier animate:(BOOL)animate
-//{
+- (void)displayViewForIdentifier:(NSString *)identifier animate:(BOOL)animate
+{
+    if ([identifier isEqual:NSLocalizedString(@"About", nil)])
+        [self checkAboutWebViewDisplay];
+
+    [super displayViewForIdentifier:identifier animate:animate];
+
 //    BOOL rules = [identifier isEqual:NSLocalizedString(@"Gestures", nil)];
-//
-//    [super displayViewForIdentifier:identifier animate:animate];
 //
 //    if (rules) {
 //        self.window.styleMask |= NSWindowStyleMaskResizable;
@@ -116,7 +119,24 @@ static BOOL isBigSur = NO;
 //
 ////    self.rulesPreferenceView.translatesAutoresizingMaskIntoConstraints = YES;
 ////    self.rulesPreferenceView.autoresizingMask |= NSViewWidthSizable | NSViewHeightSizable;
-//}
+}
+
+- (void)checkAboutWebViewDisplay {
+    if (_webView) return;
+
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"README" withExtension:@"html"];
+
+    _webView = [[WKWebView alloc] initWithFrame:_webViewBox.bounds];
+    _webView.navigationDelegate = self;
+    _webView.autoresizingMask = _webViewBox.autoresizingMask;
+    _webView.layer.cornerRadius = 4;
+    _webView.layer.masksToBounds = YES;
+    _webView.layer.borderWidth = 1;
+    _webView.layer.borderColor = [NSColor colorWithWhite:0.1 alpha:0.1].CGColor;
+
+    [_webViewBox addSubview:_webView];
+    [_webView loadFileURL:url allowingReadAccessToURL:url];
+}
 
 - (void)windowDidLoad {
     [super windowDidLoad];
@@ -178,19 +198,28 @@ static BOOL isBigSur = NO;
         [item setAction:@selector(exampleAppleScriptSelected:)];
         [[[self loadAppleScriptExampleButton] menu] addItem:item];
     }
-    
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"README" withExtension:@"html"];
-    [self.webView loadFileURL:url allowingReadAccessToURL:url];
-    self.webView.navigationDelegate = self;
-    
+
+    _rulesTableView.rowHeight = 36;
+    _appleScriptTableView.rowHeight = 36;
+
     [[self rulesTableView] registerForDraggedTypes:@[MacGestureRuleDataType]];
 }
 
 - (BOOL)windowShouldClose:(id)sender {
+
+    __auto_type delegate = _delegate;
+
     [[self window] orderOut:self];
-    [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"PrefsDidClose" object:nil];
-    return NO;
+
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PrefsDidClose" object:nil];
+
+        if ([delegate respondsToSelector:@selector(appPrefsDidClose)])
+            [delegate appPrefsDidClose];
+    }];
+
+    return YES;
 }
 
 - (void)windowDidBecomeKey:(NSNotification *)notification
@@ -211,29 +240,32 @@ static BOOL isBigSur = NO;
 //}
 
 - (void)refreshFilterRadioAndTextViewState {
-    //    self.blockListModeRadio.cell stat
     NSLog(@"BWFilter.isInAllowListMode: %d", BWFilter.isInAllowListMode);
-    [self.blockListModeRadio setState:BWFilter.isInAllowListMode ? NSOffState : NSOnState];
-    [self.allowListModeRadio setState:BWFilter.isInAllowListMode ? NSOnState : NSOffState];
+
+    BOOL blocking = !BWFilter.isInAllowListMode;
+    _blockListModeRadio.state = (blocking) ? NSOnState : NSOffState;
+    _blockListModeAddButton.enabled = blocking;
+    _allowListModeRadio.state = (blocking) ? NSOffState : NSOnState;
+    _allowListModeAddButton.enabled = !blocking;
+
     NSColor *notActive = self.window.backgroundColor;
     NSColor *active = [NSColor textBackgroundColor];
-    self.blockListTextView.backgroundColor = BWFilter.isInAllowListMode ? notActive : active;
-    //    ((NSScrollView *)(self.blockListTextView.superview.superview)).backgroundColor=BWFilter.isInAllowListMode?notActive:active;
-    self.allowListTextView.backgroundColor = BWFilter.isInAllowListMode ? active : notActive;
-    //    ((NSScrollView *)(self.allowListTextView.superview.superview)).backgroundColor=BWFilter.isInAllowListMode?active:notActive;
 
-    [self.allowListTextView.superview.superview needsLayout];
-    [self.allowListTextView.superview.superview needsDisplay];
-    [self.blockListTextView.superview.superview needsLayout];
-    [self.blockListTextView.superview.superview needsDisplay];
+    _blockListTextView.backgroundColor = !blocking ? notActive : active;
+    _allowListTextView.backgroundColor = !blocking ? active : notActive;
+
+//    [_allowListTextView.superview.superview needsLayout];
+//    [_allowListTextView.superview.superview needsDisplay];
+//    [_blockListTextView.superview.superview needsLayout];
+//    [_blockListTextView.superview.superview needsDisplay];
 }
 
-- (IBAction) addShortcutRule:(id)sender {
+- (IBAction)addShortcutRule:(id)sender {
     [[RulesList sharedRulesList] addRuleWithDirection:@"DR" filter:@"*safari|*chrome" filterType:FILTER_TYPE_WILDCARD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:0 shortcutFlag:0 appleScriptId:nil note:@"note"];
     [_rulesTableView reloadData];
 }
 
-- (IBAction) addAppleScriptRule:(id)sender {
+- (IBAction)addAppleScriptRule:(id)sender {
     [[RulesList sharedRulesList] addRuleWithDirection:@"DR" filter:@"*safari|*chrome" filterType:FILTER_TYPE_WILDCARD actionType:ACTION_TYPE_APPLE_SCRIPT shortcutKeyCode:0 shortcutFlag:0 appleScriptId:@"" note:@"note"];
     [_rulesTableView reloadData];
 }
@@ -570,10 +602,11 @@ static NSString *currentScriptId = nil;
         [defaults setObject:@[languagesOrder[idx]] forKey:@"AppleLanguages"];
     else [defaults removeObjectForKey:@"AppleLanguages"];
     
-    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    NSUserNotification *notification = [NSUserNotification new];
     notification.title = @"MacGesture";
     notification.informativeText = NSLocalizedString(@"Restart MacGesture to take effect", nil);
     notification.soundName = NSUserNotificationDefaultSoundName;
+    notification.hasActionButton = NO;
     
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
@@ -615,10 +648,11 @@ static NSString *currentScriptId = nil;
         }
         [file closeFile];
         
-        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        NSUserNotification *notification = [NSUserNotification new];
         notification.title = @"MacGesture";
         notification.informativeText = NSLocalizedString(@"Restart MacGesture to take effect", nil);
         notification.soundName = NSUserNotificationDefaultSoundName;
+        notification.hasActionButton = NO;
         
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
     }
@@ -649,10 +683,11 @@ static NSString *currentScriptId = nil;
         }
         [file closeFile];
         
-        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        NSUserNotification *notification = [NSUserNotification new];
         notification.title = @"MacGesture";
         notification.informativeText = NSLocalizedString(@"Export succeeded", nil);
         notification.soundName = NSUserNotificationDefaultSoundName;
+        notification.hasActionButton = NO;
         
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
     }
@@ -790,7 +825,13 @@ static NSString *currentScriptId = nil;
     NSView *result = nil;
     RulesList *rulesList = [RulesList sharedRulesList];
     BOOL isEnabled = [rulesList enabledAtIndex:row];
-    if (@{ @"Gesture": @1, @"Filter": @2, @"Note": @3 }[tableColumn.identifier] != nil) {
+
+    NSDictionary<NSString *, NSNumber *> *columns =
+        @{ @"Gesture": @1, @"Filter": @2, @"Note": @3, @"Action": @4, @"TriggerOnEveryMatch": @5 };
+    NSInteger thisColumn = [columns[tableColumn.identifier] integerValue];
+
+    if (thisColumn >= 1 && thisColumn <= 3) { // Gesture, Filter, Note
+
         NSTextField *textField = [NSTextField new];
         textField.cell = [VerticalTextFieldCell new];
         textField.cell.wraps = NO;
@@ -799,21 +840,18 @@ static NSString *currentScriptId = nil;
         textField.bezeled = NO;
         textField.drawsBackground = NO;
         textField.enabled = isEnabled;
-        if ([tableColumn.identifier isEqualToString:@"Gesture"]) {
-            textField.stringValue = [rulesList directionAtIndex:row];
-            textField.identifier = @"Gesture";
-        } else if ([tableColumn.identifier isEqualToString:@"Filter"]) {
-            textField.stringValue = [rulesList filterAtIndex:row];
-            textField.identifier = @"Filter";
-        } else if ([tableColumn.identifier isEqualToString:@"Note"]) {
-            textField.stringValue = [rulesList noteAtIndex:row];
-            textField.identifier = @"Note";
-        }
+        textField.identifier = tableColumn.identifier;
+        if      (thisColumn == 1) textField.stringValue = [rulesList directionAtIndex:row];
+        else if (thisColumn == 2) textField.stringValue = [rulesList filterAtIndex:row];
+        else if (thisColumn == 3) textField.stringValue = [rulesList noteAtIndex:row];
         textField.delegate = self;
         textField.tag = row;
         result = textField;
-    } else if ([tableColumn.identifier isEqualToString:@"Action"]) {
+
+    } else if (thisColumn == 4) { // Action
+
         if ([rulesList actionTypeAtIndex:row] == ACTION_TYPE_SHORTCUT) {
+
             SRRecorderControlWithTagid *recordView = [[SRRecorderControlWithTagid alloc] init];
             
             // TODO: Nicer types
@@ -829,7 +867,9 @@ static NSString *currentScriptId = nil;
             [recordView setEnabled:isEnabled];
             
             result = recordView;
+
         } else if ([rulesList actionTypeAtIndex:row] == ACTION_TYPE_APPLE_SCRIPT) {
+
             NSComboBox *comboBox = [[NSComboBox alloc]init];
             [comboBox setUsesDataSource:YES];
             [comboBox setDataSource:self];
@@ -842,13 +882,14 @@ static NSString *currentScriptId = nil;
             [comboBox setEnabled:isEnabled];
             
             [[NSNotificationCenter defaultCenter] addObserver:self
-                                                     selector:@selector(appleScriptSelectionChanged:)
-                                                         name:NSComboBoxSelectionDidChangeNotification
-                                                       object:comboBox];
+                selector:@selector(appleScriptSelectionChanged:)
+                    name:NSComboBoxSelectionDidChangeNotification object:comboBox];
             
             result = comboBox;
         }
-    } else if ([tableColumn.identifier isEqualToString:@"TriggerOnEveryMatch"]) {
+
+    } else if (thisColumn == 5) { // Trigger
+
         NSButton *checkButton = [[NSButton alloc] init];
         [checkButton setButtonType:NSSwitchButton];
         [checkButton setState:[rulesList triggerOnEveryMatchAtIndex:row]];
@@ -865,16 +906,18 @@ static NSString *currentScriptId = nil;
 
 - (NSView *)tableViewForAppleScripts:(NSTableColumn *)tableColumn row:(NSInteger)row {
     AppleScriptsList *appleScriptsList = [AppleScriptsList sharedAppleScriptsList];
-    NSTextField *textField = [[NSTextField alloc] init];
-    [textField.cell setWraps:NO];
-    [textField.cell setScrollable:YES];
-    [textField setEditable:YES];
-    [textField setBezeled:NO];
-    [textField setDrawsBackground:NO];
-    [textField setDelegate:self];
-    [textField setLineBreakMode:NSLineBreakByTruncatingMiddle];
-    [textField setStringValue:[appleScriptsList titleAtIndex:row]];
-    [textField setIdentifier:@"Title"];
+    NSTextField *textField = [NSTextField new];
+    textField.cell = [VerticalTextFieldCell new];
+    textField.cell.controlView.frame = textField.bounds;
+    textField.cell.wraps = NO;
+    textField.cell.scrollable = YES;
+    textField.editable = YES;
+    textField.bezeled = NO;
+    textField.drawsBackground = NO;
+    textField.delegate = self;
+    textField.lineBreakMode = NSLineBreakByTruncatingMiddle;
+    textField.stringValue = [appleScriptsList titleAtIndex:row];
+    textField.identifier = @"Title";
     return textField;
 }
 
@@ -941,6 +984,49 @@ static NSString *currentScriptId = nil;
 - (void)prepareForInterfaceBuilder
 {
     [super prepareForInterfaceBuilder];
+}
+
+@end
+
+
+
+
+
+
+@interface NSTextViewWithPlaceHolder: NSTextView
+
+@property (nonatomic, copy) IBInspectable NSString *placeholder;
+@property (nonatomic, strong) NSAttributedString *placeholderAttributed;
+
+@end
+
+@implementation NSTextViewWithPlaceHolder
+
+- (void)setPlaceholder:(NSString *)placeholder {
+    _placeholder = placeholder ?: @"";
+    _placeholderAttributed = [[NSAttributedString alloc] initWithString:placeholder attributes:@{
+        NSForegroundColorAttributeName: [NSColor colorWithWhite:0.5 alpha:0.5],
+        NSFontAttributeName: [NSFont systemFontOfSize:14],
+    }];
+}
+
+- (BOOL)becomeFirstResponder
+{
+    self.needsDisplay = YES;
+    return [super becomeFirstResponder];
+}
+
+- (BOOL)resignFirstResponder
+{
+    self.needsDisplay = YES;
+    return [super resignFirstResponder];
+}
+
+- (void)drawRect:(NSRect)rect
+{
+    [super drawRect:rect];
+    if (self.string.length == 0 && self != self.window.firstResponder)
+        [_placeholderAttributed drawAtPoint:NSMakePoint(2, 2)];
 }
 
 @end

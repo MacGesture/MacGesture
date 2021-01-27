@@ -5,6 +5,8 @@
 #import "utils.h"
 #import "BlockAllowFilter.h"
 
+@interface AppDelegate () <AppPrefsDelegate> @end
+
 @implementation AppDelegate
 
 static CanvasWindowController *windowController;
@@ -150,20 +152,24 @@ static BOOL eventTriggered;
     }
 }
 
-- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
+     shouldPresentNotification:(NSUserNotification *)notification {
     return YES;
 }
 
 - (void)showPreferences {
     [NSApp activateIgnoringOtherApps:YES];
-    
-    //instantiate preferences window controller
+
+    // Instantiate Preferences window controller
     if (!_preferencesWindowController) {
         _preferencesWindowController = [[AppPrefsWindowController alloc] initWithWindowNibName:@"Preferences"];
+        _preferencesWindowController.delegate = self;
         [_preferencesWindowController showWindow:self];
-    } else {
-        [[_preferencesWindowController window] orderFront:self];
-    }
+    } else [_preferencesWindowController.window orderFront:self];
+}
+
+- (void)appPrefsDidClose {
+    _preferencesWindowController = nil;
 }
 
 - (void)setEnabled:(BOOL)enabled {
