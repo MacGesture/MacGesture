@@ -42,6 +42,8 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
 static NSDictionary<NSString *, NSString *> *languages;
 static NSArray<NSString *> *languagesOrder;
 
+static NSArray<id> *previewPositions;
+
 static NSUserDefaults *defaults;
 
 #define MacGestureRuleDataType @"MacGestureRuleDataType"
@@ -53,16 +55,29 @@ static BOOL isBigSur = NO;
 {
     if (@available(macOS 11.0, *))
         isBigSur = YES;
+
     languages = @{
         @"": NSLocalizedString(@"System", nil),
         @"en": NSLocalizedString(@"English", nil),
         @"zh-Hans": NSLocalizedString(@"Chinese", nil),
-    };
-    languagesOrder = @[ @"", @"en", @"zh-Hans" ];
+    }; languagesOrder = @[ @"", @"en", @"zh-Hans" ];
+
+    previewPositions = @[
+        @[ @(MGPreviewPositionCenter), NSLocalizedString(@"Center", nil) ],
+        @[ @(MGPreviewPositionTopLeft), NSLocalizedString(@"Top Left", nil) ],
+        @[ @(MGPreviewPositionTopCenter), NSLocalizedString(@"Top Center", nil) ],
+        @[ @(MGPreviewPositionTopRight), NSLocalizedString(@"Top Right", nil) ],
+        @[ @(MGPreviewPositionBottomLeft), NSLocalizedString(@"Bottom Left", nil) ],
+        @[ @(MGPreviewPositionBottomCenter), NSLocalizedString(@"Bottom Center", nil) ],
+        @[ @(MGPreviewPositionBottomRight), NSLocalizedString(@"Bottom Right", nil) ],
+    ];
+
     defaults = [NSUserDefaults standardUserDefaults];
+
     exampleAppleScripts = @[@"ChromeCloseTabsToTheRight", @"Close Tabs To The Right In Chrome",
             @"OpenMacGesturePreferences", @"Open MacGesture Preferences",
             @"SearchInWeb", @"Search in Web"];
+
     assert(languages.count == languagesOrder.count);
 }
 
@@ -131,6 +146,13 @@ static BOOL isBigSur = NO;
 
     [_languageComboBox addItemsWithTitles:langs];
 
+    NSArray<NSString *> *previewPoss = [previewPositions mappedArrayUsingBlock:
+      ^NSString *(NSArray<id> *obj, NSUInteger idx) {
+        return obj[1];
+    }];
+
+    [_previewPositionComboBox addItemsWithTitles:previewPoss];
+
     if (isBigSur) {
         NSRect rect = _gestureSizeSlider.frame;
         rect.origin.y -= 5; rect.size.height += 6;
@@ -141,6 +163,13 @@ static BOOL isBigSur = NO;
     NSUInteger idx = ([languagesOrder containsObject:language]) ?
         [languagesOrder indexOfObject:language] : 0;
     [_languageComboBox selectItemAtIndex:idx];
+
+    MGPreviewPosition position = [MGOptionsDefine getPreviewPosition];
+    idx = 0;
+    for (NSArray<id> *pos in previewPositions)
+        if ([pos[0] integerValue] == position)
+            idx = [previewPositions indexOfObject:pos];
+    [_previewPositionComboBox selectItemAtIndex:idx];
 
     for (NSUInteger i = 0;i < [exampleAppleScripts count];i += 2) {
         NSMenuItem *item = [[NSMenuItem alloc] init];
@@ -540,7 +569,6 @@ static NSString *currentScriptId = nil;
     if (idx != 0)
         [defaults setObject:@[languagesOrder[idx]] forKey:@"AppleLanguages"];
     else [defaults removeObjectForKey:@"AppleLanguages"];
-    [defaults synchronize];
     
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     notification.title = @"MacGesture";
@@ -548,6 +576,12 @@ static NSString *currentScriptId = nil;
     notification.soundName = NSUserNotificationDefaultSoundName;
     
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+}
+
+- (IBAction)previewPositionChanged:(id)sender {
+    NSInteger idx = [_previewPositionComboBox indexOfSelectedItem] % previewPositions.count;
+    MGPreviewPosition position = [previewPositions[idx][0] integerValue];
+    [MGOptionsDefine setPreviewPosition:position];
 }
 
 - (IBAction)onToggleMacGestureEnabled:(id)sender {

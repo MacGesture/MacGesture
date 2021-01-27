@@ -5,7 +5,25 @@
 "AppleScript" = "AppleScript";
 
 /* No comment provided by engineer. */
+"Bottom Center" = "Bottom Center";
+
+/* No comment provided by engineer. */
+"Bottom Left" = "Bottom Left";
+
+/* No comment provided by engineer. */
+"Bottom Right" = "Bottom Right";
+
+/* No comment provided by engineer. */
+"Center" = "Center";
+
+/* No comment provided by engineer. */
+"Chinese" = "Chinese";
+
+/* No comment provided by engineer. */
 "Edit in External Editor" = "Edit in External Editor";
+
+/* No comment provided by engineer. */
+"English" = "English";
 
 /* No comment provided by engineer. */
 "Export succeeded" = "Export succeeded";
@@ -65,10 +83,13 @@
 "Stop" = "Stop";
 
 /* No comment provided by engineer. */
-"Chinese" = "Chinese";
-
-/* No comment provided by engineer. */
-"English" = "English";
-
-/* No comment provided by engineer. */
 "System" = "System";
+
+/* No comment provided by engineer. */
+"Top Center" = "Top Center";
+
+/* No comment provided by engineer. */
+"Top Left" = "Top Left";
+
+/* No comment provided by engineer. */
+"Top Right" = "Top Right";

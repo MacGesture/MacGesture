@@ -43,8 +43,8 @@
 /* Class = "NSBox"; title = "Gesture"; ObjectID = "4xM-Ya-MxN"; */
 "4xM-Ya-MxN.title" = "Gesture";
 
-/* Class = "NSTextFieldCell"; title = "Language:"; ObjectID = "5rs-3N-RX4"; */
-"5rs-3N-RX4.title" = "Language:";
+/* Class = "NSTextFieldCell"; title = "Language"; ObjectID = "5rs-3N-RX4"; */
+"5rs-3N-RX4.title" = "Language";
 
 /* Class = "NSButtonCell"; title = "Go bigger"; ObjectID = "7xg-Hp-Yhw"; */
 "7xg-Hp-Yhw.title" = "Go bigger";
@@ -135,6 +135,9 @@
 
 /* Class = "NSButtonCell"; title = "Add…"; ObjectID = "seb-qO-V3w"; */
 "seb-qO-V3w.title" = "Add…";
+
+/* Class = "NSTextFieldCell"; title = "Preview & Note Position"; ObjectID = "t7s-Nq-0oL"; */
+"t7s-Nq-0oL.title" = "Preview & Note Position";
 
 /* Class = "NSButtonCell"; title = "Merge Consecutive Identical Gestures"; ObjectID = "Tzh-fR-TUh"; */
 "Tzh-fR-TUh.title" = "Merge Consecutive Identical Gestures";
