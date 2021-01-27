@@ -1,23 +1,5 @@
-/* Class = "NSMenuItem"; title = "Revert to Saved"; ObjectID = "112"; */
-"112.title" = "Revert to Saved";
-
-/* Class = "NSMenuItem"; title = "Open Recent"; ObjectID = "124"; */
-"124.title" = "Open Recent";
-
-/* Class = "NSMenu"; title = "Open Recent"; ObjectID = "125"; */
-"125.title" = "Open Recent";
-
-/* Class = "NSMenuItem"; title = "Clear Menu"; ObjectID = "126"; */
-"126.title" = "Clear Menu";
-
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "129"; */
 "129.title" = "Preferences…";
-
-/* Class = "NSMenu"; title = "Services"; ObjectID = "130"; */
-"130.title" = "Services";
-
-/* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
-"131.title" = "Services";
 
 /* Class = "NSMenuItem"; title = "Hide MacGesture"; ObjectID = "134"; */
 "134.title" = "Hide MacGesture";
@@ -120,18 +102,6 @@
 
 /* Class = "NSMenu"; title = "AMainMenu"; ObjectID = "29"; */
 "29.title" = "AMainMenu";
-
-/* Class = "NSMenuItem"; title = "View"; ObjectID = "295"; */
-"295.title" = "View";
-
-/* Class = "NSMenu"; title = "View"; ObjectID = "296"; */
-"296.title" = "View";
-
-/* Class = "NSMenuItem"; title = "Show Toolbar"; ObjectID = "297"; */
-"297.title" = "Show Toolbar";
-
-/* Class = "NSMenuItem"; title = "Customize Toolbar…"; ObjectID = "298"; */
-"298.title" = "Customize Toolbar…";
 
 /* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "346"; */
 "346.title" = "Check Grammar With Spelling";
@@ -280,8 +250,8 @@
 /* Class = "NSMenu"; title = "Help"; ObjectID = "491"; */
 "491.title" = "Help";
 
-/* Class = "NSMenuItem"; title = "MenuBarApp Help"; ObjectID = "492"; */
-"492.title" = "MenuBarApp Help";
+/* Class = "NSMenuItem"; title = "MacGesture Help"; ObjectID = "492"; */
+"492.title" = "MacGesture Help";
 
 /* Class = "NSMenuItem"; title = "Text"; ObjectID = "496"; */
 "496.title" = "Text";
@@ -355,26 +325,11 @@
 /* Class = "NSMenuItem"; title = "About MacGesture"; ObjectID = "58"; */
 "58.title" = "About MacGesture";
 
-/* Class = "NSMenuItem"; title = "Open…"; ObjectID = "72"; */
-"72.title" = "Open…";
-
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "73"; */
 "73.title" = "Close";
 
-/* Class = "NSMenuItem"; title = "Save…"; ObjectID = "75"; */
-"75.title" = "Save…";
-
-/* Class = "NSMenuItem"; title = "Page Setup..."; ObjectID = "77"; */
-"77.title" = "Page Setup...";
-
-/* Class = "NSMenuItem"; title = "Print…"; ObjectID = "78"; */
-"78.title" = "Print…";
-
 /* Class = "NSMenu"; title = "File"; ObjectID = "81"; */
 "81.title" = "File";
-
-/* Class = "NSMenuItem"; title = "New"; ObjectID = "82"; */
-"82.title" = "New";
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "83"; */
 "83.title" = "File";
