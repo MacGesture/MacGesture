@@ -230,7 +230,6 @@ static void updateDirections(NSEvent *event) {
     
     lastLocation = event.locationInWindow;
     
-    
     if (absX > absY) {
         if (deltaX > 0) {
             addDirection('R', false);
@@ -398,19 +397,21 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             if (!shouldShow || !mouseDownEvent) {
                 return event;
             }
+            mouseEvent = [NSEvent eventWithCGEvent:event];
             double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
-            
+//            BOOL unnaturalDirection = mouseEvent.isDirectionInvertedFromDevice;
+//            if (unnaturalDirection) delta *= -1;
             // NSLog(@"scrollWheel delta:%f", delta);
             
             NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate];
             if (current - lastMouseWheelEventTime > 0.3) {
                 if (delta > 0) {
-                    // NSLog(@"scrollWheel Down!");
-                    addDirection('d', true);
+                    // NSLog(@"Traditional scroll wheel up!");
+                    addDirection('u', true);
                     eventTriggered = YES;
                 } else if (delta < 0){
-                    // NSLog(@"scrollWheel Up!");
-                    addDirection('u', true);
+                    // NSLog(@"Traditional scroll wheel down!");
+                    addDirection('d', true);
                     eventTriggered = YES;
                 }
                 lastMouseWheelEventTime = current;

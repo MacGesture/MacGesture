@@ -28,17 +28,20 @@
 /* Class = "NSButtonCell"; title = "Show Gesture Preview"; ObjectID = "354"; */
 "354.title" = "Show Gesture Preview";
 
-/* Class = "NSTextFieldCell"; title = "Author: code.falling@gmail.com"; ObjectID = "357"; */
+/* Class = "NSTextFieldCell"; title = "Author:"; ObjectID = "357"; */
 "357.title" = "Author: code.falling@gmail.com";
-
-/* Class = "NSTextFieldCell"; title = "@zhangciwu on GitHub"; ObjectID = "3XA-Af-eIC"; */
-"3XA-Af-eIC.title" = "@zhangciwu on GitHub";
 
 /* Class = "NSButtonCell"; title = "Show Mouse Path"; ObjectID = "400"; */
 "400.title" = "Show Mouse Path";
 
 /* Class = "NSButtonCell"; title = "Auto Start at Login"; ObjectID = "403"; */
 "403.title" = "Auto Start at Login";
+
+/* Class = "NSButtonCell"; alternateTitle = "https://github.com/xcodebuild"; ObjectID = "4Wa-f1-P4X"; */
+"4Wa-f1-P4X.alternateTitle" = "https://github.com/xcodebuild";
+
+/* Class = "NSButtonCell"; title = "code.falling@gmail.com"; ObjectID = "4Wa-f1-P4X"; */
+"4Wa-f1-P4X.title" = "code.falling@gmail.com";
 
 /* Class = "NSBox"; title = "Gesture"; ObjectID = "4xM-Ya-MxN"; */
 "4xM-Ya-MxN.title" = "Gesture";
@@ -55,6 +58,9 @@
 /* Class = "NSButtonCell"; title = "Reset Defaults"; ObjectID = "9qA-nt-g9l"; */
 "9qA-nt-g9l.title" = "Reset Defaults";
 
+/* Class = "NSTextFieldCell"; title = "MacGesture"; ObjectID = "9qO-sE-SpO"; */
+"9qO-sE-SpO.title" = "MacGesture";
+
 /* Class = "NSMenuItem"; title = "Load Example"; ObjectID = "adc-de-fgh"; */
 "adc-de-fgh.title" = "Load Example";
 
@@ -63,6 +69,12 @@
 
 /* Class = "NSButtonCell"; title = "Block list mode"; ObjectID = "BDA-RK-czZ"; */
 "BDA-RK-czZ.title" = "Block list mode";
+
+/* Class = "NSButtonCell"; alternateTitle = "https://github.com/jiegec"; ObjectID = "be8-8V-idT"; */
+"be8-8V-idT.alternateTitle" = "https://github.com/jiegec";
+
+/* Class = "NSButtonCell"; title = "@jiegec on GitHub"; ObjectID = "be8-8V-idT"; */
+"be8-8V-idT.title" = "@jiegec on GitHub";
 
 /* Class = "NSButtonCell"; title = "Edit in External Editor"; ObjectID = "cl6-Yg-6iY"; */
 "cl6-Yg-6iY.title" = "Edit in External Editor";
@@ -84,9 +96,6 @@
 
 /* Class = "NSTextFieldCell"; placeholderString = "Enter AppleScript here"; ObjectID = "gTD-R3-oZl"; */
 "gTD-R3-oZl.placeholderString" = "Enter AppleScript here";
-
-/* Class = "NSTextFieldCell"; title = "@username0x0a on GitHub"; ObjectID = "hyC-z8-Zae"; */
-"hyC-z8-Zae.title" = "@username0x0a on GitHub";
 
 /* Class = "NSTextFieldCell"; title = "You are advised to go through the README below:"; ObjectID = "Jc2-FY-LoP"; */
 "Jc2-FY-LoP.title" = "You are advised to go through the README below:";
@@ -121,6 +130,12 @@
 /* Class = "NSButtonCell"; title = "Go bigger"; ObjectID = "Q7Q-zb-iKX"; */
 "Q7Q-zb-iKX.title" = "Go bigger";
 
+/* Class = "NSButtonCell"; alternateTitle = "https://github.com/zhangciwu"; ObjectID = "qIq-Md-lBa"; */
+"qIq-Md-lBa.alternateTitle" = "https://github.com/zhangciwu";
+
+/* Class = "NSButtonCell"; title = "@zhangciwu on GitHub"; ObjectID = "qIq-Md-lBa"; */
+"qIq-Md-lBa.title" = "@zhangciwu on GitHub";
+
 /* Class = "NSButtonCell"; title = "Invert Fn When Control Is Pressed"; ObjectID = "Rc0-gx-DHr"; */
 "Rc0-gx-DHr.title" = "Invert Fn When Control Is Pressed";
 
@@ -148,6 +163,12 @@
 /* Class = "NSButtonCell"; title = "Apply rules"; ObjectID = "VCT-WP-3Oh"; */
 "VCT-WP-3Oh.title" = "Apply rules";
 
+/* Class = "NSButtonCell"; alternateTitle = "https://github.com/username0x0a"; ObjectID = "VHr-zB-GUM"; */
+"VHr-zB-GUM.alternateTitle" = "https://github.com/username0x0a";
+
+/* Class = "NSButtonCell"; title = "@username0x0a on GitHub"; ObjectID = "VHr-zB-GUM"; */
+"VHr-zB-GUM.title" = "@username0x0a on GitHub";
+
 /* Class = "NSButtonCell"; title = "Pick a running app"; ObjectID = "WsD-th-NkZ"; */
 "WsD-th-NkZ.title" = "Pick a running app";
 
@@ -160,7 +181,7 @@
 /* Class = "NSButtonCell"; title = "Open Preferences Window Upon Activation"; ObjectID = "YZQ-P5-4Yq"; */
 "YZQ-P5-4Yq.title" = "Open Preferences Window Upon Activation";
 
-/* Class = "NSButtonCell"; title = "Check Now"; ObjectID = "Z4w-5n-8OX"; */
+/* Class = "NSButtonCell"; title = "Check for Updates…"; ObjectID = "Z4w-5n-8OX"; */
 "Z4w-5n-8OX.title" = "Check Now";
 
 /* Class = "NSBox"; title = "General"; ObjectID = "zLw-Oi-GBf"; */

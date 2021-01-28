@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -355,9 +355,9 @@
 		1381E4A01824E7E800E815F5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = MBA;
+				CLASSPREFIX = MCG;
 				LastUpgradeCheck = 1240;
-				ORGANIZATIONNAME = "Chivalry Software";
+				ORGANIZATIONNAME = MacGesture;
 				TargetAttributes = {
 					1381E4A71824E7E800E815F5 = {
 						ProvisioningStyle = Automatic;
@@ -368,7 +368,7 @@
 				};
 			};
 			buildConfigurationList = 1381E4A31824E7E800E815F5 /* Build configuration list for PBXProject "MacGesture" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

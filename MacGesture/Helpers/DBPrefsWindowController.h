@@ -13,11 +13,18 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef NS_ENUM(NSUInteger, DBPrefsWindowResizing) {
+    DBPrefsWindowResizingLeftAnchored = 0,
+    DBPrefsWindowResizingCentered,
+    DBPrefsWindowResizingRightAnchored,
+};
+
 @interface DBPrefsWindowController : NSWindowController
 
 @property (nonatomic) BOOL crossFade;
 @property (nonatomic) BOOL shiftSlowsAnimation;
 @property (nonatomic) BOOL updateWindowTitle;
+@property (atomic) DBPrefsWindowResizing windowResizingBehavior;
 
 + (DBPrefsWindowController *)sharedPrefsWindowController;
 + (NSString *)nibName;

@@ -130,7 +130,7 @@ static CGFloat noteCornerRadius = 16;
     CGFloat menuBarHeight = 25;
 
     // Width + Height
-    CGFloat width = elmsCount * elmWidth;
+    CGFloat width = elmsCount * elmWidth + (elmsCount - 1) * paddingReserve;
     CGFloat height = elmHeight;
 
     // X position
@@ -268,12 +268,12 @@ static CGFloat noteCornerRadius = 16;
 //            }
 
             [scrollImage drawInRect:NSMakeRect(
-                beginx + index * scaledWidth + frac * scaledWidth, y - (frac - 0.5) * scaledHeight,
+                beginx + index * (scaledWidth + bgPadding) + frac * scaledWidth, y - (frac - 0.5) * scaledHeight,
                 scaledWidth * (1 - frac), scaledHeight * (1 - frac)
             ) fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0];
         }
 
-        [image drawInRect:NSMakeRect(beginx + index * scaledWidth, y, scaledWidth, scaledHeight)
+        [image drawInRect:NSMakeRect(beginx + index * (scaledWidth + bgPadding), y, scaledWidth, scaledHeight)
             fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0];
 
         index++;

@@ -121,6 +121,11 @@ static BOOL isBigSur = NO;
 ////    self.rulesPreferenceView.autoresizingMask |= NSViewWidthSizable | NSViewHeightSizable;
 }
 
+- (IBAction)aboutAuthorButtonPressed:(NSButton *)sender {
+    NSURL *url = [NSURL URLWithString:sender.alternateTitle];
+    if (url) [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
 - (void)checkAboutWebViewDisplay {
     if (_webView) return;
 
@@ -178,7 +183,10 @@ static BOOL isBigSur = NO;
         rect.origin.y -= 5; rect.size.height += 6;
         _gestureSizeSlider.frame = rect;
     }
-    
+
+    self.windowResizingBehavior = (isBigSur) ?
+        DBPrefsWindowResizingRightAnchored : DBPrefsWindowResizingCentered;
+
     NSString *language = [defaults arrayForKey:@"AppleLanguages"].firstObject;
     NSUInteger idx = ([languagesOrder containsObject:language]) ?
         [languagesOrder indexOfObject:language] : 0;
@@ -964,6 +972,9 @@ static NSString *currentScriptId = nil;
 
 @end
 
+#pragma mark -
+#pragma mark Vertically centered Text field cell
+
 @implementation VerticalTextFieldCell
 
 - (NSRect)titleRectForBounds:(NSRect)rect
@@ -988,10 +999,8 @@ static NSString *currentScriptId = nil;
 
 @end
 
-
-
-
-
+#pragma mark -
+#pragma mark Text view with placeholder
 
 @interface NSTextViewWithPlaceHolder: NSTextView
 

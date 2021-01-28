@@ -297,13 +297,23 @@
 
 // Calculate the window size for the new view.
 - (NSRect)frameForView:(NSView *)view{
-	NSRect windowFrame = [[self window] frame];
-	NSRect contentRect = [[self window] contentRectForFrameRect:windowFrame];
-	float windowTitleAndToolbarHeight = NSHeight(windowFrame) - NSHeight(contentRect);
+    NSRect windowFrame = self.window.frame;
+	NSRect contentRect = [self.window contentRectForFrameRect:windowFrame];
+	CGFloat windowTitleAndToolbarHeight = NSHeight(windowFrame) - NSHeight(contentRect);
 
-	windowFrame.size.height = NSHeight([view frame]) + windowTitleAndToolbarHeight;
-	windowFrame.size.width = NSWidth([view frame]);
-	windowFrame.origin.y = NSMaxY([[self window] frame]) - NSHeight(windowFrame);
+    CGFloat x = windowFrame.origin.x;
+
+    if (_windowResizingBehavior != DBPrefsWindowResizingLeftAnchored) {
+        CGFloat diff = NSWidth(contentRect) - NSWidth(view.frame);
+        if (_windowResizingBehavior == DBPrefsWindowResizingRightAnchored)
+            x += diff;
+        else x += diff/2;
+    }
+
+	windowFrame.size.height = NSHeight(view.frame) + windowTitleAndToolbarHeight;
+	windowFrame.size.width = NSWidth(view.frame);
+	windowFrame.origin.y = NSMaxY(self.window.frame) - NSHeight(windowFrame);
+    windowFrame.origin.x = x;
 	
 	return windowFrame;
 }
