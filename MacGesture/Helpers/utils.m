@@ -1,4 +1,5 @@
 
+#import <Cocoa/Cocoa.h>
 #import "utils.h"
 
 NSString *frontBundleName(void) {

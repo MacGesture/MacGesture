@@ -114,7 +114,10 @@
       <title>Version 3.0</title>
       <sparkle:releaseNotesLink>https://raw.githubusercontent.com/MacGesture/MacGesture/master/Changelog/3.0.html</sparkle:releaseNotesLink>
       <pubDate>Sat, 30 Jan 2021 12:00:00 +0100</pubDate>
-      <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/3.0.0/MacGesture-3.0.0.zip" sparkle:shortVersionString="3.0" sparkle:version="152" length="2496008" type="application/octet-stream" sparkle:edSignature="q44R9gt+EB9BZrDsgzSR1Mioiqb0hSyzvZd81WM9gum1FOIzjvNsblNeEoNKz4gaQzahNkw0AuORgOAedKRtBg==" sparkle:dsaSignature="MC0CFGHZEpTrGv7FMfer6v5w1n3+yTq9AhUA0pdFHh9QP+KyckjXZL4zvNoYgms=" />
+      <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/3.0.0/MacGesture-3.0.0.zip"
+        sparkle:shortVersionString="3.0.0" sparkle:version="182" length="2496008" type="application/octet-stream"
+        sparkle:edSignature="q44R9gt+EB9BZrDsgzSR1Mioiqb0hSyzvZd81WM9gum1FOIzjvNsblNeEoNKz4gaQzahNkw0AuORgOAedKRtBg=="
+        sparkle:dsaSignature="MC0CFGHZEpTrGv7FMfer6v5w1n3+yTq9AhUA0pdFHh9QP+KyckjXZL4zvNoYgms=" />
       <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
     </item>
   </channel>

@@ -1,4 +1,5 @@
-#import <AppKit/AppKit.h>
+
+#import <Cocoa/Cocoa.h>
 
 @interface CanvasWindow : NSWindow
 

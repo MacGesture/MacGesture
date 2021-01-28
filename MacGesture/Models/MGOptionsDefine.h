@@ -1,5 +1,5 @@
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 #define OPTIONS_LINE_COLOR_ID @"lineColor"
 #define OPTIONS_PREVIEW_COLOR_ID @"previewColor"

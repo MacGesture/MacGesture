@@ -3,7 +3,7 @@
 // Copyright (c) 2015 MacGesture. All rights reserved.
 //
 
-
+#import <Cocoa/Cocoa.h>
 #import "RulesList.h"
 #import "AppleScriptsList.h"
 #import <Carbon/Carbon.h>

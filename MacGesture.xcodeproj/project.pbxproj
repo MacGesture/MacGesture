@@ -59,7 +59,6 @@
 		1381E4AB1824E7E800E815F5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1381E4B31824E7E800E815F5 /* MacGesture-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacGesture-Info.plist"; sourceTree = "<group>"; };
 		1381E4B71824E7E800E815F5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; usesTabs = 0; };
-		1381E4B91824E7E800E815F5 /* MacGesture-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MacGesture-Prefix.pch"; sourceTree = "<group>"; };
 		1381E4BD1824E7E800E815F5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppDelegate.h; sourceTree = "<group>"; usesTabs = 0; };
 		1381E4BE1824E7E800E815F5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; usesTabs = 0; };
 		1381E4C31824E7E800E815F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -204,7 +203,6 @@
 			children = (
 				EF4E72C5249ABAE00095B982 /* Config.xcconfig */,
 				1381E4B31824E7E800E815F5 /* MacGesture-Info.plist */,
-				1381E4B91824E7E800E815F5 /* MacGesture-Prefix.pch */,
 				1381E4B71824E7E800E815F5 /* main.m */,
 			);
 			path = "Supporting Files";
@@ -621,6 +619,8 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_NS_ASSERTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -677,6 +677,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -684,6 +686,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -693,16 +696,14 @@
 			baseConfigurationReference = B8BB5D7B835E0DF34F8BA0D6 /* Pods-MacGesture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MacGesture/MacGesture.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "$(PRODUCT)/$(PRODUCT).entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
-				INFOPLIST_FILE = "MacGesture/Supporting Files/MacGesture-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "$(PRODUCT)/Supporting Files/$(PRODUCT)-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE)";
+				PRODUCT_NAME = "$(PRODUCT)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -712,16 +713,14 @@
 			baseConfigurationReference = DB275F9AADC2DB3FB7986EF0 /* Pods-MacGesture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MacGesture/MacGesture.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "$(PRODUCT)/$(PRODUCT).entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
-				INFOPLIST_FILE = "MacGesture/Supporting Files/MacGesture-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "$(PRODUCT)/Supporting Files/$(PRODUCT)-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE)";
+				PRODUCT_NAME = "$(PRODUCT)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
@@ -729,21 +728,15 @@
 		1381E4DD1824E7E800E815F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MacGesture.app/Contents/MacOS/MacGesture";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/$(PRODUCT).app/Contents/MacOS/$(PRODUCT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "MacGestureTests/Supporting Files/MacGestureTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "$(PRODUCT)Tests/Supporting Files/$(PRODUCT)Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE)Tests";
+				PRODUCT_NAME = "$(PRODUCT)Tests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -752,17 +745,15 @@
 		1381E4DE1824E7E800E815F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MacGesture.app/Contents/MacOS/MacGesture";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/$(PRODUCT).app/Contents/MacOS/$(PRODUCT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
-				INFOPLIST_FILE = "MacGestureTests/Supporting Files/MacGestureTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "$(PRODUCT)Tests/Supporting Files/$(PRODUCT)Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE)Tests";
+				PRODUCT_NAME = "$(PRODUCT)Tests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

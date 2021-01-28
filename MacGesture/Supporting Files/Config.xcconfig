@@ -9,5 +9,7 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-APP_VERSION    = 3.0
-APP_BUILD      = 152
+PRODUCT        = MacGesture
+APP_BUNDLE     = com.codefalling.$(PRODUCT:rfc1034identifier)
+APP_VERSION    = 3.0.0
+APP_BUILD      = 182
