@@ -1,6 +1,6 @@
 //
 // Created by zcw on 15/12/15.
-// Copyright (c) 2015 Chivalry Software. All rights reserved.
+// Copyright (c) 2015 MacGesture. All rights reserved.
 //
 
 #import "BlockAllowFilter.h"

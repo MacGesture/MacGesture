@@ -29,7 +29,7 @@
 "354.title" = "显示手势预览";
 
 /* Class = "NSTextFieldCell"; title = "Author:"; ObjectID = "357"; */
-"357.title" = "作者： code.falling@gmail.com";
+"357.title" = "作者：";
 
 /* Class = "NSButtonCell"; title = "Show Mouse Path"; ObjectID = "400"; */
 "400.title" = "不绘制鼠标路径";

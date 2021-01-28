@@ -348,7 +348,6 @@ static CGFloat noteCornerRadius = 16;
     // Draw gesture note
     if ([_defaults boolForKey:@"showGestureNote"])
         [self drawNote];
-
 }
 
 - (void)drawMouseLine {
@@ -391,7 +390,6 @@ static CGFloat noteCornerRadius = 16;
     self.needsDisplay = YES;
 }
 
-
 - (void)mouseDown:(NSEvent *)event {
 //    // Debugging
 //    [self refreshColors];
@@ -408,7 +406,9 @@ static CGFloat noteCornerRadius = 16;
 #endif
     _points = @[ [NSValue valueWithPoint:_lastLocation] ];
 
+#ifdef DEBUG
     NSLog(@"%@", NSStringFromPoint(_lastLocation));
+#endif
 }
 
 - (void)mouseDragged:(NSEvent *)event {
@@ -426,15 +426,11 @@ static CGFloat noteCornerRadius = 16;
     _points = [_points arrayByAddingObject:[NSValue valueWithPoint:newLocation]];
     _lastLocation = newLocation;
 
-//    [self setNeedsDisplayInRect:NSMakeRect(fmin(lastLocation.x - radius, newLocation.x - radius),
-//                                           fmin(lastLocation.y - radius, newLocation.y - radius),
-//                                           abs(newLocation.x - lastLocation.x) + radius * 2,
-//                                           abs(newLocation.y - lastLocation.y) + radius * 2)];
     self.needsDisplay = YES;
 }
 
 - (void)setEnable:(BOOL)shouldEnable {
-    // No op. Supress warning and avoid possible selector not found errors.
+    // No-op. Suppress warning and avoid possible selector not found errors.
 }
 
 - (void)mouseUp:(NSEvent *)event {

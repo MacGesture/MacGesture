@@ -3,7 +3,7 @@
 //  MenuBarApp
 //
 //  Created by Charles Ross on 11/2/13.
-//  Copyright (c) 2013 Chivalry Software. All rights reserved.
+//  Copyright (c) 2013 MacGesture. All rights reserved.
 //
 
 int main(int argc, const char *argv[]) {

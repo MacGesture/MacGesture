@@ -1,3 +1,3 @@
 #!/bin/sh
-markdown < README.md > ./MacGesture/Resources/en.lproj/README.html
+markdown < README.md > ./MacGesture/Resources/Base.lproj/README.html
 cp logo.png ./MacGesture/Resources

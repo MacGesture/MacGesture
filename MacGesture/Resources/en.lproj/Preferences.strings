@@ -29,7 +29,7 @@
 "354.title" = "Show Gesture Preview";
 
 /* Class = "NSTextFieldCell"; title = "Author:"; ObjectID = "357"; */
-"357.title" = "Author: code.falling@gmail.com";
+"357.title" = "Author:";
 
 /* Class = "NSButtonCell"; title = "Show Mouse Path"; ObjectID = "400"; */
 "400.title" = "Show Mouse Path";
@@ -182,7 +182,7 @@
 "YZQ-P5-4Yq.title" = "Open Preferences Window Upon Activation";
 
 /* Class = "NSButtonCell"; title = "Check for Updates…"; ObjectID = "Z4w-5n-8OX"; */
-"Z4w-5n-8OX.title" = "Check Now";
+"Z4w-5n-8OX.title" = "Check for Updates…";
 
 /* Class = "NSBox"; title = "General"; ObjectID = "zLw-Oi-GBf"; */
 "zLw-Oi-GBf.title" = "General";

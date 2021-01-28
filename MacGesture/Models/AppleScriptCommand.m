@@ -3,7 +3,7 @@
 //  MacGesture
 //
 //  Created by MacBookAir on 1/25/17.
-//  Copyright © 2017 Chivalry Software. All rights reserved.
+//  Copyright © 2017 MacGesture. All rights reserved.
 //
 
 #import "AppleScriptCommand.h"

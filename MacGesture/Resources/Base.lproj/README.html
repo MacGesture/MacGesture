@@ -289,6 +289,21 @@ sup {
     vertical-align: super;
     line-height: 0;
 }
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
 * {
 	-webkit-print-color-adjust: exact;
 }
@@ -305,6 +320,9 @@ sup {
 	pre {
 		word-wrap: break-word;
 	}
+  body {
+    padding: 2cm; 
+  }
 }
 </style>
 
@@ -313,26 +331,24 @@ sup {
 
 <body>
 
-<h1 id="toc_0">MacGesture <img src="https://img.shields.io/twitter/url/https/github.com/username0x0a/MacGesture.svg?style=social" alt="tweet"></h1>
+<h1 id="toc_0">MacGesture</h1>
 
-<p><img src="https://raw.githubusercontent.com/username0x0a/MacGesture/master/logo.png" alt="logo"></p>
+<p><img src="https://raw.githubusercontent.com/MacGesture/MacGesture/master/logo.png" alt="logo"></p>
 
 <p>Configurable global mouse gestures for macOS.</p>
-
-<p><strong>Some issues may still occur on macOS High Sierra and newer. Please file issues if possible! 🙌</strong></p>
 
 <p>You can read this README in About section of the App Preferences.</p>
 
 <h1 id="toc_1">Download</h1>
 
-<p>Download the latest ZIP release from <a href="https://github.com/username0x0a/MacGesture/releases">GitHub releases</a> page.</p>
+<p>Download the latest ZIP release from <a href="https://github.com/MacGesture/MacGesture/releases">GitHub releases</a> page.</p>
 
 <h1 id="toc_2">Features</h1>
 
 <ul>
-<li><p>Global mouse gestures recognition</p></li>
-<li><p>App filtering based on bundle identifiers</p></li>
-<li><p>Configure and invoke shortcut by gesture</p></li>
+<li>Global mouse gestures recognition</li>
+<li>Configurable shortcut invocation by gesture</li>
+<li>App filtering based on bundle identifiers</li>
 </ul>
 
 <h1 id="toc_3">Gestures Format</h1>
@@ -341,38 +357,38 @@ sup {
 <thead>
 <tr>
 <th>Gesture</th>
-<th>Acronym</th>
+<th style="text-align: center">Acronym</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>Left</td>
-<td><code>L</code></td>
+<td>Move Left</td>
+<td style="text-align: center"><code>L</code></td>
 </tr>
 <tr>
-<td>Up</td>
-<td><code>U</code></td>
+<td>Move Up</td>
+<td style="text-align: center"><code>U</code></td>
 </tr>
 <tr>
-<td>Right</td>
-<td><code>R</code></td>
+<td>Move Right</td>
+<td style="text-align: center"><code>R</code></td>
 </tr>
 <tr>
-<td>Down</td>
-<td><code>D</code></td>
+<td>Move Down</td>
+<td style="text-align: center"><code>D</code></td>
 </tr>
 <tr>
-<td>Mouse L</td>
-<td><code>Z</code></td>
+<td>Left Button</td>
+<td style="text-align: center"><code>Z</code></td>
 </tr>
 <tr>
-<td>Wheel U</td>
-<td><code>u</code></td>
+<td>Wheel Up</td>
+<td style="text-align: center"><code>u</code></td>
 </tr>
 <tr>
-<td>Wheel D</td>
-<td><code>d</code></td>
+<td>Wheel Dp</td>
+<td style="text-align: center"><code>d</code></td>
 </tr>
 </tbody>
 </table>
@@ -381,18 +397,18 @@ sup {
 
 <p>The first rule matching will take effect.</p>
 
-<p><code>Z</code> is the acronym of pinyin of &#39;左&#39; which means &#39;left&#39; in English. So to distinguish &#39;clicking the left mouse button&#39; from &#39;dragging your mouse to the left&#39;, we chose <code>Z</code>.</p>
+<p><code>Z</code> is the acronym of pinyin of <code>左</code> which means “left” in English. So to distinguish <em>clicking the left mouse button</em> from <em>dragging your mouse to the left</em>, we chose letter <code>Z</code>.</p>
 
-<p>Wheel directions may vary according to system configuration (Natural scroll direction) or some system tweaks (Karabiner&#39;s Reverse Vertical Scrolling, for example).</p>
+<p>Wheel directions may vary according to system configuration (Natural scroll direction setting) or some system tweaks (Karabiner&#39;s Reverse Vertical Scrolling, for example).</p>
 
 <h1 id="toc_4">Known Issues</h1>
 
-<h3 id="toc_5">Right click does not work in some Java applications.</h3>
+<h3 id="toc_5">Right click does not work in some Java applications</h3>
 
 <p>An imperfect fix:
-Take WebStorm for example, open Preferences, then KeyMap, set the shortcut of &quot;Show Context Menu&quot; to &quot;Button3 Click&quot;</p>
+Take WebStorm for example, open Preferences, then KeyMap, set the shortcut of “Show Context Menu” to <code>Button3 Click</code>.</p>
 
-<h3 id="toc_6">Cannot assign some system-wide shortcuts to rules.</h3>
+<h3 id="toc_6">Cannot assign some system-wide shortcuts to rules</h3>
 
 <p>Reason:
 macOS respond to system-wide shortcuts before MacGesture.</p>
@@ -401,46 +417,104 @@ macOS respond to system-wide shortcuts before MacGesture.</p>
 Disable the shortcut first (for example in System Preferences → Keyboard → Shortcuts), then assign the shortcut in MacGesture, and re-enable the shortcut.</p>
 
 <p>Caveats:
-Some shortcuts still do not work with the fix above. When you are encountering this, here are two possible solutions:
-1. Change them to others (e.g. Control+0, Control+9).
-2. Tick &quot;Invert Fn When Control Is Pressed&quot;.</p>
+Some shortcuts still don&#39;t work with the fix above. When you are encountering this, here are two possible solutions:</p>
+
+<ul>
+<li>Change them to others (e.g. ⌃0, ⌃9).</li>
+<li>Tick “Invert Fn When Control Is Pressed” option.</li>
+</ul>
 
 <h1 id="toc_7">Tips</h1>
 
 <h3 id="toc_8">Mouse scroll gesture example</h3>
 
-<p>Right click, drag upwards, then every &#39;u&#39; triggers a &#39;Next Tab&#39;, every &#39;d&#39; triggers a &#39;Prev Tab&#39;, without releasing right mouse.</p>
-
-<p>Then, create a rule like this:</p>
+<p>The following table covers probably the most basic scenario of usage:</p>
 
 <table>
 <thead>
 <tr>
-<th>Gesture</th>
-<th>Filter</th>
-<th>Action</th>
-<th>Note</th>
-<th>Trigger on every match</th>
+<th style="text-align: center">Gesture</th>
+<th style="text-align: left">Filter</th>
+<th style="text-align: center">Action</th>
+<th style="text-align: center">Note</th>
+<th style="text-align: left">Trigger on every match</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>U*d</td>
-<td>*safari|*chrome</td>
-<td>&quot;shift-command-]&quot;</td>
-<td>&quot;Next Tab&quot;</td>
-<td>Checked</td>
+<td style="text-align: center"><code>D</code></td>
+<td style="text-align: left"><code>*safari|*chrome</code></td>
+<td style="text-align: center">⌘T</td>
+<td style="text-align: center">New Tab</td>
+<td style="text-align: left">–</td>
 </tr>
 <tr>
-<td>U*u</td>
-<td>*safari|*chrome</td>
-<td>&quot;shift-command-[&quot;</td>
-<td>&quot;Prev Tab&quot;</td>
-<td>Checked</td>
+<td style="text-align: center"><code>DR</code></td>
+<td style="text-align: left"><code>*safari|*chrome</code></td>
+<td style="text-align: center">⌘W</td>
+<td style="text-align: center">Close</td>
+<td style="text-align: left">–</td>
 </tr>
 </tbody>
 </table>
+
+<p>By setting these rules, you can empower mouse gestures to open new and close currently focused tabs in Sarari and Chrome Browsers. Simply:</p>
+
+<ul>
+<li>press the right button, drag mouse down, and release
+
+<ul>
+<li>opens a new tab in the current browser window</li>
+</ul></li>
+<li>press the right button, drag mouse down, then to the right, and release
+
+<ul>
+<li>this will result in closing the currently focused tab in the active browser window</li>
+</ul></li>
+</ul>
+
+<p>How neat! 🙌</p>
+
+<p>Now, to quickly cycle between the selected tabs even without releasing the right mouse button, you can set the gesture to be triggered on every match using the checkbox at the end of the Rule line.</p>
+
+<p>So by defining the following rules:</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">Gesture</th>
+<th style="text-align: left">Filter</th>
+<th style="text-align: center">Action</th>
+<th style="text-align: center">Note</th>
+<th style="text-align: left">Trigger on every match</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center"><code>U*u</code></td>
+<td style="text-align: left"><code>*safari|*chrome</code></td>
+<td style="text-align: center">⇧⌘[</td>
+<td style="text-align: center">Prev Tab</td>
+<td style="text-align: left">Checked</td>
+</tr>
+<tr>
+<td style="text-align: center"><code>U*d</code></td>
+<td style="text-align: left"><code>*safari|*chrome</code></td>
+<td style="text-align: center">⇧⌘]</td>
+<td style="text-align: center">Next Tab</td>
+<td style="text-align: left">Checked</td>
+</tr>
+</tbody>
+</table>
+
+<p>you can simply:</p>
+
+<ul>
+<li>right click, drag mouse upwards, and every <code>u</code> (mouse wheel scroll up) triggers a <strong>Prev Tab</strong> action</li>
+<li>right click, drag mouse upwards, and every <code>d</code> (mouse wheel scroll down) triggers a <strong>Next Tab</strong> action.</li>
+</ul>
 
 <h3 id="toc_9">Exporting and importing MacGesture preferences</h3>
 
@@ -469,21 +543,21 @@ Some shortcuts still do not work with the fix above. When you are encountering t
 <table>
 <thead>
 <tr>
-<th>Gesture</th>
-<th>Filter</th>
-<th>Action</th>
-<th>Note</th>
-<th>Trigger on every match</th>
+<th style="text-align: center">Gesture</th>
+<th style="text-align: left">Filter</th>
+<th style="text-align: center">Action</th>
+<th style="text-align: center">Note</th>
+<th style="text-align: left">Trigger on every match</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>U*d</td>
-<td>*</td>
-<td>&quot;shift-command-]&quot;</td>
-<td>&quot;Next Tab&quot;</td>
-<td>Checked</td>
+<td style="text-align: center"><code>U*d</code></td>
+<td style="text-align: left"><code>*</code></td>
+<td style="text-align: center">⇧⌘]</td>
+<td style="text-align: center">Next Tab</td>
+<td style="text-align: left">Checked</td>
 </tr>
 </tbody>
 </table>
@@ -493,21 +567,21 @@ Some shortcuts still do not work with the fix above. When you are encountering t
 <table>
 <thead>
 <tr>
-<th>Gesture</th>
-<th>Filter</th>
-<th>Action</th>
-<th>Note</th>
-<th>Trigger on every match</th>
+<th style="text-align: center">Gesture</th>
+<th style="text-align: left">Filter</th>
+<th style="text-align: center">Action</th>
+<th style="text-align: center">Note</th>
+<th style="text-align: left">Trigger on every match</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>U*d</td>
-<td>*|!*safari</td>
-<td>&quot;shift-command-]&quot;</td>
-<td>&quot;Next Tab&quot;</td>
-<td>Checked</td>
+<td style="text-align: center"><code>U*d</code></td>
+<td style="text-align: left"><code>*|!*safari</code></td>
+<td style="text-align: center">⇧⌘]</td>
+<td style="text-align: center">Next Tab</td>
+<td style="text-align: left">Checked</td>
 </tr>
 </tbody>
 </table>
@@ -516,7 +590,7 @@ Some shortcuts still do not work with the fix above. When you are encountering t
 
 <h1 id="toc_13">Found a Bug?</h1>
 
-<p>Feel free to open <a href="https://github.com/username0x0a/MacGesture/issues">an issue on GitHub</a>! 👍</p>
+<p>Feel free to open <a href="https://github.com/MacGesture/MacGesture/issues">an issue on GitHub</a>! 👍</p>
 
 <h1 id="toc_14">License</h1>
 
@@ -527,7 +601,7 @@ Some shortcuts still do not work with the fix above. When you are encountering t
 <h1 id="toc_15">Contributors</h1>
 
 <ul>
-<li><a href="https://github.com/codefalling">CodeFalling</a> – original author</li>
+<li><a href="https://github.com/xcodebuild">CodeFalling</a> – original author</li>
 <li><a href="https://github.com/username0x0a">username0x0a</a> – maintainer</li>
 <li><a href="https://github.com/jiegec">jiegec</a></li>
 <li><a href="https://github.com/zhangciwu">zhangciwu</a></li>

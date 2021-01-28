@@ -22,6 +22,7 @@
 		26418E623E410EF207EFA2A8 /* RulesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418733B12703C123D16E95 /* RulesList.m */; };
 		3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */; };
 		3CDC5543D4E5BD248515F7CA /* BlockAllowFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC55835ADD1CA85B9CCC91 /* BlockAllowFilter.m */; };
+		3F27E5B397E8FBC9824D259E /* Pods_MacGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D969966A19E929C25549B82 /* Pods_MacGesture.framework */; };
 		880AA7571CA5738A006E7A74 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7591CA5738A006E7A74 /* Preferences.xib */; };
 		880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */; };
 		880AA7651CA5745D006E7A74 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75F1CA5745D006E7A74 /* Credits.rtf */; };
@@ -32,11 +33,11 @@
 		887E09251C8B0FD0003A4CC0 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */; };
 		88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = 8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript-src */; };
 		88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = 88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */; };
-		AD2A27AE66A5D1C335139B5B /* Pods_MacGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */; };
 		B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */; };
 		BB004AFA25BD001900A7373F /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB004AF825BD001900A7373F /* DBPrefsWindowController.m */; };
 		BB004AFF25BDA30300A7373F /* ComboColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB004AFE25BDA30300A7373F /* ComboColorWell.m */; };
 		BBC1C8E625BCCDC600DE6816 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC1C8E525BCCDC600DE6816 /* WebKit.framework */; };
+		BBCB97CD25C36F3C0020592A /* SUUpdaterPublicKey.pem in Resources */ = {isa = PBXBuildFile; fileRef = BBCB97CC25C36F3C0020592A /* SUUpdaterPublicKey.pem */; };
 		C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C610961B1DED98C700FCC263 /* CoreImage.framework */; };
 		D065A3CA1D18155E0062900A /* SearchInWeb.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */; };
 		D09FDBF51E06CDB50085FC36 /* README.html in Resources */ = {isa = PBXBuildFile; fileRef = D09FDBF31E06CDB50085FC36 /* README.html */; };
@@ -64,7 +65,6 @@
 		1381E4C31824E7E800E815F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1381E4D11824E7E800E815F5 /* MacGestureTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacGestureTests-Info.plist"; sourceTree = "<group>"; };
 		1381E4D51824E7E800E815F5 /* MacGestureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MacGestureTests.m; sourceTree = "<group>"; usesTabs = 0; };
-		1ACB654207F7BCBC992336E4 /* Pods-MacGesture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture.debug.xcconfig"; sourceTree = "<group>"; };
 		264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SRRecorderControlWithTagid.m; sourceTree = "<group>"; usesTabs = 0; };
 		2641846D9674154891849969 /* SRRecorderControlWithTagid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SRRecorderControlWithTagid.h; sourceTree = "<group>"; usesTabs = 0; };
 		264184868E6F3B7E8747AAA2 /* AppPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppPrefsWindowController.h; sourceTree = "<group>"; usesTabs = 0; };
@@ -83,7 +83,7 @@
 		3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MGOptionsDefine.h; sourceTree = "<group>"; usesTabs = 0; };
 		3CDC5A614857FE77ADFEA4C8 /* BlockAllowFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BlockAllowFilter.h; sourceTree = "<group>"; usesTabs = 0; };
 		3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MGOptionsDefine.m; sourceTree = "<group>"; usesTabs = 0; };
-		866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacGesture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D969966A19E929C25549B82 /* Pods_MacGesture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacGesture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		880AA7751CA64DDB006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		880AA7781CA64E62006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AppPickerWindowController.xib; sourceTree = "<group>"; };
 		880AA77A1CA64E7C006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -96,6 +96,7 @@
 		88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "OpenMacGesturePreferences.applescript-src"; sourceTree = "<group>"; };
 		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppPickerWindowController.h; sourceTree = "<group>"; usesTabs = 0; };
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppPickerWindowController.m; sourceTree = "<group>"; usesTabs = 0; };
+		B8BB5D7B835E0DF34F8BA0D6 /* Pods-MacGesture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.debug.xcconfig"; path = "Target Support Files/Pods-MacGesture/Pods-MacGesture.debug.xcconfig"; sourceTree = "<group>"; };
 		BB004AF825BD001900A7373F /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
 		BB004AF925BD001900A7373F /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
 		BB004AFD25BDA30300A7373F /* ComboColorWell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComboColorWell.h; sourceTree = "<group>"; };
@@ -105,6 +106,7 @@
 		BBC1C8C725BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppPickerWindowController.strings"; sourceTree = "<group>"; };
 		BBC1C8C825BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BBC1C8E525BCCDC600DE6816 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		BBCB97CC25C36F3C0020592A /* SUUpdaterPublicKey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SUUpdaterPublicKey.pem; sourceTree = "<group>"; };
 		C610961B1DED98C700FCC263 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		D02885E11EF29CDE0082A660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SearchInWeb.applescript-src"; sourceTree = "<group>"; };
@@ -118,7 +120,7 @@
 		D6B1318B249E54D00014F55E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		D6B1318D249E54E10014F55E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppPickerWindowController.strings; sourceTree = "<group>"; };
 		D6B1318F249E55C90014F55E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
-		E051A121D93E759C89CE3094 /* Pods-MacGesture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture.release.xcconfig"; sourceTree = "<group>"; };
+		DB275F9AADC2DB3FB7986EF0 /* Pods-MacGesture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.release.xcconfig"; path = "Target Support Files/Pods-MacGesture/Pods-MacGesture.release.xcconfig"; sourceTree = "<group>"; };
 		EF4E7293249AAF960095B982 /* MacGesture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacGesture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4E72C5249ABAE00095B982 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		EF8ECEC8249EC5F2004C2563 /* MacGesture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacGesture.entitlements; sourceTree = "<group>"; };
@@ -132,7 +134,7 @@
 				C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */,
 				1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */,
 				BBC1C8E625BCCDC600DE6816 /* WebKit.framework in Frameworks */,
-				AD2A27AE66A5D1C335139B5B /* Pods_MacGesture.framework in Frameworks */,
+				3F27E5B397E8FBC9824D259E /* Pods_MacGesture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,9 +154,9 @@
 			children = (
 				1381E4B11824E7E800E815F5 /* MacGesture */,
 				1381E4CF1824E7E800E815F5 /* MacGestureTests */,
-				CCE209CCED2C3EF90609FF7E /* Pods */,
 				1381E4AA1824E7E800E815F5 /* Frameworks */,
 				1381E4A91824E7E800E815F5 /* Products */,
+				E06E22524ADF3886B4BC27CB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,7 +177,7 @@
 				C610961B1DED98C700FCC263 /* CoreImage.framework */,
 				D6B13186249E54330014F55E /* Foundation.framework */,
 				BBC1C8E525BCCDC600DE6816 /* WebKit.framework */,
-				866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */,
+				7D969966A19E929C25549B82 /* Pods_MacGesture.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -240,6 +242,7 @@
 				880AA7721CA57884006E7A74 /* Localizable.strings */,
 				880AA75F1CA5745D006E7A74 /* Credits.rtf */,
 				D09FDBF31E06CDB50085FC36 /* README.html */,
+				BBCB97CC25C36F3C0020592A /* SUUpdaterPublicKey.pem */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -261,13 +264,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		CCE209CCED2C3EF90609FF7E /* Pods */ = {
+		E06E22524ADF3886B4BC27CB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1ACB654207F7BCBC992336E4 /* Pods-MacGesture.debug.xcconfig */,
-				E051A121D93E759C89CE3094 /* Pods-MacGesture.release.xcconfig */,
+				B8BB5D7B835E0DF34F8BA0D6 /* Pods-MacGesture.debug.xcconfig */,
+				DB275F9AADC2DB3FB7986EF0 /* Pods-MacGesture.release.xcconfig */,
 			);
-			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		EF4E721E249A880A0095B982 /* Controllers */ = {
@@ -316,12 +319,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1381E4D91824E7E800E815F5 /* Build configuration list for PBXNativeTarget "MacGesture" */;
 			buildPhases = (
-				67400C116298A8804058BA6A /* [CP] Check Pods Manifest.lock */,
+				237E7048FBA3C44743A62A1C /* [CP] Check Pods Manifest.lock */,
 				1381E4A41824E7E800E815F5 /* Sources */,
 				1381E4A51824E7E800E815F5 /* Frameworks */,
 				1381E4A61824E7E800E815F5 /* Resources */,
-				C2CC8958184B6BE82579F7B1 /* [CP] Embed Pods Frameworks */,
 				D02885E91EF29E1B0082A660 /* Update Translations */,
+				D04D17BB4E5D9DB1C8145C08 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -403,6 +406,7 @@
 				880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */,
 				880AA7571CA5738A006E7A74 /* Preferences.xib in Resources */,
 				D0B19D421E3841FD00619F4A /* AppleScript.sdef in Resources */,
+				BBCB97CD25C36F3C0020592A /* SUUpdaterPublicKey.pem in Resources */,
 				887E09251C8B0FD0003A4CC0 /* DefaultPreferences.plist in Resources */,
 				880AA7651CA5745D006E7A74 /* Credits.rtf in Resources */,
 			);
@@ -418,42 +422,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		67400C116298A8804058BA6A /* [CP] Check Pods Manifest.lock */ = {
+		237E7048FBA3C44743A62A1C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-MacGesture-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C2CC8958184B6BE82579F7B1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ShortcutRecorder/ShortcutRecorder.framework",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ShortcutRecorder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D02885E91EF29E1B0082A660 /* Update Translations */ = {
@@ -469,6 +457,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which bartycrouch > /dev/null; then\n    bartycrouch update\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\n    echo \"         or using Homebrew by running `brew install bartycrouch` command\"\nfi\n";
+		};
+		D04D17BB4E5D9DB1C8145C08 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -685,7 +690,7 @@
 		};
 		1381E4DA1824E7E800E815F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1ACB654207F7BCBC992336E4 /* Pods-MacGesture.debug.xcconfig */;
+			baseConfigurationReference = B8BB5D7B835E0DF34F8BA0D6 /* Pods-MacGesture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MacGesture/MacGesture.entitlements;
@@ -704,7 +709,7 @@
 		};
 		1381E4DB1824E7E800E815F5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E051A121D93E759C89CE3094 /* Pods-MacGesture.release.xcconfig */;
+			baseConfigurationReference = DB275F9AADC2DB3FB7986EF0 /* Pods-MacGesture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MacGesture/MacGesture.entitlements;
