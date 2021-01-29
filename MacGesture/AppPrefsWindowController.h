@@ -33,5 +33,6 @@
 
 @property (weak) IBOutlet NSButton *autoStartAtLogin;
 
+@property (weak) IBOutlet NSTextField *versionCode;
 
 @end

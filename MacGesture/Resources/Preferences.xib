@@ -21,6 +21,7 @@
                 <outlet property="showGesturePreview" destination="353" id="355"/>
                 <outlet property="updater" destination="360" id="364"/>
                 <outlet property="updatesPreferenceView" destination="68" id="148"/>
+                <outlet property="versionCode" destination="Sfx-R9-Aqx" id="VHO-vz-PZV"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -337,11 +338,21 @@
                         <outlet property="nextKeyView" destination="70" id="368"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="358">
-                    <rect key="frame" x="107" y="41" width="86" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Sfx-R9-Aqx">
+                    <rect key="frame" x="147" y="41" width="86" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version:2.0.5" id="359">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="code" id="fyQ-X1-a5o">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="358">
+                    <rect key="frame" x="92" y="41" width="86" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version:" id="359">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
