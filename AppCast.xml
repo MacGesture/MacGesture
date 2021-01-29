@@ -75,14 +75,15 @@
           <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
   </item>
 
-  <item>
-          <title>Version 2.1.0</title>
+    <item>
+          <title>Version 2.1.1</title>
           <sparkle:releaseNotesLink>
-            https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changelog/2.1.0.html
+            https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changelog/2.1.1.html
           </sparkle:releaseNotesLink>
-          <pubDate>2016-04-20 22:10 +8</pubDate>
-          <enclosure url="https://github.com/CodeFalling/MacGesture/releases/download/2.1.0/MacGesture-2.1.0.zip" sparkle:version="2.1.0" length="1586800" type="application/octet-stream" sparkle:dsaSignature="MCwCFG38qM7h4kyFBLogRuWuknwXTEuyAhRN0JJ8hXSdPz1q8xsoMO3oSJ7cRw==" />
+          <pubDate>2016-04-25 22:41 +8</pubDate>
+          <enclosure url="https://github.com/CodeFalling/MacGesture/releases/download/2.1.1/MacGesture-2.1.1.zip" sparkle:version="2.1.1" length="1589313" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCxlDmNxAmes+q9adgQvKAinF8fGgIUbAydp2oVv26i/s9NwUVhaqAqyrA=" />
           <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
   </item>
+  
     </channel>
 </rss>

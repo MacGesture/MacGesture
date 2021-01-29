@@ -10,7 +10,7 @@
 
 @class LaunchAtLoginController;
 
-@interface AppPrefsWindowController : DBPrefsWindowController <NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate, NSTextFieldDelegate, AppPickerCallback, NSComboBoxDataSource>
+@interface AppPrefsWindowController : DBPrefsWindowController <NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate, NSTextFieldDelegate, AppPickerCallback, NSComboBoxDataSource, NSWindowDelegate>
 
 @property(strong, nonatomic) IBOutlet NSView *generalPreferenceView;
 @property(strong, nonatomic) IBOutlet NSView *rulesPreferenceView;
@@ -33,7 +33,7 @@
 @property(weak) IBOutlet NSButton *changeRulesWindowSizeButton;
 @property(weak) IBOutlet NSButton *changeFiltersWindowSizeButton;
 @property(weak) IBOutlet NSButton *editInExternalEditorButton;
-@property(weak) IBOutlet NSButton *loadAppleScriptExampleButton;
+@property(weak) IBOutlet NSPopUpButton *loadAppleScriptExampleButton;
 @property(weak) IBOutlet NSButton *addAppleScriptButton;
 @property(weak) IBOutlet NSButton *removeAppleScriptButton;
 @property(weak) IBOutlet NSTextField *fontNameTextField;

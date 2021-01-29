@@ -107,16 +107,14 @@ static AppPrefsWindowController *_preferencesWindowController;
 
 - (void)showPreferences {
     [NSApp activateIgnoringOtherApps:YES];
-    //instantiate preferences window controller
-    if (_preferencesWindowController) {
-        [_preferencesWindowController close];
-        _preferencesWindowController = nil;
-    }
-    //init from nib but the real initialization happens in the
-    //PreferencesWindowController setupToolbar method
-    _preferencesWindowController = [[AppPrefsWindowController alloc] initWithWindowNibName:@"Preferences"];
     
-    [_preferencesWindowController showWindow:self];
+    //instantiate preferences window controller
+    if (!_preferencesWindowController) {
+        _preferencesWindowController = [[AppPrefsWindowController alloc] initWithWindowNibName:@"Preferences"];
+        [_preferencesWindowController showWindow:self];
+    } else {
+       [[_preferencesWindowController window] orderFront:self];
+    }
 }
 
 - (IBAction)openPreferences:(id)sender {
@@ -193,12 +191,9 @@ void resetDirection() {
     [direction setString:@""];
 }
 
+// See https://developer.apple.com/library/mac/documentation/Carbon/Reference/QuartzEventServicesRef/#//apple_ref/c/tdef/CGEventTapCallBack
 static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
-    static bool shouldShow;
-    if (type != kCGEventRightMouseDown && type != kCGEventRightMouseDragged && type != kCGEventRightMouseUp && type != kCGEventTapDisabledByTimeout) {
-        return NULL;
-    }
-    
+    static BOOL shouldShow;
     
     NSEvent *mouseEvent;
     switch (type) {
@@ -206,19 +201,20 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             // not thread safe, but it's always called in main thread
             // check blocker apps
             //    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){
-        {
-            NSString *frontBundle = frontBundleName();
-            if (![BWFilter willHookRightClickForApp:frontBundle] || !([[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] || [[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
+            if (true)
+            {
+                NSString *frontBundle = frontBundleName();
+                if (![BWFilter willHookRightClickForApp:frontBundle] || !([[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] || [[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
                 //        CGEventPost(kCGSessionEventTap, mouseDownEvent);
                 //        if (mouseDraggedEvent) {
                 //            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
                 //        }
-                shouldShow = NO;
-                CGEventPost(kCGSessionEventTap, event);
-                return NULL;
+                    shouldShow = NO;
+                    return event;
+                }
+                shouldShow = YES;
             }
-            shouldShow = YES;
-        }
+            
             if (mouseDownEvent) { // mouseDownEvent may not release when kCGEventTapDisabledByTimeout
                 resetDirection();
 
@@ -245,9 +241,9 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             break;
         case kCGEventRightMouseDragged:
             if (!shouldShow){
-                CGEventPost(kCGSessionEventTap, event);
-                return NULL;
+                return event;
             }
+            
             if (mouseDownEvent) {
                 mouseEvent = [NSEvent eventWithCGEvent:event];
                 if (mouseDraggedEvent) {
@@ -261,6 +257,10 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             }
             break;
         case kCGEventRightMouseUp: {
+            if (!shouldShow){
+                return event;
+            }
+            
             if (mouseDownEvent) {
                 mouseEvent = [NSEvent eventWithCGEvent:event];
                 [windowController handleMouseEvent:mouseEvent];

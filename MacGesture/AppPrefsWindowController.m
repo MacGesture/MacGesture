@@ -31,6 +31,13 @@ static NSInteger const PREF_WINDOW_SIZECOUNT = 3;
 static NSInteger currentRulesWindowSizeIndex = 0;
 static NSInteger currentFiltersWindowSizeIndex = 0;
 
+static NSArray *exampleAppleScripts;
+
++ (void)initialize {
+    exampleAppleScripts = [NSArray arrayWithObjects:@"ChromeCloseTabsToTheRight", @"Close Tabs To The Right In Chrome",
+                           @"OpenMacGesturePreferences", @"Open MacGesture Preferences", nil];
+}
+
 - (void)changeSize:(NSInteger *)index changeSizeButton:(NSButton *)button preferenceView:(NSView *)view {
     *index += 1;
     *index %= PREF_WINDOW_SIZECOUNT;
@@ -58,6 +65,8 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     [super windowDidLoad];
 //    [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
     
+    [[self window] setDelegate:self];
+    
     self.autoStartAtLogin.state = [[NSBundle mainBundle] isLoginItem] ? NSOnState : NSOffState;
     self.versionCode.stringValue = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
     [self refreshFilterRadioAndTextViewState];
@@ -77,6 +86,19 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     if (languages) {
         [[self languageComboBox] selectItemWithObjectValue:languages[0]];
     }
+    
+    for (NSUInteger i = 0;i < [exampleAppleScripts count];i += 2) {
+        NSMenuItem *item = [[NSMenuItem alloc] init];
+        [item setTitle:exampleAppleScripts[i+1]];
+        [item setTag:i];
+        [item setAction:@selector(exampleAppleScriptSelected:)];
+        [[[self loadAppleScriptExampleButton] menu] addItem:item];
+    }
+}
+
+- (BOOL)windowShouldClose:(id)sender {
+    [[self window] orderOut:self];
+    return NO;
 }
 
 - (void)refreshFilterRadioAndTextViewState {
@@ -287,15 +309,18 @@ static NSInteger currentFiltersWindowSizeIndex = 0;
     [[self appleScriptTableView] selectRowIndexes:[NSIndexSet indexSetWithIndex:[[AppleScriptsList sharedAppleScriptsList] count] - 1] byExtendingSelection:NO];
 }
 
-- (IBAction)loadExampleAppleScript:(id)sender {
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"ChromeCloseTabsToTheRight"
+- (void)exampleAppleScriptSelected:(id)sender {
+    NSInteger index = [sender tag];
+    
+    NSString* path = [[NSBundle mainBundle] pathForResource:exampleAppleScripts[index]
                                                      ofType:@"applescript"];
     NSError* error = nil;
-    [[AppleScriptsList sharedAppleScriptsList] addAppleScript:@"Close Tabs To The Right In Chrome"
+    [[AppleScriptsList sharedAppleScriptsList] addAppleScript:exampleAppleScripts[index+1]
                                                        script:[NSString stringWithContentsOfFile:path
                                                                                         encoding:NSUTF8StringEncoding
                                                                                            error:&error]];
     [[AppleScriptsList sharedAppleScriptsList] save];
+    
     [[self appleScriptTableView] reloadData];
     [[self appleScriptTableView] selectRowIndexes:[NSIndexSet indexSetWithIndex:[[AppleScriptsList sharedAppleScriptsList] count] - 1] byExtendingSelection:NO];
 }
