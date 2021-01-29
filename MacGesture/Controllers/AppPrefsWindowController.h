@@ -62,6 +62,7 @@
 
 @property(weak) IBOutlet NSView *webViewBox;
 @property(strong) WKWebView *webView;
+@property(weak) IBOutlet NSButton *openReadmeInBrowserButton;
 
 - (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index;
 

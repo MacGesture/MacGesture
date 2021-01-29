@@ -1,4 +1,7 @@
-/* Class = "NSButtonCell"; title = "Open Preferences Window at Startup"; ObjectID = "245"; */
+/* Class = "NSButtonCell"; title = "Open in Browser"; ObjectID = "0Dr-CA-s4Y"; */
+"0Dr-CA-s4Y.title" = "Open in Browser";
+
+/* Class = "NSButtonCell"; title = "Open Preferences window on Startup"; ObjectID = "245"; */
 "245.title" = "在启动时打开偏好面板";
 
 /* Class = "NSTableColumn"; headerCell.title = "Filter"; ObjectID = "290"; */
@@ -34,7 +37,7 @@
 /* Class = "NSButtonCell"; title = "Show Mouse Path"; ObjectID = "400"; */
 "400.title" = "不绘制鼠标路径";
 
-/* Class = "NSButtonCell"; title = "Auto Start at Login"; ObjectID = "403"; */
+/* Class = "NSButtonCell"; title = "Start automatically at Login"; ObjectID = "403"; */
 "403.title" = "登录时自动启动";
 
 /* Class = "NSButtonCell"; alternateTitle = "https://github.com/xcodebuild"; ObjectID = "4Wa-f1-P4X"; */
@@ -49,7 +52,7 @@
 /* Class = "NSTextFieldCell"; title = "Language"; ObjectID = "5rs-3N-RX4"; */
 "5rs-3N-RX4.title" = "语言：";
 
-/* Class = "NSButtonCell"; title = "Go bigger"; ObjectID = "7xg-Hp-Yhw"; */
+/* Class = "NSButtonCell"; title = "Go Bigger"; ObjectID = "7xg-Hp-Yhw"; */
 "7xg-Hp-Yhw.title" = "放大窗口";
 
 /* Class = "NSTextFieldCell"; title = "GestureScale"; ObjectID = "8SO-RX-LQO"; */
@@ -67,7 +70,7 @@
 /* Class = "NSTextFieldCell"; title = "Version:"; ObjectID = "b8r-Ju-Lat"; */
 "b8r-Ju-Lat.title" = "版本：";
 
-/* Class = "NSButtonCell"; title = "Block list mode"; ObjectID = "BDA-RK-czZ"; */
+/* Class = "NSButtonCell"; title = "Block List mode"; ObjectID = "BDA-RK-czZ"; */
 "BDA-RK-czZ.title" = "黑名单模式";
 
 /* Class = "NSButtonCell"; alternateTitle = "https://github.com/jiegec"; ObjectID = "be8-8V-idT"; */
@@ -79,7 +82,7 @@
 /* Class = "NSButtonCell"; title = "Edit in External Editor"; ObjectID = "cl6-Yg-6iY"; */
 "cl6-Yg-6iY.title" = "在外部编辑器编辑";
 
-/* Class = "NSTextFieldCell"; title = "FontName"; ObjectID = "fEL-3U-jlH"; */
+/* Class = "NSTextFieldCell"; title = "Font name"; ObjectID = "fEL-3U-jlH"; */
 "fEL-3U-jlH.title" = "FontName";
 
 /* Class = "NSButtonCell"; title = "Enable MacGesture"; ObjectID = "gbg-RG-zrR"; */
@@ -94,7 +97,7 @@
 /* Class = "NSBox"; title = "Advanced"; ObjectID = "grB-jA-OPZ"; */
 "grB-jA-OPZ.title" = "高级设置";
 
-/* Class = "NSTextFieldCell"; placeholderString = "Enter AppleScript here"; ObjectID = "gTD-R3-oZl"; */
+/* Class = "NSTextFieldCell"; placeholderString = "Enter AppleScript here!"; ObjectID = "gTD-R3-oZl"; */
 "gTD-R3-oZl.placeholderString" = "在这里输入 AppleScript";
 
 /* Class = "NSTextFieldCell"; title = "You are advised to go through the README below:"; ObjectID = "Jc2-FY-LoP"; */
@@ -115,10 +118,10 @@
 /* Class = "NSMenuItem"; title = "Add a Shortcut Rule"; ObjectID = "mVL-bN-Qa5"; */
 "mVL-bN-Qa5.title" = "添加一个快捷键规则";
 
-/* Class = "NSTextFieldCell"; title = "FontSize"; ObjectID = "oRe-ac-8qu"; */
+/* Class = "NSTextFieldCell"; title = "Size"; ObjectID = "oRe-ac-8qu"; */
 "oRe-ac-8qu.title" = "FontSize";
 
-/* Class = "NSButtonCell"; title = "Show Gesture In Whatever App"; ObjectID = "Pif-49-STQ"; */
+/* Class = "NSButtonCell"; title = "Show gesture indication in all apps"; ObjectID = "Pif-49-STQ"; */
 "Pif-49-STQ.title" = "在所有 App 中显示";
 
 /* Class = "NSButtonCell"; title = "Add…"; ObjectID = "PQ5-fb-DKg"; */
@@ -127,7 +130,7 @@
 /* Class = "NSMenuItem"; title = "Add a AppleScript Rule"; ObjectID = "pqG-Ck-V2g"; */
 "pqG-Ck-V2g.title" = "添加一个 AppleScript 规则";
 
-/* Class = "NSButtonCell"; title = "Go bigger"; ObjectID = "Q7Q-zb-iKX"; */
+/* Class = "NSButtonCell"; title = "Go Bigger"; ObjectID = "Q7Q-zb-iKX"; */
 "Q7Q-zb-iKX.title" = "放大窗口";
 
 /* Class = "NSButtonCell"; alternateTitle = "https://github.com/zhangciwu"; ObjectID = "qIq-Md-lBa"; */
@@ -136,10 +139,10 @@
 /* Class = "NSButtonCell"; title = "@zhangciwu on GitHub"; ObjectID = "qIq-Md-lBa"; */
 "qIq-Md-lBa.title" = "@zhangciwu on GitHub";
 
-/* Class = "NSButtonCell"; title = "Invert Fn When Control Is Pressed"; ObjectID = "Rc0-gx-DHr"; */
+/* Class = "NSButtonCell"; title = "Invert Fn when Control is pressed"; ObjectID = "Rc0-gx-DHr"; */
 "Rc0-gx-DHr.title" = "当 Control 按下时，抵消 Fn 键的作用";
 
-/* Class = "NSButtonCell"; title = "Automatically Download Updates"; ObjectID = "rOi-wV-Iez"; */
+/* Class = "NSButtonCell"; title = "Automatically download updates"; ObjectID = "rOi-wV-Iez"; */
 "rOi-wV-Iez.title" = "自动下载更新";
 
 /* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "RUf-9S-74q"; */
@@ -151,16 +154,16 @@
 /* Class = "NSButtonCell"; title = "Add…"; ObjectID = "seb-qO-V3w"; */
 "seb-qO-V3w.title" = "添加..";
 
-/* Class = "NSTextFieldCell"; title = "Preview & Note Position"; ObjectID = "t7s-Nq-0oL"; */
+/* Class = "NSTextFieldCell"; title = "Preview & Note position"; ObjectID = "t7s-Nq-0oL"; */
 "t7s-Nq-0oL.title" = "Preview & Note Position";
 
-/* Class = "NSButtonCell"; title = "Merge Consecutive Identical Gestures"; ObjectID = "Tzh-fR-TUh"; */
+/* Class = "NSButtonCell"; title = "Merge consecutive identical gestures"; ObjectID = "Tzh-fR-TUh"; */
 "Tzh-fR-TUh.title" = "合并连续相同手势";
 
 /* Class = "NSTableColumn"; headerCell.title = "Note"; ObjectID = "Urw-VE-VYr"; */
 "Urw-VE-VYr.headerCell.title" = "说明";
 
-/* Class = "NSButtonCell"; title = "Apply rules"; ObjectID = "VCT-WP-3Oh"; */
+/* Class = "NSButtonCell"; title = "Apply Rules"; ObjectID = "VCT-WP-3Oh"; */
 "VCT-WP-3Oh.title" = "应用规则";
 
 /* Class = "NSButtonCell"; alternateTitle = "https://github.com/username0x0a"; ObjectID = "VHr-zB-GUM"; */
@@ -169,16 +172,16 @@
 /* Class = "NSButtonCell"; title = "@username0x0a on GitHub"; ObjectID = "VHr-zB-GUM"; */
 "VHr-zB-GUM.title" = "@username0x0a on GitHub";
 
-/* Class = "NSButtonCell"; title = "Pick a running app"; ObjectID = "WsD-th-NkZ"; */
+/* Class = "NSButtonCell"; title = "Pick a Running App"; ObjectID = "WsD-th-NkZ"; */
 "WsD-th-NkZ.title" = "从运行中的 App 中选取";
 
 /* Class = "NSButtonCell"; title = "Import"; ObjectID = "yDp-B1-8NE"; */
 "yDp-B1-8NE.title" = "导入";
 
-/* Class = "NSButtonCell"; title = "Automatically Check for Updates"; ObjectID = "Yev-5n-cgO"; */
+/* Class = "NSButtonCell"; title = "Automatically check for updates"; ObjectID = "Yev-5n-cgO"; */
 "Yev-5n-cgO.title" = "自动检查更新";
 
-/* Class = "NSButtonCell"; title = "Open Preferences Window Upon Activation"; ObjectID = "YZQ-P5-4Yq"; */
+/* Class = "NSButtonCell"; title = "Open Preferences window upon activation"; ObjectID = "YZQ-P5-4Yq"; */
 "YZQ-P5-4Yq.title" = "在激活时，打开偏好设置";
 
 /* Class = "NSButtonCell"; title = "Check for Updates…"; ObjectID = "Z4w-5n-8OX"; */
@@ -190,8 +193,8 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "ZnZ-zo-5eD"; */
 "ZnZ-zo-5eD.title" = "Text Cell";
 
-/* Class = "NSButtonCell"; title = "Allow list mode"; ObjectID = "ztb-nI-iil"; */
+/* Class = "NSButtonCell"; title = "Allow List mode"; ObjectID = "ztb-nI-iil"; */
 "ztb-nI-iil.title" = "白名单模式";
 
-/* Class = "NSButtonCell"; title = "Show Icon In Menu Bar"; ObjectID = "ztS-80-zXz"; */
+/* Class = "NSButtonCell"; title = "Show icon in Menu Bar"; ObjectID = "ztS-80-zXz"; */
 "ztS-80-zXz.title" = "在状态栏中显示图标";

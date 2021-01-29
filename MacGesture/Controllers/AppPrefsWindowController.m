@@ -57,7 +57,7 @@ static BOOL isBigSur = NO;
         isBigSur = YES;
 
     languages = @{
-        @"": NSLocalizedString(@"System", nil),
+        @"": NSLocalizedString(@"System default", nil),
         @"en": NSLocalizedString(@"English", nil),
         @"zh-Hans": NSLocalizedString(@"Chinese", nil),
     }; languagesOrder = @[ @"", @"en", @"zh-Hans" ];
@@ -85,14 +85,10 @@ static BOOL isBigSur = NO;
     *index += 1;
     *index %= PREF_WINDOW_SIZECOUNT;
     
-    NSString *title;
-    
-    if (*index != PREF_WINDOW_SIZECOUNT - 1) {
-        title = NSLocalizedString(@"Go bigger", nil);
-    } else {
-        title = NSLocalizedString(@"Reset size", nil);
-    }
-    
+    NSString *title = (*index != PREF_WINDOW_SIZECOUNT - 1) ?
+        NSLocalizedString(@"Go Bigger", nil) :
+        NSLocalizedString(@"Reset Size", nil);
+
     [button setTitle:title];
     
     [view setFrameSize:PREF_WINDOW_SIZES[*index]];
@@ -141,6 +137,11 @@ static BOOL isBigSur = NO;
 
     [_webViewBox addSubview:_webView];
     [_webView loadFileURL:url allowingReadAccessToURL:url];
+}
+
+- (IBAction)openREADMEInBrowser:(id)sender {
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"README" withExtension:@"html"];
+    [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
 - (void)windowDidLoad {
@@ -454,12 +455,12 @@ static BOOL isBigSur = NO;
 
 - (IBAction)pickBtnDidClick:(id)sender {
     if ([_rulesTableView selectedRow] == -1) {
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert addButtonWithTitle:NSLocalizedString(@"Okay, I know", nil)];
-        [alert setAlertStyle:NSAlertStyleInformational];
-        [alert setMessageText:NSLocalizedString(@"Select a filter first!", nil)];
+        NSAlert *alert = [NSAlert new];
+        alert.alertStyle = NSAlertStyleInformational;
+        alert.messageText = NSLocalizedString(@"Please select a filter first!", nil);
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", nil)];
         [alert runModal];
-        return ;
+        return;
     }
     
     self.pickerWindowController = [[AppPickerWindowController alloc] initWithWindowNibName:@"AppPickerWindowController"];
@@ -522,12 +523,12 @@ static NSString *currentScriptId = nil;
 - (IBAction)editAppleScriptInExternalEditor:(id)sender {
     NSInteger index = [[self appleScriptTableView] selectedRow];
     if (index == -1) {
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert addButtonWithTitle:NSLocalizedString(@"Okay, I know", nil)];
-        [alert setAlertStyle:NSAlertStyleInformational];
-        [alert setMessageText:NSLocalizedString(@"Select an AppleScript first!", nil)];
+        NSAlert *alert = [NSAlert new];
+        alert.alertStyle = NSAlertStyleInformational;
+        alert.messageText = NSLocalizedString(@"Please select an AppleScript first!", nil);
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", nil)];
         [alert runModal];
-        return ;
+        return;
     }
     
     if (!isEditing) {
@@ -740,10 +741,10 @@ static NSString *currentScriptId = nil;
         NSCharacterSet *invalidGestureCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ULDRZud?*"];
         invalidGestureCharacters = [invalidGestureCharacters invertedSet];
         if ([gesture rangeOfCharacterFromSet:invalidGestureCharacters].location != NSNotFound) {
-            NSAlert *alert = [[NSAlert alloc] init];
-            [alert addButtonWithTitle:NSLocalizedString(@"Okay, I know", nil)];
-            [alert setAlertStyle:NSAlertStyleInformational];
-            [alert setMessageText:NSLocalizedString(@"Gesture must only contain \"ULDRZud?*\"", nil)];
+            NSAlert *alert = [NSAlert new];
+            alert.alertStyle = NSAlertStyleInformational;
+            alert.messageText = NSLocalizedString(@"Gesture can only contain \"ULDRZud?*\"", nil);
+            [alert addButtonWithTitle:NSLocalizedString(@"OK", nil)];
             [alert runModal];
             
             return NO;

@@ -337,13 +337,25 @@ kbd {
 
 <p>Configurable global mouse gestures for macOS.</p>
 
-<p>You can read this README in About section of the App Preferences.</p>
+<blockquote>
+<p>You can read this <code>README</code> file in <strong>About</strong> section in App Preferences.</p>
+</blockquote>
 
-<h1 id="toc_1">Download</h1>
+<h2 id="toc_1">Installation</h2>
 
-<p>Download the latest ZIP release from <a href="https://github.com/MacGesture/MacGesture/releases">GitHub releases</a> page.</p>
+<h3 id="toc_2">Automatic Update</h3>
 
-<h1 id="toc_2">Features</h1>
+<p>MacGesture will regularly check for updates and prompt you when new version is available. 👍</p>
+
+<h3 id="toc_3">Manually</h3>
+
+<p>Download the latese release bundle from <a href="https://github.com/MacGesture/MacGesture/releases">GitHub releases</a> page.</p>
+
+<h3 id="toc_4">Homebrew</h3>
+
+<p>Simply use <code>brew install --cask macgesture</code>. 🙌</p>
+
+<h2 id="toc_5">Features</h2>
 
 <ul>
 <li>Global mouse gestures recognition</li>
@@ -351,7 +363,7 @@ kbd {
 <li>App filtering based on bundle identifiers</li>
 </ul>
 
-<h1 id="toc_3">Gestures Format</h1>
+<h2 id="toc_6">Gestures Format</h2>
 
 <table>
 <thead>
@@ -401,14 +413,14 @@ kbd {
 
 <p>Wheel directions may vary according to system configuration (Natural scroll direction setting) or some system tweaks (Karabiner&#39;s Reverse Vertical Scrolling, for example).</p>
 
-<h1 id="toc_4">Known Issues</h1>
+<h2 id="toc_7">Known Issues</h2>
 
-<h3 id="toc_5">Right click does not work in some Java applications</h3>
+<h3 id="toc_8">Right click does not work in some Java applications</h3>
 
 <p>An imperfect fix:
 Take WebStorm for example, open Preferences, then KeyMap, set the shortcut of “Show Context Menu” to <code>Button3 Click</code>.</p>
 
-<h3 id="toc_6">Cannot assign some system-wide shortcuts to rules</h3>
+<h3 id="toc_9">Cannot assign some system-wide shortcuts to rules</h3>
 
 <p>Reason:
 macOS respond to system-wide shortcuts before MacGesture.</p>
@@ -424,9 +436,9 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 <li>Tick “Invert Fn When Control Is Pressed” option.</li>
 </ul>
 
-<h1 id="toc_7">Tips</h1>
+<h2 id="toc_10">Tips</h2>
 
-<h3 id="toc_8">Mouse scroll gesture example</h3>
+<h3 id="toc_11">Mouse scroll gesture example</h3>
 
 <p>The following table covers probably the most basic scenario of usage:</p>
 
@@ -497,14 +509,14 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 <td style="text-align: left"><code>*safari|*chrome</code></td>
 <td style="text-align: center">⇧⌘[</td>
 <td style="text-align: center">Prev Tab</td>
-<td style="text-align: left">Checked</td>
+<td style="text-align: left">–</td>
 </tr>
 <tr>
 <td style="text-align: center"><code>U*d</code></td>
 <td style="text-align: left"><code>*safari|*chrome</code></td>
 <td style="text-align: center">⇧⌘]</td>
 <td style="text-align: center">Next Tab</td>
-<td style="text-align: left">Checked</td>
+<td style="text-align: left">–</td>
 </tr>
 </tbody>
 </table>
@@ -516,15 +528,15 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 <li>right click, drag mouse upwards, and every <code>d</code> (mouse wheel scroll down) triggers a <strong>Next Tab</strong> action.</li>
 </ul>
 
-<h3 id="toc_9">Exporting and importing MacGesture preferences</h3>
+<h3 id="toc_12">Exporting and importing MacGesture preferences</h3>
 
-<h4 id="toc_10">Recommended way</h4>
+<h4 id="toc_13">Recommended way</h4>
 
-<p>Use the buttons &#39;Import&#39; and &#39;Export&#39; in the ‘General&#39; Panel.</p>
+<p>Use “Import” and “Export” buttons in the <strong>General</strong> Panel.</p>
 
-<h4 id="toc_11">Geek-ish way</h4>
+<h4 id="toc_14">Geek-ish way</h4>
 
-<p>Open a terminal, Do this in your old computer:</p>
+<p>Open the <em>Terminal</em> app, Do this in your old computer:</p>
 
 <div><pre><code class="language-shell">defaults read com.codefalling.MacGesture backup.plist</code></pre></div>
 
@@ -532,11 +544,11 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 
 <div><pre><code class="language-shell">defaults import com.codefalling.MacGesture backup.plist</code></pre></div>
 
-<p>You should get your preferences back now. If is doesn&#39;t, file an issue on the project home.</p>
+<p>All settings should be successfully brought over. If that&#39;s not the case please file an issue.</p>
 
-<h3 id="toc_12">Excluding an app in a certain rule</h3>
+<h3 id="toc_15">Excluding an app in a certain rule</h3>
 
-<p>You can prepend &#39;!&#39;, then the app you want to exclude (still wildcard).</p>
+<p>You can prepend <code>!</code>, then the app you want to exclude (still wildcard).</p>
 
 <p>For example, the original one:</p>
 
@@ -588,17 +600,11 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 
 <p>Then you will experience the expected behaviour.</p>
 
-<h1 id="toc_13">Found a Bug?</h1>
+<h2 id="toc_16">Found a Bug?</h2>
 
 <p>Feel free to open <a href="https://github.com/MacGesture/MacGesture/issues">an issue on GitHub</a>! 👍</p>
 
-<h1 id="toc_14">License</h1>
-
-<p>This project is made under <a href="https://en.wikipedia.org/wiki/GNU_General_Public_License">GNU General Public License</a>.</p>
-
-<p>App icon &amp; other icons designed by <a href="https://github.com/username0x0a">username0x0a</a>.</p>
-
-<h1 id="toc_15">Contributors</h1>
+<h2 id="toc_17">Contributors</h2>
 
 <ul>
 <li><a href="https://github.com/xcodebuild">CodeFalling</a> – original author</li>
@@ -606,6 +612,12 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 <li><a href="https://github.com/jiegec">jiegec</a></li>
 <li><a href="https://github.com/zhangciwu">zhangciwu</a></li>
 </ul>
+
+<h2 id="toc_18">License</h2>
+
+<p>This project is made under <a href="https://en.wikipedia.org/wiki/GNU_General_Public_License">GNU General Public License</a>.</p>
+
+<p>App icon &amp; other icons designed by <a href="https://github.com/username0x0a">username0x0a</a>.</p>
 
 
 

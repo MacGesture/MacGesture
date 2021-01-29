@@ -62,7 +62,7 @@
 "Stop" = "停止";
 
 /* No comment provided by engineer. */
-"On macOS Mojave(10.14) and later, you must manually enable Accessibility permission for MacGesture to work.\n Please goto System Preferences -> Security & Privacy -> Privacy -> Accessibility to enable it for MacGesture.\nIf is is already enabled but MacGesture is still not working, please re-open MacGesture." = "macOS Mojave 后的系统需要开启隐私权限才能使用鼠标手势。\n请到 系统-安全性及隐私-隐私-辅助功能 中启用 MacGesture。\n如果已经启用但仍不工作，请先移除再重新打开此应用并启用。";
+"On macOS Mojave(10.14) and later, you must manually enable Accessibility permission for MacGesture to work.\n Please navigate to System Preferences -> Security & Privacy -> Privacy -> Accessibility to enable it for MacGesture.\nIf is is already enabled but MacGesture is still not working, please re-open MacGesture." = "macOS Mojave 后的系统需要开启隐私权限才能使用鼠标手势。\n请到 系统-安全性及隐私-隐私-辅助功能 中启用 MacGesture。\n如果已经启用但仍不工作，请先移除再重新打开此应用并启用。";
 
 /* No comment provided by engineer. */
 "Gestures" = "";
@@ -77,7 +77,7 @@
 "On macOS Mojave (10.14) and later, you must manually enable Accessibility permission for MacGesture to work." = "";
 
 /* No comment provided by engineer. */
-"Please goto System Preferences → Security & Privacy → Privacy → Accessibility to enable it for MacGesture." = "";
+"Please navigate to System Preferences → Security & Privacy → Privacy → Accessibility to enable it for MacGesture." = "";
 
 /* No comment provided by engineer. */
 "Chinese" = "Chinese";
@@ -108,3 +108,57 @@
 
 /* No comment provided by engineer. */
 "Top Right" = "Top Right";
+
+/* No comment provided by engineer. */
+"Open README in Browser" = "Open README in Browser";
+
+/* No comment provided by engineer. */
+"Welcome to MacGesture!\n\nBrief information about how MacGesture works is available in README. A copy of README is also included in About section of MacGesture's Preferences." = "Welcome to MacGesture!\n\nBrief information about how MacGesture works is available in README. A copy of README is also included in About section of MacGesture's Preferences.";
+
+/* No comment provided by engineer. */
+"Brief information about how MacGesture works is available in README. A copy of README is also included in About section of MacGesture's Preferences." = "Brief information about how MacGesture works is available in README. A copy of README is also included in About section of MacGesture's Preferences.";
+
+/* No comment provided by engineer. */
+"Welcome to MacGesture! 🎉" = "Welcome to MacGesture! 🎉";
+
+/* No comment provided by engineer. */
+"If it's already enabled but gestures aren't working properly, please re-open MacGesture." = "If it's already enabled but gestures aren't working properly, please re-open MacGesture.";
+
+/* No comment provided by engineer. */
+"MacGesture works thanks by following the mouse gesture events, thus requires Accessibility permission to work properly" = "MacGesture works thanks by following the mouse gesture events, thus requires Accessibility permission to work properly";
+
+/* No comment provided by engineer. */
+"Please navigate to System Preferences → Security & Privacy → Privacy → Accessibility section to enable it for MacGesture." = "Please navigate to System Preferences → Security & Privacy → Privacy → Accessibility section to enable it for MacGesture.";
+
+/* No comment provided by engineer. */
+"MacGesture processes your mouse events, thus requires Accessibility permission to work properly" = "MacGesture processes your mouse events, thus requires Accessibility permission to work properly";
+
+/* No comment provided by engineer. */
+"Go Bigger" = "Go Bigger";
+
+/* No comment provided by engineer. */
+"Reset Size" = "Reset Size";
+
+/* No comment provided by engineer. */
+"A brief information about how MacGesture works is available in README. A copy of README is also included in About section of MacGesture's Preferences." = "A brief information about how MacGesture works is available in README. A copy of README is also included in About section of MacGesture's Preferences.";
+
+/* No comment provided by engineer. */
+"Gesture can only contain \"ULDRZud?*\"" = "Gesture can only contain \"ULDRZud?*\"";
+
+/* No comment provided by engineer. */
+"MacGesture processes your mouse events, thus requires the Accessibility permission to work properly" = "MacGesture processes your mouse events, thus requires the Accessibility permission to work properly";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Open README" = "Open README";
+
+/* No comment provided by engineer. */
+"Please select a filter first!" = "Please select a filter first!";
+
+/* No comment provided by engineer. */
+"Please select an AppleScript first!" = "Please select an AppleScript first!";
+
+/* No comment provided by engineer. */
+"System default" = "System default";

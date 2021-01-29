@@ -4,19 +4,29 @@
 
 Configurable global mouse gestures for macOS.
 
-You can read this README in About section of the App Preferences.
+> You can read this `README` file in **About** section in App Preferences.
 
-# Download
+## Installation
 
-Download the latest ZIP release from [GitHub releases](https://github.com/MacGesture/MacGesture/releases) page.
+### Automatic Update
 
-# Features
+MacGesture will regularly check for updates and prompt you when new version is available. 👍
+
+### Manually
+
+Download the latese release bundle from [GitHub releases](https://github.com/MacGesture/MacGesture/releases) page.
+
+### Homebrew
+
+Simply use `brew install --cask macgesture`. 🙌
+
+## Features
 
 - Global mouse gestures recognition
 - Configurable shortcut invocation by gesture
 - App filtering based on bundle identifiers
 
-# Gestures Format
+## Gestures Format
 
 | Gesture      | Acronym |
 | ------------ | :-----: |
@@ -36,7 +46,7 @@ The first rule matching will take effect.
 
 Wheel directions may vary according to system configuration (Natural scroll direction setting) or some system tweaks (Karabiner's Reverse Vertical Scrolling, for example).
 
-# Known Issues
+## Known Issues
 
 ### Right click does not work in some Java applications
 
@@ -57,7 +67,7 @@ Some shortcuts still don't work with the fix above. When you are encountering th
 - Change them to others (e.g. ⌃0, ⌃9).
 - Tick “Invert Fn When Control Is Pressed” option.
 
-# Tips
+## Tips
 
 ### Mouse scroll gesture example
 
@@ -83,8 +93,8 @@ So by defining the following rules:
 
 | Gesture | Filter             | Action   | Note     | Trigger on every match |
 | :-----: | :----------------- | :------: | :------: | :--------------------- |
-| `U*u`   | `*safari|*chrome`  |   ⇧⌘[    | Prev Tab | Checked                |
-| `U*d`   | `*safari|*chrome`  |   ⇧⌘]    | Next Tab | Checked                |
+| `U*u`   | `*safari|*chrome`  |   ⇧⌘[    | Prev Tab | –                |
+| `U*d`   | `*safari|*chrome`  |   ⇧⌘]    | Next Tab | –                |
 
 you can simply:
 
@@ -95,27 +105,27 @@ you can simply:
 
 #### Recommended way
 
-Use the buttons 'Import' and 'Export' in the ‘General' Panel.
+Use “Import” and “Export” buttons in the **General** Panel.
 
 #### Geek-ish way
 
-Open a terminal, Do this in your old computer:
+Open the _Terminal_ app, Do this in your old computer:
 
-``` shell
+```shell
 defaults read com.codefalling.MacGesture backup.plist
 ```
 
 And then copy that file to your new computer, then:
 
-``` shell
+```shell
 defaults import com.codefalling.MacGesture backup.plist
 ```
 
-You should get your preferences back now. If is doesn't, file an issue on the project home.
+All settings should be successfully brought over. If that's not the case please file an issue.
 
 ### Excluding an app in a certain rule
 
-You can prepend '!', then the app you want to exclude (still wildcard).
+You can prepend `!`, then the app you want to exclude (still wildcard).
 
 For example, the original one:
 
@@ -131,19 +141,19 @@ Then, in order to exclude Safari, change this to:
 
 Then you will experience the expected behaviour.
 
-# Found a Bug?
+## Found a Bug?
 
 Feel free to open [an issue on GitHub](https://github.com/MacGesture/MacGesture/issues)! 👍
 
-# License
-
-This project is made under [GNU General Public License](https://en.wikipedia.org/wiki/GNU_General_Public_License).
-
-App icon & other icons designed by [username0x0a](https://github.com/username0x0a).
-
-# Contributors
+## Contributors
 
 - [CodeFalling](https://github.com/xcodebuild) – original author
 - [username0x0a](https://github.com/username0x0a) – maintainer
 - [jiegec](https://github.com/jiegec)
 - [zhangciwu](https://github.com/zhangciwu)
+
+## License
+
+This project is made under [GNU General Public License](https://en.wikipedia.org/wiki/GNU_General_Public_License).
+
+App icon & other icons designed by [username0x0a](https://github.com/username0x0a).
