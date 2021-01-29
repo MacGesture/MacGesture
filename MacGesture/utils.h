@@ -1,3 +1,5 @@
 NSString *frontBundleName();
 
-bool wildLike(NSString *bundlename,NSString *wildfilter);
+bool wildcardArray(NSString *bundleName, NSArray *wildFilters);
+
+bool wildcardString(NSString *bundleName, NSString *wildFilter);

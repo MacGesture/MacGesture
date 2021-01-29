@@ -12,14 +12,13 @@
 
 @implementation CanvasView
 
-static NSImage* leftImage;
-static NSImage* rightImage;
-static NSImage* upImage;
-static NSImage* downImage;
+static NSImage *leftImage;
+static NSImage *rightImage;
+static NSImage *upImage;
+static NSImage *downImage;
 
-- (id)initWithFrame:(NSRect)frame
-{
-	self = [super initWithFrame:frame];
+- (id)initWithFrame:(NSRect)frame {
+    self = [super initWithFrame:frame];
 
     leftImage = [NSImage imageNamed:@"left.png"];
     rightImage = [NSImage imageNamed:@"right.png"];
@@ -27,27 +26,31 @@ static NSImage* downImage;
     upImage = [NSImage imageNamed:@"up.png"];
 
     if (self) {
-		color = [MGOptionsDefine getLineColor];
+        color = [MGOptionsDefine getLineColor];
         points = [[NSMutableArray alloc] init];
         directionToDraw = @"";
-		radius = 2;
-	}
+        radius = 2;
+    }
 
-	return self;
+    return self;
 }
 
-- (void)drawDirection{
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"showGesturePreview"]){
+- (float)getGestureImageScale {
+    return [[NSUserDefaults standardUserDefaults] doubleForKey:@"gestureSize"] / 100 * 1.25;
+}
+
+- (void)drawDirection {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"showGesturePreview"]) {
         return;
     }
 
     // This should be called in drawRect
     CGRect screenRect = [[NSScreen mainScreen] frame];
-    NSInteger y = (screenRect.size.height - leftImage.size.height) / 2;
-    NSInteger beginx = (screenRect.size.width - leftImage.size.width * directionToDraw.length) / 2;
-    for(NSInteger i = 0;i<directionToDraw.length;i++){
+    NSInteger y = (screenRect.size.height - leftImage.size.height * [self getGestureImageScale]) / 2;
+    NSInteger beginx = (screenRect.size.width - leftImage.size.width * [self getGestureImageScale]* directionToDraw.length) / 2;
+    for (NSInteger i = 0; i < directionToDraw.length; i++) {
         NSImage *image = nil;
-        switch([directionToDraw characterAtIndex:i]){
+        switch ([directionToDraw characterAtIndex:i]) {
             case 'L':
                 image = leftImage;
                 break;
@@ -63,50 +66,57 @@ static NSImage* downImage;
             default:
                 break;
         }
-
-        [image drawAtPoint:NSMakePoint(beginx+i*leftImage.size.width,y) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+        [NSGraphicsContext saveGraphicsState];
+        [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationNone];
+        [image drawInRect:NSMakeRect(beginx + i * leftImage.size.width * [self getGestureImageScale], y, leftImage.size.width * [self getGestureImageScale], leftImage.size.height * [self getGestureImageScale]) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+        [NSGraphicsContext restoreGraphicsState];
     }
 
 }
-- (void)drawNote{
+
+- (void)drawNote {
     // This should be called in drawRect
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"showGestureNote"]){
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"showGestureNote"]) {
         return;
     }
     NSInteger index = [[RulesList sharedRulesList] suitedRuleWithGesture:directionToDraw];
-    NSString* note = @"";
-    if(index == -1)
+    NSString *note = @"";
+    if (index == -1)
         return;
     else
         note = [[RulesList sharedRulesList] noteAtIndex:index];
-    if(![note isEqualToString:@""]){
+    if (![note isEqualToString:@""]) {
 
         CGRect screenRect = [[NSScreen mainScreen] frame];
 
-        NSFont *font = [NSFont fontWithName:@"Palatino-Roman" size:88.0];
+        NSFont *font = [NSFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"noteFontName"] size:[[NSUserDefaults standardUserDefaults] doubleForKey:@"noteFontSize"]];
 
-        NSDictionary *textAttributes = @{NSFontAttributeName: font};
+        NSDictionary *textAttributes = @{NSFontAttributeName : font};
 
         CGSize size = [note sizeWithAttributes:textAttributes];
-        int x = ((screenRect.size.width - size.width) / 2);
-        int y = ((screenRect.size.height - size.height) / 3 *2);
-
+        float x = ((screenRect.size.width - size.width) / 2);
+        float y = ((screenRect.size.height + leftImage.size.height * [self getGestureImageScale]) / 2);
+        
+        CGContextRef context = [[NSGraphicsContext currentContext]
+                                graphicsPort];
+        CGContextSetRGBFillColor (context, 0, 0, 0, 0.1);
+        CGContextFillRect (context, CGRectMake (x, y, size.width,
+                                                size.height));
+        
         [note drawAtPoint:NSMakePoint(x, y) withAttributes:textAttributes];
     }
 
 
-
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
-	// draw mouse line
+- (void)drawRect:(NSRect)dirtyRect {
+    // draw mouse line
 
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"disableMousePath"]) {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableMousePath"]) {
         NSBezierPath *path = [NSBezierPath bezierPath];
         path.lineWidth = radius * 2;
         [color setStroke];
-        if(points.count>=1){
+        if (points.count >= 1) {
             [path moveToPoint:[points[0] pointValue]];
         }
         for (int i = 1; i < points.count; i++) {
@@ -121,8 +131,7 @@ static NSImage* downImage;
 
 }
 
-- (void)drawCircleAtPoint:(NSPoint)point
-{
+- (void)drawCircleAtPoint:(NSPoint)point {
     /*
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [image lockFocus];
@@ -149,9 +158,9 @@ static NSImage* downImage;
 }
 
 - (void)resizeTo:(NSRect)frame {
-	self.frame = frame;
+    self.frame = frame;
 
-	self.needsDisplay = YES;
+    self.needsDisplay = YES;
 }
 
 - (void)setEnable:(BOOL)shouldEnable {
@@ -171,17 +180,16 @@ static NSImage* downImage;
     lastLocation.x -= s.frame.origin.x;
     lastLocation.y -= s.frame.origin.y;
 #ifdef DEBUG
-    NSLog(@"frame:%@, window:%@, screen:%@",NSStringFromRect( self.frame),NSStringFromRect( w.frame),NSStringFromRect( s.frame));
-    NSLog(@"%@",NSStringFromPoint( lastLocation));
+    NSLog(@"frame:%@, window:%@, screen:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame));
+    NSLog(@"%@", NSStringFromPoint(lastLocation));
 #endif
     [points addObject:[NSValue valueWithPoint:lastLocation]];
 }
 
-- (void)mouseDragged:(NSEvent *)event
-{
+- (void)mouseDragged:(NSEvent *)event {
 
-	@autoreleasepool {
-		NSPoint newLocation = event.locationInWindow;
+    @autoreleasepool {
+        NSPoint newLocation = event.locationInWindow;
         NSWindow *w = self.window;
         NSScreen *s = w.screen;
         newLocation.x -= s.frame.origin.x;
@@ -189,24 +197,22 @@ static NSImage* downImage;
 
 //		[self drawCircleAtPoint:newLocation];
         [points addObject:[NSValue valueWithPoint:newLocation]];
-        self.needsDisplay=YES;
+        self.needsDisplay = YES;
 //		[self setNeedsDisplayInRect:NSMakeRect(fmin(lastLocation.x - radius, newLocation.x - radius),
 //											   fmin(lastLocation.y - radius, newLocation.y - radius),
 //											   abs(newLocation.x - lastLocation.x) + radius * 2,
 //											   abs(newLocation.y - lastLocation.y) + radius * 2)];
-		lastLocation = newLocation;
-	}
+        lastLocation = newLocation;
+    }
 
 }
 
-- (void)mouseUp:(NSEvent *)event
-{
-	[self clear];
+- (void)mouseUp:(NSEvent *)event {
+    [self clear];
 }
 
 
-- (void)writeDirection:(NSString *)directionStr;
-{
+- (void)writeDirection:(NSString *)directionStr; {
 
     directionToDraw = directionStr;
 

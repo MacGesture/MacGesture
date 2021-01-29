@@ -9,6 +9,7 @@
 #import "CanvasWindowController.h"
 #import "CanvasWindow.h"
 #import "CanvasView.h"
+#import "RulesList.h"
 
 @implementation CanvasWindowController
 
@@ -48,19 +49,20 @@
 }
 
 - (void)handleMouseEvent:(NSEvent *)event {
-
-    switch (event.type) {
-        case NSRightMouseDown:
-            [self.window.contentView mouseDown:event];
-            break;
-        case NSRightMouseDragged:
-            [self.window.contentView mouseDragged:event];
-            break;
-        case NSRightMouseUp:
-            [self.window.contentView mouseUp:event];
-            break;
-        default:
-            break;
+    if ([[RulesList sharedRulesList] frontAppSuitedRule]) {
+        switch (event.type) {
+            case NSRightMouseDown:
+                [self.window.contentView mouseDown:event];
+                break;
+            case NSRightMouseDragged:
+                [self.window.contentView mouseDragged:event];
+                break;
+            case NSRightMouseUp:
+                [self.window.contentView mouseUp:event];
+                break;
+            default:
+                break;
+        }
     }
 }
 

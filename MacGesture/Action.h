@@ -7,11 +7,11 @@
 
 @class MASShortcut;
 
-static const NSString* ACTION_SHORTCUT = @"shortcut";
+static const NSString *ACTION_SHORTCUT = @"shortcut";
 
-typedef enum{
+typedef enum {
     SHORT_CUT_ACTION,
-}ActionType;
+} ActionType;
 
 @interface Action : NSObject
 
@@ -20,5 +20,4 @@ typedef enum{
 
 - (instancetype)initWithShortcut:(MASShortcut *)shortcut;
 
-- (void)execute;
 @end

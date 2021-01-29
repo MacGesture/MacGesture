@@ -38,6 +38,7 @@
 		3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */; };
 		3CDC5543D4E5BD248515F7CA /* BlackWhiteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */; };
 		68C087AD74CFB1C5E0528759 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1136B136EA3AC3F1862223E3 /* libPods.a */; };
+		887E09251C8B0FD0003A4CC0 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */; };
 		B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */; };
 		B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */; };
 		B6F75AE41BD65BDD00A8CF63 /* AppPickerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AE21BD65BDD00A8CF63 /* AppPickerWindowController.xib */; };
@@ -104,6 +105,7 @@
 		3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOptionsDefine.h; sourceTree = "<group>"; };
 		3CDC5A614857FE77ADFEA4C8 /* BlackWhiteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackWhiteFilter.h; sourceTree = "<group>"; };
 		3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOptionsDefine.m; sourceTree = "<group>"; };
+		887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPickerWindowController.h; sourceTree = "<group>"; };
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPickerWindowController.m; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				2641860492954D6BD5AF2FD5 /* up.png */,
 				264180FCC355082AC7EDFD74 /* left.png */,
 				26418331BA0AD1E0D42A4E53 /* down.png */,
+				887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -319,7 +322,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MBA;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Chivalry Software";
 				TargetAttributes = {
 					1381E4C81824E7E800E815F5 = {
@@ -361,6 +364,7 @@
 				264182480FA70DFC89B87842 /* Updates.tiff in Resources */,
 				264185813821B17A6CF8761E /* Rules.png in Resources */,
 				B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */,
+				887E09251C8B0FD0003A4CC0 /* DefaultPreferences.plist in Resources */,
 				2641871BACBB993F84AF778C /* About.png in Resources */,
 				26418AB7E1520EED88A179C1 /* MainMenu.xib in Resources */,
 				2641804FA39EEA04BDDC27B2 /* right.png in Resources */,
@@ -519,6 +523,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -580,6 +585,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacGesture/MacGesture-Prefix.pch";
 				INFOPLIST_FILE = "MacGesture/MacGesture-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -594,6 +600,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacGesture/MacGesture-Prefix.pch";
 				INFOPLIST_FILE = "MacGesture/MacGesture-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -615,6 +622,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "MacGestureTests/MacGestureTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -633,6 +641,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacGesture/MacGesture-Prefix.pch";
 				INFOPLIST_FILE = "MacGestureTests/MacGestureTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
