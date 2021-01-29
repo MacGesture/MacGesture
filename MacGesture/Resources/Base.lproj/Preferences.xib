@@ -486,7 +486,7 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="292" customClass="VerticalTextFieldCell">
+                                        <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" id="292" customClass="VerticalTextFieldCell">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -505,7 +505,7 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="293" customClass="VerticalTextFieldCell">
+                                        <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" id="293" customClass="VerticalTextFieldCell">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -517,7 +517,7 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="308">
+                                        <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" id="308">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -529,7 +529,7 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="rUX-BY-P9Y" customClass="VerticalTextFieldCell">
+                                        <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" id="rUX-BY-P9Y" customClass="VerticalTextFieldCell">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -541,7 +541,7 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" scrollable="YES" lineBreakMode="clipping" inset="2" id="gPX-Pa-jb5">
+                                        <buttonCell key="dataCell" type="check" bezelStyle="regularSquare" imagePosition="left" scrollable="YES" lineBreakMode="clipping" inset="2" id="gPX-Pa-jb5">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -609,18 +609,8 @@
                         <action selector="removeRule:" target="-2" id="323"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZxS-0a-wRT">
-                    <rect key="frame" x="107" y="1" width="95" height="32"/>
-                    <buttonCell key="cell" type="push" title="Go Bigger" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q7Q-zb-iKX">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="changeSizeOfPreferenceWindow:" target="-2" id="xwh-PW-ijj"/>
-                    </connections>
-                </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2vX-WF-Pfn">
-                    <rect key="frame" x="204" y="1" width="152" height="32"/>
+                    <rect key="frame" x="107" y="1" width="152" height="32"/>
                     <buttonCell key="cell" type="push" title="Pick a Running App" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WsD-th-NkZ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -642,21 +632,31 @@
                         </connections>
                     </buttonCell>
                 </button>
+                <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZxS-0a-wRT">
+                    <rect key="frame" x="261" y="1" width="95" height="32"/>
+                    <buttonCell key="cell" type="push" title="Go Bigger" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q7Q-zb-iKX">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="changeSizeOfPreferenceWindow:" target="-2" id="xwh-PW-ijj"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="2vX-WF-Pfn" secondAttribute="bottom" constant="8" id="4fU-sD-7RL"/>
                 <constraint firstAttribute="bottom" secondItem="320" secondAttribute="bottom" constant="8" id="7Wc-f2-b8Q"/>
+                <constraint firstItem="2vX-WF-Pfn" firstAttribute="leading" secondItem="320" secondAttribute="trailing" constant="16" id="BFx-CM-KVK"/>
                 <constraint firstAttribute="bottom" secondItem="ZxS-0a-wRT" secondAttribute="bottom" constant="8" id="GWr-rV-7fZ"/>
                 <constraint firstItem="285" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="8" id="Lt2-pq-eMj"/>
                 <constraint firstAttribute="trailing" secondItem="325" secondAttribute="trailing" constant="8" id="Luc-ne-2hk"/>
                 <constraint firstItem="2vX-WF-Pfn" firstAttribute="top" secondItem="285" secondAttribute="bottom" constant="8" id="NTF-V1-PQC"/>
                 <constraint firstItem="320" firstAttribute="leading" secondItem="Psr-r8-pb3" secondAttribute="trailing" constant="8" id="RFn-64-FE1"/>
-                <constraint firstItem="2vX-WF-Pfn" firstAttribute="leading" secondItem="ZxS-0a-wRT" secondAttribute="trailing" constant="16" id="Rui-Vb-sET"/>
                 <constraint firstItem="285" firstAttribute="top" secondItem="5" secondAttribute="top" constant="8" id="XMO-xd-cbs"/>
-                <constraint firstItem="ZxS-0a-wRT" firstAttribute="leading" secondItem="320" secondAttribute="trailing" constant="16" id="bFF-hL-PUR"/>
                 <constraint firstItem="325" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2vX-WF-Pfn" secondAttribute="trailing" constant="12" symbolic="YES" id="h5s-x5-d8g"/>
                 <constraint firstAttribute="trailing" secondItem="285" secondAttribute="trailing" constant="8" id="mZh-Uz-5d9"/>
                 <constraint firstItem="Psr-r8-pb3" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="8" id="q1C-8R-0P2"/>
+                <constraint firstItem="ZxS-0a-wRT" firstAttribute="leading" secondItem="2vX-WF-Pfn" secondAttribute="trailing" constant="16" id="qQ5-yp-7j0"/>
                 <constraint firstAttribute="bottom" secondItem="Psr-r8-pb3" secondAttribute="bottom" constant="8" id="tWF-db-sy1"/>
                 <constraint firstAttribute="bottom" secondItem="325" secondAttribute="bottom" constant="8" id="wkJ-r5-Y5L" userLabel="bottom = Reset.bottom + 5"/>
             </constraints>
@@ -772,7 +772,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O3m-tP-4Yw">
+                <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O3m-tP-4Yw">
                     <rect key="frame" x="1" y="1" width="95" height="32"/>
                     <buttonCell key="cell" type="push" title="Go Bigger" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7xg-Hp-Yhw">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -858,7 +858,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0PA-iQ-2S2">
                                                         <rect key="frame" x="1" y="3" width="182" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="RUf-9S-74q">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" id="RUf-9S-74q">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1029,7 +1029,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4G-u8-9Le">
-                    <rect key="frame" x="57" y="484" width="252" height="18"/>
+                    <rect key="frame" x="55" y="484" width="252" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Automatically check for updates" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Yev-5n-cgO">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1041,7 +1041,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fxG-XN-bbL">
-                    <rect key="frame" x="57" y="458" width="252" height="18"/>
+                    <rect key="frame" x="55" y="458" width="252" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Automatically download updates" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="rOi-wV-Iez">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>

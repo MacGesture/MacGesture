@@ -274,21 +274,20 @@
 }
 
 - (void)animationDidEnd:(NSAnimation *)animation{
-    NSView *subview;
 
     // Get a list of all of the views in the window. Hopefully
     // at this point there are two. One is visible and one is hidden.
-    NSEnumerator *subviewsEnum = [[self.contentSubview subviews] reverseObjectEnumerator];
+    NSArray<NSView *> *views = [self.contentSubview.subviews copy];
 
     // This is our visible view. Just get past it.
-    [subviewsEnum nextObject];
+    NSView *topMost = views.lastObject;
 
     // Remove everything else. There should be just one, but
     // if the user does a lot of fast clicking, we might have
     // more than one to remove.
-    while((subview = [subviewsEnum nextObject]) != nil){
-        [subview removeFromSuperviewWithoutNeedingDisplay];
-    }
+    for (NSView *view in views)
+        if (view != topMost)
+            [view removeFromSuperview];
 
     // This is a work-around that prevents the first
     // toolbar icon from becoming highlighted.

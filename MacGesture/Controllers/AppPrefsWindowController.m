@@ -62,6 +62,10 @@ static BOOL isBigSur = NO;
         @"zh-Hans": NSLocalizedString(@"Chinese", nil),
     }; languagesOrder = @[ @"", @"en", @"zh-Hans" ];
 
+    // Future translations:
+//    NSLocalizedString(@"Czech", nil)
+//    NSLocalizedString(@"Slovak", nil)
+
     previewPositions = @[
         @[ @(MGPreviewPositionCenter), NSLocalizedString(@"Center", nil) ],
         @[ @(MGPreviewPositionTopLeft), NSLocalizedString(@"Top Left", nil) ],
@@ -84,13 +88,11 @@ static BOOL isBigSur = NO;
 - (void)changeSize:(NSInteger *)index changeSizeButton:(NSButton *)button preferenceView:(NSView *)view {
     *index += 1;
     *index %= PREF_WINDOW_SIZECOUNT;
-    
-    NSString *title = (*index != PREF_WINDOW_SIZECOUNT - 1) ?
+
+    button.title = (*index != PREF_WINDOW_SIZECOUNT - 1) ?
         NSLocalizedString(@"Go Bigger", nil) :
         NSLocalizedString(@"Reset Size", nil);
 
-    [button setTitle:title];
-    
     [view setFrameSize:PREF_WINDOW_SIZES[*index]];
     [self changeWindowSizeToFitInsideView:view];
     [self crossFadeView:view withView:view];

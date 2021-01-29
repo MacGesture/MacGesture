@@ -573,7 +573,7 @@
                         <items>
                             <menuItem title="MacGesture Help" keyEquivalent="?" id="492">
                                 <connections>
-                                    <action selector="showHelp:" target="-1" id="493"/>
+                                    <action selector="showHelp:" target="494" id="fJ7-bE-M1n"/>
                                 </connections>
                             </menuItem>
                         </items>

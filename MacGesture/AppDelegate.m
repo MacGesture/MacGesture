@@ -209,6 +209,11 @@ static NSUserDefaults *defaults;
     [self showPreferences];
 }
 
+- (IBAction)showHelp:(id)sender {
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"README" withExtension:@"html"];
+    [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
 - (void)receiveOpenPreferencesNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"MacGestureOpenPreferences"])
         [self showPreferences];

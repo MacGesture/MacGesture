@@ -107,6 +107,10 @@
 		BBC1C8E525BCCDC600DE6816 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		BBCB97CC25C36F3C0020592A /* SUUpdaterPublicKey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SUUpdaterPublicKey.pem; sourceTree = "<group>"; };
 		BBCB98BB25C4114E0020592A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BBCB99BF25C4593E0020592A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		BBCB99C025C4593E0020592A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Preferences.strings; sourceTree = "<group>"; };
+		BBCB99C125C4593E0020592A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppPickerWindowController.strings; sourceTree = "<group>"; };
+		BBCB99C225C4593E0020592A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C610961B1DED98C700FCC263 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		D02885E11EF29CDE0082A660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SearchInWeb.applescript-src"; sourceTree = "<group>"; };
@@ -377,6 +381,7 @@
 				Base,
 				en,
 				"zh-Hans",
+				cs,
 			);
 			mainGroup = 1381E49F1824E7E800E815F5;
 			productRefGroup = 1381E4A91824E7E800E815F5 /* Products */;
@@ -525,6 +530,7 @@
 				880AA77C1CA64E88006E7A74 /* Base */,
 				D6B1318F249E55C90014F55E /* en */,
 				BBC1C8C625BCA21F00DE6816 /* zh-Hans */,
+				BBCB99C025C4593E0020592A /* cs */,
 			);
 			name = Preferences.xib;
 			path = .;
@@ -536,6 +542,7 @@
 				880AA7781CA64E62006E7A74 /* Base */,
 				D6B1318D249E54E10014F55E /* en */,
 				BBC1C8C725BCA21F00DE6816 /* zh-Hans */,
+				BBCB99C125C4593E0020592A /* cs */,
 			);
 			name = AppPickerWindowController.xib;
 			path = .;
@@ -565,6 +572,7 @@
 				880AA7751CA64DDB006E7A74 /* Base */,
 				D6B1318B249E54D00014F55E /* en */,
 				BBC1C8C525BCA21F00DE6816 /* zh-Hans */,
+				BBCB99BF25C4593E0020592A /* cs */,
 			);
 			name = MainMenu.xib;
 			path = .;
@@ -576,6 +584,7 @@
 				880AA77E1CA64EB7006E7A74 /* Base */,
 				BBCB98BB25C4114E0020592A /* en */,
 				BBC1C8C825BCA21F00DE6816 /* zh-Hans */,
+				BBCB99C225C4593E0020592A /* cs */,
 			);
 			name = Localizable.strings;
 			path = .;

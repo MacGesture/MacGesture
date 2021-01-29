@@ -1,257 +1,257 @@
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "129"; */
-"129.title" = "首选项...";
+"129.title" = "Nastavení…";
 
 /* Class = "NSMenuItem"; title = "Hide MacGesture"; ObjectID = "134"; */
-"134.title" = "隐藏 MacGesture";
+"134.title" = "Skrýt MacGesture";
 
 /* Class = "NSMenuItem"; title = "Quit MacGesture"; ObjectID = "136"; */
-"136.title" = "退出 MacGesture";
+"136.title" = "Zavřít MacGesture";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
-"145.title" = "隐藏其它";
+"145.title" = "Skrýt ostatní";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
-"150.title" = "显示所有";
+"150.title" = "Zobrazit vše";
 
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
-"19.title" = "窗口";
+"19.title" = "Okno";
 
 /* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "195"; */
-"195.title" = "停止朗读";
+"195.title" = "Zastavit předčítání";
 
 /* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "196"; */
-"196.title" = "开始朗读";
+"196.title" = "Spustit předčítání";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "197"; */
-"197.title" = "复制";
+"197.title" = "Kopírovat";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "198"; */
-"198.title" = "选择所有";
+"198.title" = "Vybrat vše";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "199"; */
-"199.title" = "剪切";
+"199.title" = "Vyjmout";
 
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
-"200.title" = "拼写和语法";
+"200.title" = "Pravopis a gramatika";
 
 /* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "201"; */
-"201.title" = "立即检查文档";
+"201.title" = "Zkontrolovat dokument";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "202"; */
-"202.title" = "删除";
+"202.title" = "Odstranit";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "203"; */
-"203.title" = "粘贴";
+"203.title" = "Vložit";
 
 /* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "204"; */
-"204.title" = "显示拼写和语法";
+"204.title" = "Zobrazit pravopis a gramatiku";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "205"; */
-"205.title" = "编辑";
+"205.title" = "Upravit";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "207"; */
-"207.title" = "撤销";
+"207.title" = "Zpět";
 
 /* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "208"; */
-"208.title" = "查找下一个";
+"208.title" = "Najít další";
 
 /* Class = "NSMenuItem"; title = "Find…"; ObjectID = "209"; */
-"209.title" = "查找…";
+"209.title" = "Najít…";
 
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "210"; */
-"210.title" = "跳转到选择项";
+"210.title" = "Přejít na výběr";
 
 /* Class = "NSMenuItem"; title = "Speech"; ObjectID = "211"; */
-"211.title" = "语音";
+"211.title" = "Řeč";
 
 /* Class = "NSMenu"; title = "Speech"; ObjectID = "212"; */
-"212.title" = "语音";
+"212.title" = "Řeč";
 
 /* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "213"; */
-"213.title" = "查找上一个";
+"213.title" = "Najít předchozí";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "215"; */
-"215.title" = "重做";
+"215.title" = "Opakovat";
 
 /* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "216"; */
-"216.title" = "拼写和语法";
+"216.title" = "Pravopis a gramatika";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "217"; */
-"217.title" = "编辑";
+"217.title" = "Upravit";
 
 /* Class = "NSMenuItem"; title = "Find"; ObjectID = "218"; */
-"218.title" = "查找";
+"218.title" = "Hledat";
 
 /* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "219"; */
-"219.title" = "在输入时检查拼写";
+"219.title" = "Kontrolovat pravopis při psaní";
 
 /* Class = "NSMenu"; title = "Find"; ObjectID = "220"; */
-"220.title" = "查找";
+"220.title" = "Hledat";
 
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "221"; */
-"221.title" = "使用所选内容查找";
+"221.title" = "Použít výběr pro hledání";
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "23"; */
-"23.title" = "最小化";
+"23.title" = "Minimalizovat";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "239"; */
-"239.title" = "缩放";
+"239.title" = "Přiblížit";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "24"; */
-"24.title" = "窗口";
+"24.title" = "Okno";
 
 /* Class = "NSMenu"; title = "AMainMenu"; ObjectID = "29"; */
 "29.title" = "AMainMenu";
 
 /* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "346"; */
-"346.title" = "在拼写时检查语法";
+"346.title" = "Kontrolovat gramatiku a pravopis";
 
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "348"; */
-"348.title" = "替换";
+"348.title" = "Náhrady";
 
 /* Class = "NSMenu"; title = "Substitutions"; ObjectID = "349"; */
-"349.title" = "替换";
+"349.title" = "Náhrady";
 
 /* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "350"; */
-"350.title" = "智能复制/粘贴";
+"350.title" = "Chytré kopírování/vložení";
 
 /* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "351"; */
-"351.title" = "智能引号";
+"351.title" = "Chytré uvozovky";
 
 /* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "354"; */
-"354.title" = "智能链接";
+"354.title" = "Chytré odkazy";
 
 /* Class = "NSMenuItem"; title = "Format"; ObjectID = "375"; */
-"375.title" = "格式";
+"375.title" = "Formát";
 
 /* Class = "NSMenu"; title = "Format"; ObjectID = "376"; */
-"376.title" = "格式";
+"376.title" = "Formát";
 
 /* Class = "NSMenuItem"; title = "Font"; ObjectID = "377"; */
-"377.title" = "字体";
+"377.title" = "Písmo";
 
 /* Class = "NSMenu"; title = "Font"; ObjectID = "388"; */
-"388.title" = "字体";
+"388.title" = "Písmo";
 
 /* Class = "NSMenuItem"; title = "Show Fonts"; ObjectID = "389"; */
-"389.title" = "显示字体";
+"389.title" = "Zobrazit písma";
 
 /* Class = "NSMenuItem"; title = "Bold"; ObjectID = "390"; */
-"390.title" = "粗体";
+"390.title" = "Tučně";
 
 /* Class = "NSMenuItem"; title = "Italic"; ObjectID = "391"; */
-"391.title" = "斜体";
+"391.title" = "Kurzíva";
 
 /* Class = "NSMenuItem"; title = "Underline"; ObjectID = "392"; */
-"392.title" = "下划线";
+"392.title" = "Podtržené";
 
 /* Class = "NSMenuItem"; title = "Bigger"; ObjectID = "394"; */
-"394.title" = "变大";
+"394.title" = "Větší";
 
 /* Class = "NSMenuItem"; title = "Smaller"; ObjectID = "395"; */
-"395.title" = "Smaller";
+"395.title" = "Menší";
 
 /* Class = "NSMenuItem"; title = "Kern"; ObjectID = "397"; */
-"397.title" = "Kern";
+"397.title" = "Vyrovnání";
 
 /* Class = "NSMenuItem"; title = "Ligatures"; ObjectID = "398"; */
-"398.title" = "连字";
+"398.title" = "Ligatury";
 
 /* Class = "NSMenuItem"; title = "Baseline"; ObjectID = "399"; */
-"399.title" = "Baseline";
+"399.title" = "Účaří";
 
 /* Class = "NSMenuItem"; title = "Show Colors"; ObjectID = "401"; */
-"401.title" = "显示颜色";
+"401.title" = "Zobrazit barvy";
 
 /* Class = "NSMenuItem"; title = "Copy Style"; ObjectID = "403"; */
-"403.title" = "复制样式";
+"403.title" = "Kopírovat styl";
 
 /* Class = "NSMenuItem"; title = "Paste Style"; ObjectID = "404"; */
-"404.title" = "粘贴样式";
+"404.title" = "Vložit styl";
 
 /* Class = "NSMenu"; title = "Baseline"; ObjectID = "405"; */
-"405.title" = "Baseline";
+"405.title" = "Účaří";
 
 /* Class = "NSMenuItem"; title = "Use Default"; ObjectID = "406"; */
-"406.title" = "Use Default";
+"406.title" = "Použít výchozí";
 
 /* Class = "NSMenuItem"; title = "Superscript"; ObjectID = "407"; */
-"407.title" = "Superscript";
+"407.title" = "Horní index";
 
 /* Class = "NSMenuItem"; title = "Subscript"; ObjectID = "408"; */
-"408.title" = "Subscript";
+"408.title" = "Dolní index";
 
 /* Class = "NSMenuItem"; title = "Raise"; ObjectID = "409"; */
-"409.title" = "Raise";
+"409.title" = "Zvýšit";
 
 /* Class = "NSMenuItem"; title = "Lower"; ObjectID = "410"; */
-"410.title" = "Lower";
+"410.title" = "Snížit";
 
 /* Class = "NSMenu"; title = "Ligatures"; ObjectID = "411"; */
-"411.title" = "Ligatures";
+"411.title" = "Ligatury";
 
 /* Class = "NSMenuItem"; title = "Use Default"; ObjectID = "412"; */
-"412.title" = "Use Default";
+"412.title" = "Použít výchozí";
 
 /* Class = "NSMenuItem"; title = "Use None"; ObjectID = "413"; */
-"413.title" = "Use None";
+"413.title" = "Nepoužít žádný";
 
 /* Class = "NSMenuItem"; title = "Use All"; ObjectID = "414"; */
-"414.title" = "Use All";
+"414.title" = "Použít vše";
 
 /* Class = "NSMenu"; title = "Kern"; ObjectID = "415"; */
-"415.title" = "Kern";
+"415.title" = "Vyrovnání";
 
 /* Class = "NSMenuItem"; title = "Use Default"; ObjectID = "416"; */
-"416.title" = "Use Default";
+"416.title" = "Použít výchozí";
 
 /* Class = "NSMenuItem"; title = "Use None"; ObjectID = "417"; */
-"417.title" = "Use None";
+"417.title" = "Nepoužít žádný";
 
 /* Class = "NSMenuItem"; title = "Tighten"; ObjectID = "418"; */
-"418.title" = "Tighten";
+"418.title" = "Upevnit";
 
 /* Class = "NSMenuItem"; title = "Loosen"; ObjectID = "419"; */
-"419.title" = "Loosen";
+"419.title" = "Uvolnit";
 
 /* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "450"; */
-"450.title" = "Transformations";
+"450.title" = "Transformace";
 
 /* Class = "NSMenu"; title = "Transformations"; ObjectID = "451"; */
-"451.title" = "Transformations";
+"451.title" = "Transformace";
 
 /* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "452"; */
-"452.title" = "Make Upper Case";
+"452.title" = "Převést na velká písmena";
 
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "454"; */
-"454.title" = "Correct Spelling Automatically";
+"454.title" = "Automaticky opravovat pravopis";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "457"; */
-"457.title" = "Show Substitutions";
+"457.title" = "Zobrazit náhrady";
 
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "460"; */
-"460.title" = "Smart Dashes";
+"460.title" = "Chytré pomlčky";
 
 /* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "462"; */
-"462.title" = "Text Replacement";
+"462.title" = "Náhrady textu";
 
 /* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "465"; */
-"465.title" = "Make Lower Case";
+"465.title" = "Převést na malá písmena";
 
 /* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "466"; */
-"466.title" = "Capitalize";
+"466.title" = "Kapitálky";
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "485"; */
-"485.title" = "Paste and Match Style";
+"485.title" = "Vložit a přizpůsobit styl";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
-"490.title" = "帮助";
+"490.title" = "Nápověda";
 
 /* Class = "NSMenu"; title = "Help"; ObjectID = "491"; */
-"491.title" = "帮助";
+"491.title" = "Nápověda";
 
 /* Class = "NSMenuItem"; title = "MacGesture Help"; ObjectID = "492"; */
-"492.title" = "MacGesture 帮助";
+"492.title" = "Nápověda MacGesture";
 
 /* Class = "NSMenuItem"; title = "Text"; ObjectID = "496"; */
 "496.title" = "Text";
@@ -260,61 +260,61 @@
 "497.title" = "Text";
 
 /* Class = "NSMenuItem"; title = "Align Left"; ObjectID = "498"; */
-"498.title" = "靠左对齐";
+"498.title" = "Zarovnat vlevo";
 
 /* Class = "NSMenuItem"; title = "Center"; ObjectID = "499"; */
-"499.title" = "居中";
+"499.title" = "Zarovnat na střed";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; */
-"5.title" = "Bring All to Front";
+"5.title" = "Přesunout vše do popředí";
 
 /* Class = "NSMenuItem"; title = "Justify"; ObjectID = "500"; */
-"500.title" = "Justify";
+"500.title" = "Zarovnat do bloku";
 
 /* Class = "NSMenuItem"; title = "Align Right"; ObjectID = "501"; */
-"501.title" = "Align Right";
+"501.title" = "Zarovnat vpravo";
 
 /* Class = "NSMenuItem"; title = "Writing Direction"; ObjectID = "503"; */
-"503.title" = "Writing Direction";
+"503.title" = "Směr psaní";
 
 /* Class = "NSMenuItem"; title = "Show Ruler"; ObjectID = "505"; */
-"505.title" = "Show Ruler";
+"505.title" = "Zobrazit pravítko";
 
 /* Class = "NSMenuItem"; title = "Copy Ruler"; ObjectID = "506"; */
-"506.title" = "Copy Ruler";
+"506.title" = "Kopírovat pravítko";
 
 /* Class = "NSMenuItem"; title = "Paste Ruler"; ObjectID = "507"; */
-"507.title" = "Paste Ruler";
+"507.title" = "Vložit pravítko";
 
 /* Class = "NSMenu"; title = "Writing Direction"; ObjectID = "508"; */
-"508.title" = "Writing Direction";
+"508.title" = "Směr psaní";
 
 /* Class = "NSMenuItem"; title = "Paragraph"; ObjectID = "509"; */
-"509.title" = "Paragraph";
+"509.title" = "Odstavec";
 
 /* Class = "NSMenuItem"; title = "\tDefault"; ObjectID = "510"; */
-"510.title" = "\t默认";
+"510.title" = "\tVýchozí";
 
 /* Class = "NSMenuItem"; title = "\tLeft to Right"; ObjectID = "511"; */
-"511.title" = "\t从左到右";
+"511.title" = "\tZleva doprava";
 
 /* Class = "NSMenuItem"; title = "\tRight to Left"; ObjectID = "512"; */
-"512.title" = "\t从右到左";
+"512.title" = "\tZprava doleva";
 
 /* Class = "NSMenuItem"; title = "Selection"; ObjectID = "514"; */
-"514.title" = "Selection";
+"514.title" = "Výběr";
 
 /* Class = "NSMenuItem"; title = "\tDefault"; ObjectID = "515"; */
-"515.title" = "\t默认";
+"515.title" = "\tVýchozí";
 
 /* Class = "NSMenuItem"; title = "\tLeft to Right"; ObjectID = "516"; */
-"516.title" = "\t从左到右";
+"516.title" = "\tZleva doprava";
 
 /* Class = "NSMenuItem"; title = "\tRight to Left"; ObjectID = "517"; */
-"517.title" = "\t从右到左";
+"517.title" = "\tZprava doleva";
 
 /* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "534"; */
-"534.title" = "查找和替換...";
+"534.title" = "Najít a nahradit…";
 
 /* Class = "NSMenuItem"; title = "MacGesture"; ObjectID = "56"; */
 "56.title" = "MacGesture";
@@ -323,19 +323,19 @@
 "57.title" = "MacGesture";
 
 /* Class = "NSMenuItem"; title = "About MacGesture"; ObjectID = "58"; */
-"58.title" = "关于 MacGesture";
+"58.title" = "O MacGesture";
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "73"; */
-"73.title" = "关闭";
+"73.title" = "Zavřít";
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "81"; */
-"81.title" = "文件";
+"81.title" = "Soubor";
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "83"; */
-"83.title" = "文件";
+"83.title" = "Soubor";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "E8a-Fn-In1"; */
-"E8a-Fn-In1.title" = "首选项...";
+"E8a-Fn-In1.title" = "Nastavení…";
 
 /* Class = "NSMenuItem"; title = "Quit"; ObjectID = "MTY-xM-R0q"; */
-"MTY-xM-R0q.title" = "退出";
+"MTY-xM-R0q.title" = "Ukončit";
