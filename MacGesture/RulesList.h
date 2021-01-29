@@ -5,8 +5,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class MASShortcut;
-
 @interface RulesList : NSObject
 typedef enum {
     FILTER_TYPE_WILDCARD, // for example *chrome
@@ -25,7 +23,7 @@ typedef enum {
                   actionType:(ActionType)actionType
              shortcutKeyCode:(NSUInteger)shortcutKeyCode // when actionType == ACTION_TYPE_SHORTCUT required,or 0
                 shortcutFlag:(NSUInteger)shortcutFlag // when actionType == ACTION_TYPE_SHORTCUT required,or 0
-                 appleScriptId:(NSString *)appleScriptId // when actionType == ACTION_TYPE_APPLE_SCRIPT required,or nil
+               appleScriptId:(NSString *)appleScriptId // when actionType == ACTION_TYPE_APPLE_SCRIPT required,or nil
                         note:(NSString *)note;
 
 - (void)moveRuleFrom:(NSInteger)from

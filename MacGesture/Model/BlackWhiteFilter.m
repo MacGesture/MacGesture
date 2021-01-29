@@ -17,7 +17,7 @@ static BlackWhiteFilter *filterSingle;
     if (!filterSingle) {
         filterSingle = [BlackWhiteFilter new];
     }
-
+    
     return filterSingle;
 }
 
@@ -56,7 +56,7 @@ static BlackWhiteFilter *filterSingle;
         if (trimed.length > 0) {
             [a addObject:trimed];
         }
-
+        
     }
     self.blackList = a;
 }
@@ -87,7 +87,7 @@ static BlackWhiteFilter *filterSingle;
         if (trimed.length > 0) {
             [a addObject:trimed];
         }
-
+        
     }
     self.whiteList = a;
 }
@@ -115,7 +115,7 @@ static BlackWhiteFilter *filterSingle;
         self.blackListText = [s stringByReplacingOccurrencesOfString:@"|" withString:@"\n"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"blockFilter"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-
+        
     } else {
         //nothing
     }

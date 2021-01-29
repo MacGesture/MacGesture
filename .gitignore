@@ -1,6 +1,7 @@
 Pods
+.idea
 
-### HubIgnore Begin: Global/Xcode, Objective-C, Global/Emacs, Global/OSX
+### HubIgnore Begin: Global/Xcode, Objective-C, Global/Emacs, Global/OSX, Global/JetBrains
 ## Global/Xcode Begins:
 # Xcode
 #

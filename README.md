@@ -6,7 +6,9 @@
 
 Configurable global mouse gesture for macOS.
 
-** Multiple issues are reported in Sierra. Please file issues and roll back to earlier versions before we fix all of them. **
+**Multiple issues are reported in macOS High Sierra. Please file issues and roll back to earlier versions before we fix all of them.**
+
+<u>***LOOKING FOR NEW MAINTAINER***</u>
 
 You can read this README in About section.
 
@@ -25,7 +27,7 @@ You can read this README in About section.
 # The format of gesture
 
 | Gesture | Acronym |
-|---------|---------|
+| ------- | ------- |
 | Left    | L       |
 | Up      | U       |
 | Right   | R       |
@@ -81,9 +83,9 @@ Right click, drag upwards, then every 'u' triggers a 'Next Tab', every 'd' trigg
 Then, create a rule like this:
 
 | Gesture | Filter             | Action             | Note       | Trigger on every match |
-|---------|--------------------|--------------------|------------|------------------------|
-|U*d      | \*safari\|\*chrome | "shift-command-\]" | "Next Tab" | Checked                |
-|U*u      | \*safari\|\*chrome | "shift-command-\[" | "Prev Tab" | Checked                |
+| ------- | ------------------ | ------------------ | ---------- | ---------------------- |
+| U*d     | \*safari\|\*chrome | "shift-command-\]" | "Next Tab" | Checked                |
+| U*u     | \*safari\|\*chrome | "shift-command-\[" | "Prev Tab" | Checked                |
 
 * If you want to export and import MacGesture preferences:
 
@@ -113,15 +115,15 @@ You can prepend '!', then the app you want to exclude (still wildcard).
 
 For example, the original one:
 
-| Gesture | Filter             | Action             | Note       | Trigger on every match |
-|---------|--------------------|--------------------|------------|------------------------|
-|U*d      | \*                 | "shift-command-\]" | "Next Tab" | Checked                |
+| Gesture | Filter | Action             | Note       | Trigger on every match |
+| ------- | ------ | ------------------ | ---------- | ---------------------- |
+| U*d     | \*     | "shift-command-\]" | "Next Tab" | Checked                |
 
 Then, in order to exclude Safari, change this to:
 
-| Gesture | Filter             | Action             | Note       | Trigger on every match |
-|---------|--------------------|--------------------|------------|------------------------|
-|U*d      | \*\|!*safari       | "shift-command-\]" | "Next Tab" | Checked                |
+| Gesture | Filter       | Action             | Note       | Trigger on every match |
+| ------- | ------------ | ------------------ | ---------- | ---------------------- |
+| U*d     | \*\|!*safari | "shift-command-\]" | "Next Tab" | Checked                |
 
 Then you will see the expected behavior.
 

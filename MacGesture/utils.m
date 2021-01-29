@@ -1,8 +1,8 @@
 #import "utils.h"
 
-NSString *frontBundleName() {
+NSString *frontBundleName(void) {
     NSRunningApplication *runningApp = [[NSWorkspace sharedWorkspace] frontmostApplication];
-
+    
     if (!runningApp.bundleIdentifier) {
         return @"";
     }
@@ -37,7 +37,7 @@ bool wildcardArray(NSString *bundleName, NSArray *wildFilters, BOOL ignoreCase) 
 
 bool wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase) {
     NSArray *filterArray = [wildFilter componentsSeparatedByCharactersInSet:
-            [NSCharacterSet characterSetWithCharactersInString:@"|\n"]];
+                            [NSCharacterSet characterSetWithCharactersInString:@"|\n"]];
     return wildcardArray(bundleName, filterArray, ignoreCase);
 }
 
