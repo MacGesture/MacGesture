@@ -15,7 +15,6 @@
 		1381E4CC1824E7E800E815F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381E4AB1824E7E800E815F5 /* Cocoa.framework */; };
 		1381E4D41824E7E800E815F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4D21824E7E800E815F5 /* InfoPlist.strings */; };
 		1381E4D61824E7E800E815F5 /* MacGestureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4D51824E7E800E815F5 /* MacGestureTests.m */; };
-		21D5AAF88B7E00E52401122E /* libPods-MacGesture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4389FB13810EBE5934C100 /* libPods-MacGesture.a */; };
 		2641800AADBF86F6E76A37B3 /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418B1111120858F175152C /* CanvasView.m */; };
 		2641804FA39EEA04BDDC27B2 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 26418DFD972C75FBEF81D049 /* right.png */; };
 		2641813EC194C60DC1B1806D /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418F4D8FB5BC803E3EB850 /* utils.m */; };
@@ -46,6 +45,7 @@
 		88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */; };
 		88EB641C1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript */; };
 		88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript */; };
+		AD2A27AE66A5D1C335139B5B /* Pods_MacGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */; };
 		B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */; };
 		B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */; };
 		C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C610961B1DED98C700FCC263 /* CoreImage.framework */; };
@@ -111,6 +111,7 @@
 		3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOptionsDefine.h; sourceTree = "<group>"; };
 		3CDC5A614857FE77ADFEA4C8 /* BlackWhiteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackWhiteFilter.h; sourceTree = "<group>"; };
 		3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOptionsDefine.m; sourceTree = "<group>"; };
+		866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacGesture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		880AA76A1CA575D5006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		880AA76D1CA575D6006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/Credits.rtf"; sourceTree = "<group>"; };
 		880AA7731CA57884006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -129,7 +130,6 @@
 		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPickerWindowController.h; sourceTree = "<group>"; };
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPickerWindowController.m; sourceTree = "<group>"; };
 		C610961B1DED98C700FCC263 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		CE4389FB13810EBE5934C100 /* libPods-MacGesture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MacGesture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D013DE1D1F08DEA7006003DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppPickerWindowController.strings; sourceTree = "<group>"; };
 		D013DE1F1F08DEBE006003DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		D013DE211F08DECA006003DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 			files = (
 				C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */,
 				1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */,
-				21D5AAF88B7E00E52401122E /* libPods-MacGesture.a in Frameworks */,
+				AD2A27AE66A5D1C335139B5B /* Pods_MacGesture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +195,7 @@
 				C610961B1DED98C700FCC263 /* CoreImage.framework */,
 				1381E4AB1824E7E800E815F5 /* Cocoa.framework */,
 				1381E4AD1824E7E800E815F5 /* Other Frameworks */,
-				CE4389FB13810EBE5934C100 /* libPods-MacGesture.a */,
+				866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -337,7 +337,6 @@
 				1381E4A51824E7E800E815F5 /* Frameworks */,
 				1381E4A61824E7E800E815F5 /* Resources */,
 				C2CC8958184B6BE82579F7B1 /* [CP] Embed Pods Frameworks */,
-				78ED3B33608EAD983CB74225 /* [CP] Copy Pods Resources */,
 				D02885E91EF29E1B0082A660 /* ShellScript */,
 			);
 			buildRules = (
@@ -466,24 +465,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		78ED3B33608EAD983CB74225 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ShortcutRecorder/ShortcutRecorder.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShortcutRecorder.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C2CC8958184B6BE82579F7B1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -491,11 +472,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DBPrefsWindowController/DBPrefsWindowController.framework",
+				"${BUILT_PRODUCTS_DIR}/HexColors/HexColors.framework",
+				"${BUILT_PRODUCTS_DIR}/ShortcutRecorder/ShortcutRecorder.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DBPrefsWindowController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HexColors.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ShortcutRecorder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);

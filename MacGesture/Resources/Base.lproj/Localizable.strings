@@ -61,3 +61,6 @@
 
 /* No comment provided by engineer. */
 "Stop" = "Stop";
+
+/* No comment provided by engineer. */
+"On macOS Mojave(10.14) and later, you must manually enable Accessibility permission for MacGesture to work.\n Please goto System Preferences -> Security & Privacy -> Privacy -> Accessibility to enable it for MacGesture.\nIf is is already enabled but MacGesture is still not working, please re-open MacGesture." = "On macOS Mojave(10.14) and later, you must manually enable Accessibility permission for MacGesture to work.\n Please goto System Preferences -> Security & Privacy -> Privacy -> Accessibility to enable it for MacGesture.\nIf is is already enabled but MacGesture is still not working, please re-open MacGesture".;

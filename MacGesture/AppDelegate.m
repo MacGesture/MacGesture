@@ -40,11 +40,35 @@ static BOOL eventTriggered;
     
     CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) | CGEventMaskBit(kCGEventRightMouseUp) | CGEventMaskBit(kCGEventLeftMouseDown) | CGEventMaskBit(kCGEventScrollWheel);
     mouseEventTap = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, kCGEventTapOptionDefault, eventMask, mouseEventCallback, NULL);
-    CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, mouseEventTap, 0);
-    CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
-    CFRelease(mouseEventTap);
-    CFRelease(runLoopSource);
     
+
+    const void * keys[] = { kAXTrustedCheckOptionPrompt };
+    const void * values[] = { kCFBooleanTrue };
+    
+    CFDictionaryRef options = CFDictionaryCreate(
+                                                 kCFAllocatorDefault,
+                                                 keys,
+                                                 values,
+                                                 sizeof(keys) / sizeof(*keys),
+                                                 &kCFCopyStringDictionaryKeyCallBacks,
+                                                 &kCFTypeDictionaryValueCallBacks);
+    
+    BOOL accessibilityEnabled = AXIsProcessTrustedWithOptions(options);
+    
+    if (accessibilityEnabled) {
+        CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, mouseEventTap, 0);
+        CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
+        CFRelease(mouseEventTap);
+        CFRelease(runLoopSource);
+    } else {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert setMessageText:NSLocalizedString(@"On macOS Mojave(10.14) and later, you must manually enable Accessibility permission for MacGesture to work.\n Please goto System Preferences -> Security & Privacy -> Privacy -> Accessibility to enable it for MacGesture.\nIf is is already enabled but MacGesture is still not working, please re-open MacGesture.", nil)];
+        
+        [alert runModal];
+        
+    }
+
     direction = [NSMutableString string];
     isEnabled = YES;
     
