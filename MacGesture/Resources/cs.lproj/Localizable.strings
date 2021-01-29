@@ -1,0 +1,104 @@
+/* No comment provided by engineer. */
+"A brief information about how MacGesture works is available in README. A copy of README is also included in About section of MacGesture's Preferences." = "Stručná informace o tom, jak funguje MacGesture, je k dispozici README souboru. README je také zahrnuto v části O aplikaci v nastavení MacGesture.";
+
+/* No comment provided by engineer. */
+"About" = "O aplikaci";
+
+/* No comment provided by engineer. */
+"AppleScript" = "AppleScript";
+
+/* No comment provided by engineer. */
+"Bottom Center" = "Dole, uprostřed";
+
+/* No comment provided by engineer. */
+"Bottom Left" = "Dole, vlevo";
+
+/* No comment provided by engineer. */
+"Bottom Right" = "Dole, vpravo";
+
+/* No comment provided by engineer. */
+"Center" = "Uprostřed";
+
+/* No comment provided by engineer. */
+"Chinese" = "Čínština";
+
+/* No comment provided by engineer. */
+"Czech" = "Čeština";
+
+/* No comment provided by engineer. */
+"Edit in External Editor" = "Upravit v externím editoru";
+
+/* No comment provided by engineer. */
+"English" = "Angličtina";
+
+/* No comment provided by engineer. */
+"Export succeeded" = "Export proběhl úspěšně";
+
+/* No comment provided by engineer. */
+"Filters" = "Filtry";
+
+/* No comment provided by engineer. */
+"General" = "Obecné";
+
+/* No comment provided by engineer. */
+"Gesture can only contain \"ULDRZud?*\"" = "Gesto může obsahovat pouze znaky \"ULDRZud?*\"";
+
+/* No comment provided by engineer. */
+"Gestures" = "Gesta";
+
+/* No comment provided by engineer. */
+"Go Bigger" = "Zvětšit";
+
+/* No comment provided by engineer. */
+"If it's already enabled but gestures aren't working properly, please re-open MacGesture." = "Pokud je již povolení aktivní, ale gesta nefungují správně, spusťte prosím aplikaci znovu.";
+
+/* No comment provided by engineer. */
+"Loading…" = "Načítání…";
+
+/* No comment provided by engineer. */
+"MacGesture processes your mouse events, thus requires the Accessibility permission to work properly" = "MacGesture zpracovává vaše pohyby myší a proto vyžaduje oprávnění k Usnadněnému přístupu";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Open README" = "Otevřít README";
+
+/* No comment provided by engineer. */
+"Please navigate to System Preferences → Security & Privacy → Privacy → Accessibility section to enable it for MacGesture." = "Přejděte do Nastavení systému → Bezpečnost a soukromí → Soukromí → Přístupnost a povolte oprávnění pro aplikaci MacGesture.";
+
+/* No comment provided by engineer. */
+"Please select a filter first!" = "Nejprve prosím vyberte filtr!";
+
+/* No comment provided by engineer. */
+"Please select an AppleScript first!" = "Nejprve prosím vyberte AppleScript!";
+
+/* No comment provided by engineer. */
+"Reset Size" = "Původní velikost";
+
+/* No comment provided by engineer. */
+"Restart MacGesture to take effect" = "Spusťte MacGesture znovu, aby se změna projevila";
+
+/* No comment provided by engineer. */
+"Skip" = "Přeskočit";
+
+/* No comment provided by engineer. */
+"Slovak" = "Slovenština";
+
+/* No comment provided by engineer. */
+"Stop" = "Zastavit";
+
+/* No comment provided by engineer. */
+"System default" = "Systémový výchozí";
+
+/* No comment provided by engineer. */
+"Top Center" = "Nahoře, uprostřed";
+
+/* No comment provided by engineer. */
+"Top Left" = "Nahoře, vlevo";
+
+/* No comment provided by engineer. */
+"Top Right" = "Nahoře, vpravo";
+
+/* No comment provided by engineer. */
+"Welcome to MacGesture! 🎉" = "Vítejte v MacGesture! 🎉";

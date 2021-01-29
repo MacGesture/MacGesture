@@ -3,56 +3,42 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		075C1BC91C214E9A00B7211A /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075C1BC81C214E9A00B7211A /* list@2x.png */; };
 		1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381E4AB1824E7E800E815F5 /* Cocoa.framework */; };
 		1381E4B81824E7E800E815F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4B71824E7E800E815F5 /* main.m */; };
 		1381E4BF1824E7E800E815F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4BE1824E7E800E815F5 /* AppDelegate.m */; };
-		1381E4C41824E7E800E815F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4C31824E7E800E815F5 /* Images.xcassets */; };
+		1381E4C41824E7E800E815F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4C31824E7E800E815F5 /* Assets.xcassets */; };
 		1381E4CC1824E7E800E815F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381E4AB1824E7E800E815F5 /* Cocoa.framework */; };
-		1381E4D41824E7E800E815F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1381E4D21824E7E800E815F5 /* InfoPlist.strings */; };
 		1381E4D61824E7E800E815F5 /* MacGestureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4D51824E7E800E815F5 /* MacGestureTests.m */; };
 		2641800AADBF86F6E76A37B3 /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418B1111120858F175152C /* CanvasView.m */; };
-		2641804FA39EEA04BDDC27B2 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 26418DFD972C75FBEF81D049 /* right.png */; };
 		2641813EC194C60DC1B1806D /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418F4D8FB5BC803E3EB850 /* utils.m */; };
-		264182480FA70DFC89B87842 /* Updates.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 26418C0A252C6E5467076636 /* Updates.tiff */; };
 		264183649CB68AD1A072883A /* AppPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */; };
 		264183DA0542C17E1932F696 /* SRRecorderControlWithTagid.m in Sources */ = {isa = PBXBuildFile; fileRef = 264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */; };
 		264183EEE694EB7761D6066B /* CanvasWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 264188F91072F914D0FF443E /* CanvasWindowController.m */; };
 		264184A9FF52175212CBE73F /* CanvasWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2641881917BAF09AFC2A7CC7 /* CanvasWindow.m */; };
-		264185813821B17A6CF8761E /* Rules.png in Resources */ = {isa = PBXBuildFile; fileRef = 264188A38F5F48B61F3EF173 /* Rules.png */; };
-		2641871BACBB993F84AF778C /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 264188CA1FEAB47BE83286F8 /* About.png */; };
-		26418785A1CC885F4D2FFDF5 /* General.png in Resources */ = {isa = PBXBuildFile; fileRef = 264182CCCB38C9FAD7896BD5 /* General.png */; };
-		26418990BAAA8C09484967DD /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 26418331BA0AD1E0D42A4E53 /* down.png */; };
-		26418AD8D88FC1BA381305BA /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 264180FCC355082AC7EDFD74 /* left.png */; };
-		26418B30A89965ED65EC8209 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 2641860492954D6BD5AF2FD5 /* up.png */; };
 		26418E623E410EF207EFA2A8 /* RulesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418733B12703C123D16E95 /* RulesList.m */; };
 		3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */; };
 		3CDC5543D4E5BD248515F7CA /* BlockAllowFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC55835ADD1CA85B9CCC91 /* BlockAllowFilter.m */; };
+		3F27E5B397E8FBC9824D259E /* Pods_MacGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D969966A19E929C25549B82 /* Pods_MacGesture.framework */; };
 		880AA7571CA5738A006E7A74 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7591CA5738A006E7A74 /* Preferences.xib */; };
 		880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */; };
 		880AA7651CA5745D006E7A74 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75F1CA5745D006E7A74 /* Credits.rtf */; };
 		880AA7661CA5745D006E7A74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7611CA5745D006E7A74 /* InfoPlist.strings */; };
 		880AA7691CA57491006E7A74 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7671CA57491006E7A74 /* MainMenu.xib */; };
 		880AA7741CA57884006E7A74 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7721CA57884006E7A74 /* Localizable.strings */; };
-		8815F63B1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */; };
-		88331A381C9402810064ADD5 /* AppleScript_Editor_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 88331A371C9402810064ADD5 /* AppleScript_Editor_Logo.png */; };
 		88331A3B1C9D22290064ADD5 /* AppleScriptsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */; };
 		887E09251C8B0FD0003A4CC0 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */; };
-		88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */; };
-		88EB641C1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript */; };
-		88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript */; };
-		AD2A27AE66A5D1C335139B5B /* Pods_MacGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */; };
-		B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */; };
+		88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = 8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript-src */; };
+		88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = 88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */; };
 		B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */; };
+		BB004AFA25BD001900A7373F /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB004AF825BD001900A7373F /* DBPrefsWindowController.m */; };
+		BB004AFF25BDA30300A7373F /* ComboColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB004AFE25BDA30300A7373F /* ComboColorWell.m */; };
+		BBC1C8E625BCCDC600DE6816 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC1C8E525BCCDC600DE6816 /* WebKit.framework */; };
 		C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C610961B1DED98C700FCC263 /* CoreImage.framework */; };
-		D01C87CB1DE9DF2600B47E7D /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D01C87CA1DE9DF2600B47E7D /* logo.png */; };
-		D065A3C91D18154E0062900A /* SearchInWeb.applescript in Sources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript */; };
-		D065A3CA1D18155E0062900A /* SearchInWeb.applescript in Resources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript */; };
-		D09794D11DE5DA1900E88F73 /* scroll.png in Resources */ = {isa = PBXBuildFile; fileRef = D09794D01DE5DA1900E88F73 /* scroll.png */; };
+		D065A3CA1D18155E0062900A /* SearchInWeb.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */; };
 		D09FDBF51E06CDB50085FC36 /* README.html in Resources */ = {isa = PBXBuildFile; fileRef = D09FDBF31E06CDB50085FC36 /* README.html */; };
 		D0B19D421E3841FD00619F4A /* AppleScript.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D0B19D411E3841FD00619F4A /* AppleScript.sdef */; };
 		D0B19D481E384BAE00619F4A /* AppleScriptCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */; };
@@ -69,84 +55,77 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		075C1BC81C214E9A00B7211A /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
-		1331CD80182C50E500782D16 /* menu_icon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon_16x16.png; sourceTree = "<group>"; };
-		1331CD81182C50E500782D16 /* menu_icon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon_32x32.png; sourceTree = "<group>"; };
 		1381E4AB1824E7E800E815F5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		1381E4AE1824E7E800E815F5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		1381E4AF1824E7E800E815F5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		1381E4B01824E7E800E815F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1381E4B31824E7E800E815F5 /* MacGesture-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacGesture-Info.plist"; sourceTree = "<group>"; };
-		1381E4B71824E7E800E815F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1381E4B91824E7E800E815F5 /* MacGesture-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MacGesture-Prefix.pch"; sourceTree = "<group>"; };
-		1381E4BD1824E7E800E815F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		1381E4BE1824E7E800E815F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1381E4C31824E7E800E815F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1381E4B71824E7E800E815F5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; usesTabs = 0; };
+		1381E4BD1824E7E800E815F5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppDelegate.h; sourceTree = "<group>"; usesTabs = 0; };
+		1381E4BE1824E7E800E815F5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; usesTabs = 0; };
+		1381E4C31824E7E800E815F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1381E4D11824E7E800E815F5 /* MacGestureTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacGestureTests-Info.plist"; sourceTree = "<group>"; };
-		1381E4D51824E7E800E815F5 /* MacGestureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MacGestureTests.m; sourceTree = "<group>"; };
-		1ACB654207F7BCBC992336E4 /* Pods-MacGesture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture.debug.xcconfig"; sourceTree = "<group>"; };
-		264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderControlWithTagid.m; sourceTree = "<group>"; };
-		264180FCC355082AC7EDFD74 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
-		264182CCCB38C9FAD7896BD5 /* General.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = General.png; sourceTree = "<group>"; };
-		26418331BA0AD1E0D42A4E53 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
-		2641846D9674154891849969 /* SRRecorderControlWithTagid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderControlWithTagid.h; sourceTree = "<group>"; };
-		264184868E6F3B7E8747AAA2 /* AppPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPrefsWindowController.h; sourceTree = "<group>"; };
-		264184DD0A5ACE29690D7EF2 /* CanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasView.h; sourceTree = "<group>"; };
-		2641853CD8AE42C95077D980 /* RulesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesList.h; sourceTree = "<group>"; };
-		2641860492954D6BD5AF2FD5 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
-		26418733B12703C123D16E95 /* RulesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesList.m; sourceTree = "<group>"; };
-		264187BE8168A714F0DB88B7 /* CanvasWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasWindowController.h; sourceTree = "<group>"; };
-		2641881917BAF09AFC2A7CC7 /* CanvasWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasWindow.m; sourceTree = "<group>"; };
-		264188A38F5F48B61F3EF173 /* Rules.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rules.png; sourceTree = "<group>"; };
-		264188CA1FEAB47BE83286F8 /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About.png; sourceTree = "<group>"; };
-		264188F91072F914D0FF443E /* CanvasWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasWindowController.m; sourceTree = "<group>"; };
-		26418B1111120858F175152C /* CanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasView.m; sourceTree = "<group>"; };
-		26418C0A252C6E5467076636 /* Updates.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Updates.tiff; sourceTree = "<group>"; };
-		26418C419A597E159158ED0D /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
-		26418D5612632F8BDA1AE8CA /* CanvasWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CanvasWindow.h; path = Resources/CanvasWindow.h; sourceTree = "<group>"; };
-		26418DFD972C75FBEF81D049 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
-		26418F4D8FB5BC803E3EB850 /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
-		26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPrefsWindowController.m; sourceTree = "<group>"; };
-		3CDC55835ADD1CA85B9CCC91 /* BlockAllowFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockAllowFilter.m; sourceTree = "<group>"; };
-		3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOptionsDefine.h; sourceTree = "<group>"; };
-		3CDC5A614857FE77ADFEA4C8 /* BlockAllowFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockAllowFilter.h; sourceTree = "<group>"; };
-		3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOptionsDefine.m; sourceTree = "<group>"; };
-		866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacGesture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		880AA76A1CA575D5006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		880AA76D1CA575D6006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/Credits.rtf"; sourceTree = "<group>"; };
-		880AA7731CA57884006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		1381E4D51824E7E800E815F5 /* MacGestureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MacGestureTests.m; sourceTree = "<group>"; usesTabs = 0; };
+		264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SRRecorderControlWithTagid.m; sourceTree = "<group>"; usesTabs = 0; };
+		2641846D9674154891849969 /* SRRecorderControlWithTagid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SRRecorderControlWithTagid.h; sourceTree = "<group>"; usesTabs = 0; };
+		264184868E6F3B7E8747AAA2 /* AppPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppPrefsWindowController.h; sourceTree = "<group>"; usesTabs = 0; };
+		264184DD0A5ACE29690D7EF2 /* CanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CanvasView.h; sourceTree = "<group>"; usesTabs = 0; };
+		2641853CD8AE42C95077D980 /* RulesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RulesList.h; sourceTree = "<group>"; usesTabs = 0; };
+		26418733B12703C123D16E95 /* RulesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RulesList.m; sourceTree = "<group>"; usesTabs = 0; };
+		264187BE8168A714F0DB88B7 /* CanvasWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CanvasWindowController.h; sourceTree = "<group>"; usesTabs = 0; };
+		2641881917BAF09AFC2A7CC7 /* CanvasWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CanvasWindow.m; sourceTree = "<group>"; usesTabs = 0; };
+		264188F91072F914D0FF443E /* CanvasWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CanvasWindowController.m; sourceTree = "<group>"; usesTabs = 0; };
+		26418B1111120858F175152C /* CanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CanvasView.m; sourceTree = "<group>"; usesTabs = 0; };
+		26418C419A597E159158ED0D /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = utils.h; sourceTree = "<group>"; usesTabs = 0; };
+		26418D5612632F8BDA1AE8CA /* CanvasWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CanvasWindow.h; sourceTree = "<group>"; usesTabs = 0; };
+		26418F4D8FB5BC803E3EB850 /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = utils.m; sourceTree = "<group>"; usesTabs = 0; };
+		26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppPrefsWindowController.m; sourceTree = "<group>"; usesTabs = 0; };
+		3CDC55835ADD1CA85B9CCC91 /* BlockAllowFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BlockAllowFilter.m; sourceTree = "<group>"; usesTabs = 0; };
+		3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MGOptionsDefine.h; sourceTree = "<group>"; usesTabs = 0; };
+		3CDC5A614857FE77ADFEA4C8 /* BlockAllowFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BlockAllowFilter.h; sourceTree = "<group>"; usesTabs = 0; };
+		3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MGOptionsDefine.m; sourceTree = "<group>"; usesTabs = 0; };
+		7D969966A19E929C25549B82 /* Pods_MacGesture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacGesture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		880AA7751CA64DDB006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		880AA7781CA64E62006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AppPickerWindowController.xib; sourceTree = "<group>"; };
 		880AA77A1CA64E7C006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
 		880AA77C1CA64E88006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Preferences.xib; sourceTree = "<group>"; };
 		880AA77E1CA64EB7006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ChromeCloseTabsToTheRight.applescript; sourceTree = "<group>"; };
-		88331A371C9402810064ADD5 /* AppleScript_Editor_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppleScript_Editor_Logo.png; sourceTree = "<group>"; };
-		88331A391C9D22290064ADD5 /* AppleScriptsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleScriptsList.h; sourceTree = "<group>"; };
-		88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleScriptsList.m; sourceTree = "<group>"; };
+		8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ChromeCloseTabsToTheRight.applescript-src"; sourceTree = "<group>"; };
+		88331A391C9D22290064ADD5 /* AppleScriptsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppleScriptsList.h; sourceTree = "<group>"; usesTabs = 0; };
+		88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppleScriptsList.m; sourceTree = "<group>"; usesTabs = 0; };
 		887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
-		88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = OpenMacGesturePreferences.applescript; sourceTree = "<group>"; };
-		B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
-		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPickerWindowController.h; sourceTree = "<group>"; };
-		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPickerWindowController.m; sourceTree = "<group>"; };
+		88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "OpenMacGesturePreferences.applescript-src"; sourceTree = "<group>"; };
+		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppPickerWindowController.h; sourceTree = "<group>"; usesTabs = 0; };
+		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppPickerWindowController.m; sourceTree = "<group>"; usesTabs = 0; };
+		B8BB5D7B835E0DF34F8BA0D6 /* Pods-MacGesture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.debug.xcconfig"; path = "Target Support Files/Pods-MacGesture/Pods-MacGesture.debug.xcconfig"; sourceTree = "<group>"; };
+		BB004AF825BD001900A7373F /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
+		BB004AF925BD001900A7373F /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
+		BB004AFD25BDA30300A7373F /* ComboColorWell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComboColorWell.h; sourceTree = "<group>"; };
+		BB004AFE25BDA30300A7373F /* ComboColorWell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComboColorWell.m; sourceTree = "<group>"; };
+		BBC1C8C525BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		BBC1C8C625BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
+		BBC1C8C725BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppPickerWindowController.strings"; sourceTree = "<group>"; };
+		BBC1C8C825BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BBC1C8E525BCCDC600DE6816 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		BBCB98BB25C4114E0020592A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BBCB99BF25C4593E0020592A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		BBCB99C025C4593E0020592A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Preferences.strings; sourceTree = "<group>"; };
+		BBCB99C125C4593E0020592A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppPickerWindowController.strings; sourceTree = "<group>"; };
+		BBCB99C225C4593E0020592A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C610961B1DED98C700FCC263 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		D013DE1D1F08DEA7006003DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppPickerWindowController.strings; sourceTree = "<group>"; };
-		D013DE1F1F08DEBE006003DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
-		D013DE211F08DECA006003DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
-		D01C87CA1DE9DF2600B47E7D /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		D02885DF1EF29B8A0082A660 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppPickerWindowController.strings"; sourceTree = "<group>"; };
-		D02885E01EF29B9E0082A660 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		D02885E11EF29CDE0082A660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D02885E21EF29CE40082A660 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		D02A45361EA0E84800E32EC5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
-		D065A3C81D18154E0062900A /* SearchInWeb.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SearchInWeb.applescript; sourceTree = "<group>"; };
-		D09794D01DE5DA1900E88F73 /* scroll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scroll.png; sourceTree = "<group>"; };
-		D09FDBF61E06CDC60085FC36 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/README.html"; sourceTree = "<group>"; };
+		D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SearchInWeb.applescript-src"; sourceTree = "<group>"; };
 		D0B19D411E3841FD00619F4A /* AppleScript.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AppleScript.sdef; sourceTree = "<group>"; };
-		D0B19D461E384BAE00619F4A /* AppleScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleScriptCommand.h; sourceTree = "<group>"; };
-		D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleScriptCommand.m; sourceTree = "<group>"; };
-		D0FE00811EFE2C1400F06E4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/README.html; sourceTree = "<group>"; };
-		E051A121D93E759C89CE3094 /* Pods-MacGesture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture.release.xcconfig"; sourceTree = "<group>"; };
+		D0B19D461E384BAE00619F4A /* AppleScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppleScriptCommand.h; sourceTree = "<group>"; usesTabs = 0; };
+		D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppleScriptCommand.m; sourceTree = "<group>"; usesTabs = 0; };
+		D6B13184249E54270014F55E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		D6B13185249E54300014F55E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D6B13186249E54330014F55E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D6B13187249E54550014F55E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/README.html; sourceTree = "<group>"; };
+		D6B1318B249E54D00014F55E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		D6B1318D249E54E10014F55E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppPickerWindowController.strings; sourceTree = "<group>"; };
+		D6B1318F249E55C90014F55E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
+		DB275F9AADC2DB3FB7986EF0 /* Pods-MacGesture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.release.xcconfig"; path = "Target Support Files/Pods-MacGesture/Pods-MacGesture.release.xcconfig"; sourceTree = "<group>"; };
+		EF4E7293249AAF960095B982 /* MacGesture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacGesture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF4E72C5249ABAE00095B982 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		EF8ECEC8249EC5F2004C2563 /* MacGesture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacGesture.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +135,8 @@
 			files = (
 				C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */,
 				1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */,
-				AD2A27AE66A5D1C335139B5B /* Pods_MacGesture.framework in Frameworks */,
+				BBC1C8E625BCCDC600DE6816 /* WebKit.framework in Frameworks */,
+				3F27E5B397E8FBC9824D259E /* Pods_MacGesture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,17 +154,18 @@
 		1381E49F1824E7E800E815F5 = {
 			isa = PBXGroup;
 			children = (
-				1381E4AA1824E7E800E815F5 /* Frameworks */,
 				1381E4B11824E7E800E815F5 /* MacGesture */,
 				1381E4CF1824E7E800E815F5 /* MacGestureTests */,
-				CCE209CCED2C3EF90609FF7E /* Pods */,
+				1381E4AA1824E7E800E815F5 /* Frameworks */,
 				1381E4A91824E7E800E815F5 /* Products */,
+				E06E22524ADF3886B4BC27CB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		1381E4A91824E7E800E815F5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				EF4E7293249AAF960095B982 /* MacGesture.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,54 +173,30 @@
 		1381E4AA1824E7E800E815F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C610961B1DED98C700FCC263 /* CoreImage.framework */,
+				D6B13184249E54270014F55E /* AppKit.framework */,
 				1381E4AB1824E7E800E815F5 /* Cocoa.framework */,
-				1381E4AD1824E7E800E815F5 /* Other Frameworks */,
-				866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */,
+				D6B13185249E54300014F55E /* CoreData.framework */,
+				C610961B1DED98C700FCC263 /* CoreImage.framework */,
+				D6B13186249E54330014F55E /* Foundation.framework */,
+				BBC1C8E525BCCDC600DE6816 /* WebKit.framework */,
+				7D969966A19E929C25549B82 /* Pods_MacGesture.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1381E4AD1824E7E800E815F5 /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1381E4AE1824E7E800E815F5 /* AppKit.framework */,
-				1381E4AF1824E7E800E815F5 /* CoreData.framework */,
-				1381E4B01824E7E800E815F5 /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
 		1381E4B11824E7E800E815F5 /* MacGesture */ = {
 			isa = PBXGroup;
 			children = (
-				3CDC5D998F35E9F8C91C7789 /* Model */,
+				EF4E721F249A886C0095B982 /* Views */,
+				EF4E721E249A880A0095B982 /* Controllers */,
+				3CDC5D998F35E9F8C91C7789 /* Models */,
+				EF8ECEC9249FC4A8004C2563 /* Helpers */,
 				264189E588806C286B6552A8 /* Resources */,
 				1381E4B21824E7E800E815F5 /* Supporting Files */,
 				1381E4BD1824E7E800E815F5 /* AppDelegate.h */,
 				1381E4BE1824E7E800E815F5 /* AppDelegate.m */,
-				B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */,
-				B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */,
-				264184868E6F3B7E8747AAA2 /* AppPrefsWindowController.h */,
-				26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */,
 				D0B19D411E3841FD00619F4A /* AppleScript.sdef */,
-				D0B19D461E384BAE00619F4A /* AppleScriptCommand.h */,
-				D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */,
-				88331A391C9D22290064ADD5 /* AppleScriptsList.h */,
-				88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */,
-				264184DD0A5ACE29690D7EF2 /* CanvasView.h */,
-				26418B1111120858F175152C /* CanvasView.m */,
-				26418D5612632F8BDA1AE8CA /* CanvasWindow.h */,
-				2641881917BAF09AFC2A7CC7 /* CanvasWindow.m */,
-				264187BE8168A714F0DB88B7 /* CanvasWindowController.h */,
-				264188F91072F914D0FF443E /* CanvasWindowController.m */,
-				1381E4C31824E7E800E815F5 /* Images.xcassets */,
-				2641853CD8AE42C95077D980 /* RulesList.h */,
-				26418733B12703C123D16E95 /* RulesList.m */,
-				2641846D9674154891849969 /* SRRecorderControlWithTagid.h */,
-				264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */,
-				26418C419A597E159158ED0D /* utils.h */,
-				26418F4D8FB5BC803E3EB850 /* utils.m */,
+				EF8ECEC8249EC5F2004C2563 /* MacGesture.entitlements */,
 			);
 			path = MacGesture;
 			sourceTree = "<group>";
@@ -247,11 +204,9 @@
 		1381E4B21824E7E800E815F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EF4E72C5249ABAE00095B982 /* Config.xcconfig */,
 				1381E4B31824E7E800E815F5 /* MacGesture-Info.plist */,
-				1381E4B91824E7E800E815F5 /* MacGesture-Prefix.pch */,
 				1381E4B71824E7E800E815F5 /* main.m */,
-				1331CD80182C50E500782D16 /* menu_icon_16x16.png */,
-				1331CD81182C50E500782D16 /* menu_icon_32x32.png */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -268,7 +223,6 @@
 		1381E4D01824E7E800E815F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1381E4D21824E7E800E815F5 /* InfoPlist.strings */,
 				1381E4D11824E7E800E815F5 /* MacGestureTests-Info.plist */,
 			);
 			path = "Supporting Files";
@@ -277,52 +231,85 @@
 		264189E588806C286B6552A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				264188CA1FEAB47BE83286F8 /* About.png */,
+				1381E4C31824E7E800E815F5 /* Assets.xcassets */,
+				880AA7671CA57491006E7A74 /* MainMenu.xib */,
+				880AA7591CA5738A006E7A74 /* Preferences.xib */,
 				880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */,
-				88331A371C9402810064ADD5 /* AppleScript_Editor_Logo.png */,
-				8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */,
-				880AA75F1CA5745D006E7A74 /* Credits.rtf */,
+				8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript-src */,
+				88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */,
+				D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */,
 				887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */,
-				264182CCCB38C9FAD7896BD5 /* General.png */,
 				880AA7611CA5745D006E7A74 /* InfoPlist.strings */,
 				880AA7721CA57884006E7A74 /* Localizable.strings */,
-				880AA7671CA57491006E7A74 /* MainMenu.xib */,
-				88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript */,
-				880AA7591CA5738A006E7A74 /* Preferences.xib */,
+				880AA75F1CA5745D006E7A74 /* Credits.rtf */,
 				D09FDBF31E06CDB50085FC36 /* README.html */,
-				264188A38F5F48B61F3EF173 /* Rules.png */,
-				D065A3C81D18154E0062900A /* SearchInWeb.applescript */,
-				26418C0A252C6E5467076636 /* Updates.tiff */,
-				26418331BA0AD1E0D42A4E53 /* down.png */,
-				B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */,
-				264180FCC355082AC7EDFD74 /* left.png */,
-				075C1BC81C214E9A00B7211A /* list@2x.png */,
-				D01C87CA1DE9DF2600B47E7D /* logo.png */,
-				26418DFD972C75FBEF81D049 /* right.png */,
-				D09794D01DE5DA1900E88F73 /* scroll.png */,
-				2641860492954D6BD5AF2FD5 /* up.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		3CDC5D998F35E9F8C91C7789 /* Model */ = {
+		3CDC5D998F35E9F8C91C7789 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D0B19D461E384BAE00619F4A /* AppleScriptCommand.h */,
+				D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */,
+				88331A391C9D22290064ADD5 /* AppleScriptsList.h */,
+				88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */,
 				3CDC5A614857FE77ADFEA4C8 /* BlockAllowFilter.h */,
 				3CDC55835ADD1CA85B9CCC91 /* BlockAllowFilter.m */,
 				3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */,
 				3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */,
+				2641853CD8AE42C95077D980 /* RulesList.h */,
+				26418733B12703C123D16E95 /* RulesList.m */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		CCE209CCED2C3EF90609FF7E /* Pods */ = {
+		E06E22524ADF3886B4BC27CB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1ACB654207F7BCBC992336E4 /* Pods-MacGesture.debug.xcconfig */,
-				E051A121D93E759C89CE3094 /* Pods-MacGesture.release.xcconfig */,
+				B8BB5D7B835E0DF34F8BA0D6 /* Pods-MacGesture.debug.xcconfig */,
+				DB275F9AADC2DB3FB7986EF0 /* Pods-MacGesture.release.xcconfig */,
 			);
-			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EF4E721E249A880A0095B982 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */,
+				B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */,
+				264184868E6F3B7E8747AAA2 /* AppPrefsWindowController.h */,
+				26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */,
+				264187BE8168A714F0DB88B7 /* CanvasWindowController.h */,
+				264188F91072F914D0FF443E /* CanvasWindowController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		EF4E721F249A886C0095B982 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				264184DD0A5ACE29690D7EF2 /* CanvasView.h */,
+				26418B1111120858F175152C /* CanvasView.m */,
+				26418D5612632F8BDA1AE8CA /* CanvasWindow.h */,
+				2641881917BAF09AFC2A7CC7 /* CanvasWindow.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EF8ECEC9249FC4A8004C2563 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BB004AFD25BDA30300A7373F /* ComboColorWell.h */,
+				BB004AFE25BDA30300A7373F /* ComboColorWell.m */,
+				BB004AF925BD001900A7373F /* DBPrefsWindowController.h */,
+				BB004AF825BD001900A7373F /* DBPrefsWindowController.m */,
+				2641846D9674154891849969 /* SRRecorderControlWithTagid.h */,
+				264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */,
+				26418C419A597E159158ED0D /* utils.h */,
+				26418F4D8FB5BC803E3EB850 /* utils.m */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,12 +319,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1381E4D91824E7E800E815F5 /* Build configuration list for PBXNativeTarget "MacGesture" */;
 			buildPhases = (
-				67400C116298A8804058BA6A /* [CP] Check Pods Manifest.lock */,
+				237E7048FBA3C44743A62A1C /* [CP] Check Pods Manifest.lock */,
 				1381E4A41824E7E800E815F5 /* Sources */,
 				1381E4A51824E7E800E815F5 /* Frameworks */,
 				1381E4A61824E7E800E815F5 /* Resources */,
-				C2CC8958184B6BE82579F7B1 /* [CP] Embed Pods Frameworks */,
-				D02885E91EF29E1B0082A660 /* ShellScript */,
+				D02885E91EF29E1B0082A660 /* Update Translations */,
+				D04D17BB4E5D9DB1C8145C08 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -345,6 +332,7 @@
 			);
 			name = MacGesture;
 			productName = MacGesture;
+			productReference = EF4E7293249AAF960095B982 /* MacGesture.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1381E4C81824E7E800E815F5 /* MacGestureTests */ = {
@@ -370,9 +358,9 @@
 		1381E4A01824E7E800E815F5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = MBA;
-				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "Chivalry Software";
+				CLASSPREFIX = MCG;
+				LastUpgradeCheck = 1240;
+				ORGANIZATIONNAME = MacGesture;
 				TargetAttributes = {
 					1381E4A71824E7E800E815F5 = {
 						ProvisioningStyle = Automatic;
@@ -383,14 +371,14 @@
 				};
 			};
 			buildConfigurationList = 1381E4A31824E7E800E815F5 /* Build configuration list for PBXProject "MacGesture" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				Base,
-				"zh-Hans",
 				en,
+				"zh-Hans",
+				cs,
 			);
 			mainGroup = 1381E49F1824E7E800E815F5;
 			productRefGroup = 1381E4A91824E7E800E815F5 /* Products */;
@@ -409,31 +397,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D09FDBF51E06CDB50085FC36 /* README.html in Resources */,
-				D065A3CA1D18155E0062900A /* SearchInWeb.applescript in Resources */,
-				88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript in Resources */,
-				88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript in Resources */,
+				D065A3CA1D18155E0062900A /* SearchInWeb.applescript-src in Resources */,
+				88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript-src in Resources */,
+				88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript-src in Resources */,
 				880AA7661CA5745D006E7A74 /* InfoPlist.strings in Resources */,
-				1381E4C41824E7E800E815F5 /* Images.xcassets in Resources */,
+				1381E4C41824E7E800E815F5 /* Assets.xcassets in Resources */,
 				880AA7691CA57491006E7A74 /* MainMenu.xib in Resources */,
-				075C1BC91C214E9A00B7211A /* list@2x.png in Resources */,
 				880AA7741CA57884006E7A74 /* Localizable.strings in Resources */,
-				26418785A1CC885F4D2FFDF5 /* General.png in Resources */,
 				880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */,
 				880AA7571CA5738A006E7A74 /* Preferences.xib in Resources */,
-				264182480FA70DFC89B87842 /* Updates.tiff in Resources */,
 				D0B19D421E3841FD00619F4A /* AppleScript.sdef in Resources */,
-				264185813821B17A6CF8761E /* Rules.png in Resources */,
-				B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */,
 				887E09251C8B0FD0003A4CC0 /* DefaultPreferences.plist in Resources */,
-				D01C87CB1DE9DF2600B47E7D /* logo.png in Resources */,
-				2641871BACBB993F84AF778C /* About.png in Resources */,
-				2641804FA39EEA04BDDC27B2 /* right.png in Resources */,
 				880AA7651CA5745D006E7A74 /* Credits.rtf in Resources */,
-				26418B30A89965ED65EC8209 /* up.png in Resources */,
-				88331A381C9402810064ADD5 /* AppleScript_Editor_Logo.png in Resources */,
-				26418AD8D88FC1BA381305BA /* left.png in Resources */,
-				26418990BAAA8C09484967DD /* down.png in Resources */,
-				D09794D11DE5DA1900E88F73 /* scroll.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,23 +416,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1381E4D41824E7E800E815F5 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		67400C116298A8804058BA6A /* [CP] Check Pods Manifest.lock */ = {
+		237E7048FBA3C44743A62A1C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-MacGesture-checkManifestLockResult.txt",
 			);
@@ -466,44 +444,36 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C2CC8958184B6BE82579F7B1 /* [CP] Embed Pods Frameworks */ = {
+		D02885E91EF29E1B0082A660 /* Update Translations */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/DBPrefsWindowController/DBPrefsWindowController.framework",
-				"${BUILT_PRODUCTS_DIR}/HexColors/HexColors.framework",
-				"${BUILT_PRODUCTS_DIR}/ShortcutRecorder/ShortcutRecorder.framework",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
+			);
+			name = "Update Translations";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which bartycrouch > /dev/null; then\n    bartycrouch update\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\n    echo \"         or using Homebrew by running `brew install bartycrouch` command\"\nfi\n";
+		};
+		D04D17BB4E5D9DB1C8145C08 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DBPrefsWindowController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HexColors.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ShortcutRecorder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		D02885E91EF29E1B0082A660 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which bartycrouch > /dev/null; then\n# Incrementally update all Storyboards/XIBs strings files\nbartycrouch interfaces -p \"$PROJECT_DIR/MacGesture\" -b\n\n# Add new keys to Localizable.strings files from NSLocalizedString in code\nbartycrouch code -p \"$PROJECT_DIR/MacGesture\" -l \"$PROJECT_DIR/MacGesture\" -s -k\nelse\necho \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -514,20 +484,19 @@
 			files = (
 				1381E4B81824E7E800E815F5 /* main.m in Sources */,
 				1381E4BF1824E7E800E815F5 /* AppDelegate.m in Sources */,
-				8815F63B1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript in Sources */,
 				88331A3B1C9D22290064ADD5 /* AppleScriptsList.m in Sources */,
+				BB004AFA25BD001900A7373F /* DBPrefsWindowController.m in Sources */,
 				264183649CB68AD1A072883A /* AppPrefsWindowController.m in Sources */,
 				264184A9FF52175212CBE73F /* CanvasWindow.m in Sources */,
 				2641800AADBF86F6E76A37B3 /* CanvasView.m in Sources */,
 				D0B19D481E384BAE00619F4A /* AppleScriptCommand.m in Sources */,
-				D065A3C91D18154E0062900A /* SearchInWeb.applescript in Sources */,
 				264183EEE694EB7761D6066B /* CanvasWindowController.m in Sources */,
 				26418E623E410EF207EFA2A8 /* RulesList.m in Sources */,
 				B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */,
 				264183DA0542C17E1932F696 /* SRRecorderControlWithTagid.m in Sources */,
 				2641813EC194C60DC1B1806D /* utils.m in Sources */,
 				3CDC5543D4E5BD248515F7CA /* BlockAllowFilter.m in Sources */,
-				88EB641C1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript in Sources */,
+				BB004AFF25BDA30300A7373F /* ComboColorWell.m in Sources */,
 				3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,21 +520,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1381E4D21824E7E800E815F5 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				880AA76A1CA575D5006E7A74 /* zh-Hans */,
-			);
-			name = InfoPlist.strings;
-			path = .;
-			sourceTree = "<group>";
-		};
 		880AA7591CA5738A006E7A74 /* Preferences.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				880AA77C1CA64E88006E7A74 /* Base */,
-				D02A45361EA0E84800E32EC5 /* zh-Hans */,
-				D013DE211F08DECA006003DD /* en */,
+				D6B1318F249E55C90014F55E /* en */,
+				BBC1C8C625BCA21F00DE6816 /* zh-Hans */,
+				BBCB99C025C4593E0020592A /* cs */,
 			);
 			name = Preferences.xib;
 			path = .;
@@ -575,8 +536,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				880AA7781CA64E62006E7A74 /* Base */,
-				D02885DF1EF29B8A0082A660 /* zh-Hans */,
-				D013DE1D1F08DEA7006003DD /* en */,
+				D6B1318D249E54E10014F55E /* en */,
+				BBC1C8C725BCA21F00DE6816 /* zh-Hans */,
+				BBCB99C125C4593E0020592A /* cs */,
 			);
 			name = AppPickerWindowController.xib;
 			path = .;
@@ -586,7 +548,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				880AA77A1CA64E7C006E7A74 /* Base */,
-				880AA76D1CA575D6006E7A74 /* zh-Hans */,
 			);
 			name = Credits.rtf;
 			path = .;
@@ -596,7 +557,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D02885E11EF29CDE0082A660 /* Base */,
-				D02885E21EF29CE40082A660 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			path = .;
@@ -606,8 +566,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				880AA7751CA64DDB006E7A74 /* Base */,
-				D02885E01EF29B9E0082A660 /* zh-Hans */,
-				D013DE1F1F08DEBE006003DD /* en */,
+				D6B1318B249E54D00014F55E /* en */,
+				BBC1C8C525BCA21F00DE6816 /* zh-Hans */,
+				BBCB99BF25C4593E0020592A /* cs */,
 			);
 			name = MainMenu.xib;
 			path = .;
@@ -617,7 +578,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				880AA77E1CA64EB7006E7A74 /* Base */,
-				880AA7731CA57884006E7A74 /* zh-Hans */,
+				BBCB98BB25C4114E0020592A /* en */,
+				BBC1C8C825BCA21F00DE6816 /* zh-Hans */,
+				BBCB99C225C4593E0020592A /* cs */,
 			);
 			name = Localizable.strings;
 			path = .;
@@ -626,8 +589,7 @@
 		D09FDBF31E06CDB50085FC36 /* README.html */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D09FDBF61E06CDC60085FC36 /* zh-Hans */,
-				D0FE00811EFE2C1400F06E4A /* en */,
+				D6B13187249E54550014F55E /* Base */,
 			);
 			name = README.html;
 			path = .;
@@ -638,11 +600,10 @@
 /* Begin XCBuildConfiguration section */
 		1381E4D71824E7E800E815F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF4E72C5249ABAE00095B982 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -658,15 +619,17 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_NS_ASSERTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -682,7 +645,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -690,11 +653,10 @@
 		};
 		1381E4D81824E7E800E815F5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF4E72C5249ABAE00095B982 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -710,6 +672,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -719,78 +682,68 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
 		1381E4DA1824E7E800E815F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1ACB654207F7BCBC992336E4 /* Pods-MacGesture.debug.xcconfig */;
+			baseConfigurationReference = B8BB5D7B835E0DF34F8BA0D6 /* Pods-MacGesture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_ENTITLEMENTS = "$(PRODUCT)/$(PRODUCT).entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.2.6;
 				DEVELOPMENT_TEAM = "";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
-				INFOPLIST_FILE = "MacGesture/Supporting Files/MacGesture-Info.plist";
-				MARKETING_VERSION = 2.2.6;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = "$(PRODUCT)/Supporting Files/$(PRODUCT)-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE)";
+				PRODUCT_NAME = "$(PRODUCT)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		1381E4DB1824E7E800E815F5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E051A121D93E759C89CE3094 /* Pods-MacGesture.release.xcconfig */;
+			baseConfigurationReference = DB275F9AADC2DB3FB7986EF0 /* Pods-MacGesture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_ENTITLEMENTS = "$(PRODUCT)/$(PRODUCT).entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.2.6;
 				DEVELOPMENT_TEAM = "";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
-				INFOPLIST_FILE = "MacGesture/Supporting Files/MacGesture-Info.plist";
-				MARKETING_VERSION = 2.2.6;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = "$(PRODUCT)/Supporting Files/$(PRODUCT)-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE)";
+				PRODUCT_NAME = "$(PRODUCT)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		1381E4DD1824E7E800E815F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MacGesture.app/Contents/MacOS/MacGesture";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/$(PRODUCT).app/Contents/MacOS/$(PRODUCT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "MacGestureTests/Supporting Files/MacGestureTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "$(PRODUCT)Tests/Supporting Files/$(PRODUCT)Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE)Tests";
+				PRODUCT_NAME = "$(PRODUCT)Tests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -799,17 +752,15 @@
 		1381E4DE1824E7E800E815F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MacGesture.app/Contents/MacOS/MacGesture";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/$(PRODUCT).app/Contents/MacOS/$(PRODUCT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
-				INFOPLIST_FILE = "MacGestureTests/Supporting Files/MacGestureTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "$(PRODUCT)Tests/Supporting Files/$(PRODUCT)Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE)Tests";
+				PRODUCT_NAME = "$(PRODUCT)Tests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

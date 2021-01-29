@@ -1,18 +1,35 @@
+/* No comment provided by engineer. */
+"A brief information about how MacGesture works is available in README. A copy of README is also included in About section of MacGesture's Preferences." = "在 README 中可以找到关于 MacGesture 如何工作的简要信息。在 MacGesture 的选项的关于部分中也可以找到一份 README。";
 
-/*
- Localizable.strings
- MacGesture
- 
- Created by iMac on 3/25/16.
- Copyright © 2016 Codefalling. All rights reserved.
- */
-"About" = "关于 & 帮助";
+/* No comment provided by engineer. */
+"About" = "关于";
 
 /* No comment provided by engineer. */
 "AppleScript" = "AppleScript";
 
 /* No comment provided by engineer. */
-"Edit in External Editor" = "在外部编辑器编辑";
+"Bottom Center" = "正下方";
+
+/* No comment provided by engineer. */
+"Bottom Left" = "左下方";
+
+/* No comment provided by engineer. */
+"Bottom Right" = "右下方";
+
+/* No comment provided by engineer. */
+"Center" = "中央";
+
+/* No comment provided by engineer. */
+"Chinese" = "中文";
+
+/* No comment provided by engineer. */
+"Czech" = "捷克语";
+
+/* No comment provided by engineer. */
+"Edit in External Editor" = "在外部编辑器中编辑";
+
+/* No comment provided by engineer. */
+"English" = "英语";
 
 /* No comment provided by engineer. */
 "Export succeeded" = "导出成功";
@@ -21,45 +38,67 @@
 "Filters" = "过滤";
 
 /* No comment provided by engineer. */
-"General" = "常规";
+"General" = "通用";
 
 /* No comment provided by engineer. */
-"Gesture must only contain \"ULDRZud?*\"" = "手势只允许包含 \"ULDRZud?*\"";
+"Gesture can only contain \"ULDRZud?*\"" = "手势只能包含 \"ULDRZud?*\"";
 
 /* No comment provided by engineer. */
-"Go bigger" = "放大窗口";
+"Gestures" = "手势";
 
 /* No comment provided by engineer. */
-"Loading.." = "正在加载。。";
+"Go Bigger" = "变大";
 
 /* No comment provided by engineer. */
-"Much information is elaborated in README. A copy of README is included in 'About & Help'." = "自述文件中有许多对MacGesture的详细阐述。你也可以在“关于和帮助”中查看自述文件。";
+"If it's already enabled but gestures aren't working properly, please re-open MacGesture." = "如果它已启用，但手势工作不正常，请重新打开 MacGesure。";
 
 /* No comment provided by engineer. */
-"Okay, I know" = "好，我知道了";
+"Loading…" = "正在加载。。。";
 
 /* No comment provided by engineer. */
-"Open README in browser" = "在浏览器中查看自述文件";
+"MacGesture processes your mouse events, thus requires the Accessibility permission to work properly" = "MacGesture 处理您的鼠标事件，因此需要辅助功能权限才能正常工作";
 
 /* No comment provided by engineer. */
-"Reset size" = "重置大小";
+"OK" = "确定";
 
 /* No comment provided by engineer. */
-"Restart MacGesture to take effect" = "重启MacGesture后生效";
+"Open README" = "打开 README";
 
 /* No comment provided by engineer. */
-"Rules" = "规则";
+"Please navigate to System Preferences → Security & Privacy → Privacy → Accessibility section to enable it for MacGesture." = "请转到系统首选项 -> 安全和隐私 -> 隐私 -> 辅助功能中启用 MacGesure。";
 
 /* No comment provided by engineer. */
-"Select a filter first!" = "请先选择一个规则！";
+"Please select a filter first!" = "请先选择一个过滤！";
 
 /* No comment provided by engineer. */
-"Select an AppleScript first!" = "请先选择一个AppleScript！";
+"Please select an AppleScript first!" = "请先选择一个 AppleScript！";
+
+/* No comment provided by engineer. */
+"Reset Size" = "重置大小";
+
+/* No comment provided by engineer. */
+"Restart MacGesture to take effect" = "重新启动 MacGesture 后生效";
 
 /* No comment provided by engineer. */
 "Skip" = "跳过";
 
 /* No comment provided by engineer. */
-"Stop" = "停止";
+"Slovak" = "斯洛伐克文";
+
 /* No comment provided by engineer. */
-"On macOS Mojave(10.14) and later, you must manually enable Accessibility permission for MacGesture to work.\n Please goto System Preferences -> Security & Privacy -> Privacy -> Accessibility to enable it for MacGesture.\nIf is is already enabled but MacGesture is still not working, please re-open MacGesture." = "macOS Mojave 后的系统需要开启隐私权限才能使用鼠标手势。\n请到 系统-安全性及隐私-隐私-辅助功能 中启用 MacGesture。\n如果已经启用但仍不工作，请先移除再重新打开此应用并启用。";
+"Stop" = "停止";
+
+/* No comment provided by engineer. */
+"System default" = "系统默认";
+
+/* No comment provided by engineer. */
+"Top Center" = "正上方";
+
+/* No comment provided by engineer. */
+"Top Left" = "左上方";
+
+/* No comment provided by engineer. */
+"Top Right" = "右上方";
+
+/* No comment provided by engineer. */
+"Welcome to MacGesture! 🎉" = "欢迎使用 MacGesture！🎉";

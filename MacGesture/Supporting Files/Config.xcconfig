@@ -1,0 +1,15 @@
+//
+//  Config.xcconfig
+//  MacGesture
+//
+//  Created by Michi on 17/06/2020.
+//  Copyright © 2020 MacGesture. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+PRODUCT        = MacGesture
+APP_BUNDLE     = com.codefalling.$(PRODUCT:rfc1034identifier)
+APP_VERSION    = 3.0.0
+APP_BUILD      = 182

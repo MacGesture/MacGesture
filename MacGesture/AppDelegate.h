@@ -1,19 +1,15 @@
+
 #import <Cocoa/Cocoa.h>
-
-@class RulesList;
-
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate>
 
-@property(assign) IBOutlet NSWindow *window;
+@property (nonatomic, assign, getter=isEnabled) BOOL enabled;
 
-@property(readwrite, retain) IBOutlet NSMenu *menu;
-@property(readwrite, retain) NSStatusItem *statusItem;
-
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
++ (instancetype)new  UNAVAILABLE_ATTRIBUTE;
 + (AppDelegate *)appDelegate;
+
 - (void)updateStatusBarItem;
-- (void)receiveOpenPreferencesNotification:(NSNotification *)notification;
-- (void)setEnabled:(BOOL)enabled;
 - (void)showPreferences;
 
 @end

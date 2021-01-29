@@ -1,9 +1,17 @@
+
 #import "AppDelegate.h"
 #import "AppPrefsWindowController.h"
 #import "CanvasWindowController.h"
+#import "BlockAllowFilter.h"
 #import "RulesList.h"
 #import "utils.h"
-#import "BlockAllowFilter.h"
+
+@interface AppDelegate () <AppPrefsDelegate>
+
+@property (strong) IBOutlet NSMenu *statusItemMenu;
+@property (strong) NSStatusItem *statusItem;
+
+@end
 
 @implementation AppDelegate
 
@@ -12,46 +20,85 @@ static CGEventRef mouseDownEvent, mouseDraggedEvent;
 static NSMutableString *direction;
 static NSPoint lastLocation;
 static CFMachPortRef mouseEventTap;
-static BOOL isEnabled;
 static AppPrefsWindowController *_preferencesWindowController;
-static NSTimeInterval lastMouseWheelEventTime;
+static NSTimeInterval lastMouseWheelEventTime = 0;
 static BOOL eventTriggered;
+static NSUserDefaults *defaults;
 
 + (AppDelegate *)appDelegate {
     return (AppDelegate *) [[NSApplication sharedApplication] delegate];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-    NSArray *apps = [NSRunningApplication runningApplicationsWithBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+
+    defaults = [NSUserDefaults standardUserDefaults];
+    NSBundle *bundle = [NSBundle mainBundle];
+
+//#warning Debugging first app launch
+//    [defaults removePersistentDomainForName:bundle.bundleIdentifier];
+//    [defaults synchronize];
+
+    NSArray<NSRunningApplication *> *apps =
+        [NSRunningApplication runningApplicationsWithBundleIdentifier:bundle.bundleIdentifier];
     NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
     NSString *name = @"MacGestureOpenPreferences";
-    if ([apps count] > 1)
+
+    // Check whether MacGesture isn't running already.
+    // In case it is, notify the earlier instance to open Preferences window and finish execution.
+    if (apps.count > 1)
     {
         [center postNotificationName:name object:nil userInfo:nil deliverImmediately:YES];
         dispatch_async(dispatch_get_main_queue(), ^{
             [NSApp terminate:self];
         });
-        return ;
+        return;
     }
-    
-    //AXIsProcessTrustedWithOptions(CFDictionaryCreate(NULL, (const void*[]){ kAXTrustedCheckOptionPrompt }, (const void*[]){ kCFBooleanTrue }, 1, NULL, NULL));
-    
-    windowController = [[CanvasWindowController alloc] init];
-    
-    CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) | CGEventMaskBit(kCGEventRightMouseUp) | CGEventMaskBit(kCGEventLeftMouseDown) | CGEventMaskBit(kCGEventScrollWheel);
+
+    // Defaults registration
+
+    BOOL hasRunBefore = [defaults boolForKey:@"hasRunBefore"];
+
+    NSURL *defaultPrefsFile = [bundle URLForResource:@"DefaultPreferences" withExtension:@"plist"];
+    NSDictionary *defaultPrefs = [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
+    [defaults registerDefaults:defaultPrefs];
+    [defaults synchronize];
+
+    // README prompt
+
+    if (!hasRunBefore) {
+        [defaults setBool:YES forKey:@"hasRunBefore"];
+
+        NSString *text = NSLocalizedString(@"Welcome to MacGesture! 🎉", nil);
+        NSString *info = NSLocalizedString(@"A brief information about how MacGesture works "
+             "is available in README. A copy of README is also included in About section "
+             "of MacGesture's Preferences.", nil);
+
+        NSAlert *alert = [NSAlert new];
+        alert.alertStyle = NSAlertStyleInformational;
+        alert.messageText = text;
+        alert.informativeText = info;
+        [alert addButtonWithTitle:NSLocalizedString(@"Open README", nil)];
+        [alert addButtonWithTitle:NSLocalizedString(@"Skip", nil)];
+
+        if ([alert runModal] == NSAlertFirstButtonReturn) {
+            NSURL *readmeURL = [bundle URLForResource:@"README" withExtension:@"html"];
+            [[NSWorkspace sharedWorkspace] openURL:readmeURL];
+        }
+    }
+
+    // Accessibility permission check & alert
+
+    CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) |
+                            CGEventMaskBit(kCGEventRightMouseUp) | CGEventMaskBit(kCGEventLeftMouseDown) |
+                            CGEventMaskBit(kCGEventScrollWheel);
     mouseEventTap = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, kCGEventTapOptionDefault, eventMask, mouseEventCallback, NULL);
-    
 
     const void * keys[] = { kAXTrustedCheckOptionPrompt };
     const void * values[] = { kCFBooleanTrue };
-    
+
     CFDictionaryRef options = CFDictionaryCreate(
-                                                 kCFAllocatorDefault,
-                                                 keys,
-                                                 values,
-                                                 sizeof(keys) / sizeof(*keys),
-                                                 &kCFCopyStringDictionaryKeyCallBacks,
-                                                 &kCFTypeDictionaryValueCallBacks);
+        kCFAllocatorDefault, keys, values, sizeof(keys) / sizeof(*keys),
+        &kCFCopyStringDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
     
     BOOL accessibilityEnabled = AXIsProcessTrustedWithOptions(options);
     
@@ -61,108 +108,99 @@ static BOOL eventTriggered;
         CFRelease(mouseEventTap);
         CFRelease(runLoopSource);
     } else {
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setAlertStyle:NSInformationalAlertStyle];
-        [alert setMessageText:NSLocalizedString(@"On macOS Mojave(10.14) and later, you must manually enable Accessibility permission for MacGesture to work.\n Please goto System Preferences -> Security & Privacy -> Privacy -> Accessibility to enable it for MacGesture.\nIf is is already enabled but MacGesture is still not working, please re-open MacGesture.", nil)];
-        
-        [alert runModal];
-        
+        NSAlert *alert = [NSAlert new];
+        alert.alertStyle = NSAlertStyleWarning;
+        alert.messageText = NSLocalizedString(
+            @"MacGesture processes your mouse events, thus requires "
+             "the Accessibility permission to work properly", nil);
+        alert.informativeText = [NSString stringWithFormat:@"%@\n\n%@",
+            NSLocalizedString(@"Please navigate to System Preferences → Security & "
+                "Privacy → Privacy → Accessibility section to enable it for MacGesture.", nil),
+            NSLocalizedString(@"If it's already enabled but gestures aren't "
+                "working properly, please re-open MacGesture.", nil)];
+        __unused NSModalResponse response = [alert runModal];
+        // FIXME: Dynamic checking & registration to events
     }
 
+    windowController = [CanvasWindowController new];
     direction = [NSMutableString string];
-    isEnabled = YES;
-    
-    NSURL *defaultPrefsFile = [[NSBundle mainBundle]
-                               URLForResource:@"DefaultPreferences" withExtension:@"plist"];
-    NSDictionary *defaultPrefs =
-    [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPrefs];
-    
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRunBefore"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRunBefore"];
-        
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert addButtonWithTitle:NSLocalizedString(@"Open README in browser", nil)];
-        [alert addButtonWithTitle:NSLocalizedString(@"Skip", nil)];
-        [alert setAlertStyle:NSInformationalAlertStyle];
-        [alert setMessageText:NSLocalizedString(@"Much information is elaborated in README. A copy of README is included in 'About & Help'.", nil)];
-        NSModalResponse result = [alert runModal];
-        if (result == NSAlertFirstButtonReturn) {
-            NSString *readme = [[NSBundle mainBundle] pathForResource:@"README" ofType:@"html"];
-            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"file://%@", readme]]];
-        }
-    }
-    
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.4_Before"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun_2.0.4_Before"];
-    }
-    
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.5_Before"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showGestureNote"];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun_2.0.5_Before"];
-    }
-    
+    _enabled = YES;
+
     [BWFilter compatibleProcedureWithPreviousVersionBlockRules];
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]) {
+
+    [self updateStatusBarItem];
+
+    [center setSuspended:NO];
+    [center addObserver:self selector:@selector(receiveOpenPreferencesNotification:)
+        name:name object:nil suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
+
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+
+    // The application is an ordinary app that appears in the Dock and may
+    // have a user interface.
+//    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+
+    // The application does not appear in the Dock and does not have a menu
+    // bar, but it may be activated programmatically or by clicking on one
+    // of its windows.
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
+
+    // Open preferences on startup
+    if (!hasRunBefore || [defaults boolForKey:@"openPrefOnStartup"]) {
         [self openPreferences:self];
     }
-    
-    [self updateStatusBarItem];
-    
-    [center setSuspended:NO];
-    [center addObserver:self selector:@selector(receiveOpenPreferencesNotification:) name:name object:nil suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
-    
-    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
-    
-    lastMouseWheelEventTime = 0;
 }
 
 - (void)updateStatusBarItem {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showIconInStatusBar"]) {
-        [self setStatusItem:[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength]];
-        
-        NSImage *menuIcon = [NSImage imageNamed:@"Menu Icon Enabled"];
-        //NSImage *highlightIcon = [NSImage imageNamed:@"Menu Icon"]; // Yes, we're using the exact same image asset.
-        //[highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
-        [menuIcon setTemplate:YES];
-        [[self statusItem] setImage:menuIcon];
-        //    [[self statusItem] setAlternateImage:highlightIcon];
-        [[self statusItem] setMenu:[self menu]];
-        [[self statusItem] setHighlightMode:YES];
+    NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
+
+    if ([defaults boolForKey:@"showIconInStatusBar"]) {
+        NSStatusItem *item = [statusBar statusItemWithLength:NSVariableStatusItemLength];
+
+        NSImage *menuIcon = [NSImage imageNamed:@"menubar_icon"];
+        if (@available(macOS 11.0, *)) menuIcon = [NSImage imageNamed:@"menubar_icon-big_sur"];
+        menuIcon.template = YES;
+
+        item.image = menuIcon;
+//        item.alternateImage = highlightIcon;
+        item.menu = self.statusItemMenu;
+        item.highlightMode = YES;
+        self.statusItem = item;
     } else {
-        if ([self statusItem]) {
-            [[NSStatusBar systemStatusBar] removeStatusItem:[self statusItem]];
-            [self setStatusItem:nil];
+        if (self.statusItem) {
+            [statusBar removeStatusItem:self.statusItem];
+            self.statusItem = nil;
         }
     }
 }
 
-- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
+     shouldPresentNotification:(NSUserNotification *)notification {
     return YES;
 }
 
 - (void)showPreferences {
     [NSApp activateIgnoringOtherApps:YES];
-    
-    //instantiate preferences window controller
+
+    // Instantiate Preferences window controller
     if (!_preferencesWindowController) {
         _preferencesWindowController = [[AppPrefsWindowController alloc] initWithWindowNibName:@"Preferences"];
+        _preferencesWindowController.delegate = self;
         [_preferencesWindowController showWindow:self];
-    } else {
-        [[_preferencesWindowController window] orderFront:self];
-    }
+    } else [_preferencesWindowController.window orderFront:self];
+}
+
+- (void)appPrefsDidClose {
+    _preferencesWindowController = nil;
 }
 
 - (void)setEnabled:(BOOL)enabled {
-    isEnabled = enabled;
+    _enabled = enabled;
     if ([self statusItem]) {
-        NSImage *menuIcon;
-        if (isEnabled) {
-            menuIcon = [NSImage imageNamed:@"Menu Icon Enabled"];
-        } else {
-            menuIcon = [NSImage imageNamed:@"Menu Icon Disabled"];
-        }
+        NSString *menuIconName = @"menubar_icon-disabled";
+        if (enabled) menuIconName = @"menubar_icon";
+        if (@available(macOS 11.0, *)) menuIconName = [menuIconName stringByAppendingString:@"-big_sur"];
+        NSImage *menuIcon = [NSImage imageNamed:menuIconName];
         [[self statusItem] setImage:menuIcon];
     }
 }
@@ -171,15 +209,21 @@ static BOOL eventTriggered;
     [self showPreferences];
 }
 
+- (IBAction)showHelp:(id)sender {
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"README" withExtension:@"html"];
+    [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
 - (void)receiveOpenPreferencesNotification:(NSNotification *)notification {
-    [self showPreferences];
+    if ([notification.name isEqualToString:@"MacGestureOpenPreferences"])
+        [self showPreferences];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
     // This event can be triggered when switching desktops in Sierra. See BUG #37
-    if ((![[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]
-         && ![[NSUserDefaults standardUserDefaults] boolForKey:@"showIconInStatusBar"])
-        || [[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnActivate"]) {
+    if ((![defaults boolForKey:@"openPrefOnStartup"]
+         && ![defaults boolForKey:@"showIconInStatusBar"])
+        || [defaults boolForKey:@"openPrefOnActivate"]) {
         [self openPreferences:self];
     }
 }
@@ -207,13 +251,12 @@ static void updateDirections(NSEvent *event) {
     double deltaY = newLocation.y - lastLocation.y;
     double absX = fabs(deltaX);
     double absY = fabs(deltaY);
-    double threshold = [[NSUserDefaults standardUserDefaults] doubleForKey:@"directionDetectionThreshold"];
+    double threshold = [defaults doubleForKey:@"directionDetectionThreshold"];
     if (absX + absY < threshold) {
         return; // ignore short distance
     }
     
     lastLocation = event.locationInWindow;
-    
     
     if (absX > absY) {
         if (deltaX > 0) {
@@ -250,25 +293,24 @@ void resetDirection() {
 // See https://developer.apple.com/library/mac/documentation/Carbon/Reference/QuartzEventServicesRef/#//apple_ref/c/tdef/CGEventTapCallBack
 static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
     static BOOL shouldShow;
-    
-    if (!isEnabled) {
+
+    if (![[AppDelegate appDelegate] isEnabled])
         return event;
-    }
-    
+
     NSEvent *mouseEvent;
     switch (type) {
         case kCGEventRightMouseDown:
-            // not thread safe, but it's always called in main thread
+            // not thread safe, but it's always called on main thread
             // check blocker apps
-            //    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){
+            //    if(wildLike(frontBundleName(), [defaults stringForKey:@"blockFilter"])){
             if (true)
             {
                 NSString *frontBundle = frontBundleName();
-                if (![BWFilter shouldHookMouseEventForApp:frontBundle] || (![[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] && ![[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
-                    //        CGEventPost(kCGSessionEventTap, mouseDownEvent);
-                    //        if (mouseDraggedEvent) {
-                    //            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
-                    //        }
+                if (![BWFilter shouldHookMouseEventForApp:frontBundle] || (![defaults boolForKey:@"showUIInWhateverApp"] && ![[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
+//                        CGEventPost(kCGSessionEventTap, mouseDownEvent);
+//                        if (mouseDraggedEvent) {
+//                            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
+//                        }
                     shouldShow = NO;
                     return event;
                 }
@@ -382,19 +424,21 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             if (!shouldShow || !mouseDownEvent) {
                 return event;
             }
+            mouseEvent = [NSEvent eventWithCGEvent:event];
             double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
-            
+//            BOOL unnaturalDirection = mouseEvent.isDirectionInvertedFromDevice;
+//            if (unnaturalDirection) delta *= -1;
             // NSLog(@"scrollWheel delta:%f", delta);
             
             NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate];
             if (current - lastMouseWheelEventTime > 0.3) {
                 if (delta > 0) {
-                    // NSLog(@"scrollWheel Down!");
-                    addDirection('d', true);
+                    // NSLog(@"Traditional scroll wheel up!");
+                    addDirection('u', true);
                     eventTriggered = YES;
                 } else if (delta < 0){
-                    // NSLog(@"scrollWheel Up!");
-                    addDirection('u', true);
+                    // NSLog(@"Traditional scroll wheel down!");
+                    addDirection('d', true);
                     eventTriggered = YES;
                 }
                 lastMouseWheelEventTime = current;

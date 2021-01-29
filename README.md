@@ -1,152 +1,159 @@
-# MacGesture 2 ![tweet](https://img.shields.io/twitter/url/https/github.com/CodeFalling/MacGesture.svg?style=social)
+# MacGesture
 
-[Chinese version 中文版](https://github.com/MacGesture/MacGesture/blob/release/README_zh-Hans.md)
+![logo](https://raw.githubusercontent.com/MacGesture/MacGesture/master/logo.png)
 
-![logo](logo.png)
+Configurable global mouse gestures for macOS.
 
-Configurable global mouse gesture for macOS.
+> You can read this `README` file in **About** section in App Preferences.
 
-**Multiple issues are reported in macOS High Sierra. Please file issues and roll back to earlier versions before we fix all of them.**
+## Installation
 
-<u>***LOOKING FOR NEW MAINTAINER***</u>
+### Automatic Update
 
-You can read this README in About section.
+MacGesture will regularly check for updates and prompt you when new version is available. 👍
 
-# Download
+### Manually
 
-## Via Homebrew Cask
+Download the latese release bundle from [GitHub releases](https://github.com/MacGesture/MacGesture/releases) page.
 
-```
-brew cask install macgesture
-```
+### Homebrew
 
-## Download Manually
+Simply use `brew install --cask macgesture`. 🙌
 
-Download the latest zip from https://github.com/MacGesture/MacGesture/releases
+## Features
 
-# Feature
+- Global mouse gestures recognition
+- Configurable shortcut invocation by gesture
+- App filtering based on bundle identifiers
 
-- Global mouse gesture recognition
+## Gestures Format
 
-- Filter app by their bundle name (as a consequence, the apps without bundle identifiers are skipped and filtering by process name is on the road map)
+| Gesture      | Acronym |
+| ------------ | :-----: |
+| Move Left    |   `L`   |
+| Move Up      |   `U`   |
+| Move Right   |   `R`   |
+| Move Down    |   `D`   |
+| Left Button  |   `Z`   |
+| Wheel Up     |   `u`   |
+| Wheel Dp     |   `d`   |
 
-- Configure and send shortcut by gesture
-
-# Preview
-
-![Preview](https://cloud.githubusercontent.com/assets/5436704/14278725/bb126d36-fb5b-11e5-9fe8-5990ea4c1c28.gif)
-
-# The format of gesture
-
-| Gesture | Acronym |
-| ------- | ------- |
-| Left    | L       |
-| Up      | U       |
-| Right   | R       |
-| Down    | D       |
-| Mouse L | Z       |
-| Wheel U | u       |
-| Wheel D | d       |
-
-Gesture can contain wildcard matching('?' and '*').
+Gestures can contain wildcard matching (`?` and `*`).
 
 The first rule matching will take effect.
 
-Z is the acronym of pinyin of '左' which means 'left' in English.
-So to distinguish 'clicking the left mouse' from 'dragging your mouse left-ward',
-we chose 'Z'.
+`Z` is the acronym of pinyin of `左` which means “left” in English. So to distinguish _clicking the left mouse button_ from _dragging your mouse to the left_, we chose letter `Z`.
 
-Wheel directions may vary according to system configurations or some system tweaks (Karabiner's Reverse Vertical Scrolling, for example).
+Wheel directions may vary according to system configuration (Natural scroll direction setting) or some system tweaks (Karabiner's Reverse Vertical Scrolling, for example).
 
-# Known Issues
+## Known Issues
 
-* Right click does not work in some Java applications.
+### Right click does not work in some Java applications
 
 An imperfect fix:
-Take WebStorm for example, open Preferences, then KeyMap, set the shortcut of "Show Context Menu" to "Button3 Click"
+Take WebStorm for example, open Preferences, then KeyMap, set the shortcut of “Show Context Menu” to `Button3 Click`.
 
-* Cannot assign some system-wide shortcuts to rules.
+### Cannot assign some system-wide shortcuts to rules
 
 Reason:
 macOS respond to system-wide shortcuts before MacGesture.
 
 Fix:
-Disable the shortcut first (for example in System Preferences->Keyboard->Shortcuts), then assign the shortcut in MacGesture, and re-enable the shortcut.
+Disable the shortcut first (for example in System Preferences → Keyboard → Shortcuts), then assign the shortcut in MacGesture, and re-enable the shortcut.
 
 Caveats:
-Some shortcuts still do not work with the fix above. When you are encountering this, here are two possible solutions:
-1. Change them to others (e.g. Control+0, Control+9).
-2. Tick "Invert Fn When Control Is Pressed".
+Some shortcuts still don't work with the fix above. When you are encountering this, here are two possible solutions:
 
-# Q&A
+- Change them to others (e.g. ⌃0, ⌃9).
+- Tick “Invert Fn When Control Is Pressed” option.
 
-Feel free to open issue
+## Tips
 
-# Tips
+### Mouse scroll gesture example
 
-* If you want to achieve something like this:
+The following table covers probably the most basic scenario of usage:
 
-Right click, drag upwards, then every 'u' triggers a 'Next Tab', every 'd' triggers a 'Prev Tab', without releasing right mouse.
+| Gesture | Filter             | Action   | Note     | Trigger on every match |
+| :-----: | :----------------- | :------: | :------: | :--------------------- |
+| `D`     | `*safari|*chrome`  |    ⌘T    | New Tab  | –                      |
+| `DR`    | `*safari|*chrome`  |    ⌘W    | Close    | –                      |
 
-Then, create a rule like this:
+By setting these rules, you can empower mouse gestures to open new and close currently focused tabs in Sarari and Chrome Browsers. Simply:
 
-| Gesture | Filter             | Action             | Note       | Trigger on every match |
-| ------- | ------------------ | ------------------ | ---------- | ---------------------- |
-| U*d     | \*safari\|\*chrome | "shift-command-\]" | "Next Tab" | Checked                |
-| U*u     | \*safari\|\*chrome | "shift-command-\[" | "Prev Tab" | Checked                |
+- press the right button, drag mouse down, and release
+	- opens a new tab in the current browser window
+- press the right button, drag mouse down, then to the right, and release
+	- this will result in closing the currently focused tab in the active browser window
 
-* If you want to export and import MacGesture preferences:
+How neat! 🙌
 
-Recommended way:
+Now, to quickly cycle between the selected tabs even without releasing the right mouse button, you can set the gesture to be triggered on every match using the checkbox at the end of the Rule line.
 
-Use the buttons 'Import' and 'Export' in the ‘General' Panel.
+So by defining the following rules:
 
-Geek-ish way: (the underlying way as well)
+| Gesture | Filter             | Action   | Note     | Trigger on every match |
+| :-----: | :----------------- | :------: | :------: | :--------------------- |
+| `U*u`   | `*safari|*chrome`  |   ⇧⌘[    | Prev Tab | –                |
+| `U*d`   | `*safari|*chrome`  |   ⇧⌘]    | Next Tab | –                |
 
-Open a terminal, Do this in your old computer:
+you can simply:
 
-``` shell
+- right click, drag mouse upwards, and every `u` (mouse wheel scroll up) triggers a **Prev Tab** action
+- right click, drag mouse upwards, and every `d` (mouse wheel scroll down) triggers a **Next Tab** action.
+
+### Exporting and importing MacGesture preferences
+
+#### Recommended way
+
+Use “Import” and “Export” buttons in the **General** Panel.
+
+#### Geek-ish way
+
+Open the _Terminal_ app, Do this in your old computer:
+
+```shell
 defaults read com.codefalling.MacGesture backup.plist
 ```
 
 And then copy that file to your new computer, then:
 
-``` shell
+```shell
 defaults import com.codefalling.MacGesture backup.plist
 ```
 
-You should get your preferences back now. If is doesn't, file an issue on the project home.
+All settings should be successfully brought over. If that's not the case please file an issue.
 
-* If you want to exclude an app in a certain rule:
+### Excluding an app in a certain rule
 
-You can prepend '!', then the app you want to exclude (still wildcard).
+You can prepend `!`, then the app you want to exclude (still wildcard).
 
 For example, the original one:
 
-| Gesture | Filter | Action             | Note       | Trigger on every match |
-| ------- | ------ | ------------------ | ---------- | ---------------------- |
-| U*d     | \*     | "shift-command-\]" | "Next Tab" | Checked                |
+| Gesture | Filter             | Action   | Note     | Trigger on every match |
+| :-----: | :----------------- | :------: | :------: | :--------------------- |
+| `U*d`   | `*`                |   ⇧⌘]    | Next Tab | Checked                |
 
 Then, in order to exclude Safari, change this to:
 
-| Gesture | Filter       | Action             | Note       | Trigger on every match |
-| ------- | ------------ | ------------------ | ---------- | ---------------------- |
-| U*d     | \*\|!*safari | "shift-command-\]" | "Next Tab" | Checked                |
+| Gesture | Filter             | Action   | Note     | Trigger on every match |
+| :-----: | :----------------- | :------: | :------: | :--------------------- |
+| `U*d`   | `*|!*safari`       |   ⇧⌘]    | Next Tab | Checked                |
 
-Then you will see the expected behavior.
+Then you will experience the expected behaviour.
 
-# License
+## Found a Bug?
 
-This project is under GNU General Public License.
+Feel free to open [an issue on GitHub](https://github.com/MacGesture/MacGesture/issues)! 👍
 
-Icon is designed by [DanRabbit](http://www.iconarchive.com/artist/danrabbit.html) under [GNU General Public License](https://en.wikipedia.org/wiki/GNU_General_Public_License).
+## Contributors
 
-# Contributor
-
-- [CodeFalling](https://github.com/codefalling)
+- [CodeFalling](https://github.com/xcodebuild) – original author
+- [username0x0a](https://github.com/username0x0a) – maintainer
 - [jiegec](https://github.com/jiegec)
 - [zhangciwu](https://github.com/zhangciwu)
 
-# Discuss
+## License
 
-讨论可以加入qq群：498035635 (You can join the discussion in QQ Group 498035635).
+This project is made under [GNU General Public License](https://en.wikipedia.org/wiki/GNU_General_Public_License).
+
+App icon & other icons designed by [username0x0a](https://github.com/username0x0a).
