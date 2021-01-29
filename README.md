@@ -1,5 +1,7 @@
 # MacGesture 2 ![tweet](https://img.shields.io/twitter/url/https/github.com/CodeFalling/MacGesture.svg?style=social)
 
+[Chinese version 中文版](https://github.com/MacGesture/MacGesture/blob/release/README_zh-Hans.md)
+
 ![logo](logo.png)
 
 Configurable global mouse gesture for macOS.
@@ -12,7 +14,7 @@ You can read this README in About section.
 
 - Global mouse gesture recognition
 
-- Filter app by their bundle name (as a consequence, the apps without bundle identifiers are skipped and filtering by process name is on the roadmap)
+- Filter app by their bundle name (as a consequence, the apps without bundle identifiers are skipped and filtering by process name is on the road map)
 
 - Configure and send shortcut by gesture
 
@@ -52,7 +54,7 @@ Download the latest zip from https://github.com/MacGesture/MacGesture/releases
 
 # Tips
 
-1. If you want to achieve something like this:
+* If you want to achieve something like this:
 
 Right click, drag upwards, then every 'u' triggers a 'Next Tab', every 'd' triggers a 'Prev Tab', without releasing right mouse.
 
@@ -62,6 +64,28 @@ Then, create a rule like this:
 |---------|--------------------|--------------------|------------|------------------------|
 |U*d      | \*safari\|\*chrome | "shift-command-\]" | "Next Tab" | Checked                |
 |U*u      | \*safari\|\*chrome | "shift-command-\[" | "Prev Tab" | Checked                |
+
+* If you want to export and import MacGesture preferences:
+
+Recommended way:
+
+Use the buttons 'Import' and 'Export' in the ‘General' Panel.
+
+Geek-ish way: (the underlying way as well)
+
+Open a terminal, Do this in your old computer:
+
+``` shell
+defaults read com.codefalling.MacGesture backup.plist
+```
+
+And then copy that file to your new computer, then:
+
+``` shell
+defaults import com.codefalling.MacGesture backup.plist
+```
+
+You should get your preferences back now. If is doesn't, file an issue on the project home.
 
 # License
 

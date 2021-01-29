@@ -1,5 +1,7 @@
 <h1>MacGesture 2 <img src="https://img.shields.io/twitter/url/https/github.com/CodeFalling/MacGesture.svg?style=social" alt="tweet" /></h1>
 
+<p><a href="https://github.com/MacGesture/MacGesture/blob/release/README.md">英文版 English Version</a></p>
+
 <p><img src="logo.png" alt="logo" /></p>
 
 <p>macOS上一款高度可配置的全局鼠标手势软件。</p>
@@ -81,9 +83,9 @@
 
 <h1>贴士</h1>
 
-<ol>
+<ul>
 <li>如果你要实现这个功能：</li>
-</ol>
+</ul>
 
 
 <p>鼠标右击，向上脱拽，然后每次鼠标滚轮向上触发“下一个标签页“，每次鼠标滚轮向下触发”上一个标签页“，期间不松开鼠标右键。</p>
@@ -118,6 +120,31 @@
 </tbody>
 </table>
 
+
+<ul>
+<li>如果你想导入和导出MacGesture的配置文件：</li>
+</ul>
+
+
+<p>推荐方法：</p>
+
+<p>使用“通用”面板里的“导入”和“导出”按钮。</p>
+
+<p>Geek使用的方法：（也是实际上代码用的方法）</p>
+
+<p>打开一个Terminal，在你的旧电脑上这么做：</p>
+
+<p><code>shell
+defaults read com.codefalling.MacGesture backup.plist
+</code></p>
+
+<p>然后把这个文件复制到新电脑上，然后：</p>
+
+<p><code>shell
+defaults import com.codefalling.MacGesture backup.plist
+</code></p>
+
+<p>你应该可以看到你之前的设置回来了。如果没有的话，请在项目主页提交问题。</p>
 
 <h1>使用许可</h1>
 

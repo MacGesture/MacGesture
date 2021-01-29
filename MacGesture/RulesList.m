@@ -148,7 +148,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     for (NSUInteger i = 0; i < [self count]; i++) {
         if ([self matchFilter:frontApp atIndex:i]) {
             //if ([gesture isEqualToString:[self directionAtIndex:i]]) {
-            if (wildcardString(gesture, [self directionAtIndex:i])) {
+            if (wildcardString(gesture, [self directionAtIndex:i], NO)) {
                 return i;
             }
         }
@@ -173,7 +173,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     for (; i < [self count]; i++) {
         if ((last ^ [self triggerOnEveryMatchAtIndex:i]) && [self matchFilter:frontApp atIndex:i]) {
             //if ([gesture isEqualToString:[self directionAtIndex:i]]) {
-            if (wildcardString(gesture, [self directionAtIndex:i])) {
+            if (wildcardString(gesture, [self directionAtIndex:i], NO)) {
                 break;
             }
         }
@@ -265,13 +265,14 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     NSError *error;
     switch ([self filterTypeAtIndex:index]) {
         case FILTER_TYPE_REGEX:
+            // need ignore case here
             regex = [NSRegularExpression regularExpressionWithPattern:[self filterAtIndex:index] options:0 error:&error];
             if ([regex firstMatchInString:text options:0 range:NSMakeRange(0, [text length])]) {
                 return YES;
             }
             break;
         case FILTER_TYPE_WILDCARD:
-            return wildcardString(text, [self filterAtIndex:index]);
+            return wildcardString(text, [self filterAtIndex:index], YES);
             break;
     }
     return NO;

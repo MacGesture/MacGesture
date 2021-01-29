@@ -1,5 +1,5 @@
 NSString *frontBundleName();
 
-bool wildcardArray(NSString *bundleName, NSArray *wildFilters);
+bool wildcardArray(NSString *bundleName, NSArray *wildFilters, BOOL ignoreCase);
 
-bool wildcardString(NSString *bundleName, NSString *wildFilter);
+bool wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase);

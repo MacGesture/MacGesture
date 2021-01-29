@@ -1,5 +1,6 @@
-
 # MacGesture 2 ![tweet](https://img.shields.io/twitter/url/https/github.com/CodeFalling/MacGesture.svg?style=social)
+
+[英文版 English Version](https://github.com/MacGesture/MacGesture/blob/release/README.md)
 
 ![logo](logo.png)
 
@@ -51,7 +52,7 @@ Z是“左”的拼音首字母，所以我们让Z代表鼠标左键事件。
 
 # 贴士
 
-1. 如果你要实现这个功能：
+* 如果你要实现这个功能：
 
 鼠标右击，向上脱拽，然后每次鼠标滚轮向上触发“下一个标签页“，每次鼠标滚轮向下触发”上一个标签页“，期间不松开鼠标右键。
 
@@ -61,6 +62,28 @@ Z是“左”的拼音首字母，所以我们让Z代表鼠标左键事件。
 |---------|--------------------|--------------------|------------|------------------------|
 |U*d      | \*safari\|\*chrome | "shift-command-\]" | "Next Tab" | Checked                |
 |U*u      | \*safari\|\*chrome | "shift-command-\[" | "Prev Tab" | Checked                |
+
+* 如果你想导入和导出MacGesture的配置文件：
+
+推荐方法：
+
+使用“通用”面板里的“导入”和“导出”按钮。
+
+Geek使用的方法：（也是实际上代码用的方法）
+
+打开一个Terminal，在你的旧电脑上这么做：
+
+``` shell
+defaults read com.codefalling.MacGesture backup.plist
+```
+
+然后把这个文件复制到新电脑上，然后：
+
+``` shell
+defaults import com.codefalling.MacGesture backup.plist
+```
+
+你应该可以看到你之前的设置回来了。如果没有的话，请在项目主页提交问题。
 
 # 使用许可
 
