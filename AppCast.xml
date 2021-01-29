@@ -7,117 +7,117 @@
     <language>en</language>
     <item>
       <title>Version 2.0.3 (2 bugs fixed; 1 new features)</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changelog/2.0.3.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2015-10-19 16:34 +8</pubDate>
       <enclosure url="http://7lrvsy.com1.z0.glb.clouddn.com/2.0.3-MacGesture.zip" sparkle:version="2.0.3" length="1452892" type="application/octet-stream" sparkle:dsaSignature="MCwCFEE7DtwKDqLy6fNvp+P5Ttti5sjFAhR8n1R9UuvNQvtcjC/o28oHHAqe2w==" />
       <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.0.4 (3 new features)</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changelog/2.0.4.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2015-10-20 10:44 +8</pubDate>
       <enclosure url="http://7lrvsy.com1.z0.glb.clouddn.com/MacGesture-2.0.4.zip" sparkle:version="2.0.4" length="1465730" type="application/octet-stream" sparkle:dsaSignature="MC0CFQDJss40kJ90NnsPB0WHeYcnWxx+LgIUY3pdKt++p2UGV779bZvkXP0tgv8=" />
       <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.0.5 (1 bugs fixed;2 new features;1 improving experience)</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changelog/2.0.5.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2015-10-31 15:44 +8</pubDate>
       <enclosure url="http://7lrvsy.com1.z0.glb.clouddn.com/MacGesture-2.0.5.zip" sparkle:version="2.0.5" length="1474925" type="application/octet-stream" sparkle:dsaSignature="MCwCFA8eYvggcGG/ENcJeik8705ouLuAAhR5kBD16FbdI+3B2m3JLSUM7e+MnA==" />
       <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.0.6 (1 bugs fixed)</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changelog/2.0.6.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2015-11-12 21:44 +8</pubDate>
       <enclosure url="http://7lrvsy.com1.z0.glb.clouddn.com/MacGesture-2.0.6.zip" sparkle:version="2.0.6" length="1473797" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCahyZFEQRyVNFg7VCJUynScMVFagIUQ7OEJp3UajAm5Xc/j+If49E2HaY=" />
       <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.0.7 (1 bugs fixed)</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changelog/2.0.7.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2015-11-26 18:34 +8</pubDate>
       <enclosure url="http://7lrvsy.com1.z0.glb.clouddn.com/MacGesture-2.0.7.zip" sparkle:version="2.0.7" length="1474183" type="application/octet-stream" sparkle:dsaSignature="MC0CFA+R3MfYBuqtwLDGPjPJDXtd4JOXAhUAjJR23W/cqjxh+0Rr38WBRRkJEnA=" />
       <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.0.8 (2 bugs fixed,3 new features)</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changelog/2.0.8.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2015-12-18 19:50 +8</pubDate>
       <enclosure url="https://github.com/CodeFalling/MacGesture/releases/download/2.0.8/MacGesture-2.0.8.zip" sparkle:version="2.0.8" length="1494361" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCKEabyMDR2qkk9/g7E7GvZjcRGkAIURMIvyXdNd8vrjzpd9ZUXbIesU4I=" />
       <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.0.9</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changelog/2.0.9.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2016-03-05 21:58 +8</pubDate>
       <enclosure url="https://github.com/CodeFalling/MacGesture/releases/download/2.0.9/MacGesture-2.0.9.zip" sparkle:version="2.0.9" length="1575274" type="application/octet-stream" sparkle:dsaSignature="MCwCFGx/6mzZEIUvgtqJcBNFUDqxF/hkAhRFAcgAIQydGXGOUIFbmkMlQOF7FA==" />
       <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.1.1</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changelog/2.1.1.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2016-04-25 22:41 +8</pubDate>
       <enclosure url="https://github.com/CodeFalling/MacGesture/releases/download/2.1.1/MacGesture-2.1.1.zip" sparkle:version="2.1.1" length="1589313" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCxlDmNxAmes+q9adgQvKAinF8fGgIUbAydp2oVv26i/s9NwUVhaqAqyrA=" />
       <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.1.2</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changelog/2.1.2.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2016-11-27 06:51 +8</pubDate>
       <enclosure url="https://github.com/CodeFalling/MacGesture/releases/download/2.1.2/MacGesture-2.1.2.zip" sparkle:version="2.1.2" length="1612921" type="application/octet-stream" sparkle:dsaSignature="MC0CFBkQedlEx/jEH17aTKX6UfqMqTQ8AhUAxJELAGNaaGRPdsE8YT4NgD1q+BY=" />
       <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.2.0</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/MacGesture/MacGesture/master/Changelog/2.2.0.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2016-12-18 22:24 +8</pubDate>
       <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/2.2.0/MacGesture-2.2.0.zip" sparkle:version="2.2.0" length="1616129" type="application/octet-stream" sparkle:dsaSignature="MC0CFCMut0VY0pT3eGR3qxOunJoWif1jAhUAr+uiN8AFhov61El0kKZYo2GFy30=" />
       <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.2.1</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/MacGesture/MacGesture/master/Changelog/2.2.1.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2017-1-7 21:53 +8</pubDate>
       <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/2.2.1/MacGesture-2.2.1.zip" sparkle:version="2.2.1" length="1618030" type="application/octet-stream" sparkle:dsaSignature="MCwCFA2eXPu1/ylsJXEpevxkfq2hph7/AhQTRVkc2SreqY8OT5ZBJTOhZN5S3g==" />
       <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.2.2</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/MacGesture/MacGesture/release/Changelog/2.2.2.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2017-7-1 20:05 +8</pubDate>
       <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/2.2.2/MacGesture-2.2.2.zip" sparkle:version="2.2.2" length="1618030" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCb44A7KtIDFhqD+2FR+19qOjoTPgIVAKYk5APhhiYtfOGqBB5IWD92PAJ7" />
       <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.2.3</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/MacGesture/MacGesture/release/Changelog/2.2.3.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2017-10-24 15:49 +8</pubDate>
       <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/2.2.3/MacGesture-2.2.3.zip" sparkle:version="2.2.3" length="1902224" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCuB3VyONoatx/XzaJNH5HF5ASJ0gIVAKrdBswgydO0fd7jN5gTUhVECqXt" />
       <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.2.4</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/MacGesture/MacGesture/release/Changelog/2.2.4.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2018-09-08 01:33 +8</pubDate>
       <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/2.2.4/MacGesture-2.2.4.zip" sparkle:version="2.2.4" length="1728474" type="application/octet-stream" sparkle:dsaSignature="MC0CFHqawd6hmRAHE8ezvawMaI2vFD2bAhUAmHVyH0Wv5iDYuS9VLRqtcHFW0+Q=" />
       <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 2.2.5</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/MacGesture/MacGesture/release/Changelog/2.2.5.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>2018-09-08 01:33 +8</pubDate>
       <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/2.2.5/MacGesture-2.2.5.zip" sparkle:version="2.2.5" length="2144791" type="application/octet-stream" sparkle:dsaSignature="MC0CFGHZEpTrGv7FMfer6v5w1n3+yTq9AhUA0pdFHh9QP+KyckjXZL4zvNoYgms=" />
       <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
     </item>
     <item>
       <title>Version 3.0</title>
-      <sparkle:releaseNotesLink>https://raw.githubusercontent.com/MacGesture/MacGesture/master/Changelog/3.0.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
       <pubDate>Sat, 30 Jan 2021 12:00:00 +0100</pubDate>
       <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/3.0.0/MacGesture-3.0.0.zip"
-        sparkle:shortVersionString="3.0.0" sparkle:version="182" length="2496008" type="application/octet-stream"
-        sparkle:edSignature="q44R9gt+EB9BZrDsgzSR1Mioiqb0hSyzvZd81WM9gum1FOIzjvNsblNeEoNKz4gaQzahNkw0AuORgOAedKRtBg=="
-        sparkle:dsaSignature="MC0CFGHZEpTrGv7FMfer6v5w1n3+yTq9AhUA0pdFHh9QP+KyckjXZL4zvNoYgms=" />
+        sparkle:shortVersionString="3.0.0" sparkle:version="182" length="3178738" type="application/octet-stream"
+        sparkle:edSignature="5PyV3AntKLKEuJGulYkzdnsOeqedKdVfn84bvxgNWP/SpbqjyBE1cm+VrSy9/pSYgPsGtPOhntW3hpyVumZ7Aw=="
+        sparkle:dsaSignature="MC0CFQCulBw2JOFPvWFkLBXvMbCNrlpYZQIUUqHpNi8GeHelsjLy6BxuSJwDb1c=" />
       <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
     </item>
   </channel>
