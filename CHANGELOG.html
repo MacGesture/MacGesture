@@ -8,7 +8,8 @@
 	<meta name="author" content="Michal Zelinka">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style type="text/css">
-		* { font-family: -apple-system;    }
+
+		* { font-family: -apple-system; }
 		body { margin: 0; padding: 0; }
 		.item {
 			border: 1px solid #d6d6d6;
@@ -24,7 +25,7 @@
 			font-size: 1.3em;
 		}
 		.header .date {
-			color: rgba(0,0,0,0.3);
+			color: rgba(127,127,127,0.5);
 			margin: 0 0 0 10px;
 		}
 		.item li { padding: 3px 0; }
@@ -57,6 +58,14 @@
 		meta[badge][new]::after { content: 'New '; background: #557dfc; }
 		meta[badge][update]::after { content: 'Update '; background: #29c327; }
 		meta[badge][fix]::after { content: 'Fix '; background: #f07a53; }
+
+		@media (prefers-color-scheme: dark) {
+			body { background: #333; color: #dfdfdf; }
+			.header { background: #444; border-color: #666; }
+			.item { border-color: #666; }
+			code { background: #666; border-color: #888; }
+		}
+
 	</style>
 </head>
 <body>
