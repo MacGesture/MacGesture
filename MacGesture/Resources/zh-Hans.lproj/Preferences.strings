@@ -65,7 +65,7 @@
 /* Class = "NSButtonCell"; title = "Reset Defaults"; ObjectID = "9qA-nt-g9l"; */
 "9qA-nt-g9l.title" = "重置到预设";
 
-/* Class = "NSButtonCell"; title = "Black list mode"; ObjectID = "BDA-RK-czZ"; */
+/* Class = "NSButtonCell"; title = "Block list mode"; ObjectID = "BDA-RK-czZ"; */
 "BDA-RK-czZ.title" = "黑名单模式";
 
 /* Class = "NSMenuItem"; title = "+"; ObjectID = "BT0-6L-6TA"; */
@@ -182,7 +182,7 @@
 /* Class = "NSButtonCell"; title = "Show Icon In Status Bar"; ObjectID = "ztS-80-zXz"; */
 "ztS-80-zXz.title" = "在状态栏中显示图标";
 
-/* Class = "NSButtonCell"; title = "White list mode"; ObjectID = "ztb-nI-iil"; */
+/* Class = "NSButtonCell"; title = "Allow list mode"; ObjectID = "ztb-nI-iil"; */
 "ztb-nI-iil.title" = "白名单模式";
 
 /* Class = "NSButtonCell"; title = "Invert Fn When Control Is Pressed"; ObjectID = "Rc0-gx-DHr"; */

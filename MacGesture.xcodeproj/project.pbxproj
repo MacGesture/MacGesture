@@ -31,7 +31,7 @@
 		26418B30A89965ED65EC8209 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 2641860492954D6BD5AF2FD5 /* up.png */; };
 		26418E623E410EF207EFA2A8 /* RulesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418733B12703C123D16E95 /* RulesList.m */; };
 		3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */; };
-		3CDC5543D4E5BD248515F7CA /* BlackWhiteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */; };
+		3CDC5543D4E5BD248515F7CA /* BlockAllowFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC55835ADD1CA85B9CCC91 /* BlockAllowFilter.m */; };
 		880AA7571CA5738A006E7A74 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7591CA5738A006E7A74 /* Preferences.xib */; };
 		880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */; };
 		880AA7651CA5745D006E7A74 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75F1CA5745D006E7A74 /* Credits.rtf */; };
@@ -107,9 +107,9 @@
 		26418DFD972C75FBEF81D049 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
 		26418F4D8FB5BC803E3EB850 /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
 		26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPrefsWindowController.m; sourceTree = "<group>"; };
-		3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackWhiteFilter.m; sourceTree = "<group>"; };
+		3CDC55835ADD1CA85B9CCC91 /* BlockAllowFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockAllowFilter.m; sourceTree = "<group>"; };
 		3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOptionsDefine.h; sourceTree = "<group>"; };
-		3CDC5A614857FE77ADFEA4C8 /* BlackWhiteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackWhiteFilter.h; sourceTree = "<group>"; };
+		3CDC5A614857FE77ADFEA4C8 /* BlockAllowFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockAllowFilter.h; sourceTree = "<group>"; };
 		3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOptionsDefine.m; sourceTree = "<group>"; };
 		866D5EC03851FBA1353C555B /* Pods_MacGesture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacGesture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		880AA76A1CA575D5006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -308,8 +308,8 @@
 		3CDC5D998F35E9F8C91C7789 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3CDC5A614857FE77ADFEA4C8 /* BlackWhiteFilter.h */,
-				3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */,
+				3CDC5A614857FE77ADFEA4C8 /* BlockAllowFilter.h */,
+				3CDC55835ADD1CA85B9CCC91 /* BlockAllowFilter.m */,
 				3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */,
 				3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */,
 			);
@@ -387,6 +387,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				Base,
 				"zh-Hans",
 				en,
@@ -471,7 +472,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DBPrefsWindowController/DBPrefsWindowController.framework",
 				"${BUILT_PRODUCTS_DIR}/HexColors/HexColors.framework",
 				"${BUILT_PRODUCTS_DIR}/ShortcutRecorder/ShortcutRecorder.framework",
@@ -488,7 +489,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D02885E91EF29E1B0082A660 /* ShellScript */ = {
@@ -525,7 +526,7 @@
 				B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */,
 				264183DA0542C17E1932F696 /* SRRecorderControlWithTagid.m in Sources */,
 				2641813EC194C60DC1B1806D /* utils.m in Sources */,
-				3CDC5543D4E5BD248515F7CA /* BlackWhiteFilter.m in Sources */,
+				3CDC5543D4E5BD248515F7CA /* BlockAllowFilter.m in Sources */,
 				88EB641C1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript in Sources */,
 				3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */,
 			);
@@ -739,10 +740,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2.2.6;
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
 				INFOPLIST_FILE = "MacGesture/Supporting Files/MacGesture-Info.plist";
+				MARKETING_VERSION = 2.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -757,10 +760,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2.2.6;
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
 				INFOPLIST_FILE = "MacGesture/Supporting Files/MacGesture-Info.plist";
+				MARKETING_VERSION = 2.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

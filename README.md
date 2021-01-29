@@ -12,6 +12,18 @@ Configurable global mouse gesture for macOS.
 
 You can read this README in About section.
 
+# Download
+
+## Via Homebrew Cask
+
+```
+brew cask install macgesture
+```
+
+## Download Manually
+
+Download the latest zip from https://github.com/MacGesture/MacGesture/releases
+
 # Feature
 
 - Global mouse gesture recognition
@@ -45,10 +57,6 @@ So to distinguish 'clicking the left mouse' from 'dragging your mouse left-ward'
 we chose 'Z'.
 
 Wheel directions may vary according to system configurations or some system tweaks (Karabiner's Reverse Vertical Scrolling, for example).
-
-# Download
-
-Download the latest zip from https://github.com/MacGesture/MacGesture/releases
 
 # Known Issues
 

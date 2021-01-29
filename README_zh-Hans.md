@@ -12,6 +12,19 @@ macOS上一款高度可配置的全局鼠标手势软件。
 
 你可以在软件的关于里阅读这个自述文件。
 
+# 下载
+
+## 通过 Homebrew Cask
+
+```
+brew cask install macgesture
+```
+
+# 手动下载
+
+从这里下载最新版本： https://github.com/MacGesture/MacGesture/releases
+
+
 # 特性
 
 - 全局鼠标手势识别
@@ -44,9 +57,6 @@ Z是“左”的拼音首字母，所以我们让Z代表鼠标左键事件。
 
 鼠标滚轮事件可能随设备和系统设置变化而不同（比如Karabiner有反转滚轮方向的功能）
 
-# 下载
-
-从这里下载最新版本： https://github.com/MacGesture/MacGesture/releases
 
 # 已知问题
 

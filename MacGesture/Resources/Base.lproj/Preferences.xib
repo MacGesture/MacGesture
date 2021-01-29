@@ -16,8 +16,8 @@
                 <outlet property="appleScriptTableView" destination="T1p-6B-s66" id="ac1-Uc-6D8"/>
                 <outlet property="appleScriptTextField" destination="z8n-QB-ktQ" id="sMi-1i-BKZ"/>
                 <outlet property="autoStartAtLogin" destination="402" id="407"/>
-                <outlet property="blackListModeRadio" destination="yn2-oF-bXR" id="rhO-xt-Pkn"/>
-                <outlet property="blackListTextView" destination="IB6-jz-VHi" id="HIZ-RD-1ht"/>
+                <outlet property="blockListModeRadio" destination="yn2-oF-bXR" id="rhO-xt-Pkn"/>
+                <outlet property="blockListTextView" destination="IB6-jz-VHi" id="HIZ-RD-1ht"/>
                 <outlet property="changeFiltersWindowSizeButton" destination="O3m-tP-4Yw" id="7uN-LQ-1EY"/>
                 <outlet property="changeRulesWindowSizeButton" destination="ZxS-0a-wRT" id="yWx-fd-53b"/>
                 <outlet property="editInExternalEditorButton" destination="klG-Yb-lXf" id="naw-LL-eBh"/>
@@ -37,8 +37,8 @@
                 <outlet property="updater" destination="360" id="364"/>
                 <outlet property="versionCode" destination="num-fq-Ld9" id="JsU-bx-3Ga"/>
                 <outlet property="webView" destination="GwU-Ng-Wic" id="cNR-fg-lsI"/>
-                <outlet property="whiteListModeRadio" destination="jtj-ww-LUc" id="TB8-YB-Lnl"/>
-                <outlet property="whiteListTextView" destination="UlC-dc-fu7" id="D72-VG-Lgd"/>
+                <outlet property="allowListModeRadio" destination="jtj-ww-LUc" id="TB8-YB-Lnl"/>
+                <outlet property="allowListTextView" destination="UlC-dc-fu7" id="D72-VG-Lgd"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -489,22 +489,22 @@
             <subviews>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="yn2-oF-bXR">
                     <rect key="frame" x="6" y="340" width="114" height="18"/>
-                    <buttonCell key="cell" type="radio" title="Black list mode" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="BDA-RK-czZ">
+                    <buttonCell key="cell" type="radio" title="Block list mode" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="BDA-RK-czZ">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="whiteBlackRadioClicked:" target="-2" id="JvM-QE-Z0v"/>
+                        <action selector="allowBlockRadioClicked:" target="-2" id="JvM-QE-Z0v"/>
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="jtj-ww-LUc">
                     <rect key="frame" x="297" y="340" width="117" height="18"/>
-                    <buttonCell key="cell" type="radio" title="White list mode" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="ztb-nI-iil">
+                    <buttonCell key="cell" type="radio" title="Allow list mode" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="ztb-nI-iil">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="whiteBlackRadioClicked:" target="-2" id="vx4-Rs-qiN"/>
+                        <action selector="allowBlockRadioClicked:" target="-2" id="vx4-Rs-qiN"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O3m-tP-4Yw">
@@ -536,13 +536,13 @@
                             <textView importsGraphics="NO" richText="NO" horizontallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="IB6-jz-VHi">
                                 <rect key="frame" x="0.0" y="0.0" width="281" height="296"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" allow="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="minSize" width="281" height="296"/>
                                 <size key="maxSize" width="481" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" allow="1" alpha="1" colorSpace="calibratedWhite"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="VJR-FD-haH">
                         <rect key="frame" x="-100" y="-100" width="87" height="18"/>
@@ -563,7 +563,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="filterBlackListAddClicked:" target="-2" id="hfn-NF-X3V"/>
+                        <action selector="filterBlockListAddClicked:" target="-2" id="hfn-NF-X3V"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h4u-DS-rrd">
@@ -576,7 +576,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="filterWhiteListAddClicked:" target="-2" id="fZR-Ib-G0w"/>
+                        <action selector="filterAllowListAddClicked:" target="-2" id="fZR-Ib-G0w"/>
                     </connections>
                 </button>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMP-af-6AM">
@@ -588,13 +588,13 @@
                             <textView importsGraphics="NO" richText="NO" horizontallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="UlC-dc-fu7">
                                 <rect key="frame" x="0.0" y="0.0" width="281" height="296"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" allow="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="minSize" width="281" height="296"/>
                                 <size key="maxSize" width="10000" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" allow="1" alpha="1" colorSpace="calibratedWhite"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="oN2-Ld-yKW">
                         <rect key="frame" x="-100" y="-100" width="87" height="18"/>
