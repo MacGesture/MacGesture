@@ -50,7 +50,7 @@
 <td> D       </td>
 </tr>
 <tr>
-<td> 鼠标右键</td>
+<td> 鼠标左键</td>
 <td> Z       </td>
 </tr>
 <tr>
@@ -73,13 +73,39 @@
 
 <p>鼠标滚轮事件可能随设备和系统设置变化而不同（比如Karabiner有反转滚轮方向的功能）</p>
 
-<h1>Q&amp;A</h1>
-
-<p>可以尽管提交问题</p>
-
 <h1>下载</h1>
 
 <p>从这里下载最新版本： https://github.com/MacGesture/MacGesture/releases</p>
+
+<h1>已知问题</h1>
+
+<ul>
+<li>右键点击在一些Java应用中失效。</li>
+</ul>
+
+
+<p>一个不完美的修复：
+拿WebStorm作为例子，打开Preferences，在KeyMap中设置“Show Context Menu”的快捷键为“Button3 Click”。</p>
+
+<ul>
+<li>不能设置一些全系统可用的快捷键。</li>
+</ul>
+
+
+<p>原因：
+macOS在MacGesture响应之前做出了相应处理。</p>
+
+<p>修复：
+先禁用快捷键（比如在系统配置->键盘->快捷键），然后在MacGesture中设置以后再重新启用快捷键。</p>
+
+<p>注意：
+即便用了以上的修复，一些快捷键仍然不能使用。当你遇到这个问题时，有两种可能的解决方案：
+1. 修改快捷键为其它（比如Control+0, Control+9）。
+2. 勾上“当 Control 按下时，抵消 Fn 键的作用”。</p>
+
+<h1>Q&amp;A</h1>
+
+<p>可以尽管提交问题</p>
 
 <h1>贴士</h1>
 
