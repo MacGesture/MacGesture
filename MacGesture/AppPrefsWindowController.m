@@ -18,6 +18,9 @@
     [self.openPreOnStartup bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"openPrefOnStartup" options:nil];
     [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
     [self.showGesturePreview bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGesturePreview" options:nil];
+    [self.autoCheckUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyChecksForUpdates" options:nil];
+    [self.autoDownUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyDownloadsUpdates" options:nil];
+
 }
 
 - (IBAction)addRule:(id)sender {
@@ -46,6 +49,10 @@
     [self setCrossFade:[[NSUserDefaults standardUserDefaults] boolForKey:@"fade"]];
     [self setShiftSlowsAnimation:[[NSUserDefaults standardUserDefaults] boolForKey:@"shiftSlowsAnimation"]];
 
+
+}
+- (IBAction)autoCheckUpdateDidClick:(id)sender {
+    //self.updater.automaticallyChecksForUpdates = (bool)(self.autoCheckUpdate.intValue);
 
 }
 
@@ -107,7 +114,8 @@
         SRRecorderControl *recordView = [[SRRecorderControlWithTagid alloc] init];
 
         recordView.delegate = self;
-        ((SRRecorderControlWithTagid *)recordView).tagid = row;
+        [recordView setAllowedModifierFlags:SRCocoaModifierFlagsMask requiredModifierFlags:0 allowsEmptyModifierFlags:YES];
+                ((SRRecorderControlWithTagid *)recordView).tagid = row;
         recordView.objectValue = @{
                 @"keyCode": @([rulesList shortcutKeycodeAtIndex:row]),
                 @"modifierFlags": @([rulesList shortcutFlagAtIndex:row]),

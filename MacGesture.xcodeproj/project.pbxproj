@@ -35,6 +35,7 @@
 		26418C3B69408A43FB0E03F1 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2641846DC43DD915C2555D4C /* Preferences.xib */; };
 		26418E623E410EF207EFA2A8 /* RulesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418733B12703C123D16E95 /* RulesList.m */; };
 		68C087AD74CFB1C5E0528759 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1136B136EA3AC3F1862223E3 /* libPods.a */; };
+		B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		26418F65C3F7A9F255FAA94A /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPrefsWindowController.m; sourceTree = "<group>"; };
 		319D16D664048735E34A0C5E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		F7252488598BED86D8B7C09B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,6 +220,7 @@
 		264189E588806C286B6552A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */,
 				264182CCCB38C9FAD7896BD5 /* General.png */,
 				2641846DC43DD915C2555D4C /* Preferences.xib */,
 				26418C0A252C6E5467076636 /* Updates.tiff */,
@@ -326,6 +329,7 @@
 				26418C3B69408A43FB0E03F1 /* Preferences.xib in Resources */,
 				264182480FA70DFC89B87842 /* Updates.tiff in Resources */,
 				264185813821B17A6CF8761E /* Rules.png in Resources */,
+				B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */,
 				2641871BACBB993F84AF778C /* About.png in Resources */,
 				26418AB7E1520EED88A179C1 /* MainMenu.xib in Resources */,
 				2641804FA39EEA04BDDC27B2 /* right.png in Resources */,

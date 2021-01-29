@@ -5,7 +5,7 @@
 #import <Cocoa/Cocoa.h>
 #import "DBPrefsWindowController.h"
 #import "SRRecorderControl.h"
-
+#import <Sparkle/Sparkle.h>
 
 @interface AppPrefsWindowController : DBPrefsWindowController<NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate, NSTextFieldDelegate>
 
@@ -21,5 +21,8 @@
 @property (weak) IBOutlet NSTextField *blockFilter;
 
 @property (weak) IBOutlet NSButton *showGesturePreview;
+@property (weak) IBOutlet NSButton *autoCheckUpdate;
+@property (weak) IBOutlet NSButton *autoDownUpdate;
+@property (strong) IBOutlet SUUpdater *updater;
 
 @end
