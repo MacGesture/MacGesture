@@ -67,7 +67,7 @@
 
 <p>手势可以包含通配符（“?”和“*”）。</p>
 
-<p>被匹配到的第一个规则会生效</p>
+<p>被匹配到的第一个规则会生效。</p>
 
 <p>Z是“左”的拼音首字母，所以我们让Z代表鼠标左键事件。</p>
 
@@ -145,6 +145,63 @@ defaults import com.codefalling.MacGesture backup.plist
 </code></p>
 
 <p>你应该可以看到你之前的设置回来了。如果没有的话，请在项目主页提交问题。</p>
+
+<ul>
+<li>如果想要在某个规则中排除某个App：</li>
+</ul>
+
+
+<p>可以在过滤中加上'!&lsquo;，再加上你想要排除的App（仍然是通配符）。</p>
+
+<p>比如，原来是：</p>
+
+<table>
+<thead>
+<tr>
+<th> 手势    </th>
+<th> 过滤               </th>
+<th> 动作               </th>
+<th> 说明       </th>
+<th> 每次匹配时触发         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U*d      </td>
+<td> *                 </td>
+<td> &ldquo;shift-command-]&rdquo; </td>
+<td> &ldquo;Next Tab&rdquo; </td>
+<td> Checked                </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>现在想在Safari中禁用这个手势，那么，它应该改成：</p>
+
+<table>
+<thead>
+<tr>
+<th> 手势    </th>
+<th> 过滤               </th>
+<th> 动作               </th>
+<th> 说明       </th>
+<th> 每次匹配时触发         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U*d      </td>
+<td> *|!*safari            </td>
+<td> &ldquo;shift-command-]&rdquo; </td>
+<td> &ldquo;Next Tab&rdquo; </td>
+<td> Checked                </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>就可以实现这个目标了。</p>
 
 <h1>使用许可</h1>
 

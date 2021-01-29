@@ -15,14 +15,16 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2.1</string>
+	<string>2.2.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2.2.1</string>
+	<string>2.2.2</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
 	<key>LSUIElement</key>
+	<true/>
+	<key>NSAppleScriptEnabled</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2016 codefalling. All rights reserved.</string>
@@ -30,6 +32,8 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>OSAScriptingDefinition</key>
+	<string>AppleScript.sdef</string>
 	<key>SUFeedURL</key>
 	<string>https://raw.githubusercontent.com/MacGesture/MacGesture/master/AppCast.xml</string>
 	<key>SUPublicDSAKeyFile</key>

@@ -16,6 +16,7 @@ static CFMachPortRef mouseEventTap;
 static BOOL isEnabled;
 static AppPrefsWindowController *_preferencesWindowController;
 static NSTimeInterval lastMouseWheelEventTime;
+static BOOL eventTriggered;
 
 + (AppDelegate *)appDelegate {
     return (AppDelegate *) [[NSApplication sharedApplication] delegate];
@@ -33,6 +34,8 @@ static NSTimeInterval lastMouseWheelEventTime;
         });
         return ;
     }
+    
+    //AXIsProcessTrustedWithOptions(CFDictionaryCreate(NULL, (const void*[]){ kAXTrustedCheckOptionPrompt }, (const void*[]){ kCFBooleanTrue }, 1, NULL, NULL));
     
     windowController = [[CanvasWindowController alloc] init];
 
@@ -54,6 +57,17 @@ static NSTimeInterval lastMouseWheelEventTime;
 
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRunBefore"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRunBefore"];
+        
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"Open README in browser", nil)];
+        [alert addButtonWithTitle:NSLocalizedString(@"Skip", nil)];
+        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert setMessageText:NSLocalizedString(@"Much information is elaborated in README. A copy of README is included in 'About & Help'.", nil)];
+        NSModalResponse result = [alert runModal];
+        if (result == NSAlertFirstButtonReturn) {
+            NSString *readme = [[NSBundle mainBundle] pathForResource:@"README" ofType:@"html"];
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"file://%@", readme]]];
+        }
     }
 
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.4_Before"]) {
@@ -141,7 +155,11 @@ static NSTimeInterval lastMouseWheelEventTime;
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
     // This event can be triggered when switching desktops in Sierra. See BUG #37
-    // [self showPreferences];
+    if ((![[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]
+        && ![[NSUserDefaults standardUserDefaults] boolForKey:@"showIconInStatusBar"])
+        || [[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnActivate"]) {
+        [self openPreferences:self];
+    }
 }
 
 static void addDirection(unichar dir, bool allowSameDirection) {
@@ -167,7 +185,8 @@ static void updateDirections(NSEvent *event) {
     double deltaY = newLocation.y - lastLocation.y;
     double absX = fabs(deltaX);
     double absY = fabs(deltaY);
-    if (absX + absY < 20) {
+    double threshold = [[NSUserDefaults standardUserDefaults] doubleForKey:@"directionDetectionThreshold"];
+    if (absX + absY < threshold) {
         return; // ignore short distance
     }
     
@@ -177,17 +196,21 @@ static void updateDirections(NSEvent *event) {
     if (absX > absY) {
         if (deltaX > 0) {
             addDirection('R', false);
+            eventTriggered = YES;
             return;
         } else {
             addDirection('L', false);
+            eventTriggered = YES;
             return;
         }
     } else {
         if (deltaY > 0) {
             addDirection('U', false);
+            eventTriggered = YES;
             return;
         } else {
             addDirection('D', false);
+            eventTriggered = YES;
             return;
         }
     }
@@ -228,6 +251,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                     return event;
                 }
                 shouldShow = YES;
+                eventTriggered = NO;
             }
             
             if (mouseDownEvent) { // mouseDownEvent may not release when kCGEventTapDisabledByTimeout
@@ -306,7 +330,11 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 mouseEvent = [NSEvent eventWithCGEvent:event];
                 [windowController handleMouseEvent:mouseEvent];
                 updateDirections(mouseEvent);
-                if (!handleGesture(true)) {
+                if (handleGesture(true)) {
+                    eventTriggered = YES;
+                }
+                
+                if (!eventTriggered) {
                     CGEventPost(kCGSessionEventTap, mouseDownEvent);
                     //if (mouseDraggedEvent) {
                     //    CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
@@ -331,20 +359,25 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 return event;
             }
             double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
+            
+            NSLog(@"scrollWheel delta:%f", delta);
 
             NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate];
             if (current - lastMouseWheelEventTime > 0.3) {
                 if (delta > 0) {
-                    // NSLog(@"Down!");
+                    NSLog(@"scrollWheel Down!");
                     addDirection('d', true);
+                    eventTriggered = YES;
                 } else if (delta < 0){
-                    // NSLog(@"Up!");
+                    NSLog(@"scrollWheel Up!");
                     addDirection('u', true);
+                    eventTriggered = YES;
                 }
                 lastMouseWheelEventTime = current;
             }
             break;
         }
+        case kCGEventTapDisabledByUserInput:
         case kCGEventTapDisabledByTimeout:
             CGEventTapEnable(mouseEventTap, true); // re-enable
             // windowController.enable = isEnable;
@@ -353,8 +386,8 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             if (!shouldShow || !mouseDownEvent) {
                 return event;
             }
-            [direction appendString:@"Z"];
-            [windowController writeDirection:direction];
+            addDirection('Z', true);
+            eventTriggered = YES;
             break;
         }
         default:

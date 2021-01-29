@@ -1,3 +1,3 @@
 tell application "MacGesture"
-    activate
+    openPreferences
 end tell

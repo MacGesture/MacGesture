@@ -31,12 +31,11 @@
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         data = [userDefaults objectForKey:@"appleScripts"];
         _appleScriptsList = [[NSMutableArray alloc] initWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
+        if (_appleScriptsList == nil) {
+            _appleScriptsList = [[NSMutableArray alloc] init];
+        }
     }
-    
-    if (_appleScriptsList == nil) {
-        _appleScriptsList = [[NSMutableArray alloc] init];
-    }
-    
+
     return self;
 }
 

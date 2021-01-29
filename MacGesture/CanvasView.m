@@ -42,8 +42,10 @@ static NSColor *loadedColor;
     
     CIContext *context = [CIContext contextWithOptions:nil];
     CGImageRef cgImage = [context createCGImage:output fromRect:[output extent]];
+    NSImage *result = [[NSImage alloc] initWithCGImage:cgImage size:output.extent.size];
+    CGImageRelease(cgImage);
     
-    return [[NSImage alloc] initWithCGImage:cgImage size:output.extent.size];
+    return result;
 }
 
 - (id)initWithFrame:(NSRect)frame {
@@ -91,7 +93,7 @@ static NSColor *loadedColor;
         for (NSUInteger i = 0;i < directionToDraw.length;i++) {
             numberToDraw++;
             char ch = [directionToDraw characterAtIndex:i];
-            if (ch == 'u' || ch == 'd') {
+            if (ch == 'u' || ch == 'd' || ch == 'Z') {
                 for (;i < directionToDraw.length && [directionToDraw characterAtIndex:i] == ch;i++);
                 i--;
             }
@@ -130,16 +132,17 @@ static NSColor *loadedColor;
             default:
                 break;
         }
+        
+        if (merge) {
+            int count = 0;
+            for (;i < directionToDraw.length && [directionToDraw characterAtIndex:i] == ch;i++) {
+                count++;
+            }
+            i--;
+        }
+        
         if (ch == 'u' || ch == 'd') {
             double frac = 0.65;
-            
-            if (merge) {
-                int count = 0;
-                for (;i < directionToDraw.length && [directionToDraw characterAtIndex:i] == ch;i++) {
-                    count++;
-                }
-                i--;
-            }
             
             /*
             if (count > 1) {

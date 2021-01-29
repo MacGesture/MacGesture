@@ -1,23 +1,63 @@
-/* 
-  Localizable.strings
-  MacGesture
 
-  Created by iMac on 3/25/16.
-  Copyright © 2016 Codefalling. All rights reserved.
-*/
+/*
+ Localizable.strings
+ MacGesture
+ 
+ Created by iMac on 3/25/16.
+ Copyright © 2016 Codefalling. All rights reserved.
+ */
+"About" = "关于 & 帮助";
 
-"Go bigger" = "放大窗口";
-"Reset size" = "重置大小";
-"General" = "常规";
-"Rules" = "规则";
-"Filters" = "过滤";
+/* No comment provided by engineer. */
 "AppleScript" = "AppleScript";
-"About" = "关于";
-"Loading.." = "正在加载。。";
-"Stop" = "停止";
+
+/* No comment provided by engineer. */
 "Edit in External Editor" = "在外部编辑器编辑";
-"Select a AppleScript first!" = "请先选择一个AppleScript！";
-"Gesture must only contain \"ULDRZud?*\"" = "手势只允许包含 \"ULDRZud?*\"";
-"Select a filter first!" = "请先选择一个规则！";
-"Restart MacGesture to take effect" = "重启MacGesture后生效";
+
+/* No comment provided by engineer. */
 "Export succeeded" = "导出成功";
+
+/* No comment provided by engineer. */
+"Filters" = "过滤";
+
+/* No comment provided by engineer. */
+"General" = "常规";
+
+/* No comment provided by engineer. */
+"Gesture must only contain \"ULDRZud?*\"" = "手势只允许包含 \"ULDRZud?*\"";
+
+/* No comment provided by engineer. */
+"Go bigger" = "放大窗口";
+
+/* No comment provided by engineer. */
+"Loading.." = "正在加载。。";
+
+/* No comment provided by engineer. */
+"Much information is elaborated in README. A copy of README is included in 'About & Help'." = "自述文件中有许多对MacGesture的详细阐述。你也可以在“关于和帮助”中查看自述文件。";
+
+/* No comment provided by engineer. */
+"Okay, I know" = "好，我知道了";
+
+/* No comment provided by engineer. */
+"Open README in browser" = "在浏览器中查看自述文件";
+
+/* No comment provided by engineer. */
+"Reset size" = "重置大小";
+
+/* No comment provided by engineer. */
+"Restart MacGesture to take effect" = "重启MacGesture后生效";
+
+/* No comment provided by engineer. */
+"Rules" = "规则";
+
+/* No comment provided by engineer. */
+"Select a filter first!" = "请先选择一个规则！";
+
+/* No comment provided by engineer. */
+"Select an AppleScript first!" = "请先选择一个AppleScript！";
+
+/* No comment provided by engineer. */
+"Skip" = "跳过";
+
+/* No comment provided by engineer. */
+"Stop" = "停止";

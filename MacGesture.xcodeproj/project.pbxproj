@@ -54,6 +54,8 @@
 		D065A3CA1D18155E0062900A /* SearchInWeb.applescript in Resources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript */; };
 		D09794D11DE5DA1900E88F73 /* scroll.png in Resources */ = {isa = PBXBuildFile; fileRef = D09794D01DE5DA1900E88F73 /* scroll.png */; };
 		D09FDBF51E06CDB50085FC36 /* README.html in Resources */ = {isa = PBXBuildFile; fileRef = D09FDBF31E06CDB50085FC36 /* README.html */; };
+		D0B19D421E3841FD00619F4A /* AppleScript.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D0B19D411E3841FD00619F4A /* AppleScript.sdef */; };
+		D0B19D481E384BAE00619F4A /* AppleScriptCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +83,6 @@
 		1381E4BE1824E7E800E815F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1381E4C31824E7E800E815F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1381E4D11824E7E800E815F5 /* MacGestureTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacGestureTests-Info.plist"; sourceTree = "<group>"; };
-		1381E4D31824E7E800E815F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1381E4D51824E7E800E815F5 /* MacGestureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MacGestureTests.m; sourceTree = "<group>"; };
 		1ACB654207F7BCBC992336E4 /* Pods-MacGesture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture.debug.xcconfig"; sourceTree = "<group>"; };
 		264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderControlWithTagid.m; sourceTree = "<group>"; };
@@ -102,7 +103,7 @@
 		26418B1111120858F175152C /* CanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasView.m; sourceTree = "<group>"; };
 		26418C0A252C6E5467076636 /* Updates.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Updates.tiff; sourceTree = "<group>"; };
 		26418C419A597E159158ED0D /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
-		26418D5612632F8BDA1AE8CA /* CanvasWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CanvasWindow.h; path = ../CanvasWindow.h; sourceTree = "<group>"; };
+		26418D5612632F8BDA1AE8CA /* CanvasWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CanvasWindow.h; path = Resources/CanvasWindow.h; sourceTree = "<group>"; };
 		26418DFD972C75FBEF81D049 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
 		26418F4D8FB5BC803E3EB850 /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
 		26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPrefsWindowController.m; sourceTree = "<group>"; };
@@ -112,14 +113,10 @@
 		3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOptionsDefine.m; sourceTree = "<group>"; };
 		880AA76A1CA575D5006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		880AA76D1CA575D6006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/Credits.rtf"; sourceTree = "<group>"; };
-		880AA76E1CA575D6006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		880AA7731CA57884006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		880AA7751CA64DDB006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		880AA7771CA64E3B006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		880AA7781CA64E62006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AppPickerWindowController.xib; sourceTree = "<group>"; };
-		880AA7791CA64E69006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppPickerWindowController.strings"; sourceTree = "<group>"; };
 		880AA77A1CA64E7C006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
-		880AA77B1CA64E83006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		880AA77C1CA64E88006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Preferences.xib; sourceTree = "<group>"; };
 		880AA77E1CA64EB7006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ChromeCloseTabsToTheRight.applescript; sourceTree = "<group>"; };
@@ -134,11 +131,18 @@
 		C610961B1DED98C700FCC263 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		CE4389FB13810EBE5934C100 /* libPods-MacGesture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MacGesture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01C87CA1DE9DF2600B47E7D /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		D02C24391E018CE800C856FD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
+		D02885DF1EF29B8A0082A660 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppPickerWindowController.strings"; sourceTree = "<group>"; };
+		D02885E01EF29B9E0082A660 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		D02885E11EF29CDE0082A660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D02885E21EF29CE40082A660 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		D02A45361EA0E84800E32EC5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		D065A3C81D18154E0062900A /* SearchInWeb.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SearchInWeb.applescript; sourceTree = "<group>"; };
 		D09794D01DE5DA1900E88F73 /* scroll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scroll.png; sourceTree = "<group>"; };
-		D09FDBF41E06CDB50085FC36 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/README.html; sourceTree = "<group>"; };
 		D09FDBF61E06CDC60085FC36 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/README.html"; sourceTree = "<group>"; };
+		D0B19D411E3841FD00619F4A /* AppleScript.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AppleScript.sdef; sourceTree = "<group>"; };
+		D0B19D461E384BAE00619F4A /* AppleScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleScriptCommand.h; sourceTree = "<group>"; };
+		D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleScriptCommand.m; sourceTree = "<group>"; };
+		D0FE00811EFE2C1400F06E4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/README.html; sourceTree = "<group>"; };
 		E051A121D93E759C89CE3094 /* Pods-MacGesture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,11 +171,11 @@
 		1381E49F1824E7E800E815F5 = {
 			isa = PBXGroup;
 			children = (
+				1381E4AA1824E7E800E815F5 /* Frameworks */,
 				1381E4B11824E7E800E815F5 /* MacGesture */,
 				1381E4CF1824E7E800E815F5 /* MacGestureTests */,
-				1381E4AA1824E7E800E815F5 /* Frameworks */,
-				1381E4A91824E7E800E815F5 /* Products */,
 				CCE209CCED2C3EF90609FF7E /* Pods */,
+				1381E4A91824E7E800E815F5 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -206,29 +210,33 @@
 		1381E4B11824E7E800E815F5 /* MacGesture */ = {
 			isa = PBXGroup;
 			children = (
-				B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */,
-				B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */,
+				3CDC5D998F35E9F8C91C7789 /* Model */,
+				264189E588806C286B6552A8 /* Resources */,
+				1381E4B21824E7E800E815F5 /* Supporting Files */,
 				1381E4BD1824E7E800E815F5 /* AppDelegate.h */,
 				1381E4BE1824E7E800E815F5 /* AppDelegate.m */,
-				1381E4C31824E7E800E815F5 /* Images.xcassets */,
-				1381E4B21824E7E800E815F5 /* Supporting Files */,
+				B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */,
+				B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */,
 				264184868E6F3B7E8747AAA2 /* AppPrefsWindowController.h */,
 				26418FC7DDD865F972F5D0D7 /* AppPrefsWindowController.m */,
-				264189E588806C286B6552A8 /* Resources */,
+				D0B19D411E3841FD00619F4A /* AppleScript.sdef */,
+				D0B19D461E384BAE00619F4A /* AppleScriptCommand.h */,
+				D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */,
+				88331A391C9D22290064ADD5 /* AppleScriptsList.h */,
+				88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */,
+				264184DD0A5ACE29690D7EF2 /* CanvasView.h */,
+				26418B1111120858F175152C /* CanvasView.m */,
+				26418D5612632F8BDA1AE8CA /* CanvasWindow.h */,
 				2641881917BAF09AFC2A7CC7 /* CanvasWindow.m */,
 				264187BE8168A714F0DB88B7 /* CanvasWindowController.h */,
 				264188F91072F914D0FF443E /* CanvasWindowController.m */,
-				264184DD0A5ACE29690D7EF2 /* CanvasView.h */,
-				26418B1111120858F175152C /* CanvasView.m */,
+				1381E4C31824E7E800E815F5 /* Images.xcassets */,
 				2641853CD8AE42C95077D980 /* RulesList.h */,
 				26418733B12703C123D16E95 /* RulesList.m */,
 				2641846D9674154891849969 /* SRRecorderControlWithTagid.h */,
 				264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */,
 				26418C419A597E159158ED0D /* utils.h */,
 				26418F4D8FB5BC803E3EB850 /* utils.m */,
-				3CDC5D998F35E9F8C91C7789 /* Model */,
-				88331A391C9D22290064ADD5 /* AppleScriptsList.h */,
-				88331A3A1C9D22290064ADD5 /* AppleScriptsList.m */,
 			);
 			path = MacGesture;
 			sourceTree = "<group>";
@@ -236,20 +244,20 @@
 		1381E4B21824E7E800E815F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1381E4B31824E7E800E815F5 /* MacGesture-Info.plist */,
+				1381E4B91824E7E800E815F5 /* MacGesture-Prefix.pch */,
+				1381E4B71824E7E800E815F5 /* main.m */,
 				1331CD80182C50E500782D16 /* menu_icon_16x16.png */,
 				1331CD81182C50E500782D16 /* menu_icon_32x32.png */,
-				1381E4B31824E7E800E815F5 /* MacGesture-Info.plist */,
-				1381E4B71824E7E800E815F5 /* main.m */,
-				1381E4B91824E7E800E815F5 /* MacGesture-Prefix.pch */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		1381E4CF1824E7E800E815F5 /* MacGestureTests */ = {
 			isa = PBXGroup;
 			children = (
-				1381E4D51824E7E800E815F5 /* MacGestureTests.m */,
 				1381E4D01824E7E800E815F5 /* Supporting Files */,
+				1381E4D51824E7E800E815F5 /* MacGestureTests.m */,
 			);
 			path = MacGestureTests;
 			sourceTree = "<group>";
@@ -257,40 +265,39 @@
 		1381E4D01824E7E800E815F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1381E4D11824E7E800E815F5 /* MacGestureTests-Info.plist */,
 				1381E4D21824E7E800E815F5 /* InfoPlist.strings */,
+				1381E4D11824E7E800E815F5 /* MacGestureTests-Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		264189E588806C286B6552A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D09FDBF31E06CDB50085FC36 /* README.html */,
-				D01C87CA1DE9DF2600B47E7D /* logo.png */,
-				D09794D01DE5DA1900E88F73 /* scroll.png */,
-				D065A3C81D18154E0062900A /* SearchInWeb.applescript */,
+				264188CA1FEAB47BE83286F8 /* About.png */,
+				880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */,
+				88331A371C9402810064ADD5 /* AppleScript_Editor_Logo.png */,
+				8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */,
+				880AA75F1CA5745D006E7A74 /* Credits.rtf */,
+				887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */,
+				264182CCCB38C9FAD7896BD5 /* General.png */,
+				880AA7611CA5745D006E7A74 /* InfoPlist.strings */,
 				880AA7721CA57884006E7A74 /* Localizable.strings */,
 				880AA7671CA57491006E7A74 /* MainMenu.xib */,
-				880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */,
-				880AA75F1CA5745D006E7A74 /* Credits.rtf */,
-				880AA7611CA5745D006E7A74 /* InfoPlist.strings */,
-				8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */,
-				88331A371C9402810064ADD5 /* AppleScript_Editor_Logo.png */,
-				075C1BC81C214E9A00B7211A /* list@2x.png */,
-				B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */,
-				264182CCCB38C9FAD7896BD5 /* General.png */,
-				880AA7591CA5738A006E7A74 /* Preferences.xib */,
-				26418C0A252C6E5467076636 /* Updates.tiff */,
-				264188A38F5F48B61F3EF173 /* Rules.png */,
-				264188CA1FEAB47BE83286F8 /* About.png */,
-				26418DFD972C75FBEF81D049 /* right.png */,
-				2641860492954D6BD5AF2FD5 /* up.png */,
-				264180FCC355082AC7EDFD74 /* left.png */,
-				26418331BA0AD1E0D42A4E53 /* down.png */,
-				887E09241C8B0FD0003A4CC0 /* DefaultPreferences.plist */,
 				88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript */,
-				26418D5612632F8BDA1AE8CA /* CanvasWindow.h */,
+				880AA7591CA5738A006E7A74 /* Preferences.xib */,
+				D09FDBF31E06CDB50085FC36 /* README.html */,
+				264188A38F5F48B61F3EF173 /* Rules.png */,
+				D065A3C81D18154E0062900A /* SearchInWeb.applescript */,
+				26418C0A252C6E5467076636 /* Updates.tiff */,
+				26418331BA0AD1E0D42A4E53 /* down.png */,
+				B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */,
+				264180FCC355082AC7EDFD74 /* left.png */,
+				075C1BC81C214E9A00B7211A /* list@2x.png */,
+				D01C87CA1DE9DF2600B47E7D /* logo.png */,
+				26418DFD972C75FBEF81D049 /* right.png */,
+				D09794D01DE5DA1900E88F73 /* scroll.png */,
+				2641860492954D6BD5AF2FD5 /* up.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -298,8 +305,8 @@
 		3CDC5D998F35E9F8C91C7789 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */,
 				3CDC5A614857FE77ADFEA4C8 /* BlackWhiteFilter.h */,
+				3CDC55835ADD1CA85B9CCC91 /* BlackWhiteFilter.m */,
 				3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */,
 				3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */,
 			);
@@ -328,6 +335,7 @@
 				1381E4A61824E7E800E815F5 /* Resources */,
 				C2CC8958184B6BE82579F7B1 /* [CP] Embed Pods Frameworks */,
 				78ED3B33608EAD983CB74225 /* [CP] Copy Pods Resources */,
+				D02885E91EF29E1B0082A660 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -361,9 +369,12 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MBA;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Chivalry Software";
 				TargetAttributes = {
+					1381E4A71824E7E800E815F5 = {
+						ProvisioningStyle = Automatic;
+					};
 					1381E4C81824E7E800E815F5 = {
 						TestTargetID = 1381E4A71824E7E800E815F5;
 					};
@@ -374,9 +385,9 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 				"zh-Hans",
+				en,
 			);
 			mainGroup = 1381E49F1824E7E800E815F5;
 			productRefGroup = 1381E4A91824E7E800E815F5 /* Products */;
@@ -407,6 +418,7 @@
 				880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */,
 				880AA7571CA5738A006E7A74 /* Preferences.xib in Resources */,
 				264182480FA70DFC89B87842 /* Updates.tiff in Resources */,
+				D0B19D421E3841FD00619F4A /* AppleScript.sdef in Resources */,
 				264185813821B17A6CF8761E /* Rules.png in Resources */,
 				B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */,
 				887E09251C8B0FD0003A4CC0 /* DefaultPreferences.plist in Resources */,
@@ -445,7 +457,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		78ED3B33608EAD983CB74225 /* [CP] Copy Pods Resources */ = {
@@ -478,6 +490,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D02885E91EF29E1B0082A660 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which bartycrouch > /dev/null; then\n# Incrementally update all Storyboards/XIBs strings files\nbartycrouch interfaces -p \"$PROJECT_DIR/MacGesture\"\n\n# Add new keys to Localizable.strings files from NSLocalizedString in code\nbartycrouch code -p \"$PROJECT_DIR/MacGesture\" -l \"$PROJECT_DIR/MacGesture\" -s\nelse\necho \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -492,6 +517,7 @@
 				264183649CB68AD1A072883A /* AppPrefsWindowController.m in Sources */,
 				264184A9FF52175212CBE73F /* CanvasWindow.m in Sources */,
 				2641800AADBF86F6E76A37B3 /* CanvasView.m in Sources */,
+				D0B19D481E384BAE00619F4A /* AppleScriptCommand.m in Sources */,
 				D065A3C91D18154E0062900A /* SearchInWeb.applescript in Sources */,
 				264183EEE694EB7761D6066B /* CanvasWindowController.m in Sources */,
 				26418E623E410EF207EFA2A8 /* RulesList.m in Sources */,
@@ -526,73 +552,80 @@
 		1381E4D21824E7E800E815F5 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1381E4D31824E7E800E815F5 /* en */,
 				880AA76A1CA575D5006E7A74 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
+			path = .;
 			sourceTree = "<group>";
 		};
 		880AA7591CA5738A006E7A74 /* Preferences.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				880AA77C1CA64E88006E7A74 /* Base */,
-				D02C24391E018CE800C856FD /* zh-Hans */,
+				D02A45361EA0E84800E32EC5 /* zh-Hans */,
 			);
 			name = Preferences.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 		880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				880AA7781CA64E62006E7A74 /* Base */,
-				880AA7791CA64E69006E7A74 /* zh-Hans */,
+				D02885DF1EF29B8A0082A660 /* zh-Hans */,
 			);
 			name = AppPickerWindowController.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 		880AA75F1CA5745D006E7A74 /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
-				880AA76D1CA575D6006E7A74 /* zh-Hans */,
 				880AA77A1CA64E7C006E7A74 /* Base */,
+				880AA76D1CA575D6006E7A74 /* zh-Hans */,
 			);
 			name = Credits.rtf;
+			path = .;
 			sourceTree = "<group>";
 		};
 		880AA7611CA5745D006E7A74 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				880AA76E1CA575D6006E7A74 /* zh-Hans */,
-				880AA77B1CA64E83006E7A74 /* Base */,
+				D02885E11EF29CDE0082A660 /* Base */,
+				D02885E21EF29CE40082A660 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
+			path = .;
 			sourceTree = "<group>";
 		};
 		880AA7671CA57491006E7A74 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				880AA7751CA64DDB006E7A74 /* Base */,
-				880AA7771CA64E3B006E7A74 /* zh-Hans */,
+				D02885E01EF29B9E0082A660 /* zh-Hans */,
 			);
 			name = MainMenu.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 		880AA7721CA57884006E7A74 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				880AA7731CA57884006E7A74 /* zh-Hans */,
 				880AA77E1CA64EB7006E7A74 /* Base */,
+				880AA7731CA57884006E7A74 /* zh-Hans */,
 			);
 			name = Localizable.strings;
+			path = .;
 			sourceTree = "<group>";
 		};
 		D09FDBF31E06CDB50085FC36 /* README.html */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D09FDBF41E06CDB50085FC36 /* en */,
 				D09FDBF61E06CDC60085FC36 /* zh-Hans */,
+				D0FE00811EFE2C1400F06E4A /* en */,
 			);
 			name = README.html;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -602,6 +635,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -610,14 +644,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -640,6 +679,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -648,14 +688,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -672,12 +717,15 @@
 			baseConfigurationReference = 1ACB654207F7BCBC992336E4 /* Pods-MacGesture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MacGesture/MacGesture-Prefix.pch";
-				INFOPLIST_FILE = "MacGesture/MacGesture-Info.plist";
+				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
+				INFOPLIST_FILE = "MacGesture/Supporting Files/MacGesture-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -687,12 +735,15 @@
 			baseConfigurationReference = E051A121D93E759C89CE3094 /* Pods-MacGesture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MacGesture/MacGesture-Prefix.pch";
-				INFOPLIST_FILE = "MacGesture/MacGesture-Info.plist";
+				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
+				INFOPLIST_FILE = "MacGesture/Supporting Files/MacGesture-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -707,12 +758,12 @@
 					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MacGesture/MacGesture-Prefix.pch";
+				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "MacGestureTests/MacGestureTests-Info.plist";
+				INFOPLIST_FILE = "MacGestureTests/Supporting Files/MacGestureTests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -730,8 +781,8 @@
 					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MacGesture/MacGesture-Prefix.pch";
-				INFOPLIST_FILE = "MacGestureTests/MacGestureTests-Info.plist";
+				GCC_PREFIX_HEADER = "MacGesture/Supporting Files/MacGesture-Prefix.pch";
+				INFOPLIST_FILE = "MacGestureTests/Supporting Files/MacGestureTests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codefalling.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

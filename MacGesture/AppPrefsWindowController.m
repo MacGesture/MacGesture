@@ -31,6 +31,8 @@ static NSInteger const PREF_WINDOW_SIZECOUNT = 3;
 static NSInteger currentRulesWindowSizeIndex = 0;
 static NSInteger currentFiltersWindowSizeIndex = 0;
 
+#define MacGestureRuleDataType @"MacGestureRuleDataType"
+
 static NSArray *exampleAppleScripts;
 
 + (void)initialize {
@@ -100,6 +102,8 @@ static NSArray *exampleAppleScripts;
     NSString *content = [NSString stringWithContentsOfFile:readme encoding:NSUTF8StringEncoding error:NULL];
     
     [[[self webView] mainFrame] loadHTMLString:content baseURL:[NSURL URLWithString:readme]];
+    
+    [[self rulesTableView] registerForDraggedTypes:[NSArray arrayWithObject:MacGestureRuleDataType]];
 }
 
 - (BOOL)windowShouldClose:(id)sender {
@@ -299,12 +303,11 @@ static NSArray *exampleAppleScripts;
 
 - (IBAction)pickBtnDidClick:(id)sender {
     if ([_rulesTableView selectedRow] == -1) {
-        NSUserNotification *notification = [[NSUserNotification alloc] init];
-        notification.title = @"MacGesture";
-        notification.informativeText = NSLocalizedString(@"Select a filter first!", nil);
-        notification.soundName = NSUserNotificationDefaultSoundName;
-        
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"Okay, I know", nil)];
+        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert setMessageText:NSLocalizedString(@"Select a filter first!", nil)];
+        [alert runModal];
         return ;
     }
     
@@ -370,12 +373,11 @@ static NSString *currentScriptId = nil;
 - (IBAction)editAppleScriptInExternalEditor:(id)sender {
     NSInteger index = [[self appleScriptTableView] selectedRow];
     if (index == -1) {
-        NSUserNotification *notification = [[NSUserNotification alloc] init];
-        notification.title = @"MacGesture";
-        notification.informativeText = NSLocalizedString(@"Select a AppleScript first!", nil);
-        notification.soundName = NSUserNotificationDefaultSoundName;
-        
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"Okay, I know", nil)];
+        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert setMessageText:NSLocalizedString(@"Select an AppleScript first!", nil)];
+        [alert runModal];
         return ;
     }
     
@@ -475,7 +477,7 @@ static NSString *currentScriptId = nil;
 - (IBAction)doImport:(id)sender {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     
-    if ([panel runModal] == NSOKButton) {
+    if ([panel runModal] == NSModalResponseOK) {
         NSURL *url = [panel URL];
         NSTask *task = [[NSTask alloc] init];
         [task setLaunchPath:@"/bin/sh"];
@@ -511,7 +513,7 @@ static NSString *currentScriptId = nil;
 - (IBAction)doExport:(id)sender {
     NSSavePanel *panel = [NSSavePanel savePanel];
     
-    if ([panel runModal] == NSOKButton) {
+    if ([panel runModal] == NSModalResponseOK) {
         NSURL *url = [panel URL];
         NSTask *task = [[NSTask alloc] init];
         [task setLaunchPath:@"/bin/sh"];
@@ -541,6 +543,14 @@ static NSString *currentScriptId = nil;
         notification.soundName = NSUserNotificationDefaultSoundName;
         
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    }
+}
+
+-(IBAction)toggleRule:(id)sender {
+    NSInteger row = [_rulesTableView clickedRow];
+    if (row != -1) {
+        [[RulesList sharedRulesList] toggleRule:row];
+        [_rulesTableView reloadData];
     }
 }
 
@@ -575,12 +585,12 @@ static NSString *currentScriptId = nil;
         NSCharacterSet *invalidGestureCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ULDRZud?*"];
         invalidGestureCharacters = [invalidGestureCharacters invertedSet];
         if ([gesture rangeOfCharacterFromSet:invalidGestureCharacters].location != NSNotFound) {
-            NSUserNotification *notification = [[NSUserNotification alloc] init];
-            notification.title = @"MacGesture";
-            notification.informativeText = NSLocalizedString(@"Gesture must only contain \"ULDRZud?*\"", nil);
-            notification.soundName = NSUserNotificationDefaultSoundName;
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:NSLocalizedString(@"Okay, I know", nil)];
+            [alert setAlertStyle:NSInformationalAlertStyle];
+            [alert setMessageText:NSLocalizedString(@"Gesture must only contain \"ULDRZud?*\"", nil)];
+            [alert runModal];
             
-            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
             return NO;
         }
         [control setStringValue:gesture];
@@ -622,13 +632,52 @@ static NSString *currentScriptId = nil;
 #pragma mark -
 #pragma mark NSTableViewDelegate Implementation
 
+- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
+    [pboard declareTypes:[NSArray arrayWithObject:MacGestureRuleDataType] owner:self];
+    [pboard setData:data forType:MacGestureRuleDataType];
+    return YES;
+}
+
+- (NSDragOperation)tableView:(NSTableView*)tv validateDrop:(id)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)op {
+    if(op == NSTableViewDropAbove) {
+        return NSDragOperationMove;
+    }
+    return NSDragOperationNone;
+}
+
+- (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation {
+    NSPasteboard* pboard = [info draggingPasteboard];
+    NSData* rowData = [pboard dataForType:MacGestureRuleDataType];
+    NSIndexSet* rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
+    NSInteger dragRow = [rowIndexes firstIndex];
+    
+    [[RulesList sharedRulesList] moveRuleFrom:dragRow ruleTo:row];
+    [_rulesTableView noteNumberOfRowsChanged];
+    if (dragRow < row) {
+        [_rulesTableView moveRowAtIndex:dragRow toIndex:row-1];
+    } else {
+        [_rulesTableView moveRowAtIndex:dragRow toIndex:row];
+    }
+    return YES;
+}
+
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
     return 25;
+}
+
+- (void)tableView:(NSTableView *)tableView
+    didAddRowView:(NSTableRowView *)rowView
+           forRow:(NSInteger)row {
+    if (![[RulesList sharedRulesList] enabledAtIndex:row]) {
+        [rowView setBackgroundColor:[[NSColor blackColor] colorWithAlphaComponent:0.3]];
+    }
 }
 
 - (NSView *)tableViewForRules:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSView *result = nil;
     RulesList *rulesList = [RulesList sharedRulesList];
+    BOOL isEnabled = [rulesList enabledAtIndex:row];
     if ([tableColumn.identifier isEqualToString:@"Gesture"] || [tableColumn.identifier isEqualToString:@"Filter"] || [tableColumn.identifier isEqualToString:@"Note"]) {
         NSTextField *textField = [[NSTextField alloc] init];
         [textField.cell setWraps:NO];
@@ -636,6 +685,7 @@ static NSString *currentScriptId = nil;
         [textField setEditable:YES];
         [textField setBezeled:NO];
         [textField setDrawsBackground:NO];
+        [textField setEnabled:isEnabled];
         if ([tableColumn.identifier isEqualToString:@"Gesture"]) {
             textField.stringValue = [rulesList directionAtIndex:row];
             textField.identifier = @"Gesture";
@@ -660,6 +710,8 @@ static NSString *currentScriptId = nil;
                                        @"keyCode" : @([rulesList shortcutKeycodeAtIndex:row]),
                                        @"modifierFlags" : @([rulesList shortcutFlagAtIndex:row]),
                                        };
+            [recordView setEnabled:isEnabled];
+            
             result = recordView;
         } else if ([rulesList actionTypeAtIndex:row] == ACTION_TYPE_APPLE_SCRIPT) {
             NSComboBox *comboBox = [[NSComboBox alloc]init];
@@ -671,10 +723,13 @@ static NSString *currentScriptId = nil;
             if (index != -1) {
                 [comboBox selectItemAtIndex:index];
             }
+            [comboBox setEnabled:isEnabled];
+            
             [[NSNotificationCenter defaultCenter] addObserver:self
                                                      selector:@selector(appleScriptSelectionChanged:)
                                                          name:NSComboBoxSelectionDidChangeNotification
                                                        object:comboBox];
+            
             result = comboBox;
         }
     } else if ([tableColumn.identifier isEqualToString:@"TriggerOnEveryMatch"]) {
@@ -684,9 +739,11 @@ static NSString *currentScriptId = nil;
         [checkButton setTag:row];
         [checkButton setAction:@selector(onTriggerOnEveryMatchChanged:)];
         [checkButton setImagePosition:NSImageOnly];
+        [checkButton setEnabled:isEnabled];
         
         result = checkButton;
     }
+    
     return result;
 }
 

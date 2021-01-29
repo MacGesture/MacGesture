@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>invertFnWhenControl</key>
+	<false/>
+	<key>openPrefOnActivate</key>
+	<false/>
+	<key>directionDetectionThreshold</key>
+	<integer>20</integer>
 	<key>mergeConsecutiveIdenticalGestures</key>
 	<false/>
 	<key>showIconInStatusBar</key>
