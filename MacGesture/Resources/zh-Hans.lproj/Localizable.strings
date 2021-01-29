@@ -17,5 +17,6 @@
 "Stop" = "停止";
 "Edit in External Editor" = "在外部编辑器编辑";
 "Select a AppleScript first!" = "请先选择一个AppleScript！";
-"Gesture must only contain \"ULDR\"" = "手势只允许包含 \"ULDR\"";
-"Select a filter first!" = "请先选择一个过滤！";
+"Gesture must only contain \"ULDRZud?*\"" = "手势只允许包含 \"ULDRZud?*\"";
+"Select a filter first!" = "请先选择一个规则！";
+"Restart MacGesture to take effect" = "重启MacGesture后生效";

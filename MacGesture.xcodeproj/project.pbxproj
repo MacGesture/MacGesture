@@ -48,11 +48,12 @@
 		88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript in Resources */ = {isa = PBXBuildFile; fileRef = 88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript */; };
 		B6F75AD51BD4DECB00A8CF63 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */; };
 		B6F75AE31BD65BDD00A8CF63 /* AppPickerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */; };
-		D01C87C91DE9DAFB00B47E7D /* README.html in Resources */ = {isa = PBXBuildFile; fileRef = D01C87C81DE9DAFB00B47E7D /* README.html */; };
+		C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C610961B1DED98C700FCC263 /* CoreImage.framework */; };
 		D01C87CB1DE9DF2600B47E7D /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D01C87CA1DE9DF2600B47E7D /* logo.png */; };
 		D065A3C91D18154E0062900A /* SearchInWeb.applescript in Sources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript */; };
 		D065A3CA1D18155E0062900A /* SearchInWeb.applescript in Resources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript */; };
 		D09794D11DE5DA1900E88F73 /* scroll.png in Resources */ = {isa = PBXBuildFile; fileRef = D09794D01DE5DA1900E88F73 /* scroll.png */; };
+		D09FDBF51E06CDB50085FC36 /* README.html in Resources */ = {isa = PBXBuildFile; fileRef = D09FDBF31E06CDB50085FC36 /* README.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,7 +121,6 @@
 		880AA77A1CA64E7C006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
 		880AA77B1CA64E83006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		880AA77C1CA64E88006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Preferences.xib; sourceTree = "<group>"; };
-		880AA77D1CA64E8E006E7A74 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		880AA77E1CA64EB7006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8815F63A1C9D346A00C8DB3F /* ChromeCloseTabsToTheRight.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ChromeCloseTabsToTheRight.applescript; sourceTree = "<group>"; };
 		88331A371C9402810064ADD5 /* AppleScript_Editor_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppleScript_Editor_Logo.png; sourceTree = "<group>"; };
@@ -131,11 +131,14 @@
 		B6F75AD41BD4DECB00A8CF63 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPickerWindowController.h; sourceTree = "<group>"; };
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPickerWindowController.m; sourceTree = "<group>"; };
+		C610961B1DED98C700FCC263 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		CE4389FB13810EBE5934C100 /* libPods-MacGesture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MacGesture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D01C87C81DE9DAFB00B47E7D /* README.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = README.html; sourceTree = "<group>"; };
 		D01C87CA1DE9DF2600B47E7D /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		D02C24391E018CE800C856FD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		D065A3C81D18154E0062900A /* SearchInWeb.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SearchInWeb.applescript; sourceTree = "<group>"; };
 		D09794D01DE5DA1900E88F73 /* scroll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scroll.png; sourceTree = "<group>"; };
+		D09FDBF41E06CDB50085FC36 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/README.html; sourceTree = "<group>"; };
+		D09FDBF61E06CDC60085FC36 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "zh-Hans"; path = "zh-Hans.lproj/README.html"; sourceTree = "<group>"; };
 		E051A121D93E759C89CE3094 /* Pods-MacGesture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacGesture/Pods-MacGesture.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */,
 				1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */,
 				21D5AAF88B7E00E52401122E /* libPods-MacGesture.a in Frameworks */,
 			);
@@ -181,6 +185,7 @@
 		1381E4AA1824E7E800E815F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C610961B1DED98C700FCC263 /* CoreImage.framework */,
 				1381E4AB1824E7E800E815F5 /* Cocoa.framework */,
 				1381E4AD1824E7E800E815F5 /* Other Frameworks */,
 				CE4389FB13810EBE5934C100 /* libPods-MacGesture.a */,
@@ -261,8 +266,8 @@
 		264189E588806C286B6552A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D09FDBF31E06CDB50085FC36 /* README.html */,
 				D01C87CA1DE9DF2600B47E7D /* logo.png */,
-				D01C87C81DE9DAFB00B47E7D /* README.html */,
 				D09794D01DE5DA1900E88F73 /* scroll.png */,
 				D065A3C81D18154E0062900A /* SearchInWeb.applescript */,
 				880AA7721CA57884006E7A74 /* Localizable.strings */,
@@ -389,11 +394,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D09FDBF51E06CDB50085FC36 /* README.html in Resources */,
 				D065A3CA1D18155E0062900A /* SearchInWeb.applescript in Resources */,
 				88EB641D1CCA33E50018A8BE /* OpenMacGesturePreferences.applescript in Resources */,
 				88DCBC641C9D354F000727C2 /* ChromeCloseTabsToTheRight.applescript in Resources */,
 				880AA7661CA5745D006E7A74 /* InfoPlist.strings in Resources */,
-				D01C87C91DE9DAFB00B47E7D /* README.html in Resources */,
 				1381E4C41824E7E800E815F5 /* Images.xcassets in Resources */,
 				880AA7691CA57491006E7A74 /* MainMenu.xib in Resources */,
 				075C1BC91C214E9A00B7211A /* list@2x.png in Resources */,
@@ -440,7 +445,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		78ED3B33608EAD983CB74225 /* [CP] Copy Pods Resources */ = {
@@ -531,7 +536,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				880AA77C1CA64E88006E7A74 /* Base */,
-				880AA77D1CA64E8E006E7A74 /* zh-Hans */,
+				D02C24391E018CE800C856FD /* zh-Hans */,
 			);
 			name = Preferences.xib;
 			sourceTree = "<group>";
@@ -579,6 +584,15 @@
 				880AA77E1CA64EB7006E7A74 /* Base */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D09FDBF31E06CDB50085FC36 /* README.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D09FDBF41E06CDB50085FC36 /* en */,
+				D09FDBF61E06CDC60085FC36 /* zh-Hans */,
+			);
+			name = README.html;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

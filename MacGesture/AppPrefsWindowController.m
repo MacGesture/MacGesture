@@ -260,6 +260,8 @@ static NSArray *exampleAppleScripts;
     
     NSFontPanel *fontPanel = [fontManager fontPanel:YES];
     [fontPanel makeKeyAndOrderFront:self];
+    // This allow to change note color via font panel
+    [fontManager setSelectedAttributes:@{NSForegroundColorAttributeName:[MGOptionsDefine getNoteColor]} isMultiple:NO]; //must setup color AFTER displayed or it will keeps black...
 }
 
 - (void)changeFont:(nullable id)sender {
@@ -267,6 +269,18 @@ static NSArray *exampleAppleScripts;
     NSFont *font = [fontManager convertFont:[NSFont systemFontOfSize:[NSFont systemFontSize]]];
     [[NSUserDefaults standardUserDefaults] setObject:[font fontName] forKey:@"noteFontName"];
     [[NSUserDefaults standardUserDefaults] setDouble:[font pointSize] forKey:@"noteFontSize"];
+}
+
+// These two functions repond to text color change.
+- (void)setColor:(NSColor *)col forAttribute:(NSString *)attr {
+    if ([attr isEqualToString:@"NSColor"]) {
+        [MGOptionsDefine setNoteColor:col];
+    }
+}
+
+- (void)changeAttributes:(id)sender{
+    NSDictionary * newAttributes = [sender convertAttributes:@{}];
+    NSLog(@"attr:%@",newAttributes);
 }
 
 - (IBAction)resetDefaults:(id)sender {
@@ -280,7 +294,7 @@ static NSArray *exampleAppleScripts;
     }
     [defs synchronize];
     
-    [MGOptionsDefine resetColor];
+    [MGOptionsDefine resetColors];
 }
 
 - (IBAction)pickBtnDidClick:(id)sender {
@@ -416,6 +430,12 @@ static NSString *currentScriptId = nil;
     [[RulesList sharedRulesList] setAppleScriptId:[[AppleScriptsList sharedAppleScriptsList] idAtIndex:[comboBox indexOfSelectedItem]] atIndex:row];
 }
 
+- (IBAction)onTriggerOnEveryMatchChanged:(id)sender {
+    NSButton *button = sender;
+    NSInteger index = [button tag];
+    [[RulesList sharedRulesList] setTriggerOnEveryMatch:[button state] atIndex:index];
+}
+
 - (void)tableViewSelectionChanged:(NSNotification* )notification
 {
     NSInteger selectedRow = [[self appleScriptTableView] selectedRow];
@@ -446,6 +466,12 @@ static NSString *currentScriptId = nil;
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
 
+- (IBAction)onToggleMacGestureEnabled:(id)sender {
+    NSButton *button = (NSButton *)sender;
+    bool enabled = [button state];
+    [[AppDelegate appDelegate] setEnabled:enabled];
+}
+
 #pragma mark -
 #pragma mark NSComboBoxDataSource Implementation
 
@@ -474,12 +500,12 @@ static NSString *currentScriptId = nil;
     // control is editfield,control.id == row,control.identifier == "Gesture"|"Filter"|Other(only saving)
     if ([control.identifier isEqualToString:@"Gesture"]) {    // edit gesture
         NSString *gesture = control.stringValue;
-        NSCharacterSet *invalidGestureCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ULDRZud"];
+        NSCharacterSet *invalidGestureCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ULDRZud?*"];
         invalidGestureCharacters = [invalidGestureCharacters invertedSet];
         if ([gesture rangeOfCharacterFromSet:invalidGestureCharacters].location != NSNotFound) {
             NSUserNotification *notification = [[NSUserNotification alloc] init];
             notification.title = @"MacGesture";
-            notification.informativeText = NSLocalizedString(@"Gesture must only contain \"ULDRZud\"", nil);
+            notification.informativeText = NSLocalizedString(@"Gesture must only contain \"ULDRZud?*\"", nil);
             notification.soundName = NSUserNotificationDefaultSoundName;
             
             [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
@@ -579,6 +605,15 @@ static NSString *currentScriptId = nil;
                                                        object:comboBox];
             result = comboBox;
         }
+    } else if ([tableColumn.identifier isEqualToString:@"TriggerOnEveryMatch"]) {
+        NSButton *checkButton = [[NSButton alloc] init];
+        [checkButton setButtonType:NSSwitchButton];
+        [checkButton setState:[rulesList triggerOnEveryMatchAtIndex:row]];
+        [checkButton setTag:row];
+        [checkButton setAction:@selector(onTriggerOnEveryMatchChanged:)];
+        [checkButton setImagePosition:NSImageOnly];
+        
+        result = checkButton;
     }
     return result;
 }

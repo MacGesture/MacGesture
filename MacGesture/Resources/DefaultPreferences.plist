@@ -2,10 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>mergeConsecutiveIdenticalGestures</key>
+	<false/>
 	<key>showIconInStatusBar</key>
 	<true/>
 	<key>defaultLineColor</key>
 	<string>#0000ff</string>
+	<key>defaultNoteColor</key>
+	<string>#000000</string>
 	<key>showUIInWhateverApp</key>
 	<false/>
 	<key>showGestureNote</key>

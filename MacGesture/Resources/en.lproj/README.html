@@ -2,10 +2,11 @@
 
 <p><img src="logo.png" alt="logo" /></p>
 
-<p>Configurable global mouse gesture for Mac OS X.</p>
+<p>Configurable global mouse gesture for macOS.</p>
 
-<!-- **(2016-03-13) A lot of work is in the to-do list, but the collaborators are students in school so they may not be able to contribute to this project very often. If you are interested in this project, you can join us as a collaborator. If you want to, please contact @codefalling. Issues and pull requests are highly welcomed, and we are often on line. If this little tool have improved your experience a lot, please spread it so more people would be able to help us. Gracias.** -->
+<p><strong> Multiple issues are reported in Sierra. Please file issues and roll back to earlier versions before we fix all of them. </strong></p>
 
+<p>You can read this README in About section.</p>
 
 <h1>Feature</h1>
 
@@ -62,13 +63,15 @@
 </table>
 
 
+<p>Gesture can contain wildcard matching(&lsquo;?&rsquo; and &lsquo;*&rsquo;).</p>
+
+<p>The first rule matching will take effect.</p>
+
 <p>Z is the acronym of pinyin of &lsquo;左&rsquo; which means &lsquo;left&rsquo; in English.
 So to distinguish &lsquo;clicking the left mouse&rsquo; from &lsquo;dragging your mouse left-ward&rsquo;,
 we chose &lsquo;Z&rsquo;.</p>
 
-<p>Wheel directions may vary according to system configurations or some tweaks (Karabiner&rsquo;s Reverse Vertical Scrolling, for example).</p>
-
-<p>Gestures must begin with one of &lsquo;L&rsquo;, &lsquo;U&rsquo;, &lsquo;R&rsquo; and &rsquo;D'.</p>
+<p>Wheel directions may vary according to system configurations or some system tweaks (Karabiner&rsquo;s Reverse Vertical Scrolling, for example).</p>
 
 <h1>Q&amp;A</h1>
 
@@ -76,7 +79,47 @@ we chose &lsquo;Z&rsquo;.</p>
 
 <h1>Download</h1>
 
-<p>Download the latest zip from https://github.com/CodeFalling/MacGesture/releases</p>
+<p>Download the latest zip from https://github.com/MacGesture/MacGesture/releases</p>
+
+<h1>Tips</h1>
+
+<ol>
+<li>If you want to achieve something like this:</li>
+</ol>
+
+
+<p>Right click, drag upwards, then every &lsquo;u&rsquo; triggers a &lsquo;Next Tab&rsquo;, every &rsquo;d' triggers a &lsquo;Prev Tab&rsquo;, without releasing right mouse.</p>
+
+<p>Then, create a rule like this:</p>
+
+<table>
+<thead>
+<tr>
+<th> Gesture </th>
+<th> Filter             </th>
+<th> Action             </th>
+<th> Note       </th>
+<th> Trigger on every match </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U*d      </td>
+<td> *safari|*chrome </td>
+<td> &ldquo;shift-command-]&rdquo; </td>
+<td> &ldquo;Next Tab&rdquo; </td>
+<td> Checked                </td>
+</tr>
+<tr>
+<td>U*u      </td>
+<td> *safari|*chrome </td>
+<td> &ldquo;shift-command-[&rdquo; </td>
+<td> &ldquo;Prev Tab&rdquo; </td>
+<td> Checked                </td>
+</tr>
+</tbody>
+</table>
+
 
 <h1>License</h1>
 

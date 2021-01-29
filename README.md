@@ -2,9 +2,11 @@
 
 ![logo](logo.png)
 
-Configurable global mouse gesture for Mac OS X.
+Configurable global mouse gesture for macOS.
 
-<!-- **(2016-03-13) A lot of work is in the to-do list, but the collaborators are students in school so they may not be able to contribute to this project very often. If you are interested in this project, you can join us as a collaborator. If you want to, please contact @codefalling. Issues and pull requests are highly welcomed, and we are often on line. If this little tool have improved your experience a lot, please spread it so more people would be able to help us. Gracias.** -->
+** Multiple issues are reported in Sierra. Please file issues and roll back to earlier versions before we fix all of them. **
+
+You can read this README in About section.
 
 # Feature
 
@@ -30,13 +32,15 @@ Configurable global mouse gesture for Mac OS X.
 | Wheel U | u       |
 | Wheel D | d       |
 
+Gesture can contain wildcard matching('?' and '*').
+
+The first rule matching will take effect.
+
 Z is the acronym of pinyin of '左' which means 'left' in English.
 So to distinguish 'clicking the left mouse' from 'dragging your mouse left-ward',
 we chose 'Z'.
 
-Wheel directions may vary according to system configurations or some tweaks (Karabiner's Reverse Vertical Scrolling, for example).
-
-Gestures must begin with one of 'L', 'U', 'R' and 'D'.
+Wheel directions may vary according to system configurations or some system tweaks (Karabiner's Reverse Vertical Scrolling, for example).
 
 # Q&A
 
@@ -44,7 +48,20 @@ Feel free to open issue
 
 # Download
 
-Download the latest zip from https://github.com/CodeFalling/MacGesture/releases
+Download the latest zip from https://github.com/MacGesture/MacGesture/releases
+
+# Tips
+
+1. If you want to achieve something like this:
+
+Right click, drag upwards, then every 'u' triggers a 'Next Tab', every 'd' triggers a 'Prev Tab', without releasing right mouse.
+
+Then, create a rule like this:
+
+| Gesture | Filter             | Action             | Note       | Trigger on every match |
+|---------|--------------------|--------------------|------------|------------------------|
+|U*d      | \*safari\|\*chrome | "shift-command-\]" | "Next Tab" | Checked                |
+|U*u      | \*safari\|\*chrome | "shift-command-\[" | "Prev Tab" | Checked                |
 
 # License
 

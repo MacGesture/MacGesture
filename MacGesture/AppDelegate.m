@@ -13,11 +13,11 @@ static CGEventRef mouseDownEvent, mouseDraggedEvent;
 static NSMutableString *direction;
 static NSPoint lastLocation;
 static CFMachPortRef mouseEventTap;
-static bool isEnable;
+static BOOL isEnabled;
 static AppPrefsWindowController *_preferencesWindowController;
+static NSTimeInterval lastMouseWheelEventTime;
 
 + (AppDelegate *)appDelegate {
-
     return (AppDelegate *) [[NSApplication sharedApplication] delegate];
 }
 
@@ -44,7 +44,7 @@ static AppPrefsWindowController *_preferencesWindowController;
     CFRelease(runLoopSource);
 
     direction = [NSMutableString string];
-    isEnable = true;
+    isEnabled = YES;
     
     NSURL *defaultPrefsFile = [[NSBundle mainBundle]
                                URLForResource:@"DefaultPreferences" withExtension:@"plist"];
@@ -78,13 +78,15 @@ static AppPrefsWindowController *_preferencesWindowController;
     [center addObserver:self selector:@selector(receiveOpenPreferencesNotification:) name:name object:nil suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
     
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+    
+    lastMouseWheelEventTime = 0;
 }
 
 - (void)updateStatusBarItem {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showIconInStatusBar"]) {
         [self setStatusItem:[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength]];
         
-        NSImage *menuIcon = [NSImage imageNamed:@"Menu Icon"];
+        NSImage *menuIcon = [NSImage imageNamed:@"Menu Icon Enabled"];
         //NSImage *highlightIcon = [NSImage imageNamed:@"Menu Icon"]; // Yes, we're using the exact same image asset.
         //[highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
         [menuIcon setTemplate:YES];
@@ -116,6 +118,19 @@ static AppPrefsWindowController *_preferencesWindowController;
     }
 }
 
+- (void)setEnabled:(BOOL)enabled {
+    isEnabled = enabled;
+    if ([self statusItem]) {
+        NSImage *menuIcon;
+        if (isEnabled) {
+            menuIcon = [NSImage imageNamed:@"Menu Icon Enabled"];
+        } else {
+            menuIcon = [NSImage imageNamed:@"Menu Icon Disabled"];
+        }
+        [[self statusItem] setImage:menuIcon];
+    }
+}
+
 - (IBAction)openPreferences:(id)sender {
     [self showPreferences];
 }
@@ -128,6 +143,22 @@ static AppPrefsWindowController *_preferencesWindowController;
     [self showPreferences];
 }
 
+static void addDirection(unichar dir, bool allowSameDirection) {
+    unichar lastDirectionChar;
+    if (direction.length > 0) {
+        lastDirectionChar = [direction characterAtIndex:direction.length - 1];
+    } else {
+        lastDirectionChar = ' ';
+    }
+    
+    if (dir != lastDirectionChar || allowSameDirection) {
+        NSString *temp = [NSString stringWithCharacters:&dir length:1];
+        [direction appendString:temp];
+        [windowController writeDirection:direction];
+        handleGesture(NO);
+    }
+}
+
 static void updateDirections(NSEvent *event) {
     // not thread safe
     NSPoint newLocation = event.locationInWindow;
@@ -136,53 +167,34 @@ static void updateDirections(NSEvent *event) {
     double absX = fabs(deltaX);
     double absY = fabs(deltaY);
     if (absX + absY < 20) {
-
         return; // ignore short distance
     }
-
-    unichar lastDirectionChar;
-    if (direction.length > 0) {
-        lastDirectionChar = [direction characterAtIndex:direction.length - 1];
-    } else {
-        lastDirectionChar = ' ';
-    }
+    
     lastLocation = event.locationInWindow;
 
 
     if (absX > absY) {
         if (deltaX > 0) {
-            if (lastDirectionChar != 'R') {
-                [direction appendString:@"R"];
-                [windowController writeDirection:direction];
-                return;
-            }
+            addDirection('R', false);
+            return;
         } else {
-            if (lastDirectionChar != 'L') {
-                [direction appendString:@"L"];
-                [windowController writeDirection:direction];
-                return;
-            }
+            addDirection('L', false);
+            return;
         }
     } else {
         if (deltaY > 0) {
-            if (lastDirectionChar != 'U') {
-                [direction appendString:@"U"];
-                [windowController writeDirection:direction];
-                return;
-            }
+            addDirection('U', false);
+            return;
         } else {
-            if (lastDirectionChar != 'D') {
-                [direction appendString:@"D"];
-                [windowController writeDirection:direction];
-                return;
-            }
+            addDirection('D', false);
+            return;
         }
     }
 
 }
 
-static bool handleGesture() {
-    return [[RulesList sharedRulesList] handleGesture:direction];
+static bool handleGesture(BOOL lastGesture) {
+    return [[RulesList sharedRulesList] handleGesture:direction isLastGesture:lastGesture];
 }
 
 void resetDirection() {
@@ -192,6 +204,10 @@ void resetDirection() {
 // See https://developer.apple.com/library/mac/documentation/Carbon/Reference/QuartzEventServicesRef/#//apple_ref/c/tdef/CGEventTapCallBack
 static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
     static BOOL shouldShow;
+    
+    if (!isEnabled) {
+        return event;
+    }
     
     NSEvent *mouseEvent;
     switch (type) {
@@ -244,6 +260,32 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             
             if (mouseDownEvent) {
                 mouseEvent = [NSEvent eventWithCGEvent:event];
+                
+                // Hack when Synergy is started after MacGesture
+                // -- when dragging to a client, the mouse point resets to (server_screenwidth/2+rnd(-1,1),server_screenheight/2+rnd(-1,1))
+                if (mouseDraggedEvent) {
+                    NSPoint lastPoint = CGEventGetLocation(mouseDraggedEvent);
+                    NSPoint currentPoint = [mouseEvent locationInWindow];
+                    NSRect screen = [[NSScreen mainScreen] frame];
+                    float d1 = fabs(lastPoint.x - screen.origin.x), d2 = fabs(lastPoint.x - screen.origin.x - screen.size.width);
+                    float d3 = fabs(lastPoint.y - screen.origin.y), d4 = fabs(lastPoint.y - screen.origin.y - screen.size.height);
+                    
+                    float d5 = fabs(currentPoint.x - screen.origin.x - screen.size.width/2), d6 = fabs(currentPoint.y - screen.origin.y - screen.size.height/2);
+                    
+                    const float threshold = 30.0;
+                    if ((d1 < threshold || d2 < threshold || d3 < threshold || d4 < threshold) &&
+                        d5 < threshold && d6 < threshold) {
+                        CFRelease(mouseDraggedEvent);
+                        CFRelease(mouseDownEvent);
+                        mouseDownEvent = mouseDraggedEvent = NULL;
+                        shouldShow = NO;
+                        [windowController reinitWindow];
+                        resetDirection();
+                        break;
+                    }
+                    
+                }
+                
                 if (mouseDraggedEvent) {
                     CFRelease(mouseDraggedEvent);
                 }
@@ -263,11 +305,11 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 mouseEvent = [NSEvent eventWithCGEvent:event];
                 [windowController handleMouseEvent:mouseEvent];
                 updateDirections(mouseEvent);
-                if (!handleGesture()) {
+                if (!handleGesture(true)) {
                     CGEventPost(kCGSessionEventTap, mouseDownEvent);
-                    if (mouseDraggedEvent) {
-                        CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
-                    }
+                    //if (mouseDraggedEvent) {
+                    //    CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
+                    //}
                     CGEventPost(kCGSessionEventTap, event);
                 }
                 CFRelease(mouseDownEvent);
@@ -278,6 +320,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             }
             
             mouseDownEvent = mouseDraggedEvent = NULL;
+            shouldShow = NO;
             
             resetDirection();
             break;
@@ -287,39 +330,31 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 return event;
             }
             double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
-            
-            unichar lastDirectionChar;
-            if (direction.length > 0) {
-                lastDirectionChar = [direction characterAtIndex:direction.length - 1];
-            } else {
-                lastDirectionChar = ' ';
-            }
-            if (delta > 0) {
-                // NSLog(@"Down!");
-                if (lastDirectionChar != 'd') {
-                    [direction appendString:@"d"];
-                    [windowController writeDirection:direction];
+
+            NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate];
+            if (current - lastMouseWheelEventTime > 0.3) {
+                if (delta > 0) {
+                    // NSLog(@"Down!");
+                    addDirection('d', true);
+                } else if (delta < 0){
+                    // NSLog(@"Up!");
+                    addDirection('u', true);
                 }
-            } else if (delta < 0){
-                // NSLog(@"Up!");
-                if (lastDirectionChar != 'u') {
-                    [direction appendString:@"u"];
-                    [windowController writeDirection:direction];
-                }
+                lastMouseWheelEventTime = current;
             }
+            break;
         }
         case kCGEventTapDisabledByTimeout:
-            CGEventTapEnable(mouseEventTap, isEnable); // re-enable
-            windowController.enable = isEnable;
+            CGEventTapEnable(mouseEventTap, true); // re-enable
+            // windowController.enable = isEnable;
             break;
         case kCGEventLeftMouseDown: {
-            if (mouseDownEvent) {
-                [direction appendString:@"Z"];
-                [windowController writeDirection:direction];
-                return NULL;
+            if (!shouldShow || !mouseDownEvent) {
+                return event;
             }
-            
-            return event;
+            [direction appendString:@"Z"];
+            [windowController writeDirection:direction];
+            break;
         }
         default:
             return event;

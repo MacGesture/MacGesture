@@ -9,6 +9,13 @@
 #import "CanvasView.h"
 #import "RulesList.h"
 #import "MGOptionsDefine.h"
+#import <CoreImage/CoreImage.h>
+
+@interface CanvasView () {
+    NSColor *noteColor;
+}
+
+@end
 
 @implementation CanvasView
 
@@ -18,14 +25,39 @@ static NSImage *upImage;
 static NSImage *downImage;
 static NSImage *scrollImage;
 
+static NSColor *loadedColor;
+
+- (NSImage*)convertImage:(NSImage*)image toSpecifiedColor:(NSColor *)col
+{
+    CIImage *ciImage = [[CIImage alloc] initWithData:[image TIFFRepresentation]];
+    CIFilter *filter = [CIFilter filterWithName:@"CIColorMatrix"];
+    [filter setValue:ciImage forKey: kCIInputImageKey];
+    [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:0] forKey: @"inputRVector"];
+    [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:0] forKey: @"inputGVector"];
+    [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:0] forKey: @"inputBVector"];
+    [filter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:1] forKey: @"inputAVector"];
+    [filter setValue:[CIVector vectorWithX:col.redComponent Y:col.greenComponent Z:col.blueComponent W:0] forKey: @"inputBiasVector"];
+    
+    CIImage *output = filter.outputImage;
+    
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CGImageRef cgImage = [context createCGImage:output fromRect:[output extent]];
+    
+    return [[NSImage alloc] initWithCGImage:cgImage size:output.extent.size];
+}
+
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
 
-    leftImage = [NSImage imageNamed:@"left.png"];
-    rightImage = [NSImage imageNamed:@"right.png"];
-    downImage = [NSImage imageNamed:@"down.png"];
-    upImage = [NSImage imageNamed:@"up.png"];
-    scrollImage = [NSImage imageNamed:@"scroll.png"];
+    noteColor = [MGOptionsDefine getNoteColor];
+    if( ![noteColor isEqualTo:loadedColor] ) {
+        leftImage   = [self convertImage:[NSImage imageNamed:@"left.png"]   toSpecifiedColor:noteColor];
+        rightImage  = [self convertImage:[NSImage imageNamed:@"right.png"]  toSpecifiedColor:noteColor];
+        downImage   = [self convertImage:[NSImage imageNamed:@"down.png"]   toSpecifiedColor:noteColor];
+        upImage     = [self convertImage:[NSImage imageNamed:@"up.png"]     toSpecifiedColor:noteColor];
+        scrollImage = [self convertImage:[NSImage imageNamed:@"scroll.png"] toSpecifiedColor:noteColor];
+        loadedColor = noteColor;
+    }
 
     if (self) {
         color = [MGOptionsDefine getLineColor];
@@ -51,12 +83,30 @@ static NSImage *scrollImage;
     float scaledHeight = scale * leftImage.size.height;
     float scaledWidth = scale * leftImage.size.width;
     
+    // Can be more efficient, though
+    NSUInteger numberToDraw = 0;
+    bool merge = [[NSUserDefaults standardUserDefaults] boolForKey:@"mergeConsecutiveIdenticalGestures"];
+    
+    if (merge) {
+        for (NSUInteger i = 0;i < directionToDraw.length;i++) {
+            numberToDraw++;
+            char ch = [directionToDraw characterAtIndex:i];
+            if (ch == 'u' || ch == 'd') {
+                for (;i < directionToDraw.length && [directionToDraw characterAtIndex:i] == ch;i++);
+                i--;
+            }
+        }
+    } else {
+        numberToDraw = directionToDraw.length;
+    }
+    
     CGRect screenRect = [[NSScreen mainScreen] frame];
     NSInteger y = (screenRect.size.height - scaledHeight) / 2;
-    NSInteger beginx = (screenRect.size.width - scaledWidth * directionToDraw.length) / 2;
+    NSInteger beginx = (screenRect.size.width - scaledWidth * numberToDraw) / 2;
     
     [NSGraphicsContext saveGraphicsState];
     [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationNone];
+    int index = 0;
     for (NSInteger i = 0; i < directionToDraw.length; i++) {
         NSImage *image = nil;
         char ch = [directionToDraw characterAtIndex:i];
@@ -80,11 +130,31 @@ static NSImage *scrollImage;
             default:
                 break;
         }
-        [image drawInRect:NSMakeRect(beginx + i * scaledWidth, y, scaledWidth, scaledHeight) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
         if (ch == 'u' || ch == 'd') {
             double frac = 0.65;
-            [scrollImage drawInRect:NSMakeRect(beginx + i * scaledWidth + frac * scaledWidth, y - (frac - 0.5)*scaledHeight, scaledWidth*(1-frac), scaledHeight*(1-frac)) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+            
+            if (merge) {
+                int count = 0;
+                for (;i < directionToDraw.length && [directionToDraw characterAtIndex:i] == ch;i++) {
+                    count++;
+                }
+                i--;
+            }
+            
+            /*
+            if (count > 1) {
+                [[NSString stringWithFormat:@"%d", count] drawWithRect: NSMakeRect(beginx + index * scaledWidth, y - (frac - 0.5)*scaledHeight, scaledWidth*(1-frac), scaledHeight*(1-frac))
+                                                               options: NSStringDrawingUsesFontLeading
+                                                            attributes: nil
+                                                               context: nil];
+            }
+             */
+            
+            [scrollImage drawInRect:NSMakeRect(beginx + index * scaledWidth + frac * scaledWidth, y - (frac - 0.5)*scaledHeight, scaledWidth*(1-frac), scaledHeight*(1-frac)) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+            
         }
+        [image drawInRect:NSMakeRect(beginx + index * scaledWidth, y, scaledWidth, scaledHeight) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+        index++;
     }
     [NSGraphicsContext restoreGraphicsState];
 }
@@ -106,7 +176,7 @@ static NSImage *scrollImage;
 
         NSFont *font = [NSFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"noteFontName"] size:[[NSUserDefaults standardUserDefaults] doubleForKey:@"noteFontSize"]];
 
-        NSDictionary *textAttributes = @{NSFontAttributeName : font};
+        NSDictionary *textAttributes = @{NSFontAttributeName : font, NSForegroundColorAttributeName : noteColor};
 
         CGSize size = [note sizeWithAttributes:textAttributes];
         float x = ((screenRect.size.width - size.width) / 2);
@@ -172,8 +242,7 @@ static NSImage *scrollImage;
     lastLocation.x -= s.frame.origin.x;
     lastLocation.y -= s.frame.origin.y;
 #ifdef DEBUG
-    NSLog(@"frame:%@, window:%@, screen:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame));
-    NSLog(@"%@", NSStringFromPoint(lastLocation));
+    NSLog(@"mouseDown frame:%@, window:%@, screen:%@, point:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame), NSStringFromPoint(lastLocation));
 #endif
     [points addObject:[NSValue valueWithPoint:lastLocation]];
 }
@@ -186,6 +255,10 @@ static NSImage *scrollImage;
         NSScreen *s = w.screen;
         newLocation.x -= s.frame.origin.x;
         newLocation.y -= s.frame.origin.y;
+        
+#ifdef DEBUG
+        NSLog(@"mouseDragged frame:%@, window:%@, screen:%@, point:%@", NSStringFromRect(self.frame), NSStringFromRect(w.frame), NSStringFromRect(s.frame), NSStringFromPoint(newLocation));
+#endif
 
 //		[self drawCircleAtPoint:newLocation];
         [points addObject:[NSValue valueWithPoint:newLocation]];
