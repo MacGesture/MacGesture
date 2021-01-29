@@ -8,6 +8,7 @@
 
 #import "CanvasView.h"
 #import "RulesList.h"
+#import "MGOptionsDefine.h"
 
 @implementation CanvasView
 
@@ -26,7 +27,7 @@ static NSImage* downImage;
     upImage = [NSImage imageNamed:@"up.png"];
 
     if (self) {
-		color = [NSColor blueColor];
+		color = [MGOptionsDefine getLineColor];
         points = [[NSMutableArray alloc] init];
         directionToDraw = @"";
 		radius = 2;

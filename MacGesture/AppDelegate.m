@@ -5,6 +5,7 @@
 #import "RulesList.h"
 #import "utils.h"
 #import "NSBundle+LoginItem.h"
+#import "BlackWhiteFilter.h"
 
 
 @implementation AppDelegate
@@ -55,6 +56,7 @@ static AppPrefsWindowController *_preferencesWindowController;
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun_2.0.5_Before"];
     }
 
+    [BWFilter compatibleProcedureWithPreviousVersionBlockRules];
 
 
     if([[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]){
@@ -166,11 +168,12 @@ void resetDirection(){
 static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
     // not thread safe, but it's always called in main thread
     // check blocker apps
-    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){
-        CGEventPost(kCGSessionEventTap, mouseDownEvent);
-        if (mouseDraggedEvent) {
-            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
-        }
+//    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){
+    if(![BWFilter willHookRightClickForApp:frontBundleName()]){
+//        CGEventPost(kCGSessionEventTap, mouseDownEvent);
+//        if (mouseDraggedEvent) {
+//            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
+//        }
         CGEventPost(kCGSessionEventTap, event);
         return NULL;
     }
