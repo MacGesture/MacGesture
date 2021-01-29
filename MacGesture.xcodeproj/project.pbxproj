@@ -37,7 +37,6 @@
 		BB004AFA25BD001900A7373F /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB004AF825BD001900A7373F /* DBPrefsWindowController.m */; };
 		BB004AFF25BDA30300A7373F /* ComboColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB004AFE25BDA30300A7373F /* ComboColorWell.m */; };
 		BBC1C8E625BCCDC600DE6816 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC1C8E525BCCDC600DE6816 /* WebKit.framework */; };
-		BBCB97CD25C36F3C0020592A /* SUUpdaterPublicKey.pem in Resources */ = {isa = PBXBuildFile; fileRef = BBCB97CC25C36F3C0020592A /* SUUpdaterPublicKey.pem */; };
 		C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C610961B1DED98C700FCC263 /* CoreImage.framework */; };
 		D065A3CA1D18155E0062900A /* SearchInWeb.applescript-src in Resources */ = {isa = PBXBuildFile; fileRef = D065A3C81D18154E0062900A /* SearchInWeb.applescript-src */; };
 		D09FDBF51E06CDB50085FC36 /* README.html in Resources */ = {isa = PBXBuildFile; fileRef = D09FDBF31E06CDB50085FC36 /* README.html */; };
@@ -105,7 +104,6 @@
 		BBC1C8C725BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppPickerWindowController.strings"; sourceTree = "<group>"; };
 		BBC1C8C825BCA21F00DE6816 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BBC1C8E525BCCDC600DE6816 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		BBCB97CC25C36F3C0020592A /* SUUpdaterPublicKey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SUUpdaterPublicKey.pem; sourceTree = "<group>"; };
 		BBCB98BB25C4114E0020592A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BBCB99BF25C4593E0020592A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		BBCB99C025C4593E0020592A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Preferences.strings; sourceTree = "<group>"; };
@@ -245,7 +243,6 @@
 				880AA7721CA57884006E7A74 /* Localizable.strings */,
 				880AA75F1CA5745D006E7A74 /* Credits.rtf */,
 				D09FDBF31E06CDB50085FC36 /* README.html */,
-				BBCB97CC25C36F3C0020592A /* SUUpdaterPublicKey.pem */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -410,7 +407,6 @@
 				880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */,
 				880AA7571CA5738A006E7A74 /* Preferences.xib in Resources */,
 				D0B19D421E3841FD00619F4A /* AppleScript.sdef in Resources */,
-				BBCB97CD25C36F3C0020592A /* SUUpdaterPublicKey.pem in Resources */,
 				887E09251C8B0FD0003A4CC0 /* DefaultPreferences.plist in Resources */,
 				880AA7651CA5745D006E7A74 /* Credits.rtf in Resources */,
 			);

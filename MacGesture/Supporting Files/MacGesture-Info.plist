@@ -40,7 +40,7 @@
 	<string>AppleScript.sdef</string>
 	<key>SUFeedURL</key>
 	<string>https://raw.githubusercontent.com/MacGesture/MacGesture/master/AppCast.xml</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>SUUpdaterPublicKey.pem</string>
+	<key>SUPublicEDKey</key>
+	<string>luFpvgEsONf8uRiMhq14o2ZKm9l8zK4ou/4EI093ARI=</string>
 </dict>
 </plist>
