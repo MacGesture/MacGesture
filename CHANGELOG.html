@@ -1,0 +1,207 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>MacGesture Changelog</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="description" content="MacGesture Changelog">
+	<meta name="keywords" content="MacGesture, macOS, gesture control, changelog">
+	<meta name="author" content="Michal Zelinka">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		* { font-family: -apple-system;    }
+		body { margin: 0; padding: 0; }
+		.item {
+			border: 1px solid #d6d6d6;
+			border-radius: 8px;
+			margin: 12px;
+			overflow: hidden;
+		}
+		.header {
+			background: #f3f3f3;
+			border: solid #d6d6d6;
+			border-width: 0 0 1px 0;
+			padding: 5px 20px;
+			font-size: 1.3em;
+		}
+		.header .date {
+			color: rgba(0,0,0,0.3);
+			margin: 0 0 0 10px;
+		}
+		.item li { padding: 3px 0; }
+		.hidden {
+			display: none;
+			visibility: hidden;
+		}
+		code {
+			font-family: Menlo;
+			font-size: 0.9em;
+			background: #eee;
+			padding: 2px 4px;
+			border: 1px solid #ddd;
+			border-radius: 6px;
+		}
+		meta[badge] {
+			color: white;
+			text-transform: uppercase;
+			font-size: 0.8em;
+			font-weight: bold;
+			display: inline-block;
+			visibility: visible;
+		}
+		meta[badge]::after {
+			border-radius: 6px;
+			display: block;
+			padding: 3px;
+			margin-right: 5px;
+		}
+		meta[badge][new]::after { content: 'New '; background: #557dfc; }
+		meta[badge][update]::after { content: 'Update '; background: #29c327; }
+		meta[badge][fix]::after { content: 'Fix '; background: #f07a53; }
+	</style>
+</head>
+<body>
+	<div class="item">
+		<div class="header"><span class="version">3.0</span> <span class="date">30 January 2021</span></div>
+		<ul>
+			<li><meta badge update>Refreshed app with a tested support for macOS 11 Big Sur 🍏</li>
+			<li><meta badge new>Support for Apple Silicon M1 processors! 💻</li>
+			<li><meta badge new>Dark Mode support 🌓</li>
+			<li><meta badge new>Customisable colours of Gesture preview & its background 🌓</li>
+			<li><meta badge new>Customisable colours of Gesture note & its background 🌓</li>
+			<li><meta badge new>Customisable placemnet of Gesture preview & note 📐</li>
+			<li><meta badge update>Updated translations</li>
+			<li><meta badge new>Czech translation 🇨🇿</li>
+			<li>Visual refresh & UX enhancements 🎨</li>
+			<li>Minor fixes & enhancements to gesture indication 🐛</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.2.6</span></div>
+		<ul>
+			<li><meta badge update>Changed the wording of Allow and Block lists</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.2.5</span></div>
+		<ul>
+			<li><meta badge fix>Fixed a possible problem with multiple displays, see issue #90. Thanks @orchidflower for fixing it.</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.2.4</span></div>
+		<ul>
+			<li><meta badge fix>Fixed visual problems with multiple displays</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.2.3</span></div>
+		<ul>
+			<li><meta badge fix>Fixed the problem in some Java applications.</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.2.2</span></div>
+		<ul>
+			<li>Enhanced right-click handling</li>
+			<li>Consecutive <code>Z</code> gestures can be now merged</li>
+			<li><meta badge new>Rules can be rearranged or disabled</li>
+			<li><meta badge fix>Fixed opening Preferences panel by AppleScript on macOS Sierra.</li>
+			<li><meta badge update>Allowed exclusion in wildcard. See README for examples.</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.2.1</span></div>
+		<ul>
+			<li><meta badge new>Added Import and Export of all settings</li>
+			<li><meta badge fix>MacGesture Preferences panel no longer pops up in unexpected situations</li>
+			<li><meta badge fix>A case-sensitive matching bug is fixed.</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.2.0</span></div>
+		<ul>
+			<li><meta badge update>General panel has been rearranged. An option to enable or disable MacGesture is added.</li>
+			<li><meta badge new>Gestures may contain wildcards. Example use case can be found in README.</li>
+			<li><meta badge new>Consecutive identical gestures can be merged. Only mouse wheel gestures can be repeated in a row currently.</li>
+			<li><meta badge new>Add an option to trigger a rule on every match. Example use case can be found in README.</li>
+			<li>You can change arrow color by changing note font color.</li>
+			<li>Bug fixes</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.1.2</span></div>
+		<ul>
+			<li><meta badge new>Gestures can now contain Left mouse button click (<code>Z</code>) and Mouse Wheel scroll (Up: <code>u</code> and Down: <code>d</code>)!</li>
+			<li>Minor improvements</li>
+			<li>Bugs are reported by users using Sierra. Roll back to earlier versions if necessary.</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.1.1</span></div>
+		<ul>
+			<li><meta badge new>AppleScript Support!</li>
+			<li>Better performance</li>
+			<li><meta badge new>Chinese localisation 🇨🇳</li>
+			<li>Added an option to show or hide the Menu bar icon</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.0.9</span></div>
+		<ul>
+			<li><meta badge new>You can now choose font and size for the note of a gesture</li>
+			<li><meta badge new>You can now change the size of the directions</li>
+			<li><meta badge update>The directions are more beautiful now</li>
+			<li><meta badge new>Add a button to reset all settings to default</li>
+			<li>Improved preferences window size changing</li>
+			<li>Keep the current filter when picking running apps</li>
+			<li>Do not show the directions and mouse path when the current application does not appear in any filter</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.0.8</span></div>
+		<ul>
+			<li><meta badge new>Block and Allow list of applications functionality</li>
+			<li><meta badge new>Configurable line colour</li>
+			<li><meta badge fix>Fixed App picker windows issues</li>
+			<li><meta badge fix>Fixed errors when not handling events</li>
+			<li><meta badge fix>Layout fixes</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.0.7</span></div>
+		<ul>
+			<li><meta badge fix>Fixed multiple screens support (thanks <a href="https://github.com/zhangciwu">@zhangciwu</a>)</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.0.6</span></div>
+		<ul>
+			<li><meta badge fix>Block filter option not saved when app picker used</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.0.5</span></div>
+		<ul>
+			<li><meta badge new>Displayable Gesture note</li>
+			<li><meta badge fix>Resetting the rules didn't update UI</li>
+			<li><meta badge fix>Popup menu won't pop when drawing an invalid, long gesture</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.0.4</span></div>
+		<ul>
+			<li><meta badge new>Running App picker for filtering</li>
+			<li><meta badge update>Mouse Path can now be disabled in Preferences</li>
+			<li><meta badge new>App can start automatically at login</li>
+		</ul>
+	</div>
+	<div class="item">
+		<div class="header"><span class="version">2.0.3</span></div>
+		<ul>
+			<li><meta badge fix>Fixed a bug where a non-modifier key couldn't be captured
+			<li><meta badge fix>Fixed a crash when opening Preferences panel
+			<li><meta badge new>MacGesture can now update automatically
+		</ul>
+	</div>
+</body>
+</html>
