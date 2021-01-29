@@ -36,6 +36,13 @@ static AppPrefsWindowController *_preferencesWindowController;
     direction = [NSMutableString string];
     isEnable = true;
 
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRunBefore"]){
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"openPrefOnStartup"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showGesturePreview"];
+
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRunBefore"];
+    }
+
     if([[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]){
         [self openPreferences:self];
     }

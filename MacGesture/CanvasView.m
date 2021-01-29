@@ -10,23 +10,74 @@
 
 @implementation CanvasView
 
+static NSImage* leftImage;
+static NSImage* rightImage;
+static NSImage* upImage;
+static NSImage* downImage;
+
 - (id)initWithFrame:(NSRect)frame
 {
 	self = [super initWithFrame:frame];
-	if (self) {
+
+    leftImage = [NSImage imageNamed:@"left.png"];
+    rightImage = [NSImage imageNamed:@"right.png"];
+    downImage = [NSImage imageNamed:@"down.png"];
+    upImage = [NSImage imageNamed:@"up.png"];
+
+    if (self) {
 		color = [NSColor blueColor];
-		image = [[NSImage alloc] initWithSize:frame.size];
-        textImage = [[NSImage alloc] initWithSize:frame.size];
+        points = [[NSMutableArray alloc] init];
+        directionToDraw = @"";
 		radius = 2;
 	}
 
 	return self;
 }
 
+- (void)drawDirection{
+    // This should be called in drawRect
+    CGRect screenRect = [[NSScreen mainScreen] frame];
+    NSInteger y = (screenRect.size.height - leftImage.size.height) / 2;
+    NSInteger beginx = (screenRect.size.width - leftImage.size.width * directionToDraw.length) / 2;
+    for(NSInteger i = 0;i<directionToDraw.length;i++){
+        NSImage *image = nil;
+        switch([directionToDraw characterAtIndex:i]){
+            case 'L':
+                image = leftImage;
+                break;
+            case 'R':
+                image = rightImage;
+                break;
+            case 'U':
+                image = upImage;
+                break;
+            case 'D':
+                image = downImage;
+                break;
+            default:
+                break;
+        }
+
+        [image drawAtPoint:NSMakePoint(beginx+i*leftImage.size.width,y) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+
+    }
+}
+
+
 - (void)drawRect:(NSRect)dirtyRect
 {
-	[image drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-	[textImage drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+	// draw mouse line
+    for(int i=0;i<points.count;i+=2){
+        NSBezierPath *path = [NSBezierPath bezierPath];
+        path.lineWidth = radius * 2;
+        [color setStroke];
+        [path moveToPoint:[points[i] pointValue]];
+        [path lineToPoint:[points[i+1] pointValue]];
+        [path stroke];
+    }
+
+    //[textImage drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+    [self drawDirection];
 
 }
 
@@ -46,38 +97,31 @@
 
 - (void)drawLineFromPoint:(NSPoint)point1 toPoint:(NSPoint)point2 {
 
-    [image lockFocus];
-    NSBezierPath *path = [NSBezierPath bezierPath];
-    path.lineWidth = radius * 2;
-    [color setStroke];
-    [path moveToPoint:point1];
-    [path lineToPoint:point2];
-    [path stroke];
-    [image unlockFocus];
-
-    [self setNeedsDisplay:true];
-
+    [points addObject:[NSValue valueWithPoint:point1]];
+    [points addObject:[NSValue valueWithPoint:point2]];
+    self.needsDisplay = YES;
 }
 
 - (void)clear {
-	image = [[NSImage alloc] initWithSize:NSScreen.mainScreen.frame.size];
-  	textImage = [[NSImage alloc] initWithSize:NSScreen.mainScreen.frame.size];
+    [points removeAllObjects];
+    directionToDraw = @"";
     self.needsDisplay = YES;
 }
 
 - (void)resizeTo:(NSRect)frame {
 	self.frame = frame;
-	image.size = frame.size;
+
 	self.needsDisplay = YES;
 }
 
 - (void)setEnable:(BOOL)shouldEnable {
-
+/*
 	if (!shouldEnable) {
 		image = nil;
 	} else if (image == nil) {
 		image = [[NSImage alloc] initWithSize:NSScreen.mainScreen.frame.size];
 	}
+*/
 }
 
 - (void)mouseDown:(NSEvent *)event {
@@ -106,37 +150,14 @@
 	[self clear];
 }
 
+
 - (void)writeDirection:(NSString *)directionStr;
 {
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"showGesturePreview"]){
         return;
     }
-    directionStr = [directionStr stringByReplacingOccurrencesOfString:@"U" withString:@"↑"];
-    directionStr = [directionStr stringByReplacingOccurrencesOfString:@"D" withString:@"↓"];
-    directionStr = [directionStr stringByReplacingOccurrencesOfString:@"L" withString:@"←"];
-    directionStr = [directionStr stringByReplacingOccurrencesOfString:@"R" withString:@"→"];
-
-    textImage = [[NSImage alloc] initWithSize:NSScreen.mainScreen.frame.size];
-
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [textImage lockFocus];
-
-        CGRect screenRect = [[NSScreen mainScreen] frame];
-
-
-        NSFont *font = [NSFont fontWithName:@"Palatino-Roman" size:60.0];
-
-        NSDictionary *textAttributes = @{NSFontAttributeName : font};
-        CGSize size = [directionStr sizeWithAttributes:textAttributes];
-        int x = ((screenRect.size.width - size.width) / 2);
-        int y = ((screenRect.size.height - size.height) / 2);
-
-        [directionStr drawAtPoint:NSMakePoint(x, y) withAttributes:textAttributes];
-
-        [textImage unlockFocus];
-        [self setNeedsDisplay:true];
-    });
-
+    directionToDraw = directionStr;
+    self.needsDisplay = YES;
 }
 
 @end

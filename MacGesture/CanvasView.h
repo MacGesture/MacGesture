@@ -10,10 +10,14 @@
 
 @interface CanvasView : NSView {
 	NSColor *color;
-	NSImage *image;
-    NSImage *textImage;
+
     NSPoint lastLocation;
+
+
 	NSUInteger radius;
+
+	NSMutableArray *points; // NSPoint array
+	NSString* directionToDraw;
 }
 
 - (void)clear;

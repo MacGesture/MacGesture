@@ -486,7 +486,7 @@
 				<string key="NSExtension">NSResponder</string>
 			</object>
 			<object class="NSCustomView" id="731742861">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">256</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSButton" id="418487326">
@@ -494,7 +494,6 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{36, 58}, {229, 18}}</string>
 						<reference key="NSSuperview" ref="731742861"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="616284439"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="221786302">
@@ -524,8 +523,6 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{95, 14}, {111, 32}}</string>
 						<reference key="NSSuperview" ref="731742861"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="98112083">
 							<int key="NSCellFlags">67108864</int>
@@ -547,8 +544,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{300, 94}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="418487326"/>
 				<object class="NSMutableString" key="NSClassName">
 					<characters key="NS.bytes">NSView</characters>
@@ -559,7 +554,7 @@
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
 			<object class="NSCustomView" id="484696813">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">256</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSButton" id="680470413">
@@ -567,7 +562,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{35, 51}, {158, 18}}</string>
 						<reference key="NSSuperview" ref="484696813"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="130896094"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
@@ -594,8 +588,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{109, 14}, {204, 22}}</string>
 						<reference key="NSSuperview" ref="484696813"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="284213835">
@@ -627,7 +619,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{30, 17}, {73, 17}}</string>
 						<reference key="NSSuperview" ref="484696813"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="575063634"/>
 						<string key="NSReuseIdentifierKey">_NS:526</string>
 						<string key="NSHuggingPriority">{251, 750}</string>
@@ -655,7 +646,6 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{35, 87}, {252, 18}}</string>
 						<reference key="NSSuperview" ref="484696813"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="680470413"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="958456695">
@@ -677,8 +667,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{370, 132}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="432181579"/>
 				<object class="NSMutableString" key="NSClassName">
 					<characters key="NS.bytes">NSView</characters>
@@ -692,7 +680,7 @@
 					<object class="NSTextField" id="704597097">
 						<reference key="NSNextResponder" ref="259624383"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{51, 92}, {119, 17}}</string>
+						<string key="NSFrame">{{51, 92}, {127, 17}}</string>
 						<reference key="NSSuperview" ref="259624383"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -702,7 +690,7 @@
 						<object class="NSTextFieldCell" key="NSCell" id="572544778">
 							<int key="NSCellFlags">68157504</int>
 							<int key="NSCellFlags2">272630784</int>
-							<string key="NSContents">Version:2.0 alpha1</string>
+							<string key="NSContents">Version:2.0-alpha-2</string>
 							<reference key="NSSupport" ref="892052804"/>
 							<string key="NSCellIdentifier">_NS:526</string>
 							<reference key="NSControlView" ref="704597097"/>
@@ -1429,7 +1417,7 @@
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../MacGesture/AppPrefsWindowController.h</string>
+						<string key="minorKey">MacGesture/AppPrefsWindowController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -1455,7 +1443,33 @@
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../MacGesture/AppPrefsWindowController.m</string>
+						<string key="minorKey">MacGesture/AppPrefsWindowController.m</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">DBPrefsWindowController</string>
+					<string key="superclassName">NSWindowController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Pods/DBPrefsWindowController/Source/DBPrefsWindowController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">DBPrefsWindowController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">showWindow:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">showWindow:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">showWindow:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Pods/DBPrefsWindowController/Source/DBPrefsWindowController.m</string>
 					</object>
 				</object>
 			</array>
@@ -1640,6 +1654,33 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">AppKit.framework/Headers/NSView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSWindow</string>
+					<string key="superclassName">NSResponder</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSWindow.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSWindowController</string>
+					<string key="superclassName">NSResponder</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">showWindow:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">showWindow:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">showWindow:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSWindowController.h</string>
 					</object>
 				</object>
 			</array>
