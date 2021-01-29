@@ -92,7 +92,7 @@ static BlackWhiteFilter *filterSingle;
     self.whiteList = a;
 }
 
-- (BOOL)bundleName:(NSString *)bundleName FitWithRules:(NSArray *)rules {
+- (BOOL)bundleName:(NSString *)bundleName fitWithRules:(NSArray *)rules {
     for (NSString *filter in rules) {
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"self LIKE %@", [filter lowercaseString]];
         if ([pred evaluateWithObject:[bundleName lowercaseString]]) return YES;
@@ -100,14 +100,12 @@ static BlackWhiteFilter *filterSingle;
     return NO;
 }
 
-
 - (BOOL)willHookRightClickForApp:(NSString *)bundleName {
     if ([self isInWhiteListMode]) {
-        return [self bundleName:bundleName FitWithRules:self.whiteList];
+        return [self bundleName:bundleName fitWithRules:self.whiteList];
     } else {
-        return ![self bundleName:bundleName FitWithRules:self.blackList];
+        return ![self bundleName:bundleName fitWithRules:self.blackList];
     }
-    return NO;
 }
 
 - (void)compatibleProcedureWithPreviousVersionBlockRules {

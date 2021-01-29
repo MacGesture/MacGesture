@@ -3,6 +3,6 @@
 
 @interface MGOptionsDefine : NSObject
 + (void)setLineColor:(NSColor *)color;
-
 + (NSColor *)getLineColor;
++ (void)resetColor;
 @end

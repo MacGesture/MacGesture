@@ -49,20 +49,18 @@
 }
 
 - (void)handleMouseEvent:(NSEvent *)event {
-    if ([[RulesList sharedRulesList] frontAppSuitedRule]) {
-        switch (event.type) {
-            case NSRightMouseDown:
-                [self.window.contentView mouseDown:event];
-                break;
-            case NSRightMouseDragged:
-                [self.window.contentView mouseDragged:event];
-                break;
-            case NSRightMouseUp:
-                [self.window.contentView mouseUp:event];
-                break;
-            default:
-                break;
-        }
+    switch (event.type) {
+        case NSRightMouseDown:
+            [self.window.contentView mouseDown:event];
+            break;
+        case NSRightMouseDragged:
+            [self.window.contentView mouseDragged:event];
+            break;
+        case NSRightMouseUp:
+            [self.window.contentView mouseUp:event];
+            break;
+        default:
+            break;
     }
 }
 

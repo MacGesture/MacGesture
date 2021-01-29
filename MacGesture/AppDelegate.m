@@ -22,7 +22,19 @@ static AppPrefsWindowController *_preferencesWindowController;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-
+    NSArray *apps = [NSRunningApplication runningApplicationsWithBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+    NSDistributedNotificationCenter *center = [NSDistributedNotificationCenter defaultCenter];
+    NSString *name = @"MacGestureOpenPreferences";
+    if ([apps count] > 1)
+    {
+        [center postNotificationName:name object:nil userInfo:nil deliverImmediately:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [NSApp terminate:self];
+        });
+        NSLog(@"Send");
+        return ;
+    }
+    
     windowController = [[CanvasWindowController alloc] init];
 
     CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) | CGEventMaskBit(kCGEventRightMouseUp);
@@ -60,50 +72,66 @@ static AppPrefsWindowController *_preferencesWindowController;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]) {
         [self openPreferences:self];
     }
+    
+    [self updateStatusBarItem];
+    
+    [center setSuspended:NO];
+    [center addObserver:self selector:@selector(receiveOpenPreferencesNotification:) name:name object:nil suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
+    
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 }
 
-- (BOOL)toggleEnable {
-    windowController.enable = isEnable = !isEnable;
-
-    CGEventTapEnable(mouseEventTap, isEnable);
-    return isEnable;
+- (void)updateStatusBarItem {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showIconInStatusBar"]) {
+        [self setStatusItem:[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength]];
+        
+        NSImage *menuIcon = [NSImage imageNamed:@"Menu Icon"];
+        //NSImage *highlightIcon = [NSImage imageNamed:@"Menu Icon"]; // Yes, we're using the exact same image asset.
+        //[highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
+        [menuIcon setTemplate:YES];
+        [[self statusItem] setImage:menuIcon];
+        //    [[self statusItem] setAlternateImage:highlightIcon];
+        [[self statusItem] setMenu:[self menu]];
+        [[self statusItem] setHighlightMode:YES];
+    } else {
+        if ([self statusItem]) {
+            [[NSStatusBar systemStatusBar] removeStatusItem:[self statusItem]];
+            [self setStatusItem:nil];
+        }
+    }
 }
 
-- (void)awakeFromNib {
-    _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-
-    NSImage *menuIcon = [NSImage imageNamed:@"Menu Icon"];
-    //NSImage *highlightIcon = [NSImage imageNamed:@"Menu Icon"]; // Yes, we're using the exact same image asset.
-    //[highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
-    [menuIcon setTemplate:YES];
-    [[self statusItem] setImage:menuIcon];
-//    [[self statusItem] setAlternateImage:highlightIcon];
-    [[self statusItem] setMenu:[self menu]];
-    [[self statusItem] setHighlightMode:YES];
-
-
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
+    return YES;
 }
 
-- (IBAction)openPreferences:(id)sender {
+- (void)showPreferences {
     [NSApp activateIgnoringOtherApps:YES];
-    [_preferencesWindowController close];
     //instantiate preferences window controller
     if (_preferencesWindowController) {
+        [_preferencesWindowController close];
         _preferencesWindowController = nil;
     }
     //init from nib but the real initialization happens in the
     //PreferencesWindowController setupToolbar method
     _preferencesWindowController = [[AppPrefsWindowController alloc] initWithWindowNibName:@"Preferences"];
-
+    
     [_preferencesWindowController showWindow:self];
 }
 
+- (IBAction)openPreferences:(id)sender {
+    [self showPreferences];
+}
+
+- (void)receiveOpenPreferencesNotification:(NSNotification *)notification {
+    [self showPreferences];
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+    [self showPreferences];
+}
+
 static void updateDirections(NSEvent *event) {
-
-    if (![[RulesList sharedRulesList] frontAppSuitedRule]) {
-        return;
-    }
-
     // not thread safe
     NSPoint newLocation = event.locationInWindow;
     double deltaX = newLocation.x - lastLocation.x;
@@ -127,13 +155,13 @@ static void updateDirections(NSEvent *event) {
 
     if (absX > absY) {
         if (deltaX > 0) {
-            if (lastDirectionChar != [@"R" characterAtIndex:0]) {
+            if (lastDirectionChar != 'R') {
                 [direction appendString:@"R"];
                 [windowController writeDirection:direction];
                 return;
             }
         } else {
-            if (lastDirectionChar != [@"L" characterAtIndex:0]) {
+            if (lastDirectionChar != 'L') {
                 [direction appendString:@"L"];
                 [windowController writeDirection:direction];
                 return;
@@ -141,13 +169,13 @@ static void updateDirections(NSEvent *event) {
         }
     } else {
         if (deltaY > 0) {
-            if (lastDirectionChar != [@"U" characterAtIndex:0]) {
+            if (lastDirectionChar != 'U') {
                 [direction appendString:@"U"];
                 [windowController writeDirection:direction];
                 return;
             }
         } else {
-            if (lastDirectionChar != [@"D" characterAtIndex:0]) {
+            if (lastDirectionChar != 'D') {
                 [direction appendString:@"D"];
                 [windowController writeDirection:direction];
                 return;
@@ -166,23 +194,34 @@ void resetDirection() {
 }
 
 static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
-    // not thread safe, but it's always called in main thread
-    // check blocker apps
-//    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){
-    if (![BWFilter willHookRightClickForApp:frontBundleName()]) {
-//        CGEventPost(kCGSessionEventTap, mouseDownEvent);
-//        if (mouseDraggedEvent) {
-//            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
-//        }
-        CGEventPost(kCGSessionEventTap, event);
+    static bool shouldShow;
+    if (type != kCGEventRightMouseDown && type != kCGEventRightMouseDragged && type != kCGEventRightMouseUp && type != kCGEventTapDisabledByTimeout) {
         return NULL;
     }
-
+    
+    
     NSEvent *mouseEvent;
     switch (type) {
         case kCGEventRightMouseDown:
+            // not thread safe, but it's always called in main thread
+            // check blocker apps
+            //    if(wildLike(frontBundleName(), [[NSUserDefaults standardUserDefaults] stringForKey:@"blockFilter"])){
+        {
+            NSString *frontBundle = frontBundleName();
+            if (![BWFilter willHookRightClickForApp:frontBundle] || !([[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] || [[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
+                //        CGEventPost(kCGSessionEventTap, mouseDownEvent);
+                //        if (mouseDraggedEvent) {
+                //            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
+                //        }
+                shouldShow = NO;
+                CGEventPost(kCGSessionEventTap, event);
+                return NULL;
+            }
+            shouldShow = YES;
+        }
             if (mouseDownEvent) { // mouseDownEvent may not release when kCGEventTapDisabledByTimeout
                 resetDirection();
+
                 CGPoint location = CGEventGetLocation(mouseDownEvent);
                 CGEventPost(kCGSessionEventTap, mouseDownEvent);
                 CFRelease(mouseDownEvent);
@@ -196,23 +235,28 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 CFRelease(event);
                 mouseDownEvent = mouseDraggedEvent = NULL;
             }
-
             mouseEvent = [NSEvent eventWithCGEvent:event];
-            [windowController reinitWindow];
-            [windowController handleMouseEvent:mouseEvent];
             mouseDownEvent = event;
             CFRetain(mouseDownEvent);
+
+            [windowController reinitWindow];
+            [windowController handleMouseEvent:mouseEvent];
             lastLocation = mouseEvent.locationInWindow;
             break;
         case kCGEventRightMouseDragged:
+            if (!shouldShow){
+                CGEventPost(kCGSessionEventTap, event);
+                return NULL;
+            }
             if (mouseDownEvent) {
                 mouseEvent = [NSEvent eventWithCGEvent:event];
-                [windowController handleMouseEvent:mouseEvent];
                 if (mouseDraggedEvent) {
                     CFRelease(mouseDraggedEvent);
                 }
                 mouseDraggedEvent = event;
                 CFRetain(mouseDraggedEvent);
+                
+                [windowController handleMouseEvent:mouseEvent];
                 updateDirections(mouseEvent);
             }
             break;
@@ -222,7 +266,6 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 [windowController handleMouseEvent:mouseEvent];
                 updateDirections(mouseEvent);
                 if (!handleGesture()) {
-
                     CGEventPost(kCGSessionEventTap, mouseDownEvent);
                     if (mouseDraggedEvent) {
                         CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
@@ -231,10 +274,13 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 }
                 CFRelease(mouseDownEvent);
             }
+            
             if (mouseDraggedEvent) {
                 CFRelease(mouseDraggedEvent);
             }
+            
             mouseDownEvent = mouseDraggedEvent = NULL;
+            
             resetDirection();
             break;
         }

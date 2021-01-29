@@ -5,6 +5,7 @@
 
 
 #import "RulesList.h"
+#import "AppleScriptsList.h"
 #import <Carbon/Carbon.h>
 #import "utils.h"
 
@@ -12,32 +13,36 @@
 
 }
 
-NSMutableArray *_rulesList;  // private
+NSMutableArray<NSMutableDictionary *> *_rulesList;  // private
 
 - (NSString *)directionAtIndex:(NSUInteger)index {
-    return ((NSMutableDictionary *) _rulesList[index])[@"direction"];
+    return _rulesList[index][@"direction"];
 }
 
 - (NSString *)filterAtIndex:(NSUInteger)index {
-    return ((NSMutableDictionary *) _rulesList[index])[@"filter"];
+    return _rulesList[index][@"filter"];
 }
 
 - (FilterType)filterTypeAtIndex:(NSUInteger)index {
-    return (FilterType) [((NSMutableDictionary *) _rulesList[index])[@"filterType"] integerValue];
+    return (FilterType) [_rulesList[index][@"filterType"] integerValue];
 }
 
 - (ActionType)actionTypeAtIndex:(NSUInteger)index {
-    return (ActionType) [((NSMutableDictionary *) _rulesList[index])[@"actionType"] integerValue];
+    return (ActionType) [_rulesList[index][@"actionType"] integerValue];
 }
 
 - (NSUInteger)shortcutKeycodeAtIndex:(NSUInteger)index {
-    NSUInteger keycode = [((NSMutableDictionary *) _rulesList[index])[@"shortcut_code"] unsignedIntegerValue];
+    NSUInteger keycode = [_rulesList[index][@"shortcut_code"] unsignedIntegerValue];
     return keycode;
 }
 
 - (NSUInteger)shortcutFlagAtIndex:(NSUInteger)index {
-    NSUInteger flag = [((NSMutableDictionary *) _rulesList[index])[@"shortcut_flag"] unsignedIntegerValue];
+    NSUInteger flag = [_rulesList[index][@"shortcut_flag"] unsignedIntegerValue];
     return flag;
+}
+
+- (NSString *)appleScriptIdAtIndex:(NSUInteger)index {
+    return _rulesList[index][@"apple_script_id"];
 }
 
 - (NSInteger)count {
@@ -51,7 +56,6 @@ NSMutableArray *_rulesList;  // private
 - (void)save {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:self.nsData forKey:@"rules"];
-
     [userDefaults synchronize];
 }
 
@@ -63,23 +67,28 @@ NSMutableArray *_rulesList;  // private
     return result;
 }
 
-static inline void addRule(RulesList *rulesList, NSString *gesture, NSInteger keycode, NSInteger flag, NSString *note) {
-    [rulesList addRuleWithDirection:gesture filter:@"*safari|*chrome" filterType:FILETER_TYPE_WILD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:keycode shortcutFlag: flag appleScript:nil note:note];
+static inline void addWildcardShortcutRule(RulesList *rulesList, NSString *gesture, NSInteger keycode, NSInteger flag, NSString *note) {
+    [rulesList addRuleWithDirection:gesture filter:@"*safari|*chrome" filterType:FILTER_TYPE_WILDCARD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:keycode shortcutFlag: flag appleScriptId:nil note:note];
 }
 
 - (void)reInit {
     [self clear];
     
-    addRule(self, @"UR", kVK_ANSI_RightBracket, NSShiftKeyMask|NSCommandKeyMask, @"Next Tab");
-    addRule(self, @"UL", kVK_ANSI_LeftBracket, NSShiftKeyMask|NSCommandKeyMask, @"Prev Tab");
-    addRule(self, @"DL", kVK_ANSI_F, NSCommandKeyMask|NSControlKeyMask, @"Full screen");
-    addRule(self, @"DR", kVK_ANSI_W, NSCommandKeyMask, @"Close Tab");
-    addRule(self, @"R", kVK_RightArrow, NSCommandKeyMask, @"Next");
-    addRule(self, @"L", kVK_LeftArrow, NSCommandKeyMask, @"Back");
+    addWildcardShortcutRule(self, @"UR", kVK_ANSI_RightBracket, NSShiftKeyMask|NSCommandKeyMask, @"Next Tab");
+    addWildcardShortcutRule(self, @"UL", kVK_ANSI_LeftBracket, NSShiftKeyMask|NSCommandKeyMask, @"Prev Tab");
+    addWildcardShortcutRule(self, @"DL", kVK_ANSI_F, NSCommandKeyMask|NSControlKeyMask, @"Full screen");
+    addWildcardShortcutRule(self, @"DR", kVK_ANSI_W, NSCommandKeyMask, @"Close Tab");
+    addWildcardShortcutRule(self, @"R", kVK_RightArrow, NSCommandKeyMask, @"Next");
+    addWildcardShortcutRule(self, @"L", kVK_LeftArrow, NSCommandKeyMask, @"Back");
 }
 
 + (RulesList *)sharedRulesList {
+    static dispatch_once_t pred;
     static RulesList *rulesList = nil;
+    dispatch_once(&pred, ^{
+        rulesList = [[RulesList alloc] init];
+    });
+    
     NSData *data;
     if ((data = [self readRulesList])) {
         rulesList = [[RulesList alloc] initWithNsData:data];
@@ -105,15 +114,35 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     CFRelease(event);
 }
 
-- (bool)executeActionAt:(NSUInteger)i {
-    pressKeyWithFlags([self shortcutKeycodeAtIndex:i], [self shortcutFlagAtIndex:i]);
+- (bool)executeActionAt:(NSUInteger)index {
+    NSAppleScript *script;
+    NSString *appleScriptId;
+    NSString *appleScript;
+    NSDictionary *errorDict;
+    NSAppleEventDescriptor *returnDescriptor;
+    switch ([self actionTypeAtIndex:index]) {
+        case ACTION_TYPE_SHORTCUT:
+            pressKeyWithFlags([self shortcutKeycodeAtIndex:index], [self shortcutFlagAtIndex:index]);
+            break;
+        case ACTION_TYPE_APPLE_SCRIPT:
+            appleScriptId = [self appleScriptIdAtIndex:index];
+            appleScript = [[AppleScriptsList sharedAppleScriptsList] getScriptById:appleScriptId];
+            script = [[NSAppleScript alloc] initWithSource:appleScript];
+            returnDescriptor = [script executeAndReturnError:&errorDict];
+            if (errorDict != nil) {
+                NSLog(@"Execute Apple Script: returnDescriptor: %@, errorDict: %@", returnDescriptor, errorDict);
+            }
+            break;
+        default:
+            break;
+    }
     return YES;
 }
 
 - (NSInteger)suitedRuleWithGesture:(NSString *)gesture {
+    NSString *frontApp = frontBundleName();
     for (NSUInteger i = 0; i < [self count]; i++) {
-        if (wildcardString(frontBundleName(), [self filterAtIndex:i])) {
-            // wild filter ensured
+        if ([self matchFilter:frontApp atIndex:i]) {
             if ([gesture isEqualToString:[self directionAtIndex:i]]) {
                 return i;
             }
@@ -122,9 +151,9 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     return -1;
 }
 
-- (BOOL)frontAppSuitedRule {
+- (BOOL)appSuitedRule:(NSString*)bundleId {
     for (NSUInteger i = 0; i < [self count]; i++) {
-        if (wildcardString(frontBundleName(), [self filterAtIndex:i])) {
+        if ([self matchFilter:bundleId atIndex:i]) {
             return YES;
         }
     }
@@ -145,12 +174,17 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
 }
 
 - (NSString *)noteAtIndex:(NSUInteger)index {
-    NSString *value = ((NSMutableDictionary *) _rulesList[index])[@"note"];
+    NSString *value = _rulesList[index][@"note"];
     return value ? value : @"";
 }
 
 - (void)setNote:(NSString *)note atIndex:(NSUInteger)index {
-    ((NSMutableDictionary *) _rulesList[index])[@"note"] = note;
+    _rulesList[index][@"note"] = note;
+    [self save];
+}
+
+- (void)setAppleScriptId:(NSString *)id atIndex:(NSUInteger)index {
+    _rulesList[index][@"apple_script_id"] = id;
     [self save];
 }
 
@@ -160,7 +194,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
                   actionType:(ActionType)actionType
              shortcutKeyCode:(NSUInteger)shortcutKeyCode
                 shortcutFlag:(NSUInteger)shortcutFlag
-                 appleScript:(NSString *)appleScript
+                 appleScriptId:(NSString *)appleScriptId
                         note:(NSString *)note; {
     NSMutableDictionary *rule = [[NSMutableDictionary alloc] init];
     rule[@"direction"] = direction;
@@ -172,19 +206,17 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
         rule[@"shortcut_flag"] = @(shortcutFlag);
 
     } else if (actionType == ACTION_TYPE_APPLE_SCRIPT) {
-        rule[@"applescript"] = appleScript;
+        rule[@"apple_script_id"] = appleScriptId;
     }
     rule[@"note"] = note;
     [_rulesList addObject:rule];
     [self save];
 }
 
-
 - (void)removeRuleAtIndex:(NSInteger)index {
     [_rulesList removeObjectAtIndex:index];
     [self save];
 }
-
 
 - (void)setShortcutWithKeycode:(NSUInteger)keycode withFlag:(NSUInteger)flag atIndex:(NSUInteger)index {
     _rulesList[index][@"shortcut_code"] = @(keycode);
@@ -195,8 +227,31 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
 
 - (void)setWildFilter:(NSString *)filter atIndex:(NSUInteger)index {
     _rulesList[index][@"filter"] = filter;
-    _rulesList[index][@"filterType"] = @(FILETER_TYPE_WILD);
+    _rulesList[index][@"filterType"] = @(FILTER_TYPE_WILDCARD);
     [self save];
+}
+
+- (void)setRegexFilter:(NSString *)filter atIndex:(NSUInteger)index {
+    _rulesList[index][@"filter"] = filter;
+    _rulesList[index][@"filterType"] = @(FILTER_TYPE_REGEX);
+    [self save];
+}
+
+- (BOOL)matchFilter:(NSString *)text atIndex:(NSUInteger)index {
+    NSRegularExpression *regex;
+    NSError *error;
+    switch ([self filterTypeAtIndex:index]) {
+        case FILTER_TYPE_REGEX:
+            regex = [NSRegularExpression regularExpressionWithPattern:[self filterAtIndex:index] options:0 error:&error];
+            if ([regex firstMatchInString:text options:0 range:NSMakeRange(0, [text length])]) {
+                return YES;
+            }
+            break;
+        case FILTER_TYPE_WILDCARD:
+            return wildcardString(text, [self filterAtIndex:index]);
+            break;
+    }
+    return NO;
 }
 
 - (void)setDirection:(NSString *)direction atIndex:(NSUInteger)index {

@@ -45,9 +45,16 @@ static NSImage *downImage;
     }
 
     // This should be called in drawRect
+    float scale = [self getGestureImageScale];
+    float scaledHeight = scale * leftImage.size.height;
+    float scaledWidth = scale * leftImage.size.width;
+    
     CGRect screenRect = [[NSScreen mainScreen] frame];
-    NSInteger y = (screenRect.size.height - leftImage.size.height * [self getGestureImageScale]) / 2;
-    NSInteger beginx = (screenRect.size.width - leftImage.size.width * [self getGestureImageScale]* directionToDraw.length) / 2;
+    NSInteger y = (screenRect.size.height - scaledHeight) / 2;
+    NSInteger beginx = (screenRect.size.width - scaledWidth * directionToDraw.length) / 2;
+    
+    [NSGraphicsContext saveGraphicsState];
+    [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationNone];
     for (NSInteger i = 0; i < directionToDraw.length; i++) {
         NSImage *image = nil;
         switch ([directionToDraw characterAtIndex:i]) {
@@ -66,12 +73,9 @@ static NSImage *downImage;
             default:
                 break;
         }
-        [NSGraphicsContext saveGraphicsState];
-        [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationNone];
-        [image drawInRect:NSMakeRect(beginx + i * leftImage.size.width * [self getGestureImageScale], y, leftImage.size.width * [self getGestureImageScale], leftImage.size.height * [self getGestureImageScale]) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-        [NSGraphicsContext restoreGraphicsState];
+        [image drawInRect:NSMakeRect(beginx + i * scaledWidth, y, scaledWidth, scaledHeight) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
     }
-
+    [NSGraphicsContext restoreGraphicsState];
 }
 
 - (void)drawNote {
@@ -105,13 +109,11 @@ static NSImage *downImage;
         
         [note drawAtPoint:NSMakePoint(x, y) withAttributes:textAttributes];
     }
-
-
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     // draw mouse line
-
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableMousePath"]) {
         NSBezierPath *path = [NSBezierPath bezierPath];
         path.lineWidth = radius * 2;
@@ -122,6 +124,7 @@ static NSImage *downImage;
         for (int i = 1; i < points.count; i++) {
             [path lineToPoint:[points[i] pointValue]];
         }
+
         [path stroke];
     }
 
@@ -131,21 +134,8 @@ static NSImage *downImage;
 
 }
 
-- (void)drawCircleAtPoint:(NSPoint)point {
-    /*
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [image lockFocus];
-        NSBezierPath *path = [NSBezierPath bezierPathWithOvalInRect:NSMakeRect(point.x - radius, point.y - radius, radius * 2, radius * 2)];
-        [color set];
-        [path fill];
-
-        [image unlockFocus];
-    });*/
-
-}
 
 - (void)drawLineFromPoint:(NSPoint)point1 toPoint:(NSPoint)point2 {
-
     [points addObject:[NSValue valueWithPoint:point1]];
     [points addObject:[NSValue valueWithPoint:point2]];
     self.needsDisplay = YES;
@@ -163,15 +153,6 @@ static NSImage *downImage;
     self.needsDisplay = YES;
 }
 
-- (void)setEnable:(BOOL)shouldEnable {
-/*
-	if (!shouldEnable) {
-		image = nil;
-	} else if (image == nil) {
-		image = [[NSImage alloc] initWithSize:NSScreen.mainScreen.frame.size];
-	}
-*/
-}
 
 - (void)mouseDown:(NSEvent *)event {
     lastLocation = [NSEvent mouseLocation];
@@ -213,7 +194,6 @@ static NSImage *downImage;
 
 
 - (void)writeDirection:(NSString *)directionStr; {
-
     directionToDraw = directionStr;
 
     self.needsDisplay = YES;

@@ -1,9 +1,10 @@
 # MacGesture 2 ![twitter](https://img.shields.io/twitter/url/https/github.com/CodeFalling/MacGesture.svg?style=social)
 
-
 ![logo](logo.png)
 
 Configureable global mouse gesture for Mac OS X.
+
+**(2016-03-13) A lot of work is in the to-do list, but the collaborators are students in school so they may not be able to contribute to this project very often. If you are interested in this project, you can join us as a collaborator. If you want to, please contact @codefalling. Issues and pull requests are highly welcomed, and we are online often. If this little tool have improved your experience a lot, please spread it so more people would be able to help us. Gracias.**
 
 # Feature
 
@@ -15,7 +16,7 @@ Configureable global mouse gesture for Mac OS X.
 
 # Preview
 
-![Preview](http://m1.yea.im/3Hr.gif)
+![Preview](https://cloud.githubusercontent.com/assets/5436704/14278725/bb126d36-fb5b-11e5-9fe8-5990ea4c1c28.gif)
 
 # Q&A
 
@@ -33,8 +34,9 @@ Icon is design by [DanRabbit](http://www.iconarchive.com/artist/danrabbit.html) 
 
 # Contributor
 
-Thanks to [zhangciwu](https://github.com/zhangciwu)
+- [jiegec](https://github.com/jiegec)
+- [zhangciwu](https://github.com/zhangciwu)
 
 # Discuss
 
-讨论可以加入qq群：498035635
+讨论可以加入qq群：498035635 (You can join the discussion in QQ Group 498035635).
