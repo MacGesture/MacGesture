@@ -6,6 +6,7 @@
 #import "utils.h"
 #import "NSBundle+LoginItem.h"
 
+
 @implementation AppDelegate
 
 
@@ -24,7 +25,6 @@ static AppPrefsWindowController *_preferencesWindowController;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-
 
     windowController = [[CanvasWindowController alloc] init];
 
@@ -50,6 +50,13 @@ static AppPrefsWindowController *_preferencesWindowController;
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun_2.0.4_Before"];
     }
 
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.5_Before"]){
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showGestureNote"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun_2.0.5_Before"];
+    }
+
+
+
     if([[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]){
         [self openPreferences:self];
     }
@@ -66,11 +73,11 @@ static AppPrefsWindowController *_preferencesWindowController;
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
 
     NSImage *menuIcon = [NSImage imageNamed:@"Menu Icon"];
-    NSImage *highlightIcon = [NSImage imageNamed:@"Menu Icon"]; // Yes, we're using the exact same image asset.
-    [highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
-
+    //NSImage *highlightIcon = [NSImage imageNamed:@"Menu Icon"]; // Yes, we're using the exact same image asset.
+    //[highlightIcon setTemplate:YES]; // Allows the correct highlighting of the icon when the menu is clicked.
+    [menuIcon setTemplate:YES];
     [[self statusItem] setImage:menuIcon];
-    [[self statusItem] setAlternateImage:highlightIcon];
+//    [[self statusItem] setAlternateImage:highlightIcon];
     [[self statusItem] setMenu:[self menu]];
     [[self statusItem] setHighlightMode:YES];
 

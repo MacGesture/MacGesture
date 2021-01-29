@@ -23,6 +23,7 @@
     [self.openPreOnStartup bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"openPrefOnStartup" options:nil];
     [self.blockFilter bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"blockFilter" options:nil];
     [self.showGesturePreview bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGesturePreview" options:nil];
+    [self.showGestureNote bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"showGestureNote" options:nil];
     [self.disableMousePathBtn bind:NSValueBinding toObject:[NSUserDefaults standardUserDefaults]  withKeyPath:@"disableMousePath" options:nil];
 
     [self.autoCheckUpdate bind:NSValueBinding toObject:self.updater withKeyPath:@"automaticallyChecksForUpdates" options:nil];
@@ -33,7 +34,7 @@
 }
 
 - (IBAction)addRule:(id)sender {
-    [[RulesList sharedRulesList] addRuleWithDirection:@"DR" filter:@"*safari|*chrome" filterType:FILETER_TYPE_WILD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:0 shortcutFlag:0 appleScript:nil];
+    [[RulesList sharedRulesList] addRuleWithDirection:@"DR" filter:@"*safari|*chrome" filterType:FILETER_TYPE_WILD actionType:ACTION_TYPE_SHORTCUT shortcutKeyCode:0 shortcutFlag:0 appleScript:nil note:@"note"];
     [_rulesTableView reloadData];
 }
 
@@ -44,6 +45,7 @@
 - (IBAction)resetRules:(id)sender {
     [[RulesList sharedRulesList] reInit];
     [[RulesList sharedRulesList] save];
+    [_rulesTableView reloadData];
 }
 
 - (void)setupToolbar{
@@ -99,9 +101,11 @@
         [[RulesList sharedRulesList] setDirection:control.stringValue atIndex:control.tag];
     }else if([control.identifier isEqualToString:@"Filter"]){  // edit filter
         [[RulesList sharedRulesList] setWildFilter:control.stringValue atIndex:control.tag];
-    }else{
-        [[NSUserDefaults standardUserDefaults] synchronize];
+    }else if([control.identifier isEqualToString:@"Note"]){  // edit filter
+        [[RulesList sharedRulesList] setNote:control.stringValue atIndex:control.tag];
     }
+
+    [[NSUserDefaults standardUserDefaults] synchronize];
     return YES;
 }
 
@@ -125,7 +129,7 @@
 
     NSView *result = nil;
     RulesList *rulesList = [RulesList sharedRulesList];
-    if([tableColumn.identifier isEqualToString:@"Gesture"] || [tableColumn.identifier isEqualToString:@"Filter"]){
+    if([tableColumn.identifier isEqualToString:@"Gesture"] || [tableColumn.identifier isEqualToString:@"Filter"] || [tableColumn.identifier isEqualToString:@"Note"]){
         NSTextField *textfiled = [[NSTextField alloc] init];
         [textfiled.cell setWraps:NO];
         [textfiled.cell setScrollable:YES];
@@ -137,6 +141,9 @@
         }else if([tableColumn.identifier isEqualToString:@"Filter"]){
             textfiled.stringValue = [rulesList filterAtIndex:(NSUInteger)row];
             textfiled.identifier = @"Filter";
+        }else if([tableColumn.identifier isEqualToString:@"Note"]){
+            textfiled.stringValue = [rulesList noteAtIndex:(NSUInteger)row];
+            textfiled.identifier = @"Note";
         }
         textfiled.delegate = self;
         textfiled.tag = row;

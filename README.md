@@ -1,4 +1,5 @@
-# MacGesture 2
+# MacGesture 2 ![twitter](https://img.shields.io/twitter/url/https/github.com/CodeFalling/MacGesture.svg?style=social)
+
 
 ![logo](logo.png)
 
@@ -14,7 +15,7 @@ Configureable global mouse gesture for Mac OS X.
 
 # Preview
 
-![Preview](MacGesture.gif)
+![Preview](http://i11.tietuku.com/0a7dee0f5cb31da2.gif)
 
 # Q&A
 
@@ -29,3 +30,7 @@ Download latest zip from https://github.com/CodeFalling/MacGesture/releases
 Icon is design by [DanRabbit](http://www.iconarchive.com/artist/danrabbit.html) under [GNU General Public License](https://en.wikipedia.org/wiki/GNU_General_Public_License).
 
 This project is under GNU General Public License.
+
+# Discuss
+
+讨论可以加入qq群：498035635

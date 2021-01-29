@@ -24,5 +24,15 @@
             <enclosure url="http://7lrvsy.com1.z0.glb.clouddn.com/MacGesture-2.0.4.zip" sparkle:version="2.0.4" length="1465730" type="application/octet-stream" sparkle:dsaSignature="MC0CFQDJss40kJ90NnsPB0WHeYcnWxx+LgIUY3pdKt++p2UGV779bZvkXP0tgv8=" />
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
         </item>
+
+        <item>
+            <title>Version 2.0.5 (1 bugs fixed;2 new features;1 improving experience)</title>
+            <sparkle:releaseNotesLink>
+                https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changlog/2.0.5.html
+            </sparkle:releaseNotesLink>
+            <pubDate>2015-10-31 15:44 +8</pubDate>
+            <enclosure url="http://7lrvsy.com1.z0.glb.clouddn.com/MacGesture-2.0.5.zip" sparkle:version="2.0.5" length="1474925" type="application/octet-stream" sparkle:dsaSignature="MCwCFA8eYvggcGG/ENcJeik8705ouLuAAhR5kBD16FbdI+3B2m3JLSUM7e+MnA==" />
+            <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+        </item>
     </channel>
 </rss>
