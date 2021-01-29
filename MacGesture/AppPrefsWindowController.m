@@ -35,7 +35,8 @@ static NSArray *exampleAppleScripts;
 
 + (void)initialize {
     exampleAppleScripts = [NSArray arrayWithObjects:@"ChromeCloseTabsToTheRight", @"Close Tabs To The Right In Chrome",
-                           @"OpenMacGesturePreferences", @"Open MacGesture Preferences", nil];
+                           @"OpenMacGesturePreferences", @"Open MacGesture Preferences",
+                           @"SearchInWeb", @"Search in Web", nil];
 }
 
 - (void)changeSize:(NSInteger *)index changeSizeButton:(NSButton *)button preferenceView:(NSView *)view {
@@ -94,6 +95,11 @@ static NSArray *exampleAppleScripts;
         [item setAction:@selector(exampleAppleScriptSelected:)];
         [[[self loadAppleScriptExampleButton] menu] addItem:item];
     }
+    
+    NSString *readme = [[NSBundle mainBundle] pathForResource:@"README" ofType:@"html"];
+    NSString *content = [NSString stringWithContentsOfFile:readme encoding:NSUTF8StringEncoding error:NULL];
+    
+    [[[self webView] mainFrame] loadHTMLString:content baseURL:[NSURL URLWithString:readme]];
 }
 
 - (BOOL)windowShouldClose:(id)sender {
@@ -467,13 +473,13 @@ static NSString *currentScriptId = nil;
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
     // control is editfield,control.id == row,control.identifier == "Gesture"|"Filter"|Other(only saving)
     if ([control.identifier isEqualToString:@"Gesture"]) {    // edit gesture
-        NSString *gesture = [control.stringValue uppercaseString];
-        NSCharacterSet *invalidGestureCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ULDR"];
+        NSString *gesture = control.stringValue;
+        NSCharacterSet *invalidGestureCharacters = [NSCharacterSet characterSetWithCharactersInString:@"ULDRZud"];
         invalidGestureCharacters = [invalidGestureCharacters invertedSet];
         if ([gesture rangeOfCharacterFromSet:invalidGestureCharacters].location != NSNotFound) {
             NSUserNotification *notification = [[NSUserNotification alloc] init];
             notification.title = @"MacGesture";
-            notification.informativeText = NSLocalizedString(@"Gesture must only contain \"ULDR\"", nil);
+            notification.informativeText = NSLocalizedString(@"Gesture must only contain \"ULDRZud\"", nil);
             notification.soundName = NSUserNotificationDefaultSoundName;
             
             [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];

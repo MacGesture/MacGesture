@@ -16,6 +16,7 @@ static NSImage *leftImage;
 static NSImage *rightImage;
 static NSImage *upImage;
 static NSImage *downImage;
+static NSImage *scrollImage;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -24,6 +25,7 @@ static NSImage *downImage;
     rightImage = [NSImage imageNamed:@"right.png"];
     downImage = [NSImage imageNamed:@"down.png"];
     upImage = [NSImage imageNamed:@"up.png"];
+    scrollImage = [NSImage imageNamed:@"scroll.png"];
 
     if (self) {
         color = [MGOptionsDefine getLineColor];
@@ -57,7 +59,8 @@ static NSImage *downImage;
     [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationNone];
     for (NSInteger i = 0; i < directionToDraw.length; i++) {
         NSImage *image = nil;
-        switch ([directionToDraw characterAtIndex:i]) {
+        char ch = [directionToDraw characterAtIndex:i];
+        switch (ch) {
             case 'L':
                 image = leftImage;
                 break;
@@ -65,15 +68,23 @@ static NSImage *downImage;
                 image = rightImage;
                 break;
             case 'U':
+            case 'u':
                 image = upImage;
                 break;
             case 'D':
+            case 'd':
                 image = downImage;
                 break;
+            case 'Z':
+                image = [[NSCursor arrowCursor] image];
             default:
                 break;
         }
         [image drawInRect:NSMakeRect(beginx + i * scaledWidth, y, scaledWidth, scaledHeight) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+        if (ch == 'u' || ch == 'd') {
+            double frac = 0.65;
+            [scrollImage drawInRect:NSMakeRect(beginx + i * scaledWidth + frac * scaledWidth, y - (frac - 0.5)*scaledHeight, scaledWidth*(1-frac), scaledHeight*(1-frac)) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+        }
     }
     [NSGraphicsContext restoreGraphicsState];
 }

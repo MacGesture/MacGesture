@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1108" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AppPrefsWindowController">
@@ -33,6 +34,7 @@
                 <outlet property="showIconInStatusBarButton" destination="ccx-Tb-9cw" id="M8p-za-0vX"/>
                 <outlet property="updater" destination="360" id="364"/>
                 <outlet property="versionCode" destination="num-fq-Ld9" id="JsU-bx-3Ga"/>
+                <outlet property="webView" destination="GwU-Ng-Wic" id="cNR-fg-lsI"/>
                 <outlet property="whiteListModeRadio" destination="jtj-ww-LUc" id="TB8-YB-Lnl"/>
                 <outlet property="whiteListTextView" destination="UlC-dc-fu7" id="D72-VG-Lgd"/>
             </connections>
@@ -308,19 +310,19 @@
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="72" userLabel="Shared Defaults"/>
         <customView id="100" userLabel="About">
-            <rect key="frame" x="0.0" y="0.0" width="294" height="189"/>
+            <rect key="frame" x="0.0" y="0.0" width="490" height="498"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHr-Aw-yHh">
-                    <rect key="frame" x="43" y="40" width="210" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Co-developer: zhangciwu@github" id="MJR-m4-m46">
+                    <rect key="frame" x="105" y="349" width="233" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Co-developer: @zhangciwu in github" id="MJR-m4-m46">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IvI-o3-JLI">
-                    <rect key="frame" x="83" y="83" width="111" height="32"/>
+                    <rect key="frame" x="178" y="392" width="111" height="32"/>
                     <buttonCell key="cell" type="push" title="Check Now" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="Z4w-5n-8OX">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -331,7 +333,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4G-u8-9Le">
-                    <rect key="frame" x="24" y="157" width="229" height="18"/>
+                    <rect key="frame" x="119" y="466" width="229" height="18"/>
                     <buttonCell key="cell" type="check" title="Automatically Check for Updates" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Yev-5n-cgO">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -342,7 +344,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fxG-XN-bbL">
-                    <rect key="frame" x="24" y="137" width="252" height="18"/>
+                    <rect key="frame" x="119" y="446" width="252" height="18"/>
                     <buttonCell key="cell" type="check" title="Automatically Download Updates" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="rOi-wV-Iez">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -353,7 +355,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="num-fq-Ld9">
-                    <rect key="frame" x="147" y="119" width="86" height="17"/>
+                    <rect key="frame" x="242" y="428" width="86" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="code" id="mgw-z2-mZe">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -361,7 +363,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ldi-VE-YXO">
-                    <rect key="frame" x="95" y="119" width="86" height="17"/>
+                    <rect key="frame" x="190" y="428" width="86" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version:" id="b8r-Ju-Lat">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -369,7 +371,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="356">
-                    <rect key="frame" x="45" y="65" width="198" height="17"/>
+                    <rect key="frame" x="107" y="374" width="198" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Author: code.falling@gmail.com" id="357">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -377,15 +379,21 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvf-Up-e0O">
-                    <rect key="frame" x="135" y="20" width="207" height="17"/>
+                    <rect key="frame" x="197" y="329" width="207" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="jiegec@qq.com" id="3XA-Af-eIC">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <webView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GwU-Ng-Wic">
+                    <rect key="frame" x="20" y="20" width="450" height="301"/>
+                    <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
+                        <nil key="identifier"/>
+                    </webPreferences>
+                </webView>
             </subviews>
-            <point key="canvasLocation" x="328" y="481.5"/>
+            <point key="canvasLocation" x="426" y="636"/>
         </customView>
         <customView id="AaE-W0-Z9W" userLabel="AppleScript">
             <rect key="frame" x="0.0" y="0.0" width="756" height="418"/>
@@ -477,7 +485,7 @@
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="pPv-0a-vIb">
-                        <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
+                        <rect key="frame" x="1" y="-14" width="0.0" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="9g8-Dy-j0E">
@@ -566,10 +574,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="281" height="296"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="281" height="296"/>
+                                <size key="minSize" width="266" height="296"/>
                                 <size key="maxSize" width="481" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="281" height="296"/>
+                                <size key="minSize" width="266" height="296"/>
                                 <size key="maxSize" width="481" height="10000000"/>
                             </textView>
                         </subviews>
@@ -580,7 +588,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="yBO-uj-USp">
-                        <rect key="frame" x="266" y="1" width="16" height="296"/>
+                        <rect key="frame" x="267" y="1" width="15" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -620,10 +628,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="281" height="296"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="281" height="296"/>
+                                <size key="minSize" width="266" height="296"/>
                                 <size key="maxSize" width="10000" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="281" height="296"/>
+                                <size key="minSize" width="266" height="296"/>
                                 <size key="maxSize" width="10000" height="10000000"/>
                             </textView>
                         </subviews>
@@ -634,7 +642,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="DhI-gZ-AER">
-                        <rect key="frame" x="266" y="1" width="16" height="296"/>
+                        <rect key="frame" x="267" y="1" width="15" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -721,7 +729,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3wU-L9-5Kf">
-                    <rect key="frame" x="190" y="198" width="35" height="16"/>
+                    <rect key="frame" x="186" y="198" width="35" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Font:" id="0ye-8N-1Bv">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -778,6 +786,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqw-AN-D6f">
                     <rect key="frame" x="236" y="227" width="54" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="FontScale" id="8SO-RX-LQO">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="BYB-cD-CPA"/>
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

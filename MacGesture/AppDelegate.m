@@ -31,13 +31,12 @@ static AppPrefsWindowController *_preferencesWindowController;
         dispatch_async(dispatch_get_main_queue(), ^{
             [NSApp terminate:self];
         });
-        NSLog(@"Send");
         return ;
     }
     
     windowController = [[CanvasWindowController alloc] init];
 
-    CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) | CGEventMaskBit(kCGEventRightMouseUp);
+    CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) | CGEventMaskBit(kCGEventRightMouseUp) | CGEventMaskBit(kCGEventLeftMouseDown) | CGEventMaskBit(kCGEventScrollWheel);
     mouseEventTap = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, kCGEventTapOptionDefault, eventMask, mouseEventCallback, NULL);
     CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, mouseEventTap, 0);
     CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
@@ -141,7 +140,6 @@ static void updateDirections(NSEvent *event) {
         return; // ignore short distance
     }
 
-
     unichar lastDirectionChar;
     if (direction.length > 0) {
         lastDirectionChar = [direction characterAtIndex:direction.length - 1];
@@ -204,7 +202,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             if (true)
             {
                 NSString *frontBundle = frontBundleName();
-                if (![BWFilter willHookRightClickForApp:frontBundle] || !([[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] || [[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
+                if (![BWFilter shouldHookMouseEventForApp:frontBundle] || !([[NSUserDefaults standardUserDefaults] boolForKey:@"showUIInWhateverApp"] || [[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
                 //        CGEventPost(kCGSessionEventTap, mouseDownEvent);
                 //        if (mouseDraggedEvent) {
                 //            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
@@ -284,10 +282,45 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             resetDirection();
             break;
         }
+        case kCGEventScrollWheel: {
+            if (!shouldShow || !mouseDownEvent) {
+                return event;
+            }
+            double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
+            
+            unichar lastDirectionChar;
+            if (direction.length > 0) {
+                lastDirectionChar = [direction characterAtIndex:direction.length - 1];
+            } else {
+                lastDirectionChar = ' ';
+            }
+            if (delta > 0) {
+                // NSLog(@"Down!");
+                if (lastDirectionChar != 'd') {
+                    [direction appendString:@"d"];
+                    [windowController writeDirection:direction];
+                }
+            } else if (delta < 0){
+                // NSLog(@"Up!");
+                if (lastDirectionChar != 'u') {
+                    [direction appendString:@"u"];
+                    [windowController writeDirection:direction];
+                }
+            }
+        }
         case kCGEventTapDisabledByTimeout:
             CGEventTapEnable(mouseEventTap, isEnable); // re-enable
             windowController.enable = isEnable;
             break;
+        case kCGEventLeftMouseDown: {
+            if (mouseDownEvent) {
+                [direction appendString:@"Z"];
+                [windowController writeDirection:direction];
+                return NULL;
+            }
+            
+            return event;
+        }
         default:
             return event;
     }

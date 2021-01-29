@@ -100,7 +100,7 @@ static BlackWhiteFilter *filterSingle;
     return NO;
 }
 
-- (BOOL)willHookRightClickForApp:(NSString *)bundleName {
+- (BOOL)shouldHookMouseEventForApp:(NSString *)bundleName {
     if ([self isInWhiteListMode]) {
         return [self bundleName:bundleName fitWithRules:self.whiteList];
     } else {

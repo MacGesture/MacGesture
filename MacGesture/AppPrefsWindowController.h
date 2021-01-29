@@ -3,6 +3,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Webkit/Webkit.h>
 #import "DBPrefsWindowController.h"
 #import "SRRecorderControl.h"
 #import "AppPickerWindowController.h"
@@ -46,6 +47,8 @@
 @property(weak) IBOutlet NSComboBox *languageComboBox;
 
 @property(weak) IBOutlet NSColorWell *lineColorWell;
+
+@property(assign) IBOutlet WebView *webView;
 
 - (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index;
 @end
