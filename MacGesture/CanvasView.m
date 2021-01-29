@@ -67,13 +67,15 @@ static NSImage* downImage;
 - (void)drawRect:(NSRect)dirtyRect
 {
 	// draw mouse line
-    for(int i=0;i<points.count;i+=2){
-        NSBezierPath *path = [NSBezierPath bezierPath];
-        path.lineWidth = radius * 2;
-        [color setStroke];
-        [path moveToPoint:[points[i] pointValue]];
-        [path lineToPoint:[points[i+1] pointValue]];
-        [path stroke];
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"disableMousePath"]) {
+        for (int i = 0; i < points.count; i += 2) {
+            NSBezierPath *path = [NSBezierPath bezierPath];
+            path.lineWidth = radius * 2;
+            [color setStroke];
+            [path moveToPoint:[points[i] pointValue]];
+            [path lineToPoint:[points[i + 1] pointValue]];
+            [path stroke];
+        }
     }
 
     //[textImage drawInRect:NSScreen.mainScreen.frame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];

@@ -8,12 +8,21 @@
         <item>
             <title>Version 2.0.3 (2 bugs fixed; 1 new features)</title>
             <sparkle:releaseNotesLink>
-                https://raw.githubusercontent.com/CodeFalling/MacGesture/ChangeLog/master/2.0.3.html
+                https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changlog/2.0.3.html
             </sparkle:releaseNotesLink>
             <pubDate>2015-10-19 16:34 +8</pubDate>
-            <enclosure url="https://github.com/CodeFalling/MacGesture/releases/download/2.0.3/MacGesture.zip" sparkle:version="2.0.3" length="1452892" type="application/octet-stream" sparkle:dsaSignature="MC0CFQDbsqzMghre1XLEuqxLXlzFPskqWgIULPwdxjyuwX0IUWt6WUzF34hgraE" />
+            <enclosure url="http://7lrvsy.com1.z0.glb.clouddn.com/2.0.3-MacGesture.zip" sparkle:version="2.0.3" length="1452892" type="application/octet-stream" sparkle:dsaSignature="MCwCFEE7DtwKDqLy6fNvp+P5Ttti5sjFAhR8n1R9UuvNQvtcjC/o28oHHAqe2w==" />
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
         </item>
 
+        <item>
+            <title>Version 2.0.4 (3 new features)</title>
+            <sparkle:releaseNotesLink>
+                https://raw.githubusercontent.com/CodeFalling/MacGesture/master/Changlog/2.0.4.html
+            </sparkle:releaseNotesLink>
+            <pubDate>2015-10-20 10:44 +8</pubDate>
+            <enclosure url="http://7lrvsy.com1.z0.glb.clouddn.com/MacGesture-2.0.4.zip" sparkle:version="2.0.4" length="1465730" type="application/octet-stream" sparkle:dsaSignature="MC0CFQDJss40kJ90NnsPB0WHeYcnWxx+LgIUY3pdKt++p2UGV779bZvkXP0tgv8=" />
+            <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+        </item>
     </channel>
 </rss>

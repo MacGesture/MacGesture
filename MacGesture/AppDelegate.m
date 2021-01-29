@@ -4,6 +4,7 @@
 #import "CanvasWindowController.h"
 #import "RulesList.h"
 #import "utils.h"
+#import "NSBundle+LoginItem.h"
 
 @implementation AppDelegate
 
@@ -18,7 +19,7 @@ static AppPrefsWindowController *_preferencesWindowController;
 
 + (AppDelegate *)appDelegate
 {
-    
+
     return (AppDelegate *)[[NSApplication sharedApplication] delegate];
 }
 
@@ -42,6 +43,11 @@ static AppPrefsWindowController *_preferencesWindowController;
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showGesturePreview"];
 
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRunBefore"];
+    }
+
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun_2.0.4_Before"]){
+        [[NSBundle mainBundle] addToLoginItems];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun_2.0.4_Before"];
     }
 
     if([[NSUserDefaults standardUserDefaults] boolForKey:@"openPrefOnStartup"]){
