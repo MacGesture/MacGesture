@@ -64,7 +64,7 @@ Disable the shortcut first (for example in System Preferences → Keyboard → S
 Caveats:
 Some shortcuts still don't work with the fix above. When you are encountering this, here are two possible solutions:
 
-- Change them to others (e.g. ⌃0, ⌃9).
+- Change them to others (e.g. `⌃0`, `⌃9`).
 - Tick “Invert Fn When Control Is Pressed” option.
 
 ## Tips
@@ -75,8 +75,8 @@ The following table covers probably the most basic scenario of usage:
 
 | Gesture | Filter             | Action   | Note     | Trigger on every match |
 | :-----: | :----------------- | :------: | :------: | :--------------------- |
-| `D`     | `*safari|*chrome`  |    ⌘T    | New Tab  | –                      |
-| `DR`    | `*safari|*chrome`  |    ⌘W    | Close    | –                      |
+| `D`     | `*safari\|*chrome` |    ⌘T    | New Tab  | –                      |
+| `DR`    | `*safari\|*chrome` |    ⌘W    | Close    | –                      |
 
 By setting these rules, you can empower mouse gestures to open new and close currently focused tabs in Sarari and Chrome Browsers. Simply:
 
@@ -93,8 +93,8 @@ So by defining the following rules:
 
 | Gesture | Filter             | Action   | Note     | Trigger on every match |
 | :-----: | :----------------- | :------: | :------: | :--------------------- |
-| `U*u`   | `*safari|*chrome`  |   ⇧⌘[    | Prev Tab | –                |
-| `U*d`   | `*safari|*chrome`  |   ⇧⌘]    | Next Tab | –                |
+| `U*u`   | `*safari\|*chrome` |   ⇧⌘\[   | Prev Tab | –                      |
+| `U*d`   | `*safari\|*chrome` |   ⇧⌘\]   | Next Tab | –                      |
 
 you can simply:
 
@@ -131,13 +131,13 @@ For example, the original one:
 
 | Gesture | Filter             | Action   | Note     | Trigger on every match |
 | :-----: | :----------------- | :------: | :------: | :--------------------- |
-| `U*d`   | `*`                |   ⇧⌘]    | Next Tab | Checked                |
+| `U*d`   | `*`                |   ⇧⌘\]   | Next Tab | Checked                |
 
 Then, in order to exclude Safari, change this to:
 
 | Gesture | Filter             | Action   | Note     | Trigger on every match |
 | :-----: | :----------------- | :------: | :------: | :--------------------- |
-| `U*d`   | `*|!*safari`       |   ⇧⌘]    | Next Tab | Checked                |
+| `U*d`   | `*\|!*safari`       |   ⇧⌘\]   | Next Tab | Checked                |
 
 Then you will experience the expected behaviour.
 
