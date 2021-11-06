@@ -118,8 +118,7 @@ bool wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase)
             item = LSSharedFileListInsertItemURL(loginItems,
                 kLSSharedFileListItemLast, NULL, NULL, (__bridge CFURLRef)bundleURL, NULL, NULL);
 
-            if (item)
-                CFRelease(item);
+            if (item) CFRelease(item);
         }
         else
         {
@@ -127,6 +126,8 @@ bool wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase)
 
             if (item)
                 LSSharedFileListItemRemove(loginItems, item);
+
+            if (item) CFRelease(item);
         }
 
         CFRelease(loginItems);
