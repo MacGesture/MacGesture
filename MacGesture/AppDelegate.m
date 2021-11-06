@@ -286,7 +286,7 @@ static bool handleGesture(BOOL lastGesture) {
     return [[RulesList sharedRulesList] handleGesture:direction isLastGesture:lastGesture];
 }
 
-void resetDirection() {
+void resetDirection(void) {
     [direction setString:@""];
 }
 
