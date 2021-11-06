@@ -827,8 +827,10 @@ static NSString *currentScriptId = nil;
 - (void)tableView:(NSTableView *)tableView
     didAddRowView:(NSTableRowView *)rowView
            forRow:(NSInteger)row {
-    if (![[RulesList sharedRulesList] enabledAtIndex:row]) {
-        [rowView setBackgroundColor:[[NSColor blackColor] colorWithAlphaComponent:0.3]];
+    if (tableView == _rulesTableView) {
+        if (![[RulesList sharedRulesList] enabledAtIndex:row]) {
+            rowView.backgroundColor = [NSColor colorNamed:@"disabledRule"];
+        }
     }
 }
 
