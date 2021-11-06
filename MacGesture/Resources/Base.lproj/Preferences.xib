@@ -708,7 +708,7 @@
                                 <size key="maxSize" width="481" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="tld.vendor.coolapp"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="tld.badcompany.*"/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
                         </subviews>
@@ -761,7 +761,7 @@
                                 <size key="maxSize" width="10000" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="tld.badcompany.*"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="tld.vendor.coolapp"/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
                         </subviews>
