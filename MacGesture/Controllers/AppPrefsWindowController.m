@@ -59,11 +59,11 @@ static BOOL isBigSur = NO;
     languages = @{
         @"": NSLocalizedString(@"System default", nil),
         @"en": NSLocalizedString(@"English", nil),
+        @"cs-CZ": NSLocalizedString(@"Czech", nil),
         @"zh-Hans": NSLocalizedString(@"Chinese", nil),
-    }; languagesOrder = @[ @"", @"en", @"zh-Hans" ];
+    }; languagesOrder = @[ @"", @"en", @"cs-CZ", @"zh-Hans" ];
 
     // Future translations:
-//    NSLocalizedString(@"Czech", nil)
 //    NSLocalizedString(@"Slovak", nil)
 
     previewPositions = @[
