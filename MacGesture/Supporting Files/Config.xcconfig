@@ -2,7 +2,7 @@
 //  Config.xcconfig
 //  MacGesture
 //
-//  Created by Michi on 17/06/2020.
+//  Created by Michal Zelinka on 17/06/2020.
 //  Copyright © 2020 MacGesture. All rights reserved.
 //
 
@@ -11,5 +11,5 @@
 
 PRODUCT        = MacGesture
 APP_BUNDLE     = com.codefalling.$(PRODUCT:rfc1034identifier)
-APP_VERSION    = 3.0.0
-APP_BUILD      = 182
+APP_VERSION    = 3.1.0
+APP_BUILD      = 194
