@@ -38,7 +38,7 @@
 "Filters" = "过滤";
 
 /* No comment provided by engineer. */
-"For automatic start of MacGesture on Login, it needs to be placed in the Applications folder. Please move MacGesture to Applications folder and relaunch it so this feature can be enabled." = "For automatic start of MacGesture on Login, it needs to be placed in the Applications folder. Please move MacGesture to Applications folder and relaunch it so this feature can be enabled.";
+"For automatic start of MacGesture on Login, it needs to be placed in the Applications folder. Please move MacGesture to Applications folder and relaunch it so this feature can be enabled." = "要在登录时自动启动 MacGesture，需要将其放置在 Applications 文件夹中。 请将 MacGesture 移至 Applications 文件夹并重新启动，以便启用此功能。";
 
 /* No comment provided by engineer. */
 "General" = "通用";
@@ -59,10 +59,13 @@
 "Loading…" = "正在加载。。。";
 
 /* No comment provided by engineer. */
-"MacGesture is placed in an unsupported location" = "MacGesture is placed in an unsupported location";
+"MacGesture is placed in an unsupported location" = "MacGesture 放置在不受支持的位置";
 
 /* No comment provided by engineer. */
 "MacGesture processes your mouse events, thus requires the Accessibility permission to work properly" = "MacGesture 处理您的鼠标事件，因此需要辅助功能权限才能正常工作";
+
+/* No comment provided by engineer. */
+"New AppleScript" = "新的 AppleScript";
 
 /* No comment provided by engineer. */
 "OK" = "确定";
@@ -71,7 +74,7 @@
 "Open README" = "打开 README";
 
 /* No comment provided by engineer. */
-"Please navigate to System Preferences → Security & Privacy → Privacy → Accessibility section to enable it for MacGesture." = "请转到系统首选项 -> 安全和隐私 -> 隐私 -> 辅助功能中启用 MacGesure。";
+"Please navigate to System Preferences → Security & Privacy → Privacy → Accessibility section to enable it for MacGesture." = "请转到系统首选项 → 安全和隐私 → 隐私 → 辅助功能中启用 MacGesure。";
 
 /* No comment provided by engineer. */
 "Please select a filter first!" = "请先选择一个过滤！";
