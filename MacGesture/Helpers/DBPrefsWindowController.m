@@ -242,6 +242,8 @@
 - (void)crossFadeView:(NSView *)oldView withView:(NSView *)newView{
     [self.viewAnimation stopAnimation];
 
+    if (!oldView || !newView) return;
+
     NSEventModifierFlags flags = self.window.currentEvent.modifierFlags;
 
     if (_shiftSlowsAnimation && (flags & NSEventModifierFlagShift) != 0) {

@@ -426,8 +426,8 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             }
             mouseEvent = [NSEvent eventWithCGEvent:event];
             double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
-//            BOOL unnaturalDirection = mouseEvent.isDirectionInvertedFromDevice;
-//            if (unnaturalDirection) delta *= -1;
+            BOOL unnaturalDirection = mouseEvent.isDirectionInvertedFromDevice;
+            if (unnaturalDirection) {} // delta *= -1;
             // NSLog(@"scrollWheel delta:%f", delta);
             
             NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate];

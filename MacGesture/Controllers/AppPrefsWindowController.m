@@ -614,7 +614,7 @@ static NSString *currentScriptId = nil;
     else [defaults removeObjectForKey:@"AppleLanguages"];
     
     NSUserNotification *notification = [NSUserNotification new];
-    notification.title = @"MacGesture";
+    notification.title = [@"MacGesture" copy];
     notification.informativeText = NSLocalizedString(@"Restart MacGesture to take effect", nil);
     notification.soundName = NSUserNotificationDefaultSoundName;
     notification.hasActionButton = NO;
@@ -660,7 +660,7 @@ static NSString *currentScriptId = nil;
         [file closeFile];
         
         NSUserNotification *notification = [NSUserNotification new];
-        notification.title = @"MacGesture";
+        notification.title = [@"MacGesture" copy];
         notification.informativeText = NSLocalizedString(@"Restart MacGesture to take effect", nil);
         notification.soundName = NSUserNotificationDefaultSoundName;
         notification.hasActionButton = NO;
@@ -695,7 +695,7 @@ static NSString *currentScriptId = nil;
         [file closeFile];
         
         NSUserNotification *notification = [NSUserNotification new];
-        notification.title = @"MacGesture";
+        notification.title = [@"MacGesture" copy];
         notification.informativeText = NSLocalizedString(@"Export succeeded", nil);
         notification.soundName = NSUserNotificationDefaultSoundName;
         notification.hasActionButton = NO;

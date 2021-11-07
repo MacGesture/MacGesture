@@ -145,8 +145,9 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
             returnDescriptor = [script executeAndReturnError:&errorDict];
             if (errorDict != nil) {
                 NSLog(@"Execute Apple Script: returnDescriptor: %@, errorDict: %@", returnDescriptor, errorDict);
+                NSString *title = [@"MacGesture AppleScript Error" copy];
                 NSUserNotification *userNotification = [NSUserNotification new];
-                userNotification.title = @"MacGesture AppleScript Error";
+                userNotification.title = title;
                 userNotification.informativeText = errorDict[NSAppleScriptErrorMessage];
                 userNotification.hasActionButton = NO;
                 [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:userNotification];
