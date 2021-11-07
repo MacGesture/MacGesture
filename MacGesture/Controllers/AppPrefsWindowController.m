@@ -345,8 +345,38 @@ static BOOL isBigSur = NO;
 }
 
 - (IBAction)autoStartAction:(id)sender {
-    [LoginServicesHelper makeLoginItemActive:
-        self.autoStartAtLogin.state == NSOnState];
+
+    BOOL active = _autoStartAtLogin.state == NSOnState;
+
+    NSString *appDirectory = [NSBundle mainBundle].bundlePath.stringByDeletingLastPathComponent;
+
+    NSArray<NSString *> *allowedPaths =
+        NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSAllDomainsMask, YES);
+
+    if ([allowedPaths containsObject:appDirectory]) {
+
+        [LoginServicesHelper makeLoginItemActive:active];
+
+    } else {
+
+        if (!active) return;
+
+        _autoStartAtLogin.state = NSOffState;
+
+        NSString *text = NSLocalizedString(@"MacGesture is placed in an unsupported location", nil);
+        NSString *info = NSLocalizedString(@"For automatic start of MacGesture on Login, "
+            "it needs to be placed in the Applications folder. Please move MacGesture to "
+            "Applications folder and relaunch it so this feature can be enabled.", nil);
+
+        NSAlert *alert = [NSAlert new];
+        alert.alertStyle = NSAlertStyleWarning;
+        alert.messageText = text;
+        alert.informativeText = info;
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", nil)];
+
+        [alert runModal];
+
+    }
 }
 
 - (IBAction)allowBlockRadioClicked:(id)sender {

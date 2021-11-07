@@ -38,6 +38,9 @@
 "Filters" = "过滤";
 
 /* No comment provided by engineer. */
+"For automatic start of MacGesture on Login, it needs to be placed in the Applications folder. Please move MacGesture to Applications folder and relaunch it so this feature can be enabled." = "For automatic start of MacGesture on Login, it needs to be placed in the Applications folder. Please move MacGesture to Applications folder and relaunch it so this feature can be enabled.";
+
+/* No comment provided by engineer. */
 "General" = "通用";
 
 /* No comment provided by engineer. */
@@ -54,6 +57,9 @@
 
 /* No comment provided by engineer. */
 "Loading…" = "正在加载。。。";
+
+/* No comment provided by engineer. */
+"MacGesture is placed in an unsupported location" = "MacGesture is placed in an unsupported location";
 
 /* No comment provided by engineer. */
 "MacGesture processes your mouse events, thus requires the Accessibility permission to work properly" = "MacGesture 处理您的鼠标事件，因此需要辅助功能权限才能正常工作";

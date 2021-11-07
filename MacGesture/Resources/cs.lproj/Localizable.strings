@@ -38,6 +38,9 @@
 "Filters" = "Filtry";
 
 /* No comment provided by engineer. */
+"For automatic start of MacGesture on Login, it needs to be placed in the Applications folder. Please move MacGesture to Applications folder and relaunch it so this feature can be enabled." = "Aby bylo možné povolit funkci automatického spuštění, MacGesture musí být umístěn ve složce Aplikace. Přesuňte MacGesture do složky Aplikace a spusťte aplikaci znovu.";
+
+/* No comment provided by engineer. */
 "General" = "Obecné";
 
 /* No comment provided by engineer. */
@@ -54,6 +57,9 @@
 
 /* No comment provided by engineer. */
 "Loading…" = "Načítání…";
+
+/* No comment provided by engineer. */
+"MacGesture is placed in an unsupported location" = "MacGesture je umístěn v nepodporované složce";
 
 /* No comment provided by engineer. */
 "MacGesture processes your mouse events, thus requires the Accessibility permission to work properly" = "MacGesture zpracovává vaše pohyby myší a proto vyžaduje oprávnění k Usnadněnému přístupu";
