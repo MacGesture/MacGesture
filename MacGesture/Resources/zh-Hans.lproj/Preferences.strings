@@ -79,8 +79,11 @@
 /* Class = "NSButtonCell"; title = "Enable MacGesture"; ObjectID = "gbg-RG-zrR"; */
 "gbg-RG-zrR.title" = "启用 MacGesture";
 
-/* Class = "NSTableColumn"; headerCell.title = "Trigger on every match"; ObjectID = "gla-Uy-MuL"; */
-"gla-Uy-MuL.headerCell.title" = "每次匹配时触发";
+/* Class = "NSTableColumn"; headerCell.title = "⚡️"; ObjectID = "gla-Uy-MuL"; */
+"gla-Uy-MuL.headerCell.title" = "⚡️";
+
+/* Class = "NSTableColumn"; headerToolTip = "Trigger on every match"; ObjectID = "gla-Uy-MuL"; */
+"gla-Uy-MuL.headerToolTip" = "每次匹配时触发";
 
 /* Class = "NSBox"; title = "Advanced"; ObjectID = "grB-jA-OPZ"; */
 "grB-jA-OPZ.title" = "高级";

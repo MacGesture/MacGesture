@@ -936,6 +936,7 @@ static NSString *currentScriptId = nil;
         NSButton *checkButton = [[NSButton alloc] init];
         [checkButton setButtonType:NSSwitchButton];
         [checkButton setState:[rulesList triggerOnEveryMatchAtIndex:row]];
+        [checkButton setToolTip:NSLocalizedString(@"Trigger on every match", nil)];
         [checkButton setTag:row];
         [checkButton setAction:@selector(onTriggerOnEveryMatchChanged:)];
         [checkButton setImagePosition:NSImageOnly];
