@@ -149,6 +149,24 @@ static NSUserDefaults *defaults;
     if (!hasRunBefore || [defaults boolForKey:@"openPrefOnStartup"]) {
         [self openPreferences:self];
     }
+
+    // Register for Workspace session notifications
+    [[[NSWorkspace sharedWorkspace] notificationCenter]
+            addObserver:self
+            selector:@selector(workspaceSessionActiveChange:)
+            name:NSWorkspaceSessionDidBecomeActiveNotification
+            object:nil];
+
+    [[[NSWorkspace sharedWorkspace] notificationCenter]
+            addObserver:self
+            selector:@selector(workspaceSessionActiveChange:)
+            name:NSWorkspaceSessionDidResignActiveNotification
+            object:nil];
+}
+
+- (void)workspaceSessionActiveChange:(NSNotification *)notification {
+    BOOL nowActive = notification.name != NSWorkspaceSessionDidResignActiveNotification;
+    NSLog(@"[WORKSPACE SESSION] Now active: %d", nowActive);
 }
 
 - (void)updateStatusBarItem {
