@@ -432,13 +432,13 @@ Disable the shortcut first (for example in System Preferences → Keyboard → S
 Some shortcuts still don&#39;t work with the fix above. When you are encountering this, here are two possible solutions:</p>
 
 <ul>
-<li>Change them to others (e.g. ⌃0, ⌃9).</li>
+<li>Change them to others (e.g. <code>⌃0</code>, <code>⌃9</code>).</li>
 <li>Tick “Invert Fn When Control Is Pressed” option.</li>
 </ul>
 
 <h2 id="toc_10">Tips</h2>
 
-<h3 id="toc_11">Mouse scroll gesture example</h3>
+<h3 id="toc_11">Basic gestures</h3>
 
 <p>The following table covers probably the most basic scenario of usage:</p>
 
@@ -449,24 +449,24 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 <th style="text-align: left">Filter</th>
 <th style="text-align: center">Action</th>
 <th style="text-align: center">Note</th>
-<th style="text-align: left">Trigger on every match</th>
+<th style="text-align: center">⚡️</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
 <td style="text-align: center"><code>D</code></td>
-<td style="text-align: left"><code>*safari|*chrome</code></td>
+<td style="text-align: left"><code>*safari</code>&#124;<code>*chrome</code></td>
 <td style="text-align: center">⌘T</td>
 <td style="text-align: center">New Tab</td>
-<td style="text-align: left">–</td>
+<td style="text-align: center">–</td>
 </tr>
 <tr>
 <td style="text-align: center"><code>DR</code></td>
-<td style="text-align: left"><code>*safari|*chrome</code></td>
+<td style="text-align: left"><code>*safari</code>&#124;<code>*chrome</code></td>
 <td style="text-align: center">⌘W</td>
 <td style="text-align: center">Close</td>
-<td style="text-align: left">–</td>
+<td style="text-align: center">–</td>
 </tr>
 </tbody>
 </table>
@@ -488,7 +488,9 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 
 <p>How neat! 🙌</p>
 
-<p>Now, to quickly cycle between the selected tabs even without releasing the right mouse button, you can set the gesture to be triggered on every match using the checkbox at the end of the Rule line.</p>
+<h3 id="toc_12">Mouse scroll gesture example</h3>
+
+<p>Now, to quickly cycle between the selected tabs even without releasing the right mouse button, you can set the gesture to be triggered on every match using the “⚡️” checkbox at the end of the Rule line.</p>
 
 <p>So by defining the following rules:</p>
 
@@ -499,24 +501,24 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 <th style="text-align: left">Filter</th>
 <th style="text-align: center">Action</th>
 <th style="text-align: center">Note</th>
-<th style="text-align: left">Trigger on every match</th>
+<th style="text-align: center">⚡️</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
 <td style="text-align: center"><code>U*u</code></td>
-<td style="text-align: left"><code>*safari|*chrome</code></td>
+<td style="text-align: left"><code>*safari</code>&#124;<code>*chrome</code></td>
 <td style="text-align: center">⇧⌘[</td>
 <td style="text-align: center">Prev Tab</td>
-<td style="text-align: left">–</td>
+<td style="text-align: center">☑️</td>
 </tr>
 <tr>
 <td style="text-align: center"><code>U*d</code></td>
-<td style="text-align: left"><code>*safari|*chrome</code></td>
+<td style="text-align: left"><code>*safari</code>&#124;<code>*chrome</code></td>
 <td style="text-align: center">⇧⌘]</td>
 <td style="text-align: center">Next Tab</td>
-<td style="text-align: left">–</td>
+<td style="text-align: center">☑️</td>
 </tr>
 </tbody>
 </table>
@@ -524,17 +526,19 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 <p>you can simply:</p>
 
 <ul>
-<li>right click, drag mouse upwards, and every <code>u</code> (mouse wheel scroll up) triggers a <strong>Prev Tab</strong> action</li>
+<li>right click, drag mouse upwards, and every <code>u</code> (mouse wheel scroll up) triggers a <strong>Prev Tab</strong> action,</li>
 <li>right click, drag mouse upwards, and every <code>d</code> (mouse wheel scroll down) triggers a <strong>Next Tab</strong> action.</li>
 </ul>
 
-<h3 id="toc_12">Exporting and importing MacGesture preferences</h3>
+<p>Switching between multiple tabs in the browser is now a piece of cake! 😎</p>
 
-<h4 id="toc_13">Recommended way</h4>
+<h3 id="toc_13">Exporting and importing MacGesture preferences</h3>
+
+<h4 id="toc_14">Recommended way</h4>
 
 <p>Use “Import” and “Export” buttons in the <strong>General</strong> Panel.</p>
 
-<h4 id="toc_14">Geek-ish way</h4>
+<h4 id="toc_15">Geek-ish way</h4>
 
 <p>Open the <em>Terminal</em> app, Do this in your old computer:</p>
 
@@ -546,7 +550,7 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 
 <p>All settings should be successfully brought over. If that&#39;s not the case please file an issue.</p>
 
-<h3 id="toc_15">Excluding an app in a certain rule</h3>
+<h3 id="toc_16">Excluding an app in a certain rule</h3>
 
 <p>You can prepend <code>!</code>, then the app you want to exclude (still wildcard).</p>
 
@@ -559,7 +563,7 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 <th style="text-align: left">Filter</th>
 <th style="text-align: center">Action</th>
 <th style="text-align: center">Note</th>
-<th style="text-align: left">Trigger on every match</th>
+<th style="text-align: center">⚡️</th>
 </tr>
 </thead>
 
@@ -569,7 +573,7 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 <td style="text-align: left"><code>*</code></td>
 <td style="text-align: center">⇧⌘]</td>
 <td style="text-align: center">Next Tab</td>
-<td style="text-align: left">Checked</td>
+<td style="text-align: center">☑️</td>
 </tr>
 </tbody>
 </table>
@@ -583,37 +587,37 @@ Some shortcuts still don&#39;t work with the fix above. When you are encounterin
 <th style="text-align: left">Filter</th>
 <th style="text-align: center">Action</th>
 <th style="text-align: center">Note</th>
-<th style="text-align: left">Trigger on every match</th>
+<th style="text-align: center">⚡️</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
 <td style="text-align: center"><code>U*d</code></td>
-<td style="text-align: left"><code>*|!*safari</code></td>
+<td style="text-align: left"><code>*</code>&#124;<code>!*safari</code></td>
 <td style="text-align: center">⇧⌘]</td>
 <td style="text-align: center">Next Tab</td>
-<td style="text-align: left">Checked</td>
+<td style="text-align: center">☑️</td>
 </tr>
 </tbody>
 </table>
 
 <p>Then you will experience the expected behaviour.</p>
 
-<h2 id="toc_16">Found a Bug?</h2>
+<h2 id="toc_17">Found a Bug?</h2>
 
 <p>Feel free to open <a href="https://github.com/MacGesture/MacGesture/issues">an issue on GitHub</a>! 👍</p>
 
-<h2 id="toc_17">Contributors</h2>
+<h2 id="toc_18">Contributors</h2>
 
 <ul>
 <li><a href="https://github.com/xcodebuild">CodeFalling</a> – original author</li>
-<li><a href="https://github.com/username0x0a">username0x0a</a> – maintainer</li>
+<li><a href="https://github.com/username0x0a">username0x0a</a> – maintainer</li>
 <li><a href="https://github.com/jiegec">jiegec</a></li>
 <li><a href="https://github.com/zhangciwu">zhangciwu</a></li>
 </ul>
 
-<h2 id="toc_18">License</h2>
+<h2 id="toc_19">License</h2>
 
 <p>This project is made under <a href="https://en.wikipedia.org/wiki/GNU_General_Public_License">GNU General Public License</a>.</p>
 
