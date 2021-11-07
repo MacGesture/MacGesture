@@ -8,181 +8,199 @@
 
 #import "AppPickerWindowController.h"
 #import "RulesList.h"
+#import "utils.h"
 
-@interface FilterData : NSObject {
-    
-}
+#pragma mark - Filter data -
 
-@property(strong) NSString *text;
-@property(strong) NSImage *icon;
-@property NSInteger checkedState;
+@interface FilterData : NSObject
+
+@property (atomic) NSInteger checkedState;
+@property (strong) NSImage *icon;
+@property (copy) NSString *text;
 
 @end
 
 @implementation FilterData
 
-- (instancetype)initFilterData:(NSString *)text icon:(NSImage *)icon checkedState:(NSInteger)checkedState {
-    self = [super init];
-    
-    self.text = text;
-    self.icon = icon;
-    self.checkedState = checkedState;
+- (instancetype)initWithText:(NSString *)text icon:(NSImage *)icon checkedState:(NSInteger)checkedState {
+
+    if (self = [super init]) {
+        _checkedState = checkedState;
+        _icon = icon;
+        _text = text;
+    }
     
     return self;
 }
 
 @end
 
-@interface AppPickerWindowController ()
+#pragma mark - Picker window controller -
+
+@interface AppPickerWindowController () <NSTableViewDelegate, NSTableViewDataSource>
 
 @end
 
 @implementation AppPickerWindowController
 
-NSMutableArray<FilterData *> *_filters;
-NSMutableArray<NSButton *> *_checkBoxs;
 NSMutableString *_filter;
+NSMutableArray<FilterData *> *_filters;
+NSMutableArray<NSButton *> *_checkBoxes;
 
 - (instancetype)initWithWindowNibName:(NSString *)windowNibName {
-    self = [super initWithWindowNibName:windowNibName];
-    _filters = [[NSMutableArray alloc] init];
-    _checkBoxs = [[NSMutableArray alloc] init];
+
+    if (self = [super initWithWindowNibName:windowNibName]) {
+        _filters = [NSMutableArray arrayWithCapacity:10];
+        _checkBoxes = [NSMutableArray arrayWithCapacity:10];
+    }
+
     return self;
-}
-
-- (NSString *)generateFilter {
-    if (_filter) {
-        return _filter;
-    }
-    return nil;
-}
-
-- (NSImage *)getImageForApp:(NSString*)bundleIdentifier icon:(NSImage*)icon {
-    static NSImage *emptyIcon;
-    if (!emptyIcon) {
-        emptyIcon = [[NSImage alloc] initWithSize:NSMakeSize(16, 16)];
-    }
-    
-    if (icon) {
-        return icon;
-    } else {
-        return emptyIcon;
-    }
-}
-
-- (NSImage *)getImageForApp:(NSString*)bundleIdentifier {
-    return [self getImageForApp:bundleIdentifier icon:nil];
 }
 
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    dispatch_async(dispatch_get_global_queue(0,0), ^{
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
+
         for (NSRunningApplication *app in [[NSWorkspace sharedWorkspace] runningApplications]) {
-            if (app.activationPolicy == NSApplicationActivationPolicyRegular) {
-                if (app.bundleIdentifier) {
-                    FilterData *filter = [[FilterData alloc] initFilterData:app.bundleIdentifier icon:[self getImageForApp:app.bundleIdentifier icon:app.icon] checkedState:NSOffState];
-                    [_filters addObject:filter];
-                }
-            }
+            // Must be a regular app...
+            if (app.activationPolicy != NSApplicationActivationPolicyRegular) continue;
+            // ...with a valid Bundle ID
+            if (!app.bundleIdentifier) continue;
+            [_filters addObject:[[FilterData alloc] initWithText:app.bundleIdentifier
+                icon:[self getImageForApp:app.bundleIdentifier icon:app.icon]
+                checkedState:NSControlStateValueOff]
+            ];
         }
         
         if (!self.addedToTextView) {
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.filtersTableView reloadData];
                 [self.loadingLabel setStringValue:NSLocalizedString(@"Loading…", nil)];
             });
-            NSArray *filters;
-            NSString *originalFilter;
-            originalFilter = [[RulesList sharedRulesList] filterAtIndex:self.indexForParentWindow];
-            filters = [originalFilter componentsSeparatedByString:@"|"];
+
+            NSString *originalFilter = [[RulesList sharedRulesList] filterAtIndex:self.indexForParentWindow];
+            NSArray<NSString *> *filters = [originalFilter componentsSeparatedByString:@"|"];
             for (NSString *filter in filters) {
-                if ([filter length]) {
-                    NSUInteger index = [_filters indexOfObjectPassingTest:^BOOL(FilterData *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-                        return [obj text] == filter;
-                    }];
-                    if (index == NSNotFound) {
-                        [_filters addObject:[[FilterData alloc] initFilterData:filter icon:[self getImageForApp:filter] checkedState:NSOnState]];
-                    } else {
-                        [_filters[index] setCheckedState:NSOnState];
-                    }
+                if (!filter.length) continue;
+                NSUInteger index = [_filters indexOfObjectPassingTest:
+                  ^BOOL(FilterData *obj, NSUInteger idx, BOOL *stop) {
+                    return obj.text == filter;
+                }];
+                if (index == NSNotFound) {
+                    [_filters addObject:[[FilterData alloc] initWithText:filter
+                        icon:[self getImageForApp:filter]
+                        checkedState:NSControlStateValueOn]
+                    ];
+                } else {
+                    _filters[index].checkedState = NSControlStateValueOn;
                 }
             }
         }
+
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.filtersTableView reloadData];
             [self.loadingLabel setHidden:YES];
         });
+
     });
 }
 
+#pragma mark - Helpers
+
+- (NSString *)generateFilter {
+    return [_filter copy];
+}
+
+- (NSImage *)getImageForApp:(NSString *)bundleIdentifier icon:(NSImage *)icon {
+    static NSImage *emptyIcon;
+    if (!emptyIcon) emptyIcon = [[NSImage alloc] initWithSize:NSMakeSize(16, 16)];
+    return icon ?: emptyIcon;
+}
+
+- (NSImage *)getImageForApp:(NSString *)bundleIdentifier {
+    return [self getImageForApp:bundleIdentifier icon:nil];
+}
+
+#pragma mark - Table view delegate
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return [_filters count];
+    return _filters.count;
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
     return 20;
 }
 
-- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    NSView *result;
-    if ([tableColumn.identifier isEqualToString:@"CheckBox"]) {
-        NSButton *checkBox = [[NSButton alloc] init];
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)column row:(NSInteger)row {
+
+    if ([column.identifier isEqualToString:@"CheckBox"]) {
+        NSButton *checkBox = [NSButton new];
         [checkBox setButtonType:NSSwitchButton];
-        [checkBox setState:[_filters[row] checkedState]];
-        [checkBox setTitle:@""];
-        [checkBox setTag:row];
-        [_checkBoxs addObject:checkBox];
-        result = checkBox;
-    } else if ([tableColumn.identifier isEqualToString:@"Icon"]) {
-        NSImageView *imageView = [[NSImageView alloc] init];
-        [imageView setImage:[_filters[row] icon]];
+        checkBox.state = _filters[row].checkedState;
+        checkBox.title = @"";
+        checkBox.tag = row;
+        [_checkBoxes addObject:checkBox];
+        return checkBox;
+    } else if ([column.identifier isEqualToString:@"Icon"]) {
+        NSImageView *imageView = [NSImageView new];
+        imageView.image = _filters[row].icon;
         return imageView;
     } else {
-        NSTextField *textField = [[NSTextField alloc] init];
-        [textField setBezeled:NO];
-        [textField setEditable:NO];
-        [textField setDrawsBackground:NO];
-        [textField setStringValue:[_filters[row] text]];
-        result = textField;
+        NSTextField *textField = [NSTextField new];
+        textField.bezeled = NO;
+        textField.editable = NO;
+        textField.drawsBackground = NO;
+        textField.stringValue = _filters[row].text;
+        return textField;
     }
-    
-    return result;
 }
 
+#pragma mark - Actions
+
 - (void)showDialog {
-    //    NSWindow *win = [self window];
-    //    [NSApp runModalForWindow:win];
-    //    [NSApp endSheet:win];
-    //    [win orderOut:self];    // show dialog
+//    NSWindow *window = self.window;
+//    [NSApp runModalForWindow:window];
+//    [NSApp endSheet:window];
+//    [window orderOut:self];    // show dialog
 }
 
 - (IBAction)okBtnDidClick:(id)sender {
-    // generate filter
-    _filter = [[NSMutableString alloc] initWithString:@""];
-    for (NSButton *btn in _checkBoxs) {
-        if ([btn state] == NSOnState) { // YES
-            //            [_filter appendString:((NSRunningApplication *)(_runningApps[btn.tag])).bundleIdentifier];
-            //            [_filter appendString:@"|"];
-            if (self.addedToTextView) {
-                [self.addedToTextView setString:[NSString stringWithFormat:@"%@\n%@", [self.addedToTextView string], [_filters[[btn tag]] text]]];
-            } else {
-                [_filter appendString:[_filters[[btn tag]] text]];
-                [_filter appendString:@"|"];
-            }
+
+    // Generate filter
+    _filter = [NSMutableString stringWithCapacity:32];
+
+    NSWindowController<AppPickerCallback> *targetWindow = self.parentWindow;
+    NSTextView *targetTextView = self.addedToTextView;
+
+    for (NSButton *btn in _checkBoxes) {
+        if (btn.state != NSControlStateValueOn) continue;
+        if (targetTextView) {
+            NSMutableString *list = targetTextView.string.mutableCopy;
+            if (list.length) [list appendString:@"\n"];
+            [list appendString:_filters[btn.tag].text];
+            targetTextView.string = list.copy;
+        } else {
+            [_filter appendString:_filters[btn.tag].text];
+            [_filter appendString:@"|"];
         }
     }
     
-    if (!self.addedToTextView && self.parentWindow) {
-        [self.parentWindow rulePickCallback:_filter atIndex:self.indexForParentWindow];
+    if (!targetTextView && targetWindow) {
+        _filter = [[[_filter componentsSeparatedByString:@"|"]
+            mappedArrayUsingBlock:^NSString *(NSString *obj, NSUInteger idx) {
+                return obj.length > 0 ? obj : nil;
+            }] componentsJoinedByString:@"|"].mutableCopy;
+        [targetWindow rulePickCallback:_filter atIndex:_indexForParentWindow];
     }
-    
-    //    [NSApp stopModal];
+
+//    [NSApp stopModal];
     [self close];
 }
 
 - (IBAction)cancelBtnDidClick:(id)sender {
-    //    [NSApp stopModal];
+//    [NSApp stopModal];
     [self close];
 }
 
