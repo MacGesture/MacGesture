@@ -181,7 +181,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     return NO;
 }
 
-- (bool)handleGesture:(NSString *)gesture isLastGesture:(BOOL)last {
+- (BOOL)handleGesture:(NSString *)gesture isLastGesture:(BOOL)last {
     // if last, only match rules without trigger_on_every_match
     // if last = false, only match rules with trigger_on_every_match
     NSString *frontApp = frontBundleName();

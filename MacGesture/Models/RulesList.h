@@ -65,7 +65,7 @@ typedef enum {
 
 - (void)setTriggerOnEveryMatch:(BOOL)match atIndex:(NSUInteger)index;
 
-- (bool)handleGesture:(NSString *)gesture isLastGesture:(BOOL)last;
+- (BOOL)handleGesture:(NSString *)gesture isLastGesture:(BOOL)last;
 
 - (void)toggleRule:(NSUInteger)index;
 

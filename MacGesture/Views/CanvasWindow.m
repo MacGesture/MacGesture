@@ -3,7 +3,7 @@
 
 @implementation CanvasWindow
 
-- (id)initWithContentRect:(NSRect)contentRect
+- (instancetype)initWithContentRect:(NSRect)contentRect
 {
     if (self = [super initWithContentRect:contentRect
         styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:NO])
