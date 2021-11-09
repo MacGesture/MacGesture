@@ -1,6 +1,6 @@
 PODS:
   - ShortcutRecorder (3.3.0)
-  - Sparkle (1.24.0)
+  - Sparkle (1.27.0)
 
 DEPENDENCIES:
   - ShortcutRecorder (from `https://github.com/Kentzo/ShortcutRecorder`, branch `master`)
@@ -22,7 +22,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ShortcutRecorder: 49b4c7f615133f02d0b23f91edfca9046ec0e1b3
-  Sparkle: 270cd27377bf04e9c128af06e3a22d0f572d6ee3
+  Sparkle: e1245ce5ba951c60183444a13a2c7d227778205d
 
 PODFILE CHECKSUM: dda32dcb39efd9b6c56165ecde0aeebfa2ade81d
 
