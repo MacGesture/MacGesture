@@ -11,7 +11,7 @@ NSString *frontBundleName(void) {
     return runningApp.bundleIdentifier;
 }
 
-bool wildcardArray(NSString *bundleName, NSArray *wildFilters, BOOL ignoreCase) {
+BOOL wildcardArray(NSString *bundleName, NSArray *wildFilters, BOOL ignoreCase) {
     if (ignoreCase) {
         bundleName = [bundleName lowercaseString];
     }
@@ -37,7 +37,7 @@ bool wildcardArray(NSString *bundleName, NSArray *wildFilters, BOOL ignoreCase) 
     return result;
 }
 
-bool wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase) {
+BOOL wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase) {
     NSArray *filterArray = [wildFilter componentsSeparatedByCharactersInSet:
                             [NSCharacterSet characterSetWithCharactersInString:@"|\n"]];
     return wildcardArray(bundleName, filterArray, ignoreCase);
@@ -55,6 +55,15 @@ bool wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase)
     }];
 
     return results;
+}
+
+@end
+
+@implementation NSObject (Utils)
+
+- (id)parsedKindOf:(Class)class
+{
+    return [self isKindOfClass:class] ? self : nil;
 }
 
 @end
@@ -118,8 +127,7 @@ bool wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase)
             item = LSSharedFileListInsertItemURL(loginItems,
                 kLSSharedFileListItemLast, NULL, NULL, (__bridge CFURLRef)bundleURL, NULL, NULL);
 
-            if (item)
-                CFRelease(item);
+            if (item) CFRelease(item);
         }
         else
         {
@@ -127,6 +135,8 @@ bool wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase)
 
             if (item)
                 LSSharedFileListItemRemove(loginItems, item);
+
+            if (item) CFRelease(item);
         }
 
         CFRelease(loginItems);

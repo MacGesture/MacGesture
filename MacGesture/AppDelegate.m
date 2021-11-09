@@ -149,6 +149,24 @@ static NSUserDefaults *defaults;
     if (!hasRunBefore || [defaults boolForKey:@"openPrefOnStartup"]) {
         [self openPreferences:self];
     }
+
+    // Register for Workspace session notifications
+    [[[NSWorkspace sharedWorkspace] notificationCenter]
+            addObserver:self
+            selector:@selector(workspaceSessionActiveChange:)
+            name:NSWorkspaceSessionDidBecomeActiveNotification
+            object:nil];
+
+    [[[NSWorkspace sharedWorkspace] notificationCenter]
+            addObserver:self
+            selector:@selector(workspaceSessionActiveChange:)
+            name:NSWorkspaceSessionDidResignActiveNotification
+            object:nil];
+}
+
+- (void)workspaceSessionActiveChange:(NSNotification *)notification {
+    BOOL nowActive = notification.name != NSWorkspaceSessionDidResignActiveNotification;
+    NSLog(@"[WORKSPACE SESSION] Now active: %d", nowActive);
 }
 
 - (void)updateStatusBarItem {
@@ -286,7 +304,7 @@ static bool handleGesture(BOOL lastGesture) {
     return [[RulesList sharedRulesList] handleGesture:direction isLastGesture:lastGesture];
 }
 
-void resetDirection() {
+void resetDirection(void) {
     [direction setString:@""];
 }
 
@@ -426,8 +444,8 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             }
             mouseEvent = [NSEvent eventWithCGEvent:event];
             double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
-//            BOOL unnaturalDirection = mouseEvent.isDirectionInvertedFromDevice;
-//            if (unnaturalDirection) delta *= -1;
+            BOOL unnaturalDirection = mouseEvent.isDirectionInvertedFromDevice;
+            if (unnaturalDirection) {} // delta *= -1;
             // NSLog(@"scrollWheel delta:%f", delta);
             
             NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate];

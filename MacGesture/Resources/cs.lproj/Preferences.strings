@@ -79,8 +79,11 @@
 /* Class = "NSButtonCell"; title = "Enable MacGesture"; ObjectID = "gbg-RG-zrR"; */
 "gbg-RG-zrR.title" = "MacGesture je aktivní";
 
-/* Class = "NSTableColumn"; headerCell.title = "Trigger on every match"; ObjectID = "gla-Uy-MuL"; */
-"gla-Uy-MuL.headerCell.title" = "Provést při každé shodě";
+/* Class = "NSTableColumn"; headerCell.title = "⚡️"; ObjectID = "gla-Uy-MuL"; */
+"gla-Uy-MuL.headerCell.title" = "⚡️";
+
+/* Class = "NSTableColumn"; headerToolTip = "Trigger on every match"; ObjectID = "gla-Uy-MuL"; */
+"gla-Uy-MuL.headerToolTip" = "Provést při každé shodě";
 
 /* Class = "NSBox"; title = "Advanced"; ObjectID = "grB-jA-OPZ"; */
 "grB-jA-OPZ.title" = "Pokročilé";

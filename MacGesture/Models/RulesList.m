@@ -145,8 +145,9 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
             returnDescriptor = [script executeAndReturnError:&errorDict];
             if (errorDict != nil) {
                 NSLog(@"Execute Apple Script: returnDescriptor: %@, errorDict: %@", returnDescriptor, errorDict);
+                NSString *title = [@"MacGesture AppleScript Error" copy];
                 NSUserNotification *userNotification = [NSUserNotification new];
-                userNotification.title = @"MacGesture AppleScript Error";
+                userNotification.title = title;
                 userNotification.informativeText = errorDict[NSAppleScriptErrorMessage];
                 userNotification.hasActionButton = NO;
                 [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:userNotification];
@@ -180,7 +181,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     return NO;
 }
 
-- (bool)handleGesture:(NSString *)gesture isLastGesture:(BOOL)last {
+- (BOOL)handleGesture:(NSString *)gesture isLastGesture:(BOOL)last {
     // if last, only match rules without trigger_on_every_match
     // if last = false, only match rules with trigger_on_every_match
     NSString *frontApp = frontBundleName();

@@ -1,3 +1,4 @@
+
 # MacGesture
 
 ![logo](https://raw.githubusercontent.com/MacGesture/MacGesture/master/logo.png)
@@ -64,19 +65,19 @@ Disable the shortcut first (for example in System Preferences → Keyboard → S
 Caveats:
 Some shortcuts still don't work with the fix above. When you are encountering this, here are two possible solutions:
 
-- Change them to others (e.g. ⌃0, ⌃9).
+- Change them to others (e.g. `⌃0`, `⌃9`).
 - Tick “Invert Fn When Control Is Pressed” option.
 
 ## Tips
 
-### Mouse scroll gesture example
+### Basic gestures
 
 The following table covers probably the most basic scenario of usage:
 
-| Gesture | Filter             | Action   | Note     | Trigger on every match |
-| :-----: | :----------------- | :------: | :------: | :--------------------- |
-| `D`     | `*safari|*chrome`  |    ⌘T    | New Tab  | –                      |
-| `DR`    | `*safari|*chrome`  |    ⌘W    | Close    | –                      |
+| Gesture | Filter                   | Action   | Note     |  ⚡️  |
+| :-----: | :----------------------- | :------: | :------: | :-: |
+| `D`     | `*safari`&#124;`*chrome` |    ⌘T    | New Tab  |  –  |
+| `DR`    | `*safari`&#124;`*chrome` |    ⌘W    | Close    |  –  |
 
 By setting these rules, you can empower mouse gestures to open new and close currently focused tabs in Sarari and Chrome Browsers. Simply:
 
@@ -87,19 +88,23 @@ By setting these rules, you can empower mouse gestures to open new and close cur
 
 How neat! 🙌
 
-Now, to quickly cycle between the selected tabs even without releasing the right mouse button, you can set the gesture to be triggered on every match using the checkbox at the end of the Rule line.
+### Mouse scroll gesture example
+
+Now, to quickly cycle between the selected tabs even without releasing the right mouse button, you can set the gesture to be triggered on every match using the “⚡️” checkbox at the end of the Rule line.
 
 So by defining the following rules:
 
-| Gesture | Filter             | Action   | Note     | Trigger on every match |
-| :-----: | :----------------- | :------: | :------: | :--------------------- |
-| `U*u`   | `*safari|*chrome`  |   ⇧⌘[    | Prev Tab | –                |
-| `U*d`   | `*safari|*chrome`  |   ⇧⌘]    | Next Tab | –                |
+| Gesture | Filter                   | Action   | Note     |  ⚡️  |
+| :-----: | :----------------------- | :------: | :------: | :-: |
+| `U*u`   | `*safari`&#124;`*chrome` |   ⇧⌘\[   | Prev Tab |  ☑️  |
+| `U*d`   | `*safari`&#124;`*chrome` |   ⇧⌘\]   | Next Tab |  ☑️  |
 
 you can simply:
 
-- right click, drag mouse upwards, and every `u` (mouse wheel scroll up) triggers a **Prev Tab** action
+- right click, drag mouse upwards, and every `u` (mouse wheel scroll up) triggers a **Prev Tab** action,
 - right click, drag mouse upwards, and every `d` (mouse wheel scroll down) triggers a **Next Tab** action.
+
+Switching between multiple tabs in the browser is now a piece of cake! 😎
 
 ### Exporting and importing MacGesture preferences
 
@@ -129,15 +134,15 @@ You can prepend `!`, then the app you want to exclude (still wildcard).
 
 For example, the original one:
 
-| Gesture | Filter             | Action   | Note     | Trigger on every match |
-| :-----: | :----------------- | :------: | :------: | :--------------------- |
-| `U*d`   | `*`                |   ⇧⌘]    | Next Tab | Checked                |
+| Gesture | Filter             | Action   | Note     |  ⚡️  |
+| :-----: | :----------------- | :------: | :------: | :-: |
+| `U*d`   | `*`                |   ⇧⌘\]   | Next Tab |  ☑️  |
 
 Then, in order to exclude Safari, change this to:
 
-| Gesture | Filter             | Action   | Note     | Trigger on every match |
-| :-----: | :----------------- | :------: | :------: | :--------------------- |
-| `U*d`   | `*|!*safari`       |   ⇧⌘]    | Next Tab | Checked                |
+| Gesture | Filter              | Action   | Note     |  ⚡️  |
+| :-----: | :------------------ | :------: | :------: | :-: |
+| `U*d`   | `*`&#124;`!*safari` |   ⇧⌘\]   | Next Tab |  ☑️  |
 
 Then you will experience the expected behaviour.
 
@@ -148,7 +153,7 @@ Feel free to open [an issue on GitHub](https://github.com/MacGesture/MacGesture/
 ## Contributors
 
 - [CodeFalling](https://github.com/xcodebuild) – original author
-- [username0x0a](https://github.com/username0x0a) – maintainer
+- [username0x0a](https://github.com/username0x0a) – maintainer
 - [jiegec](https://github.com/jiegec)
 - [zhangciwu](https://github.com/zhangciwu)
 

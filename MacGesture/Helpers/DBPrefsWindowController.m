@@ -34,7 +34,7 @@
 #pragma mark -
 #pragma mark Setup & Teardown
 
-- (id)initWithWindow:(NSWindow *)window{
+- (instancetype)initWithWindow:(NSWindow *)window{
 	if((self = [super initWithWindow:nil])){
         // Set up an array and some dictionaries to keep track
         // of the views we'll be displaying.
@@ -241,6 +241,8 @@
 
 - (void)crossFadeView:(NSView *)oldView withView:(NSView *)newView{
     [self.viewAnimation stopAnimation];
+
+    if (!oldView || !newView) return;
 
     NSEventModifierFlags flags = self.window.currentEvent.modifierFlags;
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06B87A1A27383985003239A5 /* Foundation+BetterNSCopying.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B87A1827383985003239A5 /* Foundation+BetterNSCopying.m */; };
 		1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381E4AB1824E7E800E815F5 /* Cocoa.framework */; };
 		1381E4B81824E7E800E815F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4B71824E7E800E815F5 /* main.m */; };
 		1381E4BF1824E7E800E815F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4BE1824E7E800E815F5 /* AppDelegate.m */; };
@@ -55,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06B87A1827383985003239A5 /* Foundation+BetterNSCopying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+BetterNSCopying.m"; sourceTree = "<group>"; };
+		06B87A1927383985003239A5 /* Foundation+BetterNSCopying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Foundation+BetterNSCopying.h"; sourceTree = "<group>"; };
 		1381E4AB1824E7E800E815F5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1381E4B31824E7E800E815F5 /* MacGesture-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacGesture-Info.plist"; sourceTree = "<group>"; };
 		1381E4B71824E7E800E815F5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; usesTabs = 0; };
@@ -304,6 +307,8 @@
 				BB004AFE25BDA30300A7373F /* ComboColorWell.m */,
 				BB004AF925BD001900A7373F /* DBPrefsWindowController.h */,
 				BB004AF825BD001900A7373F /* DBPrefsWindowController.m */,
+				06B87A1927383985003239A5 /* Foundation+BetterNSCopying.h */,
+				06B87A1827383985003239A5 /* Foundation+BetterNSCopying.m */,
 				2641846D9674154891849969 /* SRRecorderControlWithTagid.h */,
 				264180FBF385AF13387254C2 /* SRRecorderControlWithTagid.m */,
 				26418C419A597E159158ED0D /* utils.h */,
@@ -485,6 +490,7 @@
 				1381E4B81824E7E800E815F5 /* main.m in Sources */,
 				1381E4BF1824E7E800E815F5 /* AppDelegate.m in Sources */,
 				88331A3B1C9D22290064ADD5 /* AppleScriptsList.m in Sources */,
+				06B87A1A27383985003239A5 /* Foundation+BetterNSCopying.m in Sources */,
 				BB004AFA25BD001900A7373F /* DBPrefsWindowController.m in Sources */,
 				264183649CB68AD1A072883A /* AppPrefsWindowController.m in Sources */,
 				264184A9FF52175212CBE73F /* CanvasWindow.m in Sources */,

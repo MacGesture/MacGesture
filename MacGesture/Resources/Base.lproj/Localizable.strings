@@ -102,3 +102,15 @@
 
 /* No comment provided by engineer. */
 "Welcome to MacGesture! 🎉" = "Welcome to MacGesture! 🎉";
+
+/* No comment provided by engineer. */
+"For automatic start of MacGesture on Login, it needs to be placed in the Applications folder. Please move MacGesture to Applications folder and relaunch it so this feature can be enabled." = "For automatic start of MacGesture on Login, it needs to be placed in the Applications folder. Please move MacGesture to Applications folder and relaunch it so this feature can be enabled.";
+
+/* No comment provided by engineer. */
+"MacGesture is placed in an unsupported location" = "MacGesture is placed in an unsupported location";
+
+/* No comment provided by engineer. */
+"Trigger on every match" = "Trigger on every match";
+
+/* No comment provided by engineer. */
+"New AppleScript" = "New AppleScript";

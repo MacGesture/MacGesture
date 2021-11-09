@@ -28,7 +28,7 @@
     [window orderFront:self];
 }
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         [self reinitWindow];

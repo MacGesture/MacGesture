@@ -61,7 +61,7 @@ static CGFloat noteCornerRadius = 16;
     return result;
 }
 
-- (id)initWithFrame:(NSRect)frame
+- (instancetype)initWithFrame:(NSRect)frame
 {
     if (self = [super initWithFrame:frame])
     {

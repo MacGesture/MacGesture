@@ -8,22 +8,23 @@
 
 #import <Cocoa/Cocoa.h>
 
-@protocol AppPickerCallback;
+@protocol AppPickerCallback
 
-@interface AppPickerWindowController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource>
-- (NSString *)generateFilter;
-
-- (void)showDialog;
-
-@property(nonatomic, strong) NSTextView *addedToTextView;
-@property(nonatomic, strong) NSWindowController <AppPickerCallback> *parentWindow;
-@property(nonatomic, strong) IBOutlet NSTableView *filtersTableView;
-@property(nonatomic, assign) NSUInteger indexForParentWindow;
-@property(nonatomic, strong) IBOutlet NSTextField *loadingLabel;
+@required
+- (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index;
 
 @end
 
-@protocol AppPickerCallback
-- (void)rulePickCallback:(NSString *)rulesStringSplitedByStick atIndex:(NSInteger)index;
+@interface AppPickerWindowController : NSWindowController
+
+@property(nonatomic, weak) NSWindowController<AppPickerCallback> *parentWindow;
+@property(nonatomic, assign) NSUInteger indexForParentWindow;
+
+@property(nonatomic, strong) IBOutlet NSTableView *filtersTableView;
+@property(nonatomic, strong) IBOutlet NSTextField *loadingLabel;
+@property(nonatomic, strong) NSTextView *addedToTextView;
+
+- (NSString *)generateFilter;
+- (void)showDialog;
 
 @end
