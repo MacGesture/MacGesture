@@ -120,5 +120,15 @@
         sparkle:dsaSignature="MC0CFQCulBw2JOFPvWFkLBXvMbCNrlpYZQIUUqHpNi8GeHelsjLy6BxuSJwDb1c=" />
       <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
     </item>
+    <item>
+      <title>Version 3.1.0</title>
+      <sparkle:releaseNotesLink>https://macgesture.github.io/MacGesture/CHANGELOG.html</sparkle:releaseNotesLink>
+      <pubDate>Tue, 09 Nov 2021 19:05:00 +0100</pubDate>
+      <enclosure url="https://github.com/MacGesture/MacGesture/releases/download/3.1.0/MacGesture-3.1.0.zip"
+        sparkle:shortVersionString="3.1.0" sparkle:version="194" length="2092905" type="application/octet-stream"
+        sparkle:edSignature="k4Hq5/MOhfiNpUigoWgcAI+rx4sFtjrV42RoX10whJZxXquunKkPhYj96K+fPGVRLrAAp8HBL6TQt/9b5veFAQ=="
+        sparkle:dsaSignature="MC4CFQDP2pCsen8bVlx0LlWud0OoNniRjgIVAK66uOWnU/7Fmoa2ypsX+HD1Monr" />
+      <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+    </item>
   </channel>
 </rss>
