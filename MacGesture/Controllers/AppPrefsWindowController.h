@@ -27,7 +27,7 @@
 
 @property(weak) IBOutlet NSTableView *rulesTableView;
 
-@property(strong) IBOutlet SUUpdater *updater;
+@property(strong) IBOutlet SPUStandardUpdaterController *updater;
 
 @property(weak) IBOutlet NSButton *autoStartAtLogin;
 
