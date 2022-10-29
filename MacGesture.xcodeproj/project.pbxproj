@@ -118,7 +118,6 @@
 		D0B19D461E384BAE00619F4A /* AppleScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppleScriptCommand.h; sourceTree = "<group>"; usesTabs = 0; };
 		D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppleScriptCommand.m; sourceTree = "<group>"; usesTabs = 0; };
 		D6B13184249E54270014F55E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		D6B13185249E54300014F55E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D6B13186249E54330014F55E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D6B13187249E54550014F55E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/README.html; sourceTree = "<group>"; };
 		D6B1318B249E54D00014F55E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
@@ -176,7 +175,6 @@
 			children = (
 				D6B13184249E54270014F55E /* AppKit.framework */,
 				1381E4AB1824E7E800E815F5 /* Cocoa.framework */,
-				D6B13185249E54300014F55E /* CoreData.framework */,
 				C610961B1DED98C700FCC263 /* CoreImage.framework */,
 				D6B13186249E54330014F55E /* Foundation.framework */,
 				BBC1C8E525BCCDC600DE6816 /* WebKit.framework */,
@@ -187,9 +185,9 @@
 		1381E4B11824E7E800E815F5 /* MacGesture */ = {
 			isa = PBXGroup;
 			children = (
+				3CDC5D998F35E9F8C91C7789 /* Models */,
 				EF4E721F249A886C0095B982 /* Views */,
 				EF4E721E249A880A0095B982 /* Controllers */,
-				3CDC5D998F35E9F8C91C7789 /* Models */,
 				EF8ECEC9249FC4A8004C2563 /* Helpers */,
 				264189E588806C286B6552A8 /* Resources */,
 				1381E4B21824E7E800E815F5 /* Supporting Files */,
@@ -354,7 +352,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MCG;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = MacGesture;
 				TargetAttributes = {
 					1381E4A71824E7E800E815F5 = {
@@ -423,6 +421,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		D02885E91EF29E1B0082A660 /* Update Translations */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
