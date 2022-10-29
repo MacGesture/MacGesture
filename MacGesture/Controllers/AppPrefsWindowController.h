@@ -5,7 +5,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Webkit/Webkit.h>
 #import "DBPrefsWindowController.h"
-#import "SRRecorderControl.h"
+#import <ShortcutRecorder/SRRecorderControl.h>
 #import "AppPickerWindowController.h"
 #import <Sparkle/Sparkle.h>
 

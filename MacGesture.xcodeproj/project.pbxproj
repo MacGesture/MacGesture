@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0681E208290D3AAB00A17715 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 0681E207290D3AAB00A17715 /* Sparkle */; };
+		0681E20B290D3AC600A17715 /* ShortcutRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = 0681E20A290D3AC600A17715 /* ShortcutRecorder */; };
 		06B87A1A27383985003239A5 /* Foundation+BetterNSCopying.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B87A1827383985003239A5 /* Foundation+BetterNSCopying.m */; };
 		1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381E4AB1824E7E800E815F5 /* Cocoa.framework */; };
 		1381E4B81824E7E800E815F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4B71824E7E800E815F5 /* main.m */; };
@@ -132,9 +134,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */,
 				1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */,
+				C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */,
 				BBC1C8E625BCCDC600DE6816 /* WebKit.framework in Frameworks */,
+				0681E20B290D3AC600A17715 /* ShortcutRecorder in Frameworks */,
+				0681E208290D3AAB00A17715 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +322,10 @@
 			dependencies = (
 			);
 			name = MacGesture;
+			packageProductDependencies = (
+				0681E207290D3AAB00A17715 /* Sparkle */,
+				0681E20A290D3AC600A17715 /* ShortcutRecorder */,
+			);
 			productName = MacGesture;
 			productReference = EF4E7293249AAF960095B982 /* MacGesture.app */;
 			productType = "com.apple.product-type.application";
@@ -368,6 +376,10 @@
 				cs,
 			);
 			mainGroup = 1381E49F1824E7E800E815F5;
+			packageReferences = (
+				0681E206290D3AAB00A17715 /* XCRemoteSwiftPackageReference "Sparkle" */,
+				0681E209290D3AC600A17715 /* XCRemoteSwiftPackageReference "ShortcutRecorder" */,
+			);
 			productRefGroup = 1381E4A91824E7E800E815F5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -744,6 +756,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0681E206290D3AAB00A17715 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:sparkle-project/Sparkle.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		0681E209290D3AC600A17715 /* XCRemoteSwiftPackageReference "ShortcutRecorder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Kentzo/ShortcutRecorder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0681E207290D3AAB00A17715 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0681E206290D3AAB00A17715 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		0681E20A290D3AC600A17715 /* ShortcutRecorder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0681E209290D3AC600A17715 /* XCRemoteSwiftPackageReference "ShortcutRecorder" */;
+			productName = ShortcutRecorder;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1381E4A01824E7E800E815F5 /* Project object */;
 }
