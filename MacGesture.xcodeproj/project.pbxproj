@@ -668,6 +668,10 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "$(PRODUCT)/Supporting Files/$(PRODUCT)-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE)";
 				PRODUCT_NAME = "$(PRODUCT)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -684,6 +688,10 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "$(PRODUCT)/Supporting Files/$(PRODUCT)-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE)";
 				PRODUCT_NAME = "$(PRODUCT)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
