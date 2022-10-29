@@ -4,7 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SRRecorderControl.h"
+#import <ShortcutRecorder/SRRecorderControl.h>
 
 
 @interface SRRecorderControlWithTagid : SRRecorderControl

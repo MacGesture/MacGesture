@@ -5,7 +5,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Webkit/Webkit.h>
 #import "DBPrefsWindowController.h"
-#import "SRRecorderControl.h"
+#import <ShortcutRecorder/SRRecorderControl.h>
 #import "AppPickerWindowController.h"
 #import <Sparkle/Sparkle.h>
 
@@ -27,7 +27,7 @@
 
 @property(weak) IBOutlet NSTableView *rulesTableView;
 
-@property(strong) IBOutlet SUUpdater *updater;
+@property(strong) IBOutlet SPUStandardUpdaterController *updater;
 
 @property(weak) IBOutlet NSButton *autoStartAtLogin;
 
