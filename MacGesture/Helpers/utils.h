@@ -26,3 +26,10 @@ BOOL wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase)
 + (void)makeLoginItemActive:(BOOL)active;
 
 @end
+
+
+#if DEBUG == 0
+#define DebugLog(...)
+#elif DEBUG == 1
+#define DebugLog(...) NSLog(__VA_ARGS__)
+#endif

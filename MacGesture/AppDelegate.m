@@ -318,6 +318,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
     NSEvent *mouseEvent;
     switch (type) {
         case kCGEventRightMouseDown:
+            DebugLog(@"kCGEventRightMouseDown");
             // not thread safe, but it's always called on main thread
             // check blocker apps
             //    if(wildLike(frontBundleName(), [defaults stringForKey:@"blockFilter"])){
@@ -360,6 +361,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             lastLocation = mouseEvent.locationInWindow;
             break;
         case kCGEventRightMouseDragged:
+            DebugLog(@"kCGEventRightMouseDragged");
             if (!shouldShow){
                 return event;
             }
@@ -373,15 +375,27 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                     NSPoint lastPoint = CGEventGetLocation(mouseDraggedEvent);
                     NSPoint currentPoint = [mouseEvent locationInWindow];
                     // FIXME: use which screen?
+                    // Here use main screen
                     NSRect screen = [[NSScreen mainScreen] frame];
-                    float d1 = fabs(lastPoint.x - screen.origin.x), d2 = fabs(lastPoint.x - screen.origin.x - screen.size.width);
-                    float d3 = fabs(lastPoint.y - screen.origin.y), d4 = fabs(lastPoint.y - screen.origin.y - screen.size.height);
-                    
-                    float d5 = fabs(currentPoint.x - screen.origin.x - screen.size.width/2), d6 = fabs(currentPoint.y - screen.origin.y - screen.size.height/2);
-                    
+                    // The distance from the cursor to the left of the main screen
+                    float d1 = fabs(lastPoint.x - screen.origin.x);
+                    // The distance from the cursor to the right of the main screen
+                    float d2 = fabs(lastPoint.x - screen.origin.x - screen.size.width);
+                    // The distance from the cursor to the top of the main screen
+                    float d3 = fabs(lastPoint.y - screen.origin.y);
+                    // The distance from the cursor to the bottom of the main screen
+                    float d4 = fabs(lastPoint.y - screen.origin.y - screen.size.height);
+                    // The distance from the cursor to the center of the main screen in the horizontal direction
+                    float d5 = fabs(currentPoint.x - screen.origin.x - screen.size.width/2);
+                    // The distance from the cursor to the center of the main screen in the vertical direction
+                    float d6 = fabs(currentPoint.y - screen.origin.y - screen.size.height/2);
+ 
+                    DebugLog(@"d1: %f, d2: %f, d3: %f, d4: %f, d5: %f, d6: %f", d1, d2, d3, d4, d5, d6);
+
                     const float threshold = 30.0;
                     if ((d1 < threshold || d2 < threshold || d3 < threshold || d4 < threshold) &&
                         d5 < threshold && d6 < threshold) {
+                        DebugLog(@"CFRelease(mouseDownEvent)");
                         CFRelease(mouseDraggedEvent);
                         CFRelease(mouseDownEvent);
                         mouseDownEvent = mouseDraggedEvent = NULL;
@@ -403,6 +417,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             }
             break;
         case kCGEventRightMouseUp: {
+            DebugLog(@"kCGEventRightMouseUp");
             if (!shouldShow){
                 return event;
             }
@@ -417,10 +432,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 
                 if (!eventTriggered) {
                     CGEventPost(kCGSessionEventTap, mouseDownEvent);
-                    //if (mouseDraggedEvent) {
-                    //    CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
-                    //}
-                    
+       
                     // Fix issue #70 dunno why here
                     usleep(1000);
                     CGEventPost(kCGSessionEventTap, event);
@@ -436,6 +448,11 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             shouldShow = NO;
             
             resetDirection();
+            
+            // if not event triggered, return the event
+            if (!eventTriggered) {
+                return event;
+            }
             break;
         }
         case kCGEventScrollWheel: {
@@ -446,16 +463,16 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
             BOOL unnaturalDirection = mouseEvent.isDirectionInvertedFromDevice;
             if (unnaturalDirection) {} // delta *= -1;
-            // NSLog(@"scrollWheel delta:%f", delta);
+            DebugLog(@"scrollWheel delta:%f", delta);
             
             NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate];
             if (current - lastMouseWheelEventTime > 0.3) {
                 if (delta > 0) {
-                    // NSLog(@"Traditional scroll wheel up!");
+                    DebugLog(@"Traditional scroll wheel up!");
                     addDirection('u', true);
                     eventTriggered = YES;
                 } else if (delta < 0){
-                    // NSLog(@"Traditional scroll wheel down!");
+                    DebugLog(@"Traditional scroll wheel down!");
                     addDirection('d', true);
                     eventTriggered = YES;
                 }
@@ -464,7 +481,9 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             break;
         }
         case kCGEventTapDisabledByUserInput:
+            DebugLog(@"kCGEventTapDisabledByUserInput");
         case kCGEventTapDisabledByTimeout:
+            DebugLog(@"kCGEventTapDisabledByTimeout");
             CGEventTapEnable(mouseEventTap, true); // re-enable
             // windowController.enable = isEnable;
             break;
