@@ -173,23 +173,36 @@ static NSUserDefaults *defaults;
     NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
 
     if ([defaults boolForKey:@"showIconInStatusBar"]) {
-        NSStatusItem *item = [statusBar statusItemWithLength:NSVariableStatusItemLength];
 
-        NSImage *menuIcon = [NSImage imageNamed:@"menubar_icon"];
-        if (@available(macOS 11.0, *)) menuIcon = [NSImage imageNamed:@"menubar_icon-big_sur"];
+        NSStatusItem *item = self.statusItem
+                          ?: [statusBar statusItemWithLength:NSVariableStatusItemLength];
+
+        NSString *iconName = @"menubar_icon";
+        if (!_enabled) iconName = [iconName stringByAppendingString:@"-disabled"];
+        if (@available(macOS 11.0, *)) iconName = [iconName stringByAppendingString:@"-big_sur"];
+
+        NSImage *menuIcon = [NSImage imageNamed:iconName];
         menuIcon.template = YES;
-
         item.image = menuIcon;
 //        item.alternateImage = highlightIcon;
         item.menu = self.statusItemMenu;
-        item.highlightMode = YES;
+
+        if (@available(macOS 11.0, *));
+        else item.highlightMode = YES;
+
         self.statusItem = item;
+
     } else {
         if (self.statusItem) {
             [statusBar removeStatusItem:self.statusItem];
             self.statusItem = nil;
         }
     }
+}
+
+- (void)setEnabled:(BOOL)enabled {
+    _enabled = enabled;
+    [self updateStatusBarItem];
 }
 
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
@@ -210,17 +223,6 @@ static NSUserDefaults *defaults;
 
 - (void)appPrefsDidClose {
     _preferencesWindowController = nil;
-}
-
-- (void)setEnabled:(BOOL)enabled {
-    _enabled = enabled;
-    if ([self statusItem]) {
-        NSString *menuIconName = @"menubar_icon-disabled";
-        if (enabled) menuIconName = @"menubar_icon";
-        if (@available(macOS 11.0, *)) menuIconName = [menuIconName stringByAppendingString:@"-big_sur"];
-        NSImage *menuIcon = [NSImage imageNamed:menuIconName];
-        [[self statusItem] setImage:menuIcon];
-    }
 }
 
 - (IBAction)openPreferences:(id)sender {

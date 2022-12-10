@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0681E208290D3AAB00A17715 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 0681E207290D3AAB00A17715 /* Sparkle */; };
+		0681E20B290D3AC600A17715 /* ShortcutRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = 0681E20A290D3AC600A17715 /* ShortcutRecorder */; };
 		06B87A1A27383985003239A5 /* Foundation+BetterNSCopying.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B87A1827383985003239A5 /* Foundation+BetterNSCopying.m */; };
 		1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1381E4AB1824E7E800E815F5 /* Cocoa.framework */; };
 		1381E4B81824E7E800E815F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1381E4B71824E7E800E815F5 /* main.m */; };
@@ -23,7 +25,6 @@
 		26418E623E410EF207EFA2A8 /* RulesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26418733B12703C123D16E95 /* RulesList.m */; };
 		3CDC524D2930406CB9272085 /* MGOptionsDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */; };
 		3CDC5543D4E5BD248515F7CA /* BlockAllowFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDC55835ADD1CA85B9CCC91 /* BlockAllowFilter.m */; };
-		3F27E5B397E8FBC9824D259E /* Pods_MacGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D969966A19E929C25549B82 /* Pods_MacGesture.framework */; };
 		880AA7571CA5738A006E7A74 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA7591CA5738A006E7A74 /* Preferences.xib */; };
 		880AA7641CA5745D006E7A74 /* AppPickerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75D1CA5745D006E7A74 /* AppPickerWindowController.xib */; };
 		880AA7651CA5745D006E7A74 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 880AA75F1CA5745D006E7A74 /* Credits.rtf */; };
@@ -84,7 +85,6 @@
 		3CDC56147BD933CE0A3EC116 /* MGOptionsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MGOptionsDefine.h; sourceTree = "<group>"; usesTabs = 0; };
 		3CDC5A614857FE77ADFEA4C8 /* BlockAllowFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BlockAllowFilter.h; sourceTree = "<group>"; usesTabs = 0; };
 		3CDC5E8230A2649DBD0DE765 /* MGOptionsDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MGOptionsDefine.m; sourceTree = "<group>"; usesTabs = 0; };
-		7D969966A19E929C25549B82 /* Pods_MacGesture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacGesture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		880AA7751CA64DDB006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		880AA7781CA64E62006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AppPickerWindowController.xib; sourceTree = "<group>"; };
 		880AA77A1CA64E7C006E7A74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -97,7 +97,6 @@
 		88EB641B1CCA328C0018A8BE /* OpenMacGesturePreferences.applescript-src */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "OpenMacGesturePreferences.applescript-src"; sourceTree = "<group>"; };
 		B6F75AE01BD65BDD00A8CF63 /* AppPickerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppPickerWindowController.h; sourceTree = "<group>"; usesTabs = 0; };
 		B6F75AE11BD65BDD00A8CF63 /* AppPickerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppPickerWindowController.m; sourceTree = "<group>"; usesTabs = 0; };
-		B8BB5D7B835E0DF34F8BA0D6 /* Pods-MacGesture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.debug.xcconfig"; path = "Target Support Files/Pods-MacGesture/Pods-MacGesture.debug.xcconfig"; sourceTree = "<group>"; };
 		BB004AF825BD001900A7373F /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
 		BB004AF925BD001900A7373F /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
 		BB004AFD25BDA30300A7373F /* ComboColorWell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComboColorWell.h; sourceTree = "<group>"; };
@@ -119,13 +118,11 @@
 		D0B19D461E384BAE00619F4A /* AppleScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppleScriptCommand.h; sourceTree = "<group>"; usesTabs = 0; };
 		D0B19D471E384BAE00619F4A /* AppleScriptCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppleScriptCommand.m; sourceTree = "<group>"; usesTabs = 0; };
 		D6B13184249E54270014F55E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		D6B13185249E54300014F55E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D6B13186249E54330014F55E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D6B13187249E54550014F55E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/README.html; sourceTree = "<group>"; };
 		D6B1318B249E54D00014F55E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		D6B1318D249E54E10014F55E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppPickerWindowController.strings; sourceTree = "<group>"; };
 		D6B1318F249E55C90014F55E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
-		DB275F9AADC2DB3FB7986EF0 /* Pods-MacGesture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacGesture.release.xcconfig"; path = "Target Support Files/Pods-MacGesture/Pods-MacGesture.release.xcconfig"; sourceTree = "<group>"; };
 		EF4E7293249AAF960095B982 /* MacGesture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacGesture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4E72C5249ABAE00095B982 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		EF8ECEC8249EC5F2004C2563 /* MacGesture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacGesture.entitlements; sourceTree = "<group>"; };
@@ -136,10 +133,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */,
 				1381E4AC1824E7E800E815F5 /* Cocoa.framework in Frameworks */,
+				C610961C1DED98C700FCC263 /* CoreImage.framework in Frameworks */,
 				BBC1C8E625BCCDC600DE6816 /* WebKit.framework in Frameworks */,
-				3F27E5B397E8FBC9824D259E /* Pods_MacGesture.framework in Frameworks */,
+				0681E20B290D3AC600A17715 /* ShortcutRecorder in Frameworks */,
+				0681E208290D3AAB00A17715 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +159,6 @@
 				1381E4CF1824E7E800E815F5 /* MacGestureTests */,
 				1381E4AA1824E7E800E815F5 /* Frameworks */,
 				1381E4A91824E7E800E815F5 /* Products */,
-				E06E22524ADF3886B4BC27CB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,11 +175,9 @@
 			children = (
 				D6B13184249E54270014F55E /* AppKit.framework */,
 				1381E4AB1824E7E800E815F5 /* Cocoa.framework */,
-				D6B13185249E54300014F55E /* CoreData.framework */,
 				C610961B1DED98C700FCC263 /* CoreImage.framework */,
 				D6B13186249E54330014F55E /* Foundation.framework */,
 				BBC1C8E525BCCDC600DE6816 /* WebKit.framework */,
-				7D969966A19E929C25549B82 /* Pods_MacGesture.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -190,9 +185,9 @@
 		1381E4B11824E7E800E815F5 /* MacGesture */ = {
 			isa = PBXGroup;
 			children = (
+				3CDC5D998F35E9F8C91C7789 /* Models */,
 				EF4E721F249A886C0095B982 /* Views */,
 				EF4E721E249A880A0095B982 /* Controllers */,
-				3CDC5D998F35E9F8C91C7789 /* Models */,
 				EF8ECEC9249FC4A8004C2563 /* Helpers */,
 				264189E588806C286B6552A8 /* Resources */,
 				1381E4B21824E7E800E815F5 /* Supporting Files */,
@@ -267,15 +262,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		E06E22524ADF3886B4BC27CB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B8BB5D7B835E0DF34F8BA0D6 /* Pods-MacGesture.debug.xcconfig */,
-				DB275F9AADC2DB3FB7986EF0 /* Pods-MacGesture.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		EF4E721E249A880A0095B982 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,18 +310,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1381E4D91824E7E800E815F5 /* Build configuration list for PBXNativeTarget "MacGesture" */;
 			buildPhases = (
-				237E7048FBA3C44743A62A1C /* [CP] Check Pods Manifest.lock */,
 				1381E4A41824E7E800E815F5 /* Sources */,
 				1381E4A51824E7E800E815F5 /* Frameworks */,
 				1381E4A61824E7E800E815F5 /* Resources */,
 				D02885E91EF29E1B0082A660 /* Update Translations */,
-				D04D17BB4E5D9DB1C8145C08 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = MacGesture;
+			packageProductDependencies = (
+				0681E207290D3AAB00A17715 /* Sparkle */,
+				0681E20A290D3AC600A17715 /* ShortcutRecorder */,
+			);
 			productName = MacGesture;
 			productReference = EF4E7293249AAF960095B982 /* MacGesture.app */;
 			productType = "com.apple.product-type.application";
@@ -364,7 +352,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MCG;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = MacGesture;
 				TargetAttributes = {
 					1381E4A71824E7E800E815F5 = {
@@ -386,6 +374,10 @@
 				cs,
 			);
 			mainGroup = 1381E49F1824E7E800E815F5;
+			packageReferences = (
+				0681E206290D3AAB00A17715 /* XCRemoteSwiftPackageReference "Sparkle" */,
+				0681E209290D3AC600A17715 /* XCRemoteSwiftPackageReference "ShortcutRecorder" */,
+			);
 			productRefGroup = 1381E4A91824E7E800E815F5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -427,30 +419,9 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		237E7048FBA3C44743A62A1C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MacGesture-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D02885E91EF29E1B0082A660 /* Update Translations */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -462,23 +433,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which bartycrouch > /dev/null; then\n    bartycrouch update\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\n    echo \"         or using Homebrew by running `brew install bartycrouch` command\"\nfi\n";
-		};
-		D04D17BB4E5D9DB1C8145C08 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MacGesture/Pods-MacGesture-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -706,7 +660,6 @@
 		};
 		1381E4DA1824E7E800E815F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8BB5D7B835E0DF34F8BA0D6 /* Pods-MacGesture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "$(PRODUCT)/$(PRODUCT).entitlements";
@@ -715,6 +668,10 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "$(PRODUCT)/Supporting Files/$(PRODUCT)-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE)";
 				PRODUCT_NAME = "$(PRODUCT)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -723,7 +680,6 @@
 		};
 		1381E4DB1824E7E800E815F5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB275F9AADC2DB3FB7986EF0 /* Pods-MacGesture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "$(PRODUCT)/$(PRODUCT).entitlements";
@@ -732,6 +688,10 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "$(PRODUCT)/Supporting Files/$(PRODUCT)-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE)";
 				PRODUCT_NAME = "$(PRODUCT)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -803,6 +763,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0681E206290D3AAB00A17715 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:sparkle-project/Sparkle.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		0681E209290D3AC600A17715 /* XCRemoteSwiftPackageReference "ShortcutRecorder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Kentzo/ShortcutRecorder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0681E207290D3AAB00A17715 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0681E206290D3AAB00A17715 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		0681E20A290D3AC600A17715 /* ShortcutRecorder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0681E209290D3AC600A17715 /* XCRemoteSwiftPackageReference "ShortcutRecorder" */;
+			productName = ShortcutRecorder;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1381E4A01824E7E800E815F5 /* Project object */;
 }

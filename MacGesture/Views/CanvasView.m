@@ -304,6 +304,27 @@ static CGFloat noteCornerRadius = 16;
         NSFont *font = [NSFont fontWithName:fontName size:fontSize];
         NSColor *fontColor = _noteColor;
 
+        if (!font) {
+
+            NSDictionary<NSString *, NSNumber *> *systemFonts = @{
+                @".SFNS-Ultralight":   @(NSFontWeightUltraLight), // 100
+                @".SFNS-Thin":         @(NSFontWeightThin),       // 200
+                @".SFNS-Light":        @(NSFontWeightLight),      // 300
+                @".SFNS-Regular":      @(NSFontWeightRegular),    // 400
+                @".SFNS-Medium":       @(NSFontWeightMedium),     // 500
+                @".SFNS-Semibold":     @(NSFontWeightSemibold),   // 600
+                @".SFNS-Bold":         @(NSFontWeightBold),       // 700
+                @".SFNS-Heavy":        @(NSFontWeightHeavy),      // 800
+                @".SFNS-Black":        @(NSFontWeightBlack),      // 900
+            };
+
+            NSAssert(systemFonts[fontName], @"No font found for '%@' name", fontName);
+
+            NSFontWeight fontWeight = systemFonts[fontName].unsignedIntegerValue ?: NSFontWeightMedium;
+
+            font = [NSFont systemFontOfSize:fontSize weight:fontWeight];
+        }
+
 //        NSLog(@"%p %p", font, noteColor);
         NSDictionary *textAttributes = @{
             NSFontAttributeName: font,
