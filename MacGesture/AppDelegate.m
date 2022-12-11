@@ -397,7 +397,6 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                     const float threshold = 30.0;
                     if ((d1 < threshold || d2 < threshold || d3 < threshold || d4 < threshold) &&
                         d5 < threshold && d6 < threshold) {
-                        DebugLog(@"CFRelease(mouseDownEvent)");
                         CFRelease(mouseDraggedEvent);
                         CFRelease(mouseDownEvent);
                         mouseDownEvent = mouseDraggedEvent = NULL;
@@ -433,6 +432,8 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                 }
                 
                 if (!eventTriggered) {
+                    CGPoint location = CGEventGetLocation(event);
+                    CGEventSetLocation(mouseDownEvent, location);
                     CGEventPost(kCGSessionEventTap, mouseDownEvent);
        
                     // Fix issue #70 dunno why here
