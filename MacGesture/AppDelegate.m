@@ -451,11 +451,6 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             shouldShow = NO;
             
             resetDirection();
-            
-            // if not event triggered, return the event
-            if (!eventTriggered) {
-                return event;
-            }
             break;
         }
         case kCGEventScrollWheel: {
