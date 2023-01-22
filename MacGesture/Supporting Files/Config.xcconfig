@@ -11,5 +11,5 @@
 
 PRODUCT        = MacGesture
 APP_BUNDLE     = com.codefalling.$(PRODUCT:rfc1034identifier)
-APP_VERSION    = 3.1.0
-APP_BUILD      = 194
+APP_VERSION    = 3.2.0
+APP_BUILD      = 198

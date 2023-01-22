@@ -114,16 +114,31 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     if (flags == kCGEventFlagMaskControl && [[NSUserDefaults standardUserDefaults] boolForKey:@"invertFnWhenControl"]) {
         flags ^= kCGEventFlagMaskSecondaryFn;
     }
+    
+    bool hasShift = false;
+    if (flags & kCGEventFlagMaskShift) {
+        hasShift = true;
+    }
+
     CGEventSourceRef source = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
+
     CGEventRef event = CGEventCreateKeyboardEvent(source, virtualKey, true);
     CGEventSetFlags(event, flags);
     CGEventPost(kCGHIDEventTap, event);
     CFRelease(event);
-    
+
     event = CGEventCreateKeyboardEvent(source, virtualKey, false);
     CGEventSetFlags(event, flags);
     CGEventPost(kCGHIDEventTap, event);
     CFRelease(event);
+
+    // Fix issue #106. We should send keyup event for `shift` manually.
+    // https://stackoverflow.com/questions/2008126/cgeventpost-possible-bug-when-simulating-keyboard-events
+    if (hasShift) {
+        event = CGEventCreateKeyboardEvent(source, (CGKeyCode)56, false);
+        CGEventPost(kCGHIDEventTap, event);
+        CFRelease(event);
+    }
     
     CFRelease(source);
 }

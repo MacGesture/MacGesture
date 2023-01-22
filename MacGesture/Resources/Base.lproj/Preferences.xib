@@ -51,7 +51,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <userDefaultsController representsSharedInstance="YES" id="72" userLabel="Shared Defaults"/>
-        <customObject id="360" customClass="SUUpdater"/>
+        <customObject id="360" customClass="SPUStandardUpdaterController"/>
         <customView id="99" userLabel="General">
             <rect key="frame" x="0.0" y="0.0" width="560" height="529"/>
             <autoresizingMask key="autoresizingMask"/>
@@ -1039,7 +1039,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <binding destination="360" name="value" keyPath="automaticallyChecksForUpdates" id="bNq-tM-Ueb"/>
+                        <binding destination="360" name="value" keyPath="updater.automaticallyChecksForUpdates" id="6EG-IK-XRG"/>
                         <outlet property="nextKeyView" destination="IvI-o3-JLI" id="iNX-7T-KhZ"/>
                     </connections>
                 </button>
@@ -1051,7 +1051,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <binding destination="360" name="value" keyPath="automaticallyDownloadsUpdates" id="loF-Vc-RY3"/>
+                        <binding destination="360" name="value" keyPath="updater.automaticallyDownloadsUpdates" id="nKX-jD-Thp"/>
                         <outlet property="nextKeyView" destination="IvI-o3-JLI" id="PBd-jV-vhp"/>
                     </connections>
                 </button>

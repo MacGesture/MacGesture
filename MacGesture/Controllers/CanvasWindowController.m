@@ -21,6 +21,7 @@
     NSRect frame = NSScreen.mainScreen.frame;
     NSWindow *window = [[CanvasWindow alloc] initWithContentRect:frame];
     NSView *view = [[CanvasView alloc] initWithFrame:frame];
+    window.ignoresMouseEvents = YES;
     window.contentView = view;
     
     window.collectionBehavior = NSWindowCollectionBehaviorCanJoinAllSpaces;

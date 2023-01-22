@@ -10,6 +10,7 @@
 #import "RulesList.h"
 #import "MGOptionsDefine.h"
 #import <CoreImage/CoreImage.h>
+#import "utils.h"
 
 @interface CanvasView ()
 
@@ -303,6 +304,27 @@ static CGFloat noteCornerRadius = 16;
         NSFont *font = [NSFont fontWithName:fontName size:fontSize];
         NSColor *fontColor = _noteColor;
 
+        if (!font) {
+
+            NSDictionary<NSString *, NSNumber *> *systemFonts = @{
+                @".SFNS-Ultralight":   @(NSFontWeightUltraLight), // 100
+                @".SFNS-Thin":         @(NSFontWeightThin),       // 200
+                @".SFNS-Light":        @(NSFontWeightLight),      // 300
+                @".SFNS-Regular":      @(NSFontWeightRegular),    // 400
+                @".SFNS-Medium":       @(NSFontWeightMedium),     // 500
+                @".SFNS-Semibold":     @(NSFontWeightSemibold),   // 600
+                @".SFNS-Bold":         @(NSFontWeightBold),       // 700
+                @".SFNS-Heavy":        @(NSFontWeightHeavy),      // 800
+                @".SFNS-Black":        @(NSFontWeightBlack),      // 900
+            };
+
+            NSAssert(systemFonts[fontName], @"No font found for '%@' name", fontName);
+
+            NSFontWeight fontWeight = systemFonts[fontName].unsignedIntegerValue ?: NSFontWeightMedium;
+
+            font = [NSFont systemFontOfSize:fontSize weight:fontWeight];
+        }
+
 //        NSLog(@"%p %p", font, noteColor);
         NSDictionary *textAttributes = @{
             NSFontAttributeName: font,
@@ -335,6 +357,7 @@ static CGFloat noteCornerRadius = 16;
     }
 }
 
+// set `needsDisplay` will call `drawRect` method automaticlly
 - (void)drawRect:(NSRect)dirtyRect
 {
     // Draw mouse line
@@ -399,29 +422,19 @@ static CGFloat noteCornerRadius = 16;
     NSWindow *w = self.window;
     _lastLocation.x -= w.frame.origin.x;
     _lastLocation.y -= w.frame.origin.y;
-#ifdef DEBUG
-//    NSLog(@"mouseDown frame:%@, window:%@, screen:%@, point:%@",
-//          NSStringFromRect(self.frame), NSStringFromRect(w.frame),
-//          NSStringFromRect(s.frame), NSStringFromPoint(lastLocation));
-#endif
+
     _points = @[ [NSValue valueWithPoint:_lastLocation] ];
 
-#ifdef DEBUG
-    NSLog(@"%@", NSStringFromPoint(_lastLocation));
-#endif
+    DebugLog(@"mouseDown point %@", NSStringFromPoint(_lastLocation));
 }
 
 - (void)mouseDragged:(NSEvent *)event {
     NSPoint newLocation = event.locationInWindow;
+
     NSWindow *w = self.window;
     newLocation.x -= w.frame.origin.x;
     newLocation.y -= w.frame.origin.y;
 
-#ifdef DEBUG
-//    NSLog(@"mouseDragged frame:%@, window:%@, screen:%@, point:%@",
-//          NSStringFromRect(self.frame), NSStringFromRect(w.frame),
-//          NSStringFromRect(s.frame), NSStringFromPoint(newLocation));
-#endif
 
     _points = [_points arrayByAddingObject:[NSValue valueWithPoint:newLocation]];
     _lastLocation = newLocation;
