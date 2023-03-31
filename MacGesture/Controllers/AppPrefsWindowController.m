@@ -315,11 +315,15 @@ static BOOL isBigSur = NO;
 }
 
 - (void)showAlertWithMessage:(NSString *)message completionHandler:(void (^)(NSModalResponse returnCode))handler {
+    [self showAlertWithMessage:message confirmButtonTitle:NSLocalizedString(@"Yes", nil) cancelButtonTitle:NSLocalizedString(@"No", nil) completionHandler:handler];
+}
+- (void)showAlertWithMessage:(NSString *)message confirmButtonTitle:(NSString *)confirmTitle cancelButtonTitle:(NSString *)cancelTitle completionHandler:(void (^)(NSModalResponse returnCode))handler {
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:message];
     [alert setAlertStyle:NSAlertStyleWarning];
-    [alert addButtonWithTitle:NSLocalizedString(@"Yes", nil)];
-    [alert addButtonWithTitle:NSLocalizedString(@"No", nil)];
+
+    [alert addButtonWithTitle:confirmTitle];
+    [alert addButtonWithTitle:cancelTitle];
 
     NSButton *yesButton = [alert.buttons objectAtIndex:0];
     // Bind Enter key
@@ -329,9 +333,7 @@ static BOOL isBigSur = NO;
     // Bind ESC key
     [noButton setKeyEquivalent:@"\033"];
 
-    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-        handler(returnCode);
-    }];
+    [alert beginSheetModalForWindow:self.window completionHandler:handler];
 }
 
 
@@ -744,14 +746,11 @@ static NSString *currentScriptId = nil;
         NSData *data = [NSData dataWithContentsOfURL:url];
         if (data) [file writeData:data];
         [file closeFile];
-
-        NSUserNotification *notification = [NSUserNotification new];
-        notification.title = [@"MacGesture" copy];
-        notification.informativeText = NSLocalizedString(@"Restart MacGesture to take effect", nil);
-        notification.soundName = NSUserNotificationDefaultSoundName;
-        notification.hasActionButton = NO;
-
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        [self showAlertWithMessage:NSLocalizedString(@"Import data succeeded. Now you need to Quit and reopen MacGesture to take effect.", nil) confirmButtonTitle:NSLocalizedString(@"Quit Now", nil) cancelButtonTitle:NSLocalizedString(@"Later", nil) completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode == NSAlertFirstButtonReturn) {
+                [[NSApplication sharedApplication] terminate:self];
+            }
+        }];
     }
 }
 
