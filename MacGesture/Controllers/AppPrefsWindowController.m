@@ -314,10 +314,36 @@ static BOOL isBigSur = NO;
     view.frame = frame;
 }
 
+- (void)showAlertWithMessage:(NSString *)message completionHandler:(void (^)(NSModalResponse returnCode))handler {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:message];
+    [alert setAlertStyle:NSAlertStyleWarning];
+    [alert addButtonWithTitle:NSLocalizedString(@"Yes", nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"No", nil)];
+
+    NSButton *yesButton = [alert.buttons objectAtIndex:0];
+    // Bind Enter key
+    [yesButton setKeyEquivalent:@"\r"];
+
+    NSButton *noButton = [alert.buttons objectAtIndex:1];
+    // Bind ESC key
+    [noButton setKeyEquivalent:@"\033"];
+
+    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+        handler(returnCode);
+    }];
+}
+
+
 - (IBAction)resetRules:(id)sender {
-    [[RulesList sharedRulesList] reInit];
-    [[RulesList sharedRulesList] save];
-    [_rulesTableView reloadData];
+    [self showAlertWithMessage:NSLocalizedString(@"Are you sure you want to reset all gestures to Default?", nil) completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            // "Yes" pressed
+            [[RulesList sharedRulesList] reInit];
+            [[RulesList sharedRulesList] save];
+            [self->_rulesTableView reloadData];
+        }
+    }];
 }
 
 - (NSString *)toolbarImageNameAdjusted:(NSString *)originalName {
@@ -485,15 +511,20 @@ static BOOL isBigSur = NO;
 }
 
 - (IBAction)resetDefaults:(id)sender {
-    NSURL *defaultPrefsFile = [[NSBundle mainBundle]
-                               URLForResource:@"DefaultPreferences" withExtension:@"plist"];
-    NSDictionary *defaultPrefs = [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
-    for (NSString *key in defaultPrefs) {
-        [defaults setObject:defaultPrefs[key] forKey:key];
-    }
-    [defaults synchronize];
+    [self showAlertWithMessage:NSLocalizedString(@"Are you sure you want to reset all preferences to Default?", nil) completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            // "Yes" pressed
+            NSURL *defaultPrefsFile = [[NSBundle mainBundle]
+                                        URLForResource:@"DefaultPreferences" withExtension:@"plist"];
+            NSDictionary *defaultPrefs = [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
+            for (NSString *key in defaultPrefs) {
+                [defaults setObject:defaultPrefs[key] forKey:key];
+            }
+            [defaults synchronize];
 
-    [MGOptionsDefine restoreDefaults];
+            [MGOptionsDefine restoreDefaults];
+        }
+    }];
 }
 
 - (IBAction)pickBtnDidClick:(id)sender {

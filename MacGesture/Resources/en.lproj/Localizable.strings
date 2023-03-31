@@ -114,3 +114,15 @@
 
 /* No comment provided by engineer. */
 "Welcome to MacGesture! 🎉" = "Welcome to MacGesture! 🎉";
+
+/* No comment provided by engineer. */
+"Yes" = "Yes";
+
+/* No comment provided by engineer. */
+"No" = "No";
+
+/* No comment provided by engineer. */
+"Are you sure you want to reset all preferences to Default?" = "Are you sure you want to reset all preferences to Default?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to reset all gestures to Default?" = "Are you sure you want to reset all gestures to Default?";
