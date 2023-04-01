@@ -114,3 +114,24 @@
 
 /* No comment provided by engineer. */
 "Welcome to MacGesture! 🎉" = "Vítejte v MacGesture! 🎉";
+
+/* No comment provided by engineer. */
+"Yes" = "Ano";
+
+/* No comment provided by engineer. */
+"No" = "Ne";
+
+/* No comment provided by engineer. */
+"Are you sure you want to reset all preferences to Default?" = "Jste si jisti, že chcete obnovit všechna nastavení na výchozí hodnoty?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to reset all gestures to Default?" = "Jste si jisti, že chcete obnovit všechny gesta na výchozí hodnoty?";
+
+/* No comment provided by engineer. */
+"Import data succeeded. Now you need to Quit and reopen MacGesture to take effect." = "Import dat úspěšně dokončen. Nyní musíte MacGesture ukončit a znovu otevřít, aby se změny projevily.";
+
+/* No comment provided by engineer. */
+"Quit Now" = "Ukončit nyní";
+
+/* No comment provided by engineer. */
+"Later" = "Později";
