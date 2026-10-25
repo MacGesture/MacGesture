@@ -2,6 +2,7 @@
 #import <Cocoa/Cocoa.h>
 #import "utils.h"
 #import <UserNotifications/UserNotifications.h>
+#import <ServiceManagement/ServiceManagement.h>
 
 NSString *frontBundleName(void) {
     NSRunningApplication *runningApp = [[NSWorkspace sharedWorkspace] frontmostApplication];
@@ -137,6 +138,9 @@ BOOL wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase)
 }
 
 + (BOOL)isLoginItem {
+    if (@available(macOS 13.0, *))
+        return SMAppService.mainAppService.status == SMAppServiceStatusEnabled;
+
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
     if (!loginItems) return NO;
 
@@ -152,6 +156,14 @@ BOOL wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase)
 
 + (void)makeLoginItemActive:(BOOL)active
 {
+    if (@available(macOS 13.0, *)) {
+        NSError *error;
+        if (!(active ? [SMAppService.mainAppService registerAndReturnError:&error]
+                     : [SMAppService.mainAppService unregisterAndReturnError:&error]))
+            NSLog(@"Login item update failed: %@", error);
+        return;
+    }
+
     NSURL *bundleURL = [NSBundle mainBundle].bundleURL;
 
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);

@@ -14,4 +14,4 @@ APP_BUNDLE     = com.codefalling.$(PRODUCT:rfc1034identifier)
 APP_VERSION    = 3.2.0
 APP_BUILD      = 198
 
-OTHER_LDFLAGS  = $(inherited) -framework UserNotifications
+OTHER_LDFLAGS  = $(inherited) -framework UserNotifications -framework ServiceManagement
