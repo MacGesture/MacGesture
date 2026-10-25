@@ -88,26 +88,9 @@ static NSUserDefaults *defaults;
 
     // Accessibility permission check & alert
 
-    CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) |
-                            CGEventMaskBit(kCGEventRightMouseUp) | CGEventMaskBit(kCGEventLeftMouseDown) |
-                            CGEventMaskBit(kCGEventScrollWheel);
-    mouseEventTap = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, kCGEventTapOptionDefault, eventMask, mouseEventCallback, NULL);
+    NSDictionary *options = @{ (__bridge NSString *)kAXTrustedCheckOptionPrompt: @YES };
 
-    const void * keys[] = { kAXTrustedCheckOptionPrompt };
-    const void * values[] = { kCFBooleanTrue };
-
-    CFDictionaryRef options = CFDictionaryCreate(
-        kCFAllocatorDefault, keys, values, sizeof(keys) / sizeof(*keys),
-        &kCFCopyStringDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
-    
-    BOOL accessibilityEnabled = AXIsProcessTrustedWithOptions(options);
-    
-    if (accessibilityEnabled) {
-        CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, mouseEventTap, 0);
-        CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
-        CFRelease(mouseEventTap);
-        CFRelease(runLoopSource);
-    } else {
+    if (!AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options)) {
         NSAlert *alert = [NSAlert new];
         alert.alertStyle = NSAlertStyleWarning;
         alert.messageText = NSLocalizedString(
@@ -118,9 +101,10 @@ static NSUserDefaults *defaults;
                 "Privacy → Privacy → Accessibility section to enable it for MacGesture.", nil),
             NSLocalizedString(@"If it's already enabled but gestures aren't "
                 "working properly, please re-open MacGesture.", nil)];
-        __unused NSModalResponse response = [alert runModal];
-        // FIXME: Dynamic checking & registration to events
+        [alert runModal];
     }
+
+    [self installEventTap];
 
     windowController = [CanvasWindowController new];
     direction = [NSMutableString string];
@@ -162,6 +146,24 @@ static NSUserDefaults *defaults;
             selector:@selector(workspaceSessionActiveChange:)
             name:NSWorkspaceSessionDidResignActiveNotification
             object:nil];
+}
+
+// Creates the mouse event tap; retries until the Accessibility permission is granted
+- (void)installEventTap {
+    CGEventMask eventMask = CGEventMaskBit(kCGEventRightMouseDown) | CGEventMaskBit(kCGEventRightMouseDragged) |
+                            CGEventMaskBit(kCGEventRightMouseUp) | CGEventMaskBit(kCGEventLeftMouseDown) |
+                            CGEventMaskBit(kCGEventScrollWheel);
+    if (AXIsProcessTrusted())
+        mouseEventTap = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, kCGEventTapOptionDefault, eventMask, mouseEventCallback, NULL);
+
+    if (!mouseEventTap) {
+        [self performSelector:@selector(installEventTap) withObject:nil afterDelay:2];
+        return;
+    }
+
+    CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, mouseEventTap, 0);
+    CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
+    CFRelease(runLoopSource);
 }
 
 - (void)workspaceSessionActiveChange:(NSNotification *)notification {
