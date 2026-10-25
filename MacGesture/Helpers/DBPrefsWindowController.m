@@ -10,6 +10,8 @@
 @property (nonatomic, strong) NSMutableDictionary *toolbarItems;
 @property (nonatomic, strong) NSViewAnimation *viewAnimation;
 @property (nonatomic, strong) NSView *contentSubview;
+@property (nonatomic, strong) NSHashTable<NSView *> *alignedTitlebarViews;
+@property (nonatomic) BOOL aligningTitlebar;
 @end
 
 @implementation DBPrefsWindowController
@@ -227,6 +229,9 @@
             self.window.title = [(self.toolbarItems)[identifier] label];
         else self.window.title = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"] ?:
                                  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+
+        [self.window layoutIfNeeded];
+        [self alignTitlebarElements];
     }
 }
 
@@ -317,6 +322,58 @@
     windowFrame.origin.x = x;
 	
 	return windowFrame;
+}
+
+#pragma mark -
+#pragma mark Titlebar Alignment
+
+// AppKit keeps traffic lights & title at the top of a tall (icon + label) toolbar;
+// re-centre them vertically each time AppKit lays them out.
+- (void)alignTitlebarElements {
+    NSView *titlebar = [self.window standardWindowButton:NSWindowCloseButton].superview;
+    if (!titlebar || _aligningTitlebar) return;
+    _aligningTitlebar = YES;
+
+    if (!_alignedTitlebarViews) _alignedTitlebarViews = [NSHashTable weakObjectsHashTable];
+
+    NSMutableArray<NSView *> *views = [NSMutableArray array];
+    for (NSWindowButton b = NSWindowCloseButton; b <= NSWindowZoomButton; b++)
+        if ([self.window standardWindowButton:b]) [views addObject:[self.window standardWindowButton:b]];
+    // Move the title's outermost compact container, as inner ones clip the label
+    NSView *title = [self titleFieldInView:titlebar];
+    while (title.superview && title.superview != titlebar && NSHeight(title.superview.frame) < NSHeight(titlebar.frame))
+        title = title.superview;
+    if (title) [views addObject:title];
+
+    for (NSView *view in views) {
+        if (![_alignedTitlebarViews containsObject:view]) {
+            [_alignedTitlebarViews addObject:view];
+            view.postsFrameChangedNotifications = YES;
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titlebarElementFrameDidChange:)
+                                                         name:NSViewFrameDidChangeNotification object:view];
+        }
+        NSRect rect = [view convertRect:view.bounds toView:titlebar];
+        CGFloat dy = round(NSMidY(titlebar.bounds) - NSMidY(rect));
+        if (fabs(dy) < 1) continue;
+        rect.origin.y += dy;
+        view.frame = [view.superview convertRect:rect fromView:titlebar];
+    }
+
+    _aligningTitlebar = NO;
+}
+
+- (void)titlebarElementFrameDidChange:(NSNotification *)notification {
+    [self alignTitlebarElements];
+}
+
+- (NSView *)titleFieldInView:(NSView *)view {
+    if ([view isKindOfClass:NSTextField.class] && [[(NSTextField *)view stringValue] isEqualToString:self.window.title])
+        return view;
+    for (NSView *subview in view.subviews) {
+        NSView *found = [self titleFieldInView:subview];
+        if (found) return found;
+    }
+    return nil;
 }
 
 // Close the window with cmd+w incase the app doesn't have an app menu
