@@ -181,16 +181,13 @@ static NSUserDefaults *defaults;
 
         NSString *iconName = @"menubar_icon";
         if (!_enabled) iconName = [iconName stringByAppendingString:@"-disabled"];
-        if (@available(macOS 11.0, *)) iconName = [iconName stringByAppendingString:@"-big_sur"];
+        iconName = [iconName stringByAppendingString:@"-big_sur"];
 
         NSImage *menuIcon = [NSImage imageNamed:iconName];
         menuIcon.template = YES;
         item.image = menuIcon;
 //        item.alternateImage = highlightIcon;
         item.menu = self.statusItemMenu;
-
-        if (@available(macOS 11.0, *));
-        else item.highlightMode = YES;
 
         self.statusItem = item;
 

@@ -49,13 +49,9 @@ static NSUserDefaults *defaults;
 #define MacGestureRuleDataType @"MacGestureRuleDataType"
 
 static NSArray *exampleAppleScripts;
-static BOOL isBigSur = NO;
 
 + (void)initialize
 {
-    if (@available(macOS 11.0, *))
-        isBigSur = YES;
-
     languages = @{
         @"": NSLocalizedString(@"System default", nil),
         @"en": NSLocalizedString(@"English", nil),
@@ -185,14 +181,11 @@ static BOOL isBigSur = NO;
 
     [_previewPositionComboBox addItemsWithTitles:previewPoss];
 
-    if (isBigSur) {
-        NSRect rect = _gestureSizeSlider.frame;
-        rect.origin.y -= 5; rect.size.height += 6;
-        _gestureSizeSlider.frame = rect;
-    }
+    NSRect rect = _gestureSizeSlider.frame;
+    rect.origin.y -= 5; rect.size.height += 6;
+    _gestureSizeSlider.frame = rect;
 
-    self.windowResizingBehavior = (isBigSur) ?
-        DBPrefsWindowResizingRightAnchored : DBPrefsWindowResizingCentered;
+    self.windowResizingBehavior = DBPrefsWindowResizingRightAnchored;
 
     NSString *language = [defaults arrayForKey:@"AppleLanguages"].firstObject;
     NSUInteger idx = ([languagesOrder containsObject:language]) ?
@@ -321,9 +314,7 @@ static BOOL isBigSur = NO;
 }
 
 - (NSString *)toolbarImageNameAdjusted:(NSString *)originalName {
-    NSString *name = originalName;
-    if (isBigSur) name = [name stringByAppendingString:@"-big_sur"];
-    return name;
+    return [originalName stringByAppendingString:@"-big_sur"];
 }
 
 - (void)setupToolbar {
@@ -335,12 +326,11 @@ static BOOL isBigSur = NO;
             image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-filters"]]];
     [self addView:_appleScriptPreferenceView label:NSLocalizedString(@"AppleScript", nil)
             image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-applescript"]]];
-    if (!isBigSur) [self addFlexibleSpacer];
     [self addView:_aboutPreferenceView label:NSLocalizedString(@"About", nil)
             image:[NSImage imageNamed:[self toolbarImageNameAdjusted:@"prefs-about"]]];
 
     // Optional configuration settings.
-    self.crossFade = isBigSur; // Pre-Big Sur OSes glitch when crossfading // [defaults boolForKey:@"fade"]]
+    self.crossFade = YES;
     self.shiftSlowsAnimation = [defaults boolForKey:@"shiftSlowsAnimation"];
 }
 

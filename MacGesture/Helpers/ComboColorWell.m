@@ -50,9 +50,7 @@
         [gradient drawInBezierPath:path angle:90.0];
     };
 
-    NSColor *accent = [NSColor systemBlueColor];
-    if (@available(macOS 10.14, *))
-        accent = [NSColor controlAccentColor];
+    NSColor *accent = [NSColor controlAccentColor];
 
     CGFloat r, g, b, a;
     [[accent colorUsingColorSpace:[NSColorSpace sRGBColorSpace]] getRed:&r green:&g blue:&b alpha:&a];
