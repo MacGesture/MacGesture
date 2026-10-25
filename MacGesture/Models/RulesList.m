@@ -275,6 +275,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     if (from != to) {
         NSMutableDictionary *rule = _rulesList[from];
         [_rulesList removeObjectAtIndex:from];
+        if (from < to) to--;
         if (to >= [_rulesList count]) {
             [_rulesList addObject:rule];
         } else {
