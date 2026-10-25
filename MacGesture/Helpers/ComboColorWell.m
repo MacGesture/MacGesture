@@ -33,8 +33,10 @@
     return self;
 }
 
-- (void)drawRect:(NSRect)cellFrame
+- (void)drawRect:(NSRect)dirtyRect
 {
+    // Draw into own bounds; `dirtyRect` may exceed them as views don't clip to bounds since macOS 14
+    NSRect cellFrame = self.bounds;
     BOOL drawButtonArea = _showsColorWellButton && cellFrame.size.width >= 2*cellFrame.size.height;
     CGFloat actualRadius = floor(MIN(_cornerRadius, MIN(cellFrame.size.width/2, cellFrame.size.height/2)));
 
