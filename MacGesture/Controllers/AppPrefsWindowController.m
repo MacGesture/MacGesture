@@ -680,24 +680,15 @@ static NSString *currentScriptId = nil;
     NSOpenPanel *panel = [NSOpenPanel openPanel];
 
     if ([panel runModal] == NSModalResponseOK) {
-        NSURL *url = [panel URL];
-        NSTask *task = [NSTask new];
-        NSPipe *pipe = [NSPipe pipe];
+        NSData *data = [NSData dataWithContentsOfURL:panel.URL];
+        NSDictionary *prefs = data ? [NSPropertyListSerialization propertyListWithData:data
+            options:NSPropertyListImmutable format:NULL error:NULL] : nil;
+        if (![prefs isKindOfClass:NSDictionary.class]) return;
 
-        NSArray *arguments = @[ @"-c", @"defaults import com.codefalling.MacGesture -" ];
-
-        task.launchPath = @"/bin/sh";
-        task.arguments = arguments;
-        task.standardInput = pipe;
-
-        NSFileHandle *file = [pipe fileHandleForWriting];
-
-        [task launch];
-
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        if (data) [file writeData:data];
-        [file closeFile];
-
+        [defaults setPersistentDomain:prefs forName:NSBundle.mainBundle.bundleIdentifier];
+        [[RulesList sharedRulesList] reload];
+        [[AppleScriptsList sharedAppleScriptsList] reload];
+        [_rulesTableView reloadData];
         MGNotify(@"MacGesture", NSLocalizedString(@"Restart MacGesture to take effect", nil));
     }
 }
@@ -706,25 +697,11 @@ static NSString *currentScriptId = nil;
     NSSavePanel *panel = [NSSavePanel savePanel];
 
     if ([panel runModal] == NSModalResponseOK) {
-        NSURL *url = [panel URL];
-        NSTask *task = [NSTask new];
-        NSPipe *pipe = [NSPipe pipe];
-
-        NSArray *arguments = @[ @"-c", @"defaults export com.codefalling.MacGesture -" ];
-
-        task.launchPath = @"/bin/sh";
-        task.arguments = arguments;
-        task.standardOutput = pipe;
-
-        NSFileHandle *file = [pipe fileHandleForReading];
-
-        [task launch];
-
-        NSData *data = [file readDataToEndOfFile];
-        if (data) [data writeToURL:url atomically:YES];
-        [file closeFile];
-
-        MGNotify(@"MacGesture", NSLocalizedString(@"Export succeeded", nil));
+        NSDictionary *prefs = [defaults persistentDomainForName:NSBundle.mainBundle.bundleIdentifier];
+        NSData *data = [NSPropertyListSerialization dataWithPropertyList:prefs ?: @{}
+            format:NSPropertyListXMLFormat_v1_0 options:0 error:NULL];
+        if ([data writeToURL:panel.URL atomically:YES])
+            MGNotify(@"MacGesture", NSLocalizedString(@"Export succeeded", nil));
     }
 }
 

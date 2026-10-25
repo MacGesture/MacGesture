@@ -17,6 +17,8 @@
 
 - (void)reInit;
 
+- (void)reload; // re-read from user defaults
+
 - (void)save;
 
 - (NSInteger)count;

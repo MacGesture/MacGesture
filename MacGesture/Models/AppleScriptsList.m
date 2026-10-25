@@ -27,17 +27,13 @@
 
 - (instancetype)init {
     self = [super init];
-    if (self) {
-        NSData *data;
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        data = [userDefaults objectForKey:@"appleScripts"];
-        _appleScriptsList = [[NSMutableArray alloc] initWithArray:MGUnarchive(data, NSMutableArray.class)];
-        if (_appleScriptsList == nil) {
-            _appleScriptsList = [[NSMutableArray alloc] init];
-        }
-    }
-    
+    if (self) [self reload];
     return self;
+}
+
+- (void)reload {
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"appleScripts"];
+    _appleScriptsList = [[NSMutableArray alloc] initWithArray:MGUnarchive(data, NSMutableArray.class)];
 }
 
 - (NSData *)nsData {

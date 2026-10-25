@@ -75,6 +75,8 @@ typedef enum {
 
 - (void)reInit;
 
+- (void)reload; // re-read from user defaults
+
 - (void)save;
 
 - (NSData *)nsData;

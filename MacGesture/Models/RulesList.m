@@ -343,6 +343,11 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     return MGArchive(_rulesList);
 }
 
+- (void)reload {
+    NSData *data = [RulesList readRulesList];
+    if (data) _rulesList = [[NSMutableArray alloc] initWithArray:MGUnarchive(data, NSMutableArray.class)];
+}
+
 - (RulesList *)initWithNsData:(NSData *)data {
     self = [self init];
     if (self) {
