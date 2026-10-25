@@ -210,6 +210,7 @@ static CGFloat noteCornerRadius = 16;
     NSUInteger numberToDraw = direction.length;
 
     if (merge) {
+        numberToDraw = 0;
         for (NSUInteger i = 0; i < direction.length; i++) {
             numberToDraw++;
             char ch = [direction characterAtIndex:i];
