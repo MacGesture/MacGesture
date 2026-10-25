@@ -177,8 +177,7 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
 - (NSInteger)suitedRuleWithGesture:(NSString *)gesture {
     NSString *frontApp = frontBundleName();
     for (NSUInteger i = 0; i < [self count]; i++) {
-        if ([self matchFilter:frontApp atIndex:i]) {
-            //if ([gesture isEqualToString:[self directionAtIndex:i]]) {
+        if ([self enabledAtIndex:i] && [self matchFilter:frontApp atIndex:i]) {
             if (wildcardString(gesture, [self directionAtIndex:i], NO)) {
                 return i;
             }
