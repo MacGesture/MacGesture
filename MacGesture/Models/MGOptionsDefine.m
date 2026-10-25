@@ -41,7 +41,7 @@ static NSUserDefaults *defaults;
 
 + (NSColor *)getPreviewBgColor {
     NSData *colorData = [defaults objectForKey:OPTIONS_PREVIEW_BG_COLOR_ID];
-    if (!colorData) return [self defaultColor];
+    if (!colorData) return [self defaultBgColor];
     NSColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
     return color ?: [self defaultBgColor];
 }
@@ -65,7 +65,7 @@ static NSUserDefaults *defaults;
 
 + (NSColor *)getNoteBgColor {
     NSData *colorData = [defaults objectForKey:OPTIONS_NOTE_BG_COLOR_ID];
-    if (!colorData) return [self defaultColor];
+    if (!colorData) return [self defaultBgColor];
     NSColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
     return color ?: [self defaultBgColor];
 }
