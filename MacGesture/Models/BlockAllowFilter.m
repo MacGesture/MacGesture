@@ -4,6 +4,7 @@
 //
 
 #import "BlockAllowFilter.h"
+#import "utils.h"
 
 #define KEY_BLOCK_LIST @"filterBlackList"
 #define KEY_ALLOW_LIST @"filterWhiteList"
@@ -94,8 +95,7 @@ static BlockAllowFilter *filterSingle;
 
 - (BOOL)bundleName:(NSString *)bundleName fitWithRules:(NSArray *)rules {
     for (NSString *filter in rules) {
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"self LIKE %@", [filter lowercaseString]];
-        if ([pred evaluateWithObject:[bundleName lowercaseString]]) return YES;
+        if ([likePredicate(filter.lowercaseString) evaluateWithObject:bundleName.lowercaseString]) return YES;
     }
     return NO;
 }

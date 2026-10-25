@@ -11,6 +11,19 @@ NSString *frontBundleName(void) {
     return runningApp.bundleIdentifier;
 }
 
+// Cached `self LIKE <wildcard>` predicate, built once per pattern
+NSPredicate *likePredicate(NSString *wildcard) {
+    static NSCache<NSString *, NSPredicate *> *cache;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{ cache = [NSCache new]; });
+    NSPredicate *pred = [cache objectForKey:wildcard];
+    if (!pred) {
+        pred = [NSPredicate predicateWithFormat:@"self LIKE %@", wildcard];
+        [cache setObject:pred forKey:wildcard];
+    }
+    return pred;
+}
+
 BOOL wildcardArray(NSString *bundleName, NSArray *wildFilters, BOOL ignoreCase) {
     if (ignoreCase) {
         bundleName = [bundleName lowercaseString];
@@ -26,8 +39,7 @@ BOOL wildcardArray(NSString *bundleName, NSArray *wildFilters, BOOL ignoreCase) 
             negate = YES;
             wildcard = [wildcard substringFromIndex:1];
         }
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"self LIKE %@", wildcard];
-        BOOL match = [pred evaluateWithObject:bundleName];
+        BOOL match = [likePredicate(wildcard) evaluateWithObject:bundleName];
         if (match && !negate) {
             result = YES;
         } else if (match && negate) {

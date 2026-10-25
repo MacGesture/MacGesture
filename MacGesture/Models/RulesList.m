@@ -309,18 +309,23 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
 }
 
 - (BOOL)matchFilter:(NSString *)text atIndex:(NSUInteger)index {
+    static NSCache<NSString *, NSRegularExpression *> *regexCache;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{ regexCache = [NSCache new]; });
+    NSString *pattern = [self filterAtIndex:index];
     NSRegularExpression *regex;
-    NSError *error;
     switch ([self filterTypeAtIndex:index]) {
         case FILTER_TYPE_REGEX:
-            // need ignore case here
-            regex = [NSRegularExpression regularExpressionWithPattern:[self filterAtIndex:index] options:0 error:&error];
-            if ([regex firstMatchInString:text options:0 range:NSMakeRange(0, [text length])]) {
-                return YES;
+            if (!pattern) return NO;
+            if (!(regex = [regexCache objectForKey:pattern])) {
+                regex = [NSRegularExpression regularExpressionWithPattern:pattern
+                    options:NSRegularExpressionCaseInsensitive error:NULL];
+                if (!regex) return NO;
+                [regexCache setObject:regex forKey:pattern];
             }
-            break;
+            return [regex firstMatchInString:text options:0 range:NSMakeRange(0, text.length)] != nil;
         case FILTER_TYPE_WILDCARD:
-            return wildcardString(text, [self filterAtIndex:index], YES);
+            return wildcardString(text, pattern, YES);
     }
     return NO;
 }

@@ -4,6 +4,8 @@
 
 NSString *frontBundleName(void);
 
+NSPredicate *likePredicate(NSString *wildcard);
+
 BOOL wildcardArray(NSString *bundleName, NSArray *wildFilters, BOOL ignoreCase);
 
 BOOL wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase);
