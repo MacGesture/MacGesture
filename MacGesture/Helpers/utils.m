@@ -11,6 +11,17 @@ NSString *frontBundleName(void) {
     return runningApp.bundleIdentifier;
 }
 
+NSData *MGArchive(id object) {
+    return [NSKeyedArchiver archivedDataWithRootObject:object requiringSecureCoding:NO error:NULL];
+}
+
+id MGUnarchive(NSData *data, Class cls) {
+    if (!data) return nil;
+    NSSet *classes = [NSSet setWithObjects:cls, NSArray.class, NSMutableArray.class, NSDictionary.class,
+        NSMutableDictionary.class, NSString.class, NSMutableString.class, NSNumber.class, nil];
+    return [NSKeyedUnarchiver unarchivedObjectOfClasses:classes fromData:data error:NULL];
+}
+
 // Cached `self LIKE <wildcard>` predicate, built once per pattern
 NSPredicate *likePredicate(NSString *wildcard) {
     static NSCache<NSString *, NSPredicate *> *cache;

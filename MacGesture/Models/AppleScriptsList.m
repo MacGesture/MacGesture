@@ -7,6 +7,7 @@
 //
 
 #import "AppleScriptsList.h"
+#import "utils.h"
 
 @implementation AppleScriptsList
 
@@ -30,7 +31,7 @@
         NSData *data;
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         data = [userDefaults objectForKey:@"appleScripts"];
-        _appleScriptsList = [[NSMutableArray alloc] initWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
+        _appleScriptsList = [[NSMutableArray alloc] initWithArray:MGUnarchive(data, NSMutableArray.class)];
         if (_appleScriptsList == nil) {
             _appleScriptsList = [[NSMutableArray alloc] init];
         }
@@ -40,7 +41,7 @@
 }
 
 - (NSData *)nsData {
-    return [NSKeyedArchiver archivedDataWithRootObject:_appleScriptsList];
+    return MGArchive(_appleScriptsList);
 }
 
 - (void)save {

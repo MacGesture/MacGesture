@@ -6,6 +6,11 @@ NSString *frontBundleName(void);
 
 NSPredicate *likePredicate(NSString *wildcard);
 
+NSData *MGArchive(id object);
+
+// Securely unarchives `data`, allowing `cls` plus property-list collection classes
+id MGUnarchive(NSData *data, Class cls);
+
 BOOL wildcardArray(NSString *bundleName, NSArray *wildFilters, BOOL ignoreCase);
 
 BOOL wildcardString(NSString *bundleName, NSString *wildFilter, BOOL ignoreCase);
