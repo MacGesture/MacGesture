@@ -68,7 +68,7 @@ static CGFloat noteCornerRadius = 16;
 {
     if (self = [super initWithFrame:frame])
     {
-        _points = @[ ];
+        _points = [NSMutableArray new];
         _directionToDraw = @"";
         _radius = 2;
 
@@ -389,7 +389,7 @@ static CGFloat noteCornerRadius = 16;
     path.lineJoinStyle = NSLineJoinStyleRound;
     [_lineColor setStroke];
 
-    NSArray<NSValue *> *points = [_points copy];
+    NSArray<NSValue *> *points = _points;
 
     if (points.count < 2) return;
 
@@ -404,15 +404,13 @@ static CGFloat noteCornerRadius = 16;
 }
 
 - (void)drawLineFromPoint:(NSPoint)point1 toPoint:(NSPoint)point2 {
-    NSMutableArray<NSValue *> *points = [_points mutableCopy];
-    [points addObject:[NSValue valueWithPoint:point1]];
-    [points addObject:[NSValue valueWithPoint:point2]];
-    _points = [points copy];
+    [_points addObject:[NSValue valueWithPoint:point1]];
+    [_points addObject:[NSValue valueWithPoint:point2]];
     self.needsDisplay = YES;
 }
 
 - (void)clear {
-    _points = @[ ];
+    [_points removeAllObjects];
     _directionToDraw = @"";
     self.needsDisplay = YES;
 }
@@ -432,7 +430,7 @@ static CGFloat noteCornerRadius = 16;
     _lastLocation.x -= w.frame.origin.x;
     _lastLocation.y -= w.frame.origin.y;
 
-    _points = @[ [NSValue valueWithPoint:_lastLocation] ];
+    [_points setArray:@[ [NSValue valueWithPoint:_lastLocation] ]];
 
     DebugLog(@"mouseDown point %@", NSStringFromPoint(_lastLocation));
 }
@@ -445,7 +443,7 @@ static CGFloat noteCornerRadius = 16;
     newLocation.y -= w.frame.origin.y;
 
 
-    _points = [_points arrayByAddingObject:[NSValue valueWithPoint:newLocation]];
+    [_points addObject:[NSValue valueWithPoint:newLocation]];
     _lastLocation = newLocation;
 
     self.needsDisplay = YES;

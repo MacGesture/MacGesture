@@ -12,7 +12,7 @@
 
 @property (atomic) NSPoint lastLocation;
 @property (atomic) NSUInteger radius;
-@property (nonatomic, copy) NSArray<NSValue *> *points; // `NSPoint`
+@property (nonatomic, readonly) NSMutableArray<NSValue *> *points; // `NSPoint`
 @property (nonatomic, copy) NSString *directionToDraw;
 
 - (void)clear;
