@@ -74,7 +74,7 @@
 "Open README" = "Open README";
 
 /* No comment provided by engineer. */
-"Please navigate to System Preferences → Security & Privacy → Privacy → Accessibility section to enable it for MacGesture." = "Please navigate to System Preferences → Security & Privacy → Privacy → Accessibility section to enable it for MacGesture.";
+"Please navigate to System Settings → Privacy & Security → Accessibility section to enable it for MacGesture." = "Please navigate to System Settings → Privacy & Security → Accessibility section to enable it for MacGesture.";
 
 /* No comment provided by engineer. */
 "Please select a filter first!" = "Please select a filter first!";
@@ -114,3 +114,5 @@
 
 /* No comment provided by engineer. */
 "Welcome to MacGesture! 🎉" = "Welcome to MacGesture! 🎉";
+
+"Open System Settings" = "Open System Settings";

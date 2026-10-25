@@ -97,11 +97,15 @@ static NSUserDefaults *defaults;
             @"MacGesture processes your mouse events, thus requires "
              "the Accessibility permission to work properly", nil);
         alert.informativeText = [NSString stringWithFormat:@"%@\n\n%@",
-            NSLocalizedString(@"Please navigate to System Preferences → Security & "
-                "Privacy → Privacy → Accessibility section to enable it for MacGesture.", nil),
+            NSLocalizedString(@"Please navigate to System Settings → Privacy & "
+                "Security → Accessibility section to enable it for MacGesture.", nil),
             NSLocalizedString(@"If it's already enabled but gestures aren't "
                 "working properly, please re-open MacGesture.", nil)];
-        [alert runModal];
+        [alert addButtonWithTitle:NSLocalizedString(@"Open System Settings", nil)];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", nil)];
+        if ([alert runModal] == NSAlertFirstButtonReturn)
+            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:
+                @"x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"]];
     }
 
     [self installEventTap];
