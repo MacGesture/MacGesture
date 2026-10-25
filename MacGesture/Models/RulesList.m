@@ -10,10 +10,8 @@
 #import "utils.h"
 
 @implementation RulesList {
-    
+    NSMutableArray<NSMutableDictionary *> *_rulesList;
 }
-
-NSMutableArray<NSMutableDictionary *> *_rulesList;  // private
 
 - (NSString *)directionAtIndex:(NSUInteger)index {
     return _rulesList[index][@"direction"];
@@ -93,19 +91,13 @@ static inline void addWildcardShortcutRule(RulesList *rulesList, NSString *gestu
     static dispatch_once_t pred;
     static RulesList *rulesList = nil;
     dispatch_once(&pred, ^{
-        rulesList = [[RulesList alloc] init];
+        NSData *data = [self readRulesList];
+        rulesList = data ? [[RulesList alloc] initWithNsData:data] : nil;
+        if (!rulesList) {
+            rulesList = [RulesList new];
+            [rulesList reInit];
+        }
     });
-    
-    NSData *data;
-    if ((data = [self readRulesList])) {
-        rulesList = [[RulesList alloc] initWithNsData:data];
-    }
-    
-    if (rulesList == nil) {
-        rulesList = [[RulesList alloc] init];
-        [rulesList reInit];
-        [rulesList save];
-    }
     return rulesList;
 }
 
