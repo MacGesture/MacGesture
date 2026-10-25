@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1381E4C81824E7E800E815F5"
-               BuildableName = "MacGestureTests"
+               BuildableName = "MacGestureTests.xctest"
                BlueprintName = "MacGestureTests"
                ReferencedContainer = "container:MacGesture.xcodeproj">
             </BuildableReference>

@@ -1,34 +1,36 @@
 //
-//  MenuBarAppTests.m
-//  MenuBarAppTests
-//
-//  Created by Charles Ross on 11/2/13.
-//  Copyright (c) 2013 MacGesture. All rights reserved.
+//  MacGestureTests.m
+//  MacGestureTests
 //
 
 #import <XCTest/XCTest.h>
+#import <Cocoa/Cocoa.h>
+#import "../MacGesture/Helpers/utils.h"
 
-@interface MenuBarAppTests : XCTestCase
-
+@interface MacGestureTests : XCTestCase
 @end
 
-@implementation MenuBarAppTests
+@implementation MacGestureTests
 
-- (void)setUp
+- (void)testWildcardMatching
 {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    XCTAssertTrue(wildcardString(@"com.google.Chrome", @"*safari|*chrome", YES));
+    XCTAssertFalse(wildcardString(@"com.google.Chrome", @"*safari|*chrome", NO));
+    XCTAssertFalse(wildcardString(@"com.apple.finder", @"*safari|*chrome", YES));
+    XCTAssertFalse(wildcardString(@"com.apple.Safari", @"*\n!com.apple.safari", YES));
+    XCTAssertTrue(wildcardString(@"UDR", @"U*R", NO));
 }
 
-- (void)tearDown
+- (void)testArchiveRoundTrip
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
+    NSMutableArray *rules = [@[ [@{ @"direction": @"UR", @"enabled": @YES } mutableCopy] ] mutableCopy];
+    NSMutableArray *decoded = MGUnarchive(MGArchive(rules), NSMutableArray.class);
+    XCTAssertEqualObjects(decoded, rules);
+    XCTAssertNoThrow(decoded.firstObject[@"note"] = @"mutable");
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    NSColor *color = [NSColor colorWithSRGBRed:0.1 green:0.2 blue:0.3 alpha:1];
+    XCTAssertEqualObjects(MGUnarchive(MGArchive(color), NSColor.class), color);
+    XCTAssertNil(MGUnarchive(nil, NSColor.class));
 }
 
 @end

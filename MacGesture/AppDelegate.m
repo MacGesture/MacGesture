@@ -31,6 +31,9 @@ static NSUserDefaults *defaults;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
 
+    // Unit tests run hosted in the app; skip prompts and event hooking
+    if (NSProcessInfo.processInfo.environment[@"XCTestConfigurationFilePath"]) return;
+
     defaults = [NSUserDefaults standardUserDefaults];
     NSBundle *bundle = [NSBundle mainBundle];
 
