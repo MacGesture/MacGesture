@@ -661,13 +661,7 @@ static NSString *currentScriptId = nil;
         [defaults setObject:@[languagesOrder[idx]] forKey:@"AppleLanguages"];
     else [defaults removeObjectForKey:@"AppleLanguages"];
 
-    NSUserNotification *notification = [NSUserNotification new];
-    notification.title = [@"MacGesture" copy];
-    notification.informativeText = NSLocalizedString(@"Restart MacGesture to take effect", nil);
-    notification.soundName = NSUserNotificationDefaultSoundName;
-    notification.hasActionButton = NO;
-
-    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    MGNotify(@"MacGesture", NSLocalizedString(@"Restart MacGesture to take effect", nil));
 }
 
 - (IBAction)previewPositionChanged:(id)sender {
@@ -704,13 +698,7 @@ static NSString *currentScriptId = nil;
         if (data) [file writeData:data];
         [file closeFile];
 
-        NSUserNotification *notification = [NSUserNotification new];
-        notification.title = [@"MacGesture" copy];
-        notification.informativeText = NSLocalizedString(@"Restart MacGesture to take effect", nil);
-        notification.soundName = NSUserNotificationDefaultSoundName;
-        notification.hasActionButton = NO;
-
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        MGNotify(@"MacGesture", NSLocalizedString(@"Restart MacGesture to take effect", nil));
     }
 }
 
@@ -736,13 +724,7 @@ static NSString *currentScriptId = nil;
         if (data) [data writeToURL:url atomically:YES];
         [file closeFile];
 
-        NSUserNotification *notification = [NSUserNotification new];
-        notification.title = [@"MacGesture" copy];
-        notification.informativeText = NSLocalizedString(@"Export succeeded", nil);
-        notification.soundName = NSUserNotificationDefaultSoundName;
-        notification.hasActionButton = NO;
-
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        MGNotify(@"MacGesture", NSLocalizedString(@"Export succeeded", nil));
     }
 }
 

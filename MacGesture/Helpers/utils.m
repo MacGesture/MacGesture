@@ -1,6 +1,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "utils.h"
+#import <UserNotifications/UserNotifications.h>
 
 NSString *frontBundleName(void) {
     NSRunningApplication *runningApp = [[NSWorkspace sharedWorkspace] frontmostApplication];
@@ -9,6 +10,20 @@ NSString *frontBundleName(void) {
         return @"";
     }
     return runningApp.bundleIdentifier;
+}
+
+void MGNotify(NSString *title, NSString *text) {
+    UNUserNotificationCenter *center = UNUserNotificationCenter.currentNotificationCenter;
+    [center requestAuthorizationWithOptions:UNAuthorizationOptionAlert | UNAuthorizationOptionSound
+                          completionHandler:^(BOOL granted, NSError *error) {
+        if (!granted) return;
+        UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+        content.title = title;
+        content.body = text ?: @"";
+        content.sound = UNNotificationSound.defaultSound;
+        [center addNotificationRequest:[UNNotificationRequest requestWithIdentifier:NSUUID.UUID.UUIDString
+            content:content trigger:nil] withCompletionHandler:nil];
+    }];
 }
 
 NSData *MGArchive(id object) {

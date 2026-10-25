@@ -118,7 +118,7 @@ static NSUserDefaults *defaults;
     [center addObserver:self selector:@selector(receiveOpenPreferencesNotification:)
         name:name object:nil suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 
-    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+    UNUserNotificationCenter.currentNotificationCenter.delegate = self;
 
     // The application is an ordinary app that appears in the Dock and may
     // have a user interface.
@@ -204,9 +204,9 @@ static NSUserDefaults *defaults;
     [self updateStatusBarItem];
 }
 
-- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
-     shouldPresentNotification:(NSUserNotification *)notification {
-    return YES;
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    completionHandler(UNNotificationPresentationOptionBanner | UNNotificationPresentationOptionSound);
 }
 
 - (void)showPreferences {

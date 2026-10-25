@@ -6,6 +6,8 @@ NSString *frontBundleName(void);
 
 NSPredicate *likePredicate(NSString *wildcard);
 
+void MGNotify(NSString *title, NSString *text);
+
 NSData *MGArchive(id object);
 
 // Securely unarchives `data`, allowing `cls` plus property-list collection classes
