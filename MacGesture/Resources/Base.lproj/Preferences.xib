@@ -53,11 +53,11 @@
         <userDefaultsController representsSharedInstance="YES" id="72" userLabel="Shared Defaults"/>
         <customObject id="360" customClass="SPUStandardUpdaterController"/>
         <customView id="99" userLabel="General">
-            <rect key="frame" x="0.0" y="0.0" width="560" height="529"/>
+            <rect key="frame" x="0.0" y="0.0" width="588" height="529"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <box fixedFrame="YES" borderType="line" title="General" translatesAutoresizingMaskIntoConstraints="NO" id="zLw-Oi-GBf">
-                    <rect key="frame" x="17" y="361" width="526" height="158"/>
+                    <rect key="frame" x="17" y="361" width="554" height="158"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="Ei1-dP-sWp">
                         <rect key="frame" x="3" y="3" width="520" height="140"/>
@@ -133,7 +133,7 @@
                     </view>
                 </box>
                 <box fixedFrame="YES" borderType="line" title="Gesture" translatesAutoresizingMaskIntoConstraints="NO" id="4xM-Ya-MxN">
-                    <rect key="frame" x="17" y="153" width="526" height="204"/>
+                    <rect key="frame" x="17" y="153" width="554" height="204"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="nbd-3i-kYj">
                         <rect key="frame" x="3" y="3" width="520" height="186"/>
@@ -394,7 +394,7 @@
                     </view>
                 </box>
                 <box fixedFrame="YES" title="Advanced" translatesAutoresizingMaskIntoConstraints="NO" id="grB-jA-OPZ">
-                    <rect key="frame" x="17" y="53" width="526" height="96"/>
+                    <rect key="frame" x="17" y="53" width="554" height="96"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="Ooq-wl-bgm">
                         <rect key="frame" x="3" y="3" width="520" height="78"/>
@@ -448,7 +448,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Csn-Ze-z2D">
-                    <rect key="frame" x="407" y="13" width="140" height="32"/>
+                    <rect key="frame" x="435" y="13" width="140" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="push" title="Reset Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9qA-nt-g9l">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
