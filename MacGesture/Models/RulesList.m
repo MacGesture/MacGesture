@@ -61,7 +61,6 @@
 - (void)save {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:self.nsData forKey:@"rules"];
-    [userDefaults synchronize];
 }
 
 + (id)readRulesList {

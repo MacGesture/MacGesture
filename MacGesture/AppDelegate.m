@@ -61,7 +61,6 @@ static NSUserDefaults *defaults;
     NSURL *defaultPrefsFile = [bundle URLForResource:@"DefaultPreferences" withExtension:@"plist"];
     NSDictionary *defaultPrefs = [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
     [defaults registerDefaults:defaultPrefs];
-    [defaults synchronize];
 
     // README prompt
 
@@ -326,15 +325,9 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             DebugLog(@"kCGEventRightMouseDown");
             // not thread safe, but it's always called on main thread
             // check blocker apps
-            //    if(wildLike(frontBundleName(), [defaults stringForKey:@"blockFilter"])){
-            if (true)
             {
                 NSString *frontBundle = frontBundleName();
                 if (![BWFilter shouldHookMouseEventForApp:frontBundle] || (![defaults boolForKey:@"showUIInWhateverApp"] && ![[RulesList sharedRulesList] appSuitedRule:frontBundle])) {
-//                        CGEventPost(kCGSessionEventTap, mouseDownEvent);
-//                        if (mouseDraggedEvent) {
-//                            CGEventPost(kCGSessionEventTap, mouseDraggedEvent);
-//                        }
                     shouldShow = NO;
                     return event;
                 }
@@ -460,10 +453,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
             if (!shouldShow || !mouseDownEvent) {
                 return event;
             }
-            mouseEvent = [NSEvent eventWithCGEvent:event];
             double delta = CGEventGetDoubleValueField(event, kCGScrollWheelEventDeltaAxis1);
-            BOOL unnaturalDirection = mouseEvent.isDirectionInvertedFromDevice;
-            if (unnaturalDirection) {} // delta *= -1;
             DebugLog(@"scrollWheel delta:%f", delta);
             
             NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate];

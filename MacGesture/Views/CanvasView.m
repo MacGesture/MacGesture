@@ -327,8 +327,6 @@ static CGFloat noteCornerRadius = 16;
                 @".SFNS-Black":        @(NSFontWeightBlack),      // 900
             };
 
-            NSAssert(systemFonts[fontName], @"No font found for '%@' name", fontName);
-
             NSFontWeight fontWeight = systemFonts[fontName].unsignedIntegerValue ?: NSFontWeightMedium;
 
             font = [NSFont systemFontOfSize:fontSize weight:fontWeight];

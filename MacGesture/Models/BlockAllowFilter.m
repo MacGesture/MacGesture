@@ -28,7 +28,6 @@ static BlockAllowFilter *filterSingle;
 
 - (void)setIsInAllowListMode:(BOOL)isInAllowListMode {
     [[NSUserDefaults standardUserDefaults] setBool:isInAllowListMode forKey:KEY_IS_IN_ALLOW_MODE];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSArray *)blockList {
@@ -38,7 +37,6 @@ static BlockAllowFilter *filterSingle;
 - (void)setBlockList:(NSArray *)blockList {
     [[NSUserDefaults standardUserDefaults] setObject:blockList
                                               forKey:KEY_BLOCK_LIST];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSString *)blockListText {
@@ -69,7 +67,6 @@ static BlockAllowFilter *filterSingle;
 - (void)setAllowList:(NSArray *)allowList {
     [[NSUserDefaults standardUserDefaults] setObject:allowList
                                               forKey:KEY_ALLOW_LIST];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSString *)allowListText {
@@ -114,7 +111,6 @@ static BlockAllowFilter *filterSingle;
         self.isInAllowListMode = NO;
         self.blockListText = [s stringByReplacingOccurrencesOfString:@"|" withString:@"\n"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"blockFilter"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
         
     } else {
         //nothing

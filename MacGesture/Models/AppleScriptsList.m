@@ -43,7 +43,6 @@
 - (void)save {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:self.nsData forKey:@"appleScripts"];
-    [userDefaults synchronize];
 }
 
 - (NSInteger)count {

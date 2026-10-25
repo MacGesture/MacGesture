@@ -334,11 +334,6 @@ static NSArray *exampleAppleScripts;
     self.shiftSlowsAnimation = [defaults boolForKey:@"shiftSlowsAnimation"];
 }
 
-- (void)close {
-    [defaults synchronize];
-    [super close];
-}
-
 - (IBAction)autoStartAction:(id)sender {
 
     BOOL active = _autoStartAtLogin.state == NSControlStateValueOn;
@@ -481,7 +476,6 @@ static NSArray *exampleAppleScripts;
     for (NSString *key in defaultPrefs) {
         [defaults setObject:defaultPrefs[key] forKey:key];
     }
-    [defaults synchronize];
 
     [MGOptionsDefine restoreDefaults];
 }
