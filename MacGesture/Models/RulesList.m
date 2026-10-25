@@ -204,7 +204,8 @@ static inline void pressKeyWithFlags(CGKeyCode virtualKey, CGEventFlags flags) {
     }
     
     if (i != [self count]) {
-        [self executeActionAt:i];
+        // Run outside the event tap callback so slow actions don't get the tap disabled
+        dispatch_async(dispatch_get_main_queue(), ^{ [self executeActionAt:i]; });
         return YES;
     }
     return NO;
