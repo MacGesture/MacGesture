@@ -23,8 +23,7 @@
     NSView *view = [[CanvasView alloc] initWithFrame:frame];
     window.ignoresMouseEvents = YES;
     window.contentView = view;
-    
-    window.collectionBehavior = NSWindowCollectionBehaviorCanJoinAllSpaces;
+
     self.window = window;
     [window orderFront:self];
 }
