@@ -33,6 +33,8 @@ static NSImage *downImage;
 static NSImage *scrollImage;
 static NSImage *cursorImage;
 
+static CGFloat legacyMenuBarHeight = 25;
+
 static CGFloat screenInset = 32;
 static CGFloat previewPadding = 16;
 static CGFloat notePadding = 10;
@@ -120,6 +122,12 @@ static CGFloat noteCornerRadius = 16;
 
 
 
+- (CGFloat)menuBarHeight
+{
+    NSScreen *screen = self.window.screen;
+    return screen ? NSMaxY(screen.frame) - NSMaxY(screen.visibleFrame) : legacyMenuBarHeight;
+}
+
 - (NSRect)rawPreviewRectWithElementWidth:(CGFloat)elmWidth elementHeight:(CGFloat)elmHeight
                            elementsCount:(NSUInteger)elmsCount paddingReserve:(CGFloat)paddingReserve
 {
@@ -128,7 +136,7 @@ static CGFloat noteCornerRadius = 16;
 
     // Screen elements
     CGSize screenSize = self.window.frame.size;
-    CGFloat menuBarHeight = 25;
+    CGFloat menuBarHeight = [self menuBarHeight];
 
     // Width + Height
     CGFloat width = elmsCount * elmWidth + (elmsCount - 1) * paddingReserve;
@@ -162,7 +170,7 @@ static CGFloat noteCornerRadius = 16;
 
     // Screen elements
     CGSize screenSize = self.window.frame.size;
-    CGFloat menuBarHeight = 25;
+    CGFloat menuBarHeight = [self menuBarHeight];
 
     // Width + Height
     CGFloat width = noteSize.width;
