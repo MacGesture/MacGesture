@@ -145,18 +145,18 @@ static CGFloat noteCornerRadius = 16;
     // X position
     CGFloat x = (screenSize.width - width) / 2; // centered
 
-    if (position & MGPreviewPositionOptionLeft || position & MGPreviewPositionOptionRight) {
+    if (position & MGPreviewPositionLeft || position & MGPreviewPositionRight) {
         x = screenInset + paddingReserve;
-        if (position & MGPreviewPositionOptionRight)
+        if (position & MGPreviewPositionRight)
             x = screenSize.width - width - paddingReserve - x;
     }
 
     // Y position
     CGFloat y = (screenSize.height - height) / 2; // centered
 
-    if (position & MGPreviewPositionOptionTop || position & MGPreviewPositionOptionBottom) {
+    if (position & MGPreviewPositionTop || position & MGPreviewPositionBottom) {
         y = screenInset + paddingReserve;
-        if (position & MGPreviewPositionOptionTop)
+        if (position & MGPreviewPositionTop)
             y = screenSize.height - height - y - menuBarHeight;
     }
 
@@ -179,9 +179,9 @@ static CGFloat noteCornerRadius = 16;
     // X position
     CGFloat x = (screenSize.width - width) / 2; // centered
 
-    if (position & MGPreviewPositionOptionLeft || position & MGPreviewPositionOptionRight) {
+    if (position & MGPreviewPositionLeft || position & MGPreviewPositionRight) {
         x = screenInset + paddingReserve;
-        if (position & MGPreviewPositionOptionRight)
+        if (position & MGPreviewPositionRight)
             x = screenSize.width - width - paddingReserve - x;
     }
 
@@ -189,9 +189,9 @@ static CGFloat noteCornerRadius = 16;
     CGFloat y = (screenSize.height - height) / 2; // centered, above preview
     CGFloat yPreviewShift = elmHeight + elementPaddingReserve + previewNoteGap;
 
-    if (position & MGPreviewPositionOptionTop || position & MGPreviewPositionOptionBottom) {
+    if (position & MGPreviewPositionTop || position & MGPreviewPositionBottom) {
         y = screenInset + paddingReserve;
-        if (position & MGPreviewPositionOptionTop) {
+        if (position & MGPreviewPositionTop) {
             y = screenSize.height - height - y - menuBarHeight;
             yPreviewShift *= -1;
         }

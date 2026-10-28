@@ -63,7 +63,7 @@ static NSArray *exampleAppleScripts;
 //    NSLocalizedString(@"Slovak", nil)
 
     previewPositions = @[
-        @[ @(MGPreviewPositionCenter), NSLocalizedString(@"Center", nil) ],
+        @[ @(MGPreviewPositionVeryCenter), NSLocalizedString(@"Center", nil) ],
         @[ @(MGPreviewPositionTopLeft), NSLocalizedString(@"Top Left", nil) ],
         @[ @(MGPreviewPositionTopCenter), NSLocalizedString(@"Top Center", nil) ],
         @[ @(MGPreviewPositionTopRight), NSLocalizedString(@"Top Right", nil) ],
@@ -195,7 +195,7 @@ static NSArray *exampleAppleScripts;
     MGPreviewPosition position = [MGOptionsDefine getPreviewPosition];
     idx = 0;
     for (NSArray<id> *pos in previewPositions)
-        if ([pos[0] integerValue] == position)
+        if ([pos[0] unsignedIntegerValue] == position)
             idx = [previewPositions indexOfObject:pos];
     [_previewPositionComboBox selectItemAtIndex:idx];
 
@@ -660,7 +660,7 @@ static NSString *currentScriptId = nil;
 
 - (IBAction)previewPositionChanged:(id)sender {
     NSInteger idx = [_previewPositionComboBox indexOfSelectedItem] % previewPositions.count;
-    MGPreviewPosition position = [previewPositions[idx][0] integerValue];
+    MGPreviewPosition position = [previewPositions[idx][0] unsignedIntegerValue];
     [MGOptionsDefine setPreviewPosition:position];
 }
 

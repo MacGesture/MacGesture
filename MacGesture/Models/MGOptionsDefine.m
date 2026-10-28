@@ -77,7 +77,7 @@ static NSUserDefaults *defaults;
 
 + (MGPreviewPosition)getPreviewPosition {
     MGPreviewPosition position = [defaults integerForKey:OPTIONS_PREVIEW_POSITION];
-    return (position != 0) ? position : MGPreviewPositionCenter;
+    return (position != 0) ? position : MGPreviewPositionVeryCenter;
 }
 
 + (void)restoreDefaults {
@@ -88,7 +88,7 @@ static NSUserDefaults *defaults;
     [self setPreviewBgColor:defaultBgColor];
     [self setNoteColor:defaultColor];
     [self setNoteBgColor:defaultBgColor];
-    [self setPreviewPosition:MGPreviewPositionCenter];
+    [self setPreviewPosition:MGPreviewPositionVeryCenter];
 }
 
 + (NSColor *)defaultColor {

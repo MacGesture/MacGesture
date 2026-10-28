@@ -8,24 +8,22 @@
 #define OPTIONS_NOTE_BG_COLOR_ID @"noteBgColor"
 #define OPTIONS_PREVIEW_POSITION @"previewPosition"
 
-typedef NS_OPTIONS(NSUInteger, MGPreviewPositionOption) {
-    MGPreviewPositionOptionNone   =      0,
-    MGPreviewPositionOptionLeft   = 1 << 0, // 1
-    MGPreviewPositionOptionCenter = 1 << 1, // 2
-    MGPreviewPositionOptionRight  = 1 << 2, // 4
-    MGPreviewPositionOptionTop    = 1 << 3, // 8
-    MGPreviewPositionOptionMiddle = 1 << 4, // 16
-    MGPreviewPositionOptionBottom = 1 << 5, // 32
-};
-
-typedef NS_ENUM(NSInteger, MGPreviewPosition) {
-    MGPreviewPositionCenter       = MGPreviewPositionOptionMiddle | MGPreviewPositionOptionCenter, // 18
-    MGPreviewPositionTopLeft      = MGPreviewPositionOptionTop    | MGPreviewPositionOptionLeft,   // 9
-    MGPreviewPositionTopCenter    = MGPreviewPositionOptionTop    | MGPreviewPositionOptionCenter, // 10
-    MGPreviewPositionTopRight     = MGPreviewPositionOptionTop    | MGPreviewPositionOptionRight,  // 12
-    MGPreviewPositionBottomLeft   = MGPreviewPositionOptionBottom | MGPreviewPositionOptionLeft,   // 33
-    MGPreviewPositionBottomCenter = MGPreviewPositionOptionBottom | MGPreviewPositionOptionCenter, // 34
-    MGPreviewPositionBottomRight  = MGPreviewPositionOptionBottom | MGPreviewPositionOptionRight,  // 36
+typedef NS_OPTIONS(NSUInteger, MGPreviewPosition) {
+    MGPreviewPositionNone   =      0,
+    MGPreviewPositionLeft   = 1 << 0, // 1
+    MGPreviewPositionCenter = 1 << 1, // 2
+    MGPreviewPositionRight  = 1 << 2, // 4
+    MGPreviewPositionTop    = 1 << 3, // 8
+    MGPreviewPositionMiddle = 1 << 4, // 16
+    MGPreviewPositionBottom = 1 << 5, // 32
+    // Helpers
+    MGPreviewPositionVeryCenter   = MGPreviewPositionMiddle | MGPreviewPositionCenter, // 18
+    MGPreviewPositionTopLeft      = MGPreviewPositionTop    | MGPreviewPositionLeft,   // 9
+    MGPreviewPositionTopCenter    = MGPreviewPositionTop    | MGPreviewPositionCenter, // 10
+    MGPreviewPositionTopRight     = MGPreviewPositionTop    | MGPreviewPositionRight,  // 12
+    MGPreviewPositionBottomLeft   = MGPreviewPositionBottom | MGPreviewPositionLeft,   // 33
+    MGPreviewPositionBottomCenter = MGPreviewPositionBottom | MGPreviewPositionCenter, // 34
+    MGPreviewPositionBottomRight  = MGPreviewPositionBottom | MGPreviewPositionRight,  // 36
 };
 
 NS_ASSUME_NONNULL_BEGIN
