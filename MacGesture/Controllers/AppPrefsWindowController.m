@@ -909,7 +909,7 @@ static NSString *currentScriptId = nil;
     } else if (thisColumn == 5) { // Trigger
 
         NSButton *checkButton = [NSButton new];
-        [checkButton setButtonType:NSSwitchButton];
+        [checkButton setButtonType:NSButtonTypeSwitch];
         checkButton.state = [rulesList triggerOnEveryMatchAtIndex:row];
         checkButton.toolTip = NSLocalizedString(@"Trigger on every match", nil);
         checkButton.tag = row;

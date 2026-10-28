@@ -191,8 +191,8 @@ static NSUserDefaults *defaults;
 
         NSImage *menuIcon = [NSImage imageNamed:iconName];
         menuIcon.template = YES;
-        item.image = menuIcon;
-//        item.alternateImage = highlightIcon;
+        item.button.image = menuIcon;
+//      item.button.alternateImage = highlightIcon;
         item.menu = self.statusItemMenu;
 
         self.statusItem = item;

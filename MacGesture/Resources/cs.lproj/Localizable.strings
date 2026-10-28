@@ -74,6 +74,9 @@
 "Open README" = "Otevřít README";
 
 /* No comment provided by engineer. */
+"Open System Settings" = "Otevřít Nastavení systému";
+
+/* No comment provided by engineer. */
 "Please navigate to System Settings → Privacy & Security → Accessibility section to enable it for MacGesture." = "Přejděte do Nastavení systému → Soukromí a zabezpečení → Zpřístupnění a povolte oprávnění pro aplikaci MacGesture.";
 
 /* No comment provided by engineer. */
@@ -114,5 +117,3 @@
 
 /* No comment provided by engineer. */
 "Welcome to MacGesture! 🎉" = "Vítejte v MacGesture! 🎉";
-
-"Open System Settings" = "Otevřít Nastavení systému";

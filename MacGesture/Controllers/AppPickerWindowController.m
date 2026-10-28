@@ -137,7 +137,7 @@ NSMutableArray<NSButton *> *_checkBoxes;
 
     if ([column.identifier isEqualToString:@"CheckBox"]) {
         NSButton *checkBox = [NSButton new];
-        [checkBox setButtonType:NSSwitchButton];
+        [checkBox setButtonType:NSButtonTypeSwitch];
         checkBox.state = _filters[row].checkedState;
         checkBox.title = @"";
         checkBox.tag = row;
