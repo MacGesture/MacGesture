@@ -16,6 +16,8 @@
 
 - (void)handleMouseEvent:(NSEvent *)event;
 
+- (void)hide; // clear and order out the overlay
+
 - (void)handleScreenParametersChange:(NSNotification *)notification;
 
 - (void)writeDirection:(NSString *)directionStr;

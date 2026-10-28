@@ -25,7 +25,6 @@
     window.contentView = view;
 
     self.window = window;
-    [window orderFront:self];
 }
 
 - (instancetype)init {
@@ -34,14 +33,6 @@
         [self reinitWindow];
         
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleScreenParametersChange:) name:NSApplicationDidChangeScreenParametersNotification object:nil];
-
-        [[NSNotificationCenter defaultCenter] addObserverForName:@"PrefsDidClose" object:nil
-          queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [self reinitWindow];
-                [self.window orderFrontRegardless];
-            });
-        }];
 
     }
     return self;
@@ -79,17 +70,24 @@
     }
     switch (event.type) {
         case NSEventTypeRightMouseDown:
+            // Shown only during a gesture; an always-present overlay blanks Mission Control's Space previews
+            [self.window orderFrontRegardless];
             [self.window.contentView mouseDown:event];
             break;
         case NSEventTypeRightMouseDragged:
             [self.window.contentView mouseDragged:event];
             break;
         case NSEventTypeRightMouseUp:
-            [self.window.contentView mouseUp:event];
+            [self hide];
             break;
         default:
             break;
     }
+}
+
+- (void)hide {
+    [(CanvasView *) self.window.contentView clear];
+    [self.window orderOut:nil];
 }
 
 - (void)handleScreenParametersChange:(NSNotification *)notification {

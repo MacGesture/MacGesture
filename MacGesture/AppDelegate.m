@@ -401,6 +401,7 @@ static CGEventRef mouseEventCallback(CGEventTapProxy proxy, CGEventType type, CG
                         mouseDownEvent = mouseDraggedEvent = NULL;
                         shouldShow = NO;
                         resetDirection();
+                        [windowController hide];
                         break;
                     }
                     
