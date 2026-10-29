@@ -26,6 +26,7 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+.derived-data-log*
 
 ## Objective-C Begins:
 # Xcode
