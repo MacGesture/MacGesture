@@ -28,6 +28,9 @@ typedef NS_OPTIONS(NSUInteger, MGPreviewPosition) {
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface MGColorTransformer : NSSecureUnarchiveFromDataTransformer
+@end
+
 @interface MGOptionsDefine : NSObject
 
 + (void)setLineColor:(nullable NSColor *)color;

@@ -2,6 +2,14 @@
 #import "MGOptionsDefine.h"
 #import "utils.h"
 
+@implementation MGColorTransformer
+
++ (NSArray<Class> *)allowedTopLevelClasses {
+    return @[ NSColor.class ];
+}
+
+@end
+
 @implementation MGOptionsDefine
 
 static NSUserDefaults *defaults;
@@ -9,6 +17,7 @@ static NSUserDefaults *defaults;
 + (void)load
 {
     defaults = [NSUserDefaults standardUserDefaults];
+    [NSValueTransformer setValueTransformer:[MGColorTransformer new] forName:@"MGColorTransformer"];
 }
 
 + (void)setLineColor:(NSColor *)color {
