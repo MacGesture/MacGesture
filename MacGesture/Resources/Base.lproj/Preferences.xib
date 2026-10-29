@@ -183,7 +183,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="colorChanged:" target="-2" id="4pc-Ho-7a5"/>
                                     <binding destination="72" name="value" keyPath="values.previewBgColor" id="Vau-RB-OdG">
                                         <dictionary key="options">
                                             <string key="NSValueTransformerName">MGColorTransformer</string>
@@ -203,7 +202,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="colorChanged:" target="-2" id="u6H-jG-oIb"/>
                                     <binding destination="72" name="value" keyPath="values.previewColor" id="YNV-t6-nr7">
                                         <dictionary key="options">
                                             <string key="NSValueTransformerName">MGColorTransformer</string>
@@ -238,7 +236,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="colorChanged:" target="-2" id="0w8-33-wML"/>
                                     <binding destination="72" name="value" keyPath="values.lineColor" id="o0v-jy-LzA">
                                         <dictionary key="options">
                                             <string key="NSValueTransformerName">MGColorTransformer</string>
@@ -319,7 +316,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="colorChanged:" target="-2" id="Pqd-vA-bhK"/>
                                     <binding destination="72" name="value" keyPath="values.noteBgColor" id="cPx-eq-gp8">
                                         <dictionary key="options">
                                             <string key="NSValueTransformerName">MGColorTransformer</string>
@@ -339,7 +335,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="colorChanged:" target="-2" id="eM3-sJ-fsv"/>
                                     <binding destination="72" name="value" keyPath="values.noteColor" id="nIk-HF-bu9">
                                         <dictionary key="options">
                                             <string key="NSValueTransformerName">MGColorTransformer</string>

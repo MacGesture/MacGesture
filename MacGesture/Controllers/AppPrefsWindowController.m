@@ -407,19 +407,6 @@ static NSArray *exampleAppleScripts;
     [self.pickerWindowController showWindow:self];
 }
 
-- (IBAction)colorChanged:(id)sender {
-    if (sender == _lineColorWell)
-        [MGOptionsDefine setLineColor:_lineColorWell.color];
-    else if (sender == _previewColorWell)
-        [MGOptionsDefine setPreviewColor:_previewColorWell.color];
-    else if (sender == _previewBgColorWell)
-        [MGOptionsDefine setPreviewBgColor:_previewBgColorWell.color];
-    else if (sender == _noteColorWell)
-        [MGOptionsDefine setNoteColor:_noteColorWell.color];
-    else if (sender == _noteBgColorWell)
-        [MGOptionsDefine setNoteBgColor:_noteBgColorWell.color];
-}
-
 - (IBAction)chooseFont:(id)sender {
 
     NSFont *font = [NSFont fontWithName:_fontNameTextField.stringValue
