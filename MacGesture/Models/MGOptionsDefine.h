@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MGOptionsDefine : NSObject
 
++ (NSFont *)noteFont;
+
 + (void)setLineColor:(nullable NSColor *)color;
 + (NSColor *)getLineColor;
 

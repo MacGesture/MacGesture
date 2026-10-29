@@ -20,6 +20,23 @@ static NSUserDefaults *defaults;
     [NSValueTransformer setValueTransformer:[MGColorTransformer new] forName:@"MGColorTransformer"];
 }
 
++ (NSFont *)noteFont {
+    NSString *name = [defaults stringForKey:@"noteFontName"];
+    CGFloat size = [defaults doubleForKey:@"noteFontSize"] ?: NSFont.systemFontSize;
+    NSFont *font = name ? [NSFont fontWithName:name size:size] : nil;
+    if (font) return font;
+
+    NSDictionary<NSString *, NSNumber *> *systemWeights = @{
+        @".SFNS-Ultralight": @(NSFontWeightUltraLight), @".SFNS-Thin":     @(NSFontWeightThin),
+        @".SFNS-Light":      @(NSFontWeightLight),      @".SFNS-Regular":  @(NSFontWeightRegular),
+        @".SFNS-Medium":     @(NSFontWeightMedium),     @".SFNS-Semibold": @(NSFontWeightSemibold),
+        @".SFNS-Bold":       @(NSFontWeightBold),       @".SFNS-Heavy":    @(NSFontWeightHeavy),
+        @".SFNS-Black":      @(NSFontWeightBlack),
+    };
+    NSNumber *weight = name ? systemWeights[name] : nil;
+    return [NSFont systemFontOfSize:size weight:weight ? weight.doubleValue : NSFontWeightRegular];
+}
+
 + (void)setLineColor:(NSColor *)color {
     NSData *colorData = MGArchive(color);
     [defaults setObject:colorData forKey:OPTIONS_LINE_COLOR_ID];

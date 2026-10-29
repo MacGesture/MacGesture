@@ -14,7 +14,7 @@
 
 #pragma mark Preferences controller Interface
 
-@interface AppPrefsWindowController () <WKNavigationDelegate>
+@interface AppPrefsWindowController () <WKNavigationDelegate, NSFontChanging>
 
 @property (nonatomic, strong) AppPickerWindowController *pickerWindowController;
 
@@ -409,8 +409,7 @@ static NSArray *exampleAppleScripts;
 
 - (IBAction)chooseFont:(id)sender {
 
-    NSFont *font = [NSFont fontWithName:_fontNameTextField.stringValue
-                                   size:_fontSizeTextField.floatValue];
+    NSFont *font = [MGOptionsDefine noteFont];
 
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
     fontManager.target = self;
@@ -437,9 +436,10 @@ static NSArray *exampleAppleScripts;
         NSFontPanelModeMaskCollection; // | NSFontPanelModeMaskTextColorEffect;
 }
 
-- (IBAction)changeFont:(nullable id)sender {
-    NSFontManager *fontManager = [NSFontManager sharedFontManager];
-    NSFont *font = [fontManager convertFont:[NSFont systemFontOfSize:[NSFont systemFontSize]]];
+- (IBAction)changeFont:(nullable NSFontManager *)sender {
+    // Convert the current note font so size- or face-only changes keep the family
+    NSFontManager *fontManager = sender ?: [NSFontManager sharedFontManager];
+    NSFont *font = [fontManager convertFont:[MGOptionsDefine noteFont]];
     [defaults setObject:font.fontName forKey:@"noteFontName"];
     [defaults setDouble:font.pointSize forKey:@"noteFontSize"];
 }
