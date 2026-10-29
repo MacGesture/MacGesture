@@ -567,10 +567,14 @@ static NSString *currentScriptId = nil;
 
         currentScriptPath = [NSString stringWithFormat:@"%@/%@", currentScriptPath, @"MacGesture.applescript"];
 
-        [[NSFileManager defaultManager] removeItemAtPath:currentScriptPath error:&error];
-        [[[AppleScriptsList sharedAppleScriptsList] scriptAtIndex:index] writeToFile:currentScriptPath atomically:YES
-                                                                            encoding:NSUTF8StringEncoding error:&error];
-        [[NSWorkspace sharedWorkspace] openFile:currentScriptPath];
+        [[NSFileManager defaultManager] removeItemAtPath:currentScriptPath error:nil];
+        BOOL written = [[[AppleScriptsList sharedAppleScriptsList] scriptAtIndex:index] writeToFile:currentScriptPath
+                                                                    atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        if (!written || ![[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:currentScriptPath]]) {
+            if (error) [[NSAlert alertWithError:error] runModal];
+            else NSBeep();
+            return;
+        }
 
         _editInExternalEditorButton.title = NSLocalizedString(@"Stop", nil);
         isEditing = YES;
