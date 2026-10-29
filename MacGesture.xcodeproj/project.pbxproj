@@ -123,8 +123,8 @@
 		D6B1318B249E54D00014F55E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		D6B1318D249E54E10014F55E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppPickerWindowController.strings; sourceTree = "<group>"; };
 		D6B1318F249E55C90014F55E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
-		EF4E72A0249AAF960095B982 /* MacGestureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacGestureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4E7293249AAF960095B982 /* MacGesture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacGesture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF4E72A0249AAF960095B982 /* MacGestureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacGestureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4E72C5249ABAE00095B982 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		EF8ECEC8249EC5F2004C2563 /* MacGesture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacGesture.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -355,7 +355,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MCG;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 2710;
 				ORGANIZATIONNAME = MacGesture;
 				TargetAttributes = {
 					1381E4A71824E7E800E815F5 = {
