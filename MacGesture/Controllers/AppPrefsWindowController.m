@@ -46,7 +46,7 @@ static NSArray<id> *previewPositions;
 
 static NSUserDefaults *defaults;
 
-#define MacGestureRuleDataType @"MacGestureRuleDataType"
+#define MacGestureRuleDataType @"com.codefalling.macgesture.rule-index"
 
 static NSArray *exampleAppleScripts;
 
@@ -770,14 +770,13 @@ static NSString *currentScriptId = nil;
 #pragma mark -
 #pragma mark NSTableViewDelegate Implementation
 
-- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes
-     toPasteboard:(NSPasteboard *)pasteboard {
+- (id<NSPasteboardWriting>)tableView:(NSTableView *)tableView pasteboardWriterForRow:(NSInteger)row {
 
-    if (tableView != _rulesTableView) return NO;
+    if (tableView != _rulesTableView) return nil;
 
-    [pasteboard declareTypes:@[ MacGestureRuleDataType ] owner:self];
-    [pasteboard setString:@(rowIndexes.firstIndex).stringValue forType:MacGestureRuleDataType];
-    return YES;
+    NSPasteboardItem *item = [NSPasteboardItem new];
+    [item setString:@(row).stringValue forType:MacGestureRuleDataType];
+    return item;
 }
 
 - (NSDragOperation)tableView:(NSTableView*)tableView validateDrop:(id)info proposedRow:(NSInteger)row
@@ -793,7 +792,9 @@ static NSString *currentScriptId = nil;
     if (tableView != _rulesTableView) return NO;
 
     NSPasteboard* pboard = [info draggingPasteboard];
-    NSInteger dragRow = [pboard stringForType:MacGestureRuleDataType].integerValue;
+    NSString *dragRowString = [pboard stringForType:MacGestureRuleDataType];
+    if (!dragRowString) return NO;
+    NSInteger dragRow = dragRowString.integerValue;
 
     [[RulesList sharedRulesList] moveRuleFrom:dragRow ruleTo:row];
     [_rulesTableView noteNumberOfRowsChanged];
